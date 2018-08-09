@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 
 namespace ExtAppraisalApp.Services
 {
     public class RestClient
     {
-        public RestClient()
-        {
-        }
+        public RestClient() { }
 
         // Initialize Httpclient
         public static HttpClient GetHttpClient()
@@ -21,7 +20,7 @@ namespace ExtAppraisalApp.Services
             HttpClient httpClient = new HttpClient(handler, true);
             httpClient.Timeout = new TimeSpan(0, 10, 30);
             httpClient.BaseAddress = new Uri(Url.BASE_URL);
-            httpClient.DefaultRequestHeaders.Add("Authorization", "Basic " + "RERDVXNlcjpERENVc2VyMDE=");
+            httpClient.DefaultRequestHeaders.Add("Authorization", "Basic " + "QXBwcmFpc2FsQXBwVXNlcjpBcHByYWlzYWxBcHBVc2VyMDE=");
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             return httpClient;
         }
@@ -46,14 +45,13 @@ namespace ExtAppraisalApp.Services
         public static HttpResponseMessage doPost(string url, string body)
         {
             HttpResponseMessage responseMessage = null;
-            StringContent content = new StringContent(body);
 
-            //var json = JsonConvert.SerializeObject(body);
-            //var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var httpContent = new StringContent(body, Encoding.UTF8, "application/json");
 
             try
             {
-                responseMessage = GetHttpClient().PostAsync(url, content).Result;
+                responseMessage = GetHttpClient().PostAsync(url, httpContent).Result;
             }
             catch (Exception exc)
             {

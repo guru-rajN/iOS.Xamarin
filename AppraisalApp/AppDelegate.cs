@@ -9,7 +9,7 @@ namespace ExtAppraisalApp
     public class AppDelegate : UIApplicationDelegate, IUISplitViewControllerDelegate
     {
         // class-level declarations
-
+        bool IsLoggedIn = false;
         public override UIWindow Window
         {
             get;
@@ -20,10 +20,22 @@ namespace ExtAppraisalApp
         {
 
             // Override point for customization after application launch.
-            var splitViewController = (UISplitViewController)Window.RootViewController;
-            var navigationController = (UINavigationController)splitViewController.ViewControllers[1];
-            navigationController.TopViewController.NavigationItem.LeftBarButtonItem = splitViewController.DisplayModeButtonItem;
-            splitViewController.WeakDelegate = this;
+
+            if (!IsLoggedIn)
+            {
+                var storyboard = UIStoryboard.FromName("Main", null);
+                var loginViewController = storyboard.InstantiateViewController("LoginViewController");
+                //loginViewController.ModalPresentationStyle = UIModalPresentationStyle.FullScreen;
+                //this.ro(loginViewController, null);
+                Window.RootViewController = loginViewController;
+            }else{
+                var splitViewController = (UISplitViewController)Window.RootViewController;
+                var navigationController = (UINavigationController)splitViewController.ViewControllers[1];
+                navigationController.TopViewController.NavigationItem.LeftBarButtonItem = splitViewController.DisplayModeButtonItem;
+                splitViewController.WeakDelegate = this;
+                Window.RootViewController = splitViewController;
+            }
+          
 
             return true;
         }

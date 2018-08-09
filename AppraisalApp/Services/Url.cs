@@ -16,10 +16,12 @@ namespace ExtAppraisalApp.Services
          */
         public const string SERVER_URL = STAGING_URL;
 
-        public const string BASE_URL = SERVER_URL + "OneStop/Appraisal/";
+        public const string BASE_URL = SERVER_URL + "ExternalAppraisal/AppraisalApp/";
 
-        public const string VALIDATE_ZIPCODE_URL = "";
+        public const string VALIDATE_ZIPCODE_URL = "ValidateZipDealer/";
 
-        public const string DECODEVIN_URL = "DecodevinKBB/{vin}/{mileage}/{storeId}/{inventoryType}";
+        public const string DECODEVIN_URL = "DecodevinKBB/";
+
+        public const string CREATEAPPRAISAL_URL = "CreateAppraisalKBB/";
     }
 }

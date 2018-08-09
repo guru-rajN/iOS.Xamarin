@@ -14,6 +14,7 @@ namespace ExtAppraisalApp
 
         DataSource dataSource;
 
+
         List<string> ItemList = new List<string>()
         {
             "Upload",
@@ -43,6 +44,8 @@ namespace ExtAppraisalApp
             //NavigationItem.RightBarButtonItem = addButton;
 
             //DetailViewController = (DetailViewController)((UINavigationController)SplitViewController.ViewControllers[1]).TopViewController;
+
+
             TableView.TableFooterView = new UIView(new CGRect(0,0,0,0));
 
             TableView.Source = dataSource = new DataSource(this);
@@ -50,7 +53,13 @@ namespace ExtAppraisalApp
             foreach(object item in ItemList){
                 dataSource.Objects.Insert(0, item);
             }
-
+            //if (!IsLoggedIn)
+            //{
+            //    var storyboard = UIStoryboard.FromName("Main", null);
+            //    var loginViewController = storyboard.InstantiateViewController("LoginViewController");
+            //    this.ModalPresentationStyle = UIModalPresentationStyle.FullScreen;
+            //    this.ShowViewController(loginViewController, null);
+            //}
 
         }
 
