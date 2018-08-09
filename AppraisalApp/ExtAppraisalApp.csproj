@@ -117,7 +117,6 @@
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Views\Main.storyboard" />
-    <InterfaceDefinition Include="Resources\MainOld~.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -176,6 +175,10 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />
+    <BundleResource Include="Resources\Girl_2048_1536.jpg" />
+    <BundleResource Include="Resources\box.png" />
+    <BundleResource Include="Resources\car.png" />
+    <BundleResource Include="Resources\girl750_1334.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
