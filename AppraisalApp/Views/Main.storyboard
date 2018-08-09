@@ -568,8 +568,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Girl_2048_1536.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="hXX-4A-s0M">
-                                <rect key="frame" x="20" y="20" width="1326" height="1004"/>
+                            <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Girl_2048_1536.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="7sj-J6-Xh5">
+                                <rect key="frame" x="0.0" y="20" width="1366" height="1004"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="box.png" translatesAutoresizingMaskIntoConstraints="NO" id="z04-0b-XMb">
+                                <rect key="frame" x="756" y="-236" width="754" height="1240"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Your Zip/Dealer Code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0v-ow-5z6">
                                 <rect key="frame" x="1129" y="199" width="217" height="34"/>
@@ -631,26 +635,31 @@
                         <constraints>
                             <constraint firstItem="gNk-V8-3wA" firstAttribute="top" secondItem="Ibc-GS-hc6" secondAttribute="bottom" constant="20" id="75E-5L-aIy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gNk-V8-3wA" secondAttribute="trailing" constant="42" id="9Cv-Pr-0sp"/>
-                            <constraint firstItem="hXX-4A-s0M" firstAttribute="top" secondItem="wOl-DI-BvQ" secondAttribute="bottom" id="OdC-o4-Xgc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="hXX-4A-s0M" secondAttribute="trailing" id="Ud5-HR-Tkl"/>
-                            <constraint firstItem="hXX-4A-s0M" firstAttribute="leading" secondItem="UZZ-bu-xiS" secondAttribute="leadingMargin" id="gSn-xw-PeH"/>
+                            <constraint firstAttribute="trailing" secondItem="z04-0b-XMb" secondAttribute="trailing" constant="-144" id="Ac3-DE-UU4"/>
+                            <constraint firstItem="7sj-J6-Xh5" firstAttribute="leading" secondItem="UZZ-bu-xiS" secondAttribute="leading" id="EK2-5h-yC3"/>
+                            <constraint firstItem="gb5-QQ-nIc" firstAttribute="top" secondItem="7sj-J6-Xh5" secondAttribute="bottom" id="Q7i-3h-c3a"/>
+                            <constraint firstItem="z04-0b-XMb" firstAttribute="leading" secondItem="UZZ-bu-xiS" secondAttribute="leading" constant="756" id="Qtg-pk-CIP"/>
+                            <constraint firstAttribute="trailing" secondItem="7sj-J6-Xh5" secondAttribute="trailing" id="SDq-EZ-h4w"/>
+                            <constraint firstItem="gb5-QQ-nIc" firstAttribute="top" secondItem="z04-0b-XMb" secondAttribute="bottom" constant="20" id="Vrt-Bz-SeM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ibc-GS-hc6" secondAttribute="trailing" constant="28" id="h9c-aA-oUb"/>
                             <constraint firstItem="h0v-ow-5z6" firstAttribute="trailing" secondItem="Nq1-AD-Bkg" secondAttribute="trailing" constant="7" id="hqH-t9-cxv"/>
-                            <constraint firstItem="gb5-QQ-nIc" firstAttribute="top" secondItem="hXX-4A-s0M" secondAttribute="bottom" id="lyU-D5-thO"/>
                             <constraint firstItem="Ibc-GS-hc6" firstAttribute="top" secondItem="Nq1-AD-Bkg" secondAttribute="bottom" constant="8" id="oZ6-TP-vCn"/>
+                            <constraint firstItem="z04-0b-XMb" firstAttribute="top" secondItem="UZZ-bu-xiS" secondAttribute="top" constant="-236" id="r43-s4-PIw"/>
                             <constraint firstItem="h0v-ow-5z6" firstAttribute="trailing" secondItem="UZZ-bu-xiS" secondAttribute="trailingMargin" id="tIU-Ff-Bkh"/>
                             <constraint firstItem="h0v-ow-5z6" firstAttribute="bottom" secondItem="Nq1-AD-Bkg" secondAttribute="top" constant="5" id="xeD-Ch-XI5"/>
+                            <constraint firstItem="7sj-J6-Xh5" firstAttribute="top" secondItem="wOl-DI-BvQ" secondAttribute="bottom" id="z5s-5c-gSY"/>
                             <constraint firstItem="h0v-ow-5z6" firstAttribute="top" secondItem="wOl-DI-BvQ" secondAttribute="bottom" constant="179" id="zRD-sT-K7g"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="btnGetStart" destination="gNk-V8-3wA" id="EuK-Ey-BUJ"/>
                         <outlet property="txtZip" destination="Ibc-GS-hc6" id="Rkw-I3-3N9"/>
+                        <outlet property="LoginImg" destination="7sj-J6-Xh5" id="name-outlet-7sj-J6-Xh5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lV4-CR-dXo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1505.71" y="600.5859"/>
+            <point key="canvasLocation" x="1505.271" y="600"/>
         </scene>
         <!--Decode View Controller-->
         <scene sceneID="0yD-be-yxN">
@@ -988,6 +997,7 @@
     </scenes>
     <resources>
         <image name="Girl_2048_1536.jpg" width="2048" height="1536"/>
+        <image name="box.png" width="750" height="1334"/>
         <image name="done.png" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>

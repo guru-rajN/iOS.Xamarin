@@ -19,6 +19,10 @@ namespace ExtAppraisalApp
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView LoginImg { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField txtZip { get; set; }
 
         [Action ("BtnGetStart_TouchUpInside:")]
@@ -30,6 +34,11 @@ namespace ExtAppraisalApp
             if (btnGetStart != null) {
                 btnGetStart.Dispose ();
                 btnGetStart = null;
+            }
+
+            if (LoginImg != null) {
+                LoginImg.Dispose ();
+                LoginImg = null;
             }
 
             if (txtZip != null) {

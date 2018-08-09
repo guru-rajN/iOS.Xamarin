@@ -9,14 +9,15 @@ namespace ExtAppraisalApp
 {
 	public partial class LoginViewController : UIViewController
 	{
+        public LoginViewController(IntPtr handle) : base(handle)
+        {
+        }
+
         partial void BtnGetStart_TouchUpInside(UIButton sender)
         {
             string code = null;
-
-
             try
             {
-
                 code = ServiceFactory.getWebServiceHandle().ValidateZipDealer(Convert.ToInt32(txtZip.Text));
                 if (code != null)
                 {
@@ -34,8 +35,6 @@ namespace ExtAppraisalApp
                         this.PresentModalViewController(vehicleInfo, true);
 
                     }
-
-
                 }
                 else
                 {
@@ -57,17 +56,17 @@ namespace ExtAppraisalApp
 
         }
 
-
-
-
-
-
-        public LoginViewController(IntPtr handle) : base(handle)
-        {
-        }
-
         public override void ViewDidLoad()
         {
+            if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
+            {
+                LoginImg.Image = UIImage.FromBundle("Girl_2048_1536.jpg");
+            }
+            else
+            {
+                LoginImg.Image = UIImage.FromBundle("girl750_1334.jpg");
+            }
+
             txtZip.KeyboardType = UIKeyboardType.NumberPad;
             txtZip.ReturnKeyType = UIReturnKeyType.Send;
             txtZip.BorderStyle = UITextBorderStyle.None;
