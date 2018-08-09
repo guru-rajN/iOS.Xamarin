@@ -1,11 +1,11 @@
 ﻿<Properties StartupConfiguration="{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="ExtAppraisalApp Status">
     <Files>
-      <File FileName="AppraisalApp/Controllers/MasterViewController.cs" Line="56" Column="13" />
-      <File FileName="AppraisalApp/Controllers/LoginViewController.cs" Line="69" Column="13" />
+      <File FileName="AppraisalApp/Controllers/MasterViewController.cs" Line="61" Column="55" />
+      <File FileName="AppraisalApp/Controllers/LoginViewController.cs" Line="69" Column="1" />
       <File FileName="AppraisalApp/Main.cs" Line="12" Column="1" />
       <File FileName="AppraisalApp/AppDelegate.cs" Line="17" Column="10" />
-      <File FileName="AppraisalApp/Views/Main.storyboard" />
+      <File FileName="AppraisalApp/Info.plist" />
       <File FileName="ExtAppraisalApp Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
@@ -14,6 +14,6 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.ExtAppraisalApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.13AA464C-9B1A-4A8C-B44A-6011481AC5C3" />
+  <MonoDevelop.Ide.ItemProperties.ExtAppraisalApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.0E5022FF-6383-4E15-8F52-AF90B39923E6" automaticSigning="False" />
   <MultiItemStartupConfigurations />
 </Properties>
