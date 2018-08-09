@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtAppraisalApp", "ExtAppraisalApp.csproj", "{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhone = Release|iPhone
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}.Release|iPhone.ActiveCfg = Release|iPhone
+		{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}.Release|iPhone.Build.0 = Release|iPhone
+		{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}.Debug|iPhone.Build.0 = Debug|iPhone
+	EndGlobalSection
+EndGlobal

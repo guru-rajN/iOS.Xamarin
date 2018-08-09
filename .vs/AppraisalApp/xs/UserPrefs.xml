@@ -1,0 +1,15 @@
+﻿<Properties StartupConfiguration="{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AppraisalApp/Controllers/DetailViewController.cs">
+    <Files>
+      <File FileName="AppraisalApp/Views/Main.storyboard" />
+      <File FileName="AppraisalApp/Controllers/DetailViewController.cs" Line="31" Column="17" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.AppraisalApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.3B2300C8-F0EC-4B96-B090-BFE6A8AA2D42" automaticSigning="False" />
+</Properties>

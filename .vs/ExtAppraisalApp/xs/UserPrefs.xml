@@ -1,0 +1,14 @@
+﻿<Properties StartupConfiguration="{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AppraisalApp/Services/RestClient.cs">
+    <Files>
+      <File FileName="AppraisalApp/Services/RestClient.cs" Line="18" Column="43" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.ExtAppraisalApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.8F2D176D-3FF7-44BC-AFB2-929C5A8A437B" />
+  <MultiItemStartupConfigurations />
+</Properties>
