@@ -23,7 +23,7 @@
     <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
     <MtouchFastDev>true</MtouchFastDev>
     <IOSDebuggerPort>40937</IOSDebuggerPort>
-    <MtouchLink>None</MtouchLink>
+    <MtouchLink>SdkOnly</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <PlatformTarget>x86</PlatformTarget>
@@ -182,6 +182,8 @@
     <BundleResource Include="Resources\girl750_1334.jpg" />
     <BundleResource Include="Resources\CarLaunch.png" />
     <BundleResource Include="Resources\EchoParkLogo.png" />
+    <BundleResource Include="Resources\box_big.png" />
+    <BundleResource Include="Resources\EchoPark_transparent.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

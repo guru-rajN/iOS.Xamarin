@@ -36,6 +36,12 @@ namespace ExtAppraisalApp
         {
             try
             {
+                // hide keyboard on touch outside area
+                var g = new UITapGestureRecognizer(() => View.EndEditing(true));
+                g.CancelsTouchesInView = false; //for iOS5
+                View.AddGestureRecognizer(g);
+
+
                 base.ViewDidLoad();
                 // Perform any additional setup after loading the view, typically from a nib.
 

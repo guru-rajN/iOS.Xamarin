@@ -58,6 +58,12 @@ namespace ExtAppraisalApp
 
         public override void ViewDidLoad()
         {
+            // hide keyboard on touch outside area
+            var g = new UITapGestureRecognizer(() => View.EndEditing(true));
+            g.CancelsTouchesInView = false; //for iOS5
+            View.AddGestureRecognizer(g);
+
+
             if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
             {
                 LoginImg.Image = UIImage.FromBundle("Girl_2048_1536.jpg");
