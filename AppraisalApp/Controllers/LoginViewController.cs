@@ -7,80 +7,89 @@ using UIKit;
 
 namespace ExtAppraisalApp
 {
-	public partial class LoginViewController : UIViewController
-	{
-        public LoginViewController(IntPtr handle) : base(handle)
-        {
-        }
 
-        partial void BtnGetStart_TouchUpInside(UIButton sender)
+        public partial class LoginViewController : UIViewController
         {
-            string code = null;
-            try
+            public LoginViewController(IntPtr handle) : base(handle)
             {
-                code = ServiceFactory.getWebServiceHandle().ValidateZipDealer(Convert.ToInt32(txtZip.Text));
-                if (code != null)
+            }
+
+            partial void BtnGetStart_TouchUpInside(UIButton sender)
+            {
+
+                string zip = txtZip.Text;
+                if (zip == "")
                 {
-                    if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
-                    {
+                    Utilities.Utility.ShowAlert("ZIP/Dealer Code", "A ZIP/Dealer is required.!!", "OK");
 
-                        var vehicleInfo = Storyboard.InstantiateViewController("DecodeViewController");
-                        vehicleInfo.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
-                        this.PresentModalViewController(vehicleInfo, true);
+                }
+                else if (!(zip.Length == 6 || zip.Length == 4))
+                {
+                    Utilities.Utility.ShowAlert("ZIP/Dealer Code", "Your ZIP/Dealer (" + zip + ") is Incorrect", "OK");
 
-                    }
-                    else
-                    {
-                        var vehicleInfo = Storyboard.InstantiateViewController("DecodeViewController");
-                        this.PresentModalViewController(vehicleInfo, true);
-
-                    }
                 }
                 else
                 {
-                    //Create Alert
-                    var okAlertController = UIAlertController.Create("Title", "Please Enter valid ZIP/Dealer Code", UIAlertControllerStyle.Alert);
+                    string code = null;
+                    try
+                    {
+                        code = ServiceFactory.getWebServiceHandle().ValidateZipDealer(Convert.ToInt32(txtZip.Text));
+                        if (code != null)
+                        {
+                            if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
+                            {
 
-                    //Add Action
-                    okAlertController.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
+                                var vehicleInfo = Storyboard.InstantiateViewController("DecodeViewController");
+                                vehicleInfo.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
+                                this.PresentModalViewController(vehicleInfo, true);
 
-                    // Present Alert
-                    PresentViewController(okAlertController, true, null);
+                            }
+                            else
+                            {
+                                var vehicleInfo = Storyboard.InstantiateViewController("DecodeViewController");
+                                this.PresentModalViewController(vehicleInfo, true);
+
+                            }
+                        }
+                        else
+                        {
+                            Utilities.Utility.ShowAlert("ZIP/Dealer", "Please Enter valid ZIP/Dealer Code", "OK");
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
 
             }
+
+            public override void ViewDidLoad()
+            {
+
+               // hide keyboard on touch outside area
+                var g = new UITapGestureRecognizer(() => View.EndEditing(true));
+                g.CancelsTouchesInView = false; //for iOS5
+                View.AddGestureRecognizer(g);
+                if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
+                {
+                    LoginImg.Image = UIImage.FromBundle("Girl_2048_1536.jpg");
+                }
+                else
+                {
+                    LoginImg.Image = UIImage.FromBundle("girl750_1334.jpg");
+                }
+
+                txtZip.KeyboardType = UIKeyboardType.NumberPad;
+                txtZip.ReturnKeyType = UIReturnKeyType.Send;
+                txtZip.BorderStyle = UITextBorderStyle.None;
+                txtZip.MinimumFontSize = 17f;
+                txtZip.AdjustsFontSizeToFitWidth = true;
+            }
+
 
         }
-
-        public override void ViewDidLoad()
-        {
-            // hide keyboard on touch outside area
-            var g = new UITapGestureRecognizer(() => View.EndEditing(true));
-            g.CancelsTouchesInView = false; //for iOS5
-            View.AddGestureRecognizer(g);
-
-
-            if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
-            {
-                LoginImg.Image = UIImage.FromBundle("Girl_2048_1536.jpg");
-            }
-            else
-            {
-                LoginImg.Image = UIImage.FromBundle("girl750_1334.jpg");
-            }
-
-            txtZip.KeyboardType = UIKeyboardType.NumberPad;
-            txtZip.ReturnKeyType = UIReturnKeyType.Send;
-            txtZip.BorderStyle = UITextBorderStyle.None;
-            txtZip.MinimumFontSize = 17f;
-            txtZip.AdjustsFontSizeToFitWidth = true;
-        }
-
-
-    }
 	
 }

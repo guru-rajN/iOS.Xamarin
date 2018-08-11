@@ -33,7 +33,7 @@ namespace ExtAppraisalApp
             // Update the user interface for the detail item
             //if (IsViewLoaded && DetailItem != null)
             //detailDescriptionLabel.Text = DetailItem.ToString();
-            VehicleInfoTableView.Source = new DetailSource(this);
+            //VehicleInfoTableView.Source = new DetailSource(this);
         }
 
         public override void ViewDidLoad()

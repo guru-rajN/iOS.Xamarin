@@ -13,16 +13,8 @@ namespace ExtAppraisalApp
     [Register ("DetailViewController")]
     partial class DetailViewController
     {
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITableView VehicleInfoTableView { get; set; }
-
         void ReleaseDesignerOutlets ()
         {
-            if (VehicleInfoTableView != null) {
-                VehicleInfoTableView.Dispose ();
-                VehicleInfoTableView = null;
-            }
         }
     }
 }

@@ -184,6 +184,7 @@
     <BundleResource Include="Resources\EchoParkLogo.png" />
     <BundleResource Include="Resources\box_big.png" />
     <BundleResource Include="Resources\EchoPark_transparent.png" />
+    <BundleResource Include="Resources\camera.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
