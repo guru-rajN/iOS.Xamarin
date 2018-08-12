@@ -84,8 +84,6 @@ namespace ExtAppraisalApp
                 var appDelegate = (AppDelegate)UIApplication.SharedApplication.Delegate;
                 appDelegate.Window.RootViewController = splitViewController;
 
-
-
             }
 
         }

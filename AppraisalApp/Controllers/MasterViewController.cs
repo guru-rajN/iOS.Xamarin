@@ -53,13 +53,7 @@ namespace ExtAppraisalApp
             foreach(object item in ItemList){
                 dataSource.Objects.Insert(0, item);
             }
-            //if (!IsLoggedIn)
-            //{
-            //    var storyboard = UIStoryboard.FromName("Main", null);
-            //    var loginViewController = storyboard.InstantiateViewController("LoginViewController");
-            //    this.ModalPresentationStyle = UIModalPresentationStyle.FullScreen;
-            //    this.ShowViewController(loginViewController, null);
-            //}
+       
 
         }
 
