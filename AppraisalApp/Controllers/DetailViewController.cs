@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CoreGraphics;
 using ExtAppraisalApp.Models;
 using ExtAppraisalApp.Services;
 using Foundation;
@@ -32,10 +33,23 @@ namespace ExtAppraisalApp
         void ConfigureView()
         {
             // Update the user interface for the detail item
+            DetailTableView.TableFooterView = new UIView(new CGRect(0, 0, 0, 0));
 
-            GetVehicleData();
-            //Vehicle vehicle = new Vehicle();
+            Vehicle vehicle = GetVehicleData();
 
+            if(null != vehicle){
+                if (vehicle.InvtrType.Equals("Used"))
+                    DecodeVin(vehicle.VIN, (int)vehicle.Mileage, vehicle.StoreID, 10);
+                else
+                    DecodeVin(vehicle.VIN, (int)vehicle.Mileage, vehicle.StoreID, 20);
+
+
+                vinNumber.Text = vehicle.VIN;
+                yearValue.Text = vehicle.Year.ToString();
+                makeValue.Text = vehicle.Make;
+            }
+
+           
         }
 
         public override void ViewDidLoad()
@@ -63,22 +77,27 @@ namespace ExtAppraisalApp
 
         }
 
-        private void GetVehicleData()
+        // Get all the vehicle details : the item which will have null value, it means it will have multiple values
+        // that we need to fetch from decode vin service
+        private Vehicle GetVehicleData()
         {
             try
             {
-                ServiceFactory.getWebServiceHandle().GetVehicleDetails(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId);
+                Vehicle vehicle = ServiceFactory.getWebServiceHandle().GetVehicleDetails(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId);
+                return vehicle;
             }
             catch (Exception exc)
             {
                 Console.WriteLine("exception occured :: " + exc.Message);
+                return null;
             }
         }
 
-        private void DecodeVin(){
+        // Decode VIN detials
+        private void DecodeVin(string VIN, int Mileage, int StoreId, int InventoryType){
             try
             {
-               // ServiceFactory.getWebServiceHandle().DecodeVin(vehicle.VIN, Vehicle);
+                ServiceFactory.getWebServiceHandle().DecodeVin(VIN, Mileage, StoreId,InventoryType);
             }
             catch (Exception exc)
             {
