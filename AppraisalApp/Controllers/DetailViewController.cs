@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using ExtAppraisalApp.Models;
+using ExtAppraisalApp.Services;
 using Foundation;
 using UIKit;
 
@@ -31,6 +33,8 @@ namespace ExtAppraisalApp
         {
             // Update the user interface for the detail item
 
+            GetVehicleData();
+            //Vehicle vehicle = new Vehicle();
 
         }
 
@@ -39,8 +43,6 @@ namespace ExtAppraisalApp
             base.ViewDidLoad();
             // Perform any additional setup after loading the view, typically from a nib.
             ConfigureView();
-
-
 
         }
 
@@ -53,8 +55,35 @@ namespace ExtAppraisalApp
         public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
         {
             Console.WriteLine("indexPath :: " + indexPath.Row);
+            if(indexPath.Row == 0){
+                
+            }else if(indexPath.Row == 1){
+                
+            }
 
+        }
 
+        private void GetVehicleData()
+        {
+            try
+            {
+                ServiceFactory.getWebServiceHandle().GetVehicleDetails(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId);
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine("exception occured :: " + exc.Message);
+            }
+        }
+
+        private void DecodeVin(){
+            try
+            {
+               // ServiceFactory.getWebServiceHandle().DecodeVin(vehicle.VIN, Vehicle);
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine("exception occured :: " + exc.Message);
+            }
         }
 
 

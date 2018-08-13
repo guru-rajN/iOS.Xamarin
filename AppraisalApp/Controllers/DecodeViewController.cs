@@ -79,6 +79,12 @@ namespace ExtAppraisalApp
                 apprrequest.DDCUserId = "5A9C9038-DDC6-4BBE-8256-675F91D6B5B7";
                 appresponse = ServiceFactory.getWebServiceHandle().CreateAppraisalKBB(apprrequest);
 
+                Console.WriteLine("vehicle id :: " + appresponse.VehicleID);
+
+                AppDelegate.appDelegate.vehicleID = appresponse.VehicleID;
+                AppDelegate.appDelegate.storeId = appresponse.StoreID;
+                AppDelegate.appDelegate.invtrId = appresponse.InvtrID;
+
                 var storyboard = UIStoryboard.FromName("Main", null); 
                 var splitViewController = storyboard.InstantiateViewController("SplitViewControllerID");
                 var appDelegate = (AppDelegate)UIApplication.SharedApplication.Delegate;
@@ -87,7 +93,6 @@ namespace ExtAppraisalApp
             }
 
         }
-
 
         partial void BtnCancel_TouchUpInside(UIButton sender)
         {

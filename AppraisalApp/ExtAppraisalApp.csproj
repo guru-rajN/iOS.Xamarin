@@ -173,6 +173,7 @@
     <Compile Include="Controllers\DecodeViewController.designer.cs">
       <DependentUpon>DecodeViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Vehicle.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />

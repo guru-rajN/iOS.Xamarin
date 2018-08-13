@@ -7,6 +7,24 @@ namespace ExtAppraisalApp.Services
 {
     public class ServiceImpl : Service
     {
+
+        #region Singleton pattern : Object creation
+        private static ServiceImpl service;
+
+        private ServiceImpl() { }
+
+        public static ServiceImpl getInstance()
+        {
+            if (null == service)
+            {
+                service = new ServiceImpl();
+            }
+            return service;
+        }
+
+        #endregion
+
+
         // validate zip/dealer code
         public bool ValidateCustomerCode(string code)
         {
@@ -61,21 +79,6 @@ namespace ExtAppraisalApp.Services
 
         }
 
-
-
-        #region Singleton pattern : Object creation
-        private static ServiceImpl service;
-
-        private ServiceImpl() { }
-
-        public static ServiceImpl getInstance()
-        {
-            if (null == service)
-            {
-                service = new ServiceImpl();
-            }
-            return service;
-        }
 
         public string ValidateZipDealer(int ZipDealer)
         {
@@ -151,29 +154,26 @@ namespace ExtAppraisalApp.Services
         public AppraisalResponse CreateAppraisalKBB(CreateAppraisalRequest apprequest)
         {
             string result = null;
-            AppraisalResponse appresponse = new AppraisalResponse();
             HttpResponseMessage responseMessage = null;
-
-            // string body = Convert.ToString(apprequest);
+            AppraisalResponse response = new AppraisalResponse();
             try
             {
-                AppraisalResponse response = new AppraisalResponse();
+               
                 string request = JsonConvert.SerializeObject(apprequest);
-
-
-
                 responseMessage = RestClient.doPost(Url.CREATEAPPRAISAL_URL, request);
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     result = responseMessage.Content.ReadAsStringAsync().Result;
                     SIMSResponseData rst = JsonConvert.DeserializeObject<SIMSResponseData>(result);
+                    var vehicleData = JsonConvert.DeserializeObject<AppraisalResponse>(rst.Data.ToString());
 
-                    response = (AppraisalResponse)rst.Data;
+                    response = vehicleData;
 
                     if (null != result)
                     {
                         //result = null;
                     }
+                    // TO-DO : show alert message if the VIN appraisal already created
                 }
                 else
                 {
@@ -187,11 +187,48 @@ namespace ExtAppraisalApp.Services
             {
                 Console.WriteLine("Exception occured :: " + exc.Message);
             }
-            return appresponse;
+            return response;
 
         }
 
-        #endregion
+        // Get KBB Vehicle details 
+        public Vehicle GetVehicleDetails(long vehicleId, short storeId, short invtrId)
+        {
+            string result = null;
+            Vehicle vehicleresponse = new Vehicle();
+            HttpResponseMessage responseMessage = null;
+            try
+            {
+                responseMessage = RestClient.doGet(Url.GET_VEHICLE_DETAILS_URL + "/" + vehicleId + "/" + storeId + "/" + invtrId);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    result = responseMessage.Content.ReadAsStringAsync().Result;
+                    SIMSResponseData rst = JsonConvert.DeserializeObject<SIMSResponseData>(result);
+                    var vehicleData = JsonConvert.DeserializeObject<Vehicle>(rst.Data.ToString());
+
+                    vehicleresponse = vehicleData;
+
+                    if (null != result)
+                    {
+                        //result = null;
+                    }
+                    // TO-DO : show alert message if the VIN appraisal already created
+                }
+                else
+                {
+                    result = null;
+
+                    //Utilities.Utility.ShowAlert("Appraisal App", "Decode VIN Failed!!", "OK");
+                }
+            }
+            catch (Exception exc)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception occured :: " + exc.Message);
+            }
+
+            return vehicleresponse;
+        }
+
 
 
     }

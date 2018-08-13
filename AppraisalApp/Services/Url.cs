@@ -23,5 +23,7 @@ namespace ExtAppraisalApp.Services
         public const string DECODEVIN_URL = "DecodevinKBB/";
 
         public const string CREATEAPPRAISAL_URL = "CreateAppraisalKBB/";
+
+        public const string GET_VEHICLE_DETAILS_URL = "GetVehicleDetailsKBB/";
     }
 }

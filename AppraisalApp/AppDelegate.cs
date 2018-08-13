@@ -15,11 +15,16 @@ namespace ExtAppraisalApp
             get;
             set;
         }
+        public static AppDelegate appDelegate { get; private set; }
+        public long vehicleID { get; set; }
+        public short storeId { get; set; }
+        public short invtrId { get; set; }
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
 
             // Override point for customization after application launch.
+            AppDelegate.appDelegate = this;
 
             if (!IsLoggedIn)
             {
