@@ -14,8 +14,16 @@ namespace ExtAppraisalApp
     [Register ("FactoryOptionViewController")]
     partial class FactoryOptionViewController
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITableView FactoryOptionTableView { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
+            if (FactoryOptionTableView != null) {
+                FactoryOptionTableView.Dispose ();
+                FactoryOptionTableView = null;
+            }
         }
     }
 }

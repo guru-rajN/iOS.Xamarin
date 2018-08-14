@@ -47,6 +47,7 @@ namespace ExtAppraisalApp
                 vinNumber.Text = vehicle.VIN;
                 yearValue.Text = vehicle.Year.ToString();
                 makeValue.Text = vehicle.Make;
+
             }
 
            

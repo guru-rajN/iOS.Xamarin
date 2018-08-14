@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using AppraisalApp.Models;
 using ExtAppraisalApp.Models;
 
 namespace ExtAppraisalApp.Services
@@ -16,5 +18,6 @@ namespace ExtAppraisalApp.Services
         AppraisalResponse CreateAppraisalKBB(CreateAppraisalRequest apprequest);
 
         Vehicle GetVehicleDetails(long vehicleId, short storeId, short invtrId);
+        List<FactoryOptionsSection> GetFactoryOptionsKBB(long vehicleId, short storeId, short invtrId, int trimId);
     }
 }

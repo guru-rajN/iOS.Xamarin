@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
+using AppraisalApp.Models;
 using ExtAppraisalApp.Models;
 using Newtonsoft.Json;
 
@@ -229,7 +231,41 @@ namespace ExtAppraisalApp.Services
             return vehicleresponse;
         }
 
+        public List<FactoryOptionsSection> GetFactoryOptionsKBB(long vehicleId, short storeId, short invtrId, int trimId)
+        {
+            //
+            HttpResponseMessage responseMessage = null;
+            string result = null;
+            List<FactoryOptionsSection> FacOpt = new List<FactoryOptionsSection>();
+             try
+            {
+                responseMessage = RestClient.doGet(Url.GET_FACTORYOPTIONSKBB_URL + "/" + vehicleId + "/" + storeId + "/" + invtrId + "/" + trimId);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    result = responseMessage.Content.ReadAsStringAsync().Result;
+                    SIMSResponseData rst = JsonConvert.DeserializeObject<SIMSResponseData>(result);
+                    var facresponse = JsonConvert.DeserializeObject<List<FactoryOptionsSection>>(rst.Data.ToString());
 
+                    FacOpt = facresponse;
 
+                    if (null != result)
+                    {
+                        //result = null;
+                    }
+                    // TO-DO : show alert message if the VIN appraisal already created
+                }
+                else
+                {
+                    result = null;
+
+                    //Utilities.Utility.ShowAlert("Appraisal App", "Decode VIN Failed!!", "OK");
+                }
+            }
+            catch (Exception exc)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception occured :: " + exc.Message);
+            }
+            return FacOpt;
+        }
     }
 }
