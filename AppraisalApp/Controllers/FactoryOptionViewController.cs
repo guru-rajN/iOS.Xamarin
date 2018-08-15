@@ -1,4 +1,6 @@
 using AppraisalApp.Models;
+using AppraisalApp.Utilities;
+using CoreGraphics;
 using ExtAppraisalApp.Services;
 using Foundation;
 using System;
@@ -9,20 +11,37 @@ namespace ExtAppraisalApp
 {
     public partial class FactoryOptionViewController : UIViewController
     {
+        UITableView table;
+        IEnumerable<FactoryOptionsSection> fctoption = new List<FactoryOptionsSection>();
         public FactoryOptionViewController (IntPtr handle) : base (handle)
         {
         }
         public override void ViewDidLoad()
         {
-            List<FactoryOptionsSection> fctoption= new List<FactoryOptionsSection>();
-            long VehicleId=85356;
-            short StoreId=2001;
-            short InvtrId=1;
-            int TrimId=430659;
 
-            fctoption = ServiceFactory.getWebServiceHandle().GetFactoryOptionsKBB(VehicleId,StoreId,InvtrId,TrimId);
+
+            base.ViewDidLoad();
+            var width = View.Bounds.Width;
+            var height = View.Bounds.Height;
+
+            table = new UITableView(new CGRect(0, 0, width, height));
+            table.AutoresizingMask = UIViewAutoresizing.All;
+
+            AppDelegate.appDelegate.fctoption = ServiceFactory.getWebServiceHandle().GetFactoryOptionsKBB(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, 432110);
+            List<string> tableItems = new List<string>();
+            foreach(var category in AppDelegate.appDelegate.fctoption){
+                string str = category.Caption;
+                tableItems.Add(str);
+            }
+          
+            table.Source = new TableSource(tableItems.ToArray(), this);
+            Add(table);
+
+
 
 
         }
+
+
     }
 }

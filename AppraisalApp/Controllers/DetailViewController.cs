@@ -36,7 +36,6 @@ namespace ExtAppraisalApp
             DetailTableView.TableFooterView = new UIView(new CGRect(0, 0, 0, 0));
 
             Vehicle vehicle = GetVehicleData();
-
             if(null != vehicle){
                 if (vehicle.InvtrType.Equals("Used"))
                     DecodeVin(vehicle.VIN, (int)vehicle.Mileage, vehicle.StoreID, 10);
