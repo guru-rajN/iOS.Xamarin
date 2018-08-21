@@ -198,6 +198,13 @@
     </Compile>
     <Compile Include="Utilities\FactoryOptionSource.cs" />
     <Compile Include="Utilities\FactoryOptionsCell.cs" />
+    <Compile Include="Models\VinVehicleDetailsKBB.cs" />
+    <Compile Include="Models\VinVehicleDetail.cs" />
+    <Compile Include="Models\RootObject.cs" />
+    <Compile Include="Controllers\PopOverViewController.cs" />
+    <Compile Include="Controllers\PopOverViewController.designer.cs">
+      <DependentUpon>PopOverViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />

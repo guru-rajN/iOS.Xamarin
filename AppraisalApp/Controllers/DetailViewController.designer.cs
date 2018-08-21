@@ -23,7 +23,7 @@ namespace ExtAppraisalApp
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel driveTrainValue { get; set; }
+        UIKit.UILabel drivetrainValue { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -44,6 +44,10 @@ namespace ExtAppraisalApp
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITableViewCell seriesTrimCell { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel transmissionValue { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -69,9 +73,9 @@ namespace ExtAppraisalApp
                 DetailTableView = null;
             }
 
-            if (driveTrainValue != null) {
-                driveTrainValue.Dispose ();
-                driveTrainValue = null;
+            if (drivetrainValue != null) {
+                drivetrainValue.Dispose ();
+                drivetrainValue = null;
             }
 
             if (engineValue != null) {
@@ -97,6 +101,11 @@ namespace ExtAppraisalApp
             if (seriesTrimCell != null) {
                 seriesTrimCell.Dispose ();
                 seriesTrimCell = null;
+            }
+
+            if (transmissionValue != null) {
+                transmissionValue.Dispose ();
+                transmissionValue = null;
             }
 
             if (trimValue != null) {

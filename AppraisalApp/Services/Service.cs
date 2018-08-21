@@ -13,11 +13,14 @@ namespace ExtAppraisalApp.Services
 
         string ValidateZipDealer(int ZipDealer);
 
-        string DecodeVin(string VIN, int Mileage, int StoreId, int InventoryType);
+        VinVehicleDetailsKBB DecodeVin(string VIN, int Mileage, int StoreId, int InventoryType);
 
         AppraisalResponse CreateAppraisalKBB(CreateAppraisalRequest apprequest);
 
         Vehicle GetVehicleDetails(long vehicleId, short storeId, short invtrId);
+
+        KBBColorDetails GetKBBColors(int trimId);
+
         List<FactoryOptionsSection> GetFactoryOptionsKBB(long vehicleId, short storeId, short invtrId, int trimId);
     }
 }

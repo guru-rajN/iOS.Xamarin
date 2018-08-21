@@ -117,10 +117,11 @@ namespace ExtAppraisalApp.Services
             return result;
         }
 
-        public string DecodeVin(string VIN, int Mileage, int StoreId, int InventoryType)
+        public VinVehicleDetailsKBB DecodeVin(string VIN, int Mileage, int StoreId, int InventoryType)
         {
             string result = null;
             HttpResponseMessage responseMessage = null;
+            VinVehicleDetailsKBB decodeVinDetails = new VinVehicleDetailsKBB();
             try
             {
                 responseMessage = RestClient.doGet(Url.DECODEVIN_URL + VIN + "/" + Mileage + "/" + StoreId + "/" + InventoryType);
@@ -130,19 +131,11 @@ namespace ExtAppraisalApp.Services
                     result = responseMessage.Content.ReadAsStringAsync().Result;
                     SIMSResponseData rst = JsonConvert.DeserializeObject<SIMSResponseData>(result);
 
-
-
-
-                    if (null != result)
-                    {
-                        //result = null;
-                    }
+                    decodeVinDetails = JsonConvert.DeserializeObject<VinVehicleDetailsKBB>(rst.Data.ToString());
                 }
                 else
                 {
-                    result = null;
-
-                    Utilities.Utility.ShowAlert("Appraisal App", "Please Enter Valid Zip/Dealer Code!!", "OK");
+                    Utilities.Utility.ShowAlert("Appraisal App", "Error while Decoding!!", "OK");
                 }
 
             }
@@ -150,7 +143,7 @@ namespace ExtAppraisalApp.Services
             {
                 Console.WriteLine("Exception occured :: " + exc.Message);
             }
-            return result;
+            return decodeVinDetails;
         }
 
         public AppraisalResponse CreateAppraisalKBB(CreateAppraisalRequest apprequest)
@@ -266,6 +259,39 @@ namespace ExtAppraisalApp.Services
                 System.Diagnostics.Debug.WriteLine("Exception occured :: " + exc.Message);
             }
             return FacOpt;
+        }
+
+        public KBBColorDetails GetKBBColors(int trimId)
+        {
+            string result = null;
+            KBBColorDetails kBBColorDetails = new KBBColorDetails();
+            HttpResponseMessage responseMessage = null;
+
+            try
+            {
+                responseMessage = RestClient.doGet(Url.GET_KBB_COLORS_URL + "/" + trimId);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    result = responseMessage.Content.ReadAsStringAsync().Result;
+                    SIMSResponseData rst = JsonConvert.DeserializeObject<SIMSResponseData>(result);
+                    var kbbColordatas = JsonConvert.DeserializeObject<KBBColorDetails>(rst.Data.ToString());
+
+                    kBBColorDetails = kbbColordatas;
+
+                }
+                else
+                {
+                    result = null;
+
+                    //Utilities.Utility.ShowAlert("Appraisal App", "Decode VIN Failed!!", "OK");
+                }
+            }
+            catch (Exception exc)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception occured :: " + exc.Message);
+            }
+
+            return kBBColorDetails;
         }
     }
 }

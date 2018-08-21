@@ -10,6 +10,7 @@ namespace ExtAppraisalApp
 {
     public partial class MasterViewController : UITableViewController
     {
+
         public DetailViewController DetailViewController { get; set; }
 
         DataSource dataSource;
@@ -84,6 +85,11 @@ namespace ExtAppraisalApp
                 controller.NavigationItem.LeftBarButtonItem = SplitViewController.DisplayModeButtonItem;
                 controller.NavigationItem.LeftItemsSupplementBackButton = true;
             }
+        }
+
+        partial void MasterViewCloseBtn_Activated(UIBarButtonItem sender)
+        {
+            this.DismissViewController(true, null);
         }
 
         class DataSource : UITableViewSource

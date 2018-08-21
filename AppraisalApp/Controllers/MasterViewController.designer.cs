@@ -13,8 +13,20 @@ namespace ExtAppraisalApp
     [Register ("MasterViewController")]
     partial class MasterViewController
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIBarButtonItem MasterViewCloseBtn { get; set; }
+
+        [Action ("MasterViewCloseBtn_Activated:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void MasterViewCloseBtn_Activated (UIKit.UIBarButtonItem sender);
+
         void ReleaseDesignerOutlets ()
         {
+            if (MasterViewCloseBtn != null) {
+                MasterViewCloseBtn.Dispose ();
+                MasterViewCloseBtn = null;
+            }
         }
     }
 }
