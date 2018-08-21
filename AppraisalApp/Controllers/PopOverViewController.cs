@@ -1,3 +1,4 @@
+using CoreGraphics;
 using Foundation;
 using System;
 using System.Collections.Generic;
@@ -8,12 +9,12 @@ namespace ExtAppraisalApp
     public partial class PopOverViewController : UITableViewController
     {
 
-
         public string title { get; set; }
 
         public List<Object> listData { get; set; }
 
         private UIPickerView pickerView;
+
         public static PopOverModel PopOverModel;
 
 
@@ -27,6 +28,8 @@ namespace ExtAppraisalApp
             titleText.Text = title;
 
             DoneBtn.Enabled = false;
+
+            PopOverTableView.TableFooterView = new UIView(new CGRect(0, 0, 0, 0));
 
             // create our simple picker model
 

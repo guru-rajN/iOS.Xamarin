@@ -35,7 +35,7 @@ namespace ExtAppraisalApp
         {
             base.ViewDidLoad();
 
-            Title = NSBundle.MainBundle.LocalizedString("2017 Toyota Yaris iA", "2017 Toyota Yaris iA");
+            Title = "2017 Toyota Yaris iA";
 
             // Perform any additional setup after loading the view, typically from a nib.
             //NavigationItem.LeftBarButtonItem = EditButtonItem;

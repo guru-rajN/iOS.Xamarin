@@ -24,6 +24,10 @@ namespace ExtAppraisalApp
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITableView PopOverTableView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField subtitleText { get; set; }
 
         [Outlet]
@@ -48,6 +52,11 @@ namespace ExtAppraisalApp
             if (DoneBtn != null) {
                 DoneBtn.Dispose ();
                 DoneBtn = null;
+            }
+
+            if (PopOverTableView != null) {
+                PopOverTableView.Dispose ();
+                PopOverTableView = null;
             }
 
             if (subtitleText != null) {

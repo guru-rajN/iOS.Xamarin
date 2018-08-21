@@ -1265,21 +1265,33 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="38211" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                                    <rect key="frame" x="16" y="12" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="38211" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="16" y="10" width="120" height="25"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <constraints>
+                                                        <constraint id="42222" firstItem="38211" firstAttribute="height" constant="25"/>
+                                                        <constraint id="42223" firstItem="38211" firstAttribute="width" constant="120"/>
+                                                    </constraints>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="38212" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" textAlignment="right" text="Required">
-                                                    <rect key="frame" x="262" y="7" width="97" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="38212" translatesAutoresizingMaskIntoConstraints="NO" textAlignment="right" text="Required">
+                                                    <rect key="frame" x="219" y="7" width="140" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <constraints>
+                                                        <constraint id="42410" firstItem="38212" firstAttribute="width" constant="140"/>
+                                                        <constraint id="42598" firstItem="38212" firstAttribute="height" constant="30"/>
+                                                    </constraints>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint id="42220" firstItem="38211" firstAttribute="top" secondItem="38209" secondAttribute="top" constant="10"/>
+                                                <constraint id="42221" firstItem="38211" firstAttribute="leading" secondItem="38209" secondAttribute="leading" constant="16"/>
+                                                <constraint id="42408" firstItem="38212" firstAttribute="top" secondItem="38209" secondAttribute="top" constant="7"/>
+                                                <constraint id="42409" firstItem="38209" firstAttribute="trailing" secondItem="38212" secondAttribute="trailing" constant="16"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -1303,6 +1315,7 @@
                         <outlet property="titleText" destination="38211" id="name-outlet-38211"/>
                         <outlet property="CancelBtn" destination="39093" id="name-outlet-39093"/>
                         <outlet property="DoneBtn" destination="39627" id="name-outlet-39627"/>
+                        <outlet property="PopOverTableView" destination="36864" id="name-outlet-36864"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="36869" userLabel="First Responder" sceneMemberID="firstResponder"/>
