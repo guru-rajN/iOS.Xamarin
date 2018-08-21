@@ -14,5 +14,8 @@ namespace AppraisalApp
     [Register ("OptionPopUp")]
     partial class OptionPopUp
     {
+        void ReleaseDesignerOutlets ()
+        {
+        }
     }
 }

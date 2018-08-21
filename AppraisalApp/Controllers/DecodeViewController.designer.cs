@@ -43,6 +43,10 @@ namespace ExtAppraisalApp
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblPhone { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITableViewCell lblVin { get; set; }
 
         [Outlet]
@@ -60,6 +64,10 @@ namespace ExtAppraisalApp
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField txtMileage { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtPhone { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -110,6 +118,11 @@ namespace ExtAppraisalApp
                 lblMileage = null;
             }
 
+            if (lblPhone != null) {
+                lblPhone.Dispose ();
+                lblPhone = null;
+            }
+
             if (lblVin != null) {
                 lblVin.Dispose ();
                 lblVin = null;
@@ -133,6 +146,11 @@ namespace ExtAppraisalApp
             if (txtMileage != null) {
                 txtMileage.Dispose ();
                 txtMileage = null;
+            }
+
+            if (txtPhone != null) {
+                txtPhone.Dispose ();
+                txtPhone = null;
             }
 
             if (txtVin != null) {

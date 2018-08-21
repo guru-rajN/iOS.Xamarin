@@ -42,58 +42,21 @@ namespace AppraisalApp.Utilities
         /// </summary>
         public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
         {
-            
-
-            UITextField field = null;
-            //UISwitch checkele = null;
+            //Instantialte the Storyboard Object
             AppDelegate.appDelegate.FactoryOptionSelected = tableItems[indexPath.Row];
-            //UIAlertController okAlertController = UIAlertController.Create("Row Selected", tableItems[indexPath.Row], UIAlertControllerStyle.ActionSheet);
-            UIAlertController okAlertController = UIAlertController.Create(tableItems[indexPath.Row],null, UIAlertControllerStyle.Alert);
+            UIStoryboard storyboard = UIStoryboard.FromName("Main", null);
+
+            //Instantiate the ViewController you want to navigate to.
+            //Make sure you have set the Storyboard ID for this ViewController in your storyboard file.
+            //Put this Storyboard ID in place of the TargetViewControllerName in below line. 
+            UIViewController vcInstance = (UIViewController)storyboard.InstantiateViewController("OptionPopUp");
 
 
+            //Get the Instance of the TopViewController (CurrentViewController) or the NavigationViewController to push the TargetViewController onto the stack. 
+            //NavigationController is an Instance of the NavigationViewController
+            owner.NavigationController.PushViewController(vcInstance, true);
 
-
-            foreach(var option in AppDelegate.appDelegate.fctoption){
-                if(option.Caption==AppDelegate.appDelegate.FactoryOptionSelected)
-                {
-                    foreach(var question in option.questions){
-                        okAlertController.AddTextField((textField) => {
-                            // Save the field
-                            field = textField;
-
-                            field.Placeholder = question.displayName;
-                            field.Text = question.displayName;
-                            field.AutocorrectionType = UITextAutocorrectionType.No;
-                            field.KeyboardType = UIKeyboardType.Default;
-                            field.ReturnKeyType = UIReturnKeyType.Done;
-                            field.ClearButtonMode = UITextFieldViewMode.WhileEditing;
-
-                        });
-                    }
-
-                    
-                }
-
-            }
-            if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
-            {
-
-                okAlertController.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
-                owner.PresentModalViewController(okAlertController, true);
-                owner.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
-
-            }
-            else
-            {
-                okAlertController.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
-                owner.PresentModalViewController(okAlertController, true);
-                owner.ModalPresentationStyle = UIModalPresentationStyle.FullScreen;
-
-            }
-           
-
-            tableView.DeselectRow(indexPath, true);
-        }
+         }
 
         /// <summary>
         /// Called by the TableView to get the actual UITableViewCell to render for the particular row

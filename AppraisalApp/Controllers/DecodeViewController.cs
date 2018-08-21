@@ -19,6 +19,7 @@ namespace ExtAppraisalApp
             string firstname = txtFirstName.Text;
             string lastname = txtLastName.Text;
             string mileage = txtMileage.Text;
+            string phone = txtPhone.Text;
             UIAlertView alert = new UIAlertView();
             alert.AddButton("OK");
             alert.Clicked += delegate {
@@ -55,11 +56,11 @@ namespace ExtAppraisalApp
                 Utilities.Utility.ShowAlert("Email", "Your email (" + email + ") is Incorrect", "OK");
 
             }
-            //else if (phone.Length != 10)
-            //{
-            //    Utilities.Utility.ShowAlert("Phone", "Your phone (" + phone + ") is Incorrect", "OK");
+            else if (phone.Length != 10)
+            {
+                Utilities.Utility.ShowAlert("Phone", "Your phone (" + phone + ") is Incorrect", "OK");
 
-            //}
+            }
             else
             {
                 //GCDiscreetNotificationView notificationView; = new GCDiscreetNotificationView(

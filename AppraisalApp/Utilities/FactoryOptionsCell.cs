@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
+using AppraisalApp.Models;
 using ExtAppraisalApp;
 using Foundation;
 using UIKit;
 
 namespace AppraisalApp.Utilities
 {
-    public class FactoryOptionSource: UITableViewSource
+    public class FactoryOptionsCell: UITableViewSource
     {
-        protected string[] tableItems;
+
+        protected List<FactoryOptionsKBB> tableItems;
         protected string cellIdentifier = "TableCell";
         OptionPopUp owner;
 
-        public FactoryOptionSource(string[] items, OptionPopUp owner)
+        public FactoryOptionsCell(List<FactoryOptionsKBB> items, OptionPopUp owner)
         {
             tableItems = items;
             this.owner = owner;
@@ -33,7 +34,7 @@ namespace AppraisalApp.Utilities
         /// </summary>
         public override nint RowsInSection(UITableView tableview, nint section)
         {
-            return tableItems.Length;
+            return tableItems.Count;
         }
 
         /// <summary>
@@ -41,12 +42,20 @@ namespace AppraisalApp.Utilities
         /// </summary>
         public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
         {
-            AppDelegate.appDelegate.FactoryOptionSelected = tableItems[indexPath.Row];
-            UIAlertController okAlertController = UIAlertController.Create("Row Selected", tableItems[indexPath.Row], UIAlertControllerStyle.Alert);
-            okAlertController.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
-           // owner.PresentViewController(okAlertController, true, null);
+            //Instantialte the Storyboard Object
+            AppDelegate.appDelegate.FactoryOptionSelected = "";
+            UIStoryboard storyboard = UIStoryboard.FromName("Main", null);
 
-            tableView.DeselectRow(indexPath, true);
+            //Instantiate the ViewController you want to navigate to.
+            //Make sure you have set the Storyboard ID for this ViewController in your storyboard file.
+            //Put this Storyboard ID in place of the TargetViewControllerName in below line. 
+            UIViewController vcInstance = (UIViewController)storyboard.InstantiateViewController("OptionPopUp");
+
+
+            //Get the Instance of the TopViewController (CurrentViewController) or the NavigationViewController to push the TargetViewController onto the stack. 
+            //NavigationController is an Instance of the NavigationViewController
+           // owner.NavigationController.PushViewController(vcInstance, true);
+
         }
 
         /// <summary>
@@ -55,7 +64,7 @@ namespace AppraisalApp.Utilities
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
             UITableViewCell cell = tableView.DequeueReusableCell(cellIdentifier);
-            string item = tableItems[indexPath.Row];
+            string item = "";
 
             //---- if there are no cells to reuse, create a new one
             if (cell == null)

@@ -1,51 +1,3 @@
+using CoreGraphics; using ExtAppraisalApp; using ExtAppraisalApp.Services; using Foundation; using System; using System.Collections.Generic; using UIKit; using AppraisalApp.Utilities; using System.Reflection.Emit; using System.Diagnostics; using AppraisalApp.Models; using Xamarin.Forms;
 
-using CoreGraphics;
-using ExtAppraisalApp;
-using ExtAppraisalApp.Services;
-using Foundation;
-using System;
-using System.Collections.Generic;
-using UIKit;
-using AppraisalApp.Utilities;
-
-namespace AppraisalApp
-{
-    public partial class OptionPopUp : UIViewController
-    {
-        UITableView table;
-        public OptionPopUp (IntPtr handle) : base (handle)
-        {
-        }
-
-
-        public override void ViewDidLoad()
-        {
-
-            UISwitch.Appearance.OnTintColor = UIColor.FromRGB(0x91, 0xCA, 0x47);
-           // UISwitch.TextAttributeCustom.Te = "test";
-           // base.ViewDidLoad();
-          //  var width = View.Bounds.Width;
-           // var height = View.Bounds.Height;
-
-          //  table = new UITableView(new CGRect(0, 0, width, height));
-         //   table.AutoresizingMask = UIViewAutoresizing.All;
-
-           // AppDelegate.appDelegate.fctoption = ServiceFactory.getWebServiceHandle().GetFactoryOptionsKBB(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, 432110);
-           // List<string> tableItems = new List<string>();
-           // foreach (var category in AppDelegate.appDelegate.fctoption)
-           // {
-            //    string str = category.Caption;
-            //    tableItems.Add(str);
-           // }
-
-           // table.Source = new TableSource(tableItems.ToArray(), this);
-          //  Add(table);
-
-
-
-
-
-
-        }
-    }
-}
+namespace AppraisalApp {     public partial class OptionPopUp : UIViewController     {                 public OptionPopUp (IntPtr handle) : base (handle)         {         }          StackLayout contentview = new StackLayout();                   public override void ViewDidLoad()         {             int y = 20;             foreach(var option in AppDelegate.appDelegate.fctoption){                 if(option.Caption==AppDelegate.appDelegate.FactoryOptionSelected)                 {                                          foreach (var question in option.questions)                     {                         UISwitch switchele = new UISwitch();                         switchele.On = Convert.ToBoolean(question.isSelected);                         UILabel label = new UILabel();                         switchele.Frame = new CGRect(20, y+33, 500, 100);                         label.Frame= new CGRect(80, y, 500, 100);                         // ((switchele)Control).CheckedChange += OnCheckedChange; " to "((Xamarin.Forms.Switch)Element).Toggled += SwitchEffect_Toggled; "                          y = y + 50;                         label.UserInteractionEnabled = true;                         label.Text = question.displayName;                         this.View.AddSubview(switchele);                         this.View.AddSubview(label);                     }                   }             }           }     } } 
