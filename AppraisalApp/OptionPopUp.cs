@@ -1,7 +1,13 @@
 using CoreGraphics; using ExtAppraisalApp; using ExtAppraisalApp.Services; using Foundation; using System; using System.Collections.Generic; using UIKit; using AppraisalApp.Utilities; using System.Reflection.Emit; using System.Diagnostics; using AppraisalApp.Models; using Xamarin.Forms;
 
 namespace AppraisalApp {     public partial class OptionPopUp : UIViewController     {
-        void Switchele_ValueChanged(object sender, EventArgs e)
+        partial void BtnSave_Activated(UIBarButtonItem sender)
+        {
+            throw new NotImplementedException();
+        }          partial void BtnCancel_Activated(UIBarButtonItem sender)
+        {
+            throw new NotImplementedException();
+        }          void Switchele_ValueChanged(object sender, EventArgs e)
         {             UISwitch switchvalue = (UISwitch)sender;             int value = Convert.ToInt32(switchvalue.Tag);             foreach (var option in AppDelegate.appDelegate.fctoption)             {                 if (option.Caption == AppDelegate.appDelegate.FactoryOptionSelected)                 {                     List<FactoryOptionsKBB>  factoryOption= new  List<FactoryOptionsKBB>();                      foreach (var question in option.questions)                     {                        // AppDelegate.appDelegate.factoryOptionsKBB = question;                                                   if(question.optionId==value)                         {                                                          if(switchvalue.On){                                 question.isSelected = "true";                              }                             else{                                 question.isSelected = "false";                             }                          }                          AppDelegate.appDelegate.factoryOptionsKBB.Add(question);                      }
                   
                 }             }         }  

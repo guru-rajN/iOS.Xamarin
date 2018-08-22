@@ -1242,10 +1242,15 @@
                                 <action selector="BtnSave_Activated:" destination="28854" id="43775"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="43393"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="43393">
+                            <connections>
+                                <action selector="BtnCancel_Activated:" destination="28854" id="44959"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="btnSave" destination="28858" id="name-outlet-28858"/>
+                        <outlet property="btnCancel" destination="43393" id="name-outlet-43393"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="28869" userLabel="First Responder" sceneMemberID="firstResponder"/>
