@@ -11,8 +11,13 @@ namespace ExtAppraisalApp
 {
     public partial class DecodeViewController : UITableViewController
     {
+        partial void BtnCancel_Activated(UIBarButtonItem sender)
+        {
+            this.DismissModalViewController(true);
+        }
+
         ZXing.Mobile.MobileBarcodeScanner scanner;
-        partial void BtnDecodeVin_TouchUpInside(UIButton sender)
+        partial void BtnDecode_Activated(UIBarButtonItem sender)
         {
             string email = txtEmail.Text;
             string vin = txtVin.Text;
@@ -107,6 +112,7 @@ namespace ExtAppraisalApp
         {
             try
             {
+                this.PerformSegue("decodeSegue", this);
                 // hide keyboard on touch outside area
                 var g = new UITapGestureRecognizer(() => View.EndEditing(true));
                 g.CancelsTouchesInView = false; //for iOS5
@@ -145,8 +151,6 @@ namespace ExtAppraisalApp
         public DecodeViewController(IntPtr handle) : base(handle)
         {
         }
-
-
 
         public override void DidReceiveMemoryWarning()
         {

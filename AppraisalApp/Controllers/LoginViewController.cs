@@ -16,6 +16,7 @@ namespace ExtAppraisalApp
 
             partial void BtnGetStart_TouchUpInside(UIButton sender)
             {
+            this.PerformSegue("decodeSegue", this);
 
                 string zip = txtZip.Text;
                 if (zip == "")
@@ -65,10 +66,10 @@ namespace ExtAppraisalApp
                 }
 
             }
-
+       
             public override void ViewDidLoad()
             {
-
+            
                // hide keyboard on touch outside area
                 var g = new UITapGestureRecognizer(() => View.EndEditing(true));
                 g.CancelsTouchesInView = false; //for iOS5

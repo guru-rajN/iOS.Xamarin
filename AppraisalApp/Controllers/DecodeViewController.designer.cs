@@ -13,10 +13,7 @@ namespace ExtAppraisalApp
     [Register ("DecodeViewController")]
     partial class DecodeViewController
     {
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIBarButtonItem btnCancel { get; set; }
-
+        
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton btnCancel { get; set; }
