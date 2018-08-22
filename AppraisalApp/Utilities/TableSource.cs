@@ -4,6 +4,8 @@ using System.IO;
 using ExtAppraisalApp;
 using Foundation;
 using UIKit;
+using CoreGraphics;
+using ExtAppraisalApp.Services;
 
 namespace AppraisalApp.Utilities
 {
@@ -19,6 +21,11 @@ namespace AppraisalApp.Utilities
             tableItems = items;
             this.owner = owner;
 
+        }
+
+        protected TableSource(IntPtr handle) : base(handle)
+        {
+            // Note: this .ctor should not contain any initialization logic.
         }
 
         /// <summary>
@@ -43,6 +50,9 @@ namespace AppraisalApp.Utilities
         public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
         {
             //Instantialte the Storyboard Object
+
+            //this.PerformSegue("popOverSegue", this);
+            owner.PerformSegue("FacOptionSegue", this);
             AppDelegate.appDelegate.FactoryOptionSelected = tableItems[indexPath.Row];
             UIStoryboard storyboard = UIStoryboard.FromName("Main", null);
 

@@ -6,7 +6,7 @@ namespace AppraisalApp {     public partial class OptionPopUp : UIViewContro
             throw new NotImplementedException();
         }          partial void BtnCancel_Activated(UIBarButtonItem sender)
         {
-            throw new NotImplementedException();
+            this.DismissModalViewController(true);
         }          void Switchele_ValueChanged(object sender, EventArgs e)
         {             UISwitch switchvalue = (UISwitch)sender;             int value = Convert.ToInt32(switchvalue.Tag);             foreach (var option in AppDelegate.appDelegate.fctoption)             {                 if (option.Caption == AppDelegate.appDelegate.FactoryOptionSelected)                 {                     List<FactoryOptionsKBB>  factoryOption= new  List<FactoryOptionsKBB>();                      foreach (var question in option.questions)                     {                        // AppDelegate.appDelegate.factoryOptionsKBB = question;                                                   if(question.optionId==value)                         {                                                          if(switchvalue.On){                                 question.isSelected = "true";                              }                             else{                                 question.isSelected = "false";                             }                          }                          AppDelegate.appDelegate.factoryOptionsKBB.Add(question);                      }
                   

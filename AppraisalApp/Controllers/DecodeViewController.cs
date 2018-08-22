@@ -87,12 +87,13 @@ namespace ExtAppraisalApp
                 AppDelegate.appDelegate.invtrId = appresponse.InvtrID;
                 AppDelegate.appDelegate.trimId = appresponse.KBBTrimId;
 
-                var storyboard = UIStoryboard.FromName("Main", null); 
+                var storyboard = UIStoryboard.FromName("Main", null);
                 var splitViewController = storyboard.InstantiateViewController("SplitViewControllerID");
                 var appDelegate = (AppDelegate)UIApplication.SharedApplication.Delegate;
                 appDelegate.Window.RootViewController = splitViewController;
 
             }
+           
 
         }
 
