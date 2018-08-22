@@ -54,7 +54,22 @@ namespace AppraisalApp.Utilities
 
             //Get the Instance of the TopViewController (CurrentViewController) or the NavigationViewController to push the TargetViewController onto the stack. 
             //NavigationController is an Instance of the NavigationViewController
-            owner.NavigationController.PushViewController(vcInstance, true);
+
+            if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
+            {
+
+                owner.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
+                owner.PresentModalViewController(vcInstance, true);
+
+            }
+            else
+            {
+                owner.PresentModalViewController(vcInstance, true);
+
+            }
+
+           // owner.PresentModalViewController(vcInstance, true);
+           // owner.NavigationController.PushViewController(vcInstance, true);
 
          }
 

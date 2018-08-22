@@ -24,6 +24,7 @@ namespace ExtAppraisalApp
         public int trimId { get; set; }
         public IEnumerable<FactoryOptionsSection> fctoption = new List<FactoryOptionsSection>();
         public string FactoryOptionSelected { get; set; }
+        public List<FactoryOptionsKBB> factoryOptionsKBB = new List<FactoryOptionsKBB>();
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
 
