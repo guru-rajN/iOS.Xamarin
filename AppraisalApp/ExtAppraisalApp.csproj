@@ -206,6 +206,14 @@
     <Compile Include="Controllers\PopOverViewController.designer.cs">
       <DependentUpon>PopOverViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\HistoryCell.cs" />
+    <Compile Include="Controllers\HistoryCell.designer.cs">
+      <DependentUpon>HistoryCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\HistoryViewController.cs" />
+    <Compile Include="Controllers\HistoryViewController.designer.cs">
+      <DependentUpon>HistoryViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />
