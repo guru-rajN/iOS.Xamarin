@@ -134,6 +134,7 @@ namespace ExtAppraisalApp
         public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
         {
             rowSelected = indexPath.Row;
+       
             this.PerformSegue("popOverSegue", this);
 
         }
@@ -156,6 +157,13 @@ namespace ExtAppraisalApp
                     else if (rowSelected == 4)
                     {
                         popOverViewController.title = "Series/Trim";
+                    }else if (rowSelected == 5){
+                        
+                        popOverViewController.title = "Engine";
+                    }else if (rowSelected == 6){
+                        popOverViewController.title = "Odometer";
+                    }else if (rowSelected == 7){
+                        popOverViewController.title = "Mileage";
                     }
                 }
 

@@ -130,6 +130,7 @@
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Views\Main.storyboard" />
+    <InterfaceDefinition Include="Resources\Views\Main~.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
