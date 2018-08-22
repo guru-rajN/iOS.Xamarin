@@ -1468,7 +1468,7 @@
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How much were the total claims?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="76774" textAlignment="natural" numberOfLines="0" misplaced="YES">
-                                <rect key="frame" x="20" y="327" width="466" height="21"/>
+                                <rect key="frame" x="20" y="327" width="610" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14" weight="medium"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1479,9 +1479,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <constraints>
-                                    <constraint id="78571" firstItem="77658" firstAttribute="width" constant="34"/>
-                                </constraints>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="77664" misplaced="YES">
                                 <rect key="frame" x="55" y="356" width="187" height="30"/>
@@ -1499,7 +1496,7 @@
                                 </accessibility>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
-                                    <constraint id="78570" firstItem="77664" firstAttribute="width" constant="187"/>
+                                    <constraint id="84151" firstItem="77664" firstAttribute="width" constant="187"/>
                                 </constraints>
                             </textField>
                         </subviews>
@@ -1522,12 +1519,11 @@
                             <constraint id="70859" firstItem="70844" firstAttribute="trailing" secondItem="70845" secondAttribute="leading"/>
                             <constraint id="78325" firstItem="76774" firstAttribute="leading" secondItem="70844" secondAttribute="leading"/>
                             <constraint id="78326" firstItem="76774" firstAttribute="top" secondItem="70844" secondAttribute="bottom" constant="17"/>
-                            <constraint id="78328" firstItem="46240" firstAttribute="trailingMargin" secondItem="76774" secondAttribute="trailing" constant="262"/>
+                            <constraint id="78328" firstItem="46240" firstAttribute="trailingMargin" secondItem="76774" secondAttribute="trailing" constant="134"/>
                             <constraint id="78563" firstItem="77658" firstAttribute="leading" secondItem="46240" secondAttribute="leadingMargin"/>
                             <constraint id="78564" firstItem="77658" firstAttribute="top" secondItem="76774" secondAttribute="bottom" constant="8"/>
-                            <constraint id="78567" firstItem="77664" firstAttribute="top" secondItem="76774" secondAttribute="bottom" constant="8"/>
-                            <constraint id="78568" firstItem="77664" firstAttribute="leading" secondItem="77658" secondAttribute="trailing" constant="1"/>
-                            <constraint id="78569" firstItem="46240" firstAttribute="trailingMargin" secondItem="77664" secondAttribute="trailing" constant="506"/>
+                            <constraint id="84149" firstItem="77664" firstAttribute="leading" secondItem="77658" secondAttribute="trailing" constant="1"/>
+                            <constraint id="84150" firstItem="77664" firstAttribute="top" secondItem="76774" secondAttribute="bottom" constant="8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="46340">
