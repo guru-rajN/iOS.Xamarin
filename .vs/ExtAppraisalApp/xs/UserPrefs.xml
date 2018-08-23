@@ -1,34 +1,24 @@
 ﻿<Properties StartupConfiguration="{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="ExtAppraisalApp Status">
     <Files>
-      <File FileName="AppraisalApp/Controllers/DetailViewController.cs" Line="15" Column="26" />
-      <File FileName="AppraisalApp/Controllers/PopOverViewController.cs" Line="1" Column="1" />
-      <File FileName="AppraisalApp/Controllers/MasterViewController.cs" Line="137" Column="33" />
-      <File FileName="AppraisalApp/Views/Main.storyboard" />
-      <File FileName="AppraisalApp/OptionPopUp.cs" Line="1" Column="1" />
-      <File FileName="AppraisalApp/Utilities/TableSource.cs" Line="1" Column="1" />
-      <File FileName="AppraisalApp/AppDelegate.cs" Line="4" Column="13" />
-      <File FileName="AppraisalApp/Controllers/HistoryCell.cs" Line="15" Column="56" />
-      <File FileName="AppraisalApp/Controllers/FactoryOptionsCell.cs" Line="1" Column="1" />
-      <File FileName="AppraisalApp/Controllers/HistoryCell.designer.cs" Line="1" Column="1" />
-      <File FileName="AppraisalApp/Controllers/DecodeViewController.designer.cs" Line="1" Column="1" />
-      <File FileName="../../../../Projects/History/History/Main.storyboard" />
-      <File FileName="AppraisalApp/Controllers/HistoryViewController.cs" Line="6" Column="2" />
-      <File FileName="AppraisalApp/Controllers/HistoryViewController.designer.cs" Line="1" Column="1" />
-      <File FileName="../../../../Projects/History/History/ViewController.cs" Line="142" Column="1" />
+      <File FileName="AppraisalApp/Controllers/AfterMarketCell.cs" Line="1" Column="1" />
+      <File FileName="AppraisalApp/AppDelegate.cs" Line="18" Column="17" />
+      <File FileName="AppraisalApp/Controllers/DecodeViewController.designer.cs" Line="78" Column="45" />
+      <File FileName="AppraisalApp/Controllers/DecodeViewController.cs" Line="103" Column="10" />
+      <File FileName="AppraisalApp/Controllers/LoginViewController.cs" Line="21" Column="42" />
       <File FileName="ExtAppraisalApp Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/apple/Documents/Narasegowda/VSTS/ExtAppraisalApp/AppraisalApp/Utilities/FactoryOptionsCell.cs" relfile="AppraisalApp/Utilities/FactoryOptionsCell.cs" line="18" column="1" />
-      <Breakpoint file="/Users/apple/Documents/Narasegowda/VSTS/ExtAppraisalApp/AppraisalApp/Utilities/FactoryOptionsCell.cs" relfile="AppraisalApp/Utilities/FactoryOptionsCell.cs" line="57" column="19" />
+      <Breakpoint file="/Users/slksoft/Sathya/VSTS/23_aug/ExtAppraisalApp/AppraisalApp/Utilities/FactoryOptionsCell.cs" relfile="AppraisalApp/Utilities/FactoryOptionsCell.cs" line="18" column="1" />
+      <Breakpoint file="/Users/slksoft/Sathya/VSTS/23_aug/ExtAppraisalApp/AppraisalApp/Utilities/FactoryOptionsCell.cs" relfile="AppraisalApp/Utilities/FactoryOptionsCell.cs" line="57" column="19" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="../../../AppraisalApp/Controllers/DecodeViewController.cs" line="80" offsetX="784" offsetY="1185" expression="apprrequest.VIN" liveUpdate="True" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
-  <MonoDevelop.Ide.ItemProperties.ExtAppraisalApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.9D8D82C0-6657-4A1A-8647-3CE1042BC918" />
+  <MonoDevelop.Ide.ItemProperties.ExtAppraisalApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.CBFD621A-3810-4A32-BA93-B050216539BB" />
   <MultiItemStartupConfigurations />
 </Properties>

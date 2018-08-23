@@ -11,13 +11,13 @@ namespace ExtAppraisalApp
 {
     public partial class DecodeViewController : UITableViewController
     {
-        partial void BtnCancel_Activated(UIBarButtonItem sender)
+        partial void BtnCancel_TouchUpInside(UIButton sender)
         {
             this.DismissModalViewController(true);
         }
 
         ZXing.Mobile.MobileBarcodeScanner scanner;
-        partial void BtnDecode_Activated(UIBarButtonItem sender)
+        partial void BtnDecodeVin_TouchUpInside(UIButton sender)
         {
             string email = txtEmail.Text;
             string vin = txtVin.Text;
@@ -99,12 +99,6 @@ namespace ExtAppraisalApp
 
             }
            
-
-        }
-
-        partial void BtnCancel_TouchUpInside(UIButton sender)
-        {
-            this.DismissModalViewController(true);
 
         }
 

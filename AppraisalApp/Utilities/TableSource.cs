@@ -52,7 +52,7 @@ namespace AppraisalApp.Utilities
             //Instantialte the Storyboard Object
 
             //this.PerformSegue("popOverSegue", this);
-            owner.PerformSegue("FacOptionSegue", this);
+           // owner.PerformSegue("FacOptionSegue", this);
             AppDelegate.appDelegate.FactoryOptionSelected = tableItems[indexPath.Row];
             UIStoryboard storyboard = UIStoryboard.FromName("Main", null);
 
