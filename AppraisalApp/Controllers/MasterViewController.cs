@@ -143,6 +143,13 @@ namespace ExtAppraisalApp
                     cell.UpdateElements(options);
                     return cell;
                 }
+                else if (indexPath.Row == 4)
+                {
+                    var cell = (ReconditionOptionCell)tableView.DequeueReusableCell("ReconditionOptionCell", indexPath);
+                    var options = objects[indexPath.Row].ToString();
+                    cell.UpdateElements(options);
+                    return cell;
+                }
                 else
                 {
                     var cell = (AfterMarketCell)tableView.DequeueReusableCell("AfterMarketCell", indexPath);

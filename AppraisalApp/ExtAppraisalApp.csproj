@@ -219,6 +219,23 @@
       <DependentUpon>decodeActivity.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\ProspectParams.cs" />
+    <Compile Include="Controllers\ReconditionViewController.cs" />
+    <Compile Include="Controllers\ReconditionViewController.designer.cs">
+      <DependentUpon>ReconditionViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ReconditionOptionCell.cs" />
+    <Compile Include="Controllers\ReconditionOptionCell.designer.cs">
+      <DependentUpon>ReconditionOptionCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ReconditionCell.cs" />
+    <Compile Include="Controllers\ReconditionCell.designer.cs">
+      <DependentUpon>ReconditionCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReconditionValue.cs" />
+    <Compile Include="Models\Recondtionm.cs" />
+    <Compile Include="Controllers\ReconditionTVS.cs" />
+    <Compile Include="SQLiteAsync.cs" />
+    <Compile Include="SQLite.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />
