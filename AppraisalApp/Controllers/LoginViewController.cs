@@ -16,7 +16,7 @@ namespace ExtAppraisalApp
 
             partial void BtnGetStart_TouchUpInside(UIButton sender)
             {
-           // this.PerformSegue("decodeSegue", this);
+                this.PerformSegue("decodeSegue", this);
 
                 string zip = txtZip.Text;
                 if (zip == "")
