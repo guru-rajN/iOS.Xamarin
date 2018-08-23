@@ -1,16 +1,9 @@
 ﻿<Properties StartupConfiguration="{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ExtAppraisalApp Status">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AppraisalApp/Controllers/DecodeViewController.designer.cs">
     <Files>
       <File FileName="AppraisalApp/Controllers/AfterMarketCell.cs" Line="1" Column="1" />
-      <File FileName="AppraisalApp/AppDelegate.cs" Line="18" Column="17" />
-      <File FileName="AppraisalApp/Controllers/DecodeViewController.designer.cs" Line="1" Column="1" />
-      <File FileName="AppraisalApp/Controllers/DecodeViewController.cs" Line="103" Column="10" />
-      <File FileName="AppraisalApp/Controllers/LoginViewController.cs" Line="19" Column="47" />
-      <File FileName="AppraisalApp/Views/Main.storyboard" />
-      <File FileName="AppraisalApp/OptionPopUp.cs" Line="1" Column="1" />
-      <File FileName="AppraisalApp/Controllers/FactoryOptionViewController.cs" Line="1" Column="1" />
-      <File FileName="AppraisalApp/Utilities/TableSource.cs" Line="55" Column="47" />
-      <File FileName="ExtAppraisalApp Status" />
+      <File FileName="AppraisalApp/AppDelegate.cs" Line="1" Column="1" />
+      <File FileName="AppraisalApp/Controllers/DecodeViewController.designer.cs" Line="20" Column="9" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
@@ -18,6 +11,8 @@
     <BreakpointStore>
       <Breakpoint file="/Users/apple/Documents/Crowe/ExtAppraisalApp/AppraisalApp/Utilities/FactoryOptionsCell.cs" relfile="AppraisalApp/Utilities/FactoryOptionsCell.cs" line="18" column="1" />
       <Breakpoint file="/Users/apple/Documents/Crowe/ExtAppraisalApp/AppraisalApp/Utilities/FactoryOptionsCell.cs" relfile="AppraisalApp/Utilities/FactoryOptionsCell.cs" line="57" column="19" />
+      <Breakpoint file="/Users/apple/Documents/Crowe/ExtAppraisalApp/AppraisalApp/Controllers/LoginViewController.cs" relfile="AppraisalApp/Controllers/LoginViewController.cs" line="64" column="1" />
+      <Breakpoint file="/Users/apple/Documents/Crowe/ExtAppraisalApp/AppraisalApp/Controllers/LoginViewController.cs" relfile="AppraisalApp/Controllers/LoginViewController.cs" line="39" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
