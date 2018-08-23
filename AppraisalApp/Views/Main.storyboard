@@ -512,7 +512,7 @@
                         <outlet property="LoginImg" destination="7sj-J6-Xh5" id="name-outlet-7sj-J6-Xh5"/>
                         <outlet property="btnGetStart" destination="gNk-V8-3wA" id="EuK-Ey-BUJ"/>
                         <outlet property="txtZip" destination="Ibc-GS-hc6" id="Rkw-I3-3N9"/>
-                        <segue id="86457" destination="CHD-x3-UBe" kind="presentation" identifier="decodeSegue"/>
+                        <segue destination="CHD-x3-UBe" kind="presentation" identifier="decodeSegue" id="86457"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lV4-CR-dXo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -783,8 +783,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Pm7-f4-ZmK">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="zAJ-15-vmc"/>
-                        <barButtonItem key="rightBarButtonItem" title="DecodeVin" id="RpB-bh-WKK"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="zAJ-15-vmc">
+                            <connections>
+                                <action selector="BtnCancel_Activated:" destination="pXu-PQ-Om3" id="95776"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="DecodeVin" id="RpB-bh-WKK">
+                            <connections>
+                                <action selector="BtnDecode_Activated:" destination="pXu-PQ-Om3" id="95775"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -801,6 +809,8 @@
                         <outlet property="txtMileage" destination="zhl-eI-D1h" id="o94-7I-n94"/>
                         <outlet property="txtPhone" destination="35244" id="name-outlet-35244"/>
                         <outlet property="txtVin" destination="ccj-34-OeX" id="W6j-Ro-Qc4"/>
+                        <outlet property="BtnDecode" destination="RpB-bh-WKK" id="name-outlet-RpB-bh-WKK"/>
+                        <outlet property="btnCancel" destination="zAJ-15-vmc" id="name-outlet-zAJ-15-vmc"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DrI-4K-JJS" userLabel="First Responder" sceneMemberID="firstResponder"/>
