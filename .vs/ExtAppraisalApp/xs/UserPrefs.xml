@@ -1,11 +1,7 @@
 ﻿<Properties StartupConfiguration="{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="ExtAppraisalApp Status">
     <Files>
-      <File FileName="AppraisalApp/Controllers/AfterMarketCell.cs" Line="18" Column="2" />
-      <File FileName="AppraisalApp/AppDelegate.cs" Line="1" Column="1" />
-      <File FileName="AppraisalApp/Controllers/LoginViewController.cs" Line="39" Column="29" />
-      <File FileName="AppraisalApp/Controllers/DetailViewController.cs" Line="421" Column="10" />
-      <File FileName="AppraisalApp/Views/Main.storyboard" />
+      <File FileName="AppraisalApp/Controllers/DetailViewController.cs" Line="98" Column="66" />
       <File FileName="ExtAppraisalApp Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>

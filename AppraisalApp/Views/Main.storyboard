@@ -212,6 +212,7 @@
                             <connections>
                                 <action selector="MasterViewCloseBtn_Activated:" destination="7bK-jq-Zjz" id="41455"/>
                             </connections>
+                            <color key="tintColor" colorSpace="calibratedRGB" red="0.27450980392156865" green="0.44705882352941179" blue="0.25882352941176473" alpha="1"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -792,11 +793,13 @@
                             <connections>
                                 <action selector="BtnCancel_Activated:" destination="pXu-PQ-Om3" id="95776"/>
                             </connections>
+                            <color key="tintColor" colorSpace="calibratedRGB" red="0.27450980392156865" green="0.44705882352941179" blue="0.25882352941176473" alpha="1"/>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="DecodeVin" id="RpB-bh-WKK">
                             <connections>
                                 <action selector="BtnDecode_Activated:" destination="pXu-PQ-Om3" id="95775"/>
                             </connections>
+                            <color key="tintColor" colorSpace="calibratedRGB" red="0.27450980392156865" green="0.44705882352941179" blue="0.25882352941176473" alpha="1"/>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -1187,6 +1190,7 @@
                             <connections>
                                 <action selector="DetailSaveBtn_Activated:" destination="19962" id="102656"/>
                             </connections>
+                            <color key="tintColor" colorSpace="calibratedRGB" red="0.27450980392156865" green="0.44705882352941179" blue="0.25882352941176473" alpha="1"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -1282,7 +1286,7 @@
                                                         <constraint firstAttribute="width" constant="140" id="42410"/>
                                                         <constraint firstAttribute="height" constant="30" id="42598"/>
                                                     </constraints>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" colorSpace="calibratedRGB" red="0.27450980392156865" green="0.44705882352941179" blue="0.25882352941176473" alpha="1"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -1308,11 +1312,13 @@
                             <connections>
                                 <action selector="CancelBtn_Activated:" destination="36862" id="40166"/>
                             </connections>
+                            <color key="tintColor" colorSpace="calibratedRGB" red="0.27450980392156865" green="0.44705882352941179" blue="0.25882352941176473" alpha="1"/>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Done" id="39627">
                             <connections>
                                 <action selector="DoneBtn_Activated:" destination="36862" id="39986"/>
                             </connections>
+                            <color key="tintColor" colorSpace="calibratedRGB" red="0.27450980392156865" green="0.44705882352941179" blue="0.25882352941176473" alpha="1"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
