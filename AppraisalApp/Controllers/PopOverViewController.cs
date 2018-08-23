@@ -1,7 +1,9 @@
 using CoreGraphics;
+using ExtAppraisalApp.Models;
 using Foundation;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UIKit;
 
 namespace ExtAppraisalApp
@@ -11,11 +13,20 @@ namespace ExtAppraisalApp
 
         public string title { get; set; }
 
-        public List<Object> listData { get; set; }
+        public List<IDValues> listData { get; set; }
 
         private UIPickerView pickerView;
 
         public static PopOverModel PopOverModel;
+
+        DetailViewController detailViewController;
+
+        private int correspondentId = 0;
+
+        public void setData(DetailViewController detailViewController)
+        {
+            this.detailViewController = detailViewController;
+        }
 
 
         public PopOverViewController(IntPtr handle) : base(handle)
@@ -35,10 +46,16 @@ namespace ExtAppraisalApp
 
             PopOverModel = new PopOverModel();
 
-            //foreach (string countryName in listData)
-            //{
-            //    PopOverModel.Items.Add(countryName);
-            //}
+            Dictionary<string, string> IDValueDetails = new Dictionary<string, string>();
+            IDValueDetails.Clear();
+
+            foreach (IDValues items in listData)
+            {
+                if (null != items.ID)
+                    IDValueDetails.Add(items.ID, items.Value);
+
+                PopOverModel.Items.Add(items.Value);
+            }
 
             //createPickerView ();
 
@@ -51,19 +68,26 @@ namespace ExtAppraisalApp
             toolbar.BarStyle = UIBarStyle.Black;
             toolbar.Translucent = true;
             toolbar.SizeToFit();
-
+            UIBarButtonItem flexibleSpaceLeft = new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace, null, null);
             UIBarButtonItem doneBtn = new UIBarButtonItem("Done", UIBarButtonItemStyle.Done, (s, e) => {
                 foreach (UIView view in this.View.Subviews)
                 {
                     subtitleText.Text = PopOverModel.Items[(int)pickerView.SelectedRowInComponent(0)].ToString();
-                    //var Id = AppDelegate.StoresDictionary.FirstOrDefault(x => x.Key.Contains(txtLocationSelector.Text)).Value;
-                    //storeLocatorId = Int32.Parse(Id);
+                    var Id = IDValueDetails.FirstOrDefault(x => x.Value.Contains(subtitleText.Text)).Key;
+                    System.Diagnostics.Debug.WriteLine(" id :: " + Id);
+
+                    if (null != Id)
+                    {
+                        if (Id.All(Char.IsDigit))
+                            correspondentId = Int32.Parse(Id);
+                    }
+
                     subtitleText.Text = PopOverModel.Items[(int)pickerView.SelectedRowInComponent(0)].ToString();
                     subtitleText.ResignFirstResponder();
                 }
                 DoneBtn.Enabled = true;
             });
-            toolbar.SetItems(new UIBarButtonItem[] { doneBtn }, true);
+            toolbar.SetItems(new UIBarButtonItem[] { flexibleSpaceLeft, doneBtn }, true);
 
             // To assign inputview has pickerview
             subtitleText.InputView = pickerView;
@@ -72,6 +96,8 @@ namespace ExtAppraisalApp
             subtitleText.TouchDown += SetPicker;
             subtitleText.Placeholder = "Required";
         }
+
+
 
         public override void ViewDidLoad()
         {
@@ -97,10 +123,15 @@ namespace ExtAppraisalApp
         // Done btn Click Event
         partial void DoneBtn_Activated(UIBarButtonItem sender)
         {
+            Worker worker = new Worker();
+            worker.WorkerDelegate = detailViewController;
+            worker.UpdateUI(subtitleText.Text, correspondentId);
+
             this.DismissViewController(true, null);
         }
 
     }
+
 
     // Inner Class : StatusChange Model : Pickerview
     public class PopOverModel : UIPickerViewModel
@@ -164,5 +195,39 @@ namespace ExtAppraisalApp
             }
         }
 
+    }
+
+
+    // Delegate methods
+    public interface IWorkerDelegate
+    {
+        void UpdateDatas(string data, int id);
+    }
+
+    public class Worker
+    {
+        WeakReference<IWorkerDelegate> _workerDelegate;
+
+        public IWorkerDelegate WorkerDelegate
+        {
+            get
+            {
+                IWorkerDelegate workerDelegate;
+                return _workerDelegate.TryGetTarget(out workerDelegate) ? workerDelegate : null;
+            }
+            set
+            {
+                _workerDelegate = new WeakReference<IWorkerDelegate>(value);
+            }
+        }
+
+        public void UpdateUI(string data, int id)
+        {
+            Console.WriteLine("Updating UI .. ");
+
+            if (_workerDelegate != null)
+                WorkerDelegate?.UpdateDatas(data, id);
+
+        }
     }
 }

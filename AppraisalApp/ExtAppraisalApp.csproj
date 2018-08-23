@@ -218,6 +218,7 @@
     <Compile Include="decodeActivity.designer.cs">
       <DependentUpon>decodeActivity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProspectParams.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />

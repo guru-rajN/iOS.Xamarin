@@ -16,7 +16,6 @@ namespace ExtAppraisalApp
 
             partial void BtnGetStart_TouchUpInside(UIButton sender)
             {
-                this.PerformSegue("decodeSegue", this);
 
                 string zip = txtZip.Text;
                 if (zip == "")
@@ -37,20 +36,21 @@ namespace ExtAppraisalApp
                         code = ServiceFactory.getWebServiceHandle().ValidateZipDealer(Convert.ToInt32(txtZip.Text));
                         if (code != null)
                         {
-                            if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
-                            {
+                            this.PerformSegue("decodeSegue", this);
+                            //if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
+                            //{
 
-                                var vehicleInfo = Storyboard.InstantiateViewController("DecodeViewController");
-                                vehicleInfo.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
-                                this.PresentModalViewController(vehicleInfo, true);
+                            //    var vehicleInfo = Storyboard.InstantiateViewController("DecodeViewController");
+                            //    vehicleInfo.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
+                            //    this.PresentModalViewController(vehicleInfo, true);
 
-                            }
-                            else
-                            {
-                                var vehicleInfo = Storyboard.InstantiateViewController("DecodeViewController");
-                                this.PresentModalViewController(vehicleInfo, true);
+                            //}
+                            //else
+                            //{
+                            //    var vehicleInfo = Storyboard.InstantiateViewController("DecodeViewController");
+                            //    this.PresentModalViewController(vehicleInfo, true);
 
-                            }
+                            //}
                         }
                         else
                         {

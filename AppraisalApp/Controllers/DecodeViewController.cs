@@ -19,94 +19,86 @@ namespace ExtAppraisalApp
 
         partial void BtnDecode_Activated(UIBarButtonItem sender)
         {
-            string email = txtEmail.Text;
-            string vin = txtVin.Text;
-            string firstname = txtFirstName.Text;
-            string lastname = txtLastName.Text;
-            string mileage = txtMileage.Text;
-            string phone = txtPhone.Text;
-            UIAlertView alert = new UIAlertView();
-            alert.AddButton("OK");
-            alert.Clicked += delegate {
-                alert.DismissWithClickedButtonIndex(0, true);
-            };
-            if (vin == "")
-            {
+            try{
+                string email = txtEmail.Text;
+                string vin = txtVin.Text;
+                string firstname = txtFirstName.Text;
+                string lastname = txtLastName.Text;
+                string mileage = txtMileage.Text;
+                string phone = txtPhone.Text;
 
-                Utilities.Utility.ShowAlert("First Name", "A username is required.!!", "OK");
+                if (vin == "")
+                {
 
+                    Utilities.Utility.ShowAlert("First Name", "A username is required.!!", "OK");
+
+                }
+                else if (mileage == "")
+                {
+                    Utilities.Utility.ShowAlert("Mileagge", "A mileagge is required.!!", "OK");
+
+                }
+                else if (firstname == "")
+                {
+                    Utilities.Utility.ShowAlert("First Name", "A firstname is required.!!", "OK");
+
+                }
+                //else if (!Regex.Match(firstname, "^[A-Z][a-zA-Z]*$").Success)
+                //{
+                //    Utilities.Utility.ShowAlert("First Name", "Your FirstName (" + firstname + ") is Incorrect", "OK");
+                //}
+                //else if (!Regex.Match(lastname, "^[A-Z][a-zA-Z]*$").Success)
+                //{
+
+                //}
+                else if (lastname == "")
+                {
+                    Utilities.Utility.ShowAlert("Last Name", "A last is required.!!", "OK");
+
+                }
+                else if (!Regex.Match(vin, (@"^[A-HJ-NPR-Z0-9]{17}$")).Success)
+                {
+                    Utilities.Utility.ShowAlert("Vin", "Your Vin (" + vin + ") is Incorrect", "OK");
+
+                }
+                else if (!Regex.Match(email, (@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$")).Success)
+                {
+                    Utilities.Utility.ShowAlert("Email", "Your email (" + email + ") is Incorrect", "OK");
+
+                }
+                else if (phone.Length != 10)
+                {
+                    Utilities.Utility.ShowAlert("Phone", "Your phone (" + phone + ") is Incorrect", "OK");
+
+                }
+                else
+                {
+
+                    CreateAppraisalRequest apprrequest = new CreateAppraisalRequest();
+                    AppraisalResponse appresponse = new AppraisalResponse();
+                    apprrequest.VIN = txtVin.Text;
+                    apprrequest.StoreID = 2001;
+                    apprrequest.Mileage = Convert.ToInt32(txtMileage.Text);
+                    apprrequest.DDCUserId = "5A9C9038-DDC6-4BBE-8256-675F91D6B5B7";
+                    appresponse = ServiceFactory.getWebServiceHandle().CreateAppraisalKBB(apprrequest);
+
+                    Console.WriteLine("vehicle id :: " + appresponse.VehicleID);
+
+                    AppDelegate.appDelegate.vehicleID = appresponse.VehicleID;
+                    AppDelegate.appDelegate.storeId = appresponse.StoreID;
+                    AppDelegate.appDelegate.invtrId = appresponse.InvtrID;
+                    AppDelegate.appDelegate.trimId = appresponse.KBBTrimId;
+
+                    var storyboard = UIStoryboard.FromName("Main", null);
+                    var splitViewController = storyboard.InstantiateViewController("SplitViewControllerID");
+                    var appDelegate = (AppDelegate)UIApplication.SharedApplication.Delegate;
+                    appDelegate.Window.RootViewController = splitViewController;
+
+                } 
+
+            }catch(Exception exc){
+                System.Diagnostics.Debug.WriteLine("Exception occured :: " + exc.Message);
             }
-            else if (mileage == "")
-            {
-                Utilities.Utility.ShowAlert("Mileagge", "A mileagge is required.!!", "OK");
-
-            }
-            else if (firstname == "")
-            {
-                Utilities.Utility.ShowAlert("First Name", "A firstname is required.!!", "OK");
-
-            }
-            else if(!Regex.Match(firstname, "^[A-Z][a-zA-Z]*$").Success){
-                Utilities.Utility.ShowAlert("First Name", "Your FirstName (" + firstname + ") is Incorrect", "OK");
-            }
-            else if(!Regex.Match(lastname, "^[A-Z][a-zA-Z]*$").Success){
-                
-            }
-            else if (lastname == "")
-            {
-                Utilities.Utility.ShowAlert("Last Name", "A last is required.!!", "OK");
-
-            }
-            else if (!Regex.Match(vin, (@"^[A-HJ-NPR-Z0-9]{17}$")).Success)
-            {
-                Utilities.Utility.ShowAlert("Vin", "Your Vin (" + vin + ") is Incorrect", "OK");
-
-            }
-            else if (!Regex.Match(email, (@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$")).Success)
-            {
-                Utilities.Utility.ShowAlert("Email", "Your email (" + email + ") is Incorrect", "OK");
-
-            }
-            else if (phone.Length != 10)
-            {
-                Utilities.Utility.ShowAlert("Phone", "Your phone (" + phone + ") is Incorrect", "OK");
-
-            }
-            else
-            {
-                //GCDiscreetNotificationView notificationView; = new GCDiscreetNotificationView(
-                //             text: "please wait...",
-                //             activity: false,
-                //             presentationMode: GCDNPresentationMode.Top,
-                //             view: View
-                //         );
-                //notificationView.Show(true);
-                //this.View.UserInteractionEnabled = false;
-
-                CreateAppraisalRequest apprrequest = new CreateAppraisalRequest();
-                AppraisalResponse appresponse = new AppraisalResponse();
-                apprrequest.VIN = txtVin.Text;
-                apprrequest.StoreID = 2001;
-                apprrequest.Mileage = Convert.ToInt32(txtMileage.Text);
-                apprrequest.DDCUserId = "5A9C9038-DDC6-4BBE-8256-675F91D6B5B7";
-                appresponse = ServiceFactory.getWebServiceHandle().CreateAppraisalKBB(apprrequest);
-
-                Console.WriteLine("vehicle id :: " + appresponse.VehicleID);
-
-                AppDelegate.appDelegate.vehicleID = appresponse.VehicleID;
-                AppDelegate.appDelegate.storeId = appresponse.StoreID;
-                AppDelegate.appDelegate.invtrId = appresponse.InvtrID;
-                AppDelegate.appDelegate.trimId = appresponse.KBBTrimId;
-
-                var storyboard = UIStoryboard.FromName("Main", null);
-                var splitViewController = storyboard.InstantiateViewController("SplitViewControllerID");
-                var appDelegate = (AppDelegate)UIApplication.SharedApplication.Delegate;
-                appDelegate.Window.RootViewController = splitViewController;
-
-            }
-           
-
-            
         }
 
         partial void BtnCancel_TouchUpInside(UIButton sender)

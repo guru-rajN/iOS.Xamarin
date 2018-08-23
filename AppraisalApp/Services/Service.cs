@@ -22,5 +22,9 @@ namespace ExtAppraisalApp.Services
         KBBColorDetails GetKBBColors(int trimId);
 
         List<FactoryOptionsSection> GetFactoryOptionsKBB(long vehicleId, short storeId, short invtrId, int trimId);
+
+        string GenerateProspectId(ProspectParams prospectParams);
+
+        SIMSResponseData SaveVehicleDetails(Vehicle vehicleDetails);
     }
 }

@@ -153,7 +153,7 @@ namespace ExtAppraisalApp.Services
             AppraisalResponse response = new AppraisalResponse();
             try
             {
-               
+
                 string request = JsonConvert.SerializeObject(apprequest);
                 responseMessage = RestClient.doPost(Url.CREATEAPPRAISAL_URL, request);
                 if (responseMessage.IsSuccessStatusCode)
@@ -230,7 +230,7 @@ namespace ExtAppraisalApp.Services
             HttpResponseMessage responseMessage = null;
             string result = null;
             List<FactoryOptionsSection> FacOpt = new List<FactoryOptionsSection>();
-             try
+            try
             {
                 responseMessage = RestClient.doGet(Url.GET_FACTORYOPTIONSKBB_URL + "/" + vehicleId + "/" + storeId + "/" + invtrId + "/" + trimId);
                 if (responseMessage.IsSuccessStatusCode)
@@ -292,6 +292,76 @@ namespace ExtAppraisalApp.Services
             }
 
             return kBBColorDetails;
+        }
+
+        public string GenerateProspectId(ProspectParams prospectParams)
+        {
+            string result = null;
+            string prospectId = string.Empty;
+            HttpResponseMessage responseMessage = null;
+
+            try
+            {
+                string request = JsonConvert.SerializeObject(prospectParams);
+                responseMessage = RestClient.doPost(Url.GENERATE_PROSPECT_URL, request);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    result = responseMessage.Content.ReadAsStringAsync().Result;
+                    SIMSResponseData rst = JsonConvert.DeserializeObject<SIMSResponseData>(result);
+                    prospectId = rst.Data.ToString();
+
+                }
+                else
+                {
+                    prospectId = null;
+
+                    //Utilities.Utility.ShowAlert("Appraisal App", "Decode VIN Failed!!", "OK");
+                }
+            }
+            catch (Exception exc)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception occured :: " + exc.Message);
+            }
+
+            return prospectId;
+        }
+
+        public SIMSResponseData SaveVehicleDetails(Vehicle vehicleDetails)
+        {
+            string result = null;
+            HttpResponseMessage responseMessage = null;
+            SIMSResponseData response = new SIMSResponseData();
+            try
+            {
+
+                string request = JsonConvert.SerializeObject(vehicleDetails);
+
+                responseMessage = RestClient.doPost(Url.SAVE_VEHICLE_DETAILS_URL, request);
+
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    result = responseMessage.Content.ReadAsStringAsync().Result;
+                    SIMSResponseData rst = JsonConvert.DeserializeObject<SIMSResponseData>(result);
+
+                    response = rst;
+
+                    if (null != response)
+                    {
+                        Utilities.Utility.ShowAlert("Appraisal App", "Vehicle Appraisal Created", "OK");
+                    }
+                }
+                else
+                {
+                    Utilities.Utility.ShowAlert("Appraisal App", "Vehicle data save failed!!", "OK");
+                }
+
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine("Exception occured :: " + exc.Message);
+            }
+            return response;
+
         }
     }
 }

@@ -3,7 +3,7 @@ namespace ExtAppraisalApp.Services
 {
     public class Url
     {
-        public Url(){}
+        public Url() { }
 
         public const string HTTP = "http://";
         public const string HTTPS = "https://";
@@ -29,5 +29,9 @@ namespace ExtAppraisalApp.Services
         public const string GET_KBB_COLORS_URL = "GetKBBColorDetails/";
 
         public const string GET_FACTORYOPTIONSKBB_URL = "GetFactoryOptionsKBB/";
+
+        public const string GENERATE_PROSPECT_URL = "GenerateProspect/";
+
+        public const string SAVE_VEHICLE_DETAILS_URL = "SaveVehicleDetailsKBB/";
     }
 }
