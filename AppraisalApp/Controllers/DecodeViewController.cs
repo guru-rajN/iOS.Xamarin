@@ -199,35 +199,32 @@ namespace ExtAppraisalApp
             {
                 txtVin.ShouldReturn = (tf) =>
                 {
-                    txtMileage.SecureTextEntry = true;
+                    //txtMileage.SecureTextEntry = true;
                     txtMileage.ReturnKeyType = UIReturnKeyType.Next;
                     txtMileage.BecomeFirstResponder();
                     return true;
                 };
                 txtMileage.ShouldReturn = (tf) =>
                 {
-                    txtFirstName.SecureTextEntry = true;
+                    //txtFirstName.SecureTextEntry = true;
                     txtFirstName.ReturnKeyType = UIReturnKeyType.Next;
                     txtFirstName.BecomeFirstResponder();
                     return true;
                 };
                 txtFirstName.ShouldReturn = (tf) =>
                 {
-                    txtLastName.SecureTextEntry = true;
                     txtLastName.ReturnKeyType = UIReturnKeyType.Next;
                     txtLastName.BecomeFirstResponder();
                     return true;
                 };
                 txtLastName.ShouldReturn = (tf) =>
                 {
-                    txtEmail.SecureTextEntry = true;
                     txtEmail.ReturnKeyType = UIReturnKeyType.Next;
                     txtEmail.BecomeFirstResponder();
                     return true;
                 };
                 txtEmail.ShouldReturn = (tf) =>
                 {
-                    txtPhone.SecureTextEntry = true;
                     txtPhone.ReturnKeyType = UIReturnKeyType.Done;
                     txtPhone.BecomeFirstResponder();
                     return true;
