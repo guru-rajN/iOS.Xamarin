@@ -1,3 +1,4 @@
+using CoreGraphics;
 using ExtAppraisalApp.DB;
 using Foundation;
 using System;
@@ -279,6 +280,7 @@ namespace ExtAppraisalApp
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            ReconditionTableView.TableFooterView = new UIView(new CGRect(0, 0, 0, 0));
 
             string segmentID = ReconditionSegment.SelectedSegment.ToString();
             setObjectRecon(segmentID);
