@@ -615,7 +615,7 @@
                                                     </constraints>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="postal-code" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="postal-code"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -655,14 +655,19 @@
                                                     </constraints>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" textContentType="name" returnKeyType="next"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="name"/>
                                                 </textField>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="100228" misplaced="YES" ambiguous="YES" hidesWhenStopped="YES" hidden="YES">
+                                                    <rect key="frame" x="366" y="4" width="37" height="37"/>
+                                                    <color key="color" colorSpace="calibratedRGB" red="0.30588235294117649" green="0.5607843137254902" blue="0" alpha="1"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="SDq-wM-nbB" firstAttribute="leading" secondItem="h2q-wl-nOr" secondAttribute="leading" constant="16" id="2Ko-Ye-ydq"/>
                                                 <constraint firstAttribute="trailing" secondItem="vge-MT-vt0" secondAttribute="trailing" constant="16" id="HQ0-qc-jq6"/>
                                                 <constraint firstItem="vge-MT-vt0" firstAttribute="top" secondItem="h2q-wl-nOr" secondAttribute="top" constant="8" id="Rqf-Vh-MVX"/>
                                                 <constraint firstItem="SDq-wM-nbB" firstAttribute="top" secondItem="h2q-wl-nOr" secondAttribute="top" constant="12" id="fBF-Uu-0mh"/>
+                                                <constraint id="101764" firstItem="100228" firstAttribute="centerX" secondItem="h2q-wl-nOr" secondAttribute="centerX"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -691,7 +696,7 @@
                                                     </constraints>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" textContentType="name" returnKeyType="next"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="name"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -727,7 +732,7 @@
                                                     </constraints>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email" returnKeyType="next"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -763,7 +768,7 @@
                                                     </constraints>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel" returnKeyType="done"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="done" textContentType="tel"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -796,6 +801,8 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="BtnDecode" destination="RpB-bh-WKK" id="name-outlet-RpB-bh-WKK"/>
+                        <outlet property="btnCancel" destination="zAJ-15-vmc" id="name-outlet-zAJ-15-vmc"/>
                         <outlet property="btnScan" destination="MMQ-ZH-Rk7" id="Bhe-sC-1RR"/>
                         <outlet property="lblEmail" destination="eK6-fN-T7I" id="name-outlet-eK6-fN-T7I"/>
                         <outlet property="lblFirstName" destination="SDq-wM-nbB" id="xth-u7-Tjf"/>
@@ -809,11 +816,14 @@
                         <outlet property="txtMileage" destination="zhl-eI-D1h" id="o94-7I-n94"/>
                         <outlet property="txtPhone" destination="35244" id="name-outlet-35244"/>
                         <outlet property="txtVin" destination="ccj-34-OeX" id="W6j-Ro-Qc4"/>
-                        <outlet property="BtnDecode" destination="RpB-bh-WKK" id="name-outlet-RpB-bh-WKK"/>
-                        <outlet property="btnCancel" destination="zAJ-15-vmc" id="name-outlet-zAJ-15-vmc"/>
+                        <outlet property="decodeActivity" destination="100228" id="name-outlet-100228"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DrI-4K-JJS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="1Bo-6k-fhV" fixedFrame="YES">
+                    <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </activityIndicatorView>
             </objects>
             <point key="canvasLocation" x="2758.594" y="1126.758"/>
         </scene>

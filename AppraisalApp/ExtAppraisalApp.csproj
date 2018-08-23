@@ -214,6 +214,10 @@
     <Compile Include="Controllers\HistoryViewController.designer.cs">
       <DependentUpon>HistoryViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="decodeActivity.cs" />
+    <Compile Include="decodeActivity.designer.cs">
+      <DependentUpon>decodeActivity.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />

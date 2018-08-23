@@ -6,6 +6,7 @@ using ExtAppraisalApp.Models;
 using ExtAppraisalApp.Services;
 using Foundation;
 using UIKit;
+using Xamarin.Forms;
 
 namespace ExtAppraisalApp
 {
@@ -32,7 +33,7 @@ namespace ExtAppraisalApp
             if (vin == "")
             {
 
-                Utilities.Utility.ShowAlert("Fist Name", "A username is required.!!", "OK");
+                Utilities.Utility.ShowAlert("First Name", "A username is required.!!", "OK");
 
             }
             else if (mileage == "")
@@ -44,6 +45,12 @@ namespace ExtAppraisalApp
             {
                 Utilities.Utility.ShowAlert("First Name", "A firstname is required.!!", "OK");
 
+            }
+            else if(!Regex.Match(firstname, "^[A-Z][a-zA-Z]*$").Success){
+                Utilities.Utility.ShowAlert("First Name", "Your FirstName (" + firstname + ") is Incorrect", "OK");
+            }
+            else if(!Regex.Match(lastname, "^[A-Z][a-zA-Z]*$").Success){
+                
             }
             else if (lastname == "")
             {
@@ -124,7 +131,7 @@ namespace ExtAppraisalApp
             if (vin == "")
             {
 
-                Utilities.Utility.ShowAlert("Fist Name", "A username is required.!!", "OK");
+                Utilities.Utility.ShowAlert("VIN", "A VIN is required.!!", "OK");
 
             }
             else if (mileage == "")
@@ -159,6 +166,8 @@ namespace ExtAppraisalApp
             }
             else
             {
+                decodeActivity.Hidden = false;
+                decodeActivity.StartAnimating();
                 //GCDiscreetNotificationView notificationView; = new GCDiscreetNotificationView(
                 //             text: "please wait...",
                 //             activity: false,
@@ -187,7 +196,8 @@ namespace ExtAppraisalApp
                 var splitViewController = storyboard.InstantiateViewController("SplitViewControllerID");
                 var appDelegate = (AppDelegate)UIApplication.SharedApplication.Delegate;
                 appDelegate.Window.RootViewController = splitViewController;
-
+                decodeActivity.StopAnimating();
+                decodeActivity.Hidden = true;
             }
            
 
@@ -197,6 +207,16 @@ namespace ExtAppraisalApp
         {
             try
             {
+                decodeActivity.Hidden = true;
+                txtVin.ShouldChangeCharacters = (textField, range, replacementString) => {
+                    var newLength = textField.Text.Length + replacementString.Length - range.Length;
+                    return newLength <= 17;
+                };
+                txtPhone.ShouldChangeCharacters = (textField, range, replacementString) => {
+                    var newLength = textField.Text.Length + replacementString.Length - range.Length;
+                    return newLength <= 10;
+                };
+                txtVin.AutocapitalizationType =UITextAutocapitalizationType.AllCharacters;
                 txtVin.ShouldReturn = (tf) =>
                 {
                     //txtMileage.SecureTextEntry = true;

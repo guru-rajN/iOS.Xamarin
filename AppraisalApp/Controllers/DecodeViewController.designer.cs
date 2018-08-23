@@ -31,6 +31,10 @@ namespace ExtAppraisalApp
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIActivityIndicatorView decodeActivity { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel lblEmail { get; set; }
 
         [Outlet]
@@ -118,6 +122,11 @@ namespace ExtAppraisalApp
             if (btnScan != null) {
                 btnScan.Dispose ();
                 btnScan = null;
+            }
+
+            if (decodeActivity != null) {
+                decodeActivity.Dispose ();
+                decodeActivity = null;
             }
 
             if (lblEmail != null) {
