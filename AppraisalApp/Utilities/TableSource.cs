@@ -51,8 +51,8 @@ namespace AppraisalApp.Utilities
         {
             //Instantialte the Storyboard Object
 
-            //this.PerformSegue("popOverSegue", this);
             owner.PerformSegue("FacOptionSegue", this);
+
             AppDelegate.appDelegate.FactoryOptionSelected = tableItems[indexPath.Row];
             UIStoryboard storyboard = UIStoryboard.FromName("Main", null);
 
@@ -65,18 +65,19 @@ namespace AppraisalApp.Utilities
             //Get the Instance of the TopViewController (CurrentViewController) or the NavigationViewController to push the TargetViewController onto the stack. 
             //NavigationController is an Instance of the NavigationViewController
 
-            if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
-            {
+            //if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
+            //{
 
-                owner.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
-                owner.PresentModalViewController(vcInstance, true);
+            //    owner.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
+            //    owner.PresentModalViewController(vcInstance, true);
 
-            }
-            else
-            {
-                owner.PresentModalViewController(vcInstance, true);
+            //}
+            //else
+            //{
+            //   // owner.ModalPresentationStyle = UIModalPresentationStyle.;
+            //    owner.PresentModalViewController(vcInstance, true);
 
-            }
+            //}
 
            // owner.PresentModalViewController(vcInstance, true);
            // owner.NavigationController.PushViewController(vcInstance, true);

@@ -49,15 +49,15 @@ namespace ExtAppraisalApp
                     Utilities.Utility.ShowAlert("First Name", "A firstname is required.!!", "OK");
 
                 }
-                else if (!Regex.Match(firstname, @"^[A-Z][a-zA-Z]*$").Success)
-                {
-                    Utilities.Utility.ShowAlert("First Name", "Your FirstName (" + firstname + ") is Incorrect", "OK");
-                }
-                else if (!Regex.Match(lastname, @"^[A-Z][a-zA-Z]*$").Success)
-                {
-                    Utilities.Utility.ShowAlert("Last Name", "Your LastName (" + lastname + ") is Incorrect", "OK");
+                //else if (!Regex.Match(firstname, @"^[A-Z][a-zA-Z]*$").Success)
+                //{
+                //    Utilities.Utility.ShowAlert("First Name", "Your FirstName (" + firstname + ") is Incorrect", "OK");
+                //}
+                //else if (!Regex.Match(lastname, @"^[A-Z][a-zA-Z]*$").Success)
+                //{
+                //    Utilities.Utility.ShowAlert("Last Name", "Your LastName (" + lastname + ") is Incorrect", "OK");
 
-                }
+                //}
                 else if (lastname == "")
                 {
                     Utilities.Utility.ShowAlert("Last Name", "A last is required.!!", "OK");

@@ -3,7 +3,7 @@ using CoreGraphics; using ExtAppraisalApp; using ExtAppraisalApp.Services;�
 namespace ExtAppraisalApp {     public partial class OptionPopUp : UIViewController     {
         partial void BtnSave_Activated(UIBarButtonItem sender)
         {
-            throw new NotImplementedException();
+            this.DismissModalViewController(true);
         }          partial void BtnCancel_Activated(UIBarButtonItem sender)
         {
             this.DismissModalViewController(true);

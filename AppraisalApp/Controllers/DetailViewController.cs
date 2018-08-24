@@ -82,6 +82,7 @@ namespace ExtAppraisalApp
                     trimValue.Text = REQUIRED;
                     exteriorColorValue.Text = REQUIRED;
 
+                    mileageValue.TextColor = UIColor.Black;
 
                     vehicleDetails.KBBMakeId = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[0].make.makeId;
 
@@ -109,10 +110,12 @@ namespace ExtAppraisalApp
                         {
                             modelValue.Text = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[0].model.displayName;
                             vehicleDetails.Model = modelValue.Text;
+                            modelValue.TextColor = UIColor.Black;
                             vehicleDetails.KBBModelId = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[0].model.modelId;
 
                             trimValue.Text = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[0].trim.displayName;
                             vehicleDetails.Trim = trimValue.Text;
+                            trimValue.TextColor = UIColor.Black;
                             vehicleDetails.KBBTrimId = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[0].trim.trimId;
                             LoadDropdownDataFromTrim(0);
                             LoadExteriorColorsFromTrim();
@@ -366,6 +369,7 @@ namespace ExtAppraisalApp
                     {
                         exteriorColorValue.Text = exteriorColorList.data[0].colorId.ToString();
                         vehicleDetails.ExtColor = exteriorColorValue.Text;
+                        exteriorColorValue.TextColor = UIColor.Black;
                         vehicleDetails.KBBColorId = exteriorColorList.data[0].displayName;
                     }
                 }
@@ -505,6 +509,7 @@ namespace ExtAppraisalApp
             {
                 engineValue.Text = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[index].engines[0].displayName; //assign the engine value
                 vehicleDetails.Engine = engineValue.Text;
+                engineValue.TextColor = UIColor.Black;
                 vehicleDetails.KBBEngineId = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[index].engines[0].engineId;
             }
 
@@ -529,6 +534,7 @@ namespace ExtAppraisalApp
             {
                 drivetrainValue.Text = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[index].drivetrains[0].displayName; //assign the drivetrain value
                 vehicleDetails.DriveTrain = drivetrainValue.Text;
+                drivetrainValue.TextColor = UIColor.Black;
                 vehicleDetails.KBBDrivetrainId = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[index].drivetrains[0].drivetrainId;
             }
 
@@ -553,6 +559,7 @@ namespace ExtAppraisalApp
             {
                 transmissionValue.Text = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[index].transmissions[0].displayName; //assign the transmision
                 vehicleDetails.Transmission = transmissionValue.Text;
+                transmissionValue.TextColor = UIColor.Black;
                 vehicleDetails.KBBTransmissionId = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[index].transmissions[0].transmissionId;
             }
 
@@ -600,6 +607,7 @@ namespace ExtAppraisalApp
                         {
                             trimValue.Text = decodeVinDetails.DecodeVinVehicleDetails.Series[0].Value;
                             vehicleDetails.Trim = trimValue.Text;
+                            trimValue.TextColor = UIColor.Black;
                             vehicleDetails.KBBTrimId = Int32.Parse(decodeVinDetails.DecodeVinVehicleDetails.Series[0].ID);
                             LoadDropdownDataFromTrim(index);
                             LoadExteriorColorsFromTrim();

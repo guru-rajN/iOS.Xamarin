@@ -123,11 +123,13 @@ namespace ExtAppraisalApp
         // Done btn Click Event
         partial void DoneBtn_Activated(UIBarButtonItem sender)
         {
+            this.DismissViewController(true, null);
+
             Worker worker = new Worker();
             worker.WorkerDelegate = detailViewController;
             worker.UpdateUI(subtitleText.Text, correspondentId);
 
-            this.DismissViewController(true, null);
+
         }
 
     }
