@@ -1,6 +1,7 @@
 using AppraisalApp.Models;
 using AppraisalApp.Utilities;
 using CoreGraphics;
+using ExtAppraisalApp.Models;
 using ExtAppraisalApp.Services;
 using Foundation;
 using System;
@@ -11,6 +12,12 @@ namespace ExtAppraisalApp
 {
     public partial class FactoryOptionViewController : UIViewController
     {
+        
+        partial void BtnSave_Activated(UIBarButtonItem sender)
+        {
+            SaveFactoryOptions();
+        }
+
         UITableView table;
         IEnumerable<FactoryOptionsSection> fctoption = new List<FactoryOptionsSection>();
         public FactoryOptionViewController (IntPtr handle) : base (handle)
@@ -40,6 +47,20 @@ namespace ExtAppraisalApp
 
 
 
+        }
+
+        public void SaveFactoryOptions(){
+            SIMSResponseData responseStatus;
+            VehicleFactoryOptionsKBB vehicleFactoryOptions = new VehicleFactoryOptionsKBB();
+            vehicleFactoryOptions.VehicleId = AppDelegate.appDelegate.vehicleID;
+            vehicleFactoryOptions.StoreId = AppDelegate.appDelegate.storeId;
+            vehicleFactoryOptions.InvtrId = AppDelegate.appDelegate.invtrId;
+
+            vehicleFactoryOptions.data = AppDelegate.appDelegate.factoryOptionsKBB;
+
+            //Logic to add the Selected Factory options
+
+            responseStatus= ServiceFactory.getWebServiceHandle().SaveFactoryOptions(vehicleFactoryOptions);
         }
 
 

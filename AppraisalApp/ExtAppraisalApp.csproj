@@ -236,6 +236,7 @@
     <Compile Include="Controllers\ReconditionTVS.cs" />
     <Compile Include="SQLiteAsync.cs" />
     <Compile Include="SQLite.cs" />
+    <Compile Include="Models\VehicleFactoryOptionsKBB.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />

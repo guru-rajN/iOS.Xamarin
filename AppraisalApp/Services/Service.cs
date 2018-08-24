@@ -26,5 +26,7 @@ namespace ExtAppraisalApp.Services
         string GenerateProspectId(ProspectParams prospectParams);
 
         SIMSResponseData SaveVehicleDetails(Vehicle vehicleDetails);
+   
+        SIMSResponseData SaveFactoryOptions(VehicleFactoryOptionsKBB vehicleFactoryOptions);
     }
 }

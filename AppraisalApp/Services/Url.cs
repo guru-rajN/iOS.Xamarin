@@ -33,5 +33,8 @@ namespace ExtAppraisalApp.Services
         public const string GENERATE_PROSPECT_URL = "GenerateProspect/";
 
         public const string SAVE_VEHICLE_DETAILS_URL = "SaveVehicleDetailsKBB/";
+   
+
+        public const string SAVE_FACTORY_OPTIONS_URL = "SaveFactoryOptionsKBB/";
     }
 }

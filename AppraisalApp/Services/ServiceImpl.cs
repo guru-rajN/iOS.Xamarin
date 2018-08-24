@@ -363,5 +363,43 @@ namespace ExtAppraisalApp.Services
             return response;
 
         }
+
+        public SIMSResponseData SaveFactoryOptions(VehicleFactoryOptionsKBB vehicleFactoryOptions)
+        {
+            string result = null;
+            HttpResponseMessage responseMessage = null;
+            SIMSResponseData response = new SIMSResponseData();
+            try
+            {
+
+                string request = JsonConvert.SerializeObject(vehicleFactoryOptions);
+
+                responseMessage = RestClient.doPost(Url.SAVE_FACTORY_OPTIONS_URL, request);
+
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    result = responseMessage.Content.ReadAsStringAsync().Result;
+                    SIMSResponseData rst = JsonConvert.DeserializeObject<SIMSResponseData>(result);
+
+                    response = rst;
+
+                    if (null != response)
+                    {
+                        Utilities.Utility.ShowAlert("Appraisal App", "Vehicle Appraisal Created", "OK");
+                    }
+                }
+                else
+                {
+                    Utilities.Utility.ShowAlert("Appraisal App", "Vehicle data save failed!!", "OK");
+                }
+
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine("Exception occured :: " + exc.Message);
+            }
+            return response;
+
+        }
     }
 }
