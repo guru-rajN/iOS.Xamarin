@@ -1,6 +1,6 @@
 using CoreGraphics; using ExtAppraisalApp; using ExtAppraisalApp.Services; using Foundation; using System; using System.Collections.Generic; using UIKit; using AppraisalApp.Utilities; using System.Reflection.Emit; using System.Diagnostics; using AppraisalApp.Models; using Xamarin.Forms;
 
-namespace AppraisalApp {     public partial class OptionPopUp : UIViewController     {
+namespace ExtAppraisalApp {     public partial class OptionPopUp : UIViewController     {
         partial void BtnSave_Activated(UIBarButtonItem sender)
         {
             throw new NotImplementedException();

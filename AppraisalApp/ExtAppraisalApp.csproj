@@ -193,10 +193,6 @@
     <Compile Include="Models\FactoryOptions.cs" />
     <Compile Include="Models\FactoryOptionsSection.cs" />
     <Compile Include="Utilities\TableSource.cs" />
-    <Compile Include="OptionPopUp.cs" />
-    <Compile Include="OptionPopUp.designer.cs">
-      <DependentUpon>OptionPopUp.cs</DependentUpon>
-    </Compile>
     <Compile Include="Utilities\FactoryOptionSource.cs" />
     <Compile Include="Utilities\FactoryOptionsCell.cs" />
     <Compile Include="Models\VinVehicleDetailsKBB.cs" />
@@ -237,6 +233,10 @@
     <Compile Include="SQLiteAsync.cs" />
     <Compile Include="SQLite.cs" />
     <Compile Include="Models\VehicleFactoryOptionsKBB.cs" />
+    <Compile Include="Controllers\OptionPopUp.cs" />
+    <Compile Include="Controllers\OptionPopUp.designer.cs">
+      <DependentUpon>OptionPopUp.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />

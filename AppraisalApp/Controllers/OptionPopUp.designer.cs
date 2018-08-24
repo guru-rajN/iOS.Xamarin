@@ -9,7 +9,7 @@ using System;
 using System.CodeDom.Compiler;
 using UIKit;
 
-namespace AppraisalApp
+namespace ExtAppraisalApp
 {
     [Register ("OptionPopUp")]
     partial class OptionPopUp
