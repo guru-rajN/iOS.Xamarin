@@ -5,9 +5,8 @@
       <File FileName="AppraisalApp/DB/SQLite_iOS.cs" Line="11" Column="1" />
       <File FileName="AppraisalApp/Controllers/ReconditionTVS.cs" Line="79" Column="14" />
       <File FileName="AppraisalApp/Controllers/DetailViewController.cs" Line="435" Column="75" />
-      <File FileName="AppraisalApp/Controllers/DecodeViewController.cs" Line="174" Column="32" />
+      <File FileName="AppraisalApp/Controllers/DecodeViewController.cs" Line="222" Column="10" />
       <File FileName="AppraisalApp/AppDelegate.cs" Line="78" Column="108" />
-      <File FileName="AppraisalApp/Views/Main.storyboard" />
       <File FileName="ExtAppraisalApp Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
@@ -21,6 +20,6 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="../../../AppraisalApp/Controllers/DecodeViewController.cs" line="80" offsetX="784" offsetY="1185" expression="apprrequest.VIN" liveUpdate="True" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
-  <MonoDevelop.Ide.ItemProperties.ExtAppraisalApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.CBFD621A-3810-4A32-BA93-B050216539BB" />
+  <MonoDevelop.Ide.ItemProperties.ExtAppraisalApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.CBFD621A-3810-4A32-BA93-B050216539BB" automaticSigning="False" />
   <MultiItemStartupConfigurations />
 </Properties>
