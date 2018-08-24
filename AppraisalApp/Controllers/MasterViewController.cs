@@ -89,7 +89,9 @@ namespace ExtAppraisalApp
 
         partial void MasterViewCloseBtn_Activated(UIBarButtonItem sender)
         {
-            this.DismissViewController(true, null);
+            var storyboard = UIStoryboard.FromName("Main", null);
+            var loginViewController = storyboard.InstantiateViewController("LoginViewController");
+            AppDelegate.appDelegate.Window.RootViewController = loginViewController;
         }
 
         class DataSource : UITableViewSource

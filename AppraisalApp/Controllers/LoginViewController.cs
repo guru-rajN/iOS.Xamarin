@@ -23,7 +23,7 @@ namespace ExtAppraisalApp
                     Utilities.Utility.ShowAlert("ZIP/Dealer Code", "A ZIP/Dealer is required.!!", "OK");
 
                 }
-                else if (!(zip.Length == 6 || zip.Length == 4))
+                else if (!(zip.Length == 6 || zip.Length == 5))
                 {
                     Utilities.Utility.ShowAlert("ZIP/Dealer Code", "Your ZIP/Dealer (" + zip + ") is Incorrect", "OK");
 
@@ -37,20 +37,7 @@ namespace ExtAppraisalApp
                         if (code != null)
                         {
                             this.PerformSegue("decodeSegue", this);
-                            //if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
-                            //{
-
-                            //    var vehicleInfo = Storyboard.InstantiateViewController("DecodeViewController");
-                            //    vehicleInfo.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
-                            //    this.PresentModalViewController(vehicleInfo, true);
-
-                            //}
-                            //else
-                            //{
-                            //    var vehicleInfo = Storyboard.InstantiateViewController("DecodeViewController");
-                            //    this.PresentModalViewController(vehicleInfo, true);
-
-                            //}
+ 
                         }
                         else
                         {
