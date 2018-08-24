@@ -182,8 +182,6 @@ namespace ExtAppraisalApp
                     return true;
                 };
 
-                this.PerformSegue("decodeSegue", this);
-
                 // hide keyboard on touch outside area
                 var g = new UITapGestureRecognizer(() => View.EndEditing(true));
                 g.CancelsTouchesInView = false; //for iOS5

@@ -35,7 +35,7 @@ namespace ExtAppraisalApp
         {
             base.ViewDidLoad();
 
-            Title = "2017 Toyota Yaris iA";
+            Title = "1999 Chevrolet";
 
             // Perform any additional setup after loading the view, typically from a nib.
             //NavigationItem.LeftBarButtonItem = EditButtonItem;
