@@ -12,7 +12,6 @@ namespace ExtAppraisalApp
 {
     public partial class FactoryOptionViewController : UIViewController
     {
-        
         partial void BtnSave_Activated(UIBarButtonItem sender)
         {
             SaveFactoryOptions();
