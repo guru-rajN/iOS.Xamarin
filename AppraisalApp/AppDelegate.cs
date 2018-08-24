@@ -22,6 +22,7 @@ namespace ExtAppraisalApp
         public short storeId { get; set; }
         public short invtrId { get; set; }
         public int trimId { get; set; }
+        public int mileage { get; set; }
         public IEnumerable<FactoryOptionsSection> fctoption = new List<FactoryOptionsSection>();
         public string FactoryOptionSelected { get; set; }
         public List<FactoryOptionsKBB> factoryOptionsKBB = new List<FactoryOptionsKBB>();
@@ -38,14 +39,16 @@ namespace ExtAppraisalApp
                 //loginViewController.ModalPresentationStyle = UIModalPresentationStyle.FullScreen;
                 //this.ro(loginViewController, null);
                 Window.RootViewController = loginViewController;
-            }else{
+            }
+            else
+            {
                 var splitViewController = (UISplitViewController)Window.RootViewController;
                 var navigationController = (UINavigationController)splitViewController.ViewControllers[1];
                 navigationController.TopViewController.NavigationItem.LeftBarButtonItem = splitViewController.DisplayModeButtonItem;
                 splitViewController.WeakDelegate = this;
                 Window.RootViewController = splitViewController;
             }
-          
+
 
             return true;
         }

@@ -11,7 +11,7 @@ namespace ExtAppraisalApp
 {
     public partial class DetailViewController : UITableViewController, IWorkerDelegate
     {
-      
+
         public object DetailItem { get; set; }
 
         public int rowSelected = 0;
@@ -69,10 +69,8 @@ namespace ExtAppraisalApp
                     yearValue.Text = vehicleDetails.Year.ToString();
                     makeValue.Text = vehicleDetails.Make;
 
-                    if (vehicleDetails.Mileage != 0)
-                    {
-                        mileageValue.Text = vehicleDetails.Mileage.ToString();
-                    }
+                    mileageValue.Text = AppDelegate.appDelegate.mileage.ToString();
+                    vehicleDetails.Mileage = AppDelegate.appDelegate.mileage;
 
                     bodyStyleValue.Text = REQUIRED;
                     odometerValue.Text = REQUIRED;
@@ -95,7 +93,7 @@ namespace ExtAppraisalApp
                         {
                             modelValueMultiple = true;
                             modelValue.Text = REQUIRED;
-                            modelValue.TextColor = UIColor.Green;
+
                             for (int i = 0; i < decodeVinDetails.KBBVinVehicleDetails.data.possibilities.Count; i++)
                             {
                                 var idvalues = new IDValues();
@@ -429,10 +427,12 @@ namespace ExtAppraisalApp
                 prospectParams.vin = vehicleDetails.VIN;
                 prospectParams.colorId = Int32.Parse(vehicleDetails.KBBColorId);
                 prospectParams.trimId = vehicleDetails.KBBTrimId;
+
                 prospectParams.drivetrainId = vehicleDetails.KBBDrivetrainId;
                 prospectParams.engineId = vehicleDetails.KBBEngineId;
-                prospectParams.currStoreId = 2001;
+                prospectParams.currStoreId = AppDelegate.appDelegate.storeId;
                 prospectParams.dealerId = 0;
+                AppDelegate.appDelegate.trimId = vehicleDetails.KBBTrimId;
                 prospectParams.makeId = vehicleDetails.KBBMakeId;
                 prospectParams.modelId = vehicleDetails.KBBModelId;
                 prospectParams.mileage = Int32.Parse(vehicleDetails.Mileage.ToString());
@@ -553,7 +553,7 @@ namespace ExtAppraisalApp
             {
                 transmissionValue.Text = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[index].transmissions[0].displayName; //assign the transmision
                 vehicleDetails.Transmission = transmissionValue.Text;
-                vehicleDetails.KBBEngineId = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[index].transmissions[0].transmissionId;
+                vehicleDetails.KBBTransmissionId = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[index].transmissions[0].transmissionId;
             }
 
 
