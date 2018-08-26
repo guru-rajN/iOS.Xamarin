@@ -15,7 +15,35 @@ namespace ExtAppraisalApp
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView AfterMarketDoneImg { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel ConditionsLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView FactoryOptionsDoneImg { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView HistoryDoneImg { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView InfoDoneImg { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIBarButtonItem MasterViewCloseBtn { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView PhotosDoneImg { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView ReconditionsDoneImg { get; set; }
 
         [Action ("MasterViewCloseBtn_Activated:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -23,9 +51,44 @@ namespace ExtAppraisalApp
 
         void ReleaseDesignerOutlets ()
         {
+            if (AfterMarketDoneImg != null) {
+                AfterMarketDoneImg.Dispose ();
+                AfterMarketDoneImg = null;
+            }
+
+            if (ConditionsLabel != null) {
+                ConditionsLabel.Dispose ();
+                ConditionsLabel = null;
+            }
+
+            if (FactoryOptionsDoneImg != null) {
+                FactoryOptionsDoneImg.Dispose ();
+                FactoryOptionsDoneImg = null;
+            }
+
+            if (HistoryDoneImg != null) {
+                HistoryDoneImg.Dispose ();
+                HistoryDoneImg = null;
+            }
+
+            if (InfoDoneImg != null) {
+                InfoDoneImg.Dispose ();
+                InfoDoneImg = null;
+            }
+
             if (MasterViewCloseBtn != null) {
                 MasterViewCloseBtn.Dispose ();
                 MasterViewCloseBtn = null;
+            }
+
+            if (PhotosDoneImg != null) {
+                PhotosDoneImg.Dispose ();
+                PhotosDoneImg = null;
+            }
+
+            if (ReconditionsDoneImg != null) {
+                ReconditionsDoneImg.Dispose ();
+                ReconditionsDoneImg = null;
             }
         }
     }

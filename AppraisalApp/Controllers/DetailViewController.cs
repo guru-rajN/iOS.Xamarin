@@ -18,6 +18,7 @@ namespace ExtAppraisalApp
 
         private Vehicle vehicleDetails;
         private VinVehicleDetailsKBB decodeVinDetails;
+        private MasterViewController masterViewController;
 
         private const string REQUIRED = "Required";
 
@@ -37,15 +38,9 @@ namespace ExtAppraisalApp
         {
         }
 
-        public void SetDetailItem(object newDetailItem)
+        public void SetDetailItem(MasterViewController masterViewController)
         {
-            if (DetailItem != newDetailItem)
-            {
-                DetailItem = newDetailItem;
-
-                // Update the view
-                ConfigureView();
-            }
+            this.masterViewController = masterViewController;
         }
 
         void ConfigureView()
@@ -455,6 +450,10 @@ namespace ExtAppraisalApp
 
         partial void DetailSaveBtn_Activated(UIBarButtonItem sender)
         {
+            DetailViewWorker worker = new DetailViewWorker();
+            worker.WorkerDelegate = masterViewController;
+            worker.UpdateUI(false);
+
             GenerateProspect();
             SaveVehicleDetails(vehicleDetails);
         }
@@ -693,6 +692,40 @@ namespace ExtAppraisalApp
                 interiorTypeValue.Text = data;
                 vehicleDetails.IntrType = interiorTypeValue.Text;
             }
+
+        }
+
+    }
+
+    // Delegate methods
+    public interface DetailViewWorkerDelegate
+    {
+        void UpdateDatas(bool show);
+    }
+
+    public class DetailViewWorker
+    {
+        WeakReference<DetailViewWorkerDelegate> _workerDelegate;
+
+        public DetailViewWorkerDelegate WorkerDelegate
+        {
+            get
+            {
+                DetailViewWorkerDelegate workerDelegate;
+                return _workerDelegate.TryGetTarget(out workerDelegate) ? workerDelegate : null;
+            }
+            set
+            {
+                _workerDelegate = new WeakReference<DetailViewWorkerDelegate>(value);
+            }
+        }
+
+        public void UpdateUI(bool show)
+        {
+            Console.WriteLine("Updating UI .. ");
+
+            if (_workerDelegate != null)
+                WorkerDelegate?.UpdateDatas(show);
 
         }
     }

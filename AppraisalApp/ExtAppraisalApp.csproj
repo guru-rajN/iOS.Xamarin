@@ -153,18 +153,6 @@
     <Compile Include="Controllers\FactoryOptionViewController.designer.cs">
       <DependentUpon>FactoryOptionViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\AfterMarketCell.cs" />
-    <Compile Include="Controllers\AfterMarketCell.designer.cs">
-      <DependentUpon>AfterMarketCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\FactoryOptionsCell.cs" />
-    <Compile Include="Controllers\FactoryOptionsCell.designer.cs">
-      <DependentUpon>FactoryOptionsCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\InformationCell.cs" />
-    <Compile Include="Controllers\InformationCell.designer.cs">
-      <DependentUpon>InformationCell.cs</DependentUpon>
-    </Compile>
     <Compile Include="Services\RestClient.cs" />
     <Compile Include="Services\Service.cs" />
     <Compile Include="Services\ServiceFactory.cs" />
@@ -203,10 +191,6 @@
     <Compile Include="Controllers\PopOverViewController.designer.cs">
       <DependentUpon>PopOverViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\HistoryCell.cs" />
-    <Compile Include="Controllers\HistoryCell.designer.cs">
-      <DependentUpon>HistoryCell.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\HistoryViewController.cs" />
     <Compile Include="Controllers\HistoryViewController.designer.cs">
       <DependentUpon>HistoryViewController.cs</DependentUpon>
@@ -220,14 +204,6 @@
     <Compile Include="Controllers\ReconditionViewController.designer.cs">
       <DependentUpon>ReconditionViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\ReconditionOptionCell.cs" />
-    <Compile Include="Controllers\ReconditionOptionCell.designer.cs">
-      <DependentUpon>ReconditionOptionCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\ReconditionCell.cs" />
-    <Compile Include="Controllers\ReconditionCell.designer.cs">
-      <DependentUpon>ReconditionCell.cs</DependentUpon>
-    </Compile>
     <Compile Include="Models\ReconditionValue.cs" />
     <Compile Include="Models\Recondtionm.cs" />
     <Compile Include="Controllers\ReconditionTVS.cs" />
@@ -238,6 +214,8 @@
     <Compile Include="Controllers\OptionPopUp.designer.cs">
       <DependentUpon>OptionPopUp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ReconditionCell.cs" />
+    <Compile Include="Controllers\ReconditionCell.designer.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />
