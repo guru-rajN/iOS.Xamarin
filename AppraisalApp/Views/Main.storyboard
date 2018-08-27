@@ -63,7 +63,7 @@
                                                     <rect key="frame" x="16" y="7" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="125462" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="125462">
                                                     <rect key="frame" x="54" y="12" width="258" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -84,11 +84,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="123460" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" image="done.png">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="done.png" translatesAutoresizingMaskIntoConstraints="NO" id="123460">
                                                     <rect key="frame" x="16" y="7" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Factory Options" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="127365" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Factory Options" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="127365">
                                                     <rect key="frame" x="54" y="12" width="279" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -99,8 +99,6 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <outlet property="factoryOptionCellLabel" destination="pDM-5W-iir" id="name-outlet-pDM-5W-iir"/>
-                                            <outlet property="factoryOptionDoneImg" destination="vH2-7J-dZN" id="name-outlet-vH2-7J-dZN"/>
                                             <segue destination="3uW-fc-y4W" kind="showDetail" identifier="factoryDetail" id="hrP-tv-Tg0"/>
                                         </connections>
                                     </tableViewCell>
@@ -111,11 +109,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="124460" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" image="done.png">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="done.png" translatesAutoresizingMaskIntoConstraints="NO" id="124460">
                                                     <rect key="frame" x="16" y="7" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AfterMarket" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="127618" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="AfterMarket" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="127618">
                                                     <rect key="frame" x="54" y="12" width="279" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -126,8 +124,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <outlet property="afterMarketCellLabel" destination="j55-2g-9X7" id="name-outlet-j55-2g-9X7"/>
-                                            <outlet property="afterMarketDoneImg" destination="T5t-eU-4IA" id="name-outlet-T5t-eU-4IA"/>
+                                            <segue destination="lHy-f3-sjo" kind="presentation" id="L92-LJ-zDL"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HistoryCell" id="Gi6-1r-tXv" customClass="HistoryCell">
@@ -137,11 +134,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="128123" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" image="done.png">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="done.png" translatesAutoresizingMaskIntoConstraints="NO" id="128123">
                                                     <rect key="frame" x="16" y="7" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="128629" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="128629">
                                                     <rect key="frame" x="54" y="12" width="279" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -152,7 +149,6 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <outlet property="HistoryCellLabel" destination="csX-CF-gF2" id="name-outlet-csX-CF-gF2"/>
                                             <segue destination="45972" kind="showDetail" identifier="historyDetails" id="46142"/>
                                         </connections>
                                     </tableViewCell>
@@ -163,11 +159,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="129136" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" image="done.png">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="done.png" translatesAutoresizingMaskIntoConstraints="NO" id="129136">
                                                     <rect key="frame" x="16" y="7" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conditions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="129644" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Conditions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="129644">
                                                     <rect key="frame" x="54" y="12" width="279" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -178,7 +174,6 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <outlet property="ReconditionCellLabel" destination="N5T-WA-LTK" id="name-outlet-N5T-WA-LTK"/>
                                             <segue destination="103566" kind="showDetail" identifier="reconditionDetails" id="104495"/>
                                         </connections>
                                     </tableViewCell>
@@ -189,11 +184,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="130919" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" image="done.png">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="done.png" translatesAutoresizingMaskIntoConstraints="NO" id="130919">
                                                     <rect key="frame" x="16" y="7" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="131686" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="131686">
                                                     <rect key="frame" x="54" y="12" width="279" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -221,14 +216,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="MasterViewCloseBtn" destination="733" id="name-outlet-733"/>
-                        <outlet property="FactoryOptionsDoneImg" destination="123460" id="name-outlet-123460"/>
                         <outlet property="AfterMarketDoneImg" destination="124460" id="name-outlet-124460"/>
-                        <outlet property="InfoDoneImg" destination="2Up-uu-2Az" id="name-outlet-2Up-uu-2Az"/>
-                        <outlet property="HistoryDoneImg" destination="128123" id="name-outlet-128123"/>
-                        <outlet property="ReconditionsDoneImg" destination="129136" id="name-outlet-129136"/>
                         <outlet property="ConditionsLabel" destination="129644" id="name-outlet-129644"/>
+                        <outlet property="FactoryOptionsDoneImg" destination="123460" id="name-outlet-123460"/>
+                        <outlet property="HistoryDoneImg" destination="128123" id="name-outlet-128123"/>
+                        <outlet property="InfoDoneImg" destination="2Up-uu-2Az" id="name-outlet-2Up-uu-2Az"/>
+                        <outlet property="MasterViewCloseBtn" destination="733" id="name-outlet-733"/>
                         <outlet property="PhotosDoneImg" destination="130919" id="name-outlet-130919"/>
+                        <outlet property="ReconditionsDoneImg" destination="129136" id="name-outlet-129136"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
@@ -1666,6 +1661,104 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="103590" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1834" y="-727"/>
+        </scene>
+        <!--Recondition View Controller-->
+        <scene sceneID="6yf-st-S97">
+            <objects>
+                <viewController id="Ln1-aC-Waj" customClass="AfterMarketViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YpY-JV-wQz"/>
+                        <viewControllerLayoutGuide type="bottom" id="6Qg-z6-bSY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="V51-2p-x9u">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Vsx-Dr-IbP">
+                                <rect key="frame" x="16" y="79" width="343" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="343" id="OcH-29-UZz"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="AfterMarket"/>
+                                    <segment title="Additional AfterMark"/>
+                                </segments>
+                                <color key="tintColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="SegmentValue_Changed:" destination="Ln1-aC-Waj" eventType="valueChanged" id="zHO-e9-Hp8"/>
+                                </connections>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4SK-41-a6U" misplaced="YES">
+                                <rect key="frame" x="16" y="126" width="343" height="676"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="135992">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="135992" id="135993">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="44.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HI jjkldjskljdlkjdsj" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="135994" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                                    <rect key="frame" x="77" y="12" width="144" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="653" id="WGn-8b-uTt"/>
+                                </constraints>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4SK-41-a6U" firstAttribute="leading" secondItem="V51-2p-x9u" secondAttribute="leadingMargin" id="3Cb-mJ-0bF"/>
+                            <constraint firstItem="Vsx-Dr-IbP" firstAttribute="centerX" secondItem="V51-2p-x9u" secondAttribute="centerX" id="RiB-op-XEL"/>
+                            <constraint firstItem="Vsx-Dr-IbP" firstAttribute="top" secondItem="YpY-JV-wQz" secondAttribute="bottom" constant="15" id="RqB-gf-88w"/>
+                            <constraint firstItem="4SK-41-a6U" firstAttribute="trailing" secondItem="V51-2p-x9u" secondAttribute="trailingMargin" id="pmc-bC-yeb"/>
+                            <constraint id="134093" firstItem="4SK-41-a6U" firstAttribute="top" secondItem="Vsx-Dr-IbP" secondAttribute="bottom" constant="19"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="VkF-wZ-MaN">
+                        <barButtonItem key="rightBarButtonItem" title="Save" width="45" id="f5O-8m-gBQ">
+                            <color key="tintColor" red="0.37254901959999998" green="0.65490196079999996" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="ReconditionSaveBtn_Activated:" destination="Ln1-aC-Waj" id="Cut-1x-vkC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="Btn_SaveAfterMarket" destination="f5O-8m-gBQ" id="name-outlet-f5O-8m-gBQ"/>
+                        <outlet property="ReconditionSegment" destination="Vsx-Dr-IbP" id="yaS-ls-XlD"/>
+                        <outlet property="AfterMarketTableView" destination="4SK-41-a6U" id="name-outlet-4SK-41-a6U"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7tg-UN-44I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3096" y="-792.7526"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="EsX-j8-lYS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lHy-f3-sjo" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ypM-th-PHg">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ln1-aC-Waj" kind="relationship" relationship="rootViewController" id="iSE-RW-aAl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8w8-WT-tmC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2648.8" y="-794.7526"/>
         </scene>
     </scenes>
     <resources>

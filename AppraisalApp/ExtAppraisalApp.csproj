@@ -216,6 +216,30 @@
     </Compile>
     <Compile Include="Controllers\ReconditionCell.cs" />
     <Compile Include="Controllers\ReconditionCell.designer.cs" />
+    <Compile Include="Views\InformationCell.cs" />
+    <Compile Include="Views\InformationCell.designer.cs">
+      <DependentUpon>InformationCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FactoryOptionsCell.cs" />
+    <Compile Include="Views\FactoryOptionsCell.designer.cs">
+      <DependentUpon>FactoryOptionsCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AfterMarketCell.cs" />
+    <Compile Include="Views\AfterMarketCell.designer.cs">
+      <DependentUpon>AfterMarketCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HistoryCell.cs" />
+    <Compile Include="Views\HistoryCell.designer.cs">
+      <DependentUpon>HistoryCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReconditionOptionCell.cs" />
+    <Compile Include="Views\ReconditionOptionCell.designer.cs">
+      <DependentUpon>ReconditionOptionCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AfterMarketViewController.cs" />
+    <Compile Include="Controllers\AfterMarketViewController.designer.cs">
+      <DependentUpon>AfterMarketViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />
