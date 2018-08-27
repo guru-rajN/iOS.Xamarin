@@ -1,11 +1,9 @@
 ﻿<Properties StartupConfiguration="{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="ExtAppraisalApp Status">
     <Files>
-      <File FileName="AppraisalApp/Controllers/MasterViewController.cs" Line="30" Column="39" />
+      <File FileName="AppraisalApp/Controllers/MasterViewController.cs" Line="44" Column="10" />
       <File FileName="AppraisalApp/Controllers/DetailViewController.cs" Line="81" Column="58" />
       <File FileName="AppraisalApp/Controllers/PopOverViewController.cs" Line="170" Column="1" />
-      <File FileName="AppraisalApp/Views/Main.storyboard" />
-      <File FileName="AppraisalApp/Controllers/DecodeViewController.designer.cs" Line="21" Column="48" />
       <File FileName="ExtAppraisalApp Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
