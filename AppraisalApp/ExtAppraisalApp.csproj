@@ -232,6 +232,7 @@
     <BundleResource Include="Resources\box_big.png" />
     <BundleResource Include="Resources\EchoPark_transparent.png" />
     <BundleResource Include="Resources\camera.png" />
+    <BundleResource Include="Resources\Echopark_logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.targets')" />
