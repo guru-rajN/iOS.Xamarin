@@ -27,6 +27,7 @@ namespace ExtAppraisalApp
         public string FactoryOptionSelected { get; set; }
         public List<FactoryOptionsKBB> factoryOptionsKBB = new List<FactoryOptionsKBB>();
         public string prospectId { get; set; }
+        public AfterMarketOptions afterMarketOptions = new AfterMarketOptions();
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
 

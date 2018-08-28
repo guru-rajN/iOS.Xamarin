@@ -417,6 +417,7 @@ namespace ExtAppraisalApp.Services
                     result = responseMessage.Content.ReadAsStringAsync().Result;
                     SIMSResponseData rst = JsonConvert.DeserializeObject<SIMSResponseData>(result);
                     var facresponse = JsonConvert.DeserializeObject<AfterMarketOptions>(rst.Data.ToString());
+                    //facresponse.aftermarketQuestions=JsonConvert.DeserializeObject<AfterMarketOptions>(rst.Data.ToString());
 
                     afterMarketOptions = facresponse;
 

@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace AppraisalApp
 {
-    public partial class AfterMarketViewController : UITableView
+    public partial class AfterMarketViewController : UIViewController
     {
         public AfterMarketViewController (IntPtr handle) : base (handle)
         {
@@ -21,9 +21,7 @@ namespace AppraisalApp
         partial void SegmentValue_Changed(UISegmentedControl sender)
         {
             string segmentID = ReconditionSegment.SelectedSegment.ToString();
-            AfterMarketOptions afterMarketOptions = new AfterMarketOptions();
-            afterMarketOptions =ServiceFactory.getWebServiceHandle().GetAltenateFactoryOptions(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId,AppDelegate.appDelegate.prospectId);
-            if ((globalInde.selectedSegmentIndex != null))
+             if ((globalInde.selectedSegmentIndex != null))
             {
                 globalInde.oldselectedSegmentIndex = globalInde.selectedSegmentIndex.ToString();
             }
@@ -44,6 +42,13 @@ namespace AppraisalApp
             //{
             //    section.Add(new UI.Custom.SickCell());
             //}
+
+        }
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
+             
+            AppDelegate.appDelegate.afterMarketOptions = ServiceFactory.getWebServiceHandle().GetAltenateFactoryOptions(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, AppDelegate.appDelegate.prospectId);
 
         }
     }
