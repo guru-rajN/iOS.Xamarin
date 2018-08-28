@@ -11,7 +11,7 @@ namespace ExtAppraisalApp
     public class AppDelegate : UIApplicationDelegate, IUISplitViewControllerDelegate
     {
         // class-level declarations
-        bool IsLoggedIn = true;
+        bool IsLoggedIn = false;
         public override UIWindow Window
         {
             get;
