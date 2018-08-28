@@ -36,5 +36,7 @@ namespace ExtAppraisalApp.Services
    
 
         public const string SAVE_FACTORY_OPTIONS_URL = "SaveFactoryOptionsKBB/";
+
+        public const string GET_AlternateFactory_OPTIONS_URL = "GetAfterMarketQuestions/";
     }
 }

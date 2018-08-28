@@ -232,15 +232,16 @@ namespace ExtAppraisalApp.Services
             List<FactoryOptionsSection> FacOpt = new List<FactoryOptionsSection>();
             try
             {
+
                 responseMessage = RestClient.doGet(Url.GET_FACTORYOPTIONSKBB_URL + "/" + vehicleId + "/" + storeId + "/" + invtrId + "/" + trimId);
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     result = responseMessage.Content.ReadAsStringAsync().Result;
                     SIMSResponseData rst = JsonConvert.DeserializeObject<SIMSResponseData>(result);
                     var facresponse = JsonConvert.DeserializeObject<List<FactoryOptionsSection>>(rst.Data.ToString());
-
+                    
                     FacOpt = facresponse;
-
+                    
                     if (null != result)
                     {
                         //result = null;
@@ -250,7 +251,7 @@ namespace ExtAppraisalApp.Services
                 else
                 {
                     result = null;
-
+                    
                     //Utilities.Utility.ShowAlert("Appraisal App", "Decode VIN Failed!!", "OK");
                 }
             }
@@ -260,7 +261,6 @@ namespace ExtAppraisalApp.Services
             }
             return FacOpt;
         }
-
         public KBBColorDetails GetKBBColors(int trimId)
         {
             string result = null;
@@ -401,5 +401,44 @@ namespace ExtAppraisalApp.Services
             return response;
 
         }
+
+        public AfterMarketOptions GetAltenateFactoryOptions(long vehicleId, short storeId, short invtrId, string prospectId)
+        {
+            string result = null;
+            HttpResponseMessage responseMessage = null;
+
+            AfterMarketOptions afterMarketOptions = new AfterMarketOptions();
+            SIMSResponseData response = new SIMSResponseData();
+            try{
+                
+                responseMessage = RestClient.doGet(Url.GET_AlternateFactory_OPTIONS_URL + "/" + vehicleId + "/" + storeId + "/" + invtrId + "/" + prospectId);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    result = responseMessage.Content.ReadAsStringAsync().Result;
+                    SIMSResponseData rst = JsonConvert.DeserializeObject<SIMSResponseData>(result);
+                    var facresponse = JsonConvert.DeserializeObject<AfterMarketOptions>(rst.Data.ToString());
+
+                    afterMarketOptions = facresponse;
+
+                    if (null != result)
+                    {
+                        //result = null;
+                    }
+                    // TO-DO : show alert message if the VIN appraisal already created
+                }
+                else
+                {
+                    result = null;
+
+                    //Utilities.Utility.ShowAlert("Appraisal App", "Decode VIN Failed!!", "OK");
+                }
+            }
+            catch (Exception exc)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception occured :: " + exc.Message);
+            }
+        return afterMarketOptions;
+        }
+
     }
 }

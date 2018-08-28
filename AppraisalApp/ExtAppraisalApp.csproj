@@ -220,6 +220,7 @@
     <Compile Include="Controllers\AfterMarketViewController.designer.cs">
       <DependentUpon>AfterMarketViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\AfterMarketOptions.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />

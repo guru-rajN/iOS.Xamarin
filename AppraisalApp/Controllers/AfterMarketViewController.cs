@@ -1,10 +1,13 @@
+using AppraisalApp.Models;
+using ExtAppraisalApp.Services;
 using Foundation;
 using System;
 using UIKit;
+using Xamarin.Forms;
 
 namespace AppraisalApp
 {
-    public partial class AfterMarketViewController : UIViewController
+    public partial class AfterMarketViewController : UITableView
     {
         public AfterMarketViewController (IntPtr handle) : base (handle)
         {
@@ -17,12 +20,30 @@ namespace AppraisalApp
         partial void SegmentValue_Changed(UISegmentedControl sender)
         {
             string segmentID = ReconditionSegment.SelectedSegment.ToString();
+            AfterMarketOptions afterMarketOptions = new AfterMarketOptions();
+            afterMarketOptions =ServiceFactory.getWebServiceHandle().GetAltenateFactoryOptions(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, 432110);
             if ((globalInde.selectedSegmentIndex != null))
             {
                 globalInde.oldselectedSegmentIndex = globalInde.selectedSegmentIndex.ToString();
             }
-            globalInde.selectedSegmentIndex = segmentID.ToString();
-           
+            if(segmentID=="1"){
+                
+            }
+            else{
+                
+            }
+            //globalInde.selectedSegmentIndex = segmentID.ToString();
+            //TableView list = new TableView();
+            //list.RowHeight = 80;
+            //TableRoot troot = new TableRoot();
+            //list.Root = troot;
+            //UITableSection section = new TableSection();
+            //troot.Add(section);
+            //for (int i = 0; i < itemsList.Count; i++)
+            //{
+            //    section.Add(new UI.Custom.SickCell());
+            //}
+
         }
     }
 }
