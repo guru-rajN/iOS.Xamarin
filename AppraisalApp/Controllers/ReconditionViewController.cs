@@ -57,7 +57,8 @@ namespace ExtAppraisalApp
                         ReconditionSegment.SelectedSegment = 2;
                     }
                     ReconditionSaveBtn.TintColor = UIColor.Red;
-                    selectionAlertLabel.Text = "please select any one of " + labeltext + " option";
+                   
+                    selectionAlertLabel.Text = "Please choose one of the " + labeltext + " option";
                     selectionAlertLabel.TextColor = UIColor.Red;
                 }
                 else
@@ -198,8 +199,7 @@ namespace ExtAppraisalApp
             };
 
             ReconditionTableView.Source = new ReconditionTVS(reconditions);
-            ReconditionTableView.RowHeight = UITableView.AutomaticDimension;
-            ReconditionTableView.EstimatedRowHeight = 40f;
+            ReconditionTableView.Source = new ReconditionTVS(reconditions);             ReconditionTableView.AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;             // ReconditionTableView.RowHeight = UITableView.AutomaticDimension;             //ReconditionTableView.             //ReconditionTableView.EstimatedRowHeight = 40f;             ReconditionTableView.ScrollEnabled = true;             ReconditionTableView.ShowsVerticalScrollIndicator = true;             ReconditionTableView.ShowsHorizontalScrollIndicator = true;            // ReconditionTableView.ContentInset = NSDirectionalEdgeInsets(0, 0, 120, 0);
             ReconditionTableView.ReloadData();
 
             string selectedSegmentIndex = globalInde.oldselectedSegmentIndex;
