@@ -92,7 +92,7 @@ namespace ExtAppraisalApp
         //Save History API
         void Save_History()
         {
-            
+          
         }
         partial void Segment2_Change(UISegmentedControl sender)
         {
@@ -131,6 +131,12 @@ namespace ExtAppraisalApp
             label2.KeyboardType = UIKeyboardType.NumberPad;
             label2.BorderStyle = UITextBorderStyle.Bezel;
             label1.BorderStyle = UITextBorderStyle.Bezel;
+            label1.Hidden = true;
+            label2.Hidden = true;
+            label3.Hidden = true;
+            label1.BackgroundColor = UIColor.White;
+            label2.BackgroundColor = UIColor.White;
+            label3.TextColor = UIColor.Black;
             // Perform any additional setup after loading the view, typically from a nib.
         }
 

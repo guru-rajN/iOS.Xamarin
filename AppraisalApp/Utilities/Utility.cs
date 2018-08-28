@@ -30,5 +30,10 @@ namespace ExtAppraisalApp.Utilities
             alert.AddButton(buttonText2);
             alert.Show();
         }
+
+        internal static void ShowAlert(string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
