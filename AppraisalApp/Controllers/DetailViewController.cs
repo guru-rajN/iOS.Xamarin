@@ -550,7 +550,7 @@ namespace ExtAppraisalApp
             worker.WorkerDelegate = masterViewController;
             worker.UpdateUI(false);
 
-            GenerateProspect();
+            AppDelegate.appDelegate.prospectId= GenerateProspect();
             SaveVehicleDetails(vehicleDetails);
         }
 

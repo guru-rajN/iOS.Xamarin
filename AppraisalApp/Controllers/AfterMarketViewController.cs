@@ -1,4 +1,5 @@
 using AppraisalApp.Models;
+using ExtAppraisalApp;
 using ExtAppraisalApp.Services;
 using Foundation;
 using System;
@@ -21,7 +22,7 @@ namespace AppraisalApp
         {
             string segmentID = ReconditionSegment.SelectedSegment.ToString();
             AfterMarketOptions afterMarketOptions = new AfterMarketOptions();
-            afterMarketOptions =ServiceFactory.getWebServiceHandle().GetAltenateFactoryOptions(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, 432110);
+            afterMarketOptions =ServiceFactory.getWebServiceHandle().GetAltenateFactoryOptions(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId,AppDelegate.appDelegate.prospectId);
             if ((globalInde.selectedSegmentIndex != null))
             {
                 globalInde.oldselectedSegmentIndex = globalInde.selectedSegmentIndex.ToString();
