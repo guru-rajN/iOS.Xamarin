@@ -239,6 +239,7 @@
     <Compile Include="Models\ReconAns.cs" />
     <Compile Include="Models\ReconAnsKBB.cs" />
     <Compile Include="Models\ReconditionRequest.cs" />
+    <Compile Include="Models\Stores.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />

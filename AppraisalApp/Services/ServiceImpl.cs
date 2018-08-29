@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.Http;
 using AppraisalApp.Models;
 using ExtAppraisalApp.Models;
@@ -515,5 +516,37 @@ namespace ExtAppraisalApp.Services
 
         }
 
+        public List<Stores> SearchNearestStores(string zipcode)
+        {
+            HttpResponseMessage responseMessage = null;
+            string result = null;
+            List<Stores> storesList = new List<Stores>();
+
+            try
+            {
+                var URL = RestClient.GetHttpClient().BaseAddress = new Uri(Url.SEARCH_NEAREST_STORES_URL);
+                responseMessage = RestClient.doGet(URL + "/" + zipcode);
+
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    result = responseMessage.Content.ReadAsStringAsync().Result;
+                    SIMSResponseData rst = JsonConvert.DeserializeObject<SIMSResponseData>(result);
+                    var response = JsonConvert.DeserializeObject<List<Stores>>(rst.Data.ToString());
+
+                    storesList = response;
+                }
+                else
+                {
+                    result = null;
+
+                    Utilities.Utility.ShowAlert("Appraisal App", "No Stores Found!!", "OK");
+                }
+            }
+            catch (Exception exc)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception occured :: " + exc.Message);
+            }
+            return storesList;
+        }
     }
 }

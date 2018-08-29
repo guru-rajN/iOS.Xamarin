@@ -36,6 +36,8 @@ namespace ExtAppraisalApp
 
         public KBBColorDetails cacheExteriorColorDetails { get; set; }
 
+        public bool IsZipCodeValid = false;
+
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
 

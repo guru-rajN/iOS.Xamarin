@@ -28,7 +28,11 @@ namespace ExtAppraisalApp.Services
         SIMSResponseData SaveVehicleDetails(Vehicle vehicleDetails);
    
         SIMSResponseData SaveFactoryOptions(VehicleFactoryOptionsKBB vehicleFactoryOptions);
+
         AfterMarketOptions GetAltenateFactoryOptions(long vehicleId, short storeId, short invtrId, string prospectId);
+
         SIMSResponseData SaveHistory(HistoryRequest historyrequest);
+
+        List<Stores> SearchNearestStores(string zipcode);
     }
 }

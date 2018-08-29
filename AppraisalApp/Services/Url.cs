@@ -34,11 +34,14 @@ namespace ExtAppraisalApp.Services
 
         public const string SAVE_VEHICLE_DETAILS_URL = "SaveVehicleDetailsKBB/";
    
-
         public const string SAVE_FACTORY_OPTIONS_URL = "SaveFactoryOptionsKBB/";
 
         public const string GET_AlternateFactory_OPTIONS_URL = "GetAfterMarketQuestions/";
+
         public const string SAVE_HISTORY_URL = "SaveHistoryKBB/";
+
         public const string SAVE_RECON_URL = "SaveReconDetailsKBB/";
+
+        public const string SEARCH_NEAREST_STORES_URL = "https://tt-stg-simsapp.sonicautomotive.com/ExternalAppraisal/ZIP/GetStores/";
     }
 }
