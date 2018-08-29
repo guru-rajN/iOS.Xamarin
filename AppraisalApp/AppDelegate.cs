@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using AppraisalApp.Models;
+using ExtAppraisalApp.Models;
 using Foundation;
 using UIKit;
 
@@ -28,6 +29,13 @@ namespace ExtAppraisalApp
         public List<FactoryOptionsKBB> factoryOptionsKBB = new List<FactoryOptionsKBB>();
         public string prospectId { get; set; }
         public AfterMarketOptions afterMarketOptions = new AfterMarketOptions();
+
+        public Vehicle cacheVehicleDetails { get; set; } // Change after SQL database 
+
+        public VinVehicleDetailsKBB cacheDecodeVinDetails { get; set; }
+
+        public KBBColorDetails cacheExteriorColorDetails { get; set; }
+
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
 

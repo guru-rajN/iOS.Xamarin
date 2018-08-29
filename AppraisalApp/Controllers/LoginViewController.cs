@@ -10,50 +10,48 @@ namespace ExtAppraisalApp
 
         public partial class LoginViewController : UIViewController
         {
+           partial void GetStartBtn_TouchUpInside(UIButton sender)
+           {
+            string zip = txtZip.Text;
+            if (zip == "")
+            {
+                Utilities.Utility.ShowAlert("ZIP/Dealer Code", "A ZIP/Dealer is required.!!", "OK");
+
+            }
+            else if (!(zip.Length == 6 || zip.Length == 5))
+            {
+                Utilities.Utility.ShowAlert("ZIP/Dealer Code", "Your ZIP/Dealer (" + zip + ") is Incorrect", "OK");
+
+            }
+            else
+            {
+                string code = null;
+                try
+                {
+                    code = ServiceFactory.getWebServiceHandle().ValidateZipDealer(Convert.ToInt32(txtZip.Text));
+                    if (code != null)
+                    {
+                        this.PerformSegue("decodeSegue", this);
+
+                    }
+                    else
+                    {
+                        Utilities.Utility.ShowAlert("ZIP/Dealer", "Please Enter valid ZIP/Dealer Code", "OK");
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+
+                }
+            }
+           }
+
             public LoginViewController(IntPtr handle) : base(handle)
             {
             }
 
-            partial void BtnGetStart_TouchUpInside(UIButton sender)
-            {
-
-                string zip = txtZip.Text;
-                if (zip == "")
-                {
-                    Utilities.Utility.ShowAlert("ZIP/Dealer Code", "A ZIP/Dealer is required.!!", "OK");
-
-                }
-                else if (!(zip.Length == 6 || zip.Length == 5))
-                {
-                    Utilities.Utility.ShowAlert("ZIP/Dealer Code", "Your ZIP/Dealer (" + zip + ") is Incorrect", "OK");
-
-                }
-                else
-                {
-                    string code = null;
-                    try
-                    {
-                        code = ServiceFactory.getWebServiceHandle().ValidateZipDealer(Convert.ToInt32(txtZip.Text));
-                        if (code != null)
-                        {
-                            this.PerformSegue("decodeSegue", this);
- 
-                        }
-                        else
-                        {
-                            Utilities.Utility.ShowAlert("ZIP/Dealer", "Please Enter valid ZIP/Dealer Code", "OK");
-
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.Message);
-
-                    }
-                }
-
-            }
-       
             public override void ViewDidLoad()
             {
             
@@ -61,22 +59,8 @@ namespace ExtAppraisalApp
                 var g = new UITapGestureRecognizer(() => View.EndEditing(true));
                 g.CancelsTouchesInView = false; //for iOS5
                 View.AddGestureRecognizer(g);
-                if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
-                {
-                    LoginImg.Image = UIImage.FromBundle("Girl_2048_1536.jpg");
-                }
-                else
-                {
-                    LoginImg.Image = UIImage.FromBundle("girl750_1334.jpg");
-                }
 
-                txtZip.KeyboardType = UIKeyboardType.NumberPad;
-                txtZip.ReturnKeyType = UIReturnKeyType.Send;
-                txtZip.BorderStyle = UITextBorderStyle.None;
-                txtZip.MinimumFontSize = 17f;
-                txtZip.AdjustsFontSizeToFitWidth = true;
             }
-
 
         }
 	
