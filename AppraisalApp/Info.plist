@@ -35,5 +35,7 @@
 	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>can we use camera</string>
+	<key>XSAppIconAssets</key>
+	<string>Assets.xcassets/AppIcon.appiconset</string>
 </dict>
 </plist>
