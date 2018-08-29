@@ -440,6 +440,80 @@ namespace ExtAppraisalApp.Services
             }
         return afterMarketOptions;
         }
+        public SIMSResponseData SaveHistory(HistoryRequest historydata)
+        {
+            string result = null;
+            HttpResponseMessage responseMessage = null;
+            SIMSResponseData response = new SIMSResponseData();
+            try
+            {
+
+                string request = JsonConvert.SerializeObject(historydata);
+
+                responseMessage = RestClient.doPost(Url.SAVE_HISTORY_URL, request);
+
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    result = responseMessage.Content.ReadAsStringAsync().Result;
+                    SIMSResponseData rst = JsonConvert.DeserializeObject<SIMSResponseData>(result);
+
+                    response = rst;
+
+                    if (null != response)
+                    {
+                        Utilities.Utility.ShowAlert("Appraisal App", "Vehicle History saved", "OK");
+                    }
+                }
+                else
+                {
+                    Utilities.Utility.ShowAlert("Appraisal App", "History save failed!!", "OK");
+                }
+
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine("Exception occured :: " + exc.Message);
+            }
+            return response;
+
+        }
+        public SIMSResponseData SaveRecondition(ReconditionKBB recondata)
+        {
+            string result = null;
+            HttpResponseMessage responseMessage = null;
+            SIMSResponseData response = new SIMSResponseData();
+            try
+            {
+
+                string request = JsonConvert.SerializeObject(recondata);
+
+                responseMessage = RestClient.doPost(Url.SAVE_RECON_URL, request);
+
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    result = responseMessage.Content.ReadAsStringAsync().Result;
+                    SIMSResponseData rst = JsonConvert.DeserializeObject<SIMSResponseData>(result);
+
+                    response = rst;
+
+                    if (null != response)
+                    {
+                        Utilities.Utility.ShowAlert("Appraisal App", "Vehicle Recondition saved", "OK");
+                    }
+                }
+                else
+                {
+                    Utilities.Utility.ShowAlert("Appraisal App", "Recondition save failed!!", "OK");
+                }
+
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine("Exception occured :: " + exc.Message);
+            }
+            return response;
+
+        }
 
     }
 }

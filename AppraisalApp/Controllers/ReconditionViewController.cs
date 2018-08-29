@@ -1,5 +1,7 @@
 using CoreGraphics;
 using ExtAppraisalApp.DB;
+using ExtAppraisalApp.Models;
+using ExtAppraisalApp.Services;
 using Foundation;
 using System;
 using System.Collections.Generic;
@@ -20,7 +22,7 @@ namespace ExtAppraisalApp
             var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);// Documents Folder
             var libraryPath = Path.Combine(documentsPath, DBConstant.SEPARATOR, DBConstant.LIBRARY);// Library Folder
             var DbPath = Path.Combine(libraryPath, DBConstant.DB_NAME);
-          
+            ReconditionKBB recondata = new ReconditionKBB();
             var connac = new SQLite.SQLiteConnection(DbPath);
 
             connac.CreateTable<ReconditionValue>();
@@ -57,12 +59,17 @@ namespace ExtAppraisalApp
                         ReconditionSegment.SelectedSegment = 2;
                     }
                     ReconditionSaveBtn.TintColor = UIColor.Red;
-                   
+
                     selectionAlertLabel.Text = "Please choose one of the " + labeltext + " option";
                     selectionAlertLabel.TextColor = UIColor.Red;
                 }
                 else
                 {
+
+                    recondata.VehicleID = AppDelegate.appDelegate.vehicleID;
+                    recondata.StoreID = AppDelegate.appDelegate.storeId;
+                    recondata.InvtrID = AppDelegate.appDelegate.invtrId;
+                    recondata.UserName = "External User";
                     if (existings.SegmentIndex.ToString() == "0")
                     {
                         existings.SegmentIndex = "Mechanical";
@@ -70,6 +77,15 @@ namespace ExtAppraisalApp
                         record1.RowOption = existings.RowOption.ToString();
                         record1.SegmentIndex = existings.SegmentIndex;
                         Saverecon.Add(record1);
+                        string optionvalue = setCondition(existings.RowOption.ToString());
+                        ReconAns recon1 = new ReconAns()
+                        {
+                            VehicleConditionCategoryName = "Mechanical",
+                            VehicleConditionCategory = 0,
+                            optionValue = optionvalue,
+                            optionValueId = Int16.Parse(existings.RowOption)
+                        };
+                        recondata.Answers.Add(recon1);
                     }
                     else if (existings.SegmentIndex.ToString() == "1")
                     {
@@ -79,6 +95,15 @@ namespace ExtAppraisalApp
                         record2.SegmentIndex = segmentIndex;
                         record2.RowOption = existings.RowOption.ToString();
                         Saverecon.Add(record2);
+                        string optionvalue = setCondition(existings.RowOption.ToString());
+                        ReconAns recon2 = new ReconAns()
+                        {
+                            VehicleConditionCategoryName = "Exterior",
+                            VehicleConditionCategory = 1,
+                            optionValue = optionvalue,
+                            optionValueId = Int16.Parse(existings.RowOption)
+                        };
+                        recondata.Answers.Add(recon2);
                     }
                     else if (existings.SegmentIndex.ToString() == "2")
                     {
@@ -88,18 +113,66 @@ namespace ExtAppraisalApp
                         record3.SegmentIndex = segmentIndex;
                         record3.RowOption = existings.RowOption.ToString();
                         Saverecon.Add(record3);
+                        string optionvalue = setCondition(existings.RowOption.ToString());
+                        ReconAns recon3 = new ReconAns()
+                        {
+                            VehicleConditionCategoryName = "Interior",
+                            VehicleConditionCategory = 2,
+                            optionValue = optionvalue,
+                            optionValueId = Int16.Parse(existings.RowOption)
+                        };
+                        recondata.Answers.Add(recon3);
                     }
+
                 }
+
             }
+
             if ((Saverecon.Count >= 3))
             {
                 ReconditionSaveBtn.TintColor = UIColor.Black;
                 selectionAlertLabel.Text = "";
+
+                savereconAPI(recondata);
                 //alert.TextColor = UIColor.Black;
                 //save recond api
             }
         }
+        public string setCondition(string row)
+        {
+            string rowValue = null;
+            if (row == "0")
+            {
+                rowValue = "Flawless";
+            }
+            else if (row == "1")
+            {
+                rowValue = "AboveAverage";
+            }
+            else if (row == "2")
+            {
+                rowValue = "Average";
+            }
+            else if (row == "3")
+            {
+                rowValue = "LessThanAverage";
+            }
+            else if (row == "4")
+            {
+                rowValue = "Rough";
+            }
+            else if (row == "5")
+            {
+                rowValue = "TowIn";
+            }
+            return rowValue;
+        }
+        public void savereconAPI(ReconditionKBB reconditionKBB)
+        {
 
+            SIMSResponseData responseStatus;
+            responseStatus = ServiceFactory.ServiceRecon.getWebServiceHandle().SaveRecondition(reconditionKBB);
+        }
         public static class globalInde
         {
             public static string selectedSegmentIndex = null;
@@ -199,7 +272,15 @@ namespace ExtAppraisalApp
             };
 
             ReconditionTableView.Source = new ReconditionTVS(reconditions);
-            ReconditionTableView.Source = new ReconditionTVS(reconditions);             ReconditionTableView.AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;             // ReconditionTableView.RowHeight = UITableView.AutomaticDimension;             //ReconditionTableView.             //ReconditionTableView.EstimatedRowHeight = 40f;             ReconditionTableView.ScrollEnabled = true;             ReconditionTableView.ShowsVerticalScrollIndicator = true;             ReconditionTableView.ShowsHorizontalScrollIndicator = true;            // ReconditionTableView.ContentInset = NSDirectionalEdgeInsets(0, 0, 120, 0);
+            ReconditionTableView.Source = new ReconditionTVS(reconditions);
+            ReconditionTableView.AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
+            // ReconditionTableView.RowHeight = UITableView.AutomaticDimension;
+            //ReconditionTableView.
+            //ReconditionTableView.EstimatedRowHeight = 40f;
+            ReconditionTableView.ScrollEnabled = true;
+            ReconditionTableView.ShowsVerticalScrollIndicator = true;
+            ReconditionTableView.ShowsHorizontalScrollIndicator = true;
+            // ReconditionTableView.ContentInset = NSDirectionalEdgeInsets(0, 0, 120, 0);
             ReconditionTableView.ReloadData();
 
             string selectedSegmentIndex = globalInde.oldselectedSegmentIndex;

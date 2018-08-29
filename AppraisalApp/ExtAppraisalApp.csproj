@@ -221,6 +221,10 @@
       <DependentUpon>AfterMarketViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\AfterMarketOptions.cs" />
+    <Compile Include="Models\HistoryRequest.cs" />
+    <Compile Include="Models\ReconAns.cs" />
+    <Compile Include="Models\ReconAnsKBB.cs" />
+    <Compile Include="Models\ReconditionRequest.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />
