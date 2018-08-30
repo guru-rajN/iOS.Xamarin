@@ -16,11 +16,19 @@ namespace AppraisalApp
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITableView AfterMarketTableView { get; set; }
+        UIKit.UIScrollView AditionAMFOScroll { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView AMFO { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIBarButtonItem Btn_SaveAfterMarket { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView masterAMFO { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -36,14 +44,24 @@ namespace AppraisalApp
 
         void ReleaseDesignerOutlets ()
         {
-            if (AfterMarketTableView != null) {
-                AfterMarketTableView.Dispose ();
-                AfterMarketTableView = null;
+            if (AditionAMFOScroll != null) {
+                AditionAMFOScroll.Dispose ();
+                AditionAMFOScroll = null;
+            }
+
+            if (AMFO != null) {
+                AMFO.Dispose ();
+                AMFO = null;
             }
 
             if (Btn_SaveAfterMarket != null) {
                 Btn_SaveAfterMarket.Dispose ();
                 Btn_SaveAfterMarket = null;
+            }
+
+            if (masterAMFO != null) {
+                masterAMFO.Dispose ();
+                masterAMFO = null;
             }
 
             if (ReconditionSegment != null) {
