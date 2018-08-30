@@ -93,6 +93,7 @@ namespace AppraisalApp
                         switchele.Frame = new CGRect(20, y + 33, UIScreen.MainScreen.Bounds.Width, 100);
                         label.Frame = new CGRect(80, y, UIScreen.MainScreen.Bounds.Width, 100);
                         y = y + 50;
+                        switchele.UserInteractionEnabled = true;
                         label.Text = question.label;
                         AdditionAMFOOption.AddSubview(switchele);
                         AdditionAMFOOption.AddSubview(label);
