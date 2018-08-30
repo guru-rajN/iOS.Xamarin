@@ -11,56 +11,88 @@ using UIKit;
 
 namespace AppraisalApp
 {
-    [Register("AfterMarketViewController")]
+    [Register ("AfterMarketViewController")]
     partial class AfterMarketViewController
     {
         [Outlet]
-        [GeneratedCode("iOS Designer", "1.0")]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView AdditionAMFO { get; set; }
 
         [Outlet]
-        [GeneratedCode("iOS Designer", "1.0")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UISegmentedControl AdditionSegment { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIScrollView AditionAMFOScroll { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView AMFO { get; set; }
 
         [Outlet]
-        [GeneratedCode("iOS Designer", "1.0")]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIBarButtonItem Btn_SaveAfterMarket { get; set; }
 
         [Outlet]
-        [GeneratedCode("iOS Designer", "1.0")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView MasterAdditionalAMFO { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView masterAMFO { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UISegmentedControl ReconditionSegment { get; set; }
 
-        [Action("ReconditionSaveBtn_Activated:")]
-        [GeneratedCode("iOS Designer", "1.0")]
-        partial void ReconditionSaveBtn_Activated(UIKit.UIBarButtonItem sender);
+        [Action ("ReconditionSaveBtn_Activated:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ReconditionSaveBtn_Activated (UIKit.UIBarButtonItem sender);
 
-        [Action("SegmentValue_Changed:")]
-        [GeneratedCode("iOS Designer", "1.0")]
-        partial void SegmentValue_Changed(UIKit.UISegmentedControl sender);
+        [Action ("SegmentValue_Changed:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void SegmentValue_Changed (UIKit.UISegmentedControl sender);
 
-        void ReleaseDesignerOutlets()
+        void ReleaseDesignerOutlets ()
         {
-            if (AdditionAMFO != null)
-            {
-                AdditionAMFO.Dispose();
+            if (AdditionAMFO != null) {
+                AdditionAMFO.Dispose ();
                 AdditionAMFO = null;
             }
 
-            if (AMFO != null)
-            {
-                AMFO.Dispose();
+            if (AdditionSegment != null) {
+                AdditionSegment.Dispose ();
+                AdditionSegment = null;
+            }
+
+            if (AditionAMFOScroll != null) {
+                AditionAMFOScroll.Dispose ();
+                AditionAMFOScroll = null;
+            }
+
+            if (AMFO != null) {
+                AMFO.Dispose ();
                 AMFO = null;
             }
 
-            if (Btn_SaveAfterMarket != null)
-            {
-                Btn_SaveAfterMarket.Dispose();
+            if (Btn_SaveAfterMarket != null) {
+                Btn_SaveAfterMarket.Dispose ();
                 Btn_SaveAfterMarket = null;
             }
 
-            if (ReconditionSegment != null)
-            {
-                ReconditionSegment.Dispose();
+            if (MasterAdditionalAMFO != null) {
+                MasterAdditionalAMFO.Dispose ();
+                MasterAdditionalAMFO = null;
+            }
+
+            if (masterAMFO != null) {
+                masterAMFO.Dispose ();
+                masterAMFO = null;
+            }
+
+            if (ReconditionSegment != null) {
+                ReconditionSegment.Dispose ();
                 ReconditionSegment = null;
             }
         }
