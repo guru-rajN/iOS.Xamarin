@@ -85,7 +85,7 @@ namespace ExtAppraisalApp
                     CreateAppraisalRequest apprrequest = new CreateAppraisalRequest();
                     AppraisalResponse appresponse = new AppraisalResponse();
                     apprrequest.VIN = txtVin.Text;
-                    apprrequest.StoreID = 2001;
+                    apprrequest.StoreID = AppDelegate.appDelegate.storeId;
                     apprrequest.Mileage = Convert.ToInt32(txtMileage.Text);
                     apprrequest.DDCUserId = "5A9C9038-DDC6-4BBE-8256-675F91D6B5B7";
                     appresponse = ServiceFactory.getWebServiceHandle().CreateAppraisalKBB(apprrequest);
@@ -93,7 +93,7 @@ namespace ExtAppraisalApp
                     Console.WriteLine("vehicle id :: " + appresponse.VehicleID);
 
                     AppDelegate.appDelegate.vehicleID = appresponse.VehicleID;
-                    AppDelegate.appDelegate.storeId = appresponse.StoreID;
+                    //AppDelegate.appDelegate.storeId = appresponse.StoreID;
                     AppDelegate.appDelegate.invtrId = appresponse.InvtrID;
                     AppDelegate.appDelegate.trimId = appresponse.KBBTrimId;
                     AppDelegate.appDelegate.mileage = Convert.ToInt32(txtMileage.Text);

@@ -524,8 +524,7 @@ namespace ExtAppraisalApp.Services
 
             try
             {
-                var URL = RestClient.GetHttpClient().BaseAddress = new Uri(Url.SEARCH_NEAREST_STORES_URL);
-                responseMessage = RestClient.doGet(URL + "/" + zipcode);
+                responseMessage = RestClient.doGet(Url.SEARCH_NEAREST_STORES_URL + "/" + zipcode);
 
                 if (responseMessage.IsSuccessStatusCode)
                 {

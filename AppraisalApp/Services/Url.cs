@@ -45,6 +45,6 @@ namespace ExtAppraisalApp.Services
 
         public const string SAVE_RECON_URL = "SaveReconDetailsKBB/";
 
-        public const string SEARCH_NEAREST_STORES_URL = "https://tt-stg-simsapp.sonicautomotive.com/ExternalAppraisal/ZIP/GetStores/";
+        public const string SEARCH_NEAREST_STORES_URL = "GetStores/";
     }
 }

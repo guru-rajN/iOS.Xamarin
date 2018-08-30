@@ -37,6 +37,7 @@ namespace ExtAppraisalApp
         bool transmissionvalueMultiple = false;
         bool trimValueMultiple = false;
 
+
         protected DetailViewController(IntPtr handle) : base(handle)
         {
             // Note: this .ctor should not contain any initialization logic.
@@ -56,6 +57,12 @@ namespace ExtAppraisalApp
 
             // Update the user interface for the detail item
             DetailTableView.TableFooterView = new UIView(new CGRect(0, 0, 0, 0));
+
+            if (null == masterViewController)
+            {
+                masterViewController = (MasterViewController)((UINavigationController)SplitViewController.ViewControllers[0]).TopViewController;
+            }
+
 
             if (AppDelegate.appDelegate.cacheVehicleDetails != null)
             {
@@ -94,6 +101,9 @@ namespace ExtAppraisalApp
                     vinNumber.Text = vehicleDetails.VIN;
                     yearValue.Text = vehicleDetails.Year.ToString();
                     makeValue.Text = vehicleDetails.Make;
+
+                    // Display Year & Make in MasterView
+                    masterViewController.Title = vehicleDetails.Year.ToString() + " " + vehicleDetails.Make;
 
                     mileageValue.Text = AppDelegate.appDelegate.mileage.ToString();
                     vehicleDetails.Mileage = AppDelegate.appDelegate.mileage;
@@ -163,6 +173,13 @@ namespace ExtAppraisalApp
                     {
                         interiorTypeValue.Text = vehicleDetails.IntrType;
                     }
+
+                    // if both drive train and transmission is null, then engine should always be null , should not show Chrome engine
+                    if (string.IsNullOrEmpty(vehicleDetails.DriveTrain) && string.IsNullOrEmpty(vehicleDetails.Transmission))
+                    {
+                        vehicleDetails.Engine = null;
+                    }
+
                     if (string.IsNullOrEmpty(vehicleDetails.Engine))
                     {
                         engineValue.Text = REQUIRED;
@@ -251,6 +268,7 @@ namespace ExtAppraisalApp
         {
             base.ViewDidLoad();
             // Perform any additional setup after loading the view, typically from a nib.
+
             ConfigureView();
         }
 
@@ -473,7 +491,7 @@ namespace ExtAppraisalApp
                     {
                         exteriorColorValueMultiple = true;
                         if (string.IsNullOrEmpty(vehicleDetails.ExtColor) ||
-                           vehicleDetails.Trim != SelectedTrim && vehicleDetails.KBBTrimId != 0 && vehicleDetails.KBBTrimId.ToString() != SelectedTrimId && vehicleDetails.Trim != null)
+                           vehicleDetails.Trim != SelectedTrim && vehicleDetails.KBBTrimId != 0)
                         {
                             exteriorColorValue.Text = REQUIRED;
                         }
@@ -580,14 +598,87 @@ namespace ExtAppraisalApp
 
         partial void DetailSaveBtn_Activated(UIBarButtonItem sender)
         {
-            DetailViewWorker worker = new DetailViewWorker();
-            worker.WorkerDelegate = masterViewController;
-            worker.UpdateUI(false);
+            var saveData = CheckAllFieldsData();
 
-            AppDelegate.appDelegate.prospectId = GenerateProspect();
-            SaveVehicleDetails(vehicleDetails);
+            if (saveData)
+            {
+                DetailViewWorker worker = new DetailViewWorker();
 
-            AppDelegate.appDelegate.cacheVehicleDetails = vehicleDetails;
+                worker.WorkerDelegate = masterViewController;
+                worker.UpdateUI(false);
+
+                AppDelegate.appDelegate.prospectId = GenerateProspect();
+                SaveVehicleDetails(vehicleDetails);
+
+                AppDelegate.appDelegate.cacheVehicleDetails = vehicleDetails;
+            }
+
+
+        }
+
+        private bool CheckAllFieldsData()
+        {
+            if (string.IsNullOrEmpty(modelValue.Text) || modelValue.Text.Equals(REQUIRED))
+            {
+                modelValue.TextColor = UIColor.Red;
+                return false;
+            }
+            else if (string.IsNullOrEmpty(trimValue.Text) || trimValue.Text.Equals(REQUIRED))
+            {
+                trimValue.TextColor = UIColor.Red;
+                return false;
+            }
+            else if (string.IsNullOrEmpty(engineValue.Text) || engineValue.Text.Equals(REQUIRED))
+            {
+                engineValue.TextColor = UIColor.Red;
+                return false;
+            }
+            else if (string.IsNullOrEmpty(odometerValue.Text) || odometerValue.Text.Equals(REQUIRED))
+            {
+                odometerValue.TextColor = UIColor.Red;
+                return false;
+            }
+            else if (string.IsNullOrEmpty(mileageValue.Text) || mileageValue.Text.Equals(REQUIRED))
+            {
+                mileageValue.TextColor = UIColor.Red;
+                return false;
+            }
+            else if (string.IsNullOrEmpty(bodyStyleValue.Text) || bodyStyleValue.Text.Equals(REQUIRED))
+            {
+                bodyStyleValue.TextColor = UIColor.Red;
+                return false;
+            }
+            else if (string.IsNullOrEmpty(drivetrainValue.Text) || drivetrainValue.Text.Equals(REQUIRED))
+            {
+                drivetrainValue.TextColor = UIColor.Red;
+                return false;
+            }
+            else if (string.IsNullOrEmpty(transmissionValue.Text) || transmissionValue.Text.Equals(REQUIRED))
+            {
+                transmissionValue.TextColor = UIColor.Red;
+                return false;
+            }
+            else if (string.IsNullOrEmpty(exteriorColorValue.Text) || exteriorColorValue.Text.Equals(REQUIRED))
+            {
+                exteriorColorValue.TextColor = UIColor.Red;
+                return false;
+            }
+            else if (string.IsNullOrEmpty(interiorColorValue.Text) || interiorColorValue.Text.Equals(REQUIRED))
+            {
+                interiorColorValue.TextColor = UIColor.Red;
+                return false;
+            }
+            else if (string.IsNullOrEmpty(interiorTypeValue.Text) || interiorTypeValue.Text.Equals(REQUIRED))
+            {
+                interiorTypeValue.TextColor = UIColor.Red;
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+
         }
 
         private SIMSResponseData SaveVehicleDetails(Vehicle vehicle)
@@ -606,21 +697,24 @@ namespace ExtAppraisalApp
 
         private void LoadDropdownDataFromTrim(int index)
         {
-            if (decodeVinDetails.DecodeVinVehicleDetails.Engine.Count == 0)
+            if (decodeVinDetails.DecodeVinVehicleDetails.Engine.Count >= 0)
             {
                 decodeVinDetails.DecodeVinVehicleDetails.Engine = new List<IDValues>();
             }
-            if (decodeVinDetails.DecodeVinVehicleDetails.Transmission.Count == 0)
+            if (decodeVinDetails.DecodeVinVehicleDetails.Transmission.Count >= 0)
             {
                 decodeVinDetails.DecodeVinVehicleDetails.Transmission = new List<IDValues>();
             }
-            if (decodeVinDetails.DecodeVinVehicleDetails.DriveTrain.Count == 0)
+            if (decodeVinDetails.DecodeVinVehicleDetails.DriveTrain.Count >= 0)
             {
                 decodeVinDetails.DecodeVinVehicleDetails.DriveTrain = new List<IDValues>();
             }
 
+            Console.WriteLine("transmission count :: " + decodeVinDetails.DecodeVinVehicleDetails.Transmission.Count);
+
             if (decodeVinDetails.KBBVinVehicleDetails.data.possibilities[index].engines.Count > 1)
             {
+                decodeVinDetails.DecodeVinVehicleDetails.Engine = new List<IDValues>();
                 for (int i = 0; i < decodeVinDetails.KBBVinVehicleDetails.data.possibilities[index].engines.Count; i++)
                 {
                     var idvalues = new IDValues();
@@ -633,7 +727,15 @@ namespace ExtAppraisalApp
                 if (null != decodeVinDetails.DecodeVinVehicleDetails.Engine ||
                     vehicleDetails.Trim != SelectedTrim && vehicleDetails.KBBTrimId != 0 && vehicleDetails.KBBTrimId.ToString() != SelectedTrimId && vehicleDetails.Trim != null)
                 {
-                    engineValue.Text = REQUIRED;
+                    if (string.IsNullOrEmpty(vehicleDetails.Engine))
+                    {
+                        engineValue.Text = REQUIRED;
+
+                    }
+                    else
+                    {
+                        engineValue.Text = vehicleDetails.Engine;
+                    }
                     engineValueMultiple = true;
                     drivetrainValue.TextColor = UIColor.FromHSB(100, 59, 51);
                 }
@@ -648,6 +750,7 @@ namespace ExtAppraisalApp
 
             if (decodeVinDetails.KBBVinVehicleDetails.data.possibilities[index].drivetrains.Count > 1)
             {
+                decodeVinDetails.DecodeVinVehicleDetails.DriveTrain = new List<IDValues>();
                 for (int i = 0; i < decodeVinDetails.KBBVinVehicleDetails.data.possibilities[index].drivetrains.Count; i++)
                 {
                     var idvalues = new IDValues();
@@ -660,7 +763,15 @@ namespace ExtAppraisalApp
                 if (null != decodeVinDetails.DecodeVinVehicleDetails.DriveTrain ||
                 vehicleDetails.Trim != SelectedTrim && vehicleDetails.KBBTrimId != 0 && vehicleDetails.KBBTrimId.ToString() != SelectedTrimId && vehicleDetails.Trim != null)
                 {
-                    drivetrainValue.Text = REQUIRED;
+                    if (string.IsNullOrEmpty(vehicleDetails.DriveTrain))
+                    {
+                        drivetrainValue.Text = REQUIRED;
+                    }
+                    else
+                    {
+                        drivetrainValue.Text = vehicleDetails.DriveTrain;
+
+                    }
                     drivetrainvalueMultiple = true;
                     drivetrainValue.TextColor = UIColor.FromHSB(100, 59, 51);
                 }
@@ -673,8 +784,18 @@ namespace ExtAppraisalApp
                 vehicleDetails.KBBDrivetrainId = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[index].drivetrains[0].drivetrainId;
             }
 
-            if (decodeVinDetails.KBBVinVehicleDetails.data.possibilities[index].transmissions.Count > 1)
+            if (decodeVinDetails.KBBVinVehicleDetails.data.possibilities[index].transmissions.Count == 1)
             {
+                transmissionValue.Text = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[index].transmissions[0].displayName; //assign the transmision
+                vehicleDetails.Transmission = transmissionValue.Text;
+                transmissionValue.TextColor = UIColor.Black;
+                vehicleDetails.KBBTransmissionId = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[index].transmissions[0].transmissionId;
+
+            }
+            else if (decodeVinDetails.KBBVinVehicleDetails.data.possibilities[index].transmissions.Count > 1)
+            {
+
+                decodeVinDetails.DecodeVinVehicleDetails.Transmission = new List<IDValues>();
                 for (int i = 0; i < decodeVinDetails.KBBVinVehicleDetails.data.possibilities[index].transmissions.Count; i++)
                 {
                     var idvalues = new IDValues();
@@ -687,17 +808,19 @@ namespace ExtAppraisalApp
                 if (null != decodeVinDetails.DecodeVinVehicleDetails.Transmission ||
                 vehicleDetails.Trim != SelectedTrim && vehicleDetails.KBBTrimId != 0 && vehicleDetails.KBBTrimId.ToString() != SelectedTrimId && vehicleDetails.Trim != null)
                 {
-                    transmissionValue.Text = REQUIRED;
+                    if (string.IsNullOrEmpty(vehicleDetails.Transmission))
+                    {
+                        transmissionValue.Text = REQUIRED;
+
+                    }
+                    else
+                    {
+                        transmissionValue.Text = vehicleDetails.Transmission;
+                    }
+                    transmissionValue.TextColor = UIColor.FromRGB(79, 131, 54);
                     transmissionvalueMultiple = true;
-                    //transmissionValue.TextColor = UIColor.FromHSB(100, 59, 51);
+
                 }
-            }
-            else if (decodeVinDetails.KBBVinVehicleDetails.data.possibilities[index].transmissions.Count == 1)
-            {
-                transmissionValue.Text = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[index].transmissions[0].displayName; //assign the transmision
-                vehicleDetails.Transmission = transmissionValue.Text;
-                transmissionValue.TextColor = UIColor.Black;
-                vehicleDetails.KBBTransmissionId = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[index].transmissions[0].transmissionId;
             }
 
 
@@ -744,6 +867,7 @@ namespace ExtAppraisalApp
                             else
                             {
                                 trimValue.Text = vehicleDetails.Trim;
+                                updateTrimDependentFields(trimValue.Text);
                             }
                             trimValueMultiple = true;
                         }
@@ -778,20 +902,12 @@ namespace ExtAppraisalApp
                 vehicleDetails.Trim = trimValue.Text;
                 vehicleDetails.KBBTrimId = id;
 
+                vehicleDetails.Transmission = null;
+                vehicleDetails.ExtColor = null;
+                vehicleDetails.DriveTrain = null;
+                vehicleDetails.Engine = null;
 
-                if (decodeVinDetails.KBBVinVehicleDetails.data != null && decodeVinDetails.KBBVinVehicleDetails.data.possibilities.Count > 1)
-                {
-                    for (int i = 0; i < decodeVinDetails.KBBVinVehicleDetails.data.possibilities.Count; i++)
-                    {
-                        if (vehicleDetails.Trim == decodeVinDetails.KBBVinVehicleDetails.data.possibilities[i].trim.displayName &&
-                           vehicleDetails.KBBModelId == decodeVinDetails.KBBVinVehicleDetails.data.possibilities[i].model.modelId)
-                        {
-                            LoadDropdownDataFromTrim(i);
-
-                        }
-                    }
-                }
-                LoadExteriorColorsFromTrim();
+                updateTrimDependentFields(vehicleDetails.Trim);
 
             }
             else if (rowSelected == 5)
@@ -839,6 +955,26 @@ namespace ExtAppraisalApp
                 vehicleDetails.IntrType = interiorTypeValue.Text;
             }
 
+
+        }
+
+        public void updateTrimDependentFields(string trim)
+        {
+            if (decodeVinDetails.KBBVinVehicleDetails.data != null && decodeVinDetails.KBBVinVehicleDetails.data.possibilities.Count > 1)
+            {
+                for (int i = 0; i < decodeVinDetails.KBBVinVehicleDetails.data.possibilities.Count; i++)
+                {
+                    if (trim == decodeVinDetails.KBBVinVehicleDetails.data.possibilities[i].trim.displayName &&
+                       vehicleDetails.KBBModelId == decodeVinDetails.KBBVinVehicleDetails.data.possibilities[i].model.modelId)
+                    {
+                        LoadDropdownDataFromTrim(i);
+
+                    }
+                }
+
+                LoadExteriorColorsFromTrim();
+            }
+
         }
 
     }
@@ -848,6 +984,8 @@ namespace ExtAppraisalApp
     {
         void UpdateDatas(bool show);
     }
+
+
 
     public class DetailViewWorker
     {

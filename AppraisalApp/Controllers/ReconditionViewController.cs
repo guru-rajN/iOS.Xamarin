@@ -60,7 +60,7 @@ namespace ExtAppraisalApp
                     }
                     ReconditionSaveBtn.TintColor = UIColor.Red;
 
-                    selectionAlertLabel.Text = "Please choose one of the below " + labeltext + " options";
+                    selectionAlertLabel.Text = "Please choose one of the " + labeltext + " options below";
                     selectionAlertLabel.TextColor = UIColor.Red;
                 }
                 else
