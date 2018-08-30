@@ -2,6 +2,7 @@ using CoreGraphics;
 using ExtAppraisalApp.DB;
 using ExtAppraisalApp.Models;
 using ExtAppraisalApp.Services;
+using ExtAppraisalApp.Utilities;
 using Foundation;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,14 @@ namespace ExtAppraisalApp
 {
     public partial class ReconditionViewController : UIViewController
     {
+
+        private MasterViewController masterViewController;
+
+        // Detect the device whether iPad or iPhone
+        static bool UserInterfaceIdiomIsPhone
+        {
+            get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
+        }
 
         partial void ReconditionSaveBtn_Activated(UIBarButtonItem sender)
         {
@@ -136,6 +145,19 @@ namespace ExtAppraisalApp
                 savereconAPI(recondata);
                 //alert.TextColor = UIColor.Black;
                 //save recond api
+
+                // Navigate to Photograph
+                if (null == masterViewController)
+                {
+                    if (!UserInterfaceIdiomIsPhone)
+                        masterViewController = (MasterViewController)((UINavigationController)SplitViewController.ViewControllers[0]).TopViewController;
+                }
+
+                ViewWorker viewWorker = new ViewWorker();
+                viewWorker.WorkerDelegate = (ExtAppraisalApp.Utilities.WorkerDelegateInterface)masterViewController;
+                viewWorker.PerformNavigation(6);
+                viewWorker.ShowPartialDoneImg(6);
+                viewWorker.ShowDoneImg(5);
             }
         }
         public string setCondition(string row)

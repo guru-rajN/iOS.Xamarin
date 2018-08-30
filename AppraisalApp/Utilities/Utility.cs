@@ -1,5 +1,6 @@
 ﻿using System;
 using CoreGraphics;
+using GlobalToast;
 using UIKit;
 
 namespace ExtAppraisalApp.Utilities
@@ -33,6 +34,10 @@ namespace ExtAppraisalApp.Utilities
             alert.AddButton(buttonText1);
             alert.AddButton(buttonText2);
             alert.Show();
+        }
+
+        public static void ShowToastMessage(string title){
+            Toast.ShowToast(title).SetDuration(5000);
         }
 
         public static void ShowLoadingIndicator(UIView view, string loadingMessage, bool show)

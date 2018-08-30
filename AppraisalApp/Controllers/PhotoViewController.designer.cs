@@ -40,6 +40,10 @@ namespace ExtAppraisalApp
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIBarButtonItem PhotosSaveBtn { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton Right { get; set; }
 
         [Outlet]
@@ -77,6 +81,10 @@ namespace ExtAppraisalApp
         [Action ("Odometer_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void Odometer_TouchUpInside (UIKit.UIButton sender);
+
+        [Action ("PhotosSaveBtn_Activated:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void PhotosSaveBtn_Activated (UIKit.UIBarButtonItem sender);
 
         [Action ("Right_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -128,6 +136,11 @@ namespace ExtAppraisalApp
             if (Odometer != null) {
                 Odometer.Dispose ();
                 Odometer = null;
+            }
+
+            if (PhotosSaveBtn != null) {
+                PhotosSaveBtn.Dispose ();
+                PhotosSaveBtn = null;
             }
 
             if (Right != null) {

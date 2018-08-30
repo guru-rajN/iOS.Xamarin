@@ -1,3 +1,4 @@
+using ExtAppraisalApp.Utilities;
 using Foundation;
 using System;
 using System.Threading.Tasks;
@@ -7,7 +8,30 @@ namespace ExtAppraisalApp
 {
     public partial class PhotoViewController : UIViewController
     {
+        private MasterViewController masterViewController;
 
+        // Detect the device whether iPad or iPhone
+        static bool UserInterfaceIdiomIsPhone
+        {
+            get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
+        }
+
+
+        partial void PhotosSaveBtn_Activated(UIBarButtonItem sender)
+        {
+            // Navigate to Summary 
+            if (null == masterViewController)
+            {
+                if (!UserInterfaceIdiomIsPhone)
+                    masterViewController = (MasterViewController)((UINavigationController)SplitViewController.ViewControllers[0]).TopViewController;
+            }
+
+            ViewWorker viewWorker = new ViewWorker();
+            viewWorker.WorkerDelegate = (ExtAppraisalApp.Utilities.WorkerDelegateInterface)masterViewController;
+            //viewWorker.PerformNavigation(6);
+            //viewWorker.ShowPartialDoneImg();
+            viewWorker.ShowDoneImg(6);
+        }
 
 
         void ActionButton_TouchUpInside()

@@ -3,6 +3,7 @@ using AppraisalApp.Utilities;
 using CoreGraphics;
 using ExtAppraisalApp.Models;
 using ExtAppraisalApp.Services;
+using ExtAppraisalApp.Utilities;
 using Foundation;
 using System;
 using System.Collections.Generic;
@@ -12,9 +13,32 @@ namespace ExtAppraisalApp
 {
     public partial class FactoryOptionViewController : UIViewController
     {
+        private MasterViewController masterViewController;
+
+        // Detect the device whether iPad or iPhone
+        static bool UserInterfaceIdiomIsPhone
+        {
+            get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
+        }
+
         partial void BtnSave_Activated(UIBarButtonItem sender)
         {
             SaveFactoryOptions();
+
+            // Navigate to Aftermarket
+            if (null == masterViewController)
+            {
+                if (!UserInterfaceIdiomIsPhone)
+                    masterViewController = (MasterViewController)((UINavigationController)SplitViewController.ViewControllers[0]).TopViewController;
+            }
+
+            ViewWorker viewWorker = new ViewWorker();
+            viewWorker.WorkerDelegate = (ExtAppraisalApp.Utilities.WorkerDelegateInterface)masterViewController;
+            viewWorker.PerformNavigation(3);
+            viewWorker.ShowPartialDoneImg(3);
+            viewWorker.ShowDoneImg(2);
+
+
         }
 
         UITableView table;

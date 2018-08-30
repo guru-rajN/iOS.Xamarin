@@ -2,6 +2,7 @@ using AppraisalApp.Models;
 using ExtAppraisalApp.DB;
 using ExtAppraisalApp.Models;
 using ExtAppraisalApp.Services;
+using ExtAppraisalApp.Utilities;
 using Foundation;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,13 @@ namespace ExtAppraisalApp
 {
     public partial class HistoryViewController : UIViewController
     {
+        private MasterViewController masterViewController;
 
+        // Detect the device whether iPad or iPhone
+        static bool UserInterfaceIdiomIsPhone
+        {
+            get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
+        }
 
         partial void Label2_Change(UITextField sender)
         {
@@ -241,6 +248,19 @@ namespace ExtAppraisalApp
                     data.InvtrID = AppDelegate.appDelegate.invtrId;
                     data.UserName = "Extrnal App";
                     Save_History(data);
+
+                    // Navigate to Recondition
+                    if (null == masterViewController)
+                    {
+                        if (!UserInterfaceIdiomIsPhone)
+                            masterViewController = (MasterViewController)((UINavigationController)SplitViewController.ViewControllers[0]).TopViewController;
+                    }
+
+                    ViewWorker viewWorker = new ViewWorker();
+                    viewWorker.WorkerDelegate = (ExtAppraisalApp.Utilities.WorkerDelegateInterface)masterViewController;
+                    viewWorker.PerformNavigation(5);
+                    viewWorker.ShowPartialDoneImg(5);
+                    viewWorker.ShowDoneImg(4);
                 }
                 else
                 {

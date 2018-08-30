@@ -118,6 +118,9 @@
       <HintPath>..\packages\WindowsAzure.Storage.9.3.1\lib\netstandard1.3\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="Toast">
+      <HintPath>..\packages\Toast.iOS.1.2.0\lib\xamarinios10\Toast.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -258,6 +261,8 @@
     </Compile>
     <Compile Include="Utilities\LoadingOverlay.cs" />
     <Compile Include="Services\Aws.cs" />
+    <Compile Include="Utilities\WorkerDelegateInterface.cs" />
+    <Compile Include="Utilities\ViewWorker.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />
@@ -284,6 +289,8 @@
     <BundleResource Include="Resources\pster.png" />
     <BundleResource Include="Resources\pvin.png" />
     <BundleResource Include="Resources\gallery.png" />
+    <BundleResource Include="Resources\partial_done.png" />
+    <BundleResource Include="Resources\undone.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.targets')" />

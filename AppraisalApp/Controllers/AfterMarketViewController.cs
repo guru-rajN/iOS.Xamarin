@@ -4,6 +4,7 @@ using CoreGraphics;
 using ExtAppraisalApp;
 using ExtAppraisalApp.Models;
 using ExtAppraisalApp.Services;
+using ExtAppraisalApp.Utilities;
 using Foundation;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,30 @@ namespace AppraisalApp
 {
     public partial class AfterMarketViewController : UIViewController
     {
+        private MasterViewController masterViewController;
+
+        // Detect the device whether iPad or iPhone
+        static bool UserInterfaceIdiomIsPhone
+        {
+            get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
+        }
+
         partial void Btn_SaveAfterMarket_Activated(UIBarButtonItem sender)
         {
             SaveAfterMarketFactoryOptions();
+
+            // Navigate to History
+            if (null == masterViewController)
+            {
+                if (!UserInterfaceIdiomIsPhone)
+                    masterViewController = (MasterViewController)((UINavigationController)SplitViewController.ViewControllers[0]).TopViewController;
+            }
+
+            ViewWorker viewWorker = new ViewWorker();
+            viewWorker.WorkerDelegate = (ExtAppraisalApp.Utilities.WorkerDelegateInterface)masterViewController;
+            viewWorker.PerformNavigation(4);
+            viewWorker.ShowPartialDoneImg(4);
+            viewWorker.ShowDoneImg(3);
         }
 
         UITableView table;

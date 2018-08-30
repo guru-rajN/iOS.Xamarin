@@ -4,6 +4,7 @@ using System.Linq;
 using CoreGraphics;
 using ExtAppraisalApp.Models;
 using ExtAppraisalApp.Services;
+using ExtAppraisalApp.Utilities;
 using Foundation;
 using UIKit;
 
@@ -70,6 +71,13 @@ namespace ExtAppraisalApp
                 if(!UserInterfaceIdiomIsPhone)
                     masterViewController = (MasterViewController)((UINavigationController)SplitViewController.ViewControllers[0]).TopViewController;
             }
+
+
+            ViewWorker worker = new ViewWorker();
+
+            worker.WorkerDelegate = masterViewController;
+
+            worker.ShowPartialDoneImg( 1);
 
 
             if (AppDelegate.appDelegate.cacheVehicleDetails != null)
@@ -621,8 +629,8 @@ namespace ExtAppraisalApp
             //    AppDelegate.appDelegate.cacheVehicleDetails = vehicleDetails;
             //}
 
-            DetailViewWorker worker = new DetailViewWorker();
-
+            //DetailViewWorker worker = new DetailViewWorker();
+            ViewWorker worker = new ViewWorker();
             worker.WorkerDelegate = masterViewController;
             worker.UpdateUI(false);
 
@@ -631,6 +639,15 @@ namespace ExtAppraisalApp
 
             AppDelegate.appDelegate.cacheVehicleDetails = vehicleDetails;
 
+            //Utilities.Utility.ShowToastMessage("Vehicle Appraisal Created");
+            // Show Factory Options
+            //var storyboard = UIStoryboard.FromName("Main", null);
+            //var FactoryOptions = storyboard.InstantiateViewController("FactoryOptionViewController");
+            //this.
+            //this.NavigationController.PushViewController(FactoryOptions, true);
+            worker.ShowPartialDoneImg(2);
+            worker.ShowDoneImg(1);
+            worker.PerformNavigation(2);
         }
 
         private bool CheckAllFieldsData()
@@ -997,39 +1014,53 @@ namespace ExtAppraisalApp
     }
 
     // Delegate methods
-    public interface DetailViewWorkerDelegate
-    {
-        void UpdateDatas(bool show);
-    }
+    //public interface DetailViewWorkerDelegate
+    //{
+    //    void UpdateDatas(bool show);
+
+    //    void performNavigate(int index);
+
+    //    void ShowDoneIcon();
+    //}
 
 
 
-    public class DetailViewWorker
-    {
-        WeakReference<DetailViewWorkerDelegate> _workerDelegate;
+    //public class DetailViewWorker
+    //{
+    //    WeakReference<DetailViewWorkerDelegate> _workerDelegate;
 
-        public DetailViewWorkerDelegate WorkerDelegate
-        {
-            get
-            {
-                DetailViewWorkerDelegate workerDelegate;
-                return _workerDelegate.TryGetTarget(out workerDelegate) ? workerDelegate : null;
-            }
-            set
-            {
-                _workerDelegate = new WeakReference<DetailViewWorkerDelegate>(value);
-            }
-        }
+    //    public DetailViewWorkerDelegate WorkerDelegate
+    //    {
+    //        get
+    //        {
+    //            DetailViewWorkerDelegate workerDelegate;
+    //            return _workerDelegate.TryGetTarget(out workerDelegate) ? workerDelegate : null;
+    //        }
+    //        set
+    //        {
+    //            _workerDelegate = new WeakReference<DetailViewWorkerDelegate>(value);
+    //        }
+    //    }
 
-        public void UpdateUI(bool show)
-        {
-            Console.WriteLine("Updating UI .. ");
+    //    public void UpdateUI(bool show)
+    //    {
+    //        Console.WriteLine("Updating UI .. ");
 
-            if (_workerDelegate != null)
-                WorkerDelegate?.UpdateDatas(show);
+    //        if (_workerDelegate != null)
+    //            WorkerDelegate?.UpdateDatas(show);
 
-        }
-    }
+    //    }
+
+    //    public void PerformNavigation(int indexPath){
+    //        if (_workerDelegate != null)
+    //            WorkerDelegate?.performNavigate(indexPath);
+    //    }
+
+    //    public void ShowDoneImg(){
+    //        if (_workerDelegate != null)
+    //            WorkerDelegate?.ShowDoneIcon();
+    //    }
+    //}
 
 }
 
