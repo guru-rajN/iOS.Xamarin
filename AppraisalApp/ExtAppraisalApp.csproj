@@ -246,6 +246,7 @@
     </Compile>
     <Compile Include="Models\VehicleAfterMarketOptions.cs" />
     <Compile Include="Models\AnswerWrapper.cs" />
+    <Compile Include="Models\HistoryValue.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />

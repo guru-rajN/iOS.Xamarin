@@ -1,30 +1,22 @@
 ﻿<Properties StartupConfiguration="{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="ExtAppraisalApp Status">
     <Files>
-      <File FileName="AppraisalApp/Controllers/LoginViewController.cs" Line="8" Column="20" />
-      <File FileName="AppraisalApp/Services/Url.cs" Line="38" Column="1" />
-      <File FileName="AppraisalApp/Controllers/PopOverViewController.cs" Line="110" Column="9" />
-      <File FileName="AppraisalApp/Services/Service.cs" Line="36" Column="20" />
-      <File FileName="AppraisalApp/Services/ServiceImpl.cs" Line="527" Column="1" />
-      <File FileName="AppraisalApp/Services/RestClient.cs" Line="22" Column="60" />
-      <File FileName="AppraisalApp/AppDelegate.cs" Line="22" Column="44" />
-      <File FileName="AppraisalApp/Controllers/DecodeViewController.cs" Line="224" Column="55" />
-      <File FileName="AppraisalApp/Views/Main.storyboard" />
+      <File FileName="AppraisalApp/Controllers/DetailViewController.cs" Line="78" Column="1" />
       <File FileName="ExtAppraisalApp Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/apple/Documents/Crowe/Sonic.SIMS/ExtAppraisalApp/AppraisalApp/Utilities/FactoryOptionsCell.cs" relfile="AppraisalApp/Utilities/FactoryOptionsCell.cs" line="18" column="1" />
-      <Breakpoint file="/Users/apple/Documents/Crowe/Sonic.SIMS/ExtAppraisalApp/AppraisalApp/Utilities/FactoryOptionsCell.cs" relfile="AppraisalApp/Utilities/FactoryOptionsCell.cs" line="57" column="19" />
-      <Breakpoint file="/Users/apple/Documents/Crowe/Sonic.SIMS/ExtAppraisalApp/AppraisalApp/Utilities/FactoryOptionsCell.cs" relfile="AppraisalApp/Utilities/FactoryOptionsCell.cs" line="18" column="1" />
-      <Breakpoint file="/Users/apple/Documents/Crowe/Sonic.SIMS/ExtAppraisalApp/AppraisalApp/Utilities/FactoryOptionsCell.cs" relfile="AppraisalApp/Utilities/FactoryOptionsCell.cs" line="57" column="19" />
+      <Breakpoint file="/Users/apple/Documents/Narasegowda/CodeBaseV5/ExtAppraisalApp/AppraisalApp/Utilities/FactoryOptionsCell.cs" relfile="AppraisalApp/Utilities/FactoryOptionsCell.cs" line="18" column="1" />
+      <Breakpoint file="/Users/apple/Documents/Narasegowda/CodeBaseV5/ExtAppraisalApp/AppraisalApp/Utilities/FactoryOptionsCell.cs" relfile="AppraisalApp/Utilities/FactoryOptionsCell.cs" line="57" column="19" />
+      <Breakpoint file="/Users/apple/Documents/Narasegowda/CodeBaseV5/ExtAppraisalApp/AppraisalApp/Utilities/FactoryOptionsCell.cs" relfile="AppraisalApp/Utilities/FactoryOptionsCell.cs" line="18" column="1" />
+      <Breakpoint file="/Users/apple/Documents/Narasegowda/CodeBaseV5/ExtAppraisalApp/AppraisalApp/Utilities/FactoryOptionsCell.cs" relfile="AppraisalApp/Utilities/FactoryOptionsCell.cs" line="57" column="19" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="../../../AppraisalApp/Controllers/DecodeViewController.cs" line="80" offsetX="784" offsetY="1185" expression="apprrequest.VIN" liveUpdate="True" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
-  <MonoDevelop.Ide.ItemProperties.ExtAppraisalApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.13AA464C-9B1A-4A8C-B44A-6011481AC5C3" automaticSigning="False" />
+  <MonoDevelop.Ide.ItemProperties.ExtAppraisalApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.0E5022FF-6383-4E15-8F52-AF90B39923E6" automaticSigning="False" />
   <MultiItemStartupConfigurations />
 </Properties>

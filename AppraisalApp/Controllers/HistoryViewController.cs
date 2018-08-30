@@ -1,8 +1,12 @@
+using AppraisalApp.Models;
+using ExtAppraisalApp.DB;
 using ExtAppraisalApp.Models;
 using ExtAppraisalApp.Services;
 using Foundation;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using UIKit;
 namespace ExtAppraisalApp
 {
@@ -24,6 +28,31 @@ namespace ExtAppraisalApp
             label1.BackgroundColor = UIColor.White;
             label2.BackgroundColor = UIColor.White;
             label3.TextColor = UIColor.Black;//Label 2 highlight with red color
+
+            var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            var libraryPath = Path.Combine(documentsPath, DBConstant.SEPARATOR, DBConstant.LIBRARY);// Library Folder
+            var DbPath = Path.Combine(libraryPath, DBConstant.DB_NAME);
+            var conn = new SQLite.SQLiteConnection(DbPath);
+            conn.CreateTable<HistoryValue>();
+            string Historyvalue = Segment2.SelectedSegment.ToString();
+            string HistoryQuestion = "3";
+            string coast = label2.Text.ToString();
+            var record = new HistoryValue { HistoyQuestion = HistoryQuestion, HistoryValueid = Historyvalue, InsureCoast = coast };
+            using (var db = new SQLite.SQLiteConnection(DbPath))
+            {
+                var existingRecord = (db.Table<HistoryValue>().Where(c => c.HistoyQuestion == record.HistoyQuestion)).SingleOrDefault();
+                if (existingRecord != null)
+                {
+                    existingRecord.HistoryValueid = record.HistoryValueid;
+                    existingRecord.InsureCoast = record.InsureCoast;
+                    db.Update(existingRecord);
+                }
+                else
+                {
+                    db.Insert(record);
+                }
+
+            }
         }
         //partial void Label2_Change(UITextField sender)
         //{
@@ -43,12 +72,56 @@ namespace ExtAppraisalApp
         partial void Segment3_Change(UISegmentedControl sender)
         {
             Segment3.TintColor = UIColor.FromRGB(92, 165, 53);
+            var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            var libraryPath = Path.Combine(documentsPath, DBConstant.SEPARATOR, DBConstant.LIBRARY);// Library Folder
+            var DbPath = Path.Combine(libraryPath, DBConstant.DB_NAME);
+            var conn = new SQLite.SQLiteConnection(DbPath);
+            conn.CreateTable<HistoryValue>();
+            string Historyvalue = Segment3.SelectedSegment.ToString();
+            string HistoryQuestion = "2";
+            var record = new HistoryValue { HistoyQuestion = HistoryQuestion, HistoryValueid = Historyvalue };
+            using (var db = new SQLite.SQLiteConnection(DbPath))
+            {
+                var existingRecord = (db.Table<HistoryValue>().Where(c => c.HistoyQuestion == record.HistoyQuestion)).SingleOrDefault();
+                if (existingRecord != null)
+                {
+                    existingRecord.HistoryValueid = record.HistoryValueid;
+                    db.Update(existingRecord);
+                }
+                else
+                {
+                    db.Insert(record);
+                }
+
+            }
         }
 
 
         partial void Segment1_Change(UISegmentedControl sender)
         {
             Segment1.TintColor = UIColor.FromRGB(92, 165, 53);
+            var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            var libraryPath = Path.Combine(documentsPath, DBConstant.SEPARATOR, DBConstant.LIBRARY);// Library Folder
+            var DbPath = Path.Combine(libraryPath, DBConstant.DB_NAME);
+            var conn = new SQLite.SQLiteConnection(DbPath);
+            conn.CreateTable<HistoryValue>();
+            string Historyvalue = Segment1.SelectedSegment.ToString();
+            string HistoryQuestion = "1";
+            var record = new HistoryValue { HistoyQuestion = HistoryQuestion, HistoryValueid = Historyvalue };
+            using (var db = new SQLite.SQLiteConnection(DbPath))
+            {
+                var existingRecord = (db.Table<HistoryValue>().Where(c => c.HistoyQuestion == record.HistoyQuestion)).SingleOrDefault();
+                if (existingRecord != null)
+                {
+                    existingRecord.HistoryValueid = record.HistoryValueid;
+                    db.Update(existingRecord);
+                }
+                else
+                {
+                    db.Insert(record);
+                }
+
+            }
         }
 
         string value1;
@@ -176,16 +249,17 @@ namespace ExtAppraisalApp
                     label3.TextColor = UIColor.FromRGB(215, 4, 27);//Label 2 highlight with red color 
                 }
 
+
             }
-            if (!(value1 == "Yes" || value1 == "No"))
+            if (!(value1 == "1" || value1 == "0" || value1 == "Yes" || value1 == "No"))
             {
                 Segment1.TintColor = UIColor.Red;
             }
-            if (!(value2 == "Yes" || value2 == "No"))
+            if (!(value2 == "1" || value2 == "0" || value2 == "Yes" || value2 == "No"))
             {
                 Segment2.TintColor = UIColor.Red;
             }
-            if (!(value3 == "Yes" || value3 == "No"))
+            if (!(value3 == "1" || value3 == "0" || value3 == "Yes" || value3 == "No"))
             {
                 Segment3.TintColor = UIColor.Red;
             }
@@ -200,8 +274,31 @@ namespace ExtAppraisalApp
         }
         partial void Segment2_Change(UISegmentedControl sender)
         {
+            var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            var libraryPath = Path.Combine(documentsPath, DBConstant.SEPARATOR, DBConstant.LIBRARY);// Library Folder
+            var DbPath = Path.Combine(libraryPath, DBConstant.DB_NAME);
+            var conn = new SQLite.SQLiteConnection(DbPath);
+            conn.CreateTable<HistoryValue>();
+            string Historyvalue = Segment2.SelectedSegment.ToString();
+            string HistoryQuestion = "3";
+            var record = new HistoryValue { HistoyQuestion = HistoryQuestion, HistoryValueid = Historyvalue };
+            using (var db = new SQLite.SQLiteConnection(DbPath))
+            {
+                var existingRecord = (db.Table<HistoryValue>().Where(c => c.HistoyQuestion == record.HistoyQuestion)).SingleOrDefault();
+                if (existingRecord != null)
+                {
+                    existingRecord.HistoryValueid = record.HistoryValueid;
+                    db.Update(existingRecord);
+                }
+                else
+                {
+                    db.Insert(record);
+                }
+
+            }
             var index2 = Segment2.SelectedSegment;
             Segment2.TintColor = UIColor.FromRGB(92, 165, 53);
+
             if (index2 == 1)
             {
                 label1.Hidden = true;
@@ -210,6 +307,8 @@ namespace ExtAppraisalApp
                 label1.BackgroundColor = UIColor.White;
                 label2.BackgroundColor = UIColor.White;
                 label3.TextColor = UIColor.Black;
+
+
             }
             if (index2 == 0)
             {
@@ -217,6 +316,20 @@ namespace ExtAppraisalApp
                 label2.Hidden = false;
                 label3.Hidden = false;
                 label2.Text = "";
+                using (var db = new SQLite.SQLiteConnection(DbPath))
+                {
+                    var existingRecord = (db.Table<HistoryValue>().Where(c => c.HistoyQuestion == record.HistoyQuestion)).SingleOrDefault();
+                    if (existingRecord != null)
+                    {
+                        existingRecord.InsureCoast = label2.Text.ToString();
+                        db.Update(existingRecord);
+                    }
+                    else
+                    {
+                        db.Insert(record);
+                    }
+
+                }
             }
         }
 
@@ -241,7 +354,50 @@ namespace ExtAppraisalApp
             label1.BackgroundColor = UIColor.White;
             label2.BackgroundColor = UIColor.White;
             label3.TextColor = UIColor.Black;
+
             // Perform any additional setup after loading the view, typically from a nib.
+            var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            var libraryPath = Path.Combine(documentsPath, DBConstant.SEPARATOR, DBConstant.LIBRARY);// Library Folder
+            var DbPath = Path.Combine(libraryPath, DBConstant.DB_NAME);
+            var conn = new SQLite.SQLiteConnection(DbPath);
+            conn.CreateTable<HistoryValue>();
+            string segment = "1";
+            var existingRecord = (conn.Table<HistoryValue>().Where(c => c.HistoyQuestion == segment)).SingleOrDefault();
+            if (existingRecord != null)
+            {
+                Segment1.SelectedSegment = Int32.Parse(existingRecord.HistoryValueid);
+            }
+            segment = "3";
+            var existingRecord2 = (conn.Table<HistoryValue>().Where(c => c.HistoyQuestion == segment)).SingleOrDefault();
+            if (existingRecord2 != null)
+            {
+                Segment2.SelectedSegment = Int32.Parse(existingRecord2.HistoryValueid);
+                if (existingRecord2.InsureCoast != null)
+                {
+                    label1.Hidden = false;
+                    label2.Hidden = false;
+                    label3.Hidden = false;
+                    label2.Text = existingRecord2.InsureCoast.ToString();
+                }
+
+                if (Segment2.SelectedSegment.ToString() == "1")
+                {
+                    label1.Hidden = true;
+                    label2.Hidden = true;
+                    label3.Hidden = true;
+                    label1.BackgroundColor = UIColor.White;
+                    label2.BackgroundColor = UIColor.White;
+                    label3.TextColor = UIColor.Black;
+                }
+
+            }
+            segment = "2";
+            var existingRecord3 = (conn.Table<HistoryValue>().Where(c => c.HistoyQuestion == segment)).SingleOrDefault();
+            if (existingRecord3 != null)
+            {
+                Segment3.SelectedSegment = Int32.Parse(existingRecord3.HistoryValueid);
+            }
+
         }
 
         public override void DidReceiveMemoryWarning()
