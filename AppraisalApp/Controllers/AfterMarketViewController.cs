@@ -101,8 +101,8 @@ namespace AppraisalApp
                 switchele.Tag = option.AfterMarketOptionId;
                 switchele.ValueChanged += Switchele_ValueChanged;
                 UILabel label = new UILabel();
-                switchele.Frame = new CGRect(20, y + 33, 500, 100);
-                label.Frame = new CGRect(80, y, 500, 100);
+                switchele.Frame = new CGRect(20, y + 33, UIScreen.MainScreen.Bounds.Width, 100);
+                label.Frame = new CGRect(80, y, UIScreen.MainScreen.Bounds.Width, 100);
                 y = y + 50;
                 label.UserInteractionEnabled = true;
                 label.Text = option.Description;

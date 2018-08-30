@@ -1505,8 +1505,8 @@
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="144217">
                                                 <rect key="frame" x="0.0" y="0.0" width="121" height="29"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="28" id="145199"/>
-                                                    <constraint id="152700" firstItem="144217" firstAttribute="width" constant="121"/>
+                                                    <constraint firstAttribute="height" constant="28" id="145199" ibExternalInspectedSegment="2"/>
+                                                    <constraint firstAttribute="width" constant="121" id="152700"/>
                                                 </constraints>
                                                 <segments>
                                                     <segment title="Yes"/>
@@ -1521,16 +1521,16 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="N1E-Y2-D7q" firstAttribute="trailing" secondItem="wzR-1Q-dcz" secondAttribute="trailing" id="144466"/>
-                                            <constraint firstItem="N1E-Y2-D7q" firstAttribute="leading" secondItem="wzR-1Q-dcz" secondAttribute="leading" id="144467"/>
+                                            <constraint firstItem="N1E-Y2-D7q" firstAttribute="leading" secondItem="wzR-1Q-dcz" secondAttribute="leading" id="144467" constant="20"/>
                                             <constraint firstItem="N1E-Y2-D7q" firstAttribute="top" secondItem="wzR-1Q-dcz" secondAttribute="top" id="144709"/>
-                                            <constraint firstItem="144217" firstAttribute="leading" secondItem="wzR-1Q-dcz" secondAttribute="leading" id="145198"/>
+                                            <constraint firstItem="144217" firstAttribute="leading" secondItem="wzR-1Q-dcz" secondAttribute="leading" id="145198" constant="20"/>
                                             <constraint firstItem="145201" firstAttribute="top" secondItem="N1E-Y2-D7q" secondAttribute="bottom" constant="38" id="145202"/>
                                             <constraint firstItem="145201" firstAttribute="trailing" secondItem="wzR-1Q-dcz" secondAttribute="trailing" id="145203"/>
                                             <constraint firstItem="145201" firstAttribute="leading" secondItem="wzR-1Q-dcz" secondAttribute="leading" id="145204"/>
                                             <constraint firstItem="145201" firstAttribute="bottom" secondItem="wzR-1Q-dcz" secondAttribute="bottom" id="145205"/>
                                             <constraint firstAttribute="height" constant="859" id="145206"/>
-                                            <constraint firstItem="N1E-Y2-D7q" firstAttribute="bottom" secondItem="144217" secondAttribute="top" constant="30" id="152164"/>
-                                            <constraint id="152701" firstItem="N1E-Y2-D7q" firstAttribute="centerX" secondItem="wzR-1Q-dcz" secondAttribute="centerX"/>
+                                            <constraint firstItem="N1E-Y2-D7q" firstAttribute="bottom" secondItem="144217" secondAttribute="top" constant="-5" id="152164"/>
+                                            <constraint firstItem="N1E-Y2-D7q" firstAttribute="centerX" secondItem="wzR-1Q-dcz" secondAttribute="centerX" id="152701"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1803,15 +1803,40 @@
                     <view key="view" contentMode="scaleToFill" id="147053">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="155139" misplaced="YES" ambiguous="YES">
+                                <rect key="frame" x="0.0" y="78" width="540" height="542"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aje-6b-cLT" misplaced="YES" ambiguous="YES">
+                                        <rect key="frame" x="16" y="8" width="516" height="526"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint id="155682" firstItem="Aje-6b-cLT" firstAttribute="top" secondItem="155139" secondAttribute="top" constant="8"/>
+                                    <constraint id="155683" firstItem="155139" firstAttribute="trailing" secondItem="Aje-6b-cLT" secondAttribute="trailing" constant="8"/>
+                                    <constraint id="155684" firstItem="155139" firstAttribute="bottom" secondItem="Aje-6b-cLT" secondAttribute="bottom" constant="8"/>
+                                    <constraint id="155685" firstItem="Aje-6b-cLT" firstAttribute="leading" secondItem="155139" secondAttribute="leading" constant="16"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="155139" firstAttribute="leading" secondItem="147053" secondAttribute="leading" id="5ms-sc-kof"/>
+                            <constraint firstItem="147050" firstAttribute="top" secondItem="155139" secondAttribute="bottom" id="Cbd-53-JdA"/>
+                            <constraint firstAttribute="trailing" secondItem="155139" secondAttribute="trailing" id="bw2-wm-jmV"/>
+                            <constraint id="155680" firstItem="155139" firstAttribute="top" secondItem="147049" secondAttribute="bottom"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JhC-OQ-ztf">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="148859">
+                            <color key="tintColor" red="0.0" green="0.55686274509803924" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="BtnCancel_Activated:" destination="147052" id="151904"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="148858">
+                            <color key="tintColor" red="0.0" green="0.55686274509803924" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="BtnSave_Activated:" destination="147052" id="151905"/>
                             </connections>
@@ -1820,11 +1845,12 @@
                     <connections>
                         <outlet property="BtnCancel" destination="148859" id="name-outlet-148859"/>
                         <outlet property="BtnSave" destination="148858" id="name-outlet-148858"/>
+                        <outlet property="AdditionAMFOOption" destination="Aje-6b-cLT" id="name-outlet-Aje-6b-cLT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="147054" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4680.469" y="-794.5313"/>
+            <point key="canvasLocation" x="4680.469" y="-795.1172"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vpo-T5-9eA">

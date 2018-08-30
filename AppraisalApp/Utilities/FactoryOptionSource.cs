@@ -45,7 +45,7 @@ namespace AppraisalApp.Utilities
 
             owner.PerformSegue("AMFOSegue", this);
 
-            AppDelegate.appDelegate.FactoryOptionSelected = tableItems[indexPath.Row];
+            AppDelegate.appDelegate.AMFactoryOptionSelected = tableItems[indexPath.Row];
             UIStoryboard storyboard = UIStoryboard.FromName("Main", null);
 
             //Instantiate the ViewController you want to navigate to.

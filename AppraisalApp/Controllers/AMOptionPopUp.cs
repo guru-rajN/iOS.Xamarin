@@ -71,7 +71,7 @@ namespace AppraisalApp
 
         public override void ViewDidLoad()
         {
-            int y = 20;
+            int y = 0;
             foreach (var option in AppDelegate.appDelegate.afterMarketOptions.aftermarketQuestions.data)
             {
                 if (option.Caption == AppDelegate.appDelegate.AMFactoryOptionSelected)
@@ -90,13 +90,12 @@ namespace AppraisalApp
                         switchele.Tag = Convert.ToInt32(tokens[1]);
                         switchele.ValueChanged += Switchele_ValueChanged;
                         UILabel label = new UILabel();
-                        switchele.Frame = new CGRect(20, y + 33, 500, 100);
-                        label.Frame = new CGRect(80, y, 500, 100);
+                        switchele.Frame = new CGRect(20, y + 33, UIScreen.MainScreen.Bounds.Width, 100);
+                        label.Frame = new CGRect(80, y, UIScreen.MainScreen.Bounds.Width, 100);
                         y = y + 50;
-                        label.UserInteractionEnabled = true;
                         label.Text = question.label;
-                        this.View.AddSubview(switchele);
-                        this.View.AddSubview(label);
+                        AdditionAMFOOption.AddSubview(switchele);
+                        AdditionAMFOOption.AddSubview(label);
                     }
                 }
             }
