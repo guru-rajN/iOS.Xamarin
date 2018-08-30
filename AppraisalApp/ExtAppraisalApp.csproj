@@ -240,6 +240,10 @@
     <Compile Include="Models\ReconAnsKBB.cs" />
     <Compile Include="Models\ReconditionRequest.cs" />
     <Compile Include="Models\Stores.cs" />
+    <Compile Include="Controllers\AMOptionPopUp.cs" />
+    <Compile Include="Controllers\AMOptionPopUp.designer.cs">
+      <DependentUpon>AMOptionPopUp.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />

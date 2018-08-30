@@ -26,6 +26,8 @@ namespace ExtAppraisalApp
         public int mileage { get; set; }
         public IEnumerable<FactoryOptionsSection> fctoption = new List<FactoryOptionsSection>();
         public string FactoryOptionSelected { get; set; }
+        public string AMFactoryOptionSelected { get; set; }
+
         public List<FactoryOptionsKBB> factoryOptionsKBB = new List<FactoryOptionsKBB>();
         public string prospectId { get; set; }
         public AfterMarketOptions afterMarketOptions = new AfterMarketOptions();

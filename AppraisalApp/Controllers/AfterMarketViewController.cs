@@ -82,16 +82,16 @@ namespace AppraisalApp
             else
             {
 
-                this.AMFO.Hidden = false;
-                AdditionAMFO.Hidden = true;
+                this.masterAMFO.Hidden = false;
+                MasterAdditionalAMFO.Hidden = true;
 
             }
         }
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            this.AMFO.Hidden = true;
-            AdditionAMFO.Hidden = false;
+            this.masterAMFO.Hidden = true;
+            MasterAdditionalAMFO.Hidden = false;
             AppDelegate.appDelegate.afterMarketOptions = ServiceFactory.getWebServiceHandle().GetAltenateFactoryOptions(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, AppDelegate.appDelegate.prospectId);
             int y = 0;
             foreach (var option in AppDelegate.appDelegate.afterMarketOptions.sonicAfterMarketList)
