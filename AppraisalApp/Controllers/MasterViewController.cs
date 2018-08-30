@@ -71,6 +71,7 @@ namespace ExtAppraisalApp
             }
         }
 
+
         partial void MasterViewCloseBtn_Activated(UIBarButtonItem sender)
         {
             var storyboard = UIStoryboard.FromName("Main", null);

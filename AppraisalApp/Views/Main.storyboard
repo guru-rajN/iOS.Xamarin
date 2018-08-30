@@ -124,7 +124,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <segue destination="lHy-f3-sjo" kind="presentation" identifier="AfterMarketSegue" id="L92-LJ-zDL"/>
+                                            <segue destination="lHy-f3-sjo" kind="showDetail" identifier="AfterMarketSegue" id="L92-LJ-zDL"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HistoryCell" id="Gi6-1r-tXv" customClass="HistoryCell">
@@ -1606,7 +1606,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7tg-UN-44I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3156" y="-795"/>
+            <point key="canvasLocation" x="3419" y="-790"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EsX-j8-lYS">
@@ -1624,7 +1624,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8w8-WT-tmC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2648.8" y="-794.7526"/>
+            <point key="canvasLocation" x="3228.8" y="-464.7526"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="n1v-an-Y74">
@@ -1794,7 +1794,7 @@
         <!--View Controller-->
         <scene sceneID="147051">
             <objects>
-                <viewController id="147052" sceneMemberID="viewController" customClass="AMOptionPopUp">
+                <viewController id="147052" sceneMemberID="viewController" customClass="AMOptionPopUp" storyboardIdentifier="AMOptionPopUp">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="147049"/>
                         <viewControllerLayoutGuide type="bottom" id="147050"/>
@@ -1805,8 +1805,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="JhC-OQ-ztf">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="148858"/>
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="148859"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="148858">
+                            <connections>
+                                <action selector="BtnSave_Activated:" destination="147052" id="151905"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="148859">
+                            <connections>
+                                <action selector="BtnCancel_Activated:" destination="147052" id="151904"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="BtnCancel" destination="148859" id="name-outlet-148859"/>

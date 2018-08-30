@@ -11,7 +11,7 @@ namespace AppraisalApp
 {
     public partial class AMOptionPopUp : UIViewController
     {
-
+       
         partial void BtnSave_Activated(UIBarButtonItem sender)
         {
             this.DismissModalViewController(true);
