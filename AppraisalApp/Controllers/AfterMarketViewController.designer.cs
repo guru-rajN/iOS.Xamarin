@@ -46,9 +46,9 @@ namespace AppraisalApp
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UISegmentedControl ReconditionSegment { get; set; }
 
-        [Action ("ReconditionSaveBtn_Activated:")]
+        [Action ("Btn_SaveAfterMarket_Activated:")]
         [GeneratedCode ("iOS Designer", "1.0")]
-        partial void ReconditionSaveBtn_Activated (UIKit.UIBarButtonItem sender);
+        partial void Btn_SaveAfterMarket_Activated (UIKit.UIBarButtonItem sender);
 
         [Action ("SegmentValue_Changed:")]
         [GeneratedCode ("iOS Designer", "1.0")]

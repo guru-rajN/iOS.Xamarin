@@ -14,13 +14,7 @@ namespace ExtAppraisalApp.Models
 
 
     }
-    public enum VehicleConditionCategory
-    {
-        Mechanical = 0,
-        Interior = 1,
-        Exterior = 2
 
-    }
     public enum optionValue
     {
         Flawless = 0,

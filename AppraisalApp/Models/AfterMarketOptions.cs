@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using AppraisalApp.Models;
 
-namespace AppraisalApp.Models
+namespace ExtAppraisalApp.Models
 {
     public class AfterMarketOptions
     {

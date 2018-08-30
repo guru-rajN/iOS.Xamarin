@@ -67,18 +67,7 @@ namespace ExtAppraisalApp.Models
 
 
     }
-    public enum VehicleSection
-    {
-        None = 0,
-        Interior = 5,
-        DriverSide = 1,
-        Front = 2,
-        PassengerSide = 3,
-        Rear = 4,
-        TopAndBottom = 7,
-        Miscellaneous = 6,
-        Mechanical = 8
-    }
+   
     public enum VehicleConditionCategorya
     {
         None = 0,

@@ -244,6 +244,8 @@
     <Compile Include="Controllers\AMOptionPopUp.designer.cs">
       <DependentUpon>AMOptionPopUp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\VehicleAfterMarketOptions.cs" />
+    <Compile Include="Models\AnswerWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />

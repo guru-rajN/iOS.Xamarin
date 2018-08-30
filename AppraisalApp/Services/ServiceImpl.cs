@@ -548,5 +548,44 @@ namespace ExtAppraisalApp.Services
             }
             return storesList;
         }
+
+        public SIMSResponseData SaveAfterMarketFactoryOptions(VehicleAfterMarketOptions vehicleAfterMarketOptions)
+        {
+
+            string result = null;
+            HttpResponseMessage responseMessage = null;
+            SIMSResponseData response = new SIMSResponseData();
+            try
+            {
+
+                string request = JsonConvert.SerializeObject(vehicleAfterMarketOptions);
+
+                responseMessage = RestClient.doPost(Url.SAVE_AfterMarketFactoryOption, request);
+
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    result = responseMessage.Content.ReadAsStringAsync().Result;
+                    SIMSResponseData rst = JsonConvert.DeserializeObject<SIMSResponseData>(result);
+
+                    response = rst;
+
+                    if (null != response)
+                    {
+                        Utilities.Utility.ShowAlert("Appraisal App", "After Market Saved Successfully", "OK");
+                    }
+                }
+                else
+                {
+                    Utilities.Utility.ShowAlert("Appraisal App", "Vehicle data save failed!!", "OK");
+                }
+
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine("Exception occured :: " + exc.Message);
+            }
+            return response;
+
+        }
     }
 }

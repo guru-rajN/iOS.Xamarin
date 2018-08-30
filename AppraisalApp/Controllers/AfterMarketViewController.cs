@@ -2,6 +2,7 @@ using AppraisalApp.Models;
 using AppraisalApp.Utilities;
 using CoreGraphics;
 using ExtAppraisalApp;
+using ExtAppraisalApp.Models;
 using ExtAppraisalApp.Services;
 using Foundation;
 using System;
@@ -13,6 +14,11 @@ namespace AppraisalApp
 {
     public partial class AfterMarketViewController : UIViewController
     {
+        partial void Btn_SaveAfterMarket_Activated(UIBarButtonItem sender)
+        {
+            SaveAfterMarketFactoryOptions();
+        }
+
         UITableView table;
         IEnumerable<AfterMarketSection> fctoption = new List<AfterMarketSection>();
 
@@ -86,6 +92,48 @@ namespace AppraisalApp
                 MasterAdditionalAMFO.Hidden = true;
 
             }
+        }
+
+
+        public void SaveAfterMarketFactoryOptions()
+        {
+            SIMSResponseData responseStatus;
+            VehicleAfterMarketOptions vehicleFactoryOptions = new VehicleAfterMarketOptions();
+            AnswerWrapper answers = new AnswerWrapper();
+            answers.Answers = new List<ReconAnsKBB>();
+
+            foreach(var ans in AppDelegate.appDelegate.afterMarketOptions.aftermarketQuestions.data){
+                
+                foreach(var item in ans.questions)
+                {
+                    ReconAnsKBB answer = new ReconAnsKBB();
+
+                    answer.label = item.label;
+                    answer.questionId = item.questionId;
+                    answer.questionType = item.questionType;
+                    answer.tags = item.tags;
+                    answer.value = item.value;
+                    answer.vehicleConditionCategory = item.vehicleConditionCategory;
+                    answer.vehicleConditionCategoryName = item.vehicleConditionCategoryName;
+                    answer.vehicleSectionId = item.vehicleSectionId;
+                    answer.vehicleSectionName = item.vehicleSectionName;
+                    answer.comment = item.comment;
+                    answers.Answers.Add(answer);
+                }
+            }
+            vehicleFactoryOptions.Answer.VehicleID = AppDelegate.appDelegate.vehicleID;
+            vehicleFactoryOptions.Answer.StoreID = AppDelegate.appDelegate.storeId;
+            vehicleFactoryOptions.Answer.InvtrID = AppDelegate.appDelegate.invtrId;
+
+            vehicleFactoryOptions.Answer.Answers = answers.Answers;
+            vehicleFactoryOptions.vehicleFactoryOptions.AlternateFactoryOptionsLst = AppDelegate.appDelegate.afterMarketOptions.sonicAfterMarketList;
+            vehicleFactoryOptions.vehicleFactoryOptions.VehicleID = AppDelegate.appDelegate.vehicleID;
+            vehicleFactoryOptions.vehicleFactoryOptions.StoreID = AppDelegate.appDelegate.storeId;
+            vehicleFactoryOptions.vehicleFactoryOptions.InvtrID = AppDelegate.appDelegate.invtrId;
+
+            //Logic to add the Selected Factory options
+
+            responseStatus = ServiceFactory.getWebServiceHandle().SaveAfterMarketFactoryOptions(vehicleFactoryOptions);
         }
         public override void ViewDidLoad()
         {

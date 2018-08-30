@@ -1,6 +1,8 @@
 using AppraisalApp.Models;
 using CoreGraphics;
 using ExtAppraisalApp;
+using ExtAppraisalApp.Models;
+using ExtAppraisalApp.Services;
 using Foundation;
 using System;
 using System.Collections.Generic;
@@ -22,7 +24,7 @@ namespace AppraisalApp
             this.DismissModalViewController(true);
         }
 
-        void Switchele_ValueChanged(object sender, EventArgs e)
+        public void Switchele_ValueChanged(object sender, EventArgs e)
         {
             UISwitch switchvalue = (UISwitch)sender;
             int value = Convert.ToInt32(switchvalue.Tag);
@@ -35,7 +37,6 @@ namespace AppraisalApp
 
                     foreach (var question in option.questions)
                     {
-                        // AppDelegate.appDelegate.factoryOptionsKBB = question;
 
                         if (question.questionId == val)
                         {
@@ -50,7 +51,6 @@ namespace AppraisalApp
 
                         }
 
-                        //AppDelegate.appDelegate.afterMarketOptions.Add(question);
                     }
 
                 }
@@ -97,9 +97,13 @@ namespace AppraisalApp
                         label.Text = question.label;
                         AdditionAMFOOption.AddSubview(switchele);
                         AdditionAMFOOption.AddSubview(label);
+
+
                     }
                 }
             }
         }
+
+     
     }
 }
