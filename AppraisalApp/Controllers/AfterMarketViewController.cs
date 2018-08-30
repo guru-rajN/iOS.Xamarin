@@ -59,8 +59,8 @@ namespace AppraisalApp
             }
             if (segmentID == "1")
             {
-                this.AMFO.Hidden = true;
-                AdditionAMFO.Hidden = false;
+                this.masterAMFO.Hidden = true;
+                MasterAdditionalAMFO.Hidden = false;
                 //base.ViewDidLoad();
                 //var width = View.Bounds.Width;
                 //var height = View.Bounds.Height;
@@ -90,8 +90,8 @@ namespace AppraisalApp
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            this.masterAMFO.Hidden = true;
-            MasterAdditionalAMFO.Hidden = false;
+            this.masterAMFO.Hidden = false;
+            MasterAdditionalAMFO.Hidden = true;
             AppDelegate.appDelegate.afterMarketOptions = ServiceFactory.getWebServiceHandle().GetAltenateFactoryOptions(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, AppDelegate.appDelegate.prospectId);
             int y = 0;
             foreach (var option in AppDelegate.appDelegate.afterMarketOptions.sonicAfterMarketList)
