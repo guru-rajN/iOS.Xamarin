@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1486,34 +1487,86 @@
                             </segmentedControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="142248" misplaced="YES">
                                 <rect key="frame" x="0.0" y="116" width="768" height="850"/>
-                            </scrollView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="142024">
-                                <rect key="frame" x="0.0" y="116" width="768" height="908"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" id="142703" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                        <rect key="frame" x="8" y="8" width="752" height="54"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        <string key="text">Does your vehicle contain any of these additional parts that were installed or modified after the original assembly of the vehicle?</string>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wzR-1Q-dcz" misplaced="YES">
+                                        <rect key="frame" x="8" y="8" width="737" height="859"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="N1E-Y2-D7q" customClass="AdditionDesc" misplaced="YES">
+                                                <rect key="frame" x="0.0" y="0.0" width="737" height="54"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <string key="text">Does your vehicle contain any of these additional parts that were installed or modified after the original assembly of the vehicle?</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <constraints>
+                                                    <constraint id="144952" firstItem="N1E-Y2-D7q" firstAttribute="height" constant="81"/>
+                                                    <constraint id="145196" firstItem="N1E-Y2-D7q" firstAttribute="width" constant="737"/>
+                                                </constraints>
+                                            </textView>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="144217" misplaced="YES">
+                                                <rect key="frame" x="0.0" y="0.0" width="121" height="29"/>
+                                                <segments>
+                                                    <segment title="Yes"/>
+                                                    <segment title="No"/>
+                                                </segments>
+                                                <constraints>
+                                                    <constraint id="145199" firstItem="144217" firstAttribute="height" constant="28"/>
+                                                    <constraint id="145200" firstItem="144217" firstAttribute="width" constant="121"/>
+                                                </constraints>
+                                            </segmentedControl>
+                                            <view contentMode="scaleToFill" id="145201" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                                <rect key="frame" x="0.0" y="92" width="737" height="767"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                        </subviews>
                                         <constraints>
-                                            <constraint id="142719" firstItem="142703" firstAttribute="height" constant="54"/>
+                                            <constraint id="144466" firstItem="N1E-Y2-D7q" firstAttribute="trailing" secondItem="wzR-1Q-dcz" secondAttribute="trailing"/>
+                                            <constraint id="144467" firstItem="N1E-Y2-D7q" firstAttribute="leading" secondItem="wzR-1Q-dcz" secondAttribute="leading"/>
+                                            <constraint id="144709" firstItem="N1E-Y2-D7q" firstAttribute="top" secondItem="wzR-1Q-dcz" secondAttribute="top"/>
+                                            <constraint id="145197" firstItem="N1E-Y2-D7q" firstAttribute="bottom" secondItem="144217" secondAttribute="top" constant="54"/>
+                                            <constraint id="145198" firstItem="144217" firstAttribute="leading" secondItem="wzR-1Q-dcz" secondAttribute="leading"/>
+                                            <constraint id="145202" firstItem="145201" firstAttribute="top" secondItem="N1E-Y2-D7q" secondAttribute="bottom" constant="38"/>
+                                            <constraint id="145203" firstItem="145201" firstAttribute="trailing" secondItem="wzR-1Q-dcz" secondAttribute="trailing"/>
+                                            <constraint id="145204" firstItem="145201" firstAttribute="leading" secondItem="wzR-1Q-dcz" secondAttribute="leading"/>
+                                            <constraint id="145205" firstItem="145201" firstAttribute="bottom" secondItem="wzR-1Q-dcz" secondAttribute="bottom"/>
+                                            <constraint id="145206" firstItem="wzR-1Q-dcz" firstAttribute="height" constant="859"/>
                                         </constraints>
-                                    </textView>
-                                    <view contentMode="scaleToFill" id="142714" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                        <rect key="frame" x="0.0" y="60" width="768" height="848"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint id="142704" firstItem="142703" firstAttribute="top" secondItem="142024" secondAttribute="top" constant="8"/>
-                                    <constraint id="142705" firstItem="142024" firstAttribute="trailing" secondItem="142703" secondAttribute="trailing" constant="8"/>
-                                    <constraint id="142706" firstItem="142703" firstAttribute="leading" secondItem="142024" secondAttribute="leading" constant="8"/>
-                                    <constraint id="142715" firstItem="142714" firstAttribute="top" secondItem="142703" secondAttribute="centerY" constant="25"/>
-                                    <constraint id="142716" firstItem="142714" firstAttribute="leading" secondItem="142024" secondAttribute="leading"/>
-                                    <constraint id="142717" firstItem="142714" firstAttribute="trailing" secondItem="142024" secondAttribute="trailing"/>
-                                    <constraint id="142718" firstItem="142714" firstAttribute="bottom" secondItem="142024" secondAttribute="bottom"/>
+                                    <constraint firstAttribute="bottom" secondItem="wzR-1Q-dcz" secondAttribute="bottom" id="Cqb-xG-8qd"/>
+                                    <constraint firstAttribute="trailing" secondItem="wzR-1Q-dcz" secondAttribute="trailing" id="KWA-6b-EZw"/>
+                                    <constraint firstItem="wzR-1Q-dcz" firstAttribute="top" secondItem="142248" secondAttribute="top" id="Pkf-zk-nbE"/>
+                                    <constraint firstItem="wzR-1Q-dcz" firstAttribute="leading" secondItem="142248" secondAttribute="leading" id="Uao-BZ-SdP"/>
+                                </constraints>
+                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="142024">
+                                <rect key="frame" x="0.0" y="116" width="748" height="908"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="142703">
+                                        <rect key="frame" x="8" y="8" width="732" height="54"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="54" id="142719"/>
+                                        </constraints>
+                                        <string key="text">Does your vehicle contain any of these additional parts that were installed or modified after the original assembly of the vehicle?</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="142714">
+                                        <rect key="frame" x="0.0" y="60" width="748" height="848"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="142703" firstAttribute="top" secondItem="142024" secondAttribute="top" constant="8" id="142704"/>
+                                    <constraint firstAttribute="trailing" secondItem="142703" secondAttribute="trailing" constant="8" id="142705"/>
+                                    <constraint firstItem="142703" firstAttribute="leading" secondItem="142024" secondAttribute="leading" constant="8" id="142706"/>
+                                    <constraint firstItem="142714" firstAttribute="top" secondItem="142703" secondAttribute="centerY" constant="25" id="142715"/>
+                                    <constraint firstItem="142714" firstAttribute="leading" secondItem="142024" secondAttribute="leading" id="142716"/>
+                                    <constraint firstItem="142714" firstAttribute="trailing" secondItem="142024" secondAttribute="trailing" id="142717"/>
+                                    <constraint firstItem="142714" firstAttribute="bottom" secondItem="142024" secondAttribute="bottom" id="142718"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1523,12 +1576,12 @@
                             <constraint firstAttribute="leadingMargin" secondItem="142024" secondAttribute="leading" constant="20" id="142026"/>
                             <constraint firstItem="142024" firstAttribute="trailing" secondItem="V51-2p-x9u" secondAttribute="trailingMargin" id="142027"/>
                             <constraint firstItem="142024" firstAttribute="bottom" secondItem="V51-2p-x9u" secondAttribute="bottom" id="142028"/>
+                            <constraint firstItem="142248" firstAttribute="top" secondItem="Vsx-Dr-IbP" secondAttribute="bottom" constant="9" id="142698"/>
+                            <constraint firstItem="142024" firstAttribute="bottom" secondItem="142248" secondAttribute="bottom" constant="58" id="142699"/>
+                            <constraint firstItem="142024" firstAttribute="trailing" secondItem="142248" secondAttribute="trailing" id="142701"/>
+                            <constraint firstItem="142024" firstAttribute="leading" secondItem="142248" secondAttribute="leading" id="142702"/>
                             <constraint firstItem="Vsx-Dr-IbP" firstAttribute="centerX" secondItem="V51-2p-x9u" secondAttribute="centerX" id="RiB-op-XEL"/>
                             <constraint firstItem="Vsx-Dr-IbP" firstAttribute="top" secondItem="YpY-JV-wQz" secondAttribute="bottom" constant="15" id="RqB-gf-88w"/>
-                            <constraint id="142698" firstItem="142248" firstAttribute="top" secondItem="Vsx-Dr-IbP" secondAttribute="bottom" constant="9"/>
-                            <constraint id="142699" firstItem="142024" firstAttribute="bottom" secondItem="142248" secondAttribute="bottom" constant="58"/>
-                            <constraint id="142701" firstItem="142024" firstAttribute="trailing" secondItem="142248" secondAttribute="trailing"/>
-                            <constraint id="142702" firstItem="142024" firstAttribute="leading" secondItem="142248" secondAttribute="leading"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="VkF-wZ-MaN">
@@ -1540,16 +1593,19 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="AMFO" destination="142714" id="name-outlet-142714"/>
                         <outlet property="AditionAMFOScroll" destination="142248" id="name-outlet-142248"/>
                         <outlet property="Btn_SaveAfterMarket" destination="f5O-8m-gBQ" id="name-outlet-f5O-8m-gBQ"/>
                         <outlet property="ReconditionSegment" destination="Vsx-Dr-IbP" id="yaS-ls-XlD"/>
                         <outlet property="masterAMFO" destination="142024" id="name-outlet-142024"/>
-                        <outlet property="AMFO" destination="142714" id="name-outlet-142714"/>
+                        <outlet property="AdditionSegment" destination="144217" id="name-outlet-144217"/>
+                        <outlet property="AdditionAMFO" destination="145201" id="name-outlet-145201"/>
+                        <outlet property="MasterAdditionalAMFO" destination="wzR-1Q-dcz" id="name-outlet-wzR-1Q-dcz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7tg-UN-44I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3451.563" y="-795.1172"/>
+            <point key="canvasLocation" x="3451.563" y="-795.7031"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EsX-j8-lYS">
