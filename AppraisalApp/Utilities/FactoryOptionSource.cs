@@ -7,13 +7,13 @@ using UIKit;
 
 namespace AppraisalApp.Utilities
 {
-    public class FactoryOptionSource: UITableViewSource
+    public class FactoryOptionSource : UITableViewSource
     {
         protected string[] tableItems;
         protected string cellIdentifier = "TableCell";
-        OptionPopUp owner;
+        AfterMarketViewController owner;
 
-        public FactoryOptionSource(string[] items, OptionPopUp owner)
+        public FactoryOptionSource(string[] items, AfterMarketViewController owner)
         {
             tableItems = items;
             this.owner = owner;
@@ -41,12 +41,39 @@ namespace AppraisalApp.Utilities
         /// </summary>
         public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
         {
-            AppDelegate.appDelegate.FactoryOptionSelected = tableItems[indexPath.Row];
-            UIAlertController okAlertController = UIAlertController.Create("Row Selected", tableItems[indexPath.Row], UIAlertControllerStyle.Alert);
-            okAlertController.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
-           // owner.PresentViewController(okAlertController, true, null);
+            //Instantialte the Storyboard Object
 
-            tableView.DeselectRow(indexPath, true);
+            owner.PerformSegue("AMFOSegue", this);
+
+            AppDelegate.appDelegate.FactoryOptionSelected = tableItems[indexPath.Row];
+            UIStoryboard storyboard = UIStoryboard.FromName("Main", null);
+
+            //Instantiate the ViewController you want to navigate to.
+            //Make sure you have set the Storyboard ID for this ViewController in your storyboard file.
+            //Put this Storyboard ID in place of the TargetViewControllerName in below line. 
+            UIViewController vcInstance = (UIViewController)storyboard.InstantiateViewController("AMOptionPopUp");
+
+
+            //Get the Instance of the TopViewController (CurrentViewController) or the NavigationViewController to push the TargetViewController onto the stack. 
+            //NavigationController is an Instance of the NavigationViewController
+
+            //if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
+            //{
+
+            //    owner.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
+            //    owner.PresentModalViewController(vcInstance, true);
+
+            //}
+            //else
+            //{
+            //   // owner.ModalPresentationStyle = UIModalPresentationStyle.;
+            //    owner.PresentModalViewController(vcInstance, true);
+
+            //}
+
+            // owner.PresentModalViewController(vcInstance, true);
+            // owner.NavigationController.PushViewController(vcInstance, true);
+
         }
 
         /// <summary>
