@@ -121,11 +121,15 @@ namespace AppraisalApp
                     answers.Answers.Add(answer);
                 }
             }
+            vehicleFactoryOptions.Answer = new AnswerWrapper();
+            vehicleFactoryOptions.Answer.Answers = new List<ReconAnsKBB>();
             vehicleFactoryOptions.Answer.VehicleID = AppDelegate.appDelegate.vehicleID;
             vehicleFactoryOptions.Answer.StoreID = AppDelegate.appDelegate.storeId;
             vehicleFactoryOptions.Answer.InvtrID = AppDelegate.appDelegate.invtrId;
 
             vehicleFactoryOptions.Answer.Answers = answers.Answers;
+            vehicleFactoryOptions.vehicleFactoryOptions = new VehicleFactoryOptions();
+            vehicleFactoryOptions.vehicleFactoryOptions.AlternateFactoryOptionsLst = new List<AlternateFactoryOptions>();
             vehicleFactoryOptions.vehicleFactoryOptions.AlternateFactoryOptionsLst = AppDelegate.appDelegate.afterMarketOptions.sonicAfterMarketList;
             vehicleFactoryOptions.vehicleFactoryOptions.VehicleID = AppDelegate.appDelegate.vehicleID;
             vehicleFactoryOptions.vehicleFactoryOptions.StoreID = AppDelegate.appDelegate.storeId;
