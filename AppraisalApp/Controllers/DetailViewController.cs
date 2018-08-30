@@ -37,6 +37,11 @@ namespace ExtAppraisalApp
         bool transmissionvalueMultiple = false;
         bool trimValueMultiple = false;
 
+        // Detect the device whether iPad or iPhone
+        static bool UserInterfaceIdiomIsPhone
+        {
+            get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
+        }
 
         protected DetailViewController(IntPtr handle) : base(handle)
         {
@@ -58,9 +63,12 @@ namespace ExtAppraisalApp
             // Update the user interface for the detail item
             DetailTableView.TableFooterView = new UIView(new CGRect(0, 0, 0, 0));
 
+
+
             if (null == masterViewController)
             {
-                masterViewController = (MasterViewController)((UINavigationController)SplitViewController.ViewControllers[0]).TopViewController;
+                if(!UserInterfaceIdiomIsPhone)
+                    masterViewController = (MasterViewController)((UINavigationController)SplitViewController.ViewControllers[0]).TopViewController;
             }
 
 
@@ -598,21 +606,30 @@ namespace ExtAppraisalApp
 
         partial void DetailSaveBtn_Activated(UIBarButtonItem sender)
         {
-            var saveData = CheckAllFieldsData();
+            //var saveData = CheckAllFieldsData();
 
-            if (saveData)
-            {
-                DetailViewWorker worker = new DetailViewWorker();
+            //if (saveData)
+            //{
+            //    DetailViewWorker worker = new DetailViewWorker();
 
-                worker.WorkerDelegate = masterViewController;
-                worker.UpdateUI(false);
+            //    worker.WorkerDelegate = masterViewController;
+            //    worker.UpdateUI(false);
 
-                AppDelegate.appDelegate.prospectId = GenerateProspect();
-                SaveVehicleDetails(vehicleDetails);
+            //    AppDelegate.appDelegate.prospectId = GenerateProspect();
+            //    SaveVehicleDetails(vehicleDetails);
 
-                AppDelegate.appDelegate.cacheVehicleDetails = vehicleDetails;
-            }
+            //    AppDelegate.appDelegate.cacheVehicleDetails = vehicleDetails;
+            //}
 
+            DetailViewWorker worker = new DetailViewWorker();
+
+            worker.WorkerDelegate = masterViewController;
+            worker.UpdateUI(false);
+
+            AppDelegate.appDelegate.prospectId = GenerateProspect();
+            SaveVehicleDetails(vehicleDetails);
+
+            AppDelegate.appDelegate.cacheVehicleDetails = vehicleDetails;
 
         }
 
