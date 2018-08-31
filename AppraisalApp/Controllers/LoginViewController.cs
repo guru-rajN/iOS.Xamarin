@@ -70,7 +70,8 @@ namespace ExtAppraisalApp
                         code = ServiceFactory.getWebServiceHandle().ValidateZipDealer(Convert.ToInt32(txtZip.Text));
 
 
-                        if (code != null)
+
+                        if (code == null)
                         {
                             List<Stores> storesList = ServiceFactory.getWebServiceHandle().SearchNearestStores(txtZip.Text);
                             if(null != storesList){
@@ -124,9 +125,11 @@ namespace ExtAppraisalApp
                                     txtZip.Placeholder = "Select Stores";
                                 }
 
-                            }else{
-                                Utility.ShowAlert("Appraisal App", "No Nearest Stores Found!!", "OK"); 
                             }
+                        }
+                        else if(null != code){
+                            AppDelegate.appDelegate.storeId = Convert.ToInt16(code);
+                            this.PerformSegue("decodeSegue", this);
                         }
                         else
                         {

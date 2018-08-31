@@ -100,7 +100,7 @@ namespace ExtAppraisalApp.Services
 
                     if (null != result)
                     {
-                        // result = (string)rst.Data;
+                        result = rst.Data.ToString();
                     }
                 }
                 else

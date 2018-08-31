@@ -18,10 +18,12 @@ namespace AppraisalApp
         partial void AfterMarketSegmentValue_Changed(UISegmentedControl sender)
         {
             string segmentID = ReconditionSegment.SelectedSegment.ToString();
-            if(segmentID=="1"){
+            if (segmentID == "1")
+            {
                 AdditionAMFO.Hidden = false;
             }
-            else{
+            else
+            {
                 AdditionAMFO.Hidden = true;
             }
 
@@ -138,9 +140,10 @@ namespace AppraisalApp
             AnswerWrapper answers = new AnswerWrapper();
             answers.Answers = new List<ReconAnsKBB>();
 
-            foreach(var ans in AppDelegate.appDelegate.afterMarketOptions.aftermarketQuestions.data){
-                
-                foreach(var item in ans.questions)
+            foreach (var ans in AppDelegate.appDelegate.afterMarketOptions.aftermarketQuestions.data)
+            {
+
+                foreach (var item in ans.questions)
                 {
                     ReconAnsKBB answer = new ReconAnsKBB();
 
@@ -148,10 +151,12 @@ namespace AppraisalApp
                     answer.questionId = item.questionId;
                     answer.questionType = item.questionType;
                     answer.tags = item.tags;
-                    if(item.value=="true"){
+                    if (item.value == "true")
+                    {
                         answer.value = "Yes";
                     }
-                    else{
+                    else
+                    {
                         answer.value = "No";
                     }
                     answer.value = item.value;
@@ -227,5 +232,6 @@ namespace AppraisalApp
 
 
         }
+    }
 
 }

@@ -1,10 +1,6 @@
 using CoreGraphics; using ExtAppraisalApp; using ExtAppraisalApp.Services; using Foundation; using System; using System.Collections.Generic; using UIKit; using AppraisalApp.Utilities; using System.Reflection.Emit; using System.Diagnostics; using AppraisalApp.Models; using Xamarin.Forms;
 
-namespace ExtAppraisalApp {     public partial class OptionPopUp : UIViewController     {
-        partial void BtnSave_Activated(UIBarButtonItem sender)
-        {
-            this.DismissModalViewController(true);
-        }          partial void BtnCancel_Activated(UIBarButtonItem sender)
+namespace ExtAppraisalApp {     public partial class OptionPopUp : UIViewController     {          partial void BtnCancel_Activated(UIBarButtonItem sender)
         {
             this.DismissModalViewController(true);
         }          void Switchele_ValueChanged(object sender, EventArgs e)
