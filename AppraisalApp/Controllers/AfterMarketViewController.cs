@@ -136,6 +136,12 @@ namespace AppraisalApp
                     answer.questionId = item.questionId;
                     answer.questionType = item.questionType;
                     answer.tags = item.tags;
+                    if(item.value=="true"){
+                        answer.value = "Yes";
+                    }
+                    else{
+                        answer.value = "No";
+                    }
                     answer.value = item.value;
                     answer.vehicleConditionCategory = item.vehicleConditionCategory;
                     answer.vehicleConditionCategoryName = item.vehicleConditionCategoryName;

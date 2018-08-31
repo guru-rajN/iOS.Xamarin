@@ -84,7 +84,7 @@ namespace AppraisalApp
                         {
                             question.value = "false";
                         }
-                        switchele.On = Convert.ToBoolean(question.value.ToLower());
+                        switchele.On = Convert.ToBoolean("false");
 
                         string[] tokens = question.questionId.Split('/');
                         switchele.Tag = Convert.ToInt32(tokens[1]);

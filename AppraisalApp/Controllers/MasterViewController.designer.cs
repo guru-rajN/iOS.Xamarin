@@ -35,10 +35,6 @@ namespace ExtAppraisalApp
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel InformationLabel { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIBarButtonItem MasterViewCloseBtn { get; set; }
 
         [Outlet]
@@ -78,11 +74,6 @@ namespace ExtAppraisalApp
             if (InfoDoneImg != null) {
                 InfoDoneImg.Dispose ();
                 InfoDoneImg = null;
-            }
-
-            if (InformationLabel != null) {
-                InformationLabel.Dispose ();
-                InformationLabel = null;
             }
 
             if (MasterViewCloseBtn != null) {
