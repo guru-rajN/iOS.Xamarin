@@ -62,15 +62,15 @@ namespace ExtAppraisalApp
                     Utilities.Utility.ShowAlert("First Name", "A firstname is required.!!", "OK");
 
                 }
-                //else if (!Regex.Match(firstname, @"^[A-Z][a-zA-Z]*$").Success)
-                //{
-                //    Utilities.Utility.ShowAlert("First Name", "Your FirstName (" + firstname + ") is Incorrect", "OK");
-                //}
-                //else if (!Regex.Match(lastname, @"^[A-Z][a-zA-Z]*$").Success)
-                //{
-                //    Utilities.Utility.ShowAlert("Last Name", "Your LastName (" + lastname + ") is Incorrect", "OK");
+                else if (!Regex.Match(firstname, @"^[a-zA-Z]*$").Success)
+                {
+                    Utilities.Utility.ShowAlert("First Name", "Your FirstName (" + firstname + ") is Incorrect", "OK");
+                }
+                else if (!Regex.Match(lastname, @"^[a-zA-Z]*$").Success)
+                {
+                    Utilities.Utility.ShowAlert("Last Name", "Your LastName (" + lastname + ") is Incorrect", "OK");
 
-                //}
+                }
                 else if (lastname == "")
                 {
                     Utilities.Utility.ShowAlert("Last Name", "A last is required.!!", "OK");
@@ -106,7 +106,7 @@ namespace ExtAppraisalApp
                     Console.WriteLine("vehicle id :: " + appresponse.VehicleID);
 
                     AppDelegate.appDelegate.vehicleID = appresponse.VehicleID;
-                    //AppDelegate.appDelegate.storeId = appresponse.StoreID;
+                    AppDelegate.appDelegate.storeId = appresponse.StoreID;
                     AppDelegate.appDelegate.invtrId = appresponse.InvtrID;
                     AppDelegate.appDelegate.trimId = appresponse.KBBTrimId;
                     AppDelegate.appDelegate.mileage = Convert.ToInt32(txtMileage.Text);

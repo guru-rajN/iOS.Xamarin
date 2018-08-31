@@ -119,7 +119,8 @@ namespace ExtAppraisalApp
                     makeValue.Text = vehicleDetails.Make;
 
                     // Display Year & Make in MasterView
-                    masterViewController.Title = vehicleDetails.Year.ToString() + " " + vehicleDetails.Make;
+                    //masterViewController =MasterViewController;
+                   // masterViewController.Title = vehicleDetails.Year.ToString() + " " + vehicleDetails.Make;
 
                     mileageValue.Text = AppDelegate.appDelegate.mileage.ToString();
                     vehicleDetails.Mileage = AppDelegate.appDelegate.mileage;

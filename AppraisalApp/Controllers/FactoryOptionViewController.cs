@@ -84,13 +84,25 @@ namespace ExtAppraisalApp
             vehicleFactoryOptions.StoreId = AppDelegate.appDelegate.storeId;
             vehicleFactoryOptions.InvtrId = AppDelegate.appDelegate.invtrId;
 
-            vehicleFactoryOptions.data = AppDelegate.appDelegate.factoryOptionsKBB;
 
-            //Logic to add the Selected Factory options
+            List<FactoryOptionsKBB> listfactory = new List<FactoryOptionsKBB>();
+            foreach (var items in AppDelegate.appDelegate.fctoption)
+            {
+                foreach (var item in items.questions)
+                {
+                    FactoryOptionsKBB factory = new FactoryOptionsKBB();
+                    factory.categoryName = item.categoryName;
+                    factory.displayName = item.displayName;
+                    factory.isSelected = item.isSelected;
+                    factory.optionId = item.optionId;
+                    factory.optionKindId = "KBB";
+                     listfactory.Add(factory);
 
+
+                }
+            }
+            vehicleFactoryOptions.data = listfactory;
             responseStatus= ServiceFactory.getWebServiceHandle().SaveFactoryOptions(vehicleFactoryOptions);
         }
-
-
     }
 }
