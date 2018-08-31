@@ -1513,6 +1513,7 @@
                                                     <segment title="Yes"/>
                                                     <segment title="No"/>
                                                 </segments>
+                                                <color key="tintColor" colorSpace="calibratedRGB" red="0" green="0.55686274509803924" blue="0" alpha="1"/>
                                             </segmentedControl>
                                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="145201">
                                                 <rect key="frame" x="0.0" y="92" width="737" height="767"/>
