@@ -107,7 +107,7 @@ namespace ExtAppraisalApp.Services
                 {
                     result = null;
 
-                    Utilities.Utility.ShowAlert("Appraisal App", "Please Enter Valid Zip/Dealer Code!!", "OK");
+                   // Utilities.Utility.ShowAlert("Appraisal App", "Please Enter Valid Zip/Dealer Code!!", "OK");
                 }
 
             }
