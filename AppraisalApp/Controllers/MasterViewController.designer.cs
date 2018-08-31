@@ -31,7 +31,15 @@ namespace ExtAppraisalApp
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        AppraisalApp.InformationCell InfoCell { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIImageView InfoDoneImg { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel InformationLabel { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -71,9 +79,19 @@ namespace ExtAppraisalApp
                 HistoryDoneImg = null;
             }
 
+            if (InfoCell != null) {
+                InfoCell.Dispose ();
+                InfoCell = null;
+            }
+
             if (InfoDoneImg != null) {
                 InfoDoneImg.Dispose ();
                 InfoDoneImg = null;
+            }
+
+            if (InformationLabel != null) {
+                InformationLabel.Dispose ();
+                InformationLabel = null;
             }
 
             if (MasterViewCloseBtn != null) {
