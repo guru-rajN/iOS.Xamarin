@@ -31,10 +31,6 @@ namespace ExtAppraisalApp
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        AppraisalApp.InformationCell InfoCell { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIImageView InfoDoneImg { get; set; }
 
         [Outlet]
@@ -77,11 +73,6 @@ namespace ExtAppraisalApp
             if (HistoryDoneImg != null) {
                 HistoryDoneImg.Dispose ();
                 HistoryDoneImg = null;
-            }
-
-            if (InfoCell != null) {
-                InfoCell.Dispose ();
-                InfoCell = null;
             }
 
             if (InfoDoneImg != null) {
