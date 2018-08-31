@@ -1126,7 +1126,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="36869" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2303" y="188"/>
+            <point key="canvasLocation" x="2432" y="490"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="36870">
@@ -1615,7 +1615,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7tg-UN-44I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3419" y="-790"/>
+            <point key="canvasLocation" x="3173" y="-950"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EsX-j8-lYS">
@@ -1646,30 +1646,7 @@
                     <view key="view" contentMode="scaleToFill" id="147053">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="155139">
-                                <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aje-6b-cLT" misplaced="YES">
-                                        <rect key="frame" x="16" y="8" width="516" height="526"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="Aje-6b-cLT" firstAttribute="top" secondItem="155139" secondAttribute="top" constant="8" id="155682"/>
-                                    <constraint firstAttribute="trailing" secondItem="Aje-6b-cLT" secondAttribute="trailing" constant="8" id="155683"/>
-                                    <constraint firstAttribute="bottom" secondItem="Aje-6b-cLT" secondAttribute="bottom" constant="8" id="155684"/>
-                                    <constraint firstItem="Aje-6b-cLT" firstAttribute="leading" secondItem="155139" secondAttribute="leading" constant="16" id="155685"/>
-                                </constraints>
-                            </scrollView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="155139" firstAttribute="top" secondItem="147049" secondAttribute="bottom" id="155680"/>
-                            <constraint firstItem="155139" firstAttribute="leading" secondItem="147053" secondAttribute="leading" id="5ms-sc-kof"/>
-                            <constraint firstItem="147050" firstAttribute="top" secondItem="155139" secondAttribute="bottom" id="Cbd-53-JdA"/>
-                            <constraint firstAttribute="trailing" secondItem="155139" secondAttribute="trailing" id="bw2-wm-jmV"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JhC-OQ-ztf">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="148859">
@@ -1686,7 +1663,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="AdditionAMFOOption" destination="Aje-6b-cLT" id="name-outlet-Aje-6b-cLT"/>
                         <outlet property="BtnCancel" destination="148859" id="name-outlet-148859"/>
                         <outlet property="BtnSave" destination="148858" id="name-outlet-148858"/>
                     </connections>

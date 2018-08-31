@@ -16,10 +16,6 @@ namespace AppraisalApp
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIView AdditionAMFOOption { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIBarButtonItem BtnCancel { get; set; }
 
         [Outlet]
@@ -36,11 +32,6 @@ namespace AppraisalApp
 
         void ReleaseDesignerOutlets ()
         {
-            if (AdditionAMFOOption != null) {
-                AdditionAMFOOption.Dispose ();
-                AdditionAMFOOption = null;
-            }
-
             if (BtnCancel != null) {
                 BtnCancel.Dispose ();
                 BtnCancel = null;

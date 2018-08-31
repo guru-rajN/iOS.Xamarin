@@ -84,7 +84,7 @@ namespace AppraisalApp
                         {
                             question.value = "false";
                         }
-                        switchele.On = Convert.ToBoolean("false");
+                        switchele.On = Convert.ToBoolean(question.value);
 
                         string[] tokens = question.questionId.Split('/');
                         switchele.Tag = Convert.ToInt32(tokens[1]);
@@ -95,8 +95,8 @@ namespace AppraisalApp
                         y = y + 50;
                         switchele.UserInteractionEnabled = true;
                         label.Text = question.label;
-                        AdditionAMFOOption.AddSubview(switchele);
-                        AdditionAMFOOption.AddSubview(label);
+                        this.View.AddSubview(switchele);
+                        this.View.AddSubview(label);
 
 
                     }
