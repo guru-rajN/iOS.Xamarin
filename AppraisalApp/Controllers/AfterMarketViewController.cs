@@ -17,14 +17,14 @@ namespace AppraisalApp
     {
         partial void AfterMarketSegmentValue_Changed(UISegmentedControl sender)
         {
-            string segmentID = ReconditionSegment.SelectedSegment.ToString();
+            string segmentID = AdditionSegment.SelectedSegment.ToString();
             if (segmentID == "1")
             {
-                AdditionAMFO.Hidden = false;
+                AdditionAMFO.Hidden = true;
             }
             else
             {
-                AdditionAMFO.Hidden = true;
+                AdditionAMFO.Hidden = false;
             }
 
         }
@@ -228,9 +228,8 @@ namespace AppraisalApp
             table.Source = new FactoryOptionSource(tableItems.ToArray(), this);
             AdditionAMFO.AddSubview(table);
 
-            //Add(table);
-
-
+            AdditionSegment.SelectedSegment = 1;
+            AdditionAMFO.Hidden = true;
         }
     }
 

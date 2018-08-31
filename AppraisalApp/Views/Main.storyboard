@@ -1478,8 +1478,8 @@
                                     <constraint firstAttribute="width" constant="343" id="OcH-29-UZz"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="AfterMarket"/>
-                                    <segment title="Additional AfterMark"/>
+                                    <segment title="Aftermarket"/>
+                                    <segment title="Additional Aftermarket"/>
                                 </segments>
                                 <color key="tintColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
@@ -1800,7 +1800,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="165783">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="165783" bouncesZoom="NO" bounces="NO">
                                 <rect key="frame" x="0.0" y="166" width="768" height="858"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="167887">
@@ -2003,7 +2003,7 @@
                                             <constraint firstAttribute="width" constant="192" id="173715"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                        <state key="normal" title="Front Seat">
+                                        <state key="normal" title="Front Seats">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>

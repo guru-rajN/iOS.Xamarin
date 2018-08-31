@@ -19,6 +19,8 @@ namespace ExtAppraisalApp
             // Note: this .ctor should not contain any initialization logic.
         }
 
+        private int rowSelectionIndex;
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -41,7 +43,6 @@ namespace ExtAppraisalApp
         public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
         {
             Console.WriteLine("row selected :: " + indexPath.Row);
-
         }
 
         public override void ViewWillAppear(bool animated)
@@ -114,7 +115,7 @@ namespace ExtAppraisalApp
 
         public void performNavigate(int index)
         {
-            Console.WriteLine("inside perform Navigation");
+            rowSelectionIndex = index;
             switch(index){
                 case 1 :
                     this.PerformSegue("infoDetail", this);
