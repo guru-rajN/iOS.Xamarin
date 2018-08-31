@@ -348,7 +348,7 @@ namespace ExtAppraisalApp.Services
 
                     if (null != response)
                     {
-                        Utilities.Utility.ShowAlert("Appraisal App", "Vehicle Appraisal Created", "OK");
+                       // Utilities.Utility.ShowAlert("Appraisal App", "Vehicle Appraisal Created", "OK");
                     }
                 }
                 else
@@ -386,7 +386,7 @@ namespace ExtAppraisalApp.Services
 
                     if (null != response)
                     {
-                        Utilities.Utility.ShowAlert("Appraisal App", "Factory Options Saved", "OK");
+                        //Utilities.Utility.ShowAlert("Appraisal App", "Factory Options Saved", "OK");
                     }
                 }
                 else
@@ -462,7 +462,7 @@ namespace ExtAppraisalApp.Services
 
                     if (null != response)
                     {
-                        Utilities.Utility.ShowAlert("Appraisal App", "Vehicle History saved", "OK");
+                        //Utilities.Utility.ShowAlert("Appraisal App", "Vehicle History saved", "OK");
                     }
                 }
                 else
@@ -499,7 +499,7 @@ namespace ExtAppraisalApp.Services
 
                     if (null != response)
                     {
-                        Utilities.Utility.ShowAlert("Appraisal App", "Vehicle Recondition saved", "OK");
+                        //Utilities.Utility.ShowAlert("Appraisal App", "Vehicle Recondition saved", "OK");
                     }
                 }
                 else
@@ -570,7 +570,7 @@ namespace ExtAppraisalApp.Services
 
                     if (null != response)
                     {
-                        Utilities.Utility.ShowAlert("Appraisal App", "After Market Saved Successfully", "OK");
+                        //Utilities.Utility.ShowAlert("Appraisal App", "After Market Saved Successfully", "OK");
                     }
                 }
                 else
