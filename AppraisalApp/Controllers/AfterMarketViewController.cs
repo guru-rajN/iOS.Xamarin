@@ -156,6 +156,7 @@ namespace AppraisalApp
             vehicleFactoryOptions.Answer.VehicleID = AppDelegate.appDelegate.vehicleID;
             vehicleFactoryOptions.Answer.StoreID = AppDelegate.appDelegate.storeId;
             vehicleFactoryOptions.Answer.InvtrID = AppDelegate.appDelegate.invtrId;
+            vehicleFactoryOptions.Answer.UserName = "ExtApprasialApp";
 
             vehicleFactoryOptions.Answer.Answers = answers.Answers;
             vehicleFactoryOptions.vehicleFactoryOptions = new VehicleFactoryOptions();
@@ -164,7 +165,7 @@ namespace AppraisalApp
             vehicleFactoryOptions.vehicleFactoryOptions.VehicleID = AppDelegate.appDelegate.vehicleID;
             vehicleFactoryOptions.vehicleFactoryOptions.StoreID = AppDelegate.appDelegate.storeId;
             vehicleFactoryOptions.vehicleFactoryOptions.InvtrID = AppDelegate.appDelegate.invtrId;
-
+            vehicleFactoryOptions.vehicleFactoryOptions.UserName = "ExtApprasialApp";
             //Logic to add the Selected Factory options
 
             responseStatus = ServiceFactory.getWebServiceHandle().SaveAfterMarketFactoryOptions(vehicleFactoryOptions);
