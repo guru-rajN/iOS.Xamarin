@@ -155,6 +155,12 @@ namespace ExtAppraisalApp
                     var newLength = textField.Text.Length + replacementString.Length - range.Length;
                     return newLength <= 10;
                 };
+
+                txtMileage.ShouldChangeCharacters = (textField, range, replacementString) => {
+                    var newLength = textField.Text.Length + replacementString.Length - range.Length;
+                    return newLength <= 6;
+                };
+
                 txtVin.AutocapitalizationType = UITextAutocapitalizationType.AllCharacters;
                 txtVin.ShouldReturn = (tf) =>
                 {

@@ -45,13 +45,26 @@ namespace ExtAppraisalApp
             AppDelegate.appDelegate.IsReconditionsSaved = false;
             AppDelegate.appDelegate.IsPhotosSaved = false;
 
+            txtZip.ShouldReturn = (tf) =>
+            {
+                
+                return true;
+            };
+
         }
 
         partial void GetStartBtn_TouchUpInside(UIButton sender)
-        { 
-            try{
-               
-                if(!AppDelegate.appDelegate.IsZipCodeValid){
+        {
+            GoClick();
+        }
+
+        public void GoClick()
+        {
+            try
+            {
+
+                if (!AppDelegate.appDelegate.IsZipCodeValid)
+                {
                     string zip = txtZip.Text;
 
                     if (zip == "")
@@ -74,15 +87,17 @@ namespace ExtAppraisalApp
                         if (code == null)
                         {
                             List<Stores> storesList = ServiceFactory.getWebServiceHandle().SearchNearestStores(txtZip.Text);
-                            if(null != storesList){
-                                
+                            if (null != storesList)
+                            {
+
                                 AnimateFlipHorizontally(txtZip, true, 0.5, null);
                                 AnimateFlipHorizontally(GetStartBtn, true, 0.5, null);
                                 txtZip.Text = "";
                                 GetStartBtn.SetTitle("Go", UIControlState.Normal);
                                 AppDelegate.appDelegate.IsZipCodeValid = true;
 
-                                foreach(Stores stores in storesList){
+                                foreach (Stores stores in storesList)
+                                {
                                     storeNamesID.Add(stores.OrgID, stores.Name);
                                     storeLocatorModel.Items.Add(stores.Name);
                                 }
@@ -108,7 +123,7 @@ namespace ExtAppraisalApp
 
                                             AppDelegate.appDelegate.storeId = short.Parse(Id);
                                             System.Diagnostics.Debug.WriteLine(" id :: " + AppDelegate.appDelegate.storeId);
-         
+
 
                                             txtZip.Text = storeLocatorModel.Items[(int)pickerView.SelectedRowInComponent(0)].ToString();
                                             txtZip.ResignFirstResponder();
@@ -127,7 +142,8 @@ namespace ExtAppraisalApp
 
                             }
                         }
-                        else if(null != code){
+                        else if (null != code)
+                        {
                             AppDelegate.appDelegate.storeId = Convert.ToInt16(code);
                             this.PerformSegue("decodeSegue", this);
                         }
@@ -137,13 +153,17 @@ namespace ExtAppraisalApp
 
                         }
                     }
-                }else{
+                }
+                else
+                {
                     // add store locator here
                     AppDelegate.appDelegate.IsZipCodeValid = false;
                     this.PerformSegue("decodeSegue", this);
                 }
 
-            }catch(Exception exc){
+            }
+            catch (Exception exc)
+            {
                 Console.WriteLine("Exception occured :: " + exc.Message);
             }
         }
