@@ -15,6 +15,18 @@ namespace AppraisalApp
 {
     public partial class AfterMarketViewController : UIViewController
     {
+        partial void AfterMarketSegmentValue_Changed(UISegmentedControl sender)
+        {
+            string segmentID = ReconditionSegment.SelectedSegment.ToString();
+            if(segmentID=="1"){
+                AdditionAMFO.Hidden = false;
+            }
+            else{
+                AdditionAMFO.Hidden = true;
+            }
+
+        }
+
         private MasterViewController masterViewController;
 
         // Detect the device whether iPad or iPhone
@@ -216,5 +228,4 @@ namespace AppraisalApp
 
         }
 
-    }
 }
