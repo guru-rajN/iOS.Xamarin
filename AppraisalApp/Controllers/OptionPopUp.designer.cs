@@ -18,28 +18,15 @@ namespace ExtAppraisalApp
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIBarButtonItem btnCancel { get; set; }
 
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIBarButtonItem btnSave { get; set; }
-
         [Action ("BtnCancel_Activated:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void BtnCancel_Activated (UIKit.UIBarButtonItem sender);
-
-        [Action ("BtnSave_Activated:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void BtnSave_Activated (UIKit.UIBarButtonItem sender);
 
         void ReleaseDesignerOutlets ()
         {
             if (btnCancel != null) {
                 btnCancel.Dispose ();
                 btnCancel = null;
-            }
-
-            if (btnSave != null) {
-                btnSave.Dispose ();
-                btnSave = null;
             }
         }
     }

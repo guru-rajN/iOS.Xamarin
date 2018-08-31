@@ -1025,22 +1025,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="28857">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="43393">
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="43393">
                             <color key="tintColor" red="0.30588235294117649" green="0.5607843137254902" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="BtnCancel_Activated:" destination="28854" id="44959"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="28858">
-                            <color key="tintColor" red="0.30588235294117649" green="0.5607843137254902" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="BtnSave_Activated:" destination="28854" id="43775"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="btnCancel" destination="43393" id="name-outlet-43393"/>
-                        <outlet property="btnSave" destination="28858" id="name-outlet-28858"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="28869" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1649,22 +1642,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="JhC-OQ-ztf">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="148859">
+                        <barButtonItem key="leftBarButtonItem" id="148859" title="Close">
                             <color key="tintColor" red="0.0" green="0.55686274509803924" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="BtnCancel_Activated:" destination="147052" id="151904"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="148858">
-                            <color key="tintColor" red="0.0" green="0.55686274509803924" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="BtnSave_Activated:" destination="147052" id="151905"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="BtnCancel" destination="148859" id="name-outlet-148859"/>
-                        <outlet property="BtnSave" destination="148858" id="name-outlet-148858"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="147054" userLabel="First Responder" sceneMemberID="firstResponder"/>
