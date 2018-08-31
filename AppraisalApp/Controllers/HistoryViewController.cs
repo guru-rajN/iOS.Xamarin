@@ -261,6 +261,8 @@ namespace ExtAppraisalApp
                     viewWorker.PerformNavigation(5);
                     viewWorker.ShowPartialDoneImg(5);
                     viewWorker.ShowDoneImg(4);
+
+                    AppDelegate.appDelegate.IsHistorySaved = true;
                 }
                 else
                 {

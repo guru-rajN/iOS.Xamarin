@@ -10,6 +10,17 @@ namespace ExtAppraisalApp
     {
         private MasterViewController masterViewController;
 
+        private bool LeftCarImageUploaded = false;
+        private bool RightCarImageUploaded = false;
+        private bool SeatCarImageUploaded = false;
+        private bool BackSeatImageUploaded = false;
+        private bool FrontCarImageUploaded = false;
+        private bool BackCarImageUploaded = false;
+        private bool DashBoardImageUploaded = false;
+        private bool VINImageUplaoded = false;
+        private bool RimImageUploaded = false;
+        private bool OdometerImageUploaded = false;
+
         // Detect the device whether iPad or iPhone
         static bool UserInterfaceIdiomIsPhone
         {
@@ -19,18 +30,64 @@ namespace ExtAppraisalApp
 
         partial void PhotosSaveBtn_Activated(UIBarButtonItem sender)
         {
-            // Navigate to Summary 
-            if (null == masterViewController)
+            if(!LeftCarImageUploaded){
+                Left.Layer.BorderColor = UIColor.Red.CGColor;
+            } 
+            if(!RightCarImageUploaded){
+                Right.Layer.BorderColor = UIColor.Red.CGColor;
+            } 
+            if (!SeatCarImageUploaded)
             {
-                if (!UserInterfaceIdiomIsPhone)
-                    masterViewController = (MasterViewController)((UINavigationController)SplitViewController.ViewControllers[0]).TopViewController;
+                Seat.Layer.BorderColor = UIColor.Red.CGColor;
+            } 
+            if (!BackSeatImageUploaded)
+            {
+                Seats.Layer.BorderColor = UIColor.Red.CGColor;
+            } 
+            if (!FrontCarImageUploaded)
+            {
+                Front.Layer.BorderColor = UIColor.Red.CGColor;
+            } 
+            if (!BackCarImageUploaded)
+            {
+                Back.Layer.BorderColor = UIColor.Red.CGColor;
+            } 
+            if (!OdometerImageUploaded)
+            {
+                Odometer.Layer.BorderColor = UIColor.Red.CGColor;
+            } 
+            if (!DashBoardImageUploaded)
+            {
+                Dashboard.Layer.BorderColor = UIColor.Red.CGColor;
+            } 
+            if (!VINImageUplaoded)
+            {
+                VIN.Layer.BorderColor = UIColor.Red.CGColor;
+            } 
+            if (!RimImageUploaded)
+            {
+                Rim.Layer.BorderColor = UIColor.Red.CGColor;
             }
 
-            ViewWorker viewWorker = new ViewWorker();
-            viewWorker.WorkerDelegate = (ExtAppraisalApp.Utilities.WorkerDelegateInterface)masterViewController;
-            //viewWorker.PerformNavigation(6);
-            //viewWorker.ShowPartialDoneImg();
-            viewWorker.ShowDoneImg(6);
+            if(LeftCarImageUploaded && RightCarImageUploaded && SeatCarImageUploaded && BackSeatImageUploaded && FrontCarImageUploaded && BackCarImageUploaded 
+               && OdometerImageUploaded && DashBoardImageUploaded && VINImageUplaoded && RimImageUploaded){
+                // Navigate to Summary 
+                if (null == masterViewController)
+                {
+                    if (!UserInterfaceIdiomIsPhone)
+                        masterViewController = (MasterViewController)((UINavigationController)SplitViewController.ViewControllers[0]).TopViewController;
+                }
+
+                ViewWorker viewWorker = new ViewWorker();
+                viewWorker.WorkerDelegate = (ExtAppraisalApp.Utilities.WorkerDelegateInterface)masterViewController;
+                viewWorker.ShowDoneImg(6);
+
+                AppDelegate.appDelegate.IsPhotosSaved = true;
+
+                this.PerformSegue("summarySegue", this);
+            }
+
+          
         }
 
 
@@ -213,48 +270,69 @@ namespace ExtAppraisalApp
                     //Right_Image.SetImage(Image.SetNilValueForKey)
                     Front.TintColor = UIColor.Clear;
                     Front.SetBackgroundImage(Image, UIControlState.Normal);
+                    FrontCarImageUploaded = true;
+                    Front.Layer.BorderColor = UIColor.Black.CGColor;
                     // Right_Image.SizeToFit();
                     break;
                 case "back":
                     Back.TintColor = UIColor.Clear;
                     Back.SetBackgroundImage(Image, UIControlState.Normal);
                     // Left_Image.SetBackgroundImage(Image, UIControlState.Normal);
+                    BackCarImageUploaded = true;
+                    Back.Layer.BorderColor = UIColor.Black.CGColor;
                     break;
                 case "right":
                     Right.TintColor = UIColor.Clear;
                     Right.SetBackgroundImage(Image, UIControlState.Normal);
+                    RightCarImageUploaded = true;
+                    Right.Layer.BorderColor = UIColor.Black.CGColor;
                     /// Front.SetBackgroundImage(Image, UIControlState.Normal);
                     break;
                 case "left":
                     Left.TintColor = UIColor.Clear;
                     Left.SetBackgroundImage(Image, UIControlState.Normal);
+                    LeftCarImageUploaded = true;
+                    Left.Layer.BorderColor = UIColor.Black.CGColor;
                     /// Odometer.SetBackgroundImage(Image, UIControlState.Normal);
                     break;
                 case "seat":
                     Seat.TintColor = UIColor.Clear;
                     Seat.SetBackgroundImage(Image, UIControlState.Normal);
                     ///Seat.SetBackgroundImage(Image, UIControlState.Normal);
+                    SeatCarImageUploaded = true;
+                    Seat.Layer.BorderColor = UIColor.Black.CGColor;
                     break;
                 case "seats":
                     Seats.TintColor = UIColor.Clear;
                     Seats.SetBackgroundImage(Image, UIControlState.Normal);
+
+                    BackSeatImageUploaded = true;
+                    Seats.Layer.BorderColor = UIColor.Black.CGColor;
                     ///Seat.SetBackgroundImage(Image, UIControlState.Normal);
                     break;
                 case "dashboard":
                     Dashboard.TintColor = UIColor.Clear;
                     Dashboard.SetBackgroundImage(Image, UIControlState.Normal);
+                    DashBoardImageUploaded = true;
+                    Dashboard.Layer.BorderColor = UIColor.Black.CGColor;
                     break;
                 case "odometer":
                     Odometer.TintColor = UIColor.Clear;
                     Odometer.SetBackgroundImage(Image, UIControlState.Normal);
+                    OdometerImageUploaded = true;
+                    Odometer.Layer.BorderColor = UIColor.Black.CGColor;
                     break;
                 case "rim":
                     Rim.TintColor = UIColor.Clear;
                     Rim.SetBackgroundImage(Image, UIControlState.Normal);
+                    RimImageUploaded = true;
+                    Rim.Layer.BorderColor = UIColor.Black.CGColor;
                     break;
                 case "VIN":
                     VIN.TintColor = UIColor.Clear;
                     VIN.SetBackgroundImage(Image, UIControlState.Normal);
+                    VINImageUplaoded = true;
+                    VIN.Layer.BorderColor = UIColor.Black.CGColor;
                     break;
                 default:
                     Console.WriteLine("Invalid selection. Please select 1, 2, or 3.");

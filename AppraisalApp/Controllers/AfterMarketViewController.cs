@@ -39,6 +39,8 @@ namespace AppraisalApp
             viewWorker.PerformNavigation(4);
             viewWorker.ShowPartialDoneImg(4);
             viewWorker.ShowDoneImg(3);
+
+            AppDelegate.appDelegate.IsAftermarketSaved = true;
         }
 
         UITableView table;

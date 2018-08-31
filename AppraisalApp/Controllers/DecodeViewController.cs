@@ -4,6 +4,7 @@ using System;
 using System.Text.RegularExpressions;
 using ExtAppraisalApp.Models;
 using ExtAppraisalApp.Services;
+using ExtAppraisalApp.Utilities;
 using Foundation;
 using UIKit;
 using Xamarin.Forms;
@@ -12,9 +13,21 @@ namespace ExtAppraisalApp
 {
     public partial class DecodeViewController : UITableViewController
     {
+        private LoginViewController loginViewController;
+
+        public void SetDetailItem(LoginViewController masterViewController)
+        {
+            this.loginViewController = masterViewController;
+        }
+
         partial void BtnCancel_Activated(UIBarButtonItem sender)
         {
             this.DismissModalViewController(true);
+
+
+            ViewWorker worker = new ViewWorker();
+            worker.WorkerDelegate = loginViewController;
+            worker.UpdateUI(false);
         }
 
         partial void BtnDecode_Activated(UIBarButtonItem sender)

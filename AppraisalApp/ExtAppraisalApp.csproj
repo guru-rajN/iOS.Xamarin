@@ -263,6 +263,10 @@
     <Compile Include="Services\Aws.cs" />
     <Compile Include="Utilities\WorkerDelegateInterface.cs" />
     <Compile Include="Utilities\ViewWorker.cs" />
+    <Compile Include="Controllers\SummaryViewController.cs" />
+    <Compile Include="Controllers\SummaryViewController.designer.cs">
+      <DependentUpon>SummaryViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />

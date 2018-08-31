@@ -40,6 +40,13 @@ namespace ExtAppraisalApp
 
         public bool IsZipCodeValid = false;
 
+        public bool IsInfoSaved = false;
+        public bool IsFactorySaved = false;
+        public bool IsAftermarketSaved = false;
+        public bool IsHistorySaved = false;
+        public bool IsReconditionsSaved = false;
+        public bool IsPhotosSaved = false;
+
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
 

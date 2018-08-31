@@ -14,7 +14,7 @@ using UIKit;
 namespace ExtAppraisalApp
 {
 
-    public partial class LoginViewController : UIViewController
+    public partial class LoginViewController : UIViewController, WorkerDelegateInterface
     {
         private UIPickerView pickerView;
 
@@ -38,6 +38,12 @@ namespace ExtAppraisalApp
 
             storeLocatorModel = new StoreLocatorModel();
 
+            AppDelegate.appDelegate.IsInfoSaved = false;
+            AppDelegate.appDelegate.IsFactorySaved = false;
+            AppDelegate.appDelegate.IsAftermarketSaved = false;
+            AppDelegate.appDelegate.IsHistorySaved = false;
+            AppDelegate.appDelegate.IsReconditionsSaved = false;
+            AppDelegate.appDelegate.IsPhotosSaved = false;
 
         }
 
@@ -139,7 +145,15 @@ namespace ExtAppraisalApp
             }
         }
 
+        public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+        {
+            if (segue.Identifier == "decodeSegue")
+            {
+                var controller = (DecodeViewController)((UINavigationController)segue.DestinationViewController).TopViewController;
 
+                controller.SetDetailItem(this);
+            }
+        }
 
         private void SetPicker(object sender, EventArgs e)
         {
@@ -233,6 +247,30 @@ namespace ExtAppraisalApp
             );
         }
 
+        public void UpdateDatas(bool show)
+        {
+            txtZip.Text = "";
+            txtZip.Placeholder = "ZIP/DEALER CODE";
+            txtZip.EndEditing(true);
+            this.View.EndEditing(true);
+            GetStartBtn.SetTitle("Get Started", UIControlState.Normal);
+            AppDelegate.appDelegate.IsZipCodeValid = false;
+        }
+
+        public void performNavigate(int index)
+        {
+            System.Diagnostics.Debug.WriteLine("perform Navigate");
+        }
+
+        public void ShowDoneIcon(int index)
+        {
+            System.Diagnostics.Debug.WriteLine("perform Navigate");
+        }
+
+        public void ShowPartialDoneIcon(int index)
+        {
+            System.Diagnostics.Debug.WriteLine("perform Navigate");
+        }
     }
 
 }

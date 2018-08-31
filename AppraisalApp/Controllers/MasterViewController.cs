@@ -58,21 +58,21 @@ namespace ExtAppraisalApp
 
         public override bool ShouldPerformSegue(string segueIdentifier, NSObject sender)
         {
-            if(segueIdentifier == "infoDetail"){
-                
-            }else if(segueIdentifier == "factoryDetail"){
+            if(segueIdentifier == "infoDetail" ){
+
+            }else if(segueIdentifier == "factoryDetail" && !AppDelegate.appDelegate.IsFactorySaved){
                 return false;
                 
-            }else if (segueIdentifier == "AfterMarketSegue")
+            }else if (segueIdentifier == "AfterMarketSegue" && !AppDelegate.appDelegate.IsAftermarketSaved)
             {
                 return false;
-            }else if (segueIdentifier == "historyDetails")
+            }else if (segueIdentifier == "historyDetails" && !AppDelegate.appDelegate.IsHistorySaved)
             {
                 return false;
-            }else if (segueIdentifier == "reconditionDetails")
+            }else if (segueIdentifier == "reconditionDetails" && !AppDelegate.appDelegate.IsReconditionsSaved)
             {
                 return false;
-            }else if (segueIdentifier == "photoDetails")
+            }else if (segueIdentifier == "photoDetails" && !AppDelegate.appDelegate.IsPhotosSaved)
             {
                 return false;
             }

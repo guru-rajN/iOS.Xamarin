@@ -638,6 +638,7 @@ namespace ExtAppraisalApp
             SaveVehicleDetails(vehicleDetails);
 
             AppDelegate.appDelegate.cacheVehicleDetails = vehicleDetails;
+            AppDelegate.appDelegate.IsInfoSaved = true;
 
             //Utilities.Utility.ShowToastMessage("Vehicle Appraisal Created");
             // Show Factory Options

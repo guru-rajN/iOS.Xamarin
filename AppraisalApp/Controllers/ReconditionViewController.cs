@@ -158,6 +158,8 @@ namespace ExtAppraisalApp
                 viewWorker.PerformNavigation(6);
                 viewWorker.ShowPartialDoneImg(6);
                 viewWorker.ShowDoneImg(5);
+
+                AppDelegate.appDelegate.IsReconditionsSaved = true;
             }
         }
         public string setCondition(string row)

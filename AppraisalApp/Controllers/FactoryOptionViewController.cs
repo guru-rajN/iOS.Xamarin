@@ -38,6 +38,8 @@ namespace ExtAppraisalApp
             viewWorker.ShowPartialDoneImg(3);
             viewWorker.ShowDoneImg(2);
 
+            AppDelegate.appDelegate.IsFactorySaved = true;
+
 
         }
 
@@ -49,6 +51,7 @@ namespace ExtAppraisalApp
         public override void ViewDidLoad()
         {
 
+       
 
             base.ViewDidLoad();
             var width = View.Bounds.Width;
@@ -56,6 +59,8 @@ namespace ExtAppraisalApp
 
             table = new UITableView(new CGRect(0, 0, width, height));
             table.AutoresizingMask = UIViewAutoresizing.All;
+
+            table.TableFooterView = new UIView(new CGRect(0, 0, 0, 0));
 
             AppDelegate.appDelegate.fctoption = ServiceFactory.getWebServiceHandle().GetFactoryOptionsKBB(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, 432110);
             List<string> tableItems = new List<string>();
