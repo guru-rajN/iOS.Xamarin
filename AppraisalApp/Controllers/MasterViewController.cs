@@ -180,27 +180,27 @@ namespace ExtAppraisalApp
             {
                 case 1:
                     InfoDoneImg.Hidden = false;
-                    InfoDoneImg.Image = UIImage.FromBundle("partial_done.png");
+                    InfoDoneImg.Image = UIImage.FromBundle("blur_done.png");
                     break;
                 case 2:
                     FactoryOptionsDoneImg.Hidden = false;
-                    FactoryOptionsDoneImg.Image = UIImage.FromBundle("partial_done.png");
+                    FactoryOptionsDoneImg.Image = UIImage.FromBundle("blur_done.png");
                     break;
                 case 3:
                     AfterMarketDoneImg.Hidden = false;
-                    AfterMarketDoneImg.Image = UIImage.FromBundle("partial_done.png");
+                    AfterMarketDoneImg.Image = UIImage.FromBundle("blur_done.png");
                     break;
                 case 4:
                     HistoryDoneImg.Hidden = false;
-                    HistoryDoneImg.Image = UIImage.FromBundle("partial_done.png");
+                    HistoryDoneImg.Image = UIImage.FromBundle("blur_done.png");
                     break;
                 case 5:
                     ReconditionsDoneImg.Hidden = false;
-                    ReconditionsDoneImg.Image = UIImage.FromBundle("partial_done.png");
+                    ReconditionsDoneImg.Image = UIImage.FromBundle("blur_done.png");
                     break;
                 case 6:
                     PhotosDoneImg.Hidden = false;
-                    PhotosDoneImg.Image = UIImage.FromBundle("partial_done.png");
+                    PhotosDoneImg.Image = UIImage.FromBundle("blur_done.png");
                     break;
                 default:
                     break;

@@ -89,7 +89,6 @@ namespace ExtAppraisalApp
                 }
                 else
                 {
-                    // add store locator here
                     AppDelegate.appDelegate.IsZipCodeValid = false;
                     this.PerformSegue("decodeSegue", this);
                 }

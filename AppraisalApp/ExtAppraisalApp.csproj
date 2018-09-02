@@ -295,6 +295,7 @@
     <BundleResource Include="Resources\gallery.png" />
     <BundleResource Include="Resources\partial_done.png" />
     <BundleResource Include="Resources\undone.png" />
+    <BundleResource Include="Resources\blur_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.targets')" />
