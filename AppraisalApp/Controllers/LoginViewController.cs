@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using AppraisalApp.Models;
 using CoreAnimation;
 using CoreGraphics;
@@ -19,6 +20,8 @@ namespace ExtAppraisalApp
         private UIPickerView pickerView;
 
         public static StoreLocatorModel storeLocatorModel;
+
+        private string zipCode;
 
         Dictionary<string, string> storeNamesID = new Dictionary<string, string>();
 
@@ -79,79 +82,9 @@ namespace ExtAppraisalApp
                     }
                     else
                     {
-                        string code = null;
-                        code = ServiceFactory.getWebServiceHandle().ValidateZipDealer(Convert.ToInt32(txtZip.Text));
-
-
-
-                        if (code == null)
-                        {
-                            List<Stores> storesList = ServiceFactory.getWebServiceHandle().SearchNearestStores(txtZip.Text);
-                            if (null != storesList)
-                            {
-
-                                AnimateFlipHorizontally(txtZip, true, 0.5, null);
-                                AnimateFlipHorizontally(GetStartBtn, true, 0.5, null);
-                                txtZip.Text = "";
-                                GetStartBtn.SetTitle("Go", UIControlState.Normal);
-                                AppDelegate.appDelegate.IsZipCodeValid = true;
-
-                                foreach (Stores stores in storesList)
-                                {
-                                    storeNamesID.Add(stores.OrgID, stores.Name);
-                                    storeLocatorModel.Items.Add(stores.Name);
-                                }
-
-                                if (AppDelegate.appDelegate.IsZipCodeValid)
-                                {
-                                    pickerView = new UIPickerView();
-                                    pickerView.Model = storeLocatorModel;
-                                    pickerView.ShowSelectionIndicator = true;
-
-                                    // To create a toolbar with done button
-                                    UIToolbar toolbar = new UIToolbar();
-                                    toolbar.BarStyle = UIBarStyle.Black;
-                                    toolbar.Translucent = true;
-                                    toolbar.SizeToFit();
-                                    UIBarButtonItem flexibleSpaceLeft = new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace, null, null);
-                                    UIBarButtonItem doneBtn = new UIBarButtonItem("Done", UIBarButtonItemStyle.Done, (s, e) => {
-                                        foreach (UIView view in this.View.Subviews)
-                                        {
-                                            txtZip.Text = storeLocatorModel.Items[(int)pickerView.SelectedRowInComponent(0)].ToString();
-                                            var Id = storeNamesID.FirstOrDefault(x => x.Value.Contains(txtZip.Text)).Key;
-
-
-                                            AppDelegate.appDelegate.storeId = short.Parse(Id);
-                                            System.Diagnostics.Debug.WriteLine(" id :: " + AppDelegate.appDelegate.storeId);
-
-
-                                            txtZip.Text = storeLocatorModel.Items[(int)pickerView.SelectedRowInComponent(0)].ToString();
-                                            txtZip.ResignFirstResponder();
-                                        }
-
-                                    });
-                                    toolbar.SetItems(new UIBarButtonItem[] { flexibleSpaceLeft, doneBtn }, true);
-
-                                    // To assign inputview has pickerview
-                                    txtZip.InputView = pickerView;
-                                    txtZip.InputAccessoryView = toolbar;
-
-                                    txtZip.TouchDown += SetPicker;
-                                    txtZip.Placeholder = "Select Stores";
-                                }
-
-                            }
-                        }
-                        else if (null != code)
-                        {
-                            AppDelegate.appDelegate.storeId = Convert.ToInt16(code);
-                            this.PerformSegue("decodeSegue", this);
-                        }
-                        else
-                        {
-                            Utility.ShowAlert("ZIP/Dealer", "Please Enter valid ZIP/Dealer Code", "OK");
-
-                        }
+                        zipCode = txtZip.Text;
+                        Utility.ShowLoadingIndicator(this.View, "", true);
+                        CallWebservice();
                     }
                 }
                 else
@@ -165,6 +98,89 @@ namespace ExtAppraisalApp
             catch (Exception exc)
             {
                 Console.WriteLine("Exception occured :: " + exc.Message);
+            }
+        }
+
+        Task CallWebservice(){
+            return Task.Factory.StartNew(() => {
+                ServiceCall(); 
+            });
+        }
+
+        private void ServiceCall(){
+            string code = null;
+            code = ServiceFactory.getWebServiceHandle().ValidateZipDealer(Convert.ToInt32(zipCode));
+
+            if (code == null)
+            {
+                List<Stores> storesList = ServiceFactory.getWebServiceHandle().SearchNearestStores(zipCode);
+                if (null != storesList)
+                {
+                    InvokeOnMainThread(() => {
+                        Utility.HideLoadingIndicator(this.View);
+                        AnimateFlipHorizontally(txtZip, true, 0.5, null);
+                        AnimateFlipHorizontally(GetStartBtn, true, 0.5, null);
+                        txtZip.Text = "";
+                        GetStartBtn.SetTitle("Go", UIControlState.Normal);
+                        AppDelegate.appDelegate.IsZipCodeValid = true;
+
+                        foreach (Stores stores in storesList)
+                        {
+                            storeNamesID.Add(stores.OrgID, stores.Name);
+                            storeLocatorModel.Items.Add(stores.Name);
+                        }
+
+                        if (AppDelegate.appDelegate.IsZipCodeValid)
+                        {
+                            pickerView = new UIPickerView();
+                            pickerView.Model = storeLocatorModel;
+                            pickerView.ShowSelectionIndicator = true;
+
+                            // To create a toolbar with done button
+                            UIToolbar toolbar = new UIToolbar();
+                            toolbar.BarStyle = UIBarStyle.Black;
+                            toolbar.Translucent = true;
+                            toolbar.SizeToFit();
+                            UIBarButtonItem flexibleSpaceLeft = new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace, null, null);
+                            UIBarButtonItem doneBtn = new UIBarButtonItem("Done", UIBarButtonItemStyle.Done, (s, e) => {
+                                foreach (UIView view in this.View.Subviews)
+                                {
+                                    txtZip.Text = storeLocatorModel.Items[(int)pickerView.SelectedRowInComponent(0)].ToString();
+                                    var Id = storeNamesID.FirstOrDefault(x => x.Value.Contains(txtZip.Text)).Key;
+
+
+                                    AppDelegate.appDelegate.storeId = short.Parse(Id);
+                                    System.Diagnostics.Debug.WriteLine(" id :: " + AppDelegate.appDelegate.storeId);
+
+
+                                    txtZip.Text = storeLocatorModel.Items[(int)pickerView.SelectedRowInComponent(0)].ToString();
+                                    txtZip.ResignFirstResponder();
+                                }
+
+                            });
+                            toolbar.SetItems(new UIBarButtonItem[] { flexibleSpaceLeft, doneBtn }, true);
+
+                            // To assign inputview has pickerview
+                            txtZip.InputView = pickerView;
+                            txtZip.InputAccessoryView = toolbar;
+
+                            txtZip.TouchDown += SetPicker;
+                            txtZip.Placeholder = "Select Stores";
+                        }
+                    });
+
+
+                }
+            }
+            else if (null != code)
+            {
+                AppDelegate.appDelegate.storeId = Convert.ToInt16(code);
+                this.PerformSegue("decodeSegue", this);
+            }
+            else
+            {
+                Utility.ShowAlert("ZIP/Dealer", "Please Enter valid ZIP/Dealer Code", "OK");
+
             }
         }
 

@@ -2,6 +2,7 @@
 
 using System;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using ExtAppraisalApp.Models;
 using ExtAppraisalApp.Services;
 using ExtAppraisalApp.Utilities;
@@ -93,29 +94,8 @@ namespace ExtAppraisalApp
                 }
                 else
                 {
-                    //decodeActivity.Hidden = false;
-                    //decodeActivity.StartAnimating();
-                    CreateAppraisalRequest apprrequest = new CreateAppraisalRequest();
-                    AppraisalResponse appresponse = new AppraisalResponse();
-                    apprrequest.VIN = txtVin.Text;
-                    apprrequest.StoreID = AppDelegate.appDelegate.storeId;
-                    apprrequest.Mileage = Convert.ToInt32(txtMileage.Text);
-                    apprrequest.DDCUserId = "5A9C9038-DDC6-4BBE-8256-675F91D6B5B7";
-                    appresponse = ServiceFactory.getWebServiceHandle().CreateAppraisalKBB(apprrequest);
-
-                    Console.WriteLine("vehicle id :: " + appresponse.VehicleID);
-
-                    AppDelegate.appDelegate.vehicleID = appresponse.VehicleID;
-                    AppDelegate.appDelegate.storeId = appresponse.StoreID;
-                    AppDelegate.appDelegate.invtrId = appresponse.InvtrID;
-                    AppDelegate.appDelegate.trimId = appresponse.KBBTrimId;
-                    AppDelegate.appDelegate.mileage = Convert.ToInt32(txtMileage.Text);
-
-                    var storyboard = UIStoryboard.FromName("Main", null);
-                    var splitViewController = storyboard.InstantiateViewController("SplitViewControllerID");
-                    var appDelegate = (AppDelegate)UIApplication.SharedApplication.Delegate;
-                    appDelegate.Window.RootViewController = splitViewController;
-                    //decodeActivity.StopAnimating();
+                    Utility.ShowLoadingIndicator(this.View, "Fetching ...", true);
+                    CallWebservice(txtVin.Text,AppDelegate.appDelegate.storeId,Convert.ToInt32(txtMileage.Text), "5A9C9038-DDC6-4BBE-8256-675F91D6B5B7");
                 }
 
             }
@@ -123,6 +103,42 @@ namespace ExtAppraisalApp
             {
                 System.Diagnostics.Debug.WriteLine("Exception occured :: " + exc.Message);
             }
+        }
+
+        Task CallWebservice(string Vin, short storeId, int mileage, string ddcuserid)
+        {
+            return Task.Factory.StartNew(() => {
+                CreateAppraisalRequest apprrequest = new CreateAppraisalRequest();
+                AppraisalResponse appresponse = new AppraisalResponse();
+                apprrequest.VIN = Vin;
+                apprrequest.StoreID = storeId;
+                apprrequest.Mileage = mileage;
+                apprrequest.DDCUserId = ddcuserid;
+                appresponse = ServiceFactory.getWebServiceHandle().CreateAppraisalKBB(apprrequest);
+
+                Console.WriteLine("vehicle id :: " + appresponse.VehicleID);
+
+                if(null != appresponse){
+
+                    InvokeOnMainThread(() => 
+                    {
+                        Utility.HideLoadingIndicator(this.View);
+                        AppDelegate.appDelegate.vehicleID = appresponse.VehicleID;
+                        AppDelegate.appDelegate.storeId = appresponse.StoreID;
+                        AppDelegate.appDelegate.invtrId = appresponse.InvtrID;
+                        AppDelegate.appDelegate.trimId = appresponse.KBBTrimId;
+                        AppDelegate.appDelegate.mileage = Convert.ToInt32(txtMileage.Text);
+
+                        var storyboard = UIStoryboard.FromName("Main", null);
+                        var splitViewController = storyboard.InstantiateViewController("SplitViewControllerID");
+                        var appDelegate = (AppDelegate)UIApplication.SharedApplication.Delegate;
+                        appDelegate.Window.RootViewController = splitViewController;
+                    });
+
+                }
+
+
+            });
         }
 
         public override void WillDisplayHeaderView(UITableView tableView, UIView headerView, nint section)

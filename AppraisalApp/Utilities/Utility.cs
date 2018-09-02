@@ -46,28 +46,27 @@ namespace ExtAppraisalApp.Utilities
             container = new UIView(new CGRect(0, 0, 120, 120));
             container.BackgroundColor = UIColor.DarkGray;
             container.Layer.CornerRadius = 5;
-            container.Center = new CGPoint(view.Bounds.Width / 2, view.Bounds.Height / 2.5);
+            container.Center = new CGPoint(view.Bounds.Width / 2, view.Bounds.Height / 2);
 
-            activitySpinner = new UIActivityIndicatorView(UIActivityIndicatorViewStyle.WhiteLarge);
-            activitySpinner.Center = new CGPoint(container.Frame.Width / 2, container.Frame.Height / 2.5);
-            container.Add(activitySpinner);
+            if(!string.IsNullOrEmpty(loadingMessage)){
+                activitySpinner = new UIActivityIndicatorView(UIActivityIndicatorViewStyle.WhiteLarge);
+                activitySpinner.Center = new CGPoint(container.Frame.Width / 2, container.Frame.Height / 2.5);
+                container.Add(activitySpinner);
 
-            var label = new UILabel(new CGRect(0, 0, (container.Frame.Width - 20), 20));
-            label.TextColor = UIColor.White;
-            label.Text = loadingMessage;
-            label.TextAlignment = UITextAlignment.Center;
-            label.Center = new CGPoint(container.Frame.Width / 2, 4 * container.Frame.Height / 5);
-            container.Add(label);
+                var label = new UILabel(new CGRect(0, 0, (container.Frame.Width - 20), 20));
+                label.TextColor = UIColor.White;
+                label.Text = loadingMessage;
+                label.TextAlignment = UITextAlignment.Center;
+                label.Center = new CGPoint(container.Frame.Width / 2, 4 * container.Frame.Height / 5);
+                container.Add(label);
+            }else{
+                activitySpinner = new UIActivityIndicatorView(UIActivityIndicatorViewStyle.WhiteLarge);
+                activitySpinner.Center = new CGPoint(container.Frame.Width / 2, container.Frame.Height / 2);
+                container.Add(activitySpinner);
+            }
 
             activitySpinner.StartAnimating();
             view.AddSubview(container);
-            //if(show){
-            //    activitySpinner.StartAnimating();
-            //    view.Add(container);
-            //}else{
-            //    activitySpinner.StopAnimating();
-            //    container.RemoveFromSuperview();
-            //}
 
         }
 
