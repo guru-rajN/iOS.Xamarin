@@ -114,6 +114,10 @@ namespace ExtAppraisalApp
                 apprrequest.StoreID = storeId;
                 apprrequest.Mileage = mileage;
                 apprrequest.DDCUserId = ddcuserid;
+                apprrequest.FirstName = txtFirstName.Text;
+                apprrequest.LastName = txtLastName.Text;
+                apprrequest.Phone = txtPhone.Text;
+                apprrequest.Email = txtEmail.Text;
                 appresponse = ServiceFactory.getWebServiceHandle().CreateAppraisalKBB(apprrequest);
 
                 Console.WriteLine("vehicle id :: " + appresponse.VehicleID);
