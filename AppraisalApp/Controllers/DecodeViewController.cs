@@ -14,6 +14,36 @@ namespace ExtAppraisalApp
 {
     public partial class DecodeViewController : UITableViewController
     {
+        partial void txtVin_Changed(UITextField sender)
+        {
+            txtVin.Text = txtVin.Text.ToUpper();
+        }
+
+
+        partial void txtPhone_Changed(UITextField sender)
+        {
+            const int maxCharacters = 10;
+
+            txtPhone.ShouldChangeCharacters = (textField, range, replacement) =>
+            {
+                var newContent = new NSString(textField.Text).Replace(range, new NSString(replacement)).ToString();
+                int number;
+                return newContent.Length <= maxCharacters && (replacement.Length == 0 || int.TryParse(replacement, out number));
+            };
+        }
+
+        partial void txtMileage_Changed(UITextField sender)
+        {
+            const int maxCharacters = 7;
+
+            txtMileage.ShouldChangeCharacters = (textField, range, replacement) =>
+            {
+                var newContent = new NSString(textField.Text).Replace(range, new NSString(replacement)).ToString();
+                int number;
+                return newContent.Length <= maxCharacters && (replacement.Length == 0 || int.TryParse(replacement, out number));
+            };
+        }
+
         private LoginViewController loginViewController;
 
         public void SetDetailItem(LoginViewController masterViewController)
@@ -95,7 +125,7 @@ namespace ExtAppraisalApp
                 else
                 {
                     Utility.ShowLoadingIndicator(this.View, "Fetching ...", true);
-                    CallWebservice(txtVin.Text,AppDelegate.appDelegate.storeId,Convert.ToInt32(txtMileage.Text), "5A9C9038-DDC6-4BBE-8256-675F91D6B5B7");
+                    CallWebservice(txtVin.Text,AppDelegate.appDelegate.storeId,Convert.ToInt32(txtMileage.Text), "5A9C9038-DDC6-4BBE-8256-675F91D6B5B7",txtFirstName.Text,txtLastName.Text,txtEmail.Text,txtPhone.Text);
                 }
 
             }
@@ -105,7 +135,7 @@ namespace ExtAppraisalApp
             }
         }
 
-        Task CallWebservice(string Vin, short storeId, int mileage, string ddcuserid)
+        Task CallWebservice(string Vin, short storeId, int mileage, string ddcuserid,string firstname, string lastname,string email,string phone)
         {
             return Task.Factory.StartNew(() => {
                 CreateAppraisalRequest apprrequest = new CreateAppraisalRequest();
@@ -114,10 +144,10 @@ namespace ExtAppraisalApp
                 apprrequest.StoreID = storeId;
                 apprrequest.Mileage = mileage;
                 apprrequest.DDCUserId = ddcuserid;
-                apprrequest.FirstName = txtFirstName.Text;
-                apprrequest.LastName = txtLastName.Text;
-                apprrequest.Phone = txtPhone.Text;
-                apprrequest.Email = txtEmail.Text;
+                apprrequest.FirstName = firstname;
+                apprrequest.LastName = lastname;
+                apprrequest.Phone = phone;
+                apprrequest.Email = email;
                 appresponse = ServiceFactory.getWebServiceHandle().CreateAppraisalKBB(apprrequest);
 
                 Console.WriteLine("vehicle id :: " + appresponse.VehicleID);

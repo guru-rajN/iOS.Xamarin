@@ -97,6 +97,18 @@ namespace ExtAppraisalApp
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void BtnDecodeVin_TouchUpInside (UIKit.UIButton sender);
 
+        [Action ("txtMileage_Changed:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void txtMileage_Changed (UIKit.UITextField sender);
+
+        [Action ("txtPhone_Changed:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void txtPhone_Changed (UIKit.UITextField sender);
+
+        [Action ("txtVin_Changed:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void txtVin_Changed (UIKit.UITextField sender);
+
         void ReleaseDesignerOutlets ()
         {
             if (btnCancel != null) {

@@ -347,6 +347,10 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" keyboardType="namePhonePad" returnKeyType="next"/>
+                                                    <connections>
+                                                        <action selector="txtVin_Changed:" destination="pXu-PQ-Om3" id="213424" eventType="editingChanged"/>
+                                                        <action selector="txtVin_Changed:" destination="pXu-PQ-Om3" id="213857" eventType="touchUpInside"/>
+                                                    </connections>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="VIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLi-Lh-Pmz">
                                                     <rect key="frame" x="31" y="56.5" width="28" height="21"/>
@@ -410,6 +414,10 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="postal-code"/>
+                                                    <connections>
+                                                        <action selector="txtMileage_Changed:" destination="pXu-PQ-Om3" id="210880" eventType="editingChanged"/>
+                                                        <action selector="txtMileage_Changed:" destination="pXu-PQ-Om3" id="213425" eventType="touchUpInside"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -563,6 +571,10 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="done" textContentType="tel"/>
+                                                    <connections>
+                                                        <action selector="txtPhone_Changed:" destination="pXu-PQ-Om3" id="211741" eventType="editingChanged"/>
+                                                        <action selector="txtPhone_Changed:" destination="pXu-PQ-Om3" id="213856" eventType="touchUpInside"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
