@@ -8,6 +8,7 @@ using ExtAppraisalApp.Utilities;
 using Foundation;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UIKit;
 using Xamarin.Forms;
 
@@ -48,12 +49,16 @@ namespace AppraisalApp
                     masterViewController = (MasterViewController)((UINavigationController)SplitViewController.ViewControllers[0]).TopViewController;
             }
 
-            ViewWorker viewWorker = new ViewWorker();
-            viewWorker.WorkerDelegate = (ExtAppraisalApp.Utilities.WorkerDelegateInterface)masterViewController;
-            viewWorker.PerformNavigation(4);
-            viewWorker.ShowPartialDoneImg(4);
-            viewWorker.ShowDoneImg(3);
-
+            if(!AppDelegate.appDelegate.IsAftermarketSaved){
+                ViewWorker viewWorker = new ViewWorker();
+                viewWorker.WorkerDelegate = (ExtAppraisalApp.Utilities.WorkerDelegateInterface)masterViewController;
+                viewWorker.PerformNavigation(4);
+                viewWorker.ShowPartialDoneImg(4);
+                viewWorker.ShowDoneImg(3);
+            }else {
+                this.PerformSegue("summarySegue", this);
+            }
+             
             AppDelegate.appDelegate.IsAftermarketSaved = true;
         }
 
@@ -190,46 +195,60 @@ namespace AppraisalApp
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+
+            if(!AppDelegate.appDelegate.IsAftermarketSaved){
+                Btn_SaveAfterMarket.Title = "Next";
+            }else{
+                Btn_SaveAfterMarket.Title = "Save";
+            }
+
             this.masterAMFO.Hidden = false;
             MasterAdditionalAMFO.Hidden = true;
-            AppDelegate.appDelegate.afterMarketOptions = ServiceFactory.getWebServiceHandle().GetAltenateFactoryOptions(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, AppDelegate.appDelegate.prospectId);
-            int y = 0;
-            foreach (var option in AppDelegate.appDelegate.afterMarketOptions.sonicAfterMarketList)
-            {
-                UISwitch switchele = new UISwitch();
-                switchele.On = Convert.ToBoolean(option.Is_AfterMarketOption_Select);
-                switchele.Tag = option.AfterMarketOptionId;
-                switchele.ValueChanged += Switchele_ValueChanged;
-                UILabel label = new UILabel();
-                switchele.Frame = new CGRect(20, y + 33, UIScreen.MainScreen.Bounds.Width, 100);
-                label.Frame = new CGRect(80, y, UIScreen.MainScreen.Bounds.Width, 100);
-                y = y + 50;
-                label.UserInteractionEnabled = true;
-                label.Text = option.Description;
-                AMFO.AddSubview(switchele);
-                AMFO.AddSubview(label);
+            try{
+                AppDelegate.appDelegate.afterMarketOptions = ServiceFactory.getWebServiceHandle().GetAltenateFactoryOptions(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, AppDelegate.appDelegate.prospectId);
+                int y = 0;
+                foreach (var option in AppDelegate.appDelegate.afterMarketOptions.sonicAfterMarketList)
+                {
+                    UISwitch switchele = new UISwitch();
+                    switchele.On = Convert.ToBoolean(option.Is_AfterMarketOption_Select);
+                    switchele.Tag = option.AfterMarketOptionId;
+                    switchele.ValueChanged += Switchele_ValueChanged;
+                    UILabel label = new UILabel();
+                    switchele.Frame = new CGRect(20, y + 33, UIScreen.MainScreen.Bounds.Width, 100);
+                    label.Frame = new CGRect(80, y, UIScreen.MainScreen.Bounds.Width, 100);
+                    y = y + 50;
+                    label.UserInteractionEnabled = true;
+                    label.Text = option.Description;
+                    AMFO.AddSubview(switchele);
+                    AMFO.AddSubview(label);
 
+                }
+                var width = View.Bounds.Width;
+                var height = View.Bounds.Height;
+
+                table = new UITableView(new CGRect(0, 0, width, height));
+                table.AutoresizingMask = UIViewAutoresizing.All;
+
+                List<string> tableItems = new List<string>();
+
+                foreach (var option in AppDelegate.appDelegate.afterMarketOptions.aftermarketQuestions.data)
+                {
+
+                    string str = option.Caption;
+                    tableItems.Add(str);
+
+                }
+                table.Source = new FactoryOptionSource(tableItems.ToArray(), this);
+                AdditionAMFO.AddSubview(table);
+
+                AdditionSegment.SelectedSegment = 1;
+                AdditionAMFO.Hidden = true;
+
+            }catch(Exception exc){
+                Debug.WriteLine("Exception occured :: " + exc.Message);
             }
-            var width = View.Bounds.Width;
-            var height = View.Bounds.Height;
 
-            table = new UITableView(new CGRect(0, 0, width, height));
-            table.AutoresizingMask = UIViewAutoresizing.All;
 
-            List<string> tableItems = new List<string>();
-
-            foreach (var option in AppDelegate.appDelegate.afterMarketOptions.aftermarketQuestions.data)
-            {
-
-                string str = option.Caption;
-                tableItems.Add(str);
-
-            }
-            table.Source = new FactoryOptionSource(tableItems.ToArray(), this);
-            AdditionAMFO.AddSubview(table);
-
-            AdditionSegment.SelectedSegment = 1;
-            AdditionAMFO.Hidden = true;
         }
     }
 

@@ -32,11 +32,15 @@ namespace ExtAppraisalApp
                     masterViewController = (MasterViewController)((UINavigationController)SplitViewController.ViewControllers[0]).TopViewController;
             }
 
-            ViewWorker viewWorker = new ViewWorker();
-            viewWorker.WorkerDelegate = (ExtAppraisalApp.Utilities.WorkerDelegateInterface)masterViewController;
-            viewWorker.PerformNavigation(3);
-            viewWorker.ShowPartialDoneImg(3);
-            viewWorker.ShowDoneImg(2);
+            if(!AppDelegate.appDelegate.IsFactorySaved){
+                ViewWorker viewWorker = new ViewWorker();
+                viewWorker.WorkerDelegate = (ExtAppraisalApp.Utilities.WorkerDelegateInterface)masterViewController;
+                viewWorker.PerformNavigation(3);
+                viewWorker.ShowPartialDoneImg(3);
+                viewWorker.ShowDoneImg(2);
+            }else{
+                this.PerformSegue("summarySegue", this);
+            }
 
             AppDelegate.appDelegate.IsFactorySaved = true;
 
@@ -51,9 +55,14 @@ namespace ExtAppraisalApp
         public override void ViewDidLoad()
         {
 
-       
-
             base.ViewDidLoad();
+
+            if(!AppDelegate.appDelegate.IsFactorySaved){
+                BtnSave.Title = "Next";
+            }else{
+                BtnSave.Title = "Save";
+            }
+
             var width = View.Bounds.Width;
             var height = View.Bounds.Height;
 
@@ -71,9 +80,6 @@ namespace ExtAppraisalApp
           
             table.Source = new TableSource(tableItems.ToArray(), this);
             Add(table);
-
-
-
 
         }
 

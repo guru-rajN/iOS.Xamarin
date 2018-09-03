@@ -1,10 +1,15 @@
 ﻿<Properties StartupConfiguration="{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="ExtAppraisalApp Status">
     <Files>
-      <File FileName="AppraisalApp/Controllers/LoginViewController.cs" Line="91" Column="18" />
-      <File FileName="AppraisalApp/Controllers/DetailViewController.cs" Line="29" Column="40" />
-      <File FileName="AppraisalApp/Controllers/MasterViewController.cs" Line="22" Column="39" />
-      <File FileName="AppraisalApp/Controllers/AfterMarketViewController.cs" Line="219" Column="58" />
+      <File FileName="AppraisalApp/Controllers/LoginViewController.cs" Line="118" Column="47" />
+      <File FileName="AppraisalApp/Controllers/DetailViewController.cs" Line="644" Column="39" />
+      <File FileName="AppraisalApp/Controllers/MasterViewController.cs" Line="139" Column="85" />
+      <File FileName="AppraisalApp/Controllers/AfterMarketViewController.cs" Line="186" Column="149" />
+      <File FileName="AppraisalApp/AppDelegate.cs" Line="67" Column="45" />
+      <File FileName="AppraisalApp/Controllers/FactoryOptionViewController.cs" Line="42" Column="57" />
+      <File FileName="AppraisalApp/Controllers/HistoryViewController.cs" Line="259" Column="65" />
+      <File FileName="AppraisalApp/Controllers/ReconditionViewController.cs" Line="148" Column="17" />
+      <File FileName="AppraisalApp/Controllers/PhotoViewController.cs" Line="382" Column="45" />
       <File FileName="ExtAppraisalApp Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
@@ -15,6 +20,6 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="../../../AppraisalApp/Controllers/DecodeViewController.cs" line="80" offsetX="784" offsetY="1185" expression="apprrequest.VIN" liveUpdate="True" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
-  <MonoDevelop.Ide.ItemProperties.ExtAppraisalApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.3B2300C8-F0EC-4B96-B090-BFE6A8AA2D42" />
+  <MonoDevelop.Ide.ItemProperties.ExtAppraisalApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.CBFD621A-3810-4A32-BA93-B050216539BB" />
   <MultiItemStartupConfigurations />
 </Properties>

@@ -124,7 +124,7 @@ namespace ExtAppraisalApp
                 }
                 else
                 {
-                    Utility.ShowLoadingIndicator(this.View, "Fetching ...", true);
+                    Utility.ShowLoadingIndicator(this.View, "Decoding VIN", true);
                     CallWebservice(txtVin.Text,AppDelegate.appDelegate.storeId,Convert.ToInt32(txtMileage.Text), "5A9C9038-DDC6-4BBE-8256-675F91D6B5B7",txtFirstName.Text,txtLastName.Text,txtEmail.Text,txtPhone.Text);
                 }
 

@@ -6,10 +6,11 @@ using Foundation;
 using CoreGraphics;
 using ExtAppraisalApp.Services;
 using ExtAppraisalApp.Utilities;
+using System.Diagnostics;
 
 namespace ExtAppraisalApp
 {
-    public partial class MasterViewController : UITableViewController , WorkerDelegateInterface
+    public partial class MasterViewController : UITableViewController, WorkerDelegateInterface
     {
 
         public DetailViewController DetailViewController { get; set; }
@@ -19,16 +20,12 @@ namespace ExtAppraisalApp
             // Note: this .ctor should not contain any initialization logic.
         }
 
-        private int rowSelectionIndex;
-
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 
-            Title = "1999 Chevrolet";
 
-
-            TableView.TableFooterView = new UIView(new CGRect(0,0,0,0));
+            TableView.TableFooterView = new UIView(new CGRect(0, 0, 0, 0));
 
             InfoDoneImg.Hidden = true;
             FactoryOptionsDoneImg.Hidden = true;
@@ -37,12 +34,42 @@ namespace ExtAppraisalApp
             ReconditionsDoneImg.Hidden = true;
             PhotosDoneImg.Hidden = true;
 
-
+            NSIndexPath path = NSIndexPath.FromRowSection(0, 0);
+            this.TableView.SelectRow(path, true, UITableViewScrollPosition.None);
         }
 
         public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
         {
             Console.WriteLine("row selected :: " + indexPath.Row);
+
+        }
+
+        public override NSIndexPath WillSelectRow(UITableView tableView, NSIndexPath indexPath)
+        {
+            //RowSelectedIndexPath = this.TableView.IndexPathForSelectedRow;
+
+            if (indexPath.Row == 1 && !AppDelegate.appDelegate.IsFactorySaved)
+            {
+                return null;
+            }
+            else if (indexPath.Row == 2 && !AppDelegate.appDelegate.IsAftermarketSaved)
+            {
+                return null;
+            }
+            else if (indexPath.Row == 3 && !AppDelegate.appDelegate.IsHistorySaved)
+            {
+                return null;
+            }
+            else if (indexPath.Row == 4 && !AppDelegate.appDelegate.IsReconditionsSaved)
+            {
+                return null;
+            }
+            else if (indexPath.Row == 5 && !AppDelegate.appDelegate.IsPhotosSaved)
+            {
+                return null;
+            }
+
+            return indexPath;
         }
 
         public override void ViewWillAppear(bool animated)
@@ -59,25 +86,31 @@ namespace ExtAppraisalApp
 
         public override bool ShouldPerformSegue(string segueIdentifier, NSObject sender)
         {
-            if(segueIdentifier == "infoDetail" ){
+            if (segueIdentifier == "infoDetail")
+            {
 
-            }else if(segueIdentifier == "factoryDetail" && !AppDelegate.appDelegate.IsFactorySaved){
-                return false;
-                
-            }else if (segueIdentifier == "AfterMarketSegue" && !AppDelegate.appDelegate.IsAftermarketSaved)
+            }
+            else if (segueIdentifier == "factoryDetail" && !AppDelegate.appDelegate.IsFactorySaved)
             {
                 return false;
-            }else if (segueIdentifier == "historyDetails" && !AppDelegate.appDelegate.IsHistorySaved)
-            {
-                return false;
-            }else if (segueIdentifier == "reconditionDetails" && !AppDelegate.appDelegate.IsReconditionsSaved)
-            {
-                return false;
-            }else if (segueIdentifier == "photoDetails" && !AppDelegate.appDelegate.IsPhotosSaved)
+
+            }
+            else if (segueIdentifier == "AfterMarketSegue" && !AppDelegate.appDelegate.IsAftermarketSaved)
             {
                 return false;
             }
-
+            else if (segueIdentifier == "historyDetails" && !AppDelegate.appDelegate.IsHistorySaved)
+            {
+                return false;
+            }
+            else if (segueIdentifier == "reconditionDetails" && !AppDelegate.appDelegate.IsReconditionsSaved)
+            {
+                return false;
+            }
+            else if (segueIdentifier == "photoDetails" && !AppDelegate.appDelegate.IsPhotosSaved)
+            {
+                return false;
+            }
             return true;
 
         }
@@ -115,28 +148,37 @@ namespace ExtAppraisalApp
 
         public void performNavigate(int index)
         {
-            rowSelectionIndex = index;
-            switch(index){
-                case 1 :
+            NSIndexPath path = NSIndexPath.FromRowSection((index - 1), 0);
+            this.TableView.SelectRow(path, true, UITableViewScrollPosition.None);
+            switch (index)
+            {
+                case 1:
                     this.PerformSegue("infoDetail", this);
+                    this.TableView.AllowsSelection = true;
                     break;
                 case 2:
                     this.PerformSegue("factoryDetail", this);
+                    this.TableView.AllowsSelection = true;
                     break;
                 case 3:
                     this.PerformSegue("AfterMarketSegue", this);
+                    this.TableView.AllowsSelection = true;
                     break;
                 case 4:
                     this.PerformSegue("historyDetails", this);
+                    this.TableView.AllowsSelection = true;
                     break;
                 case 5:
                     this.PerformSegue("reconditionDetails", this);
+                    this.TableView.AllowsSelection = true;
                     break;
                 case 6:
                     this.PerformSegue("photoDetails", this);
+                    this.TableView.AllowsSelection = true;
                     break;
                 default:
                     this.PerformSegue("infoDetail", this);
+                    this.TableView.AllowsSelection = true;
                     break;
             }
 
@@ -144,7 +186,8 @@ namespace ExtAppraisalApp
 
         public void ShowDoneIcon(int index)
         {
-            switch (index){
+            switch (index)
+            {
                 case 1:
                     InfoDoneImg.Hidden = false;
                     InfoDoneImg.Image = UIImage.FromBundle("done.png");
@@ -175,32 +218,33 @@ namespace ExtAppraisalApp
             }
         }
 
-        public void ShowPartialDoneIcon(int index){
+        public void ShowPartialDoneIcon(int index)
+        {
             switch (index)
             {
                 case 1:
                     InfoDoneImg.Hidden = false;
-                    InfoDoneImg.Image = UIImage.FromBundle("blur_done.png");
+                    InfoDoneImg.Image = UIImage.FromBundle("partial_done.png");
                     break;
                 case 2:
                     FactoryOptionsDoneImg.Hidden = false;
-                    FactoryOptionsDoneImg.Image = UIImage.FromBundle("blur_done.png");
+                    FactoryOptionsDoneImg.Image = UIImage.FromBundle("partial_done.png");
                     break;
                 case 3:
                     AfterMarketDoneImg.Hidden = false;
-                    AfterMarketDoneImg.Image = UIImage.FromBundle("blur_done.png");
+                    AfterMarketDoneImg.Image = UIImage.FromBundle("partial_done.png");
                     break;
                 case 4:
                     HistoryDoneImg.Hidden = false;
-                    HistoryDoneImg.Image = UIImage.FromBundle("blur_done.png");
+                    HistoryDoneImg.Image = UIImage.FromBundle("partial_done.png");
                     break;
                 case 5:
                     ReconditionsDoneImg.Hidden = false;
-                    ReconditionsDoneImg.Image = UIImage.FromBundle("blur_done.png");
+                    ReconditionsDoneImg.Image = UIImage.FromBundle("partial_done.png");
                     break;
                 case 6:
                     PhotosDoneImg.Hidden = false;
-                    PhotosDoneImg.Image = UIImage.FromBundle("blur_done.png");
+                    PhotosDoneImg.Image = UIImage.FromBundle("partial_done.png");
                     break;
                 default:
                     break;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using CoreGraphics;
 using ExtAppraisalApp.Models;
@@ -64,11 +65,18 @@ namespace ExtAppraisalApp
             // Update the user interface for the detail item
             DetailTableView.TableFooterView = new UIView(new CGRect(0, 0, 0, 0));
 
-
+            if (AppDelegate.appDelegate.IsInfoSaved)
+            {
+                DetailSaveBtn.Title = "Save";
+            }
+            else
+            {
+                DetailSaveBtn.Title = "Next";
+            }
 
             if (null == masterViewController)
             {
-                if(!UserInterfaceIdiomIsPhone)
+                if (!UserInterfaceIdiomIsPhone)
                     masterViewController = (MasterViewController)((UINavigationController)SplitViewController.ViewControllers[0]).TopViewController;
             }
 
@@ -77,204 +85,210 @@ namespace ExtAppraisalApp
 
             worker.WorkerDelegate = masterViewController;
 
-            worker.ShowPartialDoneImg( 1);
+            worker.ShowPartialDoneImg(1);
 
+            try
+            {
 
-            if (AppDelegate.appDelegate.cacheVehicleDetails != null)
-            {
-                vehicleDetails = AppDelegate.appDelegate.cacheVehicleDetails;
-            }
-            else
-            {
-                vehicleDetails = GetVehicleData();// get vehicle details service
-                AppDelegate.appDelegate.cacheVehicleDetails = vehicleDetails;
-            }
-
-            if (null != vehicleDetails)
-            {
-                if (AppDelegate.appDelegate.cacheDecodeVinDetails != null)
+                if (AppDelegate.appDelegate.cacheVehicleDetails != null)
                 {
-                    decodeVinDetails = AppDelegate.appDelegate.cacheDecodeVinDetails;
+                    vehicleDetails = AppDelegate.appDelegate.cacheVehicleDetails;
                 }
                 else
                 {
-                    if (vehicleDetails.InvtrType.Equals("Used"))
-                    {
-                        decodeVinDetails = DecodeVin(vehicleDetails.VIN, (int)vehicleDetails.Mileage, vehicleDetails.StoreID, 20);
-                    }
-                    else
-                    {
-                        decodeVinDetails = DecodeVin(vehicleDetails.VIN, AppDelegate.appDelegate.mileage, vehicleDetails.StoreID, 10);
-
-                    }
-                    AppDelegate.appDelegate.cacheDecodeVinDetails = decodeVinDetails;
+                    vehicleDetails = GetVehicleData();// get vehicle details service
+                    AppDelegate.appDelegate.cacheVehicleDetails = vehicleDetails;
                 }
-
-
 
                 if (null != vehicleDetails)
                 {
-                    vinNumber.Text = vehicleDetails.VIN;
-                    yearValue.Text = vehicleDetails.Year.ToString();
-                    makeValue.Text = vehicleDetails.Make;
-
-                    // Display Year & Make in MasterView
-                    //masterViewController =MasterViewController;
-                   // masterViewController.Title = vehicleDetails.Year.ToString() + " " + vehicleDetails.Make;
-
-                    mileageValue.Text = AppDelegate.appDelegate.mileage.ToString();
-                    vehicleDetails.Mileage = AppDelegate.appDelegate.mileage;
-
-                    SelectedTrim = vehicleDetails.Trim;
-                    SelectedTrimId = vehicleDetails.KBBTrimId.ToString();
-
-                    SelectedModel = vehicleDetails.Model;
-                    SelectedModelId = vehicleDetails.KBBModelId.ToString();
-
-
-                    if (string.IsNullOrEmpty(vehicleDetails.BodyStyle))
+                    if (AppDelegate.appDelegate.cacheDecodeVinDetails != null)
                     {
-                        bodyStyleValue.Text = REQUIRED;
+                        decodeVinDetails = AppDelegate.appDelegate.cacheDecodeVinDetails;
                     }
                     else
                     {
-                        bodyStyleValue.Text = vehicleDetails.BodyStyle;
-                    }
-                    if (string.IsNullOrEmpty(vehicleDetails.Odometer))
-                    {
-                        odometerValue.Text = REQUIRED;
-                    }
-                    else
-                    {
-                        odometerValue.Text = vehicleDetails.Odometer;
-                    }
-                    if (string.IsNullOrEmpty(vehicleDetails.IntColor))
-                    {
-                        interiorColorValue.Text = REQUIRED;
-                    }
-                    else
-                    {
-                        interiorColorValue.Text = vehicleDetails.IntColor;
-                    }
-                    if (string.IsNullOrEmpty(vehicleDetails.Transmission))
-                    {
-                        transmissionValue.Text = REQUIRED;
-                    }
-                    else
-                    {
-                        transmissionValue.Text = vehicleDetails.Transmission;
-
-                    }
-
-                    if (string.IsNullOrEmpty(vehicleDetails.Trim))
-                    {
-                        trimValue.Text = REQUIRED;
-                    }
-                    else
-                    {
-                        trimValue.Text = vehicleDetails.Trim;
-                    }
-                    if (string.IsNullOrEmpty(vehicleDetails.ExtColor))
-                    {
-                        exteriorColorValue.Text = REQUIRED;
-                    }
-                    else
-                    {
-                        exteriorColorValue.Text = vehicleDetails.ExtColor;
-                    }
-                    if (string.IsNullOrEmpty(vehicleDetails.IntrType))
-                    {
-                        interiorTypeValue.Text = REQUIRED;
-                    }
-                    else
-                    {
-                        interiorTypeValue.Text = vehicleDetails.IntrType;
-                    }
-
-                    // if both drive train and transmission is null, then engine should always be null , should not show Chrome engine
-                    if (string.IsNullOrEmpty(vehicleDetails.DriveTrain) && string.IsNullOrEmpty(vehicleDetails.Transmission))
-                    {
-                        vehicleDetails.Engine = null;
-                    }
-
-                    if (string.IsNullOrEmpty(vehicleDetails.Engine))
-                    {
-                        engineValue.Text = REQUIRED;
-                    }
-                    else
-                    {
-                        engineValue.Text = vehicleDetails.Engine;
-                    }
-                    if (string.IsNullOrEmpty(vehicleDetails.DriveTrain))
-                    {
-                        drivetrainValue.Text = REQUIRED;
-                    }
-                    else
-                    {
-                        drivetrainValue.Text = vehicleDetails.DriveTrain;
-                    }
-
-                    mileageValue.TextColor = UIColor.Black;
-
-                    if (null != decodeVinDetails.KBBVinVehicleDetails.data)
-                        vehicleDetails.KBBMakeId = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[0].make.makeId;
-
-                    // First time load check if model is multiple(null) or single
-                    if (decodeVinDetails.KBBVinVehicleDetails.data != null)
-                    {
-                        decodeVinDetails.DecodeVinVehicleDetails.Model = new List<IDValues>();
-                        if (decodeVinDetails.KBBVinVehicleDetails.data.possibilities.Count > 1)
+                        if (vehicleDetails.InvtrType.Equals("Used"))
                         {
-                            modelValueMultiple = true;
-                            if (string.IsNullOrEmpty(vehicleDetails.Model))
+                            decodeVinDetails = DecodeVin(vehicleDetails.VIN, (int)vehicleDetails.Mileage, vehicleDetails.StoreID, 20);
+                        }
+                        else
+                        {
+                            decodeVinDetails = DecodeVin(vehicleDetails.VIN, AppDelegate.appDelegate.mileage, vehicleDetails.StoreID, 10);
+
+                        }
+                        AppDelegate.appDelegate.cacheDecodeVinDetails = decodeVinDetails;
+                    }
+
+
+
+                    if (null != vehicleDetails)
+                    {
+                        vinNumber.Text = vehicleDetails.VIN;
+                        yearValue.Text = vehicleDetails.Year.ToString();
+                        makeValue.Text = vehicleDetails.Make;
+
+                        // Display Year & Make in MasterView
+                        masterViewController.Title = vehicleDetails.Year.ToString() + " " + vehicleDetails.Make;
+
+                        mileageValue.Text = AppDelegate.appDelegate.mileage.ToString();
+                        vehicleDetails.Mileage = AppDelegate.appDelegate.mileage;
+
+                        SelectedTrim = vehicleDetails.Trim;
+                        SelectedTrimId = vehicleDetails.KBBTrimId.ToString();
+
+                        SelectedModel = vehicleDetails.Model;
+                        SelectedModelId = vehicleDetails.KBBModelId.ToString();
+
+
+                        if (string.IsNullOrEmpty(vehicleDetails.BodyStyle))
+                        {
+                            bodyStyleValue.Text = REQUIRED;
+                        }
+                        else
+                        {
+                            bodyStyleValue.Text = vehicleDetails.BodyStyle;
+                        }
+                        if (string.IsNullOrEmpty(vehicleDetails.Odometer))
+                        {
+                            odometerValue.Text = REQUIRED;
+                        }
+                        else
+                        {
+                            odometerValue.Text = vehicleDetails.Odometer;
+                        }
+                        if (string.IsNullOrEmpty(vehicleDetails.IntColor))
+                        {
+                            interiorColorValue.Text = REQUIRED;
+                        }
+                        else
+                        {
+                            interiorColorValue.Text = vehicleDetails.IntColor;
+                        }
+                        if (string.IsNullOrEmpty(vehicleDetails.Transmission))
+                        {
+                            transmissionValue.Text = REQUIRED;
+                        }
+                        else
+                        {
+                            transmissionValue.Text = vehicleDetails.Transmission;
+
+                        }
+
+                        if (string.IsNullOrEmpty(vehicleDetails.Trim))
+                        {
+                            trimValue.Text = REQUIRED;
+                        }
+                        else
+                        {
+                            trimValue.Text = vehicleDetails.Trim;
+                        }
+                        if (string.IsNullOrEmpty(vehicleDetails.ExtColor))
+                        {
+                            exteriorColorValue.Text = REQUIRED;
+                        }
+                        else
+                        {
+                            exteriorColorValue.Text = vehicleDetails.ExtColor;
+                        }
+                        if (string.IsNullOrEmpty(vehicleDetails.IntrType))
+                        {
+                            interiorTypeValue.Text = REQUIRED;
+                        }
+                        else
+                        {
+                            interiorTypeValue.Text = vehicleDetails.IntrType;
+                        }
+
+                        // if both drive train and transmission is null, then engine should always be null , should not show Chrome engine
+                        if (string.IsNullOrEmpty(vehicleDetails.DriveTrain) && string.IsNullOrEmpty(vehicleDetails.Transmission))
+                        {
+                            vehicleDetails.Engine = null;
+                        }
+
+                        if (string.IsNullOrEmpty(vehicleDetails.Engine))
+                        {
+                            engineValue.Text = REQUIRED;
+                        }
+                        else
+                        {
+                            engineValue.Text = vehicleDetails.Engine;
+                        }
+                        if (string.IsNullOrEmpty(vehicleDetails.DriveTrain))
+                        {
+                            drivetrainValue.Text = REQUIRED;
+                        }
+                        else
+                        {
+                            drivetrainValue.Text = vehicleDetails.DriveTrain;
+                        }
+
+                        mileageValue.TextColor = UIColor.Black;
+
+                        if (null != decodeVinDetails.KBBVinVehicleDetails.data)
+                            vehicleDetails.KBBMakeId = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[0].make.makeId;
+
+                        // First time load check if model is multiple(null) or single
+                        if (decodeVinDetails.KBBVinVehicleDetails.data != null)
+                        {
+                            decodeVinDetails.DecodeVinVehicleDetails.Model = new List<IDValues>();
+                            if (decodeVinDetails.KBBVinVehicleDetails.data.possibilities.Count > 1)
                             {
-                                modelValue.Text = REQUIRED;
+                                modelValueMultiple = true;
+                                if (string.IsNullOrEmpty(vehicleDetails.Model))
+                                {
+                                    modelValue.Text = REQUIRED;
+                                }
+                                else
+                                {
+                                    modelValue.Text = vehicleDetails.Model;
+                                }
+
+                                for (int i = 0; i < decodeVinDetails.KBBVinVehicleDetails.data.possibilities.Count; i++)
+                                {
+                                    var idvalues = new IDValues();
+                                    idvalues.Value = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[i].model.displayName;
+                                    idvalues.ID = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[i].model.modelId.ToString();
+                                    decodeVinDetails.DecodeVinVehicleDetails.Model.Add(idvalues);
+
+                                }
+
+                                removeDuplicateModels(decodeVinDetails.DecodeVinVehicleDetails.Model);
+
+                                if (decodeVinDetails.DecodeVinVehicleDetails.Model.Count == 1)
+                                {
+                                    modelValue.Text = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[0].model.displayName;
+                                    vehicleDetails.Model = modelValue.Text;
+                                    modelValue.TextColor = UIColor.Black;
+                                    vehicleDetails.KBBModelId = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[0].model.modelId;
+                                    LoadTrimList();
+                                }
                             }
-                            else
-                            {
-                                modelValue.Text = vehicleDetails.Model;
-                            }
-
-                            for (int i = 0; i < decodeVinDetails.KBBVinVehicleDetails.data.possibilities.Count; i++)
-                            {
-                                var idvalues = new IDValues();
-                                idvalues.Value = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[i].model.displayName;
-                                idvalues.ID = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[i].model.modelId.ToString();
-                                decodeVinDetails.DecodeVinVehicleDetails.Model.Add(idvalues);
-
-                            }
-
-                            removeDuplicateModels(decodeVinDetails.DecodeVinVehicleDetails.Model);
-
-                            if (decodeVinDetails.DecodeVinVehicleDetails.Model.Count == 1)
+                            else if (decodeVinDetails.KBBVinVehicleDetails.data.possibilities.Count == 1)
                             {
                                 modelValue.Text = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[0].model.displayName;
                                 vehicleDetails.Model = modelValue.Text;
                                 modelValue.TextColor = UIColor.Black;
                                 vehicleDetails.KBBModelId = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[0].model.modelId;
-                                LoadTrimList();
-                            }
-                        }
-                        else if (decodeVinDetails.KBBVinVehicleDetails.data.possibilities.Count == 1)
-                        {
-                            modelValue.Text = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[0].model.displayName;
-                            vehicleDetails.Model = modelValue.Text;
-                            modelValue.TextColor = UIColor.Black;
-                            vehicleDetails.KBBModelId = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[0].model.modelId;
 
-                            trimValue.Text = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[0].trim.displayName;
-                            vehicleDetails.Trim = trimValue.Text;
-                            trimValue.TextColor = UIColor.Black;
-                            vehicleDetails.KBBTrimId = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[0].trim.trimId;
-                            LoadDropdownDataFromTrim(0);
-                            LoadExteriorColorsFromTrim();
+                                trimValue.Text = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[0].trim.displayName;
+                                vehicleDetails.Trim = trimValue.Text;
+                                trimValue.TextColor = UIColor.Black;
+                                vehicleDetails.KBBTrimId = decodeVinDetails.KBBVinVehicleDetails.data.possibilities[0].trim.trimId;
+                                LoadDropdownDataFromTrim(0);
+                                LoadExteriorColorsFromTrim();
+                            }
+
                         }
 
                     }
-
                 }
 
 
+            }
+            catch (Exception exc)
+            {
+                Debug.WriteLine(exc.Message);
             }
 
 
@@ -615,22 +629,7 @@ namespace ExtAppraisalApp
 
         partial void DetailSaveBtn_Activated(UIBarButtonItem sender)
         {
-            //var saveData = CheckAllFieldsData();
-
-            //if (saveData)
-            //{
-            //    DetailViewWorker worker = new DetailViewWorker();
-
-            //    worker.WorkerDelegate = masterViewController;
-            //    worker.UpdateUI(false);
-
-            //    AppDelegate.appDelegate.prospectId = GenerateProspect();
-            //    SaveVehicleDetails(vehicleDetails);
-
-            //    AppDelegate.appDelegate.cacheVehicleDetails = vehicleDetails;
-            //}
-
-            //DetailViewWorker worker = new DetailViewWorker();
+    
             ViewWorker worker = new ViewWorker();
             worker.WorkerDelegate = masterViewController;
             worker.UpdateUI(false);
@@ -639,17 +638,23 @@ namespace ExtAppraisalApp
             SaveVehicleDetails(vehicleDetails);
 
             AppDelegate.appDelegate.cacheVehicleDetails = vehicleDetails;
-            AppDelegate.appDelegate.IsInfoSaved = true;
+           
+            if(!AppDelegate.appDelegate.IsInfoSaved){
+                worker.ShowPartialDoneImg(2);
+                worker.ShowDoneImg(1);
+                worker.PerformNavigation(2); 
+            }else {
+                //this.PerformSegue("summarySegue", this);
+                //PhotoViewController photoViewController = (PhotoViewController)((UINavigationController)SplitViewController.ViewControllers[1]).TopViewController;
+                //photoViewController.PerformSegue("summarySegue", this);
 
-            //Utilities.Utility.ShowToastMessage("Vehicle Appraisal Created");
-            // Show Factory Options
-            //var storyboard = UIStoryboard.FromName("Main", null);
-            //var FactoryOptions = storyboard.InstantiateViewController("FactoryOptionViewController");
-            //this.
-            //this.NavigationController.PushViewController(FactoryOptions, true);
-            worker.ShowPartialDoneImg(2);
-            worker.ShowDoneImg(1);
-            worker.PerformNavigation(2);
+                var storyboard = UIStoryboard.FromName("Main", null);
+                SummaryViewController summaryViewController = (SummaryViewController)storyboard.InstantiateViewController("SummaryViewController");
+                summaryViewController.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
+                summaryViewController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
+                this.NavigationController.PresentViewController(summaryViewController, true, null);
+            }
+            AppDelegate.appDelegate.IsInfoSaved = true;
         }
 
         private bool CheckAllFieldsData()
@@ -1014,55 +1019,5 @@ namespace ExtAppraisalApp
         }
 
     }
-
-    // Delegate methods
-    //public interface DetailViewWorkerDelegate
-    //{
-    //    void UpdateDatas(bool show);
-
-    //    void performNavigate(int index);
-
-    //    void ShowDoneIcon();
-    //}
-
-
-
-    //public class DetailViewWorker
-    //{
-    //    WeakReference<DetailViewWorkerDelegate> _workerDelegate;
-
-    //    public DetailViewWorkerDelegate WorkerDelegate
-    //    {
-    //        get
-    //        {
-    //            DetailViewWorkerDelegate workerDelegate;
-    //            return _workerDelegate.TryGetTarget(out workerDelegate) ? workerDelegate : null;
-    //        }
-    //        set
-    //        {
-    //            _workerDelegate = new WeakReference<DetailViewWorkerDelegate>(value);
-    //        }
-    //    }
-
-    //    public void UpdateUI(bool show)
-    //    {
-    //        Console.WriteLine("Updating UI .. ");
-
-    //        if (_workerDelegate != null)
-    //            WorkerDelegate?.UpdateDatas(show);
-
-    //    }
-
-    //    public void PerformNavigation(int indexPath){
-    //        if (_workerDelegate != null)
-    //            WorkerDelegate?.performNavigate(indexPath);
-    //    }
-
-    //    public void ShowDoneImg(){
-    //        if (_workerDelegate != null)
-    //            WorkerDelegate?.ShowDoneIcon();
-    //    }
-    //}
-
 }
 

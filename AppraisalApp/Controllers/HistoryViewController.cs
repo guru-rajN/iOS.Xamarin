@@ -61,13 +61,7 @@ namespace ExtAppraisalApp
 
             }
         }
-        //partial void Label2_Change(UITextField sender)
-        //{
 
-        //    label1.BackgroundColor = UIColor.White;
-        //    label2.BackgroundColor = UIColor.White;
-        //    label3.TextColor = UIColor.Black;//Label 2 highlight with red color
-        //}
 
         partial void label2_Change(UITextField sender)
         {
@@ -255,12 +249,15 @@ namespace ExtAppraisalApp
                         if (!UserInterfaceIdiomIsPhone)
                             masterViewController = (MasterViewController)((UINavigationController)SplitViewController.ViewControllers[0]).TopViewController;
                     }
-
-                    ViewWorker viewWorker = new ViewWorker();
-                    viewWorker.WorkerDelegate = (ExtAppraisalApp.Utilities.WorkerDelegateInterface)masterViewController;
-                    viewWorker.PerformNavigation(5);
-                    viewWorker.ShowPartialDoneImg(5);
-                    viewWorker.ShowDoneImg(4);
+                    if(!AppDelegate.appDelegate.IsHistorySaved){
+                        ViewWorker viewWorker = new ViewWorker();
+                        viewWorker.WorkerDelegate = (ExtAppraisalApp.Utilities.WorkerDelegateInterface)masterViewController;
+                        viewWorker.PerformNavigation(5);
+                        viewWorker.ShowPartialDoneImg(5);
+                        viewWorker.ShowDoneImg(4);
+                    }else{
+                        this.PerformSegue("summarySegue", this);
+                    }
 
                     AppDelegate.appDelegate.IsHistorySaved = true;
                 }
@@ -363,6 +360,13 @@ namespace ExtAppraisalApp
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+
+            if(!AppDelegate.appDelegate.IsHistorySaved){
+                Save.Title = "Next";
+            }else{
+                Save.Title = "Save";
+            }
+
             label1.UserInteractionEnabled = false;
             Segment1.SelectedSegment = -1;
             Segment2.SelectedSegment = -1;

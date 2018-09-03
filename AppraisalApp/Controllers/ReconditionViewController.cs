@@ -153,11 +153,15 @@ namespace ExtAppraisalApp
                         masterViewController = (MasterViewController)((UINavigationController)SplitViewController.ViewControllers[0]).TopViewController;
                 }
 
-                ViewWorker viewWorker = new ViewWorker();
-                viewWorker.WorkerDelegate = (ExtAppraisalApp.Utilities.WorkerDelegateInterface)masterViewController;
-                viewWorker.PerformNavigation(6);
-                viewWorker.ShowPartialDoneImg(6);
-                viewWorker.ShowDoneImg(5);
+                if(!AppDelegate.appDelegate.IsReconditionsSaved){
+                    ViewWorker viewWorker = new ViewWorker();
+                    viewWorker.WorkerDelegate = (ExtAppraisalApp.Utilities.WorkerDelegateInterface)masterViewController;
+                    viewWorker.PerformNavigation(6);
+                    viewWorker.ShowPartialDoneImg(6);
+                    viewWorker.ShowDoneImg(5);  
+                }else{
+                    this.PerformSegue("summarySegue", this);
+                }
 
                 AppDelegate.appDelegate.IsReconditionsSaved = true;
             }
@@ -386,6 +390,12 @@ namespace ExtAppraisalApp
         {
             base.ViewDidLoad();
             ReconditionTableView.TableFooterView = new UIView(new CGRect(0, 0, 0, 0));
+
+            if(!AppDelegate.appDelegate.IsReconditionsSaved){
+                ReconditionSaveBtn.Title = "Next";
+            }else{
+                ReconditionSaveBtn.Title = "Save";
+            }
 
             string segmentID = ReconditionSegment.SelectedSegment.ToString();
             setObjectRecon(segmentID);

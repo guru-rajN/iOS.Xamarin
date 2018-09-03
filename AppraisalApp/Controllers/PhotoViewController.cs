@@ -78,9 +78,11 @@ namespace ExtAppraisalApp
                         masterViewController = (MasterViewController)((UINavigationController)SplitViewController.ViewControllers[0]).TopViewController;
                 }
 
-                ViewWorker viewWorker = new ViewWorker();
-                viewWorker.WorkerDelegate = (ExtAppraisalApp.Utilities.WorkerDelegateInterface)masterViewController;
-                viewWorker.ShowDoneImg(6);
+                if(!AppDelegate.appDelegate.IsPhotosSaved){
+                    ViewWorker viewWorker = new ViewWorker();
+                    viewWorker.WorkerDelegate = (ExtAppraisalApp.Utilities.WorkerDelegateInterface)masterViewController;
+                    viewWorker.ShowDoneImg(6); 
+                }
 
                 AppDelegate.appDelegate.IsPhotosSaved = true;
 
@@ -383,8 +385,10 @@ namespace ExtAppraisalApp
                     });
 
                     imagePicker.DismissModalViewController(true);
+                    //Utility.ShowLoadingIndicator(this.View, "Uploading", true);
                     Amazon.Aws amazonS3 = new Amazon.Aws();
                     Task.Run(() => amazonS3.UploadFile(pngFilename));
+                    //Utility.HideLoadingIndicator(this.View);
                     ActivityLoader();
                 }
             }
@@ -444,6 +448,12 @@ namespace ExtAppraisalApp
                 Rim.Layer.BorderColor = UIColor.Black.CGColor;
                 VIN.Layer.BorderWidth = 2.0f;
                 VIN.Layer.BorderColor = UIColor.Black.CGColor;
+
+                if(!AppDelegate.appDelegate.IsPhotosSaved){
+                    PhotosSaveBtn.Title = "Next";
+                }else{
+                    PhotosSaveBtn.Title = "Save";
+                }
 
             }
 
