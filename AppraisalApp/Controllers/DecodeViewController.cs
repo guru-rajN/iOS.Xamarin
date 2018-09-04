@@ -66,75 +66,9 @@ namespace ExtAppraisalApp
                 DoneDecodeVin();
         }
 
-        public void DoneDecodeVin()
-        {
-            try
-            {
-                string email = txtEmail.Text;
-                string vin = txtVin.Text;
-                string firstname = txtFirstName.Text;
-                string lastname = txtLastName.Text;
-                string mileage = txtMileage.Text;
-                string phone = txtPhone.Text;
+        public void DoneDecodeVin()         {             try             {                 string email = txtEmail.Text;                 string vin = txtVin.Text;                 string firstname = txtFirstName.Text;                 string lastname = txtLastName.Text;                 string mileage = txtMileage.Text;                 string phone = txtPhone.Text;
 
-                if (vin == "")
-                {
-
-                    Utilities.Utility.ShowAlert("First Name", "A username is required.!!", "OK");
-
-                }
-                else if (mileage == "")
-                {
-                    Utilities.Utility.ShowAlert("Mileagge", "A mileagge is required.!!", "OK");
-
-                }
-                else if (firstname == "")
-                {
-                    Utilities.Utility.ShowAlert("First Name", "A firstname is required.!!", "OK");
-
-                }
-                else if (!Regex.Match(firstname, @"^[a-zA-Z]*$").Success)
-                {
-                    Utilities.Utility.ShowAlert("First Name", "Your FirstName (" + firstname + ") is Incorrect", "OK");
-                }
-                else if (!Regex.Match(lastname, @"^[a-zA-Z]*$").Success)
-                {
-                    Utilities.Utility.ShowAlert("Last Name", "Your LastName (" + lastname + ") is Incorrect", "OK");
-
-                }
-                else if (lastname == "")
-                {
-                    Utilities.Utility.ShowAlert("Last Name", "A last is required.!!", "OK");
-
-                }
-                else if (!Regex.Match(vin, (@"^[A-HJ-NPR-Z0-9]{17}$")).Success)
-                {
-                    Utilities.Utility.ShowAlert("Vin", "Your Vin (" + vin + ") is Incorrect", "OK");
-
-                }
-                else if (!Regex.Match(email, (@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$")).Success)
-                {
-                    Utilities.Utility.ShowAlert("Email", "Your email (" + email + ") is Incorrect", "OK");
-
-                }
-                else if (phone.Length != 10)
-                {
-                    Utilities.Utility.ShowAlert("Phone", "Your phone (" + phone + ") is Incorrect", "OK");
-
-                }
-                else
-                {
-                    Utility.ShowLoadingIndicator(this.View, "Decoding VIN", true);
-                    CallWebservice(txtVin.Text,AppDelegate.appDelegate.storeId,Convert.ToInt32(txtMileage.Text), "5A9C9038-DDC6-4BBE-8256-675F91D6B5B7",txtFirstName.Text,txtLastName.Text,txtEmail.Text,txtPhone.Text);
-                }
-
-            }
-            catch (Exception exc)
-            {
-                System.Diagnostics.Debug.WriteLine("Exception occured :: " + exc.Message);
-            }
-        }
-
+                txtVin.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);                 txtMileage.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);                 txtFirstName.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);                 txtLastName.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);                 txtEmail.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);                 txtPhone.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);                  if (vin == "")                 {                     //txtVin.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);                     txtVin.TintColor = UIColor.Red;                     //Utilities.Utility.ShowAlert("First Name", "A username is required.!!", "OK");                  }                 else if (mileage == "")                 {                     //txtMileage.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);                     txtMileage.TintColor = UIColor.Red;                      //Utilities.Utility.ShowAlert("Mileagge", "A mileagge is required.!!", "OK");                  }                 else if (firstname == "")                 {                    // txtFirstName.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);                     txtFirstName.TintColor = UIColor.Red;                    // Utilities.Utility.ShowAlert("First Name", "A firstname is required.!!", "OK");                  }                 else if (!Regex.Match(firstname, @"^[a-zA-Z]*$").Success)                 {                    // txtLastName.AttributedPlaceholder = new NSAttributedString("Your FirstName (" + firstname + ") is Incorrect", null, UIColor.Red);                     txtLastName.TintColor = UIColor.Red;                     //Utilities.Utility.ShowAlert("First Name", "Your FirstName (" + firstname + ") is Incorrect", "OK");                 }                 else if (!Regex.Match(lastname, @"^[a-zA-Z]*$").Success)                 {                     //txtLastName.AttributedPlaceholder = new NSAttributedString("Your LastName (" + lastname + ") is Incorrect", null, UIColor.Red);                     txtLastName.TintColor = UIColor.Red;                     //Utilities.Utility.ShowAlert("Last Name", "Your LastName (" + lastname + ") is Incorrect", "OK");                  }                 else if (lastname == "")                 {                     //txtLastName.AttributedPlaceholder = new NSAttributedString("Your LastName is Required", null, UIColor.Red);                     txtLastName.TintColor = UIColor.Red;                    // Utilities.Utility.ShowAlert("Last Name", "A last is required.!!", "OK");                  }                 //else if (!Regex.Match(vin, (@"^[A-HJ-NPR-Z0-9]{17}$")).Success)                 //{                 //    Utilities.Utility.ShowAlert("Vin", "Your Vin (" + vin + ") is Incorrect", "OK");                  //}                 else if (!Regex.Match(email, (@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$")).Success)                 {                     //txtEmail.AttributedPlaceholder = new NSAttributedString("Your email (" + email + ") is Incorrect", null, UIColor.Red);                     txtEmail.TintColor = UIColor.Red;                    // Utilities.Utility.ShowAlert("Email", "Your email (" + email + ") is Incorrect", "OK");                  }                 else if (phone.Length != 10)                 {                     //txtPhone.AttributedPlaceholder = new NSAttributedString("Your Phone (" + phone + ") is Incorrect", null, UIColor.Red);                     txtPhone.TintColor = UIColor.Red;                                  //Utilities.Utility.ShowAlert("Phone", "Your phone (" + phone + ") is Incorrect", "OK");                  }                 else                 {                     Utility.ShowLoadingIndicator(this.View, "Decoding VIN", true);                     CallWebservice(txtVin.Text,AppDelegate.appDelegate.storeId,Convert.ToInt32(txtMileage.Text), "5A9C9038-DDC6-4BBE-8256-675F91D6B5B7",txtFirstName.Text,txtLastName.Text,txtEmail.Text,txtPhone.Text);                 }              }             catch (Exception exc)             {                 System.Diagnostics.Debug.WriteLine("Exception occured :: " + exc.Message);             }         }  
         Task CallWebservice(string Vin, short storeId, int mileage, string ddcuserid,string firstname, string lastname,string email,string phone)
         {
             return Task.Factory.StartNew(() => {
