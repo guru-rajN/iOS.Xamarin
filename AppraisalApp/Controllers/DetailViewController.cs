@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using CoreGraphics;
 using ExtAppraisalApp.Models;
 using ExtAppraisalApp.Services;
@@ -629,34 +630,57 @@ namespace ExtAppraisalApp
 
         partial void DetailSaveBtn_Activated(UIBarButtonItem sender)
         {
-    
+
             ViewWorker worker = new ViewWorker();
             worker.WorkerDelegate = masterViewController;
             worker.UpdateUI(false);
 
-            AppDelegate.appDelegate.prospectId = GenerateProspect();
-            SaveVehicleDetails(vehicleDetails);
+            //Utility.ShowLoadingIndicator(this.View, "", true);
+            SaveVehicleDatas(worker);
 
-            AppDelegate.appDelegate.cacheVehicleDetails = vehicleDetails;
 
-            if(!AppDelegate.appDelegate.IsAllDataSaved){
-                if(!AppDelegate.appDelegate.IsInfoSaved){
-                    worker.ShowPartialDoneImg(2);
-                    worker.ShowDoneImg(1);
-                    worker.PerformNavigation(2);  
-                }else{
-                    worker.PerformNavigation(2);  
+        }
+
+        Task SaveVehicleDatas(ViewWorker worker)
+        {
+            return Task.Factory.StartNew(() => {
+                AppDelegate.appDelegate.prospectId = GenerateProspect();
+                SIMSResponseData responseData = SaveVehicleDetails(vehicleDetails);
+                if (null != responseData)
+                {
+
+                    InvokeOnMainThread(() => {
+                        //Utility.HideLoadingIndicator(this.View);
+
+                        AppDelegate.appDelegate.cacheVehicleDetails = vehicleDetails;
+
+                        if (!AppDelegate.appDelegate.IsAllDataSaved)
+                        {
+                            if (!AppDelegate.appDelegate.IsInfoSaved)
+                            {
+                                worker.ShowPartialDoneImg(2);
+                                worker.ShowDoneImg(1);
+                                worker.PerformNavigation(2);
+                            }
+                            else
+                            {
+                                worker.PerformNavigation(2);
+                            }
+                        }
+                        else
+                        {
+                            var storyboard = UIStoryboard.FromName("Main", null);
+                            SummaryViewController summaryViewController = (SummaryViewController)storyboard.InstantiateViewController("SummaryViewController");
+                            UINavigationController uINavigationController = new UINavigationController(summaryViewController);
+                            uINavigationController.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
+                            uINavigationController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
+                            this.NavigationController.PresentViewController(uINavigationController, true, null);
+                        }
+
+                        AppDelegate.appDelegate.IsInfoSaved = true;
+                    });
                 }
-            }else{
-                var storyboard = UIStoryboard.FromName("Main", null);
-                SummaryViewController summaryViewController = (SummaryViewController)storyboard.InstantiateViewController("SummaryViewController");
-                UINavigationController uINavigationController = new UINavigationController(summaryViewController);
-                uINavigationController.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
-                uINavigationController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
-                this.NavigationController.PresentViewController(uINavigationController, true, null);
-            }
-          
-            AppDelegate.appDelegate.IsInfoSaved = true;
+            });
         }
 
         private bool CheckAllFieldsData()

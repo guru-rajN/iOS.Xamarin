@@ -31,7 +31,7 @@ namespace ExtAppraisalApp
 
         public override void ViewDidLoad()
         {
-            
+
             // hide keyboard on touch outside area
             var g = new UITapGestureRecognizer(() => View.EndEditing(true));
             g.CancelsTouchesInView = false; //for iOS5
@@ -51,7 +51,7 @@ namespace ExtAppraisalApp
 
             txtZip.ShouldReturn = (tf) =>
             {
-                
+
                 return true;
             };
 
@@ -101,20 +101,22 @@ namespace ExtAppraisalApp
             }
         }
 
-        Task CallWebservice(){
+        Task CallWebservice()
+        {
             return Task.Factory.StartNew(() => {
-                ServiceCall(); 
+                ServiceCall();
             });
         }
 
-        private void ServiceCall(){
+        private void ServiceCall()
+        {
             string code = null;
             code = ServiceFactory.getWebServiceHandle().ValidateZipDealer(Convert.ToInt32(zipCode));
 
             if (code == null)
             {
                 List<Stores> storesList = ServiceFactory.getWebServiceHandle().SearchNearestStores(zipCode);
-                if (null != storesList)
+                if (null != storesList && storesList.Count > 0)
                 {
                     InvokeOnMainThread(() => {
                         Utility.HideLoadingIndicator(this.View);
@@ -171,16 +173,29 @@ namespace ExtAppraisalApp
 
 
                 }
+                else
+                {
+                    InvokeOnMainThread(() =>
+                    {
+                        Utility.HideLoadingIndicator(this.View);
+                        Utility.ShowAlert("Appraisal App", "No Nearest Stores Found!!", "OK");
+                    });
+
+                }
             }
             else if (null != code)
             {
                 AppDelegate.appDelegate.storeId = Convert.ToInt16(code);
-                this.PerformSegue("decodeSegue", this);
+                InvokeOnMainThread(() => {
+                    this.PerformSegue("decodeSegue", this);
+                });
+
             }
             else
             {
-                Utility.ShowAlert("ZIP/Dealer", "Please Enter valid ZIP/Dealer Code", "OK");
-
+                InvokeOnMainThread(() => {
+                    Utility.ShowAlert("ZIP/Dealer", "Please Enter valid ZIP/Dealer Code", "OK");
+                });
             }
         }
 
