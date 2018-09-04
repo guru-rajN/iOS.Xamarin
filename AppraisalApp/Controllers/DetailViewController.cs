@@ -650,9 +650,10 @@ namespace ExtAppraisalApp
             }else{
                 var storyboard = UIStoryboard.FromName("Main", null);
                 SummaryViewController summaryViewController = (SummaryViewController)storyboard.InstantiateViewController("SummaryViewController");
-                summaryViewController.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
-                summaryViewController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
-                this.NavigationController.PresentViewController(summaryViewController, true, null);
+                UINavigationController uINavigationController = new UINavigationController(summaryViewController);
+                uINavigationController.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
+                uINavigationController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
+                this.NavigationController.PresentViewController(uINavigationController, true, null);
             }
           
             AppDelegate.appDelegate.IsInfoSaved = true;

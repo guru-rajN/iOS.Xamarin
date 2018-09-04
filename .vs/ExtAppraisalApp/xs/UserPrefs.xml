@@ -1,22 +1,21 @@
 ﻿<Properties StartupConfiguration="{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="ExtAppraisalApp Status">
     <Files>
-      <File FileName="AppraisalApp/Controllers/DetailViewController.cs" Line="648" Column="51" />
+      <File FileName="AppraisalApp/Controllers/DetailViewController.cs" Line="641" Column="13" />
       <File FileName="AppraisalApp/Controllers/MasterViewController.cs" Line="76" Column="77" />
-      <File FileName="AppraisalApp/Controllers/DecodeViewController.designer.cs" Line="18" Column="54" />
+      <File FileName="AppraisalApp/AppDelegate.cs" Line="18" Column="17" />
+      <File FileName="AppraisalApp/Controllers/FactoryOptionViewController.cs" Line="58" Column="101" />
+      <File FileName="AppraisalApp/Controllers/AfterMarketViewController.cs" Line="75" Column="101" />
+      <File FileName="AppraisalApp/Controllers/HistoryViewController.cs" Line="276" Column="109" />
+      <File FileName="AppraisalApp/Controllers/ReconditionViewController.cs" Line="178" Column="105" />
       <File FileName="AppraisalApp/Controllers/PhotoViewController.cs" Line="69" Column="61" />
-      <File FileName="AppraisalApp/Controllers/FactoryOptionViewController.cs" Line="49" Column="18" />
-      <File FileName="AppraisalApp/Controllers/AfterMarketViewController.cs" Line="75" Column="14" />
-      <File FileName="AppraisalApp/Controllers/HistoryViewController.cs" Line="279" Column="18" />
-      <File FileName="AppraisalApp/Controllers/ReconditionViewController.cs" Line="165" Column="22" />
-      <File FileName="AppraisalApp/Controllers/DecodeViewController.cs" Line="174" Column="17" />
       <File FileName="ExtAppraisalApp Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/slksoft/Sathya/VSTS/04-Sep/ExtAppraisalApp/AppraisalApp/Services/ServiceImpl.cs" relfile="AppraisalApp/Services/ServiceImpl.cs" line="99" column="1" />
+      <Breakpoint file="/Users/slksoft/Sathya/VSTS/05-Sep/ExtAppraisalApp/AppraisalApp/Services/ServiceImpl.cs" relfile="AppraisalApp/Services/ServiceImpl.cs" line="99" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
