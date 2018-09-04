@@ -12,11 +12,12 @@ namespace ExtAppraisalApp
     internal class ReconditionTVS : UITableViewSource
     {
         private List<Recondtionm> reconditions;
+        private ReconditionViewController reconditionViewController;
 
-
-        public ReconditionTVS(List<Recondtionm> reconditions)
+        public ReconditionTVS(List<Recondtionm> reconditions, ReconditionViewController reconditionViewController)
         {
             this.reconditions = reconditions;
+            this.reconditionViewController = reconditionViewController;
         }
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
@@ -41,7 +42,7 @@ namespace ExtAppraisalApp
             //cell.BackgroundColor = UIColor.FromRGB(169,202,141);
             cell.Accessory = (indexPath.Row >= 0) ? UITableViewCellAccessory.Checkmark : UITableViewCellAccessory.None;
             SavetolocalDb(SelectedRow);
-
+            reconditionViewController.UpdateAlertText();
         }
 
         void SavetolocalDb(string SelectedRow)

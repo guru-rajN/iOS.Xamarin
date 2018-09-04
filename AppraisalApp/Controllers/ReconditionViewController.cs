@@ -68,7 +68,7 @@ namespace ExtAppraisalApp
                         ReconditionSegment.SelectedSegment = 2;
                     }
                     //ReconditionSaveBtn.TintColor = UIColor.Red;
-
+                    selectionAlertLabel.Hidden = false;
                     selectionAlertLabel.Text = "Please choose one of the " + labeltext + " options below";
                     selectionAlertLabel.TextColor = UIColor.Red;
                 }
@@ -181,6 +181,12 @@ namespace ExtAppraisalApp
                 AppDelegate.appDelegate.IsReconditionsSaved = true;
             }
         }
+
+        internal void UpdateAlertText()
+        {
+            selectionAlertLabel.Hidden = true;
+        }
+
         public string setCondition(string row)
         {
             string rowValue = null;
@@ -314,8 +320,8 @@ namespace ExtAppraisalApp
                 },
             };
 
-            ReconditionTableView.Source = new ReconditionTVS(reconditions);
-            ReconditionTableView.Source = new ReconditionTVS(reconditions);
+            ReconditionTableView.Source = new ReconditionTVS(reconditions, this);
+            ReconditionTableView.Source = new ReconditionTVS(reconditions, this);
             ReconditionTableView.AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
             // ReconditionTableView.RowHeight = UITableView.AutomaticDimension;
             //ReconditionTableView.

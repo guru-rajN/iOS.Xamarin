@@ -81,12 +81,14 @@ namespace ExtAppraisalApp
                     masterViewController = (MasterViewController)((UINavigationController)SplitViewController.ViewControllers[0]).TopViewController;
             }
 
+            if(!AppDelegate.appDelegate.IsInfoSaved){
+                ViewWorker worker = new ViewWorker();
 
-            ViewWorker worker = new ViewWorker();
+                worker.WorkerDelegate = masterViewController;
 
-            worker.WorkerDelegate = masterViewController;
+                worker.ShowPartialDoneImg(1);
+            }
 
-            worker.ShowPartialDoneImg(1);
 
             try
             {

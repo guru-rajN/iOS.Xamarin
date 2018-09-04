@@ -1,7 +1,7 @@
 ﻿using System;
 using SQLite;
 
-namespace AppraisalApp.Models
+namespace ExtAppraisalApp.Models
 {
     public class HistoryValue
     {
