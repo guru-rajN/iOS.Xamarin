@@ -32,14 +32,29 @@ namespace ExtAppraisalApp
                     masterViewController = (MasterViewController)((UINavigationController)SplitViewController.ViewControllers[0]).TopViewController;
             }
 
-            if(!AppDelegate.appDelegate.IsFactorySaved){
-                ViewWorker viewWorker = new ViewWorker();
-                viewWorker.WorkerDelegate = (ExtAppraisalApp.Utilities.WorkerDelegateInterface)masterViewController;
-                viewWorker.PerformNavigation(3);
-                viewWorker.ShowPartialDoneImg(3);
-                viewWorker.ShowDoneImg(2);
-            }else{
-                this.PerformSegue("summarySegue", this);
+            ViewWorker viewWorker = new ViewWorker();
+            viewWorker.WorkerDelegate = (ExtAppraisalApp.Utilities.WorkerDelegateInterface)masterViewController;
+
+            if (!AppDelegate.appDelegate.IsAllDataSaved)
+            {
+                if (!AppDelegate.appDelegate.IsFactorySaved)
+                {
+                    viewWorker.PerformNavigation(3);
+                    viewWorker.ShowPartialDoneImg(3);
+                    viewWorker.ShowDoneImg(2);
+                }
+                else
+                {
+                    viewWorker.PerformNavigation(3);
+                }
+            }
+            else
+            {
+                var storyboard = UIStoryboard.FromName("Main", null);
+                SummaryViewController summaryViewController = (SummaryViewController)storyboard.InstantiateViewController("SummaryViewController");
+                summaryViewController.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
+                summaryViewController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
+                this.NavigationController.PresentViewController(summaryViewController, true, null);
             }
 
             AppDelegate.appDelegate.IsFactorySaved = true;
@@ -57,7 +72,7 @@ namespace ExtAppraisalApp
 
             base.ViewDidLoad();
 
-            if(!AppDelegate.appDelegate.IsFactorySaved){
+            if(!AppDelegate.appDelegate.IsAllDataSaved){
                 BtnSave.Title = "Next";
             }else{
                 BtnSave.Title = "Save";

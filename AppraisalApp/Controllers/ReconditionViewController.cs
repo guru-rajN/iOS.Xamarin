@@ -152,15 +152,29 @@ namespace ExtAppraisalApp
                     if (!UserInterfaceIdiomIsPhone)
                         masterViewController = (MasterViewController)((UINavigationController)SplitViewController.ViewControllers[0]).TopViewController;
                 }
+                ViewWorker viewWorker = new ViewWorker();
+                viewWorker.WorkerDelegate = (ExtAppraisalApp.Utilities.WorkerDelegateInterface)masterViewController;
 
-                if(!AppDelegate.appDelegate.IsReconditionsSaved){
-                    ViewWorker viewWorker = new ViewWorker();
-                    viewWorker.WorkerDelegate = (ExtAppraisalApp.Utilities.WorkerDelegateInterface)masterViewController;
-                    viewWorker.PerformNavigation(6);
-                    viewWorker.ShowPartialDoneImg(6);
-                    viewWorker.ShowDoneImg(5);  
-                }else{
-                    this.PerformSegue("summarySegue", this);
+                if (!AppDelegate.appDelegate.IsAllDataSaved)
+                {
+                    if (!AppDelegate.appDelegate.IsReconditionsSaved)
+                    {
+                        viewWorker.PerformNavigation(6);
+                        viewWorker.ShowPartialDoneImg(6);
+                        viewWorker.ShowDoneImg(5);
+                    }
+                    else
+                    {
+                        viewWorker.PerformNavigation(6);
+                    }
+                }
+                else
+                {
+                    var storyboard = UIStoryboard.FromName("Main", null);
+                    SummaryViewController summaryViewController = (SummaryViewController)storyboard.InstantiateViewController("SummaryViewController");
+                    summaryViewController.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
+                    summaryViewController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
+                    this.NavigationController.PresentViewController(summaryViewController, true, null);
                 }
 
                 AppDelegate.appDelegate.IsReconditionsSaved = true;
@@ -391,7 +405,7 @@ namespace ExtAppraisalApp
             base.ViewDidLoad();
             ReconditionTableView.TableFooterView = new UIView(new CGRect(0, 0, 0, 0));
 
-            if(!AppDelegate.appDelegate.IsReconditionsSaved){
+            if(!AppDelegate.appDelegate.IsAllDataSaved){
                 ReconditionSaveBtn.Title = "Next";
             }else{
                 ReconditionSaveBtn.Title = "Save";

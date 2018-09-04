@@ -46,7 +46,6 @@ namespace ExtAppraisalApp
 
         public override NSIndexPath WillSelectRow(UITableView tableView, NSIndexPath indexPath)
         {
-            //RowSelectedIndexPath = this.TableView.IndexPathForSelectedRow;
 
             if (indexPath.Row == 1 && !AppDelegate.appDelegate.IsFactorySaved)
             {

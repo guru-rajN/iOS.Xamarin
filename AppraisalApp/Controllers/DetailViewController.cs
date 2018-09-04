@@ -65,7 +65,7 @@ namespace ExtAppraisalApp
             // Update the user interface for the detail item
             DetailTableView.TableFooterView = new UIView(new CGRect(0, 0, 0, 0));
 
-            if (AppDelegate.appDelegate.IsInfoSaved)
+            if (AppDelegate.appDelegate.IsAllDataSaved)
             {
                 DetailSaveBtn.Title = "Save";
             }
@@ -638,22 +638,23 @@ namespace ExtAppraisalApp
             SaveVehicleDetails(vehicleDetails);
 
             AppDelegate.appDelegate.cacheVehicleDetails = vehicleDetails;
-           
-            if(!AppDelegate.appDelegate.IsInfoSaved){
-                worker.ShowPartialDoneImg(2);
-                worker.ShowDoneImg(1);
-                worker.PerformNavigation(2); 
-            }else {
-                //this.PerformSegue("summarySegue", this);
-                //PhotoViewController photoViewController = (PhotoViewController)((UINavigationController)SplitViewController.ViewControllers[1]).TopViewController;
-                //photoViewController.PerformSegue("summarySegue", this);
 
+            if(!AppDelegate.appDelegate.IsAllDataSaved){
+                if(!AppDelegate.appDelegate.IsInfoSaved){
+                    worker.ShowPartialDoneImg(2);
+                    worker.ShowDoneImg(1);
+                    worker.PerformNavigation(2);  
+                }else{
+                    worker.PerformNavigation(2);  
+                }
+            }else{
                 var storyboard = UIStoryboard.FromName("Main", null);
                 SummaryViewController summaryViewController = (SummaryViewController)storyboard.InstantiateViewController("SummaryViewController");
                 summaryViewController.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
                 summaryViewController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
                 this.NavigationController.PresentViewController(summaryViewController, true, null);
             }
+          
             AppDelegate.appDelegate.IsInfoSaved = true;
         }
 

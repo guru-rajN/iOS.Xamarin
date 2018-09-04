@@ -47,6 +47,8 @@ namespace ExtAppraisalApp
         public bool IsReconditionsSaved = false;
         public bool IsPhotosSaved = false;
 
+        public bool IsAllDataSaved = false;
+
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
 

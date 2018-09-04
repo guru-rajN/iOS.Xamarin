@@ -47,6 +47,7 @@ namespace ExtAppraisalApp
             AppDelegate.appDelegate.IsHistorySaved = false;
             AppDelegate.appDelegate.IsReconditionsSaved = false;
             AppDelegate.appDelegate.IsPhotosSaved = false;
+            AppDelegate.appDelegate.IsAllDataSaved = false;
 
             txtZip.ShouldReturn = (tf) =>
             {

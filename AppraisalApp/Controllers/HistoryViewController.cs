@@ -249,14 +249,30 @@ namespace ExtAppraisalApp
                         if (!UserInterfaceIdiomIsPhone)
                             masterViewController = (MasterViewController)((UINavigationController)SplitViewController.ViewControllers[0]).TopViewController;
                     }
-                    if(!AppDelegate.appDelegate.IsHistorySaved){
-                        ViewWorker viewWorker = new ViewWorker();
-                        viewWorker.WorkerDelegate = (ExtAppraisalApp.Utilities.WorkerDelegateInterface)masterViewController;
-                        viewWorker.PerformNavigation(5);
-                        viewWorker.ShowPartialDoneImg(5);
-                        viewWorker.ShowDoneImg(4);
-                    }else{
-                        this.PerformSegue("summarySegue", this);
+
+                    ViewWorker viewWorker = new ViewWorker();
+                    viewWorker.WorkerDelegate = (ExtAppraisalApp.Utilities.WorkerDelegateInterface)masterViewController;
+
+                    if (!AppDelegate.appDelegate.IsAllDataSaved)
+                    {
+                        if (!AppDelegate.appDelegate.IsHistorySaved)
+                        {
+                            viewWorker.PerformNavigation(5);
+                            viewWorker.ShowPartialDoneImg(5);
+                            viewWorker.ShowDoneImg(4);
+                        }
+                        else
+                        {
+                            viewWorker.PerformNavigation(5);
+                        }
+                    }
+                    else
+                    {
+                        var storyboard = UIStoryboard.FromName("Main", null);
+                        SummaryViewController summaryViewController = (SummaryViewController)storyboard.InstantiateViewController("SummaryViewController");
+                        summaryViewController.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
+                        summaryViewController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
+                        this.NavigationController.PresentViewController(summaryViewController, true, null);
                     }
 
                     AppDelegate.appDelegate.IsHistorySaved = true;
@@ -361,7 +377,7 @@ namespace ExtAppraisalApp
         {
             base.ViewDidLoad();
 
-            if(!AppDelegate.appDelegate.IsHistorySaved){
+            if(!AppDelegate.appDelegate.IsAllDataSaved){
                 Save.Title = "Next";
             }else{
                 Save.Title = "Save";

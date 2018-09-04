@@ -49,14 +49,29 @@ namespace AppraisalApp
                     masterViewController = (MasterViewController)((UINavigationController)SplitViewController.ViewControllers[0]).TopViewController;
             }
 
-            if(!AppDelegate.appDelegate.IsAftermarketSaved){
-                ViewWorker viewWorker = new ViewWorker();
-                viewWorker.WorkerDelegate = (ExtAppraisalApp.Utilities.WorkerDelegateInterface)masterViewController;
-                viewWorker.PerformNavigation(4);
-                viewWorker.ShowPartialDoneImg(4);
-                viewWorker.ShowDoneImg(3);
-            }else {
-                this.PerformSegue("summarySegue", this);
+            ViewWorker viewWorker = new ViewWorker();
+            viewWorker.WorkerDelegate = (ExtAppraisalApp.Utilities.WorkerDelegateInterface)masterViewController;
+
+            if (!AppDelegate.appDelegate.IsAllDataSaved)
+            {
+                if (!AppDelegate.appDelegate.IsAftermarketSaved)
+                {
+                    viewWorker.PerformNavigation(4);
+                    viewWorker.ShowPartialDoneImg(4);
+                    viewWorker.ShowDoneImg(3);
+                }
+                else
+                {
+                    viewWorker.PerformNavigation(4);
+                }
+            }
+            else
+            {
+                var storyboard = UIStoryboard.FromName("Main", null);
+                SummaryViewController summaryViewController = (SummaryViewController)storyboard.InstantiateViewController("SummaryViewController");
+                summaryViewController.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
+                summaryViewController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
+                this.NavigationController.PresentViewController(summaryViewController, true, null);
             }
              
             AppDelegate.appDelegate.IsAftermarketSaved = true;
@@ -196,7 +211,7 @@ namespace AppraisalApp
         {
             base.ViewDidLoad();
 
-            if(!AppDelegate.appDelegate.IsAftermarketSaved){
+            if(!AppDelegate.appDelegate.IsAllDataSaved){
                 Btn_SaveAfterMarket.Title = "Next";
             }else{
                 Btn_SaveAfterMarket.Title = "Save";

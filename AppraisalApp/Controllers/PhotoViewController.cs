@@ -85,6 +85,7 @@ namespace ExtAppraisalApp
                 }
 
                 AppDelegate.appDelegate.IsPhotosSaved = true;
+                AppDelegate.appDelegate.IsAllDataSaved = true;
 
                 this.PerformSegue("summarySegue", this);
             }
@@ -449,7 +450,7 @@ namespace ExtAppraisalApp
                 VIN.Layer.BorderWidth = 2.0f;
                 VIN.Layer.BorderColor = UIColor.Black.CGColor;
 
-                if(!AppDelegate.appDelegate.IsPhotosSaved){
+                if(!AppDelegate.appDelegate.IsAllDataSaved){
                     PhotosSaveBtn.Title = "Next";
                 }else{
                     PhotosSaveBtn.Title = "Save";
