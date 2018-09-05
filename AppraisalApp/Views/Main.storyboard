@@ -280,7 +280,7 @@
                     <connections>
                         <outlet property="BtnSave" destination="1474" id="name-outlet-1474"/>
                         <outlet property="FactoryOptionTableView" destination="24674" id="name-outlet-24674"/>
-                        <segue id="225165" destination="s9i-39-nb4" kind="presentation" identifier="FacOptionSegue" modalPresentationStyle="formSheet"/>
+                        <segue destination="s9i-39-nb4" kind="presentation" identifier="FacOptionSegue" modalPresentationStyle="formSheet" id="225165"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="486" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1160,7 +1160,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X1l-z9-g0S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2851.172" y="-2610.156"/>
+            <point key="canvasLocation" x="2811.172" y="-2481.156"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="45971">
@@ -1614,12 +1614,12 @@
                         <outlet property="MasterAdditionalAMFO" destination="wzR-1Q-dcz" id="name-outlet-wzR-1Q-dcz"/>
                         <outlet property="ReconditionSegment" destination="Vsx-Dr-IbP" id="yaS-ls-XlD"/>
                         <outlet property="masterAMFO" destination="142024" id="name-outlet-142024"/>
-                        <segue destination="Vcg-kw-lnQ" kind="presentation" identifier="AMFOSegue" modalPresentationStyle="formSheet" id="147653"/>
+                        <segue id="228339" destination="Vac-eD-lw6" kind="presentation" identifier="AMFOSegue" modalPresentationStyle="formSheet"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7tg-UN-44I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4004.883" y="-2583.594"/>
+            <point key="canvasLocation" x="3989.883" y="-2722.594"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EsX-j8-lYS">
@@ -2522,68 +2522,68 @@
                     <view key="view" contentMode="scaleToFill" id="215163">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="216043" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="216043" misplaced="YES">
+                                <rect key="frame" x="0.0" y="44" width="540" height="576"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="216044" customClass="FactoryOptionsDetailCell" reuseIdentifier="Cell_id" rowHeight="67">
-                                        <rect key="frame" x="0.0" y="28" width="1024" height="67"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell_id" rowHeight="67" id="216044" customClass="FactoryOptionsDetailCell">
+                                        <rect key="frame" x="0.0" y="28" width="540" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="216044" id="216045">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="66.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="540" height="66.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="223753" translatesAutoresizingMaskIntoConstraints="NO">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="223753">
                                                     <rect key="frame" x="13" y="18" width="51" height="31"/>
                                                     <constraints>
-                                                        <constraint id="223757" firstItem="223753" firstAttribute="height" constant="31"/>
-                                                        <constraint id="223758" firstItem="223753" firstAttribute="width" constant="49"/>
+                                                        <constraint firstAttribute="height" constant="31" id="223757"/>
+                                                        <constraint firstAttribute="width" constant="49" id="223758"/>
                                                     </constraints>
                                                 </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="223754" translatesAutoresizingMaskIntoConstraints="NO" numberOfLines="0">
-                                                    <rect key="frame" x="72" y="23" width="922" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="223754" misplaced="YES">
+                                                    <rect key="frame" x="72" y="23" width="438" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint id="223755" firstItem="223753" firstAttribute="top" secondItem="216045" secondAttribute="top" constant="18"/>
-                                                <constraint id="223756" firstItem="223753" firstAttribute="leading" secondItem="216045" secondAttribute="leading" constant="13"/>
-                                                <constraint id="224200" firstItem="223754" firstAttribute="top" secondItem="216045" secondAttribute="top" constant="23"/>
-                                                <constraint id="224201" firstItem="216045" firstAttribute="bottom" secondItem="223754" secondAttribute="bottom" constant="22"/>
-                                                <constraint id="224202" firstItem="223754" firstAttribute="leading" secondItem="223753" secondAttribute="trailing" constant="10"/>
-                                                <constraint id="224203" firstItem="216045" firstAttribute="trailing" secondItem="223754" secondAttribute="trailing" constant="30"/>
+                                                <constraint firstItem="223753" firstAttribute="top" secondItem="216045" secondAttribute="top" constant="18" id="223755"/>
+                                                <constraint firstItem="223753" firstAttribute="leading" secondItem="216045" secondAttribute="leading" constant="13" id="223756"/>
+                                                <constraint firstItem="223754" firstAttribute="top" secondItem="216045" secondAttribute="top" constant="23" id="224200"/>
+                                                <constraint firstAttribute="bottom" secondItem="223754" secondAttribute="bottom" constant="22" id="224201"/>
+                                                <constraint firstItem="223754" firstAttribute="leading" secondItem="223753" secondAttribute="trailing" constant="10" id="224202"/>
+                                                <constraint firstAttribute="trailing" secondItem="223754" secondAttribute="trailing" constant="30" id="224203"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="switchElement" destination="223753" id="name-outlet-223753"/>
                                             <outlet property="LabelElement" destination="223754" id="name-outlet-223754"/>
+                                            <outlet property="switchElement" destination="223753" id="name-outlet-223753"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint id="216046" firstItem="216043" firstAttribute="top" secondItem="215159" secondAttribute="bottom"/>
-                            <constraint id="216047" firstItem="216043" firstAttribute="trailing" secondItem="215163" secondAttribute="trailingMargin" constant="20"/>
-                            <constraint id="216048" firstItem="215163" firstAttribute="leadingMargin" secondItem="216043" secondAttribute="leading" constant="20"/>
-                            <constraint id="216049" firstItem="216043" firstAttribute="bottom" secondItem="215163" secondAttribute="bottom"/>
+                            <constraint firstItem="216043" firstAttribute="top" secondItem="215159" secondAttribute="bottom" id="216046"/>
+                            <constraint firstItem="216043" firstAttribute="trailing" secondItem="215163" secondAttribute="trailingMargin" constant="20" id="216047"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="216043" secondAttribute="leading" constant="20" id="216048"/>
+                            <constraint firstItem="216043" firstAttribute="bottom" secondItem="215163" secondAttribute="bottom" id="216049"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Hr2-LX-xXZ">
                         <barButtonItem key="rightBarButtonItem" title="Close" id="216505">
-                            <color key="tintColor" colorSpace="calibratedRGB" red="0" green="0.55686274509803924" blue="0" alpha="1"/>
+                            <color key="tintColor" red="0.0" green="0.55686274509803924" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="BtnClose_Activated:" destination="215162" id="216953"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="FactoryOptionTableView" destination="216043" id="name-outlet-216043"/>
                         <outlet property="BtnClose" destination="216505" id="name-outlet-216505"/>
+                        <outlet property="FactoryOptionTableView" destination="216043" id="name-outlet-216043"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="215164" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2607,6 +2607,103 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d1g-IC-RPF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1179.492" y="-3026.719"/>
+        </scene>
+        <!--After-->
+        <scene sceneID="227349">
+            <objects>
+                <viewController id="227350" customClass="AMOptionViewController" sceneMemberID="viewController" storyboardIdentifier="AMOptionViewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="227347"/>
+                        <viewControllerLayoutGuide type="bottom" id="227348"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="227351">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="230588" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="0.0" y="66" width="1024" height="702"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="230589" customClass="AfterMarketDetailCell" reuseIdentifier="Cell_id" rowHeight="55">
+                                        <rect key="frame" x="0.0" y="28" width="1024" height="55"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="230589" id="230590">
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="54.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="231056" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="11" y="9" width="51" height="31"/>
+                                                    <constraints>
+                                                        <constraint id="233322" firstItem="231056" firstAttribute="height" constant="31"/>
+                                                        <constraint id="233323" firstItem="231056" firstAttribute="width" constant="49"/>
+                                                    </constraints>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="231057" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="77" y="8" width="914" height="33"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint id="233320" firstItem="231056" firstAttribute="leading" secondItem="230590" secondAttribute="leading" constant="11"/>
+                                                <constraint id="233321" firstItem="231056" firstAttribute="top" secondItem="230590" secondAttribute="top" constant="9"/>
+                                                <constraint id="233324" firstItem="231057" firstAttribute="leading" secondItem="231056" secondAttribute="trailing" constant="17"/>
+                                                <constraint id="233325" firstItem="231057" firstAttribute="top" secondItem="230590" secondAttribute="top" constant="8"/>
+                                                <constraint id="233326" firstItem="230590" firstAttribute="bottom" secondItem="231057" secondAttribute="bottom" constant="13"/>
+                                                <constraint id="233327" firstItem="230590" firstAttribute="trailing" secondItem="231057" secondAttribute="trailing" constant="33"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="switchElement" destination="231056" id="name-outlet-231056"/>
+                                            <outlet property="LabelElement" destination="231057" id="name-outlet-231057"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <constraints>
+                            <constraint id="230591" firstItem="230588" firstAttribute="top" secondItem="227347" secondAttribute="bottom" constant="2"/>
+                            <constraint id="230592" firstItem="227351" firstAttribute="leadingMargin" secondItem="230588" secondAttribute="leading" constant="20"/>
+                            <constraint id="230594" firstItem="230588" firstAttribute="trailing" secondItem="227351" secondAttribute="trailingMargin" constant="20"/>
+                            <constraint id="230595" firstItem="230588" firstAttribute="bottom" secondItem="227351" secondAttribute="bottom"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="37e-zT-UPc">
+                        <barButtonItem key="rightBarButtonItem" title="Close" id="230137">
+                            <color key="tintColor" colorSpace="calibratedRGB" red="0" green="0.55686274509803924" blue="0" alpha="1"/>
+                            <connections>
+                                <action selector="BtnClose_Activated:" destination="227350" id="230138"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="BtnClose" destination="230137" id="name-outlet-230137"/>
+                        <outlet property="AMOptionTableView" destination="230588" id="name-outlet-230588"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="227352" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5895.703" y="-2762.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8ip-6S-MTw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vac-eD-lw6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fA6-w4-zxa">
+                        <rect key="frame" x="0.0" y="20" width="1024" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="227350" kind="relationship" relationship="rootViewController" id="8Dc-Bj-0Mo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k9v-HY-Kzi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5171.484" y="-2762.5"/>
         </scene>
     </scenes>
     <resources>

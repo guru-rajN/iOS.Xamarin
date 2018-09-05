@@ -276,6 +276,15 @@
       <DependentUpon>FactoryOptionsDetailCell.cs</DependentUpon>
     </Compile>
     <Compile Include="Controllers\FactoryOptionTVS.cs" />
+    <Compile Include="Controllers\AfterMarketDetailCell.cs" />
+    <Compile Include="Controllers\AfterMarketDetailCell.designer.cs">
+      <DependentUpon>AfterMarketDetailCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AMFactoryOptionTVS.cs" />
+    <Compile Include="Controllers\AMOptionViewController.cs" />
+    <Compile Include="Controllers\AMOptionViewController.designer.cs">
+      <DependentUpon>AMOptionViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />
