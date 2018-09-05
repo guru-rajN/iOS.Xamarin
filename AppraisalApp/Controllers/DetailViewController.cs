@@ -633,13 +633,99 @@ namespace ExtAppraisalApp
         partial void DetailSaveBtn_Activated(UIBarButtonItem sender)
         {
 
-            ViewWorker worker = new ViewWorker();
-            worker.WorkerDelegate = masterViewController;
-            worker.UpdateUI(false);
+            if (ValidataInfo())
+            {
+                ViewWorker worker = new ViewWorker();
+                worker.WorkerDelegate = masterViewController;
+                worker.UpdateUI(false);
 
-            //Utility.ShowLoadingIndicator(this.View, "", true);
-            SaveVehicleDatas(worker);
+                AppDelegate.appDelegate.prospectId = GenerateProspect();
+                SaveVehicleDetails(vehicleDetails);
 
+                AppDelegate.appDelegate.cacheVehicleDetails = vehicleDetails;
+
+                if (!AppDelegate.appDelegate.IsInfoSaved)
+                {
+                    worker.ShowPartialDoneImg(2);
+                    worker.ShowDoneImg(1);
+                    worker.PerformNavigation(2);
+                }
+                else
+                {
+                    var storyboard = UIStoryboard.FromName("Main", null);
+                    SummaryViewController summaryViewController = (SummaryViewController)storyboard.InstantiateViewController("SummaryViewController");
+                    UINavigationController uINavigationController = new UINavigationController(summaryViewController);
+                    uINavigationController.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
+                    uINavigationController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
+                    this.NavigationController.PresentViewController(uINavigationController, true, null);
+                }
+                AppDelegate.appDelegate.IsInfoSaved = true;
+            }
+
+
+        }
+
+        private bool ValidataInfo()
+        {
+            if (string.IsNullOrEmpty(modelValue.Text) || modelValue.Text.Equals(REQUIRED))
+            {
+                modelValue.TextColor = UIColor.Red;
+                return false;
+            }
+            else if (string.IsNullOrEmpty(trimValue.Text) || trimValue.Text.Equals(REQUIRED))
+            {
+                trimValue.TextColor = UIColor.Red;
+                return false;
+            }
+            else if (string.IsNullOrEmpty(engineValue.Text) || engineValue.Text.Equals(REQUIRED))
+            {
+                engineValue.TextColor = UIColor.Red;
+                return false;
+            }
+            else if (string.IsNullOrEmpty(odometerValue.Text) || odometerValue.Text.Equals(REQUIRED))
+            {
+                odometerValue.TextColor = UIColor.Red;
+                return false;
+            }
+            else if (string.IsNullOrEmpty(mileageValue.Text) || mileageValue.Text.Equals(REQUIRED))
+            {
+                mileageValue.TextColor = UIColor.Red;
+                return false;
+            }
+            else if (string.IsNullOrEmpty(bodyStyleValue.Text) || bodyStyleValue.Text.Equals(REQUIRED))
+            {
+                bodyStyleValue.TextColor = UIColor.Red;
+                return false;
+            }
+            else if (string.IsNullOrEmpty(drivetrainValue.Text) || drivetrainValue.Text.Equals(REQUIRED))
+            {
+                drivetrainValue.TextColor = UIColor.Red;
+                return false;
+            }
+            else if (string.IsNullOrEmpty(transmissionValue.Text) || transmissionValue.Text.Equals(REQUIRED))
+            {
+                transmissionValue.TextColor = UIColor.Red;
+                return false;
+            }
+            else if (string.IsNullOrEmpty(exteriorColorValue.Text) || exteriorColorValue.Text.Equals(REQUIRED))
+            {
+                exteriorColorValue.TextColor = UIColor.Red;
+                return false;
+            }
+            else if (string.IsNullOrEmpty(interiorColorValue.Text) || interiorColorValue.Text.Equals(REQUIRED))
+            {
+                interiorColorValue.TextColor = UIColor.Red;
+                return false;
+            }
+            else if (string.IsNullOrEmpty(interiorTypeValue.Text) || interiorTypeValue.Text.Equals(REQUIRED))
+            {
+                interiorTypeValue.TextColor = UIColor.Red;
+                return false;
+            }
+            else
+            {
+                return true;
+            }
 
         }
 
@@ -806,7 +892,7 @@ namespace ExtAppraisalApp
                         engineValue.Text = vehicleDetails.Engine;
                     }
                     engineValueMultiple = true;
-                    drivetrainValue.TextColor = UIColor.FromHSB(100, 59, 51);
+                    drivetrainValue.TextColor = UIColor.FromRGB(95, 135, 95);
                 }
             }
             else if (decodeVinDetails.KBBVinVehicleDetails.data.possibilities[index].engines.Count == 1)
@@ -842,7 +928,7 @@ namespace ExtAppraisalApp
 
                     }
                     drivetrainvalueMultiple = true;
-                    drivetrainValue.TextColor = UIColor.FromHSB(100, 59, 51);
+                    drivetrainValue.TextColor = UIColor.FromRGB(95, 135, 95);
                 }
             }
             else if (decodeVinDetails.KBBVinVehicleDetails.data.possibilities[index].drivetrains.Count == 1)
@@ -961,6 +1047,7 @@ namespace ExtAppraisalApp
             if (rowSelected == 3)
             {
                 modelValue.Text = data;
+                modelValue.TextColor = UIColor.FromRGB(95, 135, 95);
                 vehicleDetails.Model = modelValue.Text;
                 vehicleDetails.KBBModelId = id;
                 LoadTrimList();
@@ -968,6 +1055,7 @@ namespace ExtAppraisalApp
             else if (rowSelected == 4)
             {
                 trimValue.Text = data;
+                trimValue.TextColor = UIColor.FromRGB(95, 135, 95);
                 vehicleDetails.Trim = trimValue.Text;
                 vehicleDetails.KBBTrimId = id;
 
@@ -982,45 +1070,53 @@ namespace ExtAppraisalApp
             else if (rowSelected == 5)
             {
                 engineValue.Text = data;
+                engineValue.TextColor = UIColor.FromRGB(95, 135, 95);
                 vehicleDetails.Engine = data;
                 vehicleDetails.KBBEngineId = id;
             }
             else if (rowSelected == 6)
             {
                 odometerValue.Text = data;
+                odometerValue.TextColor = UIColor.FromRGB(95, 135, 95);
                 vehicleDetails.Odometer = odometerValue.Text;
             }
             else if (rowSelected == 8)
             {
                 bodyStyleValue.Text = data;
+                bodyStyleValue.TextColor = UIColor.FromRGB(95, 135, 95);
                 vehicleDetails.BodyStyle = bodyStyleValue.Text;
             }
             else if (rowSelected == 9)
             {
                 drivetrainValue.Text = data;
+                drivetrainValue.TextColor = UIColor.FromRGB(95, 135, 95);
                 vehicleDetails.DriveTrain = drivetrainValue.Text;
                 vehicleDetails.KBBDrivetrainId = id;
             }
             else if (rowSelected == 10)
             {
                 transmissionValue.Text = data;
+                transmissionValue.TextColor = UIColor.FromRGB(95, 135, 95);
                 vehicleDetails.Transmission = transmissionValue.Text;
                 vehicleDetails.KBBTransmissionId = id;
             }
             else if (rowSelected == 11)
             {
                 exteriorColorValue.Text = data;
+                exteriorColorValue.TextColor = UIColor.FromRGB(95, 135, 95);
                 vehicleDetails.ExtColor = exteriorColorValue.Text;
                 vehicleDetails.KBBColorId = id.ToString();
             }
             else if (rowSelected == 12)
             {
                 interiorColorValue.Text = data;
+                interiorColorValue.TextColor = UIColor.FromRGB(95, 135, 95);
                 vehicleDetails.IntColor = interiorColorValue.Text;
             }
             else if (rowSelected == 13)
             {
                 interiorTypeValue.Text = data;
+                interiorTypeValue.TextColor = UIColor.FromRGB(95, 135, 95);
                 vehicleDetails.IntrType = interiorTypeValue.Text;
             }
 
