@@ -2625,34 +2625,34 @@
                                 <rect key="frame" x="0.0" y="66" width="1024" height="702"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="230589" customClass="AfterMarketDetailCell" reuseIdentifier="Cell_id" rowHeight="55">
-                                        <rect key="frame" x="0.0" y="28" width="1024" height="55"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="230589" customClass="AfterMarketDetailCell" reuseIdentifier="Cell_id" rowHeight="67">
+                                        <rect key="frame" x="0.0" y="28" width="1024" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="230589" id="230590">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="54.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="66.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="231056" translatesAutoresizingMaskIntoConstraints="NO">
-                                                    <rect key="frame" x="11" y="9" width="51" height="31"/>
+                                                    <rect key="frame" x="24" y="18" width="51" height="31"/>
                                                     <constraints>
-                                                        <constraint id="233322" firstItem="231056" firstAttribute="height" constant="31"/>
-                                                        <constraint id="233323" firstItem="231056" firstAttribute="width" constant="49"/>
+                                                        <constraint id="236238" firstItem="231056" firstAttribute="height" constant="31"/>
+                                                        <constraint id="236239" firstItem="231056" firstAttribute="width" constant="49"/>
                                                     </constraints>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="231057" translatesAutoresizingMaskIntoConstraints="NO" numberOfLines="0">
-                                                    <rect key="frame" x="77" y="8" width="914" height="33"/>
+                                                    <rect key="frame" x="94" y="8" width="914" height="51"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint id="233320" firstItem="231056" firstAttribute="leading" secondItem="230590" secondAttribute="leading" constant="11"/>
-                                                <constraint id="233321" firstItem="231056" firstAttribute="top" secondItem="230590" secondAttribute="top" constant="9"/>
-                                                <constraint id="233324" firstItem="231057" firstAttribute="leading" secondItem="231056" secondAttribute="trailing" constant="17"/>
-                                                <constraint id="233325" firstItem="231057" firstAttribute="top" secondItem="230590" secondAttribute="top" constant="8"/>
-                                                <constraint id="233326" firstItem="230590" firstAttribute="bottom" secondItem="231057" secondAttribute="bottom" constant="13"/>
-                                                <constraint id="233327" firstItem="230590" firstAttribute="trailing" secondItem="231057" secondAttribute="trailing" constant="33"/>
+                                                <constraint id="236236" firstItem="231056" firstAttribute="leading" secondItem="230590" secondAttribute="leading" constant="24"/>
+                                                <constraint id="236237" firstItem="231056" firstAttribute="top" secondItem="230590" secondAttribute="top" constant="18"/>
+                                                <constraint id="236240" firstItem="231057" firstAttribute="leading" secondItem="231056" secondAttribute="trailing" constant="21"/>
+                                                <constraint id="236241" firstItem="231057" firstAttribute="top" secondItem="230590" secondAttribute="top" constant="8"/>
+                                                <constraint id="236242" firstItem="230590" firstAttribute="bottom" secondItem="231057" secondAttribute="bottom" constant="7"/>
+                                                <constraint id="236243" firstItem="230590" firstAttribute="trailing" secondItem="231057" secondAttribute="trailing" constant="16"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
