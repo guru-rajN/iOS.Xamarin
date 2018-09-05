@@ -2633,21 +2633,21 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="231056" translatesAutoresizingMaskIntoConstraints="NO">
-                                                    <rect key="frame" x="24" y="18" width="51" height="31"/>
+                                                    <rect key="frame" x="13" y="18" width="51" height="31"/>
                                                     <constraints>
                                                         <constraint id="236238" firstItem="231056" firstAttribute="height" constant="31"/>
                                                         <constraint id="236239" firstItem="231056" firstAttribute="width" constant="49"/>
                                                     </constraints>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="231057" translatesAutoresizingMaskIntoConstraints="NO" numberOfLines="0">
-                                                    <rect key="frame" x="94" y="8" width="914" height="51"/>
+                                                    <rect key="frame" x="83" y="8" width="925" height="51.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint id="236236" firstItem="231056" firstAttribute="leading" secondItem="230590" secondAttribute="leading" constant="24"/>
+                                                <constraint id="236236" firstItem="231056" firstAttribute="leading" secondItem="230590" secondAttribute="leading" constant="13"/>
                                                 <constraint id="236237" firstItem="231056" firstAttribute="top" secondItem="230590" secondAttribute="top" constant="18"/>
                                                 <constraint id="236240" firstItem="231057" firstAttribute="leading" secondItem="231056" secondAttribute="trailing" constant="21"/>
                                                 <constraint id="236241" firstItem="231057" firstAttribute="top" secondItem="230590" secondAttribute="top" constant="8"/>
