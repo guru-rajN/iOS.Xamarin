@@ -82,10 +82,7 @@ namespace ExtAppraisalApp
             }
             //sqlitecode
         }
-        //private void setSelectedIndex(string reconditionHeader)
-        //{
-        //     ReconditionSegment.SelectedSegment.ToString();
-        //}
+
 
 
 

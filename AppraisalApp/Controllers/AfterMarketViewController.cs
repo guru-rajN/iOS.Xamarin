@@ -255,6 +255,7 @@ namespace AppraisalApp
 
                 }
                 table.Source = new FactoryOptionSource(tableItems.ToArray(), this);
+                table.TableFooterView = new UIView(CoreGraphics.CGRect.Empty);
                 AdditionAMFO.AddSubview(table);
 
                 AdditionSegment.SelectedSegment = 1;

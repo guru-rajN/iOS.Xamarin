@@ -36,6 +36,7 @@ namespace AppraisalApp
                 }
             }
             FactoryOptionTableView.Source = new FactoryOptionTVS(factoryOptionKBBList);
+            FactoryOptionTableView.TableFooterView = new UIView(CoreGraphics.CGRect.Empty); 
             FactoryOptionTableView.RowHeight = UITableView.AutomaticDimension;
             FactoryOptionTableView.EstimatedRowHeight = 40f;
             FactoryOptionTableView.ReloadData();

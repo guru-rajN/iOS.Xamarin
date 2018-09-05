@@ -95,6 +95,7 @@ namespace ExtAppraisalApp
             }
           
             table.Source = new TableSource(tableItems.ToArray(), this);
+            table.TableFooterView = new UIView(CoreGraphics.CGRect.Empty);
             Add(table);
 
         }

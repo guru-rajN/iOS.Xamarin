@@ -37,6 +37,8 @@ namespace AppraisalApp
             }
 
             AMOptionTableView.Source = new AMFactoryOptionTVS(reconQuestions);
+            AMOptionTableView.TableFooterView = new UIView(CoreGraphics.CGRect.Empty); 
+
             AMOptionTableView.RowHeight = UITableView.AutomaticDimension;
             AMOptionTableView.EstimatedRowHeight = 40f;
             AMOptionTableView.ReloadData();

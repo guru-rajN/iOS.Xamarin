@@ -100,6 +100,11 @@ namespace AppraisalApp.Utilities
 
             return cell;
         }
+        public override void WillDisplay(UITableView tableView, UITableViewCell cell, NSIndexPath indexPath)
+        {
+            if (cell.RespondsToSelector(new ObjCRuntime.Selector("setSeparatorInset:"))) cell.SeparatorInset = UIEdgeInsets.Zero;
+            if (cell.RespondsToSelector(new ObjCRuntime.Selector("setLayoutMargins:"))) cell.LayoutMargins = UIEdgeInsets.Zero;
+        }
 
         //      public override string TitleForHeader (UITableView tableView, nint section)
         //      {
