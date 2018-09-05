@@ -267,6 +267,15 @@
     <Compile Include="Controllers\SummaryViewController.designer.cs">
       <DependentUpon>SummaryViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\FactoryOptionDataViewController.cs" />
+    <Compile Include="Controllers\FactoryOptionDataViewController.designer.cs">
+      <DependentUpon>FactoryOptionDataViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\FactoryOptionsDetailCell.cs" />
+    <Compile Include="Controllers\FactoryOptionsDetailCell.designer.cs">
+      <DependentUpon>FactoryOptionsDetailCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\FactoryOptionTVS.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />

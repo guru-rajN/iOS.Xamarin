@@ -59,7 +59,7 @@ namespace AppraisalApp.Utilities
             //Instantiate the ViewController you want to navigate to.
             //Make sure you have set the Storyboard ID for this ViewController in your storyboard file.
             //Put this Storyboard ID in place of the TargetViewControllerName in below line. 
-            UIViewController vcInstance = (UIViewController)storyboard.InstantiateViewController("OptionPopUp");
+            UIViewController vcInstance = (UIViewController)storyboard.InstantiateViewController("FactoryOptionViewController");
 
 
             //Get the Instance of the TopViewController (CurrentViewController) or the NavigationViewController to push the TargetViewController onto the stack. 
