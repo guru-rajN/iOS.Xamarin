@@ -29,6 +29,12 @@ namespace ExtAppraisalApp
         {
         }
 
+        // Detect the device whether iPad or iPhone
+        static bool UserInterfaceIdiomIsPhone
+        {
+            get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
+        }
+
         public override void ViewDidLoad()
         {
 
@@ -36,6 +42,12 @@ namespace ExtAppraisalApp
             var g = new UITapGestureRecognizer(() => View.EndEditing(true));
             g.CancelsTouchesInView = false; //for iOS5
             View.AddGestureRecognizer(g);
+
+            if(UserInterfaceIdiomIsPhone){
+                boxImg.Frame = new CGRect(0,0,500,500);
+                boxImg.Center = new CGPoint(this.View.Bounds.Width / 2, this.View.Bounds.Height / 2);
+                ComponentView.Center = new CGPoint(this.View.Bounds.Width / 2, this.View.Bounds.Height / 2.2);
+            }
 
             AppDelegate.appDelegate.IsZipCodeValid = false;
 
