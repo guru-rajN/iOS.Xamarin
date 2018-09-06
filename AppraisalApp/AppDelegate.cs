@@ -119,6 +119,22 @@ namespace ExtAppraisalApp
             }
             return false;
         }
+
+        // Detect the device whether iPad or iPhone
+        static bool UserInterfaceIdiomIsPhone
+        {
+            get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
+        }
+
+        public override UIInterfaceOrientationMask GetSupportedInterfaceOrientations(UIApplication application, UIWindow forWindow)
+        {
+            if(UserInterfaceIdiomIsPhone){
+                return UIInterfaceOrientationMask.Portrait;
+            }else{
+                return UIInterfaceOrientationMask.All;
+            }
+
+        }
     }
 }
 

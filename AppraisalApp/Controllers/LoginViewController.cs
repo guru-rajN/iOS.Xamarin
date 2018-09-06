@@ -49,7 +49,14 @@ namespace ExtAppraisalApp
             if (UserInterfaceIdiomIsPhone)
             {
                 Console.WriteLine("width :: " + this.View.Bounds.Width + " Height :: " + this.View.Bounds.Height);
-                boxImg.Frame = new CGRect(0, 0, 500, 500);
+                // iphone 8 plus :: width :: 414 Height :: 736
+                // iphone 7 width :: 375 Height :: 667
+                if(this.View.Bounds.Width == 375){
+                    boxImg.Frame = new CGRect(0, 0, 500, 500);
+                }else{
+                    boxImg.Frame = new CGRect(0, 0, 550, 550);
+                }
+
                 if (this.View.Bounds.Height == 667)
                 {
                     boxImg.Center = new CGPoint(this.View.Bounds.Width / 2, this.View.Bounds.Height / 1.5);
@@ -61,8 +68,11 @@ namespace ExtAppraisalApp
                     ComponentView.Center = new CGPoint(this.View.Bounds.Width / 2, this.View.Bounds.Height / 2.2);
                 }
 
-                NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillHideNotification, keyboardWillHide);
-                NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillShowNotification, keyboardWillShow);
+                if(this.View.Bounds.Width == 375){
+                    NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillHideNotification, keyboardWillHide);
+                    NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillShowNotification, keyboardWillShow);
+                }
+
 
             }
             else
