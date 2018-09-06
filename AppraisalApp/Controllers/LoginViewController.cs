@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using AppraisalApp.Models;
@@ -29,6 +30,8 @@ namespace ExtAppraisalApp
         {
         }
 
+        private bool keyboardPushedUp;
+
         // Detect the device whether iPad or iPhone
         static bool UserInterfaceIdiomIsPhone
         {
@@ -43,10 +46,31 @@ namespace ExtAppraisalApp
             g.CancelsTouchesInView = false; //for iOS5
             View.AddGestureRecognizer(g);
 
-            if(UserInterfaceIdiomIsPhone){
-                boxImg.Frame = new CGRect(0,0,500,500);
-                boxImg.Center = new CGPoint(this.View.Bounds.Width / 2, this.View.Bounds.Height / 2);
-                ComponentView.Center = new CGPoint(this.View.Bounds.Width / 2, this.View.Bounds.Height / 2.2);
+            if (UserInterfaceIdiomIsPhone)
+            {
+                Console.WriteLine("width :: " + this.View.Bounds.Width + " Height :: " + this.View.Bounds.Height);
+                boxImg.Frame = new CGRect(0, 0, 500, 500);
+                if (this.View.Bounds.Height == 667)
+                {
+                    boxImg.Center = new CGPoint(this.View.Bounds.Width / 2, this.View.Bounds.Height / 1.5);
+                    ComponentView.Center = new CGPoint(this.View.Bounds.Width / 2, this.View.Bounds.Height / 1.5);
+                }
+                else
+                {
+                    boxImg.Center = new CGPoint(this.View.Bounds.Width / 2, this.View.Bounds.Height / 2);
+                    ComponentView.Center = new CGPoint(this.View.Bounds.Width / 2, this.View.Bounds.Height / 2.2);
+                }
+
+                NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillHideNotification, keyboardWillHide);
+                NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillShowNotification, keyboardWillShow);
+
+            }
+            else
+            {
+                //if(InterfaceOrientation == UIInterfaceOrientation.LandscapeLeft || InterfaceOrientation == UIInterfaceOrientation.LandscapeRight){
+                //    NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillHideNotification, keyboardWillHide);
+                //    NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillShowNotification, keyboardWillShow);
+                //}
             }
 
             AppDelegate.appDelegate.IsZipCodeValid = false;
@@ -115,7 +139,8 @@ namespace ExtAppraisalApp
 
         Task CallWebservice()
         {
-            return Task.Factory.StartNew(() => {
+            return Task.Factory.StartNew(() =>
+            {
                 ServiceCall();
             });
         }
@@ -130,7 +155,8 @@ namespace ExtAppraisalApp
                 List<Stores> storesList = ServiceFactory.getWebServiceHandle().SearchNearestStores(zipCode);
                 if (null != storesList && storesList.Count > 0)
                 {
-                    InvokeOnMainThread(() => {
+                    InvokeOnMainThread(() =>
+                    {
                         Utility.HideLoadingIndicator(this.View);
                         AnimateFlipHorizontally(txtZip, true, 0.5, null);
                         AnimateFlipHorizontally(GetStartBtn, true, 0.5, null);
@@ -156,7 +182,8 @@ namespace ExtAppraisalApp
                             toolbar.Translucent = true;
                             toolbar.SizeToFit();
                             UIBarButtonItem flexibleSpaceLeft = new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace, null, null);
-                            UIBarButtonItem doneBtn = new UIBarButtonItem("Done", UIBarButtonItemStyle.Done, (s, e) => {
+                            UIBarButtonItem doneBtn = new UIBarButtonItem("Done", UIBarButtonItemStyle.Done, (s, e) =>
+                            {
                                 foreach (UIView view in this.View.Subviews)
                                 {
                                     txtZip.Text = storeLocatorModel.Items[(int)pickerView.SelectedRowInComponent(0)].ToString();
@@ -198,14 +225,16 @@ namespace ExtAppraisalApp
             else if (null != code)
             {
                 AppDelegate.appDelegate.storeId = Convert.ToInt16(code);
-                InvokeOnMainThread(() => {
+                InvokeOnMainThread(() =>
+                {
                     this.PerformSegue("decodeSegue", this);
                 });
 
             }
             else
             {
-                InvokeOnMainThread(() => {
+                InvokeOnMainThread(() =>
+                {
                     Utility.ShowAlert("ZIP/Dealer", "Please Enter valid ZIP/Dealer Code", "OK");
                 });
             }
@@ -226,6 +255,49 @@ namespace ExtAppraisalApp
             UITextField field = (UITextField)sender;
             if (field.Text != "")
                 pickerView.Select(storeLocatorModel.Items.IndexOf(field.Text), 0, true);
+        }
+
+        private void keyboardWillHide(NSNotification notification)
+        {
+            try
+            {
+                keyboardPushedUp = false;
+                CGPoint point = scrollview.ContentOffset;
+                point.Y = point.Y - 90;
+                scrollview.SetContentOffset(point, true);
+            }
+            catch (NullReferenceException ex)
+            {
+                Debug.WriteLine("Null exception :: " + ex.Message);
+            }
+            catch (Exception ex1)
+            {
+                Debug.WriteLine("Exception occurred :: " + ex1.Message);
+            }
+        }
+
+        private void keyboardWillShow(NSNotification notification)
+        {
+            try
+            {
+                if (!keyboardPushedUp)
+                {
+                    CGPoint point = scrollview.ContentOffset;
+                    point.Y = point.Y + 90;
+                    scrollview.SetContentOffset(point, true);
+                    keyboardPushedUp = true;
+                }
+
+
+            }
+            catch (NullReferenceException ex)
+            {
+                Debug.WriteLine("Null exception :: " + ex.Message);
+            }
+            catch (Exception ex1)
+            {
+                Debug.WriteLine("Exception occurred :: " + ex1.Message);
+            }
         }
 
         // Inner Class : StatusChange Model : Pickerview
@@ -305,7 +377,8 @@ namespace ExtAppraisalApp
 
             view.Layer.Transform = isIn ? minTransform : maxTransform;
             UIView.Animate(duration, 0, UIViewAnimationOptions.CurveEaseInOut,
-                () => {
+                () =>
+                {
                     view.Layer.AnchorPoint = new CGPoint((nfloat)0.5, (nfloat)0.5f);
                     view.Layer.Transform = isIn ? maxTransform : minTransform;
                 },
