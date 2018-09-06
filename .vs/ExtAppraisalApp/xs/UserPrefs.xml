@@ -1,22 +1,22 @@
 ﻿<Properties StartupConfiguration="{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="ExtAppraisalApp Status">
     <Files>
-      <File FileName="AppraisalApp/Controllers/DetailViewController.cs" Line="62" Column="9" />
-      <File FileName="AppraisalApp/AppDelegate.cs" Line="132" Column="59" />
+      <File FileName="AppraisalApp/Controllers/DetailViewController.cs" Line="60" Column="62" />
+      <File FileName="AppraisalApp/AppDelegate.cs" Line="168" Column="28" />
       <File FileName="AppraisalApp/Controllers/SummaryViewController.cs" Line="15" Column="14" />
-      <File FileName="AppraisalApp/Controllers/LoginViewController.cs" Line="31" Column="10" />
-      <File FileName="AppraisalApp/Controllers/DecodeViewController.cs" Line="164" Column="77" />
-      <File FileName="AppraisalApp/Services/ServiceImpl.cs" Line="160" Column="1" />
+      <File FileName="AppraisalApp/Controllers/LoginViewController.cs" Line="274" Column="14" />
+      <File FileName="AppraisalApp/Controllers/DecodeViewController.cs" Line="134" Column="18" />
+      <File FileName="AppraisalApp/Services/ServiceImpl.cs" Line="182" Column="34" />
       <File FileName="ExtAppraisalApp Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="../../../AppraisalApp/Controllers/DecodeViewController.cs" line="80" offsetX="784" offsetY="1185" expression="apprrequest.VIN" liveUpdate="True" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
-  <MonoDevelop.Ide.ItemProperties.ExtAppraisalApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.CBFD621A-3810-4A32-BA93-B050216539BB" />
+  <MonoDevelop.Ide.ItemProperties.ExtAppraisalApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.e99ffd9f7376f177a5020a6c918a1c6bf88e5a45" automaticSigning="False" />
   <MultiItemStartupConfigurations />
 </Properties>

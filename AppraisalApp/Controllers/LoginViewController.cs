@@ -51,6 +51,7 @@ namespace ExtAppraisalApp
                 Console.WriteLine("width :: " + this.View.Bounds.Width + " Height :: " + this.View.Bounds.Height);
                 // iphone 8 plus :: width :: 414 Height :: 736
                 // iphone 7 width :: 375 Height :: 667
+
                 if(this.View.Bounds.Width == 375){
                     boxImg.Frame = new CGRect(0, 0, 500, 500);
                 }else{
