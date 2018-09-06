@@ -452,7 +452,11 @@
                                                     </constraints>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="name"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="name" autocapitalizationType="words"/>
+                                                    <connections>
+                                                        <action selector="txtFirstName_Changed:" destination="pXu-PQ-Om3" id="240063" eventType="touchUpInside"/>
+                                                        <action selector="txtFirstName_Changed:" destination="pXu-PQ-Om3" id="240064" eventType="valueChanged"/>
+                                                    </connections>
                                                 </textField>
                                                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="100228">
                                                     <rect key="frame" x="169" y="4" width="37" height="37"/>
@@ -493,7 +497,11 @@
                                                     </constraints>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="name"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="name" autocapitalizationType="words"/>
+                                                    <connections>
+                                                        <action selector="txtLastName_Changed:" destination="pXu-PQ-Om3" id="240065" eventType="touchUpInside"/>
+                                                        <action selector="txtLastName_Changed:" destination="pXu-PQ-Om3" id="240066" eventType="valueChanged"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>

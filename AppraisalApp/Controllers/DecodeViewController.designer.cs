@@ -97,6 +97,14 @@ namespace ExtAppraisalApp
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void BtnDecodeVin_TouchUpInside (UIKit.UIButton sender);
 
+        [Action ("txtFirstName_Changed:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void txtFirstName_Changed (UIKit.UITextField sender);
+
+        [Action ("txtLastName_Changed:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void txtLastName_Changed (UIKit.UITextField sender);
+
         [Action ("txtMileage_Changed:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void txtMileage_Changed (UIKit.UITextField sender);
