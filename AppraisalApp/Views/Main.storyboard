@@ -455,7 +455,7 @@
                                                     <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="name" autocapitalizationType="words"/>
                                                     <connections>
                                                         <action selector="txtFirstName_Changed:" destination="pXu-PQ-Om3" id="240063" eventType="touchUpInside"/>
-                                                        <action selector="txtFirstName_Changed:" destination="pXu-PQ-Om3" id="240064" eventType="valueChanged"/>
+                                                        <action selector="txtFirstName_Changed:" destination="pXu-PQ-Om3" id="241851" eventType="editingChanged"/>
                                                     </connections>
                                                 </textField>
                                                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="100228">
@@ -500,7 +500,7 @@
                                                     <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="name" autocapitalizationType="words"/>
                                                     <connections>
                                                         <action selector="txtLastName_Changed:" destination="pXu-PQ-Om3" id="240065" eventType="touchUpInside"/>
-                                                        <action selector="txtLastName_Changed:" destination="pXu-PQ-Om3" id="240066" eventType="valueChanged"/>
+                                                        <action selector="txtLastName_Changed:" destination="pXu-PQ-Om3" id="241852" eventType="editingChanged"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
