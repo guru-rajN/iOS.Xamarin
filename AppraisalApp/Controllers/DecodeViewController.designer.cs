@@ -17,6 +17,9 @@ namespace ExtAppraisalApp
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIBarButtonItem btnCancel { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnCancel { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -97,6 +100,10 @@ namespace ExtAppraisalApp
         [Action ("BtnDecodeVin_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void BtnDecodeVin_TouchUpInside (UIKit.UIButton sender);
+
+        [Action ("txtEmail_Changed:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void txtEmail_Changed (UIKit.UITextField sender);
 
         [Action ("txtFirstName_Changed:")]
         [GeneratedCode ("iOS Designer", "1.0")]

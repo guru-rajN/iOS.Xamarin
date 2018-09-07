@@ -238,7 +238,12 @@ namespace ExtAppraisalApp
                 AppDelegate.appDelegate.storeId = Convert.ToInt16(code);
                 InvokeOnMainThread(() =>
                 {
-                    this.PerformSegue("decodeSegue", this);
+                    var storyboard = UIStoryboard.FromName("Main", null);
+                    var splitViewController = storyboard.InstantiateViewController("AppraisalLogNavID");
+                    var appDelegate = (AppDelegate)UIApplication.SharedApplication.Delegate;
+                    appDelegate.Window.RootViewController = splitViewController;
+
+                    //this.PerformSegue("decodeSegue", this);
                 });
 
             }

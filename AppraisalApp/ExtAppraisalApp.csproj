@@ -284,6 +284,14 @@
       <DependentUpon>AMOptionViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\APNSRespone.cs" />
+    <Compile Include="Controllers\AppraisalLogCell.cs" />
+    <Compile Include="Controllers\AppraisalLogCell.designer.cs">
+      <DependentUpon>AppraisalLogCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AppraisalLogViewController.cs" />
+    <Compile Include="Controllers\AppraisalLogViewController.designer.cs">
+      <DependentUpon>AppraisalLogViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />
