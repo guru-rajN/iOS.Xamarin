@@ -25,6 +25,42 @@ namespace ExtAppraisalApp.Services
             return service;
         }
 
+        public List<AppraisalLogEntity> FetchAppraisalLog(short storeId)
+        {
+            HttpResponseMessage responseMessage = null;
+            string result = null;
+            List<AppraisalLogEntity> appraisalLogsData = new List<AppraisalLogEntity>();
+            try
+            {
+
+                responseMessage = RestClient.doGet(Url.FetchAppraisalLog_URL + "/" + storeId);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    result = responseMessage.Content.ReadAsStringAsync().Result;
+                    SIMSResponseData rst = JsonConvert.DeserializeObject<SIMSResponseData>(result);
+                    var appaisalresponse = JsonConvert.DeserializeObject<List<AppraisalLogEntity>>(rst.Data.ToString());
+
+                    appraisalLogsData = appaisalresponse;
+
+                    if (null != result)
+                    {
+                        //result = null;
+                    }
+                }
+                else
+                {
+                    result = null;
+
+                }
+            }
+            catch (Exception exc)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception occured :: " + exc.Message);
+            }
+            return appraisalLogsData;
+            
+        }
+
         #endregion
 
 

@@ -1398,9 +1398,9 @@
                                     <constraint firstAttribute="width" constant="343" id="109408"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="Mechanical" misplaced="YES"/>
-                                    <segment title="Interior" misplaced="YES"/>
-                                    <segment title="Exterior" misplaced="YES"/>
+                                    <segment title="Mechanical"/>
+                                    <segment title="Interior"/>
+                                    <segment title="Exterior"/>
                                 </segments>
                                 <color key="tintColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
@@ -2863,6 +2863,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="BtnAddNew" destination="246043" id="name-outlet-246043"/>
+                        <outlet property="AppraisalTableView" destination="244181" id="name-outlet-244181"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="243231" userLabel="First Responder" sceneMemberID="firstResponder"/>

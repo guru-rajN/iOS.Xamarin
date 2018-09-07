@@ -292,6 +292,8 @@
     <Compile Include="Controllers\AppraisalLogViewController.designer.cs">
       <DependentUpon>AppraisalLogViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\AppraisalLogEntity.cs" />
+    <Compile Include="Controllers\ApprasialLogTVS.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />

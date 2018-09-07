@@ -16,10 +16,19 @@ namespace AppraisalApp
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITableView AppraisalTableView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIBarButtonItem BtnAddNew { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
+            if (AppraisalTableView != null) {
+                AppraisalTableView.Dispose ();
+                AppraisalTableView = null;
+            }
+
             if (BtnAddNew != null) {
                 BtnAddNew.Dispose ();
                 BtnAddNew = null;
