@@ -1,4 +1,4 @@
-﻿    using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using AppraisalApp.Models;
 using ExtAppraisalApp.Models;
 using Foundation;
@@ -19,6 +19,7 @@ namespace ExtAppraisalApp
             set;
         }
         public static AppDelegate appDelegate { get; private set; }
+        public string DeviceToken = null;
         public long vehicleID { get; set; }
         public short storeId { get; set; }
         public short invtrId { get; set; }
@@ -48,6 +49,8 @@ namespace ExtAppraisalApp
         public bool IsPhotosSaved = false;
 
         public bool IsAllDataSaved = false;
+
+        public string AppleDeviceToken = null;
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
@@ -163,10 +166,12 @@ namespace ExtAppraisalApp
                 DeviceToken = DeviceToken.Trim('<').Trim('>');
             }
 
-            //UIAlertView ALERT = new UIAlertView(null, DeviceToken.ToString(), null, "ok", null);
+            AppleDeviceToken = DeviceToken;
+            UIAlertView ALERT = new UIAlertView(null, DeviceToken.ToString(), null, "ok", null);
 
-            //ALERT.Show();
+            ALERT.Show();
             // Get previous device token
+
             var oldDeviceToken = NSUserDefaults.StandardUserDefaults.StringForKey("PushDeviceToken");
 
             // Has the token changed?

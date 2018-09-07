@@ -478,6 +478,43 @@ namespace ExtAppraisalApp.Services
             return response;
 
         }
+        public SIMSResponseData SaveAPNSDeviceToken(APNSRespone aPNSRespone)
+        {
+            string result = null;
+            HttpResponseMessage responseMessage = null;
+            SIMSResponseData response = new SIMSResponseData();
+            try
+            {
+
+                string request = JsonConvert.SerializeObject(aPNSRespone);
+
+                responseMessage = RestClient.doPost(Url.SAVE_APNS, request);
+
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    result = responseMessage.Content.ReadAsStringAsync().Result;
+                    SIMSResponseData rst = JsonConvert.DeserializeObject<SIMSResponseData>(result);
+
+                    response = rst;
+
+                    if (null != response)
+                    {
+                        Utilities.Utility.ShowAlert("Appraisal App", "APNS saved", "OK");
+                    }
+                }
+                else
+                {
+                    Utilities.Utility.ShowAlert("Appraisal App", "APNS save failed!!", "OK");
+                }
+
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine("Exception occured :: " + exc.Message);
+            }
+            return response;
+
+        }
         public SIMSResponseData SaveRecondition(ReconditionKBB recondata)
         {
             string result = null;

@@ -46,5 +46,6 @@ namespace ExtAppraisalApp.Services
         public const string SAVE_RECON_URL = "SaveReconDetailsKBB/";
 
         public const string SEARCH_NEAREST_STORES_URL = "GetStores/";
+        public const string SAVE_APNS = "SavePushNotificationToken/";
     }
 }

@@ -21,5 +21,12 @@ namespace ExtAppraisalApp.Services
                 return ServiceImpl.getInstance();
             }
         }
+        public class ServiceAPNS
+        {
+            public static ServiceImpl getWebServiceHandle()
+            {
+                return ServiceImpl.getInstance();
+            }
+        }
     }
 }
