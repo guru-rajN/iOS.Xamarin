@@ -34,13 +34,13 @@
     <OutputPath>bin\iPhone\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Distribution</CodesignKey>
+    <CodesignKey>iPhone Distribution: SLK SOFTWARE SERVICES PRIVATE LIMITED</CodesignKey>
     <MtouchFloat32>true</MtouchFloat32>
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchArch>ARM64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <PlatformTarget>x86</PlatformTarget>
-    <CodesignProvision>CarcashAppraisalApp</CodesignProvision>
+    <CodesignProvision>CarCashPush</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>pdbonly</DebugType>
@@ -294,6 +294,10 @@
     </Compile>
     <Compile Include="Models\AppraisalLogEntity.cs" />
     <Compile Include="Controllers\ApprasialLogTVS.cs" />
+    <Compile Include="Controllers\APNSViewController.cs" />
+    <Compile Include="Controllers\APNSViewController.designer.cs">
+      <DependentUpon>APNSViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />
