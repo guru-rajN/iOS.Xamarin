@@ -8,6 +8,7 @@ namespace AppraisalApp
 {
     internal class ApprasialLogTVS : UITableViewSource
     {
+        //protected string[] tableItems;
         private List<AppraisalLogEntity> apploglist;
 
         public ApprasialLogTVS(List<AppraisalLogEntity> apploglist)
@@ -20,12 +21,19 @@ namespace AppraisalApp
             var amcell = (AppraisalLogCell)tableView.DequeueReusableCell("Cell_id", indexPath);
             var amfactoryOption = apploglist[indexPath.Row];
             amcell.UpdateCell(amfactoryOption);
+
             return amcell;
         }
 
         public override nint RowsInSection(UITableView tableview, nint section)
         {
             return apploglist.Count;
+        }
+        public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+        {
+            var result =apploglist[indexPath.Row];
+
+
         }
     }
 }

@@ -24,6 +24,7 @@ namespace AppraisalApp
             {
                 var completedVehicle = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status == "CA");
                 AppraisalTableView.Source = new ApprasialLogTVS(completedVehicle);
+                AppraisalTableView.SeparatorStyle = UITableViewCellSeparatorStyle.DoubleLineEtched;
 
                 AppraisalTableView.RowHeight = UITableView.AutomaticDimension;
                 AppraisalTableView.EstimatedRowHeight = 40f;
@@ -33,6 +34,7 @@ namespace AppraisalApp
             {
                 var completedVehicle = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status != "CA");
                 AppraisalTableView.Source = new ApprasialLogTVS(completedVehicle);
+                AppraisalTableView.SeparatorStyle = UITableViewCellSeparatorStyle.DoubleLineEtched;
 
                 AppraisalTableView.RowHeight = UITableView.AutomaticDimension;
                 AppraisalTableView.EstimatedRowHeight = 40f;
@@ -52,16 +54,8 @@ namespace AppraisalApp
 
 
             AppraisalTableView.Source = new ApprasialLogTVS(apploglist);
-            //AppraisalTableView.AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
-            //AppraisalTableView.RowHeight = UITableView.AutomaticDimension;
-            //AppraisalTableView.ScrollEnabled = true;
-            //AppraisalTableView.ShowsVerticalScrollIndicator = true;
-            //AppraisalTableView.ShowsHorizontalScrollIndicator = true;
-            //AppraisalTableView.ReloadData();
-
-
-            //AppraisalTableView.DataSource = new ApprasialLogTVS(apploglist);
-            //AppraisalTableView.Delegate = new ApprasialLogTVS(apploglist);
+           
+            AppraisalTableView.SeparatorStyle = UITableViewCellSeparatorStyle.DoubleLineEtched;
             AppraisalTableView.RowHeight = UITableView.AutomaticDimension;
             AppraisalTableView.EstimatedRowHeight = 40f;
             AppraisalTableView.ReloadData();
