@@ -2874,13 +2874,13 @@
                                         <connections>
                                             <outlet property="YearMakeModel" destination="246514" id="name-outlet-246514"/>
                                             <outlet property="lblVin" destination="246990" id="name-outlet-246990"/>
-                                            <outlet property="vin" destination="246995" id="name-outlet-246995"/>
+                                            <outlet property="Vin" destination="246995" id="name-outlet-246995"/>
                                             <outlet property="lblMileage" destination="246999" id="name-outlet-246999"/>
                                             <outlet property="Mileage" destination="247485" id="name-outlet-247485"/>
                                             <outlet property="CreatedBy" destination="247488" id="name-outlet-247488"/>
                                             <outlet property="appraisalDate" destination="247980" id="name-outlet-247980"/>
                                             <outlet property="sacComment" destination="247982" id="name-outlet-247982"/>
-                                            <outlet property="Trin" destination="277669" id="name-outlet-277669"/>
+                                            <outlet property="Trim" destination="277669" id="name-outlet-277669"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
