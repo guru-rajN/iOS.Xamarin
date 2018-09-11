@@ -3,6 +3,9 @@ using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System.Net;
+using ExtAppraisalApp.Models;
+using ExtAppraisalApp;
+using ExtAppraisalApp.Services;
 
 namespace Amazon
 {
@@ -32,7 +35,7 @@ namespace Amazon
 
                 blob.UploadFromFileAsync(filepath);
                 string photoURL = String.Concat("https://iossims.blob.core.windows.net/simsphoto/" + keyName + ".jpeg");
-                // Save photo api  
+                // SavePhotoAPI(photoURL);
 
             }
             catch (Exception exc)
@@ -40,6 +43,22 @@ namespace Amazon
                 Console.WriteLine("ERROR " + exc.HelpLink);
             }
         }
+
+        private void SavePhotoAPI(string photo)
+        {
+            PhotoResponse photoResponse = new PhotoResponse();
+            SIMSResponseData responseStatus;
+            photoResponse.VehicleID = AppDelegate.appDelegate.vehicleID;
+            photoResponse.StoreID = AppDelegate.appDelegate.storeId;
+            photoResponse.InvtrID = AppDelegate.appDelegate.invtrId;
+            photoResponse.PhotoGuide = "Bar Code";
+            photoResponse.PhotoURL = photo;
+            photoResponse.Photo = null;
+
+            string DeviceToken = AppDelegate.appDelegate.AppleDeviceToken;
+            responseStatus = ServiceFactory.ServicePhotoSave.getWebServiceHandle().SavePhoto(photoResponse);
+        }
+
         public string Generatekeyname()
         {
             string key = Guid.NewGuid().ToString();

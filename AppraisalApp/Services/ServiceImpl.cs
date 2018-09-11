@@ -659,5 +659,81 @@ namespace ExtAppraisalApp.Services
             return response;
 
         }
+        public SIMSResponseData SaveOffer(long VehicleId, short StoreId, short InvtrId, string UserName, string ProspectId, int TrimId)
+        {
+            string result = null;
+            HttpResponseMessage responseMessage = null;
+            SIMSResponseData response = new SIMSResponseData();
+            try
+            {
+
+                //string request = JsonConvert.SerializeObject(offerResponse);
+
+                responseMessage = RestClient.doGet(Url.SAVE_Offer + "/" + VehicleId + "/" + StoreId + "/" + InvtrId + "/" + UserName + "/" + ProspectId + "/" + TrimId);
+
+
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    result = responseMessage.Content.ReadAsStringAsync().Result;
+                    SIMSResponseData rst = JsonConvert.DeserializeObject<SIMSResponseData>(result);
+
+                    response = rst;
+
+                    if (null != response)
+                    {
+                        Utilities.Utility.ShowAlert("Appraisal App", "Offer Done", "OK");
+                    }
+                }
+                else
+                {
+                    Utilities.Utility.ShowAlert("Appraisal App", "Offer failed!!", "OK");
+                }
+
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine("Exception occured :: " + exc.Message);
+            }
+            return response;
+
+        }
+        public SIMSResponseData SavePhoto(PhotoResponse photoResponse)
+        {
+            string result = null;
+            HttpResponseMessage responseMessage = null;
+            SIMSResponseData response = new SIMSResponseData();
+            try
+            {
+
+                string request = JsonConvert.SerializeObject(photoResponse);
+
+                responseMessage = RestClient.doPost(Url.SAVE_Photo, request);
+
+
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    result = responseMessage.Content.ReadAsStringAsync().Result;
+                    SIMSResponseData rst = JsonConvert.DeserializeObject<SIMSResponseData>(result);
+
+                    response = rst;
+
+                    if (null != response)
+                    {
+                        Utilities.Utility.ShowAlert("Appraisal App", "Photo Done", "OK");
+                    }
+                }
+                else
+                {
+                    Utilities.Utility.ShowAlert("Appraisal App", "Photo failed!!", "OK");
+                }
+
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine("Exception occured :: " + exc.Message);
+            }
+            return response;
+
+        }
     }
 }

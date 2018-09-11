@@ -18,7 +18,7 @@
     <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Distribution: SLK SOFTWARE SERVICES PRIVATE LIMITED</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
     <MtouchFastDev>true</MtouchFastDev>
@@ -27,6 +27,7 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <PlatformTarget>x86</PlatformTarget>
+    <CodesignProvision>CarCashPush</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>pdbonly</DebugType>
@@ -298,6 +299,8 @@
     <Compile Include="Controllers\APNSViewController.designer.cs">
       <DependentUpon>APNSViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\OfferResponse.cs" />
+    <Compile Include="Models\PhotoResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />

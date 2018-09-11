@@ -28,5 +28,19 @@ namespace ExtAppraisalApp.Services
                 return ServiceImpl.getInstance();
             }
         }
+        public class ServiceOffer
+        {
+            public static ServiceImpl getWebServiceHandle()
+            {
+                return ServiceImpl.getInstance();
+            }
+        }
+        public class ServicePhotoSave
+        {
+            public static ServiceImpl getWebServiceHandle()
+            {
+                return ServiceImpl.getInstance();
+            }
+        }
     }
 }

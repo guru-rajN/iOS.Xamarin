@@ -49,5 +49,7 @@ namespace ExtAppraisalApp.Services
 
         public const string SEARCH_NEAREST_STORES_URL = "GetStores/";
         public const string SAVE_APNS = "SavePushNotificationToken/";
+        public const string SAVE_Offer = "SaveOfferResponseKBB/";
+        public const string SAVE_Photo = "SavePhoto/";
     }
 }
