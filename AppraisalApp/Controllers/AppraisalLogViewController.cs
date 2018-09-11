@@ -24,10 +24,18 @@ namespace AppraisalApp
             List<AppraisalLogEntity> apploglist = new List<AppraisalLogEntity>();
             apploglist=ServiceFactory.getWebServiceHandle().FetchAppraisalLog(AppDelegate.appDelegate.storeId);
 
-            //List<FactoryOptionsKBB> factoryOptionKBBList = new List<FactoryOptionsKBB>();
 
             AppraisalTableView.Source = new ApprasialLogTVS(apploglist);
-            AppraisalTableView.TableFooterView = new UIView(CoreGraphics.CGRect.Empty);
+            //AppraisalTableView.AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
+            //AppraisalTableView.RowHeight = UITableView.AutomaticDimension;
+            //AppraisalTableView.ScrollEnabled = true;
+            //AppraisalTableView.ShowsVerticalScrollIndicator = true;
+            //AppraisalTableView.ShowsHorizontalScrollIndicator = true;
+            //AppraisalTableView.ReloadData();
+
+
+            //AppraisalTableView.DataSource = new ApprasialLogTVS(apploglist);
+            //AppraisalTableView.Delegate = new ApprasialLogTVS(apploglist);
             AppraisalTableView.RowHeight = UITableView.AutomaticDimension;
             AppraisalTableView.EstimatedRowHeight = 40f;
             AppraisalTableView.ReloadData();
