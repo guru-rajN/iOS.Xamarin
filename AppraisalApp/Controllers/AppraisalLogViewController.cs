@@ -25,6 +25,7 @@ namespace AppraisalApp
 
         partial void BtnAddNew_Activated(UIBarButtonItem sender)
         {
+            this.PerformSegue("decodeSegue", this);
 
         }
 
@@ -33,7 +34,7 @@ namespace AppraisalApp
         partial void Segment_Changed(UISegmentedControl sender)
         {
             string segmentID = AppraisalTypeSegment.SelectedSegment.ToString();
-            if (segmentID == "1")
+            if (segmentID == "0")
             {
                 var completedVehicle = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status == "CA");
                 AppraisalTableView.Source = new ApprasialLogTVS(completedVehicle);
@@ -66,7 +67,7 @@ namespace AppraisalApp
             apploglist=ServiceFactory.getWebServiceHandle().FetchAppraisalLog(AppDelegate.appDelegate.storeId);
 
 
-            var completedVehicle = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status != "CA");
+            var completedVehicle = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status == "CA");
             AppraisalTableView.Source = new ApprasialLogTVS(completedVehicle);
                
             AppraisalTableView.SeparatorStyle = UITableViewCellSeparatorStyle.DoubleLineEtched;
