@@ -2753,7 +2753,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="87.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="246514" translatesAutoresizingMaskIntoConstraints="NO">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="246514" translatesAutoresizingMaskIntoConstraints="NO" numberOfLines="0">
                                                     <rect key="frame" x="15" y="-4" width="177" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18" weight="heavy"/>
                                                     <nil key="textColor"/>
@@ -2763,64 +2763,46 @@
                                                         <constraint id="277673" firstItem="246514" firstAttribute="width" constant="177"/>
                                                     </constraints>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VIN:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="246990" translatesAutoresizingMaskIntoConstraints="NO">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VIN:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="246990" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
                                                     <rect key="frame" x="15" y="64" width="34" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14" weight="light"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
-                                                    <constraints>
-                                                        <constraint id="277680" firstItem="246990" firstAttribute="width" constant="34"/>
-                                                        <constraint id="277681" firstItem="246990" firstAttribute="height" constant="21"/>
-                                                    </constraints>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="246995" translatesAutoresizingMaskIntoConstraints="NO">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="246995" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" numberOfLines="0">
                                                     <rect key="frame" x="46" y="64" width="103" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14" weight="light"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
-                                                    <constraints>
-                                                        <constraint id="277685" firstItem="246995" firstAttribute="height" constant="21"/>
-                                                        <constraint id="277686" firstItem="246995" firstAttribute="width" constant="103"/>
-                                                    </constraints>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="246999" translatesAutoresizingMaskIntoConstraints="NO" text="Mileage:" misplaced="YES" ambiguous="YES">
-                                                    <rect key="frame" x="132" y="64" width="60" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="246999" translatesAutoresizingMaskIntoConstraints="NO" text="Mileage:" misplaced="YES">
+                                                    <rect key="frame" x="164" y="63" width="57" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14" weight="light"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
-                                                    <constraints>
-                                                        <constraint id="277694" firstItem="246999" firstAttribute="height" constant="21"/>
-                                                        <constraint id="277695" firstItem="246999" firstAttribute="width" constant="60"/>
-                                                    </constraints>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="247485" translatesAutoresizingMaskIntoConstraints="NO">
-                                                    <rect key="frame" x="200" y="64" width="50" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="247485" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                                    <rect key="frame" x="221" y="63" width="52" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14" weight="light"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
-                                                    <constraints>
-                                                        <constraint id="277698" firstItem="247485" firstAttribute="height" constant="21"/>
-                                                        <constraint id="277699" firstItem="247485" firstAttribute="width" constant="50"/>
-                                                    </constraints>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="247488" translatesAutoresizingMaskIntoConstraints="NO">
-                                                    <rect key="frame" x="309" y="0.0" width="66" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="raju.mahesh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="247488" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                                    <rect key="frame" x="281" y="0.0" width="94" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14" weight="light"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <constraints>
                                                         <constraint id="277702" firstItem="247488" firstAttribute="height" constant="21"/>
-                                                        <constraint id="277703" firstItem="247488" firstAttribute="width" constant="66"/>
                                                     </constraints>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="247980" translatesAutoresizingMaskIntoConstraints="NO">
-                                                    <rect key="frame" x="309" y="34" width="66" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="247980" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                                    <rect key="frame" x="281" y="34" width="94" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14" weight="light"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <constraints>
                                                         <constraint id="277706" firstItem="247980" firstAttribute="height" constant="21"/>
-                                                        <constraint id="277707" firstItem="247980" firstAttribute="width" constant="66"/>
                                                     </constraints>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="247981" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
@@ -2830,24 +2812,20 @@
                                                     <nil key="highlightedColor"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="247982" translatesAutoresizingMaskIntoConstraints="NO">
-                                                    <rect key="frame" x="309" y="64" width="66" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="247982" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" numberOfLines="0">
+                                                    <rect key="frame" x="281" y="64" width="94" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14" weight="heavy"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
-                                                    <constraints>
-                                                        <constraint id="277710" firstItem="247982" firstAttribute="height" constant="21"/>
-                                                        <constraint id="277711" firstItem="247982" firstAttribute="width" constant="66"/>
-                                                    </constraints>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="277669" translatesAutoresizingMaskIntoConstraints="NO">
-                                                    <rect key="frame" x="15" y="29" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="277669" translatesAutoresizingMaskIntoConstraints="NO" numberOfLines="0">
+                                                    <rect key="frame" x="15" y="29" width="165" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <constraints>
                                                         <constraint id="277676" firstItem="277669" firstAttribute="height" constant="21"/>
-                                                        <constraint id="277677" firstItem="277669" firstAttribute="width" constant="42"/>
+                                                        <constraint id="287729" firstItem="277669" firstAttribute="width" constant="165"/>
                                                     </constraints>
                                                 </label>
                                             </subviews>
@@ -2860,15 +2838,20 @@
                                                 <constraint id="277682" firstItem="244183" firstAttribute="bottom" secondItem="246990" secondAttribute="bottom" constant="2"/>
                                                 <constraint id="277683" firstItem="246990" firstAttribute="trailing" secondItem="246995" secondAttribute="leading" constant="3"/>
                                                 <constraint id="277684" firstItem="244183" firstAttribute="bottom" secondItem="246995" secondAttribute="bottom" constant="2"/>
-                                                <constraint id="277693" firstItem="246999" firstAttribute="leading" secondItem="246995" secondAttribute="centerX" constant="34"/>
                                                 <constraint id="277696" firstItem="244183" firstAttribute="bottom" secondItem="247485" secondAttribute="bottom" constant="2"/>
-                                                <constraint id="277697" firstItem="247485" firstAttribute="leading" secondItem="246999" secondAttribute="trailing" constant="8"/>
+                                                <constraint id="277697" firstItem="247485" firstAttribute="leading" secondItem="246999" secondAttribute="trailing" constant="1"/>
                                                 <constraint id="277700" firstItem="247488" firstAttribute="top" secondItem="244183" secondAttribute="top"/>
                                                 <constraint id="277701" firstItem="247488" firstAttribute="trailing" secondItem="244183" secondAttribute="trailing"/>
                                                 <constraint id="277704" firstItem="247980" firstAttribute="top" secondItem="247488" secondAttribute="bottom" constant="13"/>
                                                 <constraint id="277705" firstItem="247980" firstAttribute="trailing" secondItem="244183" secondAttribute="trailing"/>
-                                                <constraint id="277708" firstItem="247982" firstAttribute="trailing" secondItem="244183" secondAttribute="trailing"/>
-                                                <constraint id="277709" firstItem="247982" firstAttribute="top" secondItem="247980" secondAttribute="bottom" constant="9"/>
+                                                <constraint id="281486" firstItem="246990" firstAttribute="top" secondItem="277669" secondAttribute="bottom" constant="14"/>
+                                                <constraint id="281487" firstItem="246995" firstAttribute="top" secondItem="277669" secondAttribute="bottom" constant="14"/>
+                                                <constraint id="281489" firstItem="246999" firstAttribute="top" secondItem="277669" secondAttribute="bottom" constant="14"/>
+                                                <constraint id="281490" firstItem="244183" firstAttribute="bottom" secondItem="246999" secondAttribute="bottom" constant="2"/>
+                                                <constraint id="281491" firstItem="247982" firstAttribute="top" secondItem="247980" secondAttribute="bottom" constant="9"/>
+                                                <constraint id="281492" firstItem="244183" firstAttribute="bottom" secondItem="247982" secondAttribute="bottom" constant="2"/>
+                                                <constraint id="281493" firstItem="247982" firstAttribute="trailing" secondItem="244183" secondAttribute="trailing"/>
+                                                <constraint id="286486" firstItem="246999" firstAttribute="leading" secondItem="246995" secondAttribute="trailing" constant="15"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
