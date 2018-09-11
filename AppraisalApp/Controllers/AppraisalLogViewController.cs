@@ -15,10 +15,31 @@ namespace AppraisalApp
 {
     public partial class AppraisalLogViewController : UIViewController
     {
+        List<AppraisalLogEntity> apploglist = new List<AppraisalLogEntity>();
+
         partial void Segment_Changed(UISegmentedControl sender)
         {
-            throw new NotImplementedException();
+            string segmentID = AppraisalTypeSegment.SelectedSegment.ToString();
+            if (segmentID == "1")
+            {
+                var completedVehicle = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status == "CA");
+                AppraisalTableView.Source = new ApprasialLogTVS(completedVehicle);
+
+                AppraisalTableView.RowHeight = UITableView.AutomaticDimension;
+                AppraisalTableView.EstimatedRowHeight = 40f;
+                AppraisalTableView.ReloadData();
+            }
+            else
+            {
+                var completedVehicle = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status != "CA");
+                AppraisalTableView.Source = new ApprasialLogTVS(completedVehicle);
+
+                AppraisalTableView.RowHeight = UITableView.AutomaticDimension;
+                AppraisalTableView.EstimatedRowHeight = 40f;
+                AppraisalTableView.ReloadData();
+            }
         }
+
 
         public AppraisalLogViewController(IntPtr handle) : base(handle)
         {
@@ -26,7 +47,7 @@ namespace AppraisalApp
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            List<AppraisalLogEntity> apploglist = new List<AppraisalLogEntity>();
+
             apploglist=ServiceFactory.getWebServiceHandle().FetchAppraisalLog(AppDelegate.appDelegate.storeId);
 
 

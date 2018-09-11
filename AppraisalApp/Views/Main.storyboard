@@ -2870,8 +2870,7 @@
                                 </segments>
                                 <color key="tintColor" colorSpace="calibratedRGB" red="0" green="0.55686274509803924" blue="0" alpha="1"/>
                                 <connections>
-                                    <action selector="Segment_Changed:" destination="243229" id="305364" eventType="touchUpInside"/>
-                                    <action selector="Segment_Changed:" destination="243229" id="305365" eventType="editingChanged"/>
+                                    <action selector="Segment_Changed:" destination="243229" id="307131" eventType="valueChanged"/>
                                 </connections>
                             </segmentedControl>
                         </subviews>
