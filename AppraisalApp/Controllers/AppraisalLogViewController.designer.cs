@@ -20,6 +20,10 @@ namespace AppraisalApp
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UISegmentedControl AppraisalTypeSegment { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIBarButtonItem BtnAddNew { get; set; }
 
         void ReleaseDesignerOutlets ()
@@ -27,6 +31,11 @@ namespace AppraisalApp
             if (AppraisalTableView != null) {
                 AppraisalTableView.Dispose ();
                 AppraisalTableView = null;
+            }
+
+            if (AppraisalTypeSegment != null) {
+                AppraisalTypeSegment.Dispose ();
+                AppraisalTypeSegment = null;
             }
 
             if (BtnAddNew != null) {

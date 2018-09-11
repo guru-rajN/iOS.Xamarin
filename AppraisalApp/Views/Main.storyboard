@@ -2741,40 +2741,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="244181" misplaced="YES">
-                                <rect key="frame" x="0.0" y="117" width="375" height="695"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="244181">
+                                <rect key="frame" x="0.0" y="96" width="375" height="716"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell_id" rowHeight="88" id="244182" customClass="AppraisalLogCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell_id" rowHeight="88" id="244182" customClass="AppraisalLogCell" accessoryType="disclosureIndicator">
                                         <rect key="frame" x="0.0" y="28" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="244182" id="244183">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="87.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="87.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="246514">
-                                                    <rect key="frame" x="15" y="-4" width="177" height="30"/>
+                                                    <rect key="frame" x="15" y="-4" width="237" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="277672"/>
-                                                        <constraint firstAttribute="width" constant="177" id="277673"/>
+                                                        <constraint id="297960" firstItem="246514" firstAttribute="width" constant="237"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="VIN:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="246990">
-                                                    <rect key="frame" x="15" y="64" width="34" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="246995">
-                                                    <rect key="frame" x="46" y="64" width="103" height="21"/>
+                                                    <rect key="frame" x="15" y="64" width="117" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Mileage:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="246999">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mileage:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="246999" misplaced="YES">
                                                     <rect key="frame" x="164" y="63" width="57" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                     <nil key="textColor"/>
@@ -2818,10 +2812,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="277669">
-                                                    <rect key="frame" x="15" y="29" width="165" height="21"/>
+                                                    <rect key="frame" x="15" y="29" width="230" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="277676"/>
-                                                        <constraint firstAttribute="width" constant="165" id="287729"/>
+                                                        <constraint id="297961" firstItem="277669" firstAttribute="width" constant="230"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -2833,24 +2827,21 @@
                                                 <constraint firstAttribute="top" secondItem="246514" secondAttribute="top" constant="4" id="277671"/>
                                                 <constraint firstItem="277669" firstAttribute="leading" secondItem="244183" secondAttribute="leading" constant="15" id="277674"/>
                                                 <constraint firstItem="277669" firstAttribute="top" secondItem="246514" secondAttribute="bottom" constant="3" id="277675"/>
-                                                <constraint firstItem="246990" firstAttribute="leading" secondItem="244183" secondAttribute="leading" constant="15" id="277678"/>
-                                                <constraint firstAttribute="bottom" secondItem="246990" secondAttribute="bottom" constant="2" id="277682"/>
-                                                <constraint firstItem="246990" firstAttribute="trailing" secondItem="246995" secondAttribute="leading" constant="3" id="277683"/>
                                                 <constraint firstAttribute="bottom" secondItem="246995" secondAttribute="bottom" constant="2" id="277684"/>
                                                 <constraint firstAttribute="bottom" secondItem="247485" secondAttribute="bottom" constant="2" id="277696"/>
-                                                <constraint firstItem="247485" firstAttribute="leading" secondItem="246999" secondAttribute="trailing" constant="1" id="277697"/>
                                                 <constraint firstItem="247488" firstAttribute="top" secondItem="244183" secondAttribute="top" id="277700"/>
                                                 <constraint firstItem="247488" firstAttribute="trailing" secondItem="244183" secondAttribute="trailing" id="277701"/>
                                                 <constraint firstItem="247980" firstAttribute="top" secondItem="247488" secondAttribute="bottom" constant="13" id="277704"/>
                                                 <constraint firstItem="247980" firstAttribute="trailing" secondItem="244183" secondAttribute="trailing" id="277705"/>
-                                                <constraint firstItem="246990" firstAttribute="top" secondItem="277669" secondAttribute="bottom" constant="14" id="281486"/>
                                                 <constraint firstItem="246995" firstAttribute="top" secondItem="277669" secondAttribute="bottom" constant="14" id="281487"/>
-                                                <constraint firstItem="246999" firstAttribute="top" secondItem="277669" secondAttribute="bottom" constant="14" id="281489"/>
-                                                <constraint firstAttribute="bottom" secondItem="246999" secondAttribute="bottom" constant="2" id="281490"/>
                                                 <constraint firstItem="247982" firstAttribute="top" secondItem="247980" secondAttribute="bottom" constant="9" id="281491"/>
                                                 <constraint firstAttribute="bottom" secondItem="247982" secondAttribute="bottom" constant="2" id="281492"/>
                                                 <constraint firstItem="247982" firstAttribute="trailing" secondItem="244183" secondAttribute="trailing" id="281493"/>
-                                                <constraint firstItem="246999" firstAttribute="leading" secondItem="246995" secondAttribute="trailing" constant="15" id="286486"/>
+                                                <constraint id="296192" firstItem="246995" firstAttribute="leading" secondItem="244183" secondAttribute="leading" constant="15"/>
+                                                <constraint id="296194" firstItem="246999" firstAttribute="leading" secondItem="246995" secondAttribute="trailing" constant="1"/>
+                                                <constraint id="296195" firstItem="246999" firstAttribute="top" secondItem="277669" secondAttribute="bottom" constant="13"/>
+                                                <constraint id="296196" firstItem="244183" firstAttribute="bottom" secondItem="246999" secondAttribute="bottom" constant="3"/>
+                                                <constraint id="296197" firstItem="247485" firstAttribute="leading" secondItem="246999" secondAttribute="trailing"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -2861,35 +2852,33 @@
                                             <outlet property="YearMakeModel" destination="246514" id="name-outlet-246514"/>
                                             <outlet property="appraisalDate" destination="247980" id="name-outlet-247980"/>
                                             <outlet property="lblMileage" destination="246999" id="name-outlet-246999"/>
-                                            <outlet property="lblVin" destination="246990" id="name-outlet-246990"/>
                                             <outlet property="sacComment" destination="247982" id="name-outlet-247982"/>
                                         </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="288974">
-                                        <rect key="frame" x="0.0" y="116" width="375" height="45"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="288974" id="288975">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute keyPath="layer.cornerRadius" type="number">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apprasial Log" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="waj-9N-3k0" misplaced="YES">
-                                <rect key="frame" x="16" y="70" width="160" height="39"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="298487" misplaced="YES">
+                                <rect key="frame" x="81" y="64" width="213" height="29"/>
+                                <segments>
+                                    <segment title="Completed"/>
+                                    <segment title="Pending"/>
+                                </segments>
+                                <color key="tintColor" colorSpace="calibratedRGB" red="0" green="0.55686274509803924" blue="0" alpha="1"/>
+                            </segmentedControl>
                         </subviews>
-                        <color key="backgroundColor" customColorSpace="genericGamma22GrayColorSpace" cocoaTouchSystemColor="lightTextColor"/>
+                        <color key="backgroundColor" customColorSpace="genericGamma22GrayColorSpace" colorSpace="calibratedWhite" white="1" alpha="1"/>
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="244181" secondAttribute="leading" constant="16" id="244185"/>
                             <constraint firstItem="244181" firstAttribute="trailing" secondItem="243230" secondAttribute="trailingMargin" constant="16" id="244186"/>
                             <constraint firstItem="244181" firstAttribute="bottom" secondItem="243230" secondAttribute="bottom" id="244187"/>
-                            <constraint id="293497" firstItem="waj-9N-3k0" firstAttribute="top" secondItem="243226" secondAttribute="bottom" constant="6"/>
-                            <constraint id="293498" firstItem="waj-9N-3k0" firstAttribute="leading" secondItem="244181" secondAttribute="leading" constant="16"/>
-                            <constraint id="293499" firstItem="244181" firstAttribute="top" secondItem="waj-9N-3k0" secondAttribute="bottom" constant="8"/>
+                            <constraint id="298492" firstItem="298487" firstAttribute="top" secondItem="243226" secondAttribute="bottom"/>
+                            <constraint id="298495" firstItem="298487" firstAttribute="leading" secondItem="243230" secondAttribute="leadingMargin" constant="65"/>
+                            <constraint id="298496" firstItem="244181" firstAttribute="top" secondItem="298487" secondAttribute="bottom" constant="4"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dlD-Bo-AaJ">
@@ -2899,10 +2888,18 @@
                         <barButtonItem key="rightBarButtonItem" title="Add NEW" id="246042">
                             <color key="tintColor" red="0.0" green="0.55686274509803924" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
+                        <label key="titleView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Appraisal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="waj-9N-3k0">
+                            <rect key="frame" x="0.0" y="0.0" width="160" height="39"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <color key="textColor" colorSpace="calibratedRGB" red="0" green="0.55686274509803924" blue="0" alpha="1"/>
+                            <color key="highlightedColor" colorSpace="calibratedRGB" red="0" green="0.55686274509803924" blue="0" alpha="1"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </label>
                     </navigationItem>
                     <connections>
                         <outlet property="AppraisalTableView" destination="244181" id="name-outlet-244181"/>
                         <outlet property="BtnAddNew" destination="246043" id="name-outlet-246043"/>
+                        <outlet property="AppraisalTypeSegment" destination="298487" id="name-outlet-298487"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="243231" userLabel="First Responder" sceneMemberID="firstResponder"/>
