@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using AppraisalApp.Models;
+using ExtAppraisalApp;
 using Foundation;
 using UIKit;
 
@@ -32,7 +33,12 @@ namespace AppraisalApp
         public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
         {
             var result =apploglist[indexPath.Row];
-
+            AppDelegate.appDelegate.storeId = result.Store_ID;
+            AppDelegate.appDelegate.vehicleID = result.Vehicle_ID;
+            AppDelegate.appDelegate.invtrId = result.Invtr_ID;
+            var storyboard = UIStoryboard.FromName("Main", null);
+            var loginViewController = storyboard.InstantiateViewController("SplitViewControllerID");
+            AppDelegate.appDelegate.Window.RootViewController = loginViewController;
 
         }
     }
