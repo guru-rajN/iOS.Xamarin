@@ -25,25 +25,13 @@ namespace AppraisalApp
 
         partial void BtnAddNew_Activated(UIBarButtonItem sender)
         {
-
+            // Navigate DecodeView
             var storyboard = UIStoryboard.FromName("Main", null);
-            var splitViewController = storyboard.InstantiateViewController("DecodeVinNavID");
-            var appDelegate = (AppDelegate)UIApplication.SharedApplication.Delegate;
-           // appDelegate.Window.RootViewController = splitViewController;
-            if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
-            {
-                
-                this.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
-                this.PresentModalViewController(splitViewController, true);
-
-            }
-            else
-            {
-               // owner.ModalPresentationStyle = UIModalPresentationStyle.;
-                this.PresentModalViewController(splitViewController, true);
-
-            }
-
+            DecodeViewController decodeViewController = (DecodeViewController)storyboard.InstantiateViewController("DecodeViewController");
+            UINavigationController uINavigationController = new UINavigationController(decodeViewController);
+            uINavigationController.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
+            uINavigationController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
+            this.NavigationController.PresentViewController(uINavigationController, true, null);
 
         }
 
