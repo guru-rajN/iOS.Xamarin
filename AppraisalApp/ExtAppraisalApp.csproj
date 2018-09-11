@@ -301,6 +301,14 @@
     </Compile>
     <Compile Include="Models\OfferResponse.cs" />
     <Compile Include="Models\PhotoResponse.cs" />
+    <Compile Include="Controllers\AdditionalPhotographs.cs" />
+    <Compile Include="Controllers\AdditionalPhotographs.designer.cs">
+      <DependentUpon>AdditionalPhotographs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\PhotoGraphController.cs" />
+    <Compile Include="Controllers\PhotoGraphController.designer.cs">
+      <DependentUpon>PhotoGraphController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />
