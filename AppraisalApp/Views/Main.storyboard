@@ -2880,9 +2880,15 @@
                     <navigationItem key="navigationItem" id="dlD-Bo-AaJ">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="246043">
                             <color key="tintColor" red="0.0" green="0.55686274509803924" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="BtnCancel_Activated:" destination="243229" id="314578"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add NEW" id="246042">
                             <color key="tintColor" red="0.0" green="0.55686274509803924" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="BtnAddNew_Activated:" destination="243229" id="314577"/>
+                            </connections>
                         </barButtonItem>
                         <label key="titleView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Appraisal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="waj-9N-3k0">
                             <rect key="frame" x="0.0" y="0.0" width="160" height="39"/>
@@ -2894,8 +2900,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="AppraisalTableView" destination="244181" id="name-outlet-244181"/>
-                        <outlet property="BtnAddNew" destination="246043" id="name-outlet-246043"/>
                         <outlet property="AppraisalTypeSegment" destination="298487" id="name-outlet-298487"/>
+                        <outlet property="BtnCancel" destination="246043" id="name-outlet-246043"/>
+                        <outlet property="BtnAddNew" destination="246042" id="name-outlet-246042"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="243231" userLabel="First Responder" sceneMemberID="firstResponder"/>

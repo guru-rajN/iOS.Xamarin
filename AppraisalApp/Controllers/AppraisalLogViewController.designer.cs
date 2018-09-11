@@ -26,6 +26,18 @@ namespace AppraisalApp
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIBarButtonItem BtnAddNew { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIBarButtonItem BtnCancel { get; set; }
+
+        [Action ("BtnAddNew_Activated:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void BtnAddNew_Activated (UIKit.UIBarButtonItem sender);
+
+        [Action ("BtnCancel_Activated:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void BtnCancel_Activated (UIKit.UIBarButtonItem sender);
+
         [Action ("Segment_Changed:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void Segment_Changed (UIKit.UISegmentedControl sender);
@@ -45,6 +57,11 @@ namespace AppraisalApp
             if (BtnAddNew != null) {
                 BtnAddNew.Dispose ();
                 BtnAddNew = null;
+            }
+
+            if (BtnCancel != null) {
+                BtnCancel.Dispose ();
+                BtnCancel = null;
             }
         }
     }

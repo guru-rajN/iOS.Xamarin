@@ -15,6 +15,19 @@ namespace AppraisalApp
 {
     public partial class AppraisalLogViewController : UIViewController
     {
+        partial void BtnCancel_Activated(UIBarButtonItem sender)
+        {
+            var storyboard = UIStoryboard.FromName("Main", null);
+            var loginViewController = storyboard.InstantiateViewController("LoginViewController");
+            AppDelegate.appDelegate.Window.RootViewController = loginViewController;
+
+        }
+
+        partial void BtnAddNew_Activated(UIBarButtonItem sender)
+        {
+
+        }
+
         List<AppraisalLogEntity> apploglist = new List<AppraisalLogEntity>();
 
         partial void Segment_Changed(UISegmentedControl sender)
@@ -53,8 +66,9 @@ namespace AppraisalApp
             apploglist=ServiceFactory.getWebServiceHandle().FetchAppraisalLog(AppDelegate.appDelegate.storeId);
 
 
-            AppraisalTableView.Source = new ApprasialLogTVS(apploglist);
-           
+            var completedVehicle = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status != "CA");
+            AppraisalTableView.Source = new ApprasialLogTVS(completedVehicle);
+               
             AppraisalTableView.SeparatorStyle = UITableViewCellSeparatorStyle.DoubleLineEtched;
             AppraisalTableView.RowHeight = UITableView.AutomaticDimension;
             AppraisalTableView.EstimatedRowHeight = 40f;
