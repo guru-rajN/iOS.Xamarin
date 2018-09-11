@@ -15,6 +15,11 @@ namespace AppraisalApp
 {
     public partial class AppraisalLogViewController : UIViewController
     {
+        partial void Segment_Changed(UISegmentedControl sender)
+        {
+            throw new NotImplementedException();
+        }
+
         public AppraisalLogViewController(IntPtr handle) : base(handle)
         {
         }

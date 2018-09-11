@@ -26,6 +26,10 @@ namespace AppraisalApp
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIBarButtonItem BtnAddNew { get; set; }
 
+        [Action ("Segment_Changed:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void Segment_Changed (UIKit.UISegmentedControl sender);
+
         void ReleaseDesignerOutlets ()
         {
             if (AppraisalTableView != null) {
