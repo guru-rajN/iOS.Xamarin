@@ -40,11 +40,11 @@ namespace AppraisalApp
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel Trim { get; set; }
+        UIKit.UILabel Trin { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel Vin { get; set; }
+        UIKit.UILabel vin { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -82,14 +82,14 @@ namespace AppraisalApp
                 sacComment = null;
             }
 
-            if (Trim != null) {
-                Trim.Dispose ();
-                Trim = null;
+            if (Trin != null) {
+                Trin.Dispose ();
+                Trin = null;
             }
 
-            if (Vin != null) {
-                Vin.Dispose ();
-                Vin = null;
+            if (vin != null) {
+                vin.Dispose ();
+                vin = null;
             }
 
             if (YearMakeModel != null) {
