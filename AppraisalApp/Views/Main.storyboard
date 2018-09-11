@@ -1349,7 +1349,7 @@
         <!--Navigation Controller-->
         <scene sceneID="YYU-vf-sFT">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CHD-x3-UBe" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CHD-x3-UBe" sceneMemberID="viewController" storyboardIdentifier="DecodeVinNavID">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LSQ-C5-NQG">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
