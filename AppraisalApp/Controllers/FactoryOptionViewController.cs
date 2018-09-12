@@ -7,6 +7,7 @@ using ExtAppraisalApp.Utilities;
 using Foundation;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UIKit;
 
 namespace ExtAppraisalApp
@@ -23,7 +24,9 @@ namespace ExtAppraisalApp
 
         partial void BtnSave_Activated(UIBarButtonItem sender)
         {
-            SaveFactoryOptions();
+           // Utility.ShowLoadingIndicator(this.View, "Saving Factory", true);
+
+            SaveFactoryOptions(AppDelegate.appDelegate.vehicleID,AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId);
 
             // Navigate to Aftermarket
             if (null == masterViewController)
@@ -78,54 +81,82 @@ namespace ExtAppraisalApp
             }else{
                 BtnSave.Title = "Save";
             }
+            Utility.ShowLoadingIndicator(this.View, "Fetching Factory", true);
+            GetFactoryOptionsKBB(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, AppDelegate.appDelegate.trimId);
 
-            var width = View.Bounds.Width;
-            var height = View.Bounds.Height;
-
-            table = new UITableView(new CGRect(0, 0, width, height));
-            table.AutoresizingMask = UIViewAutoresizing.All;
-
-            table.TableFooterView = new UIView(new CGRect(0, 0, 0, 0));
-
-            AppDelegate.appDelegate.fctoption = ServiceFactory.getWebServiceHandle().GetFactoryOptionsKBB(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, 432110);
-            List<string> tableItems = new List<string>();
-            foreach(var category in AppDelegate.appDelegate.fctoption){
-                string str = category.Caption;
-                tableItems.Add(str);
-            }
-          
-            table.Source = new TableSource(tableItems.ToArray(), this);
-            table.TableFooterView = new UIView(CoreGraphics.CGRect.Empty);
-            Add(table);
-
+        
         }
 
-        public void SaveFactoryOptions(){
-            SIMSResponseData responseStatus;
-            VehicleFactoryOptionsKBB vehicleFactoryOptions = new VehicleFactoryOptionsKBB();
-            vehicleFactoryOptions.VehicleId = AppDelegate.appDelegate.vehicleID;
-            vehicleFactoryOptions.StoreId = AppDelegate.appDelegate.storeId;
-            vehicleFactoryOptions.InvtrId = AppDelegate.appDelegate.invtrId;
+       
+        Task GetFactoryOptionsKBB(long Vehicle_ID,short store_ID,short Invtr_ID,int Trim_ID)
+        {
+            return Task.Factory.StartNew(() => { 
+           
+            AppDelegate.appDelegate.fctoption = ServiceFactory.getWebServiceHandle().GetFactoryOptionsKBB(Vehicle_ID,store_ID,Invtr_ID,Trim_ID);
+           
+                InvokeOnMainThread(() =>
+                { 
+                    var width = View.Bounds.Width;
+                    var height = View.Bounds.Height;
+
+                    table = new UITableView(new CGRect(0, 0, width, height));
+                    table.AutoresizingMask = UIViewAutoresizing.All;
+
+                    table.TableFooterView = new UIView(new CGRect(0, 0, 0, 0));
+
+                    List<string> tableItems = new List<string>();
+                    foreach (var category in AppDelegate.appDelegate.fctoption)
+                    {
+                        string str = category.Caption;
+                        tableItems.Add(str);
+                    }
+                    table.Source = new TableSource(tableItems.ToArray(), this);
+                    table.TableFooterView = new UIView(CoreGraphics.CGRect.Empty);
+                    Add(table);
+
+                });
+
+            });
+                    
+
+        }
+        public void SaveFactoryOptions(long Vehicle_ID, short store_ID, short Invtr_ID){
+           // return Task.Factory.StartNew(() => {
+                SIMSResponseData responseStatus;
+                VehicleFactoryOptionsKBB vehicleFactoryOptions = new VehicleFactoryOptionsKBB();
+               
+                    
+                    vehicleFactoryOptions.VehicleId = Vehicle_ID;
+                    vehicleFactoryOptions.StoreId = store_ID;
+                    vehicleFactoryOptions.InvtrId = store_ID;
 
 
-            List<FactoryOptionsKBB> listfactory = new List<FactoryOptionsKBB>();
-            foreach (var items in AppDelegate.appDelegate.fctoption)
-            {
-                foreach (var item in items.questions)
-                {
-                    FactoryOptionsKBB factory = new FactoryOptionsKBB();
-                    factory.categoryName = item.categoryName;
-                    factory.displayName = item.displayName;
-                    factory.isSelected = item.isSelected;
-                    factory.optionId = item.optionId;
-                    factory.optionKindId = "KBB";
-                     listfactory.Add(factory);
+                    List<FactoryOptionsKBB> listfactory = new List<FactoryOptionsKBB>();
+                    foreach (var items in AppDelegate.appDelegate.fctoption)
+                    {
+                        foreach (var item in items.questions)
+                        {
+                            FactoryOptionsKBB factory = new FactoryOptionsKBB();
+                            factory.categoryName = item.categoryName;
+                            factory.displayName = item.displayName;
+                            factory.isSelected = item.isSelected;
+                            factory.optionId = item.optionId;
+                            factory.optionKindId = "KBB";
+                            listfactory.Add(factory);
 
 
-                }
-            }
-            vehicleFactoryOptions.data = listfactory;
-            responseStatus= ServiceFactory.getWebServiceHandle().SaveFactoryOptions(vehicleFactoryOptions);
+                        }
+                    }
+
+                    vehicleFactoryOptions.data = listfactory;
+
+                //InvokeOnMainThread(() =>
+                //{
+                    responseStatus = ServiceFactory.getWebServiceHandle().SaveFactoryOptions(vehicleFactoryOptions);
+
+            //    });
+            //});
+          
         }
     }
 }
