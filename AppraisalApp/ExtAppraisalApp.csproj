@@ -309,6 +309,14 @@
     <Compile Include="Controllers\PhotoGraphController.designer.cs">
       <DependentUpon>PhotoGraphController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ReconditionOptionCell.cs" />
+    <Compile Include="Views\ReconditionOptionCell.designer.cs">
+      <DependentUpon>ReconditionOptionCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdditionDesc.cs" />
+    <Compile Include="Views\AdditionDesc.designer.cs">
+      <DependentUpon>AdditionDesc.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />
