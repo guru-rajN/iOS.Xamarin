@@ -1,6 +1,7 @@
 using ExtAppraisalApp.Utilities;
 using Foundation;
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using UIKit;
 
@@ -8,92 +9,12 @@ namespace ExtAppraisalApp
 {
     public partial class PhotoGraphController : UIViewController
     {
-        private MasterViewController masterViewController;
-
-        private bool LeftCarImageUploaded = false;
-        private bool RightCarImageUploaded = false;
-        private bool SeatCarImageUploaded = false;
-        private bool BackSeatImageUploaded = false;
-        private bool FrontCarImageUploaded = false;
-        private bool BackCarImageUploaded = false;
-        private bool DashBoardImageUploaded = false;
-        private bool VINImageUplaoded = false;
-        private bool RimImageUploaded = false;
-        private bool OdometerImageUploaded = false;
 
         // Detect the device whether iPad or iPhone
         static bool UserInterfaceIdiomIsPhone
         {
             get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
         }
-
-
-
-        //partial void PhotosSaveBtn_Activated(UIBarButtonItem sender)
-        //{
-        //    if (!LeftCarImageUploaded)
-        //    {
-        //        Left.Layer.BorderColor = UIColor.Red.CGColor;
-        //    }
-        //    if (!RightCarImageUploaded)
-        //    {
-        //        Right.Layer.BorderColor = UIColor.Red.CGColor;
-        //    }
-        //    if (!SeatCarImageUploaded)
-        //    {
-        //        Seat.Layer.BorderColor = UIColor.Red.CGColor;
-        //    }
-        //    if (!BackSeatImageUploaded)
-        //    {
-        //        Seats.Layer.BorderColor = UIColor.Red.CGColor;
-        //    }
-        //    if (!FrontCarImageUploaded)
-        //    {
-        //        Front.Layer.BorderColor = UIColor.Red.CGColor;
-        //    }
-        //    if (!BackCarImageUploaded)
-        //    {
-        //        Back.Layer.BorderColor = UIColor.Red.CGColor;
-        //    }
-        //    if (!OdometerImageUploaded)
-        //    {
-        //        Odometer.Layer.BorderColor = UIColor.Red.CGColor;
-        //    }
-        //    if (!DashBoardImageUploaded)
-        //    {
-        //        Dashboard.Layer.BorderColor = UIColor.Red.CGColor;
-        //    }
-        //    if (!VINImageUplaoded)
-        //    {
-        //        VIN.Layer.BorderColor = UIColor.Red.CGColor;
-        //    }
-        //    if (!RimImageUploaded)
-        //    {
-        //        Rim.Layer.BorderColor = UIColor.Red.CGColor;
-        //    }
-
-        //    if (LeftCarImageUploaded && RightCarImageUploaded && SeatCarImageUploaded && BackSeatImageUploaded && FrontCarImageUploaded && BackCarImageUploaded
-        //       && OdometerImageUploaded && DashBoardImageUploaded && VINImageUplaoded && RimImageUploaded)
-        //    {
-        //        // Navigate to Summary 
-        //        if (null == masterViewController)
-        //        {
-        //            if (!UserInterfaceIdiomIsPhone)
-        //                masterViewController = (MasterViewController)((UINavigationController)SplitViewController.ViewControllers[0]).TopViewController;
-        //        }
-
-        //        ViewWorker viewWorker = new ViewWorker();
-        //        viewWorker.WorkerDelegate = (ExtAppraisalApp.Utilities.WorkerDelegateInterface)masterViewController;
-        //        viewWorker.ShowDoneImg(6);
-
-        //        AppDelegate.appDelegate.IsPhotosSaved = true;
-
-        //        this.PerformSegue("summarySegue", this);
-        //    }
-
-
-        //}
-
 
         void ActionButton_TouchUpInside()
         {
@@ -269,13 +190,10 @@ namespace ExtAppraisalApp
             switch (currentButton)
             {
                 case "front":
-                    //Right_Image.SizeToFit();
-                    //Right_Image.SetImage(Image, UIControlState.Normal);
-                    //Right_Image.TintColor = UIColor.Clear;
-                    //Right_Image.SetImage(Image.SetNilValueForKey)
+              
                     Front.TintColor = UIColor.Clear;
                     Front.SetBackgroundImage(Image, UIControlState.Normal);
-                    FrontCarImageUploaded = true;
+                    AppDelegate.appDelegate.FrontCarImageUploaded = true;
                     Front.Layer.BorderColor = UIColor.Black.CGColor;
 
                     // Right_Image.SizeToFit();
@@ -284,20 +202,20 @@ namespace ExtAppraisalApp
                     Back.TintColor = UIColor.Clear;
                     Back.SetBackgroundImage(Image, UIControlState.Normal);
                     // Left_Image.SetBackgroundImage(Image, UIControlState.Normal);
-                    BackCarImageUploaded = true;
+                    AppDelegate.appDelegate.BackCarImageUploaded = true;
                     Back.Layer.BorderColor = UIColor.Black.CGColor;
                     break;
                 case "right":
                     Right.TintColor = UIColor.Clear;
                     Right.SetBackgroundImage(Image, UIControlState.Normal);
-                    RightCarImageUploaded = true;
+                    AppDelegate.appDelegate.RightCarImageUploaded = true;
                     Right.Layer.BorderColor = UIColor.Black.CGColor;
                     /// Front.SetBackgroundImage(Image, UIControlState.Normal);
                     break;
                 case "left":
                     Left.TintColor = UIColor.Clear;
                     Left.SetBackgroundImage(Image, UIControlState.Normal);
-                    LeftCarImageUploaded = true;
+                    AppDelegate.appDelegate.LeftCarImageUploaded = true;
                     Left.Layer.BorderColor = UIColor.Black.CGColor;
                     /// Odometer.SetBackgroundImage(Image, UIControlState.Normal);
                     break;
@@ -305,39 +223,39 @@ namespace ExtAppraisalApp
                     Seat.TintColor = UIColor.Clear;
                     Seat.SetBackgroundImage(Image, UIControlState.Normal);
                     ///Seat.SetBackgroundImage(Image, UIControlState.Normal);
-                    SeatCarImageUploaded = true;
+                    AppDelegate.appDelegate.SeatCarImageUploaded = true;
                     Seat.Layer.BorderColor = UIColor.Black.CGColor;
                     break;
                 case "seats":
                     Seats.TintColor = UIColor.Clear;
                     Seats.SetBackgroundImage(Image, UIControlState.Normal);
 
-                    BackSeatImageUploaded = true;
+                    AppDelegate.appDelegate.BackSeatImageUploaded = true;
                     Seats.Layer.BorderColor = UIColor.Black.CGColor;
                     ///Seat.SetBackgroundImage(Image, UIControlState.Normal);
                     break;
                 case "dashboard":
                     Dashboard.TintColor = UIColor.Clear;
                     Dashboard.SetBackgroundImage(Image, UIControlState.Normal);
-                    DashBoardImageUploaded = true;
+                    AppDelegate.appDelegate.DashBoardImageUploaded = true;
                     Dashboard.Layer.BorderColor = UIColor.Black.CGColor;
                     break;
                 case "odometer":
                     Odometer.TintColor = UIColor.Clear;
                     Odometer.SetBackgroundImage(Image, UIControlState.Normal);
-                    OdometerImageUploaded = true;
+                    AppDelegate.appDelegate.OdometerImageUploaded = true;
                     Odometer.Layer.BorderColor = UIColor.Black.CGColor;
                     break;
                 case "rim":
                     Rim.TintColor = UIColor.Clear;
                     Rim.SetBackgroundImage(Image, UIControlState.Normal);
-                    RimImageUploaded = true;
+                    AppDelegate.appDelegate.RimImageUploaded = true;
                     Rim.Layer.BorderColor = UIColor.Black.CGColor;
                     break;
                 case "VIN":
                     VIN.TintColor = UIColor.Clear;
                     VIN.SetBackgroundImage(Image, UIControlState.Normal);
-                    VINImageUplaoded = true;
+                    AppDelegate.appDelegate.VINImageUplaoded = true;
                     VIN.Layer.BorderColor = UIColor.Black.CGColor;
                     break;
                 default:
@@ -430,7 +348,6 @@ namespace ExtAppraisalApp
 
         public override void ViewDidLoad()
         {
-            {
 
                 base.ViewDidLoad();
 
@@ -454,11 +371,58 @@ namespace ExtAppraisalApp
                 Rim.Layer.BorderColor = UIColor.Black.CGColor;
                 VIN.Layer.BorderWidth = 2.0f;
                 VIN.Layer.BorderColor = UIColor.Black.CGColor;
+                
+                //Notify photos selection and validation
+                NSNotificationCenter.DefaultCenter.AddObserver((Foundation.NSString)"UpdatePhotoGraphs",UpdatePhotoGraphViews);
 
                 setPersistedImage();
 
-            }
+        }
 
+        private void UpdatePhotoGraphViews(NSNotification obj)
+        {
+            Debug.WriteLine("notification msg :: " + obj.UserInfo);
+            var userInfo = obj.UserInfo;
+            var NotificationMsg = "";
+            if(null != userInfo)
+              NotificationMsg = userInfo.Keys[0].ToString();
+
+            if(NotificationMsg.Equals("Left")){
+                Left.Layer.BorderColor = UIColor.Red.CGColor;
+            }else if(NotificationMsg.Equals("Right")){
+                Right.Layer.BorderColor = UIColor.Red.CGColor;
+            }else if (NotificationMsg.Equals("Seat"))
+            {
+                Seat.Layer.BorderColor = UIColor.Red.CGColor;
+            }else if (NotificationMsg.Equals("Seats"))
+            {
+                Seats.Layer.BorderColor = UIColor.Red.CGColor;
+            }else if (NotificationMsg.Equals("Front"))
+            {
+                Front.Layer.BorderColor = UIColor.Red.CGColor;
+            }else if (NotificationMsg.Equals("Back"))
+            {
+                Back.Layer.BorderColor = UIColor.Red.CGColor;
+            }else if (NotificationMsg.Equals("Odometer"))
+            {
+                Odometer.Layer.BorderColor = UIColor.Red.CGColor;
+            }else if (NotificationMsg.Equals("Dashboard"))
+            {
+                Dashboard.Layer.BorderColor = UIColor.Red.CGColor;
+            }else if (NotificationMsg.Equals("VIN"))
+            {
+                VIN.Layer.BorderColor = UIColor.Red.CGColor;
+            }else if (NotificationMsg.Equals("Rim"))
+            {
+                Rim.Layer.BorderColor = UIColor.Red.CGColor;
+            }
+        }
+
+        public override void ViewDidDisappear(bool animated)
+        {
+            NSNotificationCenter.DefaultCenter.RemoveObserver((Foundation.NSString)"UpdatePhotoGraphs");
+
+            base.ViewDidDisappear(animated);
         }
 
         private void setPersistedImage()
@@ -470,7 +434,7 @@ namespace ExtAppraisalApp
             {
                 Right.SetBackgroundImage(rightImage, UIControlState.Normal);
                 Right.TintColor = UIColor.Clear;
-                RightCarImageUploaded = true;
+                AppDelegate.appDelegate.RightCarImageUploaded = true;
                 Right.Layer.BorderColor = UIColor.Black.CGColor;
             }
             UIImage leftImage = LoadImage("left");
@@ -478,7 +442,7 @@ namespace ExtAppraisalApp
             {
                 Left.TintColor = UIColor.Clear;
                 Left.SetBackgroundImage(leftImage, UIControlState.Normal);
-                LeftCarImageUploaded = true;
+                AppDelegate.appDelegate.LeftCarImageUploaded = true;
                 Left.Layer.BorderColor = UIColor.Black.CGColor;
 
             }
@@ -488,7 +452,7 @@ namespace ExtAppraisalApp
 
                 Front.TintColor = UIColor.Clear;
                 Front.SetBackgroundImage(frontImage, UIControlState.Normal);
-                FrontCarImageUploaded = true;
+                AppDelegate.appDelegate.FrontCarImageUploaded = true;
                 Front.Layer.BorderColor = UIColor.Black.CGColor;
             }
             UIImage backImage = LoadImage("back");
@@ -496,7 +460,7 @@ namespace ExtAppraisalApp
             {
                 Back.TintColor = UIColor.Clear;
                 Back.SetBackgroundImage(backImage, UIControlState.Normal);
-                BackCarImageUploaded = true;
+                AppDelegate.appDelegate.BackCarImageUploaded = true;
                 Back.Layer.BorderColor = UIColor.Black.CGColor;
 
             }
@@ -505,7 +469,7 @@ namespace ExtAppraisalApp
             {
                 Seat.TintColor = UIColor.Clear;
                 Seat.SetBackgroundImage(seatImage, UIControlState.Normal);
-                SeatCarImageUploaded = true;
+                AppDelegate.appDelegate.SeatCarImageUploaded = true;
                 Left.Layer.BorderColor = UIColor.Black.CGColor;
             }
             UIImage seatsImage = LoadImage("seats");
@@ -513,7 +477,7 @@ namespace ExtAppraisalApp
             {
                 Seats.TintColor = UIColor.Clear;
                 Seats.SetBackgroundImage(seatsImage, UIControlState.Normal);
-                BackSeatImageUploaded = true;
+                AppDelegate.appDelegate.BackSeatImageUploaded = true;
                 Seats.Layer.BorderColor = UIColor.Black.CGColor;
             }
             UIImage dashImage = LoadImage("dashboard");
@@ -521,7 +485,7 @@ namespace ExtAppraisalApp
             {
                 Dashboard.TintColor = UIColor.Clear;
                 Dashboard.SetBackgroundImage(dashImage, UIControlState.Normal);
-                DashBoardImageUploaded = true;
+                AppDelegate.appDelegate.DashBoardImageUploaded = true;
                 Dashboard.Layer.BorderColor = UIColor.Black.CGColor;
 
             }
@@ -530,7 +494,7 @@ namespace ExtAppraisalApp
             {
                 Odometer.TintColor = UIColor.Clear;
                 Odometer.SetBackgroundImage(odoImage, UIControlState.Normal);
-                OdometerImageUploaded = true;
+                AppDelegate.appDelegate.OdometerImageUploaded = true;
                 Odometer.Layer.BorderColor = UIColor.Black.CGColor;
 
             }
@@ -539,7 +503,7 @@ namespace ExtAppraisalApp
             {
                 Rim.TintColor = UIColor.Clear;
                 Rim.SetBackgroundImage(rimImage, UIControlState.Normal);
-                RimImageUploaded = true;
+                AppDelegate.appDelegate.RimImageUploaded = true;
                 Rim.Layer.BorderColor = UIColor.Black.CGColor;
 
             }
@@ -548,7 +512,7 @@ namespace ExtAppraisalApp
             {
                 VIN.TintColor = UIColor.Clear;
                 VIN.SetBackgroundImage(vinImage, UIControlState.Normal);
-                VINImageUplaoded = true;
+                AppDelegate.appDelegate.VINImageUplaoded = true;
                 VIN.Layer.BorderColor = UIColor.Black.CGColor;
             }
 
