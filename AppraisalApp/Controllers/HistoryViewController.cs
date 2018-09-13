@@ -260,6 +260,13 @@ namespace ExtAppraisalApp
                             viewWorker.PerformNavigation(5);
                             viewWorker.ShowPartialDoneImg(5);
                             viewWorker.ShowDoneImg(4);
+
+                            if (UserInterfaceIdiomIsPhone)
+                            {
+                                var dictionary = new NSDictionary(new NSString("1"), new NSString("History"));
+
+                                NSNotificationCenter.DefaultCenter.PostNotificationName((Foundation.NSString)"MenuSelection", null, dictionary);
+                            }
                         }
                         else
                         {
@@ -378,9 +385,19 @@ namespace ExtAppraisalApp
         {
             base.ViewDidLoad();
 
-            if(!AppDelegate.appDelegate.IsAllDataSaved){
-                Save.Title = "Next";
-            }else{
+            if (!AppDelegate.appDelegate.IsAllDataSaved)
+            {
+                if (UserInterfaceIdiomIsPhone)
+                {
+                    Save.Title = "Save";
+                }
+                else
+                {
+                    Save.Title = "Next";
+                }
+            }
+            else
+            {
                 Save.Title = "Save";
             }
 

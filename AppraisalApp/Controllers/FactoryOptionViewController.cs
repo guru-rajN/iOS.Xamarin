@@ -45,6 +45,13 @@ namespace ExtAppraisalApp
                     viewWorker.PerformNavigation(3);
                     viewWorker.ShowPartialDoneImg(3);
                     viewWorker.ShowDoneImg(2);
+
+                    if (UserInterfaceIdiomIsPhone)
+                    {
+                        var dictionary = new NSDictionary(new NSString("1"), new NSString("FactoryOptions"));
+
+                        NSNotificationCenter.DefaultCenter.PostNotificationName((Foundation.NSString)"MenuSelection", null, dictionary);
+                    }
                 }
                 else
                 {
@@ -76,11 +83,23 @@ namespace ExtAppraisalApp
 
             base.ViewDidLoad();
 
-            if(!AppDelegate.appDelegate.IsAllDataSaved){
-                BtnSave.Title = "Next";
-            }else{
+            if (!AppDelegate.appDelegate.IsAllDataSaved)
+            {
+                if (UserInterfaceIdiomIsPhone)
+                {
+                    BtnSave.Title = "Save";
+                }
+                else
+                {
+                    BtnSave.Title = "Next";
+                }
+
+            }
+            else
+            {
                 BtnSave.Title = "Save";
             }
+
             Utility.ShowLoadingIndicator(this.View, "Fetching Factory", true);
             GetFactoryOptionsKBB(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, AppDelegate.appDelegate.trimId);
 

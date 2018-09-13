@@ -59,6 +59,13 @@ namespace AppraisalApp
                     viewWorker.PerformNavigation(4);
                     viewWorker.ShowPartialDoneImg(4);
                     viewWorker.ShowDoneImg(3);
+
+                    if (UserInterfaceIdiomIsPhone)
+                    {
+                        var dictionary = new NSDictionary(new NSString("1"), new NSString("AfterMarket"));
+
+                        NSNotificationCenter.DefaultCenter.PostNotificationName((Foundation.NSString)"MenuSelection", null, dictionary);
+                    }
                 }
                 else
                 {
@@ -212,9 +219,19 @@ namespace AppraisalApp
         {
             base.ViewDidLoad();
 
-            if(!AppDelegate.appDelegate.IsAllDataSaved){
-                Btn_SaveAfterMarket.Title = "Next";
-            }else{
+            if (!AppDelegate.appDelegate.IsAllDataSaved)
+            {
+                if (UserInterfaceIdiomIsPhone)
+                {
+                    Btn_SaveAfterMarket.Title = "Save";
+                }
+                else
+                {
+                    Btn_SaveAfterMarket.Title = "Next";
+                }
+            }
+            else
+            {
                 Btn_SaveAfterMarket.Title = "Save";
             }
 

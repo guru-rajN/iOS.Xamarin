@@ -162,6 +162,13 @@ namespace ExtAppraisalApp
                         viewWorker.PerformNavigation(6);
                         viewWorker.ShowPartialDoneImg(6);
                         viewWorker.ShowDoneImg(5);
+
+                        if (UserInterfaceIdiomIsPhone)
+                        {
+                            var dictionary = new NSDictionary(new NSString("1"), new NSString("Reconditions"));
+
+                            NSNotificationCenter.DefaultCenter.PostNotificationName((Foundation.NSString)"MenuSelection", null, dictionary);
+                        }
                     }
                     else
                     {
@@ -412,9 +419,19 @@ namespace ExtAppraisalApp
             base.ViewDidLoad();
             ReconditionTableView.TableFooterView = new UIView(new CGRect(0, 0, 0, 0));
 
-            if(!AppDelegate.appDelegate.IsAllDataSaved){
-                ReconditionSaveBtn.Title = "Next";
-            }else{
+            if (!AppDelegate.appDelegate.IsAllDataSaved)
+            {
+                if (UserInterfaceIdiomIsPhone)
+                {
+                    ReconditionSaveBtn.Title = "Save";
+                }
+                else
+                {
+                    ReconditionSaveBtn.Title = "Next";
+                }
+            }
+            else
+            {
                 ReconditionSaveBtn.Title = "Save";
             }
 

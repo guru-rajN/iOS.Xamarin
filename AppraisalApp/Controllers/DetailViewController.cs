@@ -72,7 +72,15 @@ namespace ExtAppraisalApp
             }
             else
             {
-                DetailSaveBtn.Title = "Next";
+                if (!UserInterfaceIdiomIsPhone)
+                {
+                    DetailSaveBtn.Title = "Next";
+                }
+                else
+                {
+                    DetailSaveBtn.Title = "Save";
+                }
+
             }
 
             if (null == masterViewController)
@@ -132,7 +140,14 @@ namespace ExtAppraisalApp
                         makeValue.Text = vehicleDetails.Make;
 
                         // Display Year & Make in MasterView
-                        masterViewController.Title = vehicleDetails.Year.ToString() + " " + vehicleDetails.Make;
+                        if(!UserInterfaceIdiomIsPhone){
+                            masterViewController.Title = vehicleDetails.Year.ToString() + " " + vehicleDetails.Make;  
+                        }else{
+                            var dictionary = new NSDictionary(new NSString("1"), new NSString(vehicleDetails.Year.ToString() + " " + vehicleDetails.Make));
+
+                            NSNotificationCenter.DefaultCenter.PostNotificationName((Foundation.NSString)"Title", null, dictionary);
+                        }
+                           
 
                         mileageValue.Text = AppDelegate.appDelegate.mileage.ToString();
                         vehicleDetails.Mileage = AppDelegate.appDelegate.mileage;
@@ -649,6 +664,13 @@ namespace ExtAppraisalApp
                     worker.ShowPartialDoneImg(2);
                     worker.ShowDoneImg(1);
                     worker.PerformNavigation(2);
+
+                    if (UserInterfaceIdiomIsPhone)
+                    {
+                        var dictionary = new NSDictionary(new NSString("1"), new NSString("VehicleInfo"));
+
+                        NSNotificationCenter.DefaultCenter.PostNotificationName((Foundation.NSString)"MenuSelection", null, dictionary);
+                    }
                 }
                 else
                 {

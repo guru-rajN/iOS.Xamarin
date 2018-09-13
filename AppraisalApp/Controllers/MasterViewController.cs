@@ -18,9 +18,17 @@ namespace ExtAppraisalApp
 
         public DetailViewController DetailViewController { get; set; }
 
+        private string NotificationMessage;
+
         protected MasterViewController(IntPtr handle) : base(handle)
         {
             // Note: this .ctor should not contain any initialization logic.
+        }
+
+        // Detect the device whether iPad or iPhone
+        static bool UserInterfaceIdiomIsPhone
+        {
+            get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
         }
 
         public override void ViewDidLoad()
@@ -39,6 +47,76 @@ namespace ExtAppraisalApp
 
             NSIndexPath path = NSIndexPath.FromRowSection(0, 0);
             this.TableView.SelectRow(path, true, UITableViewScrollPosition.None);
+
+            NSNotificationCenter.DefaultCenter.AddObserver((Foundation.NSString)"Title", UpdateTitle, null);
+            NSNotificationCenter.DefaultCenter.AddObserver((Foundation.NSString)"MenuSelection", UpdateView, null);
+        }
+
+        private void UpdateTitle(NSNotification obj)
+        {
+            var userInfo = obj.UserInfo;
+            var NotificationMsg = "";
+            if (null != userInfo)
+                NotificationMsg = userInfo.Keys[0].ToString();
+
+            var message = userInfo.ValueForKey((Foundation.NSString)"1");
+
+            if(NotificationMsg.Equals("1")){
+                Title = message.ToString();
+            }
+        }
+
+        public override void ViewDidDisappear(bool animated)
+        {
+            Debug.WriteLine("View did disAppear");
+            NSNotificationCenter.DefaultCenter.RemoveObserver((Foundation.NSString)"Title");
+            NSNotificationCenter.DefaultCenter.RemoveObserver((Foundation.NSString)"MenuSelection");
+            base.ViewDidDisappear(animated);
+        }
+
+        public void UpdateView(NSNotification notification)
+        {
+            Debug.WriteLine("notification recieved");
+            NSDictionary dict = notification.UserInfo;
+            var message = dict.ValueForKey((Foundation.NSString)"1");
+
+            Debug.WriteLine("message :: " + message);
+            NotificationMessage = message.ToString();
+
+            if (NotificationMessage.Equals("VehicleInfo"))
+            {
+
+                ShowDoneIcon(1);
+
+            }
+            else if (NotificationMessage.Equals("FactoryOptions"))
+            {
+
+                ShowDoneIcon(2);
+
+            }
+            else if (NotificationMessage.Equals("AfterMarket"))
+            {
+                ShowDoneIcon(3);
+
+            }
+            else if (NotificationMessage.Equals("History"))
+            {
+                ShowDoneIcon(4);
+
+            }
+            else if (NotificationMessage.Equals("Reconditions"))
+            {
+                ShowDoneIcon(5);
+
+            }
+            else if (NotificationMessage.Equals("PhotoGraphs"))
+            {
+                ShowDoneIcon(6);
+
+            }
+
+
         }
 
         public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
@@ -50,25 +128,30 @@ namespace ExtAppraisalApp
         public override NSIndexPath WillSelectRow(UITableView tableView, NSIndexPath indexPath)
         {
 
-            if (indexPath.Row == 1 && !AppDelegate.appDelegate.IsFactorySaved)
+            if (!UserInterfaceIdiomIsPhone)
             {
-                return null;
-            }
-            else if (indexPath.Row == 2 && !AppDelegate.appDelegate.IsAftermarketSaved)
-            {
-                return null;
-            }
-            else if (indexPath.Row == 3 && !AppDelegate.appDelegate.IsHistorySaved)
-            {
-                return null;
-            }
-            else if (indexPath.Row == 4 && !AppDelegate.appDelegate.IsReconditionsSaved)
-            {
-                return null;
-            }
-            else if (indexPath.Row == 5 && !AppDelegate.appDelegate.IsPhotosSaved)
-            {
-                return null;
+
+                if (indexPath.Row == 1 && !AppDelegate.appDelegate.IsFactorySaved)
+                {
+                    return null;
+                }
+                else if (indexPath.Row == 2 && !AppDelegate.appDelegate.IsAftermarketSaved)
+                {
+                    return null;
+                }
+                else if (indexPath.Row == 3 && !AppDelegate.appDelegate.IsHistorySaved)
+                {
+                    return null;
+                }
+                else if (indexPath.Row == 4 && !AppDelegate.appDelegate.IsReconditionsSaved)
+                {
+                    return null;
+                }
+                else if (indexPath.Row == 5 && !AppDelegate.appDelegate.IsPhotosSaved)
+                {
+                    return null;
+                }
+                return indexPath;
             }
 
             return indexPath;
@@ -88,32 +171,39 @@ namespace ExtAppraisalApp
 
         public override bool ShouldPerformSegue(string segueIdentifier, NSObject sender)
         {
-            if (segueIdentifier == "infoDetail")
+            if (!UserInterfaceIdiomIsPhone)
             {
+                if (segueIdentifier == "infoDetail")
+                {
 
-            }
-            else if (segueIdentifier == "factoryDetail" && !AppDelegate.appDelegate.IsFactorySaved)
-            {
-                return false;
+                }
+                else if (segueIdentifier == "factoryDetail" && !AppDelegate.appDelegate.IsFactorySaved)
+                {
+                    return false;
 
+                }
+                else if (segueIdentifier == "AfterMarketSegue" && !AppDelegate.appDelegate.IsAftermarketSaved)
+                {
+                    return false;
+                }
+                else if (segueIdentifier == "historyDetails" && !AppDelegate.appDelegate.IsHistorySaved)
+                {
+                    return false;
+                }
+                else if (segueIdentifier == "reconditionDetails" && !AppDelegate.appDelegate.IsReconditionsSaved)
+                {
+                    return false;
+                }
+                else if (segueIdentifier == "photoDetails" && !AppDelegate.appDelegate.IsPhotosSaved)
+                {
+                    return false;
+                }
+                return true;
             }
-            else if (segueIdentifier == "AfterMarketSegue" && !AppDelegate.appDelegate.IsAftermarketSaved)
+            else
             {
-                return false;
+                return true;
             }
-            else if (segueIdentifier == "historyDetails" && !AppDelegate.appDelegate.IsHistorySaved)
-            {
-                return false;
-            }
-            else if (segueIdentifier == "reconditionDetails" && !AppDelegate.appDelegate.IsReconditionsSaved)
-            {
-                return false;
-            }
-            else if (segueIdentifier == "photoDetails" && !AppDelegate.appDelegate.IsPhotosSaved)
-            {
-                return false;
-            }
-            return true;
 
         }
 
