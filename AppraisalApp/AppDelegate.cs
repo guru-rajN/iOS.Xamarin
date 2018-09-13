@@ -69,6 +69,7 @@ namespace ExtAppraisalApp
         public bool RimImageUploaded = false;
         public bool OdometerImageUploaded = false;
 
+
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
 
@@ -226,11 +227,13 @@ namespace ExtAppraisalApp
             {
 
                 APNSAlert = alert.ToString();
-                NSNotificationCenter.DefaultCenter.PostNotificationName("PushNotify", null);
 
+                NSNotificationCenter.DefaultCenter.PostNotificationName("PushNotify", null);
+                NSNotificationCenter.DefaultCenter.PostNotificationName("ShowPushNotifyData", null);
             }
 
         }
+
 
 
         public override void FailedToRegisterForRemoteNotifications(UIApplication application, NSError error)

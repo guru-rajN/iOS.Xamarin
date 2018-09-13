@@ -1,14 +1,16 @@
 ﻿<Properties StartupConfiguration="{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="ExtAppraisalApp Status">
     <Files>
-      <File FileName="AppraisalApp/AppDelegate.cs" Line="176" Column="10" />
+      <File FileName="AppraisalApp/AppDelegate.cs" Line="230" Column="17" />
       <File FileName="AppraisalApp/Controllers/PhotoViewController.cs" Line="1" Column="1" />
       <File FileName="AppraisalApp/Controllers/PhotoGraphController.cs" Line="380" Column="10" />
-      <File FileName="AppraisalApp/Controllers/SummaryViewController.cs" Line="31" Column="40" />
+      <File FileName="AppraisalApp/Controllers/SummaryViewController.cs" Line="25" Column="89" />
       <File FileName="AppraisalApp/Controllers/ConfirmationViewController.cs" Line="28" Column="10" />
-      <File FileName="AppraisalApp/Controllers/APNSViewController.cs" Line="38" Column="63" />
+      <File FileName="AppraisalApp/Controllers/APNSViewController.cs" Line="1" Column="18" />
       <File FileName="AppraisalApp/Views/Main.storyboard" />
       <File FileName="AppraisalApp/Controllers/DecodeViewController.designer.cs" Line="18" Column="54" />
+      <File FileName="AppraisalApp/Controllers/LoginViewController.cs" Line="121" Column="35" />
+      <File FileName="AppraisalApp/Controllers/DetailViewController.cs" Line="635" Column="13" />
       <File FileName="ExtAppraisalApp Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
@@ -19,6 +21,6 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="../../../AppraisalApp/Controllers/DecodeViewController.cs" line="80" offsetX="784" offsetY="1185" expression="apprrequest.VIN" liveUpdate="True" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
-  <MonoDevelop.Ide.ItemProperties.ExtAppraisalApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.e99ffd9f7376f177a5020a6c918a1c6bf88e5a45" />
+  <MonoDevelop.Ide.ItemProperties.ExtAppraisalApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.0B24CE10-6C2E-4FDE-9145-62431DB5F71B" />
   <MultiItemStartupConfigurations />
 </Properties>
