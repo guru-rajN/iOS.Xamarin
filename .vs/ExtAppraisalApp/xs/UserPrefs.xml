@@ -1,27 +1,16 @@
 ﻿<Properties StartupConfiguration="{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="ExtAppraisalApp Status">
     <Files>
-      <File FileName="AppraisalApp/Controllers/DetailViewController.cs" Line="685" Column="14" />
-      <File FileName="AppraisalApp/Controllers/MasterViewController.cs" Line="66" Column="1" />
-      <File FileName="AppraisalApp/Controllers/DecodeViewController.cs" Line="178" Column="86" />
-      <File FileName="AppraisalApp/Services/ServiceImpl.cs" Line="233" Column="1" />
-      <File FileName="AppraisalApp/Controllers/PhotoGraphController.cs" Line="397" Column="55" />
-      <File FileName="AppraisalApp/Controllers/PhotoViewController.cs" Line="40" Column="17" />
-      <File FileName="AppraisalApp/Services/RestClient.cs" Line="35" Column="1" />
+      <File FileName="AppraisalApp/Controllers/DetailViewController.cs" Line="116" Column="1" />
+      <File FileName="AppraisalApp/Controllers/FactoryOptionViewController.cs" Line="54" Column="22" />
+      <File FileName="AppraisalApp/Controllers/AfterMarketViewController.cs" Line="72" Column="49" />
+      <File FileName="AppraisalApp/Controllers/MasterViewController.cs" Line="63" Column="13" />
       <File FileName="ExtAppraisalApp Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/sathya/Work/Projects/13-Sep/ExtAppraisalApp/AppraisalApp/Controllers/MasterViewController.cs" relfile="AppraisalApp/Controllers/MasterViewController.cs" line="175" column="1" />
-      <Breakpoint file="/Users/sathya/Work/Projects/13-Sep/ExtAppraisalApp/AppraisalApp/Controllers/MasterViewController.cs" relfile="AppraisalApp/Controllers/MasterViewController.cs" line="132" column="1" />
-      <Breakpoint file="/Users/sathya/Work/Projects/13-Sep/ExtAppraisalApp/AppraisalApp/Controllers/DetailViewController.cs" relfile="AppraisalApp/Controllers/DetailViewController.cs" line="663" column="1" />
-      <Breakpoint file="/Users/sathya/Work/Projects/13-Sep/ExtAppraisalApp/AppraisalApp/Controllers/DetailViewController.cs" relfile="AppraisalApp/Controllers/DetailViewController.cs" line="105" column="1" />
-      <Breakpoint file="/Users/sathya/Work/Projects/13-Sep/ExtAppraisalApp/AppraisalApp/Controllers/DetailViewController.cs" relfile="AppraisalApp/Controllers/DetailViewController.cs" line="70" column="1" />
-      <Breakpoint file="/Users/sathya/Work/Projects/13-Sep/ExtAppraisalApp/AppraisalApp/Controllers/DetailViewController.cs" relfile="AppraisalApp/Controllers/DetailViewController.cs" line="115" column="1" />
-      <Breakpoint file="/Users/sathya/Work/Projects/13-Sep/ExtAppraisalApp/AppraisalApp/Controllers/MasterViewController.cs" relfile="AppraisalApp/Controllers/MasterViewController.cs" line="56" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="../../../AppraisalApp/Controllers/DecodeViewController.cs" line="80" offsetX="784" offsetY="1185" expression="apprrequest.VIN" liveUpdate="True" />

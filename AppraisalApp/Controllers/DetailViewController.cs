@@ -95,6 +95,7 @@ namespace ExtAppraisalApp
                 worker.WorkerDelegate = masterViewController;
 
                 worker.ShowPartialDoneImg(1);
+
             }
 
 
@@ -659,17 +660,20 @@ namespace ExtAppraisalApp
 
                 AppDelegate.appDelegate.cacheVehicleDetails = vehicleDetails;
 
-                if (!AppDelegate.appDelegate.IsInfoSaved)
+                if (!AppDelegate.appDelegate.IsAllDataSaved)
                 {
-                    worker.ShowPartialDoneImg(2);
-                    worker.ShowDoneImg(1);
-                    worker.PerformNavigation(2);
-
-                    if (UserInterfaceIdiomIsPhone)
+                    if (!AppDelegate.appDelegate.IsInfoSaved)
                     {
-                        var dictionary = new NSDictionary(new NSString("1"), new NSString("VehicleInfo"));
+                        worker.ShowPartialDoneImg(2);
+                        worker.ShowDoneImg(1);
+                        worker.PerformNavigation(2);
 
-                        NSNotificationCenter.DefaultCenter.PostNotificationName((Foundation.NSString)"MenuSelection", null, dictionary);
+                        if (UserInterfaceIdiomIsPhone)
+                        {
+                            var dictionary = new NSDictionary(new NSString("1"), new NSString("VehicleInfo"));
+
+                            NSNotificationCenter.DefaultCenter.PostNotificationName((Foundation.NSString)"MenuSelection", null, dictionary);
+                        }
                     }
                 }
                 else
@@ -681,7 +685,9 @@ namespace ExtAppraisalApp
                     uINavigationController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
                     this.NavigationController.PresentViewController(uINavigationController, true, null);
                 }
+
                 AppDelegate.appDelegate.IsInfoSaved = true;
+
             }
 
 
