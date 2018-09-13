@@ -317,6 +317,11 @@
     <Compile Include="Controllers\ConfirmationViewController.designer.cs">
       <DependentUpon>ConfirmationViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\AddPhotoModel.cs" />
+    <Compile Include="Controllers\PhotosCell.cs" />
+    <Compile Include="Controllers\PhotosCell.designer.cs">
+      <DependentUpon>PhotosCell.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />
