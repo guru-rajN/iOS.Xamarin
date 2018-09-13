@@ -16,7 +16,7 @@ namespace ExtAppraisalApp
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel ConfirmationMsg { get; set; }
+        UIKit.UIView AppraisedContainerView { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -28,7 +28,7 @@ namespace ExtAppraisalApp
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextView SummaryMsg { get; set; }
+        UIKit.UIView SummaryContainerView { get; set; }
 
         [Action ("EditButton_Activated:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -40,9 +40,9 @@ namespace ExtAppraisalApp
 
         void ReleaseDesignerOutlets ()
         {
-            if (ConfirmationMsg != null) {
-                ConfirmationMsg.Dispose ();
-                ConfirmationMsg = null;
+            if (AppraisedContainerView != null) {
+                AppraisedContainerView.Dispose ();
+                AppraisedContainerView = null;
             }
 
             if (EditButton != null) {
@@ -55,9 +55,9 @@ namespace ExtAppraisalApp
                 SubmitBtn = null;
             }
 
-            if (SummaryMsg != null) {
-                SummaryMsg.Dispose ();
-                SummaryMsg = null;
+            if (SummaryContainerView != null) {
+                SummaryContainerView.Dispose ();
+                SummaryContainerView = null;
             }
         }
     }

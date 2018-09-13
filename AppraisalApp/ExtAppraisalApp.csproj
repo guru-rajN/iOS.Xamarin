@@ -309,6 +309,14 @@
     <Compile Include="Controllers\PhotoGraphController.designer.cs">
       <DependentUpon>PhotoGraphController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AppraisedViewController.cs" />
+    <Compile Include="Controllers\AppraisedViewController.designer.cs">
+      <DependentUpon>AppraisedViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ConfirmationViewController.cs" />
+    <Compile Include="Controllers\ConfirmationViewController.designer.cs">
+      <DependentUpon>ConfirmationViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />
