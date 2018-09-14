@@ -535,12 +535,12 @@ namespace ExtAppraisalApp.Services
 
                     if (null != response)
                     {
-                        Utilities.Utility.ShowAlert("Appraisal App", "APNS saved", "OK");
+                        //Utilities.Utility.ShowAlert("Appraisal App", "APNS saved", "OK");
                     }
                 }
                 else
                 {
-                    Utilities.Utility.ShowAlert("Appraisal App", "APNS save failed!!", "OK");
+                    //Utilities.Utility.ShowAlert("Appraisal App", "APNS save failed!!", "OK");
                 }
 
             }
@@ -681,12 +681,12 @@ namespace ExtAppraisalApp.Services
 
                     if (null != response)
                     {
-                        Utilities.Utility.ShowAlert("Appraisal App", "Offer Done", "OK");
+                        //Utilities.Utility.ShowAlert("Appraisal App", "Offer Done", "OK");
                     }
                 }
                 else
                 {
-                    Utilities.Utility.ShowAlert("Appraisal App", "Offer failed!!", "OK");
+                    //Utilities.Utility.ShowAlert("Appraisal App", "Offer failed!!", "OK");
                 }
 
             }
