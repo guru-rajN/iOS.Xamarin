@@ -100,7 +100,7 @@ namespace ExtAppraisalApp
 
             txtZip.ShouldReturn = (tf) =>
             {
-
+                GoClick();
                 return true;
             };
 
