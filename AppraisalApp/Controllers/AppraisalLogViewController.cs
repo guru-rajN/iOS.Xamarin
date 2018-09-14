@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using AppraisalApp.Models;
+using CoreGraphics;
 using ExtAppraisalApp;
 using ExtAppraisalApp.Models;
 using ExtAppraisalApp.Services;
@@ -69,6 +70,7 @@ namespace AppraisalApp
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            AppraisalTableView.TableFooterView = new UIView(new CGRect(0, 0, 0, 0));
 
             apploglist=ServiceFactory.getWebServiceHandle().FetchAppraisalLog(AppDelegate.appDelegate.storeId);
 

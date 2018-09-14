@@ -24,10 +24,6 @@ namespace AppraisalApp
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel lblMileage { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel Mileage { get; set; }
 
         [Outlet]
@@ -56,11 +52,6 @@ namespace AppraisalApp
             if (CreatedBy != null) {
                 CreatedBy.Dispose ();
                 CreatedBy = null;
-            }
-
-            if (lblMileage != null) {
-                lblMileage.Dispose ();
-                lblMileage = null;
             }
 
             if (Mileage != null) {
