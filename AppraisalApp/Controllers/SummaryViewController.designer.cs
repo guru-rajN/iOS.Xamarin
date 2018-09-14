@@ -30,6 +30,10 @@ namespace ExtAppraisalApp
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView SummaryContainerView { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel valuemytrade { get; set; }
+
         [Action ("EditButton_Activated:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void EditButton_Activated (UIKit.UIBarButtonItem sender);
@@ -58,6 +62,11 @@ namespace ExtAppraisalApp
             if (SummaryContainerView != null) {
                 SummaryContainerView.Dispose ();
                 SummaryContainerView = null;
+            }
+
+            if (valuemytrade != null) {
+                valuemytrade.Dispose ();
+                valuemytrade = null;
             }
         }
     }

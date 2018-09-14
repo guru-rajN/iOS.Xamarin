@@ -27,6 +27,7 @@ namespace ExtAppraisalApp
             if (AppDelegate.appDelegate.APNSAlert != null)
             {
                 //var a=new UILa
+              
                 string Message = AppDelegate.appDelegate.APNSAlert;
                 string[] tokens = Message.Split(' ');
                 VehicleDetails.Text = tokens[2] + " " + tokens[3] + " " + tokens[4];

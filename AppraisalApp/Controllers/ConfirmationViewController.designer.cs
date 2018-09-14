@@ -20,7 +20,7 @@ namespace ExtAppraisalApp
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextView SummaryMsg { get; set; }
+        UIKit.UILabel SummaryMsg { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
