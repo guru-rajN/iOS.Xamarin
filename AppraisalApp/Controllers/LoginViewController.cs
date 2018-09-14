@@ -100,6 +100,8 @@ namespace ExtAppraisalApp
 
             txtZip.ShouldReturn = (tf) =>
             {
+                txtZip.EndEditing(true);
+                //View.EndEditing(true);
                 GoClick();
                 return true;
             };

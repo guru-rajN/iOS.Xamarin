@@ -36,7 +36,7 @@ namespace ExtAppraisalApp
 
             connac.CreateTable<ReconditionValue>();
 
-            for (int i = 0; i <= 2; i++)
+            for (int i = 2; i >= 0; i--)
             {
                 string segmentKey = i.ToString();
                 var existings = (connac.Table<ReconditionValue>().Where(

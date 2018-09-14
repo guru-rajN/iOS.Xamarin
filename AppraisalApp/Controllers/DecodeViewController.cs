@@ -96,6 +96,7 @@ namespace ExtAppraisalApp
 
         partial void BtnDecode_Activated(UIBarButtonItem sender)
         {
+           
             View.EndEditing(true);
             DoneDecodeVin();
         }
