@@ -189,9 +189,9 @@ namespace ExtAppraisalApp
             }
 
             AppleDeviceToken = DeviceToken;
-            UIAlertView ALERT = new UIAlertView(null, DeviceToken.ToString(), null, "ok", null);
+            //UIAlertView ALERT = new UIAlertView(null, DeviceToken.ToString(), null, "ok", null);
 
-            ALERT.Show();
+            //ALERT.Show();
             // Get previous device token
 
             var oldDeviceToken = NSUserDefaults.StandardUserDefaults.StringForKey("PushDeviceToken");
@@ -228,8 +228,8 @@ namespace ExtAppraisalApp
             {
 
                 APNSAlert = alert.ToString();
-
-                NSNotificationCenter.DefaultCenter.PostNotificationName("PushNotify", null);
+                var dictionary = new NSDictionary(new NSString("1"), new NSString(APNSAlert));
+                NSNotificationCenter.DefaultCenter.PostNotificationName("PushNotify", null, dictionary);
                 NSNotificationCenter.DefaultCenter.PostNotificationName("ShowPushNotifyData", null);
             }
 

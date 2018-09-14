@@ -41,8 +41,8 @@ namespace ExtAppraisalApp
         {
             SummaryContainerView.Hidden = false;
             AppraisedContainerView.Hidden = true;
-
-            NSNotificationCenter.DefaultCenter.AddObserver((Foundation.NSString)"PushNotify", UpdateUI);
+      
+            NSNotificationCenter.DefaultCenter.AddObserver((Foundation.NSString)"PushNotify", UpdateUI, null);
             base.ViewDidLoad();
 
         }
@@ -52,6 +52,19 @@ namespace ExtAppraisalApp
             SummaryContainerView.Hidden = true;
             AppraisedContainerView.Hidden = false;
 
+            var userInfo = obj.UserInfo;
+            var NotificationMsg = "";
+            if (null != userInfo)
+                NotificationMsg = userInfo.Keys[0].ToString();
+
+            var message = userInfo.ValueForKey((Foundation.NSString)"1");
+
+            if (NotificationMsg.Equals("1"))
+            {
+                Title = message.ToString();
+            }
+            var dictionary = new NSDictionary(new NSString("1"), new NSString(Title));
+            NSNotificationCenter.DefaultCenter.PostNotificationName("AppraisedValue", null, dictionary);
         }
 
         public override void ViewDidDisappear(bool animated)

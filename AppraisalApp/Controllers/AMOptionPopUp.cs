@@ -88,6 +88,7 @@ namespace AppraisalApp
                         UILabel label = new UILabel();
                         switchele.Frame = new CGRect(20, y + 33, UIScreen.MainScreen.Bounds.Width, 100);
                         label.Frame = new CGRect(80, y, UIScreen.MainScreen.Bounds.Width, 100);
+                        label.Font = label.Font.WithSize(14f);
                         y = y + 50;
                         switchele.UserInteractionEnabled = true;
                         label.Text = question.label;
