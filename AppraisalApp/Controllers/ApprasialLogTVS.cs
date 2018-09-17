@@ -36,6 +36,7 @@ namespace AppraisalApp
             AppDelegate.appDelegate.storeId = result.Store_ID;
             AppDelegate.appDelegate.vehicleID = result.Vehicle_ID;
             AppDelegate.appDelegate.invtrId = result.Invtr_ID;
+            AppDelegate.appDelegate.cacheVehicleDetails = null;
             var storyboard = UIStoryboard.FromName("Main", null);
             var loginViewController = storyboard.InstantiateViewController("SplitViewControllerID");
             AppDelegate.appDelegate.Window.RootViewController = loginViewController;
