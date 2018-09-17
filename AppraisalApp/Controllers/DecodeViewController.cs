@@ -15,9 +15,12 @@ namespace ExtAppraisalApp
     public partial class DecodeViewController : UITableViewController
     {
         partial void txtEmail_Changed(UITextField sender)
-        {
-            txtEmail.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
-            txtPhone.AttributedPlaceholder = new NSAttributedString("", null, UIColor.Red);
+        {   if(txtEmail.Text.Length > 0)
+            {
+                txtEmail.AttributedPlaceholder = new NSAttributedString("", null, UIColor.Red);
+                txtPhone.AttributedPlaceholder = new NSAttributedString("", null, UIColor.Red);
+
+            }
 
 
         }
@@ -58,10 +61,13 @@ namespace ExtAppraisalApp
             {
                 var newContent = new NSString(textField.Text).Replace(range, new NSString(replacement)).ToString();
                 int number;
+                if(newContent.Length> 0){
+                    txtEmail.AttributedPlaceholder = new NSAttributedString("", null, UIColor.Red);
+                    txtPhone.AttributedPlaceholder = new NSAttributedString("", null, UIColor.Red);
+
+                }
                 return newContent.Length <= maxCharacters && (replacement.Length == 0 || int.TryParse(replacement, out number));
             };
-            txtEmail.AttributedPlaceholder = new NSAttributedString("", null, UIColor.Red);
-            txtPhone.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
 
         }
 
@@ -167,6 +173,9 @@ namespace ExtAppraisalApp
                 }
                 else
                 {
+                    txtEmail.AttributedPlaceholder = new NSAttributedString("", null, UIColor.Red);
+                    txtPhone.AttributedPlaceholder = new NSAttributedString("", null, UIColor.Red);
+
 
                     Utility.ShowLoadingIndicator(this.View, "Decoding VIN", true);
                     CallWebservice(txtVin.Text, AppDelegate.appDelegate.storeId, Convert.ToInt32(txtMileage.Text), "5A9C9038-DDC6-4BBE-8256-675F91D6B5B7", txtFirstName.Text, txtLastName.Text, txtEmail.Text, txtPhone.Text);

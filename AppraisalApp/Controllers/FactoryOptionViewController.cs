@@ -100,28 +100,28 @@ namespace ExtAppraisalApp
                 BtnSave.Title = "Save";
             }
 
-            //Utility.ShowLoadingIndicator(this.View, "Fetching Factory", true);
-            //GetFactoryOptionsKBB(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, AppDelegate.appDelegate.trimId);
+            Utility.ShowLoadingIndicator(this.View, "Fetching Factory", true);
+            GetFactoryOptionsKBB(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, AppDelegate.appDelegate.trimId);
 
-            var width = View.Bounds.Width;
-            var height = View.Bounds.Height;
+            //var width = View.Bounds.Width;
+            //var height = View.Bounds.Height;
 
-            table = new UITableView(new CGRect(0, 0, width, height));
-            table.AutoresizingMask = UIViewAutoresizing.All;
+            //table = new UITableView(new CGRect(0, 0, width, height));
+            //table.AutoresizingMask = UIViewAutoresizing.All;
 
-            table.TableFooterView = new UIView(new CGRect(0, 0, 0, 0));
+            //table.TableFooterView = new UIView(new CGRect(0, 0, 0, 0));
 
-            AppDelegate.appDelegate.fctoption = ServiceFactory.getWebServiceHandle().GetFactoryOptionsKBB(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, 432110);
-            List<string> tableItems = new List<string>();
-            foreach (var category in AppDelegate.appDelegate.fctoption)
-            {
-                string str = category.Caption;
-                tableItems.Add(str);
-            }
+            //AppDelegate.appDelegate.fctoption = ServiceFactory.getWebServiceHandle().GetFactoryOptionsKBB(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, 432110);
+            //List<string> tableItems = new List<string>();
+            //foreach (var category in AppDelegate.appDelegate.fctoption)
+            //{
+            //    string str = category.Caption;
+            //    tableItems.Add(str);
+            //}
 
-            table.Source = new TableSource(tableItems.ToArray(), this);
-            table.TableFooterView = new UIView(CoreGraphics.CGRect.Empty);
-            Add(table);
+            //table.Source = new TableSource(tableItems.ToArray(), this);
+            //table.TableFooterView = new UIView(CoreGraphics.CGRect.Empty);
+            //Add(table);
         }
 
        
@@ -157,8 +157,8 @@ namespace ExtAppraisalApp
                     
 
         }
-        public void SaveFactoryOptions(long Vehicle_ID, short store_ID, short Invtr_ID){
-           // return Task.Factory.StartNew(() => {
+        Task SaveFactoryOptions(long Vehicle_ID, short store_ID, short Invtr_ID){
+            return Task.Factory.StartNew(() => {
                 SIMSResponseData responseStatus;
                 VehicleFactoryOptionsKBB vehicleFactoryOptions = new VehicleFactoryOptionsKBB();
                
@@ -187,12 +187,13 @@ namespace ExtAppraisalApp
 
                     vehicleFactoryOptions.data = listfactory;
 
-                //InvokeOnMainThread(() =>
-                //{
-                    responseStatus = ServiceFactory.getWebServiceHandle().SaveFactoryOptions(vehicleFactoryOptions);
+                InvokeOnMainThread(() =>
+                {
 
-            //    });
-            //});
+                });
+                responseStatus = ServiceFactory.getWebServiceHandle().SaveFactoryOptions(vehicleFactoryOptions);
+
+            });
           
         }
     }
