@@ -11,9 +11,10 @@ namespace ExtAppraisalApp
 {
     public partial class AdditionalPhotographs : UIViewController
     {
-        public AdditionalPhotographs (IntPtr handle) : base (handle)
+        public AdditionalPhotographs(IntPtr handle) : base(handle)
         {
         }
+        public int selected_index = 0;
 
         List<AddPhotoModel> PhotosModelList;
 
@@ -27,19 +28,15 @@ namespace ExtAppraisalApp
             PhotosModelList.Add(new AddPhotoModel { Image = "add_photo.png", VehicleLabel = "Additional" });
 
             AddPhotoCollectionView.Source = new AddPhotosCollectionViewSource(this, PhotosModelList);
-           
-        }
-        public void SelectPhotos(int index){
-            if(index == 3){
-                if(PhotosModelList.Count <= 10){
-                    PhotosModelList.Add(new AddPhotoModel { Image = "camera_black.png", VehicleLabel = "Additional" });
-                    //PhotosModelList.RemoveAt(3);  
-                    // PhotosModelList.Insert(3,new AddPhotoModel { Image = "camera_black.png", VehicleLabel = "Additional" });
-                    //PhotosModelList.Add(new AddPhotoModel { Image = "add_photo.png", VehicleLabel = "Additional" });
-                    AddPhotoCollectionView.ReloadData();  
-                }
 
-            }else{
+        }
+        public void SelectPhotos(int index)
+        {
+            selected_index = index;
+
+            if (selected_index != (PhotosModelList.Count - 1))
+            {
+
                 var alert = UIAlertController.Create(null, null, UIAlertControllerStyle.ActionSheet);
                 var image = UIImage.FromBundle("camera.png");
                 var camera = UIAlertAction.Create("Camera ", UIAlertActionStyle.Default, (s) => { CameraBtna_TouchUpInside(); });
@@ -61,8 +58,21 @@ namespace ExtAppraisalApp
                     presentationPopover.SourceView = this.View;
                     presentationPopover.PermittedArrowDirections = UIPopoverArrowDirection.Right;
                 }
-                this.PresentViewController(alert, true, null); 
+                this.PresentViewController(alert, true, null);
             }
+
+            if (PhotosModelList.Count <= 10 )
+            {
+                if ((PhotosModelList.Count - 1) == index)
+                {
+                    PhotosModelList.RemoveAt(index);
+                    PhotosModelList.Add(new AddPhotoModel { Image = "camera_black.png", VehicleLabel = "Additional" });
+                    PhotosModelList.Add(new AddPhotoModel { Image = "add_photo.png", VehicleLabel = "Additional" });
+                    AddPhotoCollectionView.ReloadData();
+                }
+            }
+
+
 
         }
 
@@ -114,14 +124,10 @@ namespace ExtAppraisalApp
             {
                 if (originalImage != null)
                 {
-                    Console.WriteLine("got the original image");
-                    //Right_Image.SetBackgroundImage(originalImage, UIControlState.Normal);
 
-                    //imageView.Image = originalImage; // display
-                    //SetAdditionalImages(originalImage);
                     var documentsDirectory = Environment.GetFolderPath
                                               (Environment.SpecialFolder.Personal);
-                    string buttonName = "AppraisalApp_Additional_"+ System.DateTime.Now  + ".png";
+                    string buttonName = "AppraisalApp_Additional_" + selected_index + ".png";
 
                     string pngFilename = System.IO.Path.Combine(documentsDirectory, buttonName);
                     NSData imgData = originalImage.AsJPEG(0.0f);
@@ -135,19 +141,11 @@ namespace ExtAppraisalApp
                         Console.WriteLine("NOT saved as" + pngFilename + " because" + err.LocalizedDescription);
                     }
 
-                    //ALAssetsLibrary library = new ALAssetsLibrary();
 
-                    //library.WriteImageToSavedPhotosAlbum(originalImage.CGImage, meta, (assetUrl, error) => {
-                    //    Console.WriteLine("assetUrl:" + assetUrl);
-                    //});
                     SetAdditionalImages(pngFilename);
                     var imagea = UIImage.LoadFromData(imgData);
 
-                    //imagea.SaveToPhotosAlbum((AppraisalPhotoAlbum, eror) =>
-                    //{
-
-                    //});
-
+                    // save photos to Azure cloud
                     imagePicker.DismissModalViewController(true);
                     Amazon.Aws amazonS3 = new Amazon.Aws();
                     Task.Run(() => amazonS3.UploadFile(pngFilename));
@@ -163,15 +161,15 @@ namespace ExtAppraisalApp
             //imagePicker.DismissModalViewController(true);
             //imagePicker.DismissModalViewControllerAnimated(true);
         }
-        public void SetAdditionalImages(string fileName){
-            //PhotosModelList.Add(new AddPhotoModel { Image = fileName, VehicleLabel = "Additional" });
-            //AddPhotoCollectionView.ReloadData();
+        public void SetAdditionalImages(string fileName)
+        {
+            PhotosModelList[selected_index].Image = fileName;
+            AddPhotoCollectionView.ReloadData();
         }
 
         void Handle_Canceled(object sender, EventArgs e)
         {
             imagePicker.DismissModalViewController(true);
-            //imagePicker.DismissModalViewControllerAnimated(true);
         }
 
         public async void ActivityLoader()
@@ -189,26 +187,16 @@ namespace ExtAppraisalApp
     {
         private AdditionalPhotographs additionalPhotosView;
         private List<AddPhotoModel> data;
-        //public NSIndexPath[] SelectedItems { get { return _selectedItems.ToArray(); } }
-        //readonly List<NSIndexPath> _selectedItems = new List<NSIndexPath>();
 
         public override void ItemSelected(UICollectionView collectionView, NSIndexPath indexPath)
         {
             Debug.WriteLine("Selected index :: " + indexPath.Row);
-
             additionalPhotosView.SelectPhotos(indexPath.Row);
-            //if(indexPath.Row == 0){
-            //    additionalPhotosView.SelectPhotos();
-            //}else{
-                
-            //}
-            //_selectedItems.Add(indexPath);
         }
 
         public override void ItemDeselected(UICollectionView collectionView, NSIndexPath indexPath)
         {
             Debug.WriteLine("Deselected index :: " + indexPath.Row);
-            //_selectedItems.Remove(indexPath);
         }
 
         public AddPhotosCollectionViewSource(AdditionalPhotographs additionalPhotosView, List<AddPhotoModel> data)
