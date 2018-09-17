@@ -207,7 +207,8 @@ namespace AppraisalApp
 
                     AdditionSegment.SelectedSegment = 1;
                     AdditionAMFO.Hidden = true;
-
+                    //Utility.ShowLoadingIndicator(this.View, "Fetching AfterMarket Options", false);
+                    Utility.HideLoadingIndicator(this.View);
                 });
                // Utility.ShowLoadingIndicator(this.View, "Fetching AfterMarket Options", false);
 
