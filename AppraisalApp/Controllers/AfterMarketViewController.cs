@@ -207,7 +207,8 @@ namespace AppraisalApp
                     AdditionAMFO.Hidden = true;
 
                 });
-               
+                Utility.ShowLoadingIndicator(this.View, "Fetching AfterMarket Options", false);
+
             });
 
         }
@@ -289,9 +290,7 @@ namespace AppraisalApp
             MasterAdditionalAMFO.Hidden = true;
             try{
                 Utility.ShowLoadingIndicator(this.View, "Fetching AfterMarket Options", true);
-
                 GetAltenateFactoryOptions(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, AppDelegate.appDelegate.prospectId);
-               
             }catch(Exception exc){
                 Debug.WriteLine("Exception occured :: " + exc.Message);
             }
