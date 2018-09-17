@@ -30,7 +30,7 @@ namespace ExtAppraisalApp
         public short invtrId { get; set; }
         public int trimId { get; set; }
         public int mileage { get; set; }
-        public IEnumerable<FactoryOptionsSection> fctoption = new List<FactoryOptionsSection>();
+        public List<FactoryOptionsSection> fctoption = new List<FactoryOptionsSection>();
         public string FactoryOptionSelected { get; set; }
         public string AMFactoryOptionSelected { get; set; }
 

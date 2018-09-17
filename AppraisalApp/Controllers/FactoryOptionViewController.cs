@@ -82,7 +82,7 @@ namespace ExtAppraisalApp
         {
 
             base.ViewDidLoad();
-
+            FactoryOptionTableView.RowHeight = UITableView.AutomaticDimension;
             if (!AppDelegate.appDelegate.IsAllDataSaved)
             {
                 if (UserInterfaceIdiomIsPhone)
@@ -128,8 +128,9 @@ namespace ExtAppraisalApp
         Task GetFactoryOptionsKBB(long Vehicle_ID,short store_ID,short Invtr_ID,int Trim_ID)
         {
             return Task.Factory.StartNew(() => { 
-           
-            AppDelegate.appDelegate.fctoption = ServiceFactory.getWebServiceHandle().GetFactoryOptionsKBB(Vehicle_ID,store_ID,Invtr_ID,Trim_ID);
+                if(AppDelegate.appDelegate.fctoption == null || AppDelegate.appDelegate.fctoption.Count ==0){
+                    AppDelegate.appDelegate.fctoption = ServiceFactory.getWebServiceHandle().GetFactoryOptionsKBB(Vehicle_ID, store_ID, Invtr_ID, Trim_ID);
+                }
            
                 InvokeOnMainThread(() =>
                 { 

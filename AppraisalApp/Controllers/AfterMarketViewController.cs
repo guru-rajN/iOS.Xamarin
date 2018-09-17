@@ -164,7 +164,9 @@ namespace AppraisalApp
         Task GetAltenateFactoryOptions(long VehicleId, short Store_Id, short Invtr_Id, string ProsfectID)
         {
             return Task.Factory.StartNew(() => {
-                AppDelegate.appDelegate.afterMarketOptions = ServiceFactory.getWebServiceHandle().GetAltenateFactoryOptions(VehicleId,Store_Id,Invtr_Id,ProsfectID);
+                if(AppDelegate.appDelegate.afterMarketOptions ==null || AppDelegate.appDelegate.afterMarketOptions.aftermarketQuestions == null){
+                    AppDelegate.appDelegate.afterMarketOptions = ServiceFactory.getWebServiceHandle().GetAltenateFactoryOptions(VehicleId, Store_Id, Invtr_Id, ProsfectID);
+                }
                 InvokeOnMainThread(() =>
                 { 
                     int y = 0;
@@ -207,7 +209,7 @@ namespace AppraisalApp
                     AdditionAMFO.Hidden = true;
 
                 });
-                Utility.ShowLoadingIndicator(this.View, "Fetching AfterMarket Options", false);
+               // Utility.ShowLoadingIndicator(this.View, "Fetching AfterMarket Options", false);
 
             });
 
