@@ -17,7 +17,7 @@ namespace AppraisalApp
             Vin.Text = amfactoryOption.VIN;
             YearMakeModel.Text = amfactoryOption.Year + " " + amfactoryOption.Make + " " + amfactoryOption.Model;
             Mileage.Text = Convert.ToString(amfactoryOption.Mileage);
-            CreatedBy.Text = amfactoryOption.Appraisedby;
+            //CreatedBy.Text = amfactoryOption.Appraisedby;
             Trim.Text = amfactoryOption.SeriesTrim;
             string[] datetime = Convert.ToString(amfactoryOption.CreatedDate).Split(' ');
             appraisalDate.Text = datetime[0]; 

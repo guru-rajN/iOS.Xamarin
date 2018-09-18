@@ -2102,14 +2102,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="244181">
-                                <rect key="frame" x="0.0" y="106" width="375" height="706"/>
+                                <rect key="frame" x="10" y="122" width="355" height="690"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell_id" rowHeight="88" id="244182" customClass="AppraisalLogCell">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="88"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell_id" rowHeight="98" id="244182" customClass="AppraisalLogCell">
+                                        <rect key="frame" x="0.0" y="28" width="355" height="98"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="244182" id="244183">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="87.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="322" height="97.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="246514">
@@ -2121,19 +2121,13 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="246995">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="246995" misplaced="YES">
                                                     <rect key="frame" x="15" y="64" width="34.5" height="21"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="247485">
-                                                    <rect key="frame" x="147" y="67" width="62" height="16"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="raju.mahesh" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="247488">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mileage" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="247488" misplaced="YES">
                                                     <rect key="frame" x="264.5" y="0.0" width="77.5" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="277702"/>
@@ -2142,7 +2136,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="247980">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="247980" misplaced="YES">
                                                     <rect key="frame" x="307" y="34" width="35" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="277706"/>
@@ -2158,7 +2152,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="247982">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="247982" misplaced="YES">
                                                     <rect key="frame" x="305" y="64" width="37" height="21.5"/>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="14"/>
                                                     <nil key="textColor"/>
@@ -2173,29 +2167,39 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="459348" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                                    <rect key="frame" x="0.0" y="90" width="375" height="8"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <constraints>
+                                                        <constraint id="459352" firstItem="459348" firstAttribute="height" constant="6"/>
+                                                    </constraints>
+                                                    <color key="backgroundColor" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="246514" firstAttribute="leading" secondItem="244183" secondAttribute="leading" constant="15" id="277670"/>
                                                 <constraint firstAttribute="top" secondItem="246514" secondAttribute="top" constant="4" id="277671"/>
                                                 <constraint firstItem="277669" firstAttribute="leading" secondItem="244183" secondAttribute="leading" constant="15" id="277674"/>
                                                 <constraint firstItem="277669" firstAttribute="top" secondItem="246514" secondAttribute="bottom" constant="3" id="277675"/>
-                                                <constraint firstAttribute="bottom" secondItem="246995" secondAttribute="bottom" constant="2" id="277684"/>
                                                 <constraint firstItem="247488" firstAttribute="top" secondItem="244183" secondAttribute="top" id="277700"/>
                                                 <constraint firstItem="247488" firstAttribute="trailing" secondItem="244183" secondAttribute="trailing" id="277701"/>
                                                 <constraint firstItem="247980" firstAttribute="top" secondItem="247488" secondAttribute="bottom" constant="13" id="277704"/>
                                                 <constraint firstItem="247980" firstAttribute="trailing" secondItem="244183" secondAttribute="trailing" id="277705"/>
                                                 <constraint firstItem="246995" firstAttribute="top" secondItem="277669" secondAttribute="bottom" constant="14" id="281487"/>
                                                 <constraint firstItem="247982" firstAttribute="top" secondItem="247980" secondAttribute="bottom" constant="9" id="281491"/>
-                                                <constraint firstAttribute="bottom" secondItem="247982" secondAttribute="bottom" constant="2" id="281492"/>
                                                 <constraint firstItem="247982" firstAttribute="trailing" secondItem="244183" secondAttribute="trailing" id="281493"/>
                                                 <constraint firstItem="246995" firstAttribute="leading" secondItem="244183" secondAttribute="leading" constant="15" id="296192"/>
-                                                <constraint firstItem="247485" firstAttribute="centerX" secondItem="244183" secondAttribute="centerX" constant="12" id="456276"/>
-                                                <constraint firstItem="247485" firstAttribute="top" secondItem="244183" secondAttribute="top" constant="64" id="457811"/>
+                                                <constraint id="459349" firstItem="459348" firstAttribute="leading" secondItem="244183" secondAttribute="leading"/>
+                                                <constraint id="459350" firstItem="459348" firstAttribute="trailing" secondItem="244183" secondAttribute="trailing" constant="38"/>
+                                                <constraint id="459353" firstItem="459348" firstAttribute="bottom" secondItem="244183" secondAttribute="bottom"/>
+                                                <constraint id="459356" firstItem="459348" firstAttribute="top" secondItem="246995" secondAttribute="bottom" constant="5"/>
+                                                <constraint id="459357" firstItem="459348" firstAttribute="top" secondItem="247982" secondAttribute="bottom" constant="5"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="CreatedBy" destination="247488" id="name-outlet-247488"/>
-                                            <outlet property="Mileage" destination="247485" id="name-outlet-247485"/>
+                                            <outlet property="Mileage" destination="247488" id="name-outlet-247488"/>
                                             <outlet property="Trim" destination="277669" id="name-outlet-277669"/>
                                             <outlet property="Vin" destination="246995" id="name-outlet-246995"/>
                                             <outlet property="YearMakeModel" destination="246514" id="name-outlet-246514"/>
@@ -2204,9 +2208,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <color key="sectionIndexBackgroundColor" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="298487">
-                                <rect key="frame" x="106" y="74" width="163" height="29"/>
+                                <rect key="frame" x="16" y="74" width="163" height="29"/>
                                 <segments>
                                     <segment title="Completed"/>
                                     <segment title="Pending"/>
@@ -2216,15 +2221,24 @@
                                     <action selector="Segment_Changed:" destination="243229" eventType="valueChanged" id="307131"/>
                                 </connections>
                             </segmentedControl>
+                            <searchBar contentMode="redraw" id="460441" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" placeholder="Vin">
+                                <rect key="frame" x="187" y="66" width="188" height="44"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" keyboardType="namePhonePad" returnKeyType="go"/>
+                                <constraints>
+                                    <constraint id="460445" firstItem="460441" firstAttribute="width" constant="188"/>
+                                </constraints>
+                            </searchBar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
                         <constraints>
-                            <constraint firstAttribute="leadingMargin" secondItem="244181" secondAttribute="leading" constant="16" id="244185"/>
-                            <constraint firstItem="244181" firstAttribute="trailing" secondItem="243230" secondAttribute="trailingMargin" constant="16" id="244186"/>
                             <constraint firstItem="244181" firstAttribute="bottom" secondItem="243230" secondAttribute="bottom" id="244187"/>
                             <constraint firstItem="298487" firstAttribute="top" secondItem="243226" secondAttribute="bottom" constant="10" id="298492"/>
-                            <constraint firstItem="244181" firstAttribute="top" secondItem="298487" secondAttribute="bottom" constant="4" id="298496"/>
-                            <constraint firstItem="298487" firstAttribute="centerX" secondItem="244181" secondAttribute="centerX" id="311250"/>
+                            <constraint firstItem="244181" firstAttribute="top" secondItem="298487" secondAttribute="bottom" constant="20" id="298496"/>
+                            <constraint id="459899" firstItem="298487" firstAttribute="leading" secondItem="243230" secondAttribute="leadingMargin"/>
+                            <constraint id="460442" firstItem="460441" firstAttribute="trailing" secondItem="243230" secondAttribute="trailingMargin" constant="16"/>
+                            <constraint id="460443" firstItem="460441" firstAttribute="top" secondItem="243226" secondAttribute="bottom" constant="2"/>
+                            <constraint id="462473" firstItem="243230" firstAttribute="leadingMargin" secondItem="244181" secondAttribute="leading" constant="6"/>
+                            <constraint id="462474" firstItem="244181" firstAttribute="trailing" secondItem="243230" secondAttribute="trailingMargin" constant="6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dlD-Bo-AaJ">
@@ -2253,6 +2267,7 @@
                         <outlet property="AppraisalTypeSegment" destination="298487" id="name-outlet-298487"/>
                         <outlet property="BtnAddNew" destination="246042" id="name-outlet-246042"/>
                         <outlet property="BtnCancel" destination="246043" id="name-outlet-246043"/>
+                        <outlet property="VinSearch" destination="460441" id="name-outlet-460441"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="243231" userLabel="First Responder" sceneMemberID="firstResponder"/>

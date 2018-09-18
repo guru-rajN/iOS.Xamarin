@@ -30,6 +30,10 @@ namespace AppraisalApp
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIBarButtonItem BtnCancel { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UISearchBar VinSearch { get; set; }
+
         [Action ("BtnAddNew_Activated:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void BtnAddNew_Activated (UIKit.UIBarButtonItem sender);
@@ -62,6 +66,11 @@ namespace AppraisalApp
             if (BtnCancel != null) {
                 BtnCancel.Dispose ();
                 BtnCancel = null;
+            }
+
+            if (VinSearch != null) {
+                VinSearch.Dispose ();
+                VinSearch = null;
             }
         }
     }
