@@ -229,6 +229,7 @@ namespace ExtAppraisalApp
                 {
                     InvokeOnMainThread(() =>
                     {
+                        Utility.HideLoadingIndicator(this.View);
                         Utility.ShowAlert("AppraisalApp", "Decode VIN Failed !!", "OK");
                     });
 

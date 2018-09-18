@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using AppraisalApp.Models;
@@ -19,6 +20,8 @@ namespace ExtAppraisalApp
     public partial class LoginViewController : UIViewController, WorkerDelegateInterface
     {
         private UIPickerView pickerView;
+
+        private UIToolbar toolbar;
 
         public static StoreLocatorModel storeLocatorModel;
 
@@ -54,9 +57,12 @@ namespace ExtAppraisalApp
                 // iphone 8 plus :: width :: 414 Height :: 736
                 // iphone 7 width :: 375 Height :: 667
 
-                if(this.View.Bounds.Width == 375){
+                if (this.View.Bounds.Width == 375)
+                {
                     boxImg.Frame = new CGRect(0, 0, 500, 500);
-                }else{
+                }
+                else
+                {
                     boxImg.Frame = new CGRect(0, 0, 550, 550);
                 }
 
@@ -71,7 +77,8 @@ namespace ExtAppraisalApp
                     ComponentView.Center = new CGPoint(this.View.Bounds.Width / 2, this.View.Bounds.Height / 2.2);
                 }
 
-                if(this.View.Bounds.Width == 375){
+                if (this.View.Bounds.Width == 375)
+                {
                     NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillHideNotification, keyboardWillHide);
                     NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillShowNotification, keyboardWillShow);
                 }
@@ -111,8 +118,9 @@ namespace ExtAppraisalApp
         private void ShowAPNSView(NSNotification obj)
         {
 
-            try{
-                
+            try
+            {
+
                 UIStoryboard board = UIStoryboard.FromName("Main", null);
                 APNSViewController ctrl = (APNSViewController)board.InstantiateViewController("APNSViewController");
                 UINavigationController navigationController = new UINavigationController(ctrl);
@@ -120,7 +128,9 @@ namespace ExtAppraisalApp
                 navigationController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
                 AppDelegate.appDelegate.Window.RootViewController.PresentViewController(navigationController, true, null);
 
-            }catch(Exception exc){
+            }
+            catch (Exception exc)
+            {
                 Debug.WriteLine("Exception occurred :: " + exc.Message);
                 //Utility.ShowAlert("AppraisalApp", "EXC :: " + exc.Message, "OK");
             }
@@ -170,6 +180,7 @@ namespace ExtAppraisalApp
                 {
                     AppDelegate.appDelegate.IsZipCodeValid = false;
                     this.PerformSegue("decodeSegue", this);
+                    removeAll(pickerView);
                 }
 
             }
@@ -219,7 +230,7 @@ namespace ExtAppraisalApp
                             pickerView.ShowSelectionIndicator = true;
 
                             // To create a toolbar with done button
-                            UIToolbar toolbar = new UIToolbar();
+                            toolbar = new UIToolbar();
                             toolbar.BarStyle = UIBarStyle.Black;
                             toolbar.Translucent = true;
                             toolbar.SizeToFit();
@@ -274,7 +285,6 @@ namespace ExtAppraisalApp
                     var appDelegate = (AppDelegate)UIApplication.SharedApplication.Delegate;
                     appDelegate.Window.RootViewController = splitViewController;
 
-                    //this.PerformSegue("decodeSegue", this);
                 });
 
             }
@@ -285,6 +295,19 @@ namespace ExtAppraisalApp
                     Utility.ShowAlert("ZIP/Dealer", "Please Enter valid ZIP/Dealer Code", "OK");
                 });
             }
+        }
+
+        public void removeAll(UIPickerView picker)
+        {
+            toolbar.SetItems(new UIBarButtonItem[0], false);
+            this.toolbar.RemoveFromSuperview();
+            picker.Layer.Opacity = 0f;
+            picker.Layer.Bounds = new RectangleF(0, 0, 0, 0);
+            picker.RemoveFromSuperview();
+            txtZip.InputView = null;
+            txtZip.ReloadInputViews();
+            storeNamesID.Clear();
+            storeLocatorModel.Items.Clear();
         }
 
         public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
@@ -441,6 +464,15 @@ namespace ExtAppraisalApp
             this.View.EndEditing(true);
             GetStartBtn.SetTitle("Get Started", UIControlState.Normal);
             AppDelegate.appDelegate.IsZipCodeValid = false;
+            if (null != toolbar)
+            {
+                toolbar.RemoveFromSuperview();
+            }
+            if (null != pickerView)
+            {
+                pickerView.RemoveFromSuperview();
+            }
+
         }
 
         public void performNavigate(int index)
