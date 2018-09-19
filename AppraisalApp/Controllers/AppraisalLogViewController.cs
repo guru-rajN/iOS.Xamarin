@@ -73,14 +73,41 @@ namespace AppraisalApp
             VinSearch.Text = VinSearch.Text.ToUpper();
             VinSearch.TextChanged += (sender, e) =>  
             {  
-                //this is the method that is called when the user searches  
-                var VinSearchEntity = apploglist.FindAll((AppraisalLogEntity obj) => obj.VIN.Contains(VinSearch.Text.Trim()));
-                AppraisalTableView.Source = new ApprasialLogTVS(VinSearchEntity);
-                AppraisalTableView.SeparatorStyle = UITableViewCellSeparatorStyle.DoubleLineEtched;
+                if(VinSearch.Text.Length > 0)
+                {
+                    var VinSearchEntity = apploglist.FindAll((AppraisalLogEntity obj) => obj.VIN.Contains(VinSearch.Text.Trim()));
+                    AppraisalTableView.Source = new ApprasialLogTVS(VinSearchEntity);
+                    AppraisalTableView.SeparatorStyle = UITableViewCellSeparatorStyle.DoubleLineEtched;
 
-                AppraisalTableView.RowHeight = UITableView.AutomaticDimension;
-                AppraisalTableView.EstimatedRowHeight = 40f;
-                AppraisalTableView.ReloadData();
+                    AppraisalTableView.RowHeight = UITableView.AutomaticDimension;
+                    AppraisalTableView.EstimatedRowHeight = 40f;
+                    AppraisalTableView.ReloadData();  
+                }//this is the method that is called when the user searches  
+                else
+                {
+                    string segmentID = AppraisalTypeSegment.SelectedSegment.ToString();
+                    if (segmentID == "0")
+                    {
+                        var Appcompleted = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status == "CA");
+                        AppraisalTableView.Source = new ApprasialLogTVS(Appcompleted);
+                        AppraisalTableView.SeparatorStyle = UITableViewCellSeparatorStyle.DoubleLineEtched;
+
+                        AppraisalTableView.RowHeight = UITableView.AutomaticDimension;
+                        AppraisalTableView.EstimatedRowHeight = 40f;
+                        AppraisalTableView.ReloadData();
+                    }
+                    else
+                    {
+                        var appPending = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status != "CA");
+                        AppraisalTableView.Source = new ApprasialLogTVS(appPending);
+                        AppraisalTableView.SeparatorStyle = UITableViewCellSeparatorStyle.DoubleLineEtched;
+
+                        AppraisalTableView.RowHeight = UITableView.AutomaticDimension;
+                        AppraisalTableView.EstimatedRowHeight = 40f;
+                        AppraisalTableView.ReloadData();
+                    }
+                }
+               
             };  
             AppraisalTableView.TableFooterView = new UIView(new CGRect(0, 0, 0, 0));
 
