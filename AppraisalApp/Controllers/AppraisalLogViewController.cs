@@ -70,6 +70,18 @@ namespace AppraisalApp
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            VinSearch.TextChanged += (sender, e) =>  
+            {  
+                VinSearch.Text = VinSearch.Text.ToUpper();
+                //this is the method that is called when the user searches  
+                var VinSearchEntity = apploglist.FindAll((AppraisalLogEntity obj) => obj.VIN.Contains(VinSearch.Text.Trim()));
+                AppraisalTableView.Source = new ApprasialLogTVS(VinSearchEntity);
+                AppraisalTableView.SeparatorStyle = UITableViewCellSeparatorStyle.DoubleLineEtched;
+
+                AppraisalTableView.RowHeight = UITableView.AutomaticDimension;
+                AppraisalTableView.EstimatedRowHeight = 40f;
+                AppraisalTableView.ReloadData();
+            };  
             AppraisalTableView.TableFooterView = new UIView(new CGRect(0, 0, 0, 0));
 
             apploglist=ServiceFactory.getWebServiceHandle().FetchAppraisalLog(AppDelegate.appDelegate.storeId);
@@ -82,6 +94,12 @@ namespace AppraisalApp
             AppraisalTableView.RowHeight = UITableView.AutomaticDimension;
             AppraisalTableView.EstimatedRowHeight = 40f;
             AppraisalTableView.ReloadData();
+        }
+        public void searchTable()
+        {
+            
+           
+            
         }
     }
 }
