@@ -58,6 +58,7 @@ namespace ExtAppraisalApp
         partial void txtPhone_Changed(UITextField sender)
         {
             const int maxCharacters = 10;
+            txtPhone.Text = Regex.Replace(txtPhone.Text, @"[^0-9]+", "");
 
             txtPhone.ShouldChangeCharacters = (textField, range, replacement) =>
             {
@@ -76,6 +77,7 @@ namespace ExtAppraisalApp
         partial void txtMileage_Changed(UITextField sender)
         {
             const int maxCharacters = 6;
+            txtMileage.Text = Regex.Replace(txtMileage.Text, @"[^0-9]+", "");
 
             txtMileage.ShouldChangeCharacters = (textField, range, replacement) =>
             {
