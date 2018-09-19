@@ -70,6 +70,7 @@ namespace AppraisalApp
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            VinSearch.Text = VinSearch.Text.ToUpper();
             VinSearch.TextChanged += (sender, e) =>  
             {  
                 //this is the method that is called when the user searches  
@@ -94,11 +95,6 @@ namespace AppraisalApp
             AppraisalTableView.EstimatedRowHeight = 40f;
             AppraisalTableView.ReloadData();
         }
-        public void searchTable()
-        {
-            
-           
-            
-        }
+
     }
 }
