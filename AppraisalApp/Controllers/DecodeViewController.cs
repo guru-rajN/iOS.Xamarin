@@ -27,7 +27,7 @@ namespace ExtAppraisalApp
 
         partial void txtLastName_Changed(UITextField sender)
         {
-
+            txtLastName.Text = Regex.Replace(txtLastName.Text, @"[^a-zA-Z]+", "");
             txtLastName.ShouldChangeCharacters = (UITextField txt, NSRange range, string oopsTxt) =>
             {
                 var newLength = txt.Text.Length + oopsTxt.Length - range.Length;
@@ -38,6 +38,8 @@ namespace ExtAppraisalApp
 
         partial void txtFirstName_Changed(UITextField sender)
         {
+            txtFirstName.Text = Regex.Replace(txtFirstName.Text, @"[^a-zA-Z]+", "");
+
             txtFirstName.ShouldChangeCharacters = (UITextField txt, NSRange range, string oopsTxt) =>
             {
                 var newLength = txt.Text.Length + oopsTxt.Length - range.Length;
