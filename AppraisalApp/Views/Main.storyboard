@@ -2190,11 +2190,11 @@
                                                 <constraint firstItem="246514" firstAttribute="top" secondItem="244183" secondAttribute="top" constant="30" id="470929"/>
                                                 <constraint firstItem="247488" firstAttribute="top" secondItem="244183" secondAttribute="top" id="481359" constant="30"/>
                                                 <constraint firstAttribute="bottom" secondItem="247982" secondAttribute="bottom" constant="30" id="481366"/>
-                                                <constraint id="485609" firstItem="247488" firstAttribute="trailing" secondItem="244183" secondAttribute="trailing" constant="20"/>
+                                                <constraint id="485609" firstItem="247488" firstAttribute="trailing" secondItem="244183" secondAttribute="trailing"/>
                                                 <constraint id="485610" firstItem="247488" firstAttribute="bottom" secondItem="247980" secondAttribute="top" constant="1"/>
-                                                <constraint id="485611" firstItem="247980" firstAttribute="trailing" secondItem="244183" secondAttribute="trailing" constant="20"/>
+                                                <constraint id="485611" firstItem="247980" firstAttribute="trailing" secondItem="244183" secondAttribute="trailing"/>
                                                 <constraint id="485612" firstItem="247982" firstAttribute="top" secondItem="247980" secondAttribute="bottom" constant="1"/>
-                                                <constraint id="485614" firstItem="247982" firstAttribute="trailing" secondItem="244183" secondAttribute="trailing" constant="20"/>
+                                                <constraint id="485614" firstItem="247982" firstAttribute="trailing" secondItem="244183" secondAttribute="trailing"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
