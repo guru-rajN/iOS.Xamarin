@@ -122,27 +122,31 @@ namespace ExtAppraisalApp
                 string phone = txtPhone.Text;
 
 
-                if (string.IsNullOrEmpty(vin))
+                if (string.IsNullOrEmpty(vin) || string.IsNullOrEmpty(mileage) || string.IsNullOrEmpty(firstname) ||string.IsNullOrEmpty(lastname))
                 {
                     txtVin.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
-                }
-                if (string.IsNullOrEmpty(mileage))
-                {
                     txtMileage.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
-                }
-                if (string.IsNullOrEmpty(firstname))
-                {
                     txtFirstName.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
-                }
-                if (string.IsNullOrEmpty(lastname))
-                {
+                    txtEmail.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
+                    txtPhone.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
                     txtLastName.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
-                }
 
-                if (string.IsNullOrEmpty(email) && string.IsNullOrEmpty(phone))
+                }
+                //if (string.IsNullOrEmpty(mileage))
+                //{
+                //}
+                //if (string.IsNullOrEmpty(firstname))
+                //{
+                //}
+                //if (string.IsNullOrEmpty(lastname))
+                //{
+                //}
+
+                else if (string.IsNullOrEmpty(email) && string.IsNullOrEmpty(phone))
                 {
                     txtEmail.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
                     txtPhone.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
+         
                 }
                 //else if(string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(phone)){
 
@@ -154,27 +158,27 @@ namespace ExtAppraisalApp
                 //}
 
 
-                else if (!Regex.Match(firstname, @"^[a-zA-Z]*$").Success)
-                {
+                //else if (!Regex.Match(firstname, @"^[a-zA-Z]*$").Success)
+                //{
 
-                    Utilities.Utility.ShowAlert("First Name", "Your FirstName (" + firstname + ") is Incorrect", "OK");
-                }
-                else if (!Regex.Match(lastname, @"^[a-zA-Z]*$").Success)
-                {
-                    Utilities.Utility.ShowAlert("Last Name", "Your LastName (" + lastname + ") is Incorrect", "OK");
+                //    Utilities.Utility.ShowAlert("First Name", "Your FirstName (" + firstname + ") is Incorrect", "OK");
+                //}
+                //else if (!Regex.Match(lastname, @"^[a-zA-Z]*$").Success)
+                //{
+                //    Utilities.Utility.ShowAlert("Last Name", "Your LastName (" + lastname + ") is Incorrect", "OK");
 
-                }
+                //}
 
-                else if (!string.IsNullOrEmpty(email) && !Regex.Match(email, (@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$")).Success)
-                {
-                    Utilities.Utility.ShowAlert("Email", "Your email (" + email + ") is Incorrect", "OK");
+                //else if (!string.IsNullOrEmpty(email) && !Regex.Match(email, (@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$")).Success)
+                //{
+                //    Utilities.Utility.ShowAlert("Email", "Your email (" + email + ") is Incorrect", "OK");
 
-                }
-                else if (!string.IsNullOrEmpty(phone) && phone.Length != 10)
-                {
-                    Utilities.Utility.ShowAlert("Phone", "Your phone (" + phone + ") is Incorrect", "OK");
+                //}
+                //else if (!string.IsNullOrEmpty(phone) && phone.Length != 10)
+                //{
+                //    Utilities.Utility.ShowAlert("Phone", "Your phone (" + phone + ") is Incorrect", "OK");
 
-                }
+                //}
                 else
                 {
                     txtEmail.AttributedPlaceholder = new NSAttributedString("", null, UIColor.Red);
