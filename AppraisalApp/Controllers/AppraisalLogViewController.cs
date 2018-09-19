@@ -72,9 +72,8 @@ namespace AppraisalApp
             base.ViewDidLoad();
             VinSearch.TextChanged += (sender, e) =>  
             {  
-                VinSearch.Text = VinSearch.Text.ToUpper();
                 //this is the method that is called when the user searches  
-                var VinSearchEntity = apploglist.FindAll((AppraisalLogEntity obj) => obj.VIN.Contains(VinSearch.Text.Trim()));
+                var VinSearchEntity = apploglist.FindAll((AppraisalLogEntity obj) => obj.VIN == "CA");
                 AppraisalTableView.Source = new ApprasialLogTVS(VinSearchEntity);
                 AppraisalTableView.SeparatorStyle = UITableViewCellSeparatorStyle.DoubleLineEtched;
 
