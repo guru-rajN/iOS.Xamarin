@@ -45,7 +45,7 @@ namespace ExtAppraisalApp
             reconditionViewController.UpdateAlertText();
         }
 
-        void SavetolocalDb(string SelectedRow)
+        public void SavetolocalDb(string SelectedRow)
         {
 
             string SegmentIndex = globalInde.selectedSegmentIndex;

@@ -29,6 +29,8 @@ namespace ExtAppraisalApp.Services
         public const string GET_KBB_COLORS_URL = "GetKBBColorDetails/";
 
         public const string GET_FACTORYOPTIONSKBB_URL = "GetFactoryOptionsKBB/";
+        public const string GET_HISTORY_URL = "GetHistoryKBB/";
+        public const string GET_Recon_URL = "GetReconDetailsKBB/";
         public const string FetchAppraisalLog_URL = "FetchAppraisalLog/";
 
 

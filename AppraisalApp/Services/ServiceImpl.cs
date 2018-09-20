@@ -551,6 +551,80 @@ namespace ExtAppraisalApp.Services
             return response;
 
         }
+        public List<ReconAnsKBB> GetHistoryKBB(long vehicleId, short storeId, short invtrId, string prospectId)
+        {
+
+            HttpResponseMessage responseMessage = null;
+            string result = null;
+            List<ReconAnsKBB> hisresponse = new List<ReconAnsKBB>();
+            try
+            {
+
+                responseMessage = RestClient.doGet(Url.GET_HISTORY_URL + "/" + vehicleId + "/" + storeId + "/" + invtrId + "/" + prospectId);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    result = responseMessage.Content.ReadAsStringAsync().Result;
+                    SIMSResponseData rst = JsonConvert.DeserializeObject<SIMSResponseData>(result);
+                    var historyresponse = JsonConvert.DeserializeObject<List<ReconAnsKBB>>(rst.Data.ToString());
+
+                    hisresponse = historyresponse;
+
+                    if (null != result)
+                    {
+                        //result = null;
+                    }
+                    // TO-DO : show alert message if the VIN appraisal already created
+                }
+                else
+                {
+                    result = null;
+
+                    //Utilities.Utility.ShowAlert("Appraisal App", "Decode VIN Failed!!", "OK");
+                }
+            }
+            catch (Exception exc)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception occured :: " + exc.Message);
+            }
+            return hisresponse;
+        }
+        public List<ReconResponse.Datum> GetReconKBB(long vehicleId, short storeId, short invtrId, string prospectId)
+        {
+
+            HttpResponseMessage responseMessage = null;
+            string result = null;
+            List<ReconResponse.Datum> hisresponse = new List<ReconResponse.Datum>();
+            try
+            {
+
+                responseMessage = RestClient.doGet(Url.GET_Recon_URL + "/" + vehicleId + "/" + storeId + "/" + invtrId + "/" + prospectId);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    result = responseMessage.Content.ReadAsStringAsync().Result;
+                    SIMSResponseData rst = JsonConvert.DeserializeObject<SIMSResponseData>(result);
+                    var historyresponse = JsonConvert.DeserializeObject<List<ReconResponse.Datum>>(rst.Data.ToString());
+
+                    hisresponse = historyresponse;
+
+                    if (null != result)
+                    {
+                        //result = null;
+                    }
+                    // TO-DO : show alert message if the VIN appraisal already created
+                }
+                else
+                {
+                    result = null;
+
+                    //Utilities.Utility.ShowAlert("Appraisal App", "Decode VIN Failed!!", "OK");
+                }
+            }
+            catch (Exception exc)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception occured :: " + exc.Message);
+            }
+            return hisresponse;
+        }
         public SIMSResponseData SaveRecondition(ReconditionKBB recondata)
         {
             string result = null;

@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using UIKit;
 
 namespace ExtAppraisalApp
@@ -383,9 +384,94 @@ namespace ExtAppraisalApp
             nint rowselected;
             var existings = (conn.Table<ReconditionValue>().Where(
                 c => c.SegmentIndex == segmentID)).SingleOrDefault();
+
             if (existings == null)
             {
-                //rowselected = -1;
+
+                string SegmentIndex;
+                List<ReconResponse.Datum> reconResponse = new List<ReconResponse.Datum>();
+                Utility.ShowLoadingIndicator(this.View, "Recondition", true);
+                //reconResponse= GetRecon();
+                Task.Factory.StartNew(() =>
+                {
+                    reconResponse = ServiceFactory.getWebServiceHandle().GetReconKBB(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, AppDelegate.appDelegate.prospectId);
+                    //Utility.HideLoadingIndicator(this.View);
+                    if (reconResponse != null)
+                    {
+                        InvokeOnMainThread(() =>
+                        {
+                            Utility.HideLoadingIndicator(this.View);
+
+                            foreach (var recon in reconResponse)
+                            {
+                                if (segmentID == "0")
+                                {
+                                    if (recon.vehicleConditionCategory == 0)
+                                    {
+
+                                        foreach (var option in recon.options)
+                                        {
+                                            if (option.selected == true)
+                                            {
+                                                rowselected = option.optionValueId;
+                                                SegmentIndex = recon.vehicleConditionCategory.ToString();
+                                                ReconditionTableView.SelectRow(NSIndexPath.FromRowSection(rowselected, 0), false, UITableViewScrollPosition.Middle);
+                                                SavetolocalDba(rowselected.ToString(), SegmentIndex);
+                                                selectionAlertLabel.Hidden = true;
+                                                Utility.HideLoadingIndicator(this.View);
+                                            }
+                                            //rowselected=(from r in option where r.selected == true select r)
+                                        }
+                                        //rowselected = Int32.Parse(recon.options.);
+
+                                    }
+                                }
+                                if (segmentID == "1")
+                                {
+                                    if (recon.vehicleConditionCategory == 1)
+                                    {
+                                        foreach (var option in recon.options)
+                                        {
+                                            if (option.selected == true)
+                                            {
+                                                rowselected = option.optionValueId;
+                                                SegmentIndex = recon.vehicleConditionCategory.ToString();
+                                                ReconditionTableView.SelectRow(NSIndexPath.FromRowSection(rowselected, 0), false, UITableViewScrollPosition.Middle);
+                                                SavetolocalDba(rowselected.ToString(), SegmentIndex);
+                                                selectionAlertLabel.Hidden = true;
+
+                                            }
+                                            //rowselected=(from r in option where r.selected == true select r)
+                                        }
+                                        //rowselected = Int32.Parse(recon.options.);
+
+                                    }
+                                }
+                                if (segmentID == "2")
+                                {
+                                    if (recon.vehicleConditionCategory == 2)
+                                    {
+                                        foreach (var option in recon.options)
+                                        {
+                                            if (option.selected == true)
+                                            {
+                                                rowselected = option.optionValueId;
+                                                SegmentIndex = recon.vehicleConditionCategory.ToString();
+                                                ReconditionTableView.SelectRow(NSIndexPath.FromRowSection(rowselected, 0), false, UITableViewScrollPosition.Middle);
+                                                SavetolocalDba(rowselected.ToString(), SegmentIndex);
+                                                selectionAlertLabel.Hidden = true;
+
+                                            }
+                                            //rowselected=(from r in option where r.selected == true select r)
+                                        }
+                                        //rowselected = Int32.Parse(recon.options.);
+
+                                    }
+                                }
+                            }
+                        });
+                    }
+                });   //rowselected = -1;
             }
             else
             {
@@ -404,6 +490,53 @@ namespace ExtAppraisalApp
             //  Rowselected();
         }
 
+        private List<ReconResponse.Datum> GetRecon()
+        {
+            List<ReconResponse.Datum> reconResponse = new List<ReconResponse.Datum>();
+            Task.Factory.StartNew(() =>
+            {
+                reconResponse = ServiceFactory.getWebServiceHandle().GetReconKBB(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, AppDelegate.appDelegate.prospectId);
+            });
+            return reconResponse;
+        }
+
+        public void SavetolocalDba(string SelectedRow, string SegmentIndexRecon)
+        {
+
+            string SegmentIndex = SegmentIndexRecon;
+            string RowOption = SelectedRow;
+            var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            var libraryPath = Path.Combine(documentsPath, DBConstant.SEPARATOR, DBConstant.LIBRARY);// Library Folder
+            var DbPath = Path.Combine(libraryPath, DBConstant.DB_NAME);
+            try
+            {
+
+                using (var conn = new SQLite.SQLiteConnection(DbPath))
+                {
+                    conn.CreateTable<ReconditionValue>();
+                }
+                var record = new ReconditionValue { RowOption = RowOption, SegmentIndex = SegmentIndex };
+                using (var db = new SQLite.SQLiteConnection(DbPath))
+                {
+                    var existingRecord = (db.Table<ReconditionValue>().Where(c => c.SegmentIndex == record.SegmentIndex)).SingleOrDefault();
+                    if (existingRecord != null)
+                    {
+                        existingRecord.RowOption = record.RowOption;
+                        db.Update(existingRecord);
+                    }
+                    else
+                    {
+                        db.Insert(record);
+                    }
+
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            //sqlitecode
+        }
         void Rowselected()
         {
             NSIndexPath path = NSIndexPath.FromRowSection(5, 0);
@@ -435,10 +568,14 @@ namespace ExtAppraisalApp
                 ReconditionSaveBtn.Title = "Save";
             }
 
+
             string segmentID = ReconditionSegment.SelectedSegment.ToString();
+
+
             setObjectRecon(segmentID);
 
         }
+
 
         public override void DidReceiveMemoryWarning()
         {

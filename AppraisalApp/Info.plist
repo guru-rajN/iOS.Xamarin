@@ -4,8 +4,6 @@
 <dict>
 	<key>CFBundleName</key>
 	<string>AppraisalApp</string>
-	<key>CFBundleIdentifier</key>
-	<string>sims.slkgroup.carCash</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -43,5 +41,7 @@
 	<string>Can we use this</string>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>Can we use</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.slkgroup.AppraisalApp</string>
 </dict>
 </plist>

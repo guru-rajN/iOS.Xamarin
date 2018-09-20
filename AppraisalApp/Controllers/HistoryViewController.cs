@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using UIKit;
 namespace ExtAppraisalApp
 {
@@ -422,42 +423,138 @@ namespace ExtAppraisalApp
             var conn = new SQLite.SQLiteConnection(DbPath);
             conn.CreateTable<HistoryValue>();
             string segment = "1";
-            var existingRecord = (conn.Table<HistoryValue>().Where(c => c.HistoyQuestion == segment)).SingleOrDefault();
-            if (existingRecord != null)
+            var existingRecord = (conn.Table<HistoryValue>().Where(c => c.HistoyQuestion == "1")).SingleOrDefault();
+            var existingRecord2 = (conn.Table<HistoryValue>().Where(c => c.HistoyQuestion == "3")).SingleOrDefault();
+            var existingRecord3 = (conn.Table<HistoryValue>().Where(c => c.HistoyQuestion == "2")).SingleOrDefault();
+            if (existingRecord == null || existingRecord2 == null || existingRecord3 == null)
             {
-                Segment1.SelectedSegment = Int32.Parse(existingRecord.HistoryValueid);
+                Utility.ShowLoadingIndicator(this.View, "History", true);
+                GetHistoryKBB(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, AppDelegate.appDelegate.prospectId);
+                // Utility.HideLoadingIndicator(this.View);
             }
-            segment = "3";
-            var existingRecord2 = (conn.Table<HistoryValue>().Where(c => c.HistoyQuestion == segment)).SingleOrDefault();
-            if (existingRecord2 != null)
+            else
             {
-                Segment2.SelectedSegment = Int32.Parse(existingRecord2.HistoryValueid);
-                if (existingRecord2.InsureCoast != null)
+                if (existingRecord != null)
                 {
-                    label1.Hidden = false;
-                    label2.Hidden = false;
-                    label3.Hidden = false;
-                    label2.Text = existingRecord2.InsureCoast.ToString();
+                    Segment1.SelectedSegment = Int32.Parse(existingRecord.HistoryValueid);
+                }
+                segment = "3";
+                //var existingRecord2 = (conn.Table<HistoryValue>().Where(c => c.HistoyQuestion == "3")).SingleOrDefault();
+                if (existingRecord2 != null)
+                {
+                    Segment2.SelectedSegment = Int32.Parse(existingRecord2.HistoryValueid);
+                    if (existingRecord2.InsureCoast != null)
+                    {
+                        label1.Hidden = false;
+                        label2.Hidden = false;
+                        label3.Hidden = false;
+                        label2.Text = existingRecord2.InsureCoast.ToString();
+                    }
+
+                    if (Segment2.SelectedSegment.ToString() == "1")
+                    {
+                        label1.Hidden = true;
+                        label2.Hidden = true;
+                        label3.Hidden = true;
+                        label1.BackgroundColor = UIColor.White;
+                        label2.BackgroundColor = UIColor.White;
+                        label3.TextColor = UIColor.Black;
+                    }
+
+                }
+                segment = "2";
+                //var existingRecord3 = (conn.Table<HistoryValue>().Where(c => c.HistoyQuestion == "2")).SingleOrDefault();
+                if (existingRecord3 != null)
+                {
+                    Segment3.SelectedSegment = Int32.Parse(existingRecord3.HistoryValueid);
                 }
 
-                if (Segment2.SelectedSegment.ToString() == "1")
-                {
-                    label1.Hidden = true;
-                    label2.Hidden = true;
-                    label3.Hidden = true;
-                    label1.BackgroundColor = UIColor.White;
-                    label2.BackgroundColor = UIColor.White;
-                    label3.TextColor = UIColor.Black;
-                }
-
             }
-            segment = "2";
-            var existingRecord3 = (conn.Table<HistoryValue>().Where(c => c.HistoyQuestion == segment)).SingleOrDefault();
-            if (existingRecord3 != null)
+
+        }
+
+        Task GetHistoryKBB(long vehicleID, short storeId, short invtrId, string prospectId)
+        {
+            return Task.Factory.StartNew(() =>
             {
-                Segment3.SelectedSegment = Int32.Parse(existingRecord3.HistoryValueid);
-            }
+                List<ReconAnsKBB> historyValue = new List<ReconAnsKBB>();
+                historyValue = ServiceFactory.getWebServiceHandle().GetHistoryKBB(vehicleID, storeId, invtrId, prospectId);
+                InvokeOnMainThread(() =>
+                {
+                    Utility.HideLoadingIndicator(this.View);
+                    foreach (var history in historyValue)
+                    {
+                        if (history.questionId == "qp/82")
+                        {
+                            if (history.value == "Yes")
+                            {
+                                Segment1.SelectedSegment = 0;
+                            }
+                            else if (history.value == "No")
+                            {
+                                Segment1.SelectedSegment = 1;
+                            }
+                            else
+                            {
+                                Segment1.SelectedSegment = -1;
+                            }
+                        }
+                        if (history.questionId == "qp/76")
+                        {
+                            if (history.value == "Yes")
+                            {
+                                Segment2.SelectedSegment = 0;
+                            }
+                            else if (history.value == "No")
+                            {
+                                Segment2.SelectedSegment = 1;
+                            }
+                            else
+                            {
+                                Segment2.SelectedSegment = -1;
+                            }
+                        }
+                        if (history.questionId == "qp/76/amount")
+                        {
+                            if (history.value != null)
+                            {
+                                label1.Hidden = false;
+                                label2.Hidden = false;
+                                label3.Hidden = false;
+                                label2.Text = history.value.ToString();
+                            }
 
+                            if (Segment2.SelectedSegment.ToString() == "1")
+                            {
+                                label1.Hidden = true;
+                                label2.Hidden = true;
+                                label3.Hidden = true;
+                                label1.BackgroundColor = UIColor.White;
+                                label2.BackgroundColor = UIColor.White;
+                                label3.TextColor = UIColor.Black;
+                            }
+
+                        }
+                        if (history.questionId == "qp/79")
+                        {
+                            if (history.value == "Yes")
+                            {
+                                Segment3.SelectedSegment = 0;
+                            }
+                            else if (history.value == "No")
+                            {
+                                Segment3.SelectedSegment = 1;
+                            }
+                            else
+                            {
+                                Segment3.SelectedSegment = -1;
+                            }
+                        }
+
+                    }
+                });
+            });
+            // Segment1.SelectedSegment=historyValue.
         }
 
         public override void DidReceiveMemoryWarning()

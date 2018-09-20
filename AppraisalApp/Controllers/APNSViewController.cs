@@ -17,7 +17,7 @@ namespace ExtAppraisalApp
 
 
         public APNSViewController(IntPtr handle) : base(handle)
-        {
+        { 
 
         }
 
