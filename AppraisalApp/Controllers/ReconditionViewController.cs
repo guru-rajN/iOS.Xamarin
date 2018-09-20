@@ -161,7 +161,9 @@ namespace ExtAppraisalApp
                     if (!AppDelegate.appDelegate.IsReconditionsSaved)
                     {
                         viewWorker.PerformNavigation(6);
-                        viewWorker.ShowPartialDoneImg(6);
+                        if (!AppDelegate.appDelegate.IsPhotos && AppDelegate.appDelegate.WizardPageNo < 4)
+                            viewWorker.ShowPartialDoneImg(6);
+                        
                         viewWorker.ShowDoneImg(5);
 
                         if (UserInterfaceIdiomIsPhone)
@@ -568,6 +570,11 @@ namespace ExtAppraisalApp
                 ReconditionSaveBtn.Title = "Save";
             }
 
+            if (null == AppDelegate.appDelegate.prospectId)
+            {
+                Utility.ShowLoadingIndicator(this.View, "Generating Prospect", true);
+                GenerateProspect();
+            }
 
             string segmentID = ReconditionSegment.SelectedSegment.ToString();
 
@@ -575,6 +582,19 @@ namespace ExtAppraisalApp
             setObjectRecon(segmentID);
 
         }
+
+        Task GenerateProspect()
+        {
+            return Task.Factory.StartNew(() => {
+                AppDelegate.appDelegate.prospectId = Utility.GenerateProspect();
+                InvokeOnMainThread(() =>
+                {
+                    Utility.HideLoadingIndicator(this.View);
+                });
+
+            });
+        }
+
 
 
         public override void DidReceiveMemoryWarning()

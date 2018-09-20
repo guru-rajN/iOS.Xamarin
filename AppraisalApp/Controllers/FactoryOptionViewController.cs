@@ -43,7 +43,9 @@ namespace ExtAppraisalApp
                 if (!AppDelegate.appDelegate.IsFactorySaved)
                 {
                     viewWorker.PerformNavigation(3);
-                    viewWorker.ShowPartialDoneImg(3);
+                    if (AppDelegate.appDelegate.IsFactoryOptions && AppDelegate.appDelegate.WizardPageNo < 2)
+                        viewWorker.ShowPartialDoneImg(3);
+
                     viewWorker.ShowDoneImg(2);
 
                     if (UserInterfaceIdiomIsPhone)
@@ -101,27 +103,10 @@ namespace ExtAppraisalApp
             }
 
             Utility.ShowLoadingIndicator(this.View, "Fetching Factory", true);
+
             GetFactoryOptionsKBB(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, AppDelegate.appDelegate.trimId);
 
-            //var width = View.Bounds.Width;
-            //var height = View.Bounds.Height;
 
-            //table = new UITableView(new CGRect(0, 0, width, height));
-            //table.AutoresizingMask = UIViewAutoresizing.All;
-
-            //table.TableFooterView = new UIView(new CGRect(0, 0, 0, 0));
-
-            //AppDelegate.appDelegate.fctoption = ServiceFactory.getWebServiceHandle().GetFactoryOptionsKBB(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, 432110);
-            //List<string> tableItems = new List<string>();
-            //foreach (var category in AppDelegate.appDelegate.fctoption)
-            //{
-            //    string str = category.Caption;
-            //    tableItems.Add(str);
-            //}
-
-            //table.Source = new TableSource(tableItems.ToArray(), this);
-            //table.TableFooterView = new UIView(CoreGraphics.CGRect.Empty);
-            //Add(table);
         }
 
        

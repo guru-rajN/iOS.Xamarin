@@ -18,6 +18,7 @@ namespace ExtAppraisalApp
         public object DetailItem { get; set; }
 
         public int rowSelected = 0;
+        public int WizardPageNo = 0;
 
         private Vehicle vehicleDetails;
         private VinVehicleDetailsKBB decodeVinDetails;
@@ -158,6 +159,84 @@ namespace ExtAppraisalApp
 
                         SelectedModel = vehicleDetails.Model;
                         SelectedModelId = vehicleDetails.KBBModelId.ToString();
+
+                        WizardPageNo = vehicleDetails.WizardPage;
+
+                        // Wizard Navigation
+                        ViewWorker worker = new ViewWorker();
+
+                        worker.WorkerDelegate = masterViewController;
+
+                        Debug.WriteLine("IsFactoryOptions :: " + vehicleDetails.IsFactoryOptions);
+                        Debug.WriteLine("IsHistory :: " + vehicleDetails.IsHistory);
+                        Debug.WriteLine("IsPhotos :: " + vehicleDetails.IsPhotos);
+                        Debug.WriteLine("WizardPageNo :: " + WizardPageNo);
+
+                        AppDelegate.appDelegate.IsFactoryOptions = vehicleDetails.IsFactoryOptions;
+                        AppDelegate.appDelegate.IsHistory = vehicleDetails.IsHistory;
+                        AppDelegate.appDelegate.IsPhotos = vehicleDetails.IsPhotos;
+                        AppDelegate.appDelegate.WizardPageNo = vehicleDetails.WizardPage;
+
+                        if (WizardPageNo == 0)
+                        {
+
+                            worker.ShowPartialDoneImg(1);
+                        }
+                        else if (WizardPageNo == 1)
+                        {
+
+                            worker.ShowDoneImg(1);
+                            //worker.ShowPartialDoneImg(2);
+                        }
+                        else if (vehicleDetails.IsFactoryOptions && WizardPageNo < 2)
+                        {
+
+                            worker.ShowDoneImg(1);
+                            worker.ShowDoneImg(2);
+                            //worker.ShowPartialDoneImg(3);
+
+                        }
+                        else if (vehicleDetails.IsFactoryOptions && WizardPageNo == 2)
+                        {
+                            worker.ShowDoneImg(1);
+                            worker.ShowDoneImg(2);
+                            worker.ShowDoneImg(3);
+                            //worker.ShowPartialDoneImg(4);
+                        }
+                        else if (vehicleDetails.IsHistory && WizardPageNo < 3)
+                        {
+                            worker.ShowDoneImg(1);
+                            worker.ShowDoneImg(2);
+                            worker.ShowDoneImg(3);
+                            worker.ShowDoneImg(4);
+                            //worker.ShowPartialDoneImg(5);
+                        }
+                        else if (vehicleDetails.IsHistory && WizardPageNo == 3)
+                        {
+                            worker.ShowDoneImg(1);
+                            worker.ShowDoneImg(2);
+                            worker.ShowDoneImg(3);
+                            worker.ShowDoneImg(4);
+                            worker.ShowDoneImg(5);
+                        }
+                        else if (vehicleDetails.IsPhotos && WizardPageNo < 4)
+                        {
+                            worker.ShowDoneImg(1);
+                            worker.ShowDoneImg(2);
+                            worker.ShowDoneImg(3);
+                            worker.ShowDoneImg(4);
+                            worker.ShowDoneImg(5);
+                            worker.ShowDoneImg(6);
+                        }
+                        else
+                        {
+                            worker.ShowDoneImg(1);
+                            worker.ShowDoneImg(2);
+                            worker.ShowDoneImg(3);
+                            worker.ShowDoneImg(4);
+                            worker.ShowDoneImg(5);
+                            worker.ShowDoneImg(6);
+                        }
 
 
                         if (string.IsNullOrEmpty(vehicleDetails.BodyStyle))
@@ -660,33 +739,43 @@ namespace ExtAppraisalApp
 
                 AppDelegate.appDelegate.cacheVehicleDetails = vehicleDetails;
 
-                if (!AppDelegate.appDelegate.IsAllDataSaved)
-                {
-                    if (!AppDelegate.appDelegate.IsInfoSaved)
+                if(null != AppDelegate.appDelegate.prospectId){
+                    
+                    if (!AppDelegate.appDelegate.IsAllDataSaved)
                     {
-                        worker.ShowPartialDoneImg(2);
-                        worker.ShowDoneImg(1);
-                        worker.PerformNavigation(2);
-
-                        if (UserInterfaceIdiomIsPhone)
+                        if (!AppDelegate.appDelegate.IsInfoSaved)
                         {
-                            var dictionary = new NSDictionary(new NSString("1"), new NSString("VehicleInfo"));
+                            if (!AppDelegate.appDelegate.IsFactoryOptions)
+                                worker.ShowPartialDoneImg(2);
 
-                            NSNotificationCenter.DefaultCenter.PostNotificationName((Foundation.NSString)"MenuSelection", null, dictionary);
+                            worker.ShowDoneImg(1);
+                            worker.PerformNavigation(2);
+
+                            if (UserInterfaceIdiomIsPhone)
+                            {
+                                var dictionary = new NSDictionary(new NSString("1"), new NSString("VehicleInfo"));
+
+                                NSNotificationCenter.DefaultCenter.PostNotificationName((Foundation.NSString)"MenuSelection", null, dictionary);
+                            }
                         }
                     }
-                }
-                else
-                {
-                    var storyboard = UIStoryboard.FromName("Main", null);
-                    SummaryViewController summaryViewController = (SummaryViewController)storyboard.InstantiateViewController("SummaryViewController");
-                    UINavigationController uINavigationController = new UINavigationController(summaryViewController);
-                    uINavigationController.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
-                    uINavigationController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
-                    this.NavigationController.PresentViewController(uINavigationController, true, null);
+                    else
+                    {
+                        var storyboard = UIStoryboard.FromName("Main", null);
+                        SummaryViewController summaryViewController = (SummaryViewController)storyboard.InstantiateViewController("SummaryViewController");
+                        UINavigationController uINavigationController = new UINavigationController(summaryViewController);
+                        uINavigationController.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
+                        uINavigationController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
+                        this.NavigationController.PresentViewController(uINavigationController, true, null);
+                    }
+
+                    AppDelegate.appDelegate.IsInfoSaved = true;
+                }else{
+                    // TO-DO // change the messsage
+                    Utility.ShowAlert("AppraisalApp", "Vehicle Prospect ID not generated", "OK");
                 }
 
-                AppDelegate.appDelegate.IsInfoSaved = true;
+
 
             }
 

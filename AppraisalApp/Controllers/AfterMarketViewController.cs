@@ -58,7 +58,9 @@ namespace AppraisalApp
                 if (!AppDelegate.appDelegate.IsAftermarketSaved)
                 {
                     viewWorker.PerformNavigation(4);
-                    viewWorker.ShowPartialDoneImg(4);
+                    if (!AppDelegate.appDelegate.IsHistory)
+                        viewWorker.ShowPartialDoneImg(4);
+
                     viewWorker.ShowDoneImg(3);
 
                     if (UserInterfaceIdiomIsPhone)
@@ -292,13 +294,33 @@ namespace AppraisalApp
             this.masterAMFO.Hidden = false;
             MasterAdditionalAMFO.Hidden = true;
             try{
-                Utility.ShowLoadingIndicator(this.View, "Fetching AfterMarket Options", true);
-                GetAltenateFactoryOptions(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, AppDelegate.appDelegate.prospectId);
+                if (null == AppDelegate.appDelegate.prospectId)
+                {
+                    Utility.ShowLoadingIndicator(this.View, "Generating Prospect", true);
+                    GenerateProspect();
+
+                    Utility.ShowLoadingIndicator(this.View, "Fetching AfterMarket Options", true);
+                    GetAltenateFactoryOptions(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, AppDelegate.appDelegate.prospectId);
+                }
+
+
             }catch(Exception exc){
                 Debug.WriteLine("Exception occured :: " + exc.Message);
             }
 
 
+        }
+
+        Task GenerateProspect()
+        {
+            return Task.Factory.StartNew(() => {
+                AppDelegate.appDelegate.prospectId = Utility.GenerateProspect();
+                InvokeOnMainThread(() =>
+                {
+                    Utility.HideLoadingIndicator(this.View);
+                });
+
+            });
         }
     }
 

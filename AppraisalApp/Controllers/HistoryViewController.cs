@@ -259,7 +259,9 @@ namespace ExtAppraisalApp
                         if (!AppDelegate.appDelegate.IsHistorySaved)
                         {
                             viewWorker.PerformNavigation(5);
-                            viewWorker.ShowPartialDoneImg(5);
+                            if (AppDelegate.appDelegate.IsHistory && AppDelegate.appDelegate.WizardPageNo < 3)
+                                viewWorker.ShowPartialDoneImg(5);
+   
                             viewWorker.ShowDoneImg(4);
 
                             if (UserInterfaceIdiomIsPhone)
@@ -416,6 +418,12 @@ namespace ExtAppraisalApp
             label2.BackgroundColor = UIColor.White;
             label3.TextColor = UIColor.Black;
 
+            if (null == AppDelegate.appDelegate.prospectId)
+            {
+                Utility.ShowLoadingIndicator(this.View, "Generating Prospect", true);
+                GenerateProspect();
+            }
+
             // Perform any additional setup after loading the view, typically from a nib.
             var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             var libraryPath = Path.Combine(documentsPath, DBConstant.SEPARATOR, DBConstant.LIBRARY);// Library Folder
@@ -472,6 +480,19 @@ namespace ExtAppraisalApp
             }
 
         }
+
+        Task GenerateProspect()
+        {
+            return Task.Factory.StartNew(() => {
+                AppDelegate.appDelegate.prospectId = Utility.GenerateProspect();
+                InvokeOnMainThread(() =>
+                {
+                    Utility.HideLoadingIndicator(this.View);
+                });
+
+            });
+        }
+
 
         Task GetHistoryKBB(long vehicleID, short storeId, short invtrId, string prospectId)
         {

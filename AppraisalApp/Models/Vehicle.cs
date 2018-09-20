@@ -863,5 +863,8 @@ namespace ExtAppraisalApp.Models
 
 
         public virtual string Odometer { get; set; }
+        public bool IsFactoryOptions { get; set; }
+        public bool IsHistory { get; set; }
+        public bool IsPhotos { get; set; }
     }
 }

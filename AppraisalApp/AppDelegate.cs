@@ -69,6 +69,11 @@ namespace ExtAppraisalApp
         public bool RimImageUploaded = false;
         public bool OdometerImageUploaded = false;
 
+        public bool IsFactoryOptions = false;
+        public bool IsHistory = false;
+        public bool IsPhotos = false;
+        public int WizardPageNo = 0;
+
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
