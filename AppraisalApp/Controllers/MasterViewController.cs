@@ -50,6 +50,79 @@ namespace ExtAppraisalApp
 
             NSNotificationCenter.DefaultCenter.AddObserver((Foundation.NSString)"Title", UpdateTitle, null);
             NSNotificationCenter.DefaultCenter.AddObserver((Foundation.NSString)"MenuSelection", UpdateView, null);
+            NSNotificationCenter.DefaultCenter.AddObserver((Foundation.NSString)"iPhoneWorkFlow", UpdateMasterView, null);
+        }
+
+        private void UpdateMasterView(NSNotification obj)
+        {
+            var userInfo = obj.UserInfo;
+            var NotificationMsg = "";
+            if (null != userInfo)
+                NotificationMsg = userInfo.Keys[0].ToString();
+
+            var FactoryOptionsValue = userInfo.ValueForKey((Foundation.NSString)"IsFactoryOptions");
+            var HistoryValue = userInfo.ValueForKey((Foundation.NSString)"IsHistory");
+            var PhotosValue = userInfo.ValueForKey((Foundation.NSString)"IsPhotos");
+            var WizardPage = userInfo.ValueForKey((Foundation.NSString)"WizardPageNo");
+
+
+            int WizardPageNo = Int32.Parse(WizardPage.ToString());
+
+            if (WizardPageNo == 0)
+            {
+                ShowPartialDoneIcon(1);
+            }
+            else if (WizardPageNo == 1)
+            {
+                ShowDoneIcon(1);
+            }
+            else if (FactoryOptionsValue.Equals("True") && WizardPageNo < 2)
+            {
+                ShowDoneIcon(1);
+                ShowDoneIcon(2);
+
+            }
+            else if (FactoryOptionsValue.Equals("True") && WizardPageNo == 2)
+            {
+                ShowDoneIcon(1);
+                ShowDoneIcon(2);
+                ShowDoneIcon(3);
+            }
+            else if (HistoryValue.Equals("True") && WizardPageNo < 3)
+            {
+                ShowDoneIcon(1);
+                ShowDoneIcon(2);
+                ShowDoneIcon(3);
+                ShowDoneIcon(4);
+            }
+            else if (HistoryValue.Equals("True") && WizardPageNo == 3)
+            {
+                ShowDoneIcon(1);
+                ShowDoneIcon(2);
+                ShowDoneIcon(3);
+                ShowDoneIcon(4);
+                ShowDoneIcon(5);
+
+            }
+            else if (PhotosValue.Equals("True") && WizardPageNo < 4)
+            {
+                ShowDoneIcon(1);
+                ShowDoneIcon(2);
+                ShowDoneIcon(3);
+                ShowDoneIcon(4);
+                ShowDoneIcon(5);
+                ShowDoneIcon(6);
+            }
+            else
+            {
+                ShowDoneIcon(1);// Vehicle Info
+                ShowDoneIcon(2);// Factory Options
+                ShowDoneIcon(3);// Aftermarket
+                ShowDoneIcon(4);// History
+                ShowDoneIcon(5);// Recondition
+                ShowDoneIcon(6);// Photos
+            }
+
         }
 
         private void UpdateTitle(NSNotification obj)
@@ -71,6 +144,7 @@ namespace ExtAppraisalApp
             Debug.WriteLine("View did disAppear");
             NSNotificationCenter.DefaultCenter.RemoveObserver((Foundation.NSString)"Title");
             NSNotificationCenter.DefaultCenter.RemoveObserver((Foundation.NSString)"MenuSelection");
+            NSNotificationCenter.DefaultCenter.RemoveObserver((Foundation.NSString)"iPhoneWorkFlow");
             base.ViewDidDisappear(animated);
         }
 

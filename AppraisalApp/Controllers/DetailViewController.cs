@@ -238,6 +238,15 @@ namespace ExtAppraisalApp
                             worker.ShowDoneImg(6);
                         }
 
+                        if (UserInterfaceIdiomIsPhone)
+                        {
+                            var dictionary = new NSDictionary(new NSString("IsFactoryOptions"), new NSString(AppDelegate.appDelegate.IsFactoryOptions.ToString()),
+                                                              new NSString("IsHistory"), new NSString(AppDelegate.appDelegate.IsHistory.ToString()),
+                                                              new NSString("IsPhotos"), new NSString(AppDelegate.appDelegate.IsPhotos.ToString()),
+                                                              new NSString("WizardPageNo"), new NSString(AppDelegate.appDelegate.WizardPageNo.ToString()));
+
+                            NSNotificationCenter.DefaultCenter.PostNotificationName((Foundation.NSString)"iPhoneWorkFlow", null, dictionary);
+                        }
 
                         if (string.IsNullOrEmpty(vehicleDetails.BodyStyle))
                         {
