@@ -42,6 +42,6 @@
 	<key>NSAppleMusicUsageDescription</key>
 	<string>Can we use</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.slkgroup.AppraisalApp</string>
+	<string>sims.slkgroup.carCash</string>
 </dict>
 </plist>
