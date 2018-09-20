@@ -262,6 +262,14 @@ namespace AppraisalApp
             vehicleFactoryOptions.Answer.Answers = answers.Answers;
             vehicleFactoryOptions.vehicleFactoryOptions = new VehicleFactoryOptions();
             vehicleFactoryOptions.vehicleFactoryOptions.AlternateFactoryOptionsLst = new List<AlternateFactoryOptions>();
+            if(AppDelegate.appDelegate.afterMarketOptions.sonicAfterMarketList.Count== 0){
+                AlternateFactoryOptions vehicleFactory = new AlternateFactoryOptions();
+                vehicleFactory.Description = "None";
+                vehicleFactory.Is_AfterMarketOption_Select = true;
+                vehicleFactory.AfterMarketOptionId = 1;
+                vehicleFactory.OptionKindId = "AMFO";
+                AppDelegate.appDelegate.afterMarketOptions.sonicAfterMarketList.Add(vehicleFactory);
+            }
             vehicleFactoryOptions.vehicleFactoryOptions.AlternateFactoryOptionsLst = AppDelegate.appDelegate.afterMarketOptions.sonicAfterMarketList;
             vehicleFactoryOptions.vehicleFactoryOptions.VehicleID = AppDelegate.appDelegate.vehicleID;
             vehicleFactoryOptions.vehicleFactoryOptions.StoreID = AppDelegate.appDelegate.storeId;
