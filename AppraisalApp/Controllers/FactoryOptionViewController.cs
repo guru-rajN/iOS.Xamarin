@@ -151,7 +151,7 @@ namespace ExtAppraisalApp
                     
                     vehicleFactoryOptions.VehicleId = Vehicle_ID;
                     vehicleFactoryOptions.StoreId = store_ID;
-                    vehicleFactoryOptions.InvtrId = store_ID;
+                vehicleFactoryOptions.InvtrId = Invtr_ID;
 
 
                     List<FactoryOptionsKBB> listfactory = new List<FactoryOptionsKBB>();

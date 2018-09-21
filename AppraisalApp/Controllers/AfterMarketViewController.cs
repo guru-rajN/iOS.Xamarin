@@ -172,6 +172,9 @@ namespace AppraisalApp
                 InvokeOnMainThread(() =>
                 { 
                     int y = 0;
+                    if(AppDelegate.appDelegate.afterMarketOptions.sonicAfterMarketList.Count > 0){
+                        
+                    
                     foreach (var option in AppDelegate.appDelegate.afterMarketOptions.sonicAfterMarketList)
                     {
                         UISwitch switchele = new UISwitch();
@@ -187,6 +190,7 @@ namespace AppraisalApp
                         AMFO.AddSubview(switchele);
                         AMFO.AddSubview(label);
 
+                    }
                     }
                     var width = View.Bounds.Width;
                     var height = View.Bounds.Height;
