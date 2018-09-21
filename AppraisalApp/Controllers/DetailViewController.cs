@@ -110,6 +110,7 @@ namespace ExtAppraisalApp
                 else
                 {
                     vehicleDetails = GetVehicleData();// get vehicle details service
+                    AppDelegate.appDelegate.trimId = vehicleDetails.KBBTrimId;
                     AppDelegate.appDelegate.cacheVehicleDetails = vehicleDetails;
                 }
 
