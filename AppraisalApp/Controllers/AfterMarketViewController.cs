@@ -325,7 +325,7 @@ namespace AppraisalApp
         Task GenerateProspect()
         {
             return Task.Factory.StartNew(() => {
-                AppDelegate.appDelegate.prospectId = Utility.GenerateProspect();
+                AppDelegate.appDelegate.prospectId = ServiceFactory.getWebServiceHandle().GenerateProspect();
                 Debug.WriteLine("prospect id :: " + AppDelegate.appDelegate.prospectId);
                 InvokeOnMainThread(() =>
                 {
