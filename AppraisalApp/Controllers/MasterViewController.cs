@@ -358,6 +358,11 @@ namespace ExtAppraisalApp
             var loginViewController = storyboard.InstantiateViewController("LoginViewController");
             AppDelegate.appDelegate.Window.RootViewController = loginViewController;
 
+            AppDelegate.appDelegate.IsFactoryOptions = false;
+            AppDelegate.appDelegate.IsHistory = false;
+            AppDelegate.appDelegate.IsPhotos = false;
+            AppDelegate.appDelegate.WizardPageNo = 0;
+
             dropSqlite();
             deletePhoto();
         }
