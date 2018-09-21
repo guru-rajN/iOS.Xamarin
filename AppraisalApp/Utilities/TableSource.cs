@@ -97,6 +97,7 @@ namespace AppraisalApp.Utilities
             { cell = new UITableViewCell(UITableViewCellStyle.Default, cellIdentifier); }
 
             cell.TextLabel.Text = item;
+            cell.Accessory = UITableViewCellAccessory.DisclosureIndicator;
 
             return cell;
         }
