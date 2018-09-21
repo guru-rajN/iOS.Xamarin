@@ -307,10 +307,14 @@ namespace AppraisalApp
                     Utility.ShowLoadingIndicator(this.View, "Generating Prospect", true);
                     GenerateProspect();
 
+                    }
+                else
+                {
                     Utility.ShowLoadingIndicator(this.View, "Fetching AfterMarket Options", true);
                     GetAltenateFactoryOptions(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, AppDelegate.appDelegate.prospectId);
-                }
 
+                }
+    
 
             }catch(Exception exc){
                 Debug.WriteLine("Exception occured :: " + exc.Message);
@@ -326,6 +330,9 @@ namespace AppraisalApp
                 InvokeOnMainThread(() =>
                 {
                     Utility.HideLoadingIndicator(this.View);
+                    Utility.ShowLoadingIndicator(this.View, "Fetching AfterMarket Options", true);
+                    GetAltenateFactoryOptions(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, AppDelegate.appDelegate.prospectId);
+
                 });
 
             });
