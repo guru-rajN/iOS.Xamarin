@@ -572,7 +572,6 @@ namespace ExtAppraisalApp
 
             if (null == AppDelegate.appDelegate.prospectId)
             {
-                Utility.ShowLoadingIndicator(this.View, "Generating Prospect", true);
                 GenerateProspect();
             }
 
@@ -586,11 +585,7 @@ namespace ExtAppraisalApp
         Task GenerateProspect()
         {
             return Task.Factory.StartNew(() => {
-                AppDelegate.appDelegate.prospectId = Utility.GenerateProspect();
-                InvokeOnMainThread(() =>
-                {
-                    Utility.HideLoadingIndicator(this.View);
-                });
+                AppDelegate.appDelegate.prospectId = ServiceFactory.getWebServiceHandle().GenerateProspect();
 
             });
         }

@@ -78,36 +78,7 @@ namespace ExtAppraisalApp.Utilities
             container.RemoveFromSuperview();
         }
 
-        public static string GenerateProspect()
-        {
-            string prospectId = string.Empty;
-            try
-            {
-                ProspectParams prospectParams = new ProspectParams();
-                prospectParams.vin = AppDelegate.appDelegate.cacheVehicleDetails.VIN;
-                prospectParams.colorId = Int32.Parse(AppDelegate.appDelegate.cacheVehicleDetails.KBBColorId);
-                prospectParams.trimId = AppDelegate.appDelegate.cacheVehicleDetails.KBBTrimId;
-
-                prospectParams.drivetrainId = AppDelegate.appDelegate.cacheVehicleDetails.KBBDrivetrainId;
-                prospectParams.engineId = AppDelegate.appDelegate.cacheVehicleDetails.KBBEngineId;
-                prospectParams.currStoreId = AppDelegate.appDelegate.storeId;
-                prospectParams.dealerId = 0;
-                AppDelegate.appDelegate.trimId = AppDelegate.appDelegate.cacheVehicleDetails.KBBTrimId;
-                prospectParams.makeId = AppDelegate.appDelegate.cacheVehicleDetails.KBBMakeId;
-                prospectParams.modelId = AppDelegate.appDelegate.cacheVehicleDetails.KBBModelId;
-                prospectParams.mileage = Int32.Parse(AppDelegate.appDelegate.cacheVehicleDetails.Mileage.ToString());
-                prospectParams.YearId = Int32.Parse(AppDelegate.appDelegate.cacheVehicleDetails.Year.ToString());
-                prospectParams.transmissionId = AppDelegate.appDelegate.cacheVehicleDetails.KBBTransmissionId;
-                prospectId = ServiceFactory.getWebServiceHandle().GenerateProspectId(prospectParams);
-            }
-            catch (Exception exc)
-            {
-                Console.WriteLine("exception occured :: " + exc.Message);
-                return null;
-
-            }
-            return prospectId;
-        }
+       
 
     }
 }

@@ -36,7 +36,10 @@ namespace ExtAppraisalApp.Services
         List<Stores> SearchNearestStores(string zipcode);
 
         SIMSResponseData SaveAfterMarketFactoryOptions(VehicleAfterMarketOptions vehicleAfterMarketOptions);
+
         List<AppraisalLogEntity> FetchAppraisalLog(short storeId);
+
+        string GenerateProspect();
 
     }
 }

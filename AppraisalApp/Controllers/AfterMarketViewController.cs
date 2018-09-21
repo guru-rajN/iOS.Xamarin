@@ -304,7 +304,6 @@ namespace AppraisalApp
             try{
                 if (null == AppDelegate.appDelegate.prospectId)
                 {
-                    Utility.ShowLoadingIndicator(this.View, "Generating Prospect", true);
                     GenerateProspect();
 
                     }
@@ -327,12 +326,20 @@ namespace AppraisalApp
         {
             return Task.Factory.StartNew(() => {
                 AppDelegate.appDelegate.prospectId = Utility.GenerateProspect();
+                Debug.WriteLine("prospect id :: " + AppDelegate.appDelegate.prospectId);
                 InvokeOnMainThread(() =>
                 {
+
                     Utility.HideLoadingIndicator(this.View);
                     Utility.ShowLoadingIndicator(this.View, "Fetching AfterMarket Options", true);
                     GetAltenateFactoryOptions(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, AppDelegate.appDelegate.prospectId);
 
+
+
+                    if (null == AppDelegate.appDelegate.prospectId)
+                    {
+                        Utility.ShowAlert("AppraisalApp", "Vehicle Prospect ID not generated", "OK");
+                    }
                 });
 
             });
