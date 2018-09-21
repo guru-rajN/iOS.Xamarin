@@ -272,7 +272,6 @@ namespace ExtAppraisalApp
         {
             try
             {
-                decodeActivity.Hidden = true;
                 txtVin.ShouldChangeCharacters = (textField, range, replacementString) => {
                     var newLength = textField.Text.Length + replacementString.Length - range.Length;
                     return newLength <= 17;

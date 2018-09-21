@@ -36,10 +36,6 @@ namespace AppraisalApp
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel Description { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView MasterAdditionalAMFO { get; set; }
 
         [Outlet]
@@ -87,11 +83,6 @@ namespace AppraisalApp
             if (Btn_SaveAfterMarket != null) {
                 Btn_SaveAfterMarket.Dispose ();
                 Btn_SaveAfterMarket = null;
-            }
-
-            if (Description != null) {
-                Description.Dispose ();
-                Description = null;
             }
 
             if (MasterAdditionalAMFO != null) {

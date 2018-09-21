@@ -17,6 +17,7 @@ namespace ExtAppraisalApp
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIBarButtonItem btnCancel { get; set; }
 
+
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIBarButtonItem BtnDecode { get; set; }
@@ -28,10 +29,6 @@ namespace ExtAppraisalApp
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton btnScan { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIActivityIndicatorView decodeActivity { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -146,11 +143,6 @@ namespace ExtAppraisalApp
             if (btnScan != null) {
                 btnScan.Dispose ();
                 btnScan = null;
-            }
-
-            if (decodeActivity != null) {
-                decodeActivity.Dispose ();
-                decodeActivity = null;
             }
 
             if (lblEmail != null) {
