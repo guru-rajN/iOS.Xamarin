@@ -68,6 +68,12 @@ namespace AppraisalApp
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+
+            // hide keyboard on touch outside area
+            var g = new UITapGestureRecognizer(() => View.EndEditing(true));
+            g.CancelsTouchesInView = false; //for iOS5
+            View.AddGestureRecognizer(g);
+
             VinSearch.Text = VinSearch.Text.ToUpper();
             VinSearch.TextChanged += (sender, e) =>  
             {  
@@ -103,7 +109,8 @@ namespace AppraisalApp
                     }
                 }
                
-            };  
+            }; 
+
             AppraisalTableView.TableFooterView = new UIView(new CGRect(0, 0, 0, 0));
 
             apploglist=ServiceFactory.getWebServiceHandle().FetchAppraisalLog(AppDelegate.appDelegate.storeId);
