@@ -16,6 +16,20 @@ namespace AppraisalApp
 {
     public partial class AppraisalLogViewController : UIViewController
     {
+        bool VinSearch_ShouldEndEditing(UISearchBar searchBar)
+        {
+            VinSearch.ShowsCancelButton = false;    
+            return true;    
+        }
+
+
+        bool VinSearch_ShouldBeginEditing(UISearchBar searchBar)
+        {
+            VinSearch.ShowsCancelButton = true;
+            return true;
+        }
+
+
         partial void BtnCancel_Activated(UIBarButtonItem sender)
         {
             var storyboard = UIStoryboard.FromName("Main", null);
@@ -111,6 +125,9 @@ namespace AppraisalApp
                
             }; 
 
+            VinSearch.ShouldBeginEditing += VinSearch_ShouldBeginEditing;
+            VinSearch.ShouldEndEditing += VinSearch_ShouldEndEditing;
+
             AppraisalTableView.TableFooterView = new UIView(new CGRect(0, 0, 0, 0));
 
             apploglist=ServiceFactory.getWebServiceHandle().FetchAppraisalLog(AppDelegate.appDelegate.storeId);
@@ -127,6 +144,7 @@ namespace AppraisalApp
 
             AppraisalTableView.ReloadData();
         }
+
 
     }
 }
