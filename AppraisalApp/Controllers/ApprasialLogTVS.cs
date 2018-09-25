@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using AppraisalApp.Models;
+using CoreGraphics;
 using ExtAppraisalApp;
 using Foundation;
 using UIKit;
@@ -12,7 +13,7 @@ namespace AppraisalApp
         //protected string[] tableItems;
         private List<AppraisalLogEntity> apploglist;
 
-        public ApprasialLogTVS(List<AppraisalLogEntity> apploglist)
+        public  ApprasialLogTVS(List<AppraisalLogEntity> apploglist)
         {
             this.apploglist = apploglist;
         }

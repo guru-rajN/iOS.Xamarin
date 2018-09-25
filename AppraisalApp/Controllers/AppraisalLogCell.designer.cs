@@ -20,6 +20,10 @@ namespace AppraisalApp
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView ContainerView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel Mileage { get; set; }
 
         [Outlet]
@@ -43,6 +47,11 @@ namespace AppraisalApp
             if (appraisalDate != null) {
                 appraisalDate.Dispose ();
                 appraisalDate = null;
+            }
+
+            if (ContainerView != null) {
+                ContainerView.Dispose ();
+                ContainerView = null;
             }
 
             if (Mileage != null) {

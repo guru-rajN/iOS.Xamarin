@@ -77,12 +77,11 @@ namespace AppraisalApp
                 {
                     var VinSearchEntity = apploglist.FindAll((AppraisalLogEntity obj) => obj.VIN.Contains(VinSearch.Text.Trim()));
                     AppraisalTableView.Source = new ApprasialLogTVS(VinSearchEntity);
-                    AppraisalTableView.SeparatorStyle = UITableViewCellSeparatorStyle.DoubleLineEtched;
-
-                    AppraisalTableView.RowHeight = UITableView.AutomaticDimension;
-                    AppraisalTableView.EstimatedRowHeight = 40f;
+                    AppraisalTableView.RowHeight = 120f;
+                    AppraisalTableView.EstimatedRowHeight = 120.0f;
+                    AppraisalTableView.BackgroundColor = UIColor.LightGray;
                     AppraisalTableView.ReloadData();  
-                }//this is the method that is called when the user searches  
+                }//Method get called when search started 
                 else
                 {
                     string segmentID = AppraisalTypeSegment.SelectedSegment.ToString();
@@ -90,20 +89,18 @@ namespace AppraisalApp
                     {
                         var Appcompleted = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status == "CA");
                         AppraisalTableView.Source = new ApprasialLogTVS(Appcompleted);
-                        AppraisalTableView.SeparatorStyle = UITableViewCellSeparatorStyle.DoubleLineEtched;
-
-                        AppraisalTableView.RowHeight = UITableView.AutomaticDimension;
-                        AppraisalTableView.EstimatedRowHeight = 40f;
+                        AppraisalTableView.RowHeight = 120f;
+                        AppraisalTableView.EstimatedRowHeight = 120.0f;
+                        AppraisalTableView.BackgroundColor = UIColor.LightGray;
                         AppraisalTableView.ReloadData();
                     }
                     else
                     {
                         var appPending = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status != "CA");
                         AppraisalTableView.Source = new ApprasialLogTVS(appPending);
-                        AppraisalTableView.SeparatorStyle = UITableViewCellSeparatorStyle.DoubleLineEtched;
-
-                        AppraisalTableView.RowHeight = UITableView.AutomaticDimension;
-                        AppraisalTableView.EstimatedRowHeight = 40f;
+                        AppraisalTableView.RowHeight = 120f;
+                        AppraisalTableView.EstimatedRowHeight = 120.0f;
+                        AppraisalTableView.BackgroundColor = UIColor.LightGray;
                         AppraisalTableView.ReloadData();
                     }
                 }
@@ -115,11 +112,14 @@ namespace AppraisalApp
 
 
             var completedVehicle = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status == "CA");
+
+            AppraisalTableView.RowHeight = 120f;
+            AppraisalTableView.EstimatedRowHeight = 120.0f;
+            AppraisalTableView.BackgroundColor = UIColor.LightGray;
             AppraisalTableView.Source = new ApprasialLogTVS(completedVehicle);
                
-            AppraisalTableView.SeparatorStyle = UITableViewCellSeparatorStyle.DoubleLineEtched;
-            AppraisalTableView.RowHeight = UITableView.AutomaticDimension;
-            AppraisalTableView.EstimatedRowHeight = 40f;
+            //AppraisalTableView.SeparatorStyle = UITableViewCellSeparatorStyle.DoubleLineEtched;
+
             AppraisalTableView.ReloadData();
         }
 
