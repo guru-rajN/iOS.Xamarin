@@ -130,8 +130,13 @@ namespace ExtAppraisalApp
                     List<string> tableItems = new List<string>();
                     foreach (var category in AppDelegate.appDelegate.fctoption)
                     {
-                        string str = category.Caption;
-                        tableItems.Add(str);
+                        if(category.Caption == "Seats" || category.Caption =="Steering" || category.Caption =="Lighting and Mirrors"){
+                            
+                        }
+                        else{
+                            string str = category.Caption;
+                            tableItems.Add(str);
+                        }
                     }
                     table.Source = new TableSource(tableItems.ToArray(), this);
                     table.TableFooterView = new UIView(CoreGraphics.CGRect.Empty);
