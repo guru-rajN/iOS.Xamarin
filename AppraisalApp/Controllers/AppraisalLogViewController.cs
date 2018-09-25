@@ -45,20 +45,18 @@ namespace AppraisalApp
             {
                 var completedVehicle = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status == "CA");
                 AppraisalTableView.Source = new ApprasialLogTVS(completedVehicle);
-                AppraisalTableView.SeparatorStyle = UITableViewCellSeparatorStyle.DoubleLineEtched;
-
-                AppraisalTableView.RowHeight = UITableView.AutomaticDimension;
-                AppraisalTableView.EstimatedRowHeight = 40f;
+                AppraisalTableView.RowHeight = 120f;
+                AppraisalTableView.EstimatedRowHeight = 120.0f;
+                AppraisalTableView.BackgroundColor = UIColor.LightGray;
                 AppraisalTableView.ReloadData();
             }
             else
             {
                 var completedVehicle = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status != "CA");
                 AppraisalTableView.Source = new ApprasialLogTVS(completedVehicle);
-                AppraisalTableView.SeparatorStyle = UITableViewCellSeparatorStyle.DoubleLineEtched;
-
-                AppraisalTableView.RowHeight = UITableView.AutomaticDimension;
-                AppraisalTableView.EstimatedRowHeight = 40f;
+                AppraisalTableView.RowHeight = 120f;
+                AppraisalTableView.EstimatedRowHeight = 120.0f;
+                AppraisalTableView.BackgroundColor = UIColor.LightGray;
                 AppraisalTableView.ReloadData();
             }
         }

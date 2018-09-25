@@ -1,12 +1,11 @@
 ﻿<Properties StartupConfiguration="{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ExtAppraisalApp Status">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AppraisalApp/Controllers/AppraisalLogViewController.cs">
     <Files>
       <File FileName="AppraisalApp/Controllers/DetailViewController.cs" Line="24" Column="55" />
       <File FileName="AppraisalApp/Controllers/MasterViewController.cs" Line="50" Column="13" />
-      <File FileName="AppraisalApp/Controllers/AppraisalLogViewController.cs" Line="60" Column="79" />
+      <File FileName="AppraisalApp/Controllers/AppraisalLogViewController.cs" Line="70" Column="43" />
       <File FileName="AppraisalApp/Controllers/AppraisalLogCell.cs" Line="16" Column="10" />
       <File FileName="AppraisalApp/Controllers/ApprasialLogTVS.cs" Line="14" Column="53" />
-      <File FileName="ExtAppraisalApp Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
