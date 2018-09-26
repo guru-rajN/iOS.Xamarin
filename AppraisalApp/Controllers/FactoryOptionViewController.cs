@@ -102,7 +102,7 @@ namespace ExtAppraisalApp
                 BtnSave.Title = "Save";
             }
 
-            Utility.ShowLoadingIndicator(this.View, "Fetching Factory", true);
+            Utility.ShowLoadingIndicator(this.SplitViewController.View, "Retrieving...", true);
 
             GetFactoryOptionsKBB(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, AppDelegate.appDelegate.trimId);
 
@@ -118,7 +118,8 @@ namespace ExtAppraisalApp
                 }
            
                 InvokeOnMainThread(() =>
-                { 
+                {
+                    Utility.HideLoadingIndicator(this.SplitViewController.View);
                     var width = View.Bounds.Width;
                     var height = View.Bounds.Height;
 

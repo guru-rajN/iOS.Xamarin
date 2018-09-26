@@ -47,7 +47,7 @@ namespace ExtAppraisalApp
             PhotosModelList.Add(new AddPhotoModel { Image = "add_photo.png", VehicleLabel = "Additional" });
 
             AddPhotoCollectionView.Source = new AddPhotosCollectionViewSource(this, PhotosModelList);
-            Utility.ShowLoadingIndicator(this.View, "Fetching Additional Photographs..", true);
+            Utility.ShowLoadingIndicator(this.View, "Retrieving...", true);
 
             setPersistedImage();
 

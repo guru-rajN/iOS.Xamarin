@@ -72,7 +72,7 @@ namespace ExtAppraisalApp
                     selectionAlertLabel.Hidden = false;
                     selectionAlertLabel.Text = "Please choose one of the " + labeltext + " options below";
                     selectionAlertLabel.TextColor = UIColor.Red;
-                    Utility.HideLoadingIndicator(this.View);
+                    Utility.HideLoadingIndicator(this.SplitViewController.View);
                 }
                 else
                 {
@@ -391,7 +391,7 @@ namespace ExtAppraisalApp
 
                 string SegmentIndex;
                 List<ReconResponse.Datum> reconResponse = new List<ReconResponse.Datum>();
-                Utility.ShowLoadingIndicator(this.View, "Recondition", true);
+                Utility.ShowLoadingIndicator(this.SplitViewController.View, "Retrieving...", true);
                 //reconResponse= GetRecon();
                 Task.Factory.StartNew(() =>
                 {
@@ -401,7 +401,7 @@ namespace ExtAppraisalApp
                     {
                         InvokeOnMainThread(() =>
                         {
-                            Utility.HideLoadingIndicator(this.View);
+                            Utility.HideLoadingIndicator(this.SplitViewController.View);
 
                             foreach (var recon in reconResponse)
                             {
@@ -419,7 +419,7 @@ namespace ExtAppraisalApp
                                                 ReconditionTableView.SelectRow(NSIndexPath.FromRowSection(rowselected, 0), false, UITableViewScrollPosition.Middle);
                                                 SavetolocalDba(rowselected.ToString(), SegmentIndex);
                                                 selectionAlertLabel.Hidden = true;
-                                                Utility.HideLoadingIndicator(this.View);
+                                                Utility.HideLoadingIndicator(this.SplitViewController.View);
                                             }
                                             //rowselected=(from r in option where r.selected == true select r)
                                         }
@@ -440,7 +440,7 @@ namespace ExtAppraisalApp
                                                 ReconditionTableView.SelectRow(NSIndexPath.FromRowSection(rowselected, 0), false, UITableViewScrollPosition.Middle);
                                                 SavetolocalDba(rowselected.ToString(), SegmentIndex);
                                                 selectionAlertLabel.Hidden = true;
-                                                Utility.HideLoadingIndicator(this.View);
+                                                Utility.HideLoadingIndicator(this.SplitViewController.View);
 
                                             }
                                             //rowselected=(from r in option where r.selected == true select r)
@@ -462,7 +462,7 @@ namespace ExtAppraisalApp
                                                 ReconditionTableView.SelectRow(NSIndexPath.FromRowSection(rowselected, 0), false, UITableViewScrollPosition.Middle);
                                                 SavetolocalDba(rowselected.ToString(), SegmentIndex);
                                                 selectionAlertLabel.Hidden = true;
-                                                Utility.HideLoadingIndicator(this.View);
+                                                Utility.HideLoadingIndicator(this.SplitViewController.View);
 
                                             }
                                             //rowselected=(from r in option where r.selected == true select r)
@@ -499,7 +499,7 @@ namespace ExtAppraisalApp
             Task.Factory.StartNew(() =>
             {
                 reconResponse = ServiceFactory.getWebServiceHandle().GetReconKBB(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, AppDelegate.appDelegate.prospectId);
-                Utility.HideLoadingIndicator(this.View);
+                Utility.HideLoadingIndicator(this.SplitViewController.View);
             });
             return reconResponse;
 

@@ -214,7 +214,7 @@ namespace AppraisalApp
                     AdditionSegment.SelectedSegment = 1;
                     AdditionAMFO.Hidden = true;
                     //Utility.ShowLoadingIndicator(this.View, "Fetching AfterMarket Options", false);
-                    Utility.HideLoadingIndicator(this.View);
+                    Utility.HideLoadingIndicator(this.SplitViewController.View);
                 });
                // Utility.ShowLoadingIndicator(this.View, "Fetching AfterMarket Options", false);
 
@@ -313,7 +313,7 @@ namespace AppraisalApp
                     }
                 else
                 {
-                    Utility.ShowLoadingIndicator(this.View, "Fetching AfterMarket Options", true);
+                    Utility.ShowLoadingIndicator(this.SplitViewController.View, "Retrieving...", true);
                     GetAltenateFactoryOptions(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, AppDelegate.appDelegate.prospectId);
 
                 }
@@ -334,8 +334,8 @@ namespace AppraisalApp
                 InvokeOnMainThread(() =>
                 {
 
-                    Utility.HideLoadingIndicator(this.View);
-                    Utility.ShowLoadingIndicator(this.View, "Fetching AfterMarket Options", true);
+                    Utility.HideLoadingIndicator(this.SplitViewController.View);
+                    Utility.ShowLoadingIndicator(this.View, "Retrieving...", true);
                     GetAltenateFactoryOptions(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, AppDelegate.appDelegate.prospectId);
 
 

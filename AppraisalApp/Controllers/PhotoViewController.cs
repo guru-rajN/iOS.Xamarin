@@ -137,9 +137,9 @@ namespace ExtAppraisalApp
 
         public async void ActivityLoader()
         {
-            Utility.ShowLoadingIndicator(this.View, "Uploading ...", true);
+            Utility.ShowLoadingIndicator(this.SplitViewController.View, "Uploading ...", true);
             await Task.Delay(2000);
-            Utility.HideLoadingIndicator(this.View);
+            Utility.HideLoadingIndicator(this.SplitViewController.View);
         }
 
         public override void ViewDidLoad()

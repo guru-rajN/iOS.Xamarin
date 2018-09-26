@@ -44,6 +44,9 @@ namespace ExtAppraisalApp.Utilities
 
         public static void ShowLoadingIndicator(UIView view, string loadingMessage, bool show)
         {
+            //CGRect rect = UIScreen.MainScreen.Bounds;
+            //var screenWidth = rect.Size.Width;
+            //var screenHeight = rect.Size.Height;
 
             container = new UIView(new CGRect(0, 0, 120, 120));
             container.BackgroundColor = UIColor.DarkGray;

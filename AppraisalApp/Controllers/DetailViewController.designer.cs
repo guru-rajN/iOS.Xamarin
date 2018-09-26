@@ -15,6 +15,10 @@ namespace ExtAppraisalApp
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel bodyStyleValue { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIBarButtonItem DetailSaveBtn { get; set; }
 
         [Outlet]
@@ -83,6 +87,10 @@ namespace ExtAppraisalApp
 
         void ReleaseDesignerOutlets ()
         {
+            if (bodyStyleValue != null) {
+                bodyStyleValue.Dispose ();
+                bodyStyleValue = null;
+            }
 
             if (DetailSaveBtn != null) {
                 DetailSaveBtn.Dispose ();

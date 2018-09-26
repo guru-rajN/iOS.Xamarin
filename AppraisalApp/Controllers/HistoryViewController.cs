@@ -430,7 +430,7 @@ namespace ExtAppraisalApp
             var existingRecord3 = (conn.Table<HistoryValue>().Where(c => c.HistoyQuestion == "2")).SingleOrDefault();
             if (existingRecord == null || existingRecord2 == null || existingRecord3 == null)
             {
-                Utility.ShowLoadingIndicator(this.View, "History", true);
+                Utility.ShowLoadingIndicator(this.SplitViewController.View, "Retrieving...", true);
                 GetHistoryKBB(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, AppDelegate.appDelegate.prospectId);
                 // Utility.HideLoadingIndicator(this.View);
             }
@@ -483,7 +483,7 @@ namespace ExtAppraisalApp
                 historyValue = ServiceFactory.getWebServiceHandle().GetHistoryKBB(vehicleID, storeId, invtrId, prospectId);
                 InvokeOnMainThread(() =>
                 {
-                    Utility.HideLoadingIndicator(this.View);
+                    Utility.HideLoadingIndicator(this.SplitViewController.View);
                     foreach (var history in historyValue)
                     {
                         if (history.questionId == "qp/82")

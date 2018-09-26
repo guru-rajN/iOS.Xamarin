@@ -712,7 +712,13 @@ namespace ExtAppraisalApp
                 if (!AppDelegate.appDelegate.photoAcesss)
                 {
                     AppDelegate.appDelegate.photoAcesss = true;
-                    Utility.ShowLoadingIndicator(this.View, "Fetching Photographs..", true);
+                    try
+                    {
+                        Utility.ShowLoadingIndicator(this.View, "Retrieving...", true);
+                    }catch(Exception exc){
+                        Debug.WriteLine("Exception occurred :: " + exc.Message);
+                    }
+
                     //Showndicator(this.View, "Photographs..", true);
                     AppDelegate.appDelegate.getphotoResponses = await GetPhotosWebServiceCall(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId);
                     //AppDelegate.appDelegate.getphotoResponses = GetPhotos(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId);
