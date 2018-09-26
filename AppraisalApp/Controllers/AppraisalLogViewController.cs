@@ -16,16 +16,42 @@ namespace AppraisalApp
 {
     public partial class AppraisalLogViewController : UIViewController
     {
+        void VinSearch_CancelButtonClicked(object sender, EventArgs e)
+        {
+            VinSearch.EndEditing(true);
+            VinSearch.Text = "";
+            string segmentID = AppraisalTypeSegment.SelectedSegment.ToString();
+            if (segmentID == "0")
+            {
+                var Appcompleted = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status == "CA");
+                AppraisalTableView.Source = new ApprasialLogTVS(Appcompleted);
+                AppraisalTableView.RowHeight = 120f;
+                AppraisalTableView.EstimatedRowHeight = 120.0f;
+                AppraisalTableView.BackgroundColor = UIColor.LightGray;
+                AppraisalTableView.ReloadData();
+            }
+            else
+            {
+                var appPending = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status != "CA");
+                AppraisalTableView.Source = new ApprasialLogTVS(appPending);
+                AppraisalTableView.RowHeight = 120f;
+                AppraisalTableView.EstimatedRowHeight = 120.0f;
+                AppraisalTableView.BackgroundColor = UIColor.LightGray;
+                AppraisalTableView.ReloadData();
+            }
+        }
+
+
         bool VinSearch_ShouldEndEditing(UISearchBar searchBar)
         {
-            VinSearch.ShowsCancelButton = false;    
+            VinSearch.SetShowsCancelButton(false, true);
             return true;    
         }
 
 
         bool VinSearch_ShouldBeginEditing(UISearchBar searchBar)
         {
-            VinSearch.ShowsCancelButton = true;
+            VinSearch.SetShowsCancelButton(true, true);
             return true;
         }
 
@@ -127,6 +153,7 @@ namespace AppraisalApp
 
             VinSearch.ShouldBeginEditing += VinSearch_ShouldBeginEditing;
             VinSearch.ShouldEndEditing += VinSearch_ShouldEndEditing;
+            VinSearch.CancelButtonClicked += VinSearch_CancelButtonClicked;
 
             AppraisalTableView.TableFooterView = new UIView(new CGRect(0, 0, 0, 0));
 
@@ -139,8 +166,7 @@ namespace AppraisalApp
             AppraisalTableView.EstimatedRowHeight = 120.0f;
             AppraisalTableView.BackgroundColor = UIColor.LightGray;
             AppraisalTableView.Source = new ApprasialLogTVS(completedVehicle);
-               
-            //AppraisalTableView.SeparatorStyle = UITableViewCellSeparatorStyle.DoubleLineEtched;
+
 
             AppraisalTableView.ReloadData();
         }

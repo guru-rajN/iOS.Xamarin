@@ -1,23 +1,22 @@
 ﻿<Properties StartupConfiguration="{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="ExtAppraisalApp Status">
     <Files>
-      <File FileName="AppraisalApp/Controllers/DetailViewController.cs" Line="25" Column="59" />
-      <File FileName="AppraisalApp/Controllers/MasterViewController.cs" Line="10" Column="26" />
-      <File FileName="AppraisalApp/Controllers/AppraisalLogCell.cs" Line="16" Column="10" />
-      <File FileName="AppraisalApp/Controllers/ApprasialLogTVS.cs" Line="10" Column="2" />
-      <File FileName="AppraisalApp/Views/Main.storyboard" />
-      <File FileName="AppraisalApp/Controllers/LoginViewController.cs" Line="51" Column="13" />
-      <File FileName="AppraisalApp/Controllers/AppraisalLogViewController.cs" Line="104" Column="18" />
+      <File FileName="AppraisalApp/Controllers/DetailViewController.cs" Line="15" Column="87" />
+      <File FileName="AppraisalApp/Controllers/MasterViewController.cs" Line="49" Column="82" />
+      <File FileName="AppraisalApp/Controllers/AppraisalLogCell.cs" Line="12" Column="10" />
+      <File FileName="AppraisalApp/Controllers/ApprasialLogTVS.cs" Line="8" Column="1" />
+      <File FileName="AppraisalApp/Controllers/LoginViewController.cs" Line="48" Column="77" />
+      <File FileName="AppraisalApp/Controllers/AppraisalLogViewController.cs" Line="168" Column="38" />
       <File FileName="ExtAppraisalApp Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="../../../AppraisalApp/Controllers/DecodeViewController.cs" line="80" offsetX="784" offsetY="1185" expression="apprrequest.VIN" liveUpdate="True" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
-  <MonoDevelop.Ide.ItemProperties.ExtAppraisalApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.ca5abf02aa7a97d586fe235ef5a148ef03004884" automaticSigning="False" />
+  <MonoDevelop.Ide.ItemProperties.ExtAppraisalApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.0B24CE10-6C2E-4FDE-9145-62431DB5F71B" automaticSigning="False" />
   <MultiItemStartupConfigurations />
 </Properties>
