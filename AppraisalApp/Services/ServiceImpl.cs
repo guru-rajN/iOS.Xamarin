@@ -802,6 +802,46 @@ namespace ExtAppraisalApp.Services
             return response;
 
         }
+        public PhotoGetResponse.Datum GetPhoto(long vehicleId, short storeId, short invtrId)
+        {
+            string result = null;
+
+            PhotoGetResponse.Datum getphotoResponses = new PhotoGetResponse.Datum();
+            HttpResponseMessage responseMessage = null;
+            try
+            {
+                responseMessage = RestClient.doGet(Url.GET_Photo + "/" + vehicleId + "/" + storeId + "/" + invtrId);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    result = responseMessage.Content.ReadAsStringAsync().Result;
+
+                    SIMSResponseData rst = JsonConvert.DeserializeObject<SIMSResponseData>(result);
+
+                    var getPhoto = JsonConvert.DeserializeObject<PhotoGetResponse.Datum>(rst.Data.ToString());
+
+                    getphotoResponses = getPhoto;
+
+                    if (null != result)
+                    {
+                        //result = null;
+                    }
+                    // TO-DO : show alert message if the VIN appraisal already created
+                }
+                else
+                {
+                    result = null;
+
+                    //Utilities.Utility.ShowAlert("Appraisal App", "Decode VIN Failed!!", "OK");
+                }
+            }
+            catch (Exception exc)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception occured :: " + exc.Message);
+            }
+
+            return getphotoResponses;
+        }
+
         public SIMSResponseData SavePhoto(PhotoResponse photoResponse)
         {
             string result = null;

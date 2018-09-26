@@ -72,6 +72,7 @@ namespace ExtAppraisalApp
                     selectionAlertLabel.Hidden = false;
                     selectionAlertLabel.Text = "Please choose one of the " + labeltext + " options below";
                     selectionAlertLabel.TextColor = UIColor.Red;
+                    Utility.HideLoadingIndicator(this.View);
                 }
                 else
                 {
@@ -161,9 +162,7 @@ namespace ExtAppraisalApp
                     if (!AppDelegate.appDelegate.IsReconditionsSaved)
                     {
                         viewWorker.PerformNavigation(6);
-                        if (!AppDelegate.appDelegate.IsPhotos && AppDelegate.appDelegate.WizardPageNo < 4)
-                            viewWorker.ShowPartialDoneImg(6);
-                        
+                        viewWorker.ShowPartialDoneImg(6);
                         viewWorker.ShowDoneImg(5);
 
                         if (UserInterfaceIdiomIsPhone)
@@ -441,6 +440,7 @@ namespace ExtAppraisalApp
                                                 ReconditionTableView.SelectRow(NSIndexPath.FromRowSection(rowselected, 0), false, UITableViewScrollPosition.Middle);
                                                 SavetolocalDba(rowselected.ToString(), SegmentIndex);
                                                 selectionAlertLabel.Hidden = true;
+                                                Utility.HideLoadingIndicator(this.View);
 
                                             }
                                             //rowselected=(from r in option where r.selected == true select r)
@@ -462,6 +462,7 @@ namespace ExtAppraisalApp
                                                 ReconditionTableView.SelectRow(NSIndexPath.FromRowSection(rowselected, 0), false, UITableViewScrollPosition.Middle);
                                                 SavetolocalDba(rowselected.ToString(), SegmentIndex);
                                                 selectionAlertLabel.Hidden = true;
+                                                Utility.HideLoadingIndicator(this.View);
 
                                             }
                                             //rowselected=(from r in option where r.selected == true select r)
@@ -498,8 +499,10 @@ namespace ExtAppraisalApp
             Task.Factory.StartNew(() =>
             {
                 reconResponse = ServiceFactory.getWebServiceHandle().GetReconKBB(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, AppDelegate.appDelegate.prospectId);
+                Utility.HideLoadingIndicator(this.View);
             });
             return reconResponse;
+
         }
 
         public void SavetolocalDba(string SelectedRow, string SegmentIndexRecon)
@@ -570,10 +573,6 @@ namespace ExtAppraisalApp
                 ReconditionSaveBtn.Title = "Save";
             }
 
-            if (null == AppDelegate.appDelegate.prospectId)
-            {
-                GenerateProspect();
-            }
 
             string segmentID = ReconditionSegment.SelectedSegment.ToString();
 
@@ -581,15 +580,6 @@ namespace ExtAppraisalApp
             setObjectRecon(segmentID);
 
         }
-
-        Task GenerateProspect()
-        {
-            return Task.Factory.StartNew(() => {
-                AppDelegate.appDelegate.prospectId = ServiceFactory.getWebServiceHandle().GenerateProspect();
-
-            });
-        }
-
 
 
         public override void DidReceiveMemoryWarning()

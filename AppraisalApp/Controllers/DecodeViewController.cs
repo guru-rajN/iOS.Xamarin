@@ -334,6 +334,7 @@ namespace ExtAppraisalApp
                 View.AddGestureRecognizer(g);
 
                 base.ViewDidLoad();
+                AppDelegate.appDelegate.photoAcesss = false;
                 // Perform any additional setup after loading the view, typically from a nib.
 
                 if (this.btnScan != null)

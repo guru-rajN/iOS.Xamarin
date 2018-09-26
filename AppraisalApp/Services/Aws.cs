@@ -13,29 +13,32 @@ namespace Amazon
     public class Aws
     {
 
-        public void UploadFile(string filepath)
+        public void UploadFile(string filepath, byte[] myByteArray)
         {
-            string accountname = "iossims";
 
-            string accesskey = "AiwOGA+Uf0jNlLYTkRwUuFqLsBaKp+OrO/UV7kQhUdSSCaV75s663jgKeTwcmPTv/aufWmjasnMVGsqv/1glvg==";
             try
             {
-                string keyName = Generatekeyname();
-                StorageCredentials creden = new StorageCredentials(accountname, accesskey);
+                //string accountname = "simsmedia";
+                //string photoSide = AppDelegate.appDelegate.photoButtonClicked;
+                //string accesskey = "g6wHp0pm4c+JPM9Lbt/z0qQ/Fq1LnsAUdKKkaSPIe6p/Ljh3VkMobOzoX8jpmxWaSdJpwKu3SMtgVIxp9P01AQ==";
+                //string keyName = Generatekeyname();
 
-                CloudStorageAccount acc = new CloudStorageAccount(creden, useHttps: true);
+                //StorageCredentials creden = new StorageCredentials(accountname, accesskey);
 
-                CloudBlobClient client = acc.CreateCloudBlobClient();
+                //CloudStorageAccount acc = new CloudStorageAccount(creden, useHttps: true);
 
-                CloudBlobContainer container = client.GetContainerReference("simsphoto");
+                //CloudBlobClient client = acc.CreateCloudBlobClient();
 
-                container.CreateIfNotExistsAsync();
+                //CloudBlobContainer container = client.GetContainerReference("simsuatmedia");
 
-                CloudBlockBlob blob = container.GetBlockBlobReference(keyName + ".png");
+                //container.CreateIfNotExistsAsync();
 
-                blob.UploadFromFileAsync(filepath);
-                string photoURL = String.Concat("https://iossims.blob.core.windows.net/simsphoto/" + keyName + ".jpeg");
-                // SavePhotoAPI(photoURL);
+                //CloudBlockBlob blob = container.GetBlockBlobReference(keyName + ".png");
+
+                //blob.UploadFromFileAsync(filepath);
+
+                //string photoURL = String.Concat("https://iossims.blob.core.windows.net/simsphoto/" + keyName + ".jpeg");
+                SavePhotoAPI(myByteArray);
 
             }
             catch (Exception exc)
@@ -44,18 +47,18 @@ namespace Amazon
             }
         }
 
-        private void SavePhotoAPI(string photo)
+        private void SavePhotoAPI(byte[] myByteArray)
         {
             PhotoResponse photoResponse = new PhotoResponse();
             SIMSResponseData responseStatus;
             photoResponse.VehicleID = AppDelegate.appDelegate.vehicleID;
             photoResponse.StoreID = AppDelegate.appDelegate.storeId;
             photoResponse.InvtrID = AppDelegate.appDelegate.invtrId;
-            photoResponse.PhotoGuide = "Bar Code";
-            photoResponse.PhotoURL = photo;
-            photoResponse.Photo = null;
+            photoResponse.PhotoGuide = AppDelegate.appDelegate.photoButtonClicked;
+            photoResponse.PhotoURL = "";
+            photoResponse.Photo = myByteArray;
 
-            string DeviceToken = AppDelegate.appDelegate.AppleDeviceToken;
+            //string DeviceToken = AppDelegate.appDelegate.AppleDeviceToken;
             responseStatus = ServiceFactory.ServicePhotoSave.getWebServiceHandle().SavePhoto(photoResponse);
         }
 
@@ -65,5 +68,9 @@ namespace Amazon
             return key;
         }
 
+        internal void UploadFile(string pngFilename, object myByteArray)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

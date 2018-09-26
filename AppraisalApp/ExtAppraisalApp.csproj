@@ -324,6 +324,7 @@
       <DependentUpon>PhotosCell.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\ReconResponse.cs" />
+    <Compile Include="Models\GetphotoResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />

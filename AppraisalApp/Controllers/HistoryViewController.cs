@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using UIKit;
 namespace ExtAppraisalApp
@@ -25,6 +26,7 @@ namespace ExtAppraisalApp
         partial void Label2_Change(UITextField sender)
         {
             const int maxCharacters = 7;
+            label2.Text = Regex.Replace(label2.Text, @"[^0-9]+", "");
 
             label2.ShouldChangeCharacters = (textField, range, replacement) =>
             {
@@ -259,9 +261,7 @@ namespace ExtAppraisalApp
                         if (!AppDelegate.appDelegate.IsHistorySaved)
                         {
                             viewWorker.PerformNavigation(5);
-                            if (AppDelegate.appDelegate.IsHistory && AppDelegate.appDelegate.WizardPageNo < 3)
-                                viewWorker.ShowPartialDoneImg(5);
-   
+                            viewWorker.ShowPartialDoneImg(5);
                             viewWorker.ShowDoneImg(4);
 
                             if (UserInterfaceIdiomIsPhone)
@@ -418,11 +418,6 @@ namespace ExtAppraisalApp
             label2.BackgroundColor = UIColor.White;
             label3.TextColor = UIColor.Black;
 
-            if (null == AppDelegate.appDelegate.prospectId)
-            {
-                GenerateProspect();
-            }
-
             // Perform any additional setup after loading the view, typically from a nib.
             var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             var libraryPath = Path.Combine(documentsPath, DBConstant.SEPARATOR, DBConstant.LIBRARY);// Library Folder
@@ -479,22 +474,6 @@ namespace ExtAppraisalApp
             }
 
         }
-
-        Task GenerateProspect()
-        {
-            return Task.Factory.StartNew(() => {
-                AppDelegate.appDelegate.prospectId = ServiceFactory.getWebServiceHandle().GenerateProspect();
-                InvokeOnMainThread(() =>
-                {
-                    if (null == AppDelegate.appDelegate.prospectId)
-                    {
-                        Utility.ShowAlert("AppraisalApp", "Vehicle Prospect ID not generated", "OK");
-                    }
-                });
-
-            });
-        }
-
 
         Task GetHistoryKBB(long vehicleID, short storeId, short invtrId, string prospectId)
         {

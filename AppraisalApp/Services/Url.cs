@@ -25,7 +25,7 @@ namespace ExtAppraisalApp.Services
         public const string CREATEAPPRAISAL_URL = "CreateAppraisalKBB/";
 
         public const string GET_VEHICLE_DETAILS_URL = "GetVehicleDetailsKBB/";
-
+        public const string GET_Photo = "GetPhotos/";
         public const string GET_KBB_COLORS_URL = "GetKBBColorDetails/";
 
         public const string GET_FACTORYOPTIONSKBB_URL = "GetFactoryOptionsKBB/";

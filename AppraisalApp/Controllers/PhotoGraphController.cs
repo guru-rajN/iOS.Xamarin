@@ -1,7 +1,12 @@
+using ExtAppraisalApp.Models;
+using ExtAppraisalApp.Services;
 using ExtAppraisalApp.Utilities;
 using Foundation;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Net;
 using System.Threading.Tasks;
 using UIKit;
 
@@ -61,8 +66,7 @@ namespace ExtAppraisalApp
             //viewPopup.Hidden = false;
             currentButton = "front";
             ActionButton_TouchUpInside();
-
-
+            AppDelegate.appDelegate.photoButtonClicked = "photo-front";
         }
 
 
@@ -72,52 +76,60 @@ namespace ExtAppraisalApp
             //viewPopup.Hidden = false;
             currentButton = "back";
             ActionButton_TouchUpInside();
-
+            AppDelegate.appDelegate.photoButtonClicked = "photo-rear";
         }
 
         partial void Left_TouchUpInside(UIButton sender)
         {
             currentButton = "left";
             ActionButton_TouchUpInside();
+            AppDelegate.appDelegate.photoButtonClicked = "photo-driver-side";
         }
 
         partial void Right_TouchUpInside(UIButton sender)
         {
             currentButton = "right";
             ActionButton_TouchUpInside();
+            AppDelegate.appDelegate.photoButtonClicked = "photo-passenger-side";
         }
         partial void Seats_TouchUpInside(UIButton sender)
         {
             currentButton = "seats";
             ActionButton_TouchUpInside();
+            AppDelegate.appDelegate.photoButtonClicked = "photo-interior-rear";
         }
 
         partial void Seat_TouchUpInside(UIButton sender)
         {
             currentButton = "seat";
             ActionButton_TouchUpInside();
+            AppDelegate.appDelegate.photoButtonClicked = "photo-interior-front";
         }
         partial void Odometer_TouchUpInside(UIButton sender)
         {
             currentButton = "odometer";
             ActionButton_TouchUpInside();
+            AppDelegate.appDelegate.photoButtonClicked = "photo-dashboard";
         }
 
         partial void Dashboard_TouchUpInside(UIButton sender)
         {
             currentButton = "dashboard";
             ActionButton_TouchUpInside();
+            AppDelegate.appDelegate.photoButtonClicked = "photo-odometer";
         }
         partial void Rim_TouchUpInside(UIButton sender)
         {
             currentButton = "rim";
             ActionButton_TouchUpInside();
+            AppDelegate.appDelegate.photoButtonClicked = "photo-wheels";
         }
 
         partial void VIN_TouchUpInside(UIButton sender)
         {
             currentButton = "VIN";
             ActionButton_TouchUpInside();
+            AppDelegate.appDelegate.photoButtonClicked = "photo-vin";
         }
         //partial void Odometer_TouchUpInside(UIButton sender)
         //{
@@ -190,7 +202,7 @@ namespace ExtAppraisalApp
             switch (currentButton)
             {
                 case "front":
-              
+
                     Front.TintColor = UIColor.Clear;
                     Front.SetBackgroundImage(Image, UIControlState.Normal);
                     AppDelegate.appDelegate.FrontCarImageUploaded = true;
@@ -306,10 +318,14 @@ namespace ExtAppraisalApp
                     //{
 
                     //});
+                    NSData imageData = originalImage.AsJPEG(0.0f);
+
+                    byte[] myByteArray = new byte[imageData.Length];
+                    System.Runtime.InteropServices.Marshal.Copy(imageData.Bytes, myByteArray, 0, Convert.ToInt32(imageData.Length));
 
                     imagePicker.DismissModalViewController(true);
                     Amazon.Aws amazonS3 = new Amazon.Aws();
-                    Task.Run(() => amazonS3.UploadFile(pngFilename));
+                    Task.Run(() => amazonS3.UploadFile(pngFilename, myByteArray));
                     ActivityLoader();
                 }
             }
@@ -349,33 +365,55 @@ namespace ExtAppraisalApp
         public override void ViewDidLoad()
         {
 
-                base.ViewDidLoad();
+            base.ViewDidLoad();
 
-                Front.Layer.BorderWidth = 2.0f;
-                Front.Layer.BorderColor = UIColor.Black.CGColor;
-                Back.Layer.BorderWidth = 2.0f;
-                Back.Layer.BorderColor = UIColor.Black.CGColor;
-                Right.Layer.BorderWidth = 2.0f;
-                Right.Layer.BorderColor = UIColor.Black.CGColor;
-                Left.Layer.BorderWidth = 2.0f;
-                Left.Layer.BorderColor = UIColor.Black.CGColor;
-                Seat.Layer.BorderWidth = 2.0f;
-                Seat.Layer.BorderColor = UIColor.Black.CGColor;
-                Seats.Layer.BorderWidth = 2.0f;
-                Seats.Layer.BorderColor = UIColor.Black.CGColor;
-                Dashboard.Layer.BorderWidth = 2.0f;
-                Dashboard.Layer.BorderColor = UIColor.Black.CGColor;
-                Odometer.Layer.BorderWidth = 2.0f;
-                Odometer.Layer.BorderColor = UIColor.Black.CGColor;
-                Rim.Layer.BorderWidth = 2.0f;
-                Rim.Layer.BorderColor = UIColor.Black.CGColor;
-                VIN.Layer.BorderWidth = 2.0f;
-                VIN.Layer.BorderColor = UIColor.Black.CGColor;
-                
-                //Notify photos selection and validation
-                NSNotificationCenter.DefaultCenter.AddObserver((Foundation.NSString)"UpdatePhotoGraphs",UpdatePhotoGraphViews);
+            Front.Layer.BorderWidth = 2.0f;
+            Front.Layer.BorderColor = UIColor.Black.CGColor;
+            Back.Layer.BorderWidth = 2.0f;
+            Back.Layer.BorderColor = UIColor.Black.CGColor;
+            Right.Layer.BorderWidth = 2.0f;
+            Right.Layer.BorderColor = UIColor.Black.CGColor;
+            Left.Layer.BorderWidth = 2.0f;
+            Left.Layer.BorderColor = UIColor.Black.CGColor;
+            Seat.Layer.BorderWidth = 2.0f;
+            Seat.Layer.BorderColor = UIColor.Black.CGColor;
+            Seats.Layer.BorderWidth = 2.0f;
+            Seats.Layer.BorderColor = UIColor.Black.CGColor;
+            Dashboard.Layer.BorderWidth = 2.0f;
+            Dashboard.Layer.BorderColor = UIColor.Black.CGColor;
+            Odometer.Layer.BorderWidth = 2.0f;
+            Odometer.Layer.BorderColor = UIColor.Black.CGColor;
+            Rim.Layer.BorderWidth = 2.0f;
+            Rim.Layer.BorderColor = UIColor.Black.CGColor;
+            VIN.Layer.BorderWidth = 2.0f;
+            VIN.Layer.BorderColor = UIColor.Black.CGColor;
 
-                setPersistedImage();
+            //Notify photos selection and validation
+            NSNotificationCenter.DefaultCenter.AddObserver((Foundation.NSString)"UpdatePhotoGraphs", UpdatePhotoGraphViews);
+
+            setPersistedImage();
+            //Utility.HideLoadingIndicator(this.View);
+
+        }
+
+        Task<PhotoGetResponse.Datum> GetPhotosWebServiceCall(long vehicleID, short storeId, short invtrId)
+        {
+            return Task<PhotoGetResponse.Datum>.Factory.StartNew(() =>
+            {
+                return GetPhotos(vehicleID, storeId, invtrId);
+
+            });
+        }
+
+        public PhotoGetResponse.Datum GetPhotos(long vehicleID, short storeId, short invtrId)
+        {
+            PhotoGetResponse.Datum getphotoResponses = new PhotoGetResponse.Datum();
+            getphotoResponses = ServiceFactory.getWebServiceHandle().GetPhoto(vehicleID, storeId, invtrId);
+            //InvokeOnMainThread(() =>
+            //{
+            //    Utility.HideLoadingIndicator(this.View);
+            //});
+            return getphotoResponses;
 
         }
 
@@ -384,35 +422,46 @@ namespace ExtAppraisalApp
             Debug.WriteLine("notification msg :: " + obj.UserInfo);
             var userInfo = obj.UserInfo;
             var NotificationMsg = "";
-            if(null != userInfo)
-              NotificationMsg = userInfo.Keys[0].ToString();
+            if (null != userInfo)
+                NotificationMsg = userInfo.Keys[0].ToString();
 
-            if(NotificationMsg.Equals("Left")){
+            if (NotificationMsg.Equals("Left"))
+            {
                 Left.Layer.BorderColor = UIColor.Red.CGColor;
-            }else if(NotificationMsg.Equals("Right")){
+            }
+            else if (NotificationMsg.Equals("Right"))
+            {
                 Right.Layer.BorderColor = UIColor.Red.CGColor;
-            }else if (NotificationMsg.Equals("Seat"))
+            }
+            else if (NotificationMsg.Equals("Seat"))
             {
                 Seat.Layer.BorderColor = UIColor.Red.CGColor;
-            }else if (NotificationMsg.Equals("Seats"))
+            }
+            else if (NotificationMsg.Equals("Seats"))
             {
                 Seats.Layer.BorderColor = UIColor.Red.CGColor;
-            }else if (NotificationMsg.Equals("Front"))
+            }
+            else if (NotificationMsg.Equals("Front"))
             {
                 Front.Layer.BorderColor = UIColor.Red.CGColor;
-            }else if (NotificationMsg.Equals("Back"))
+            }
+            else if (NotificationMsg.Equals("Back"))
             {
                 Back.Layer.BorderColor = UIColor.Red.CGColor;
-            }else if (NotificationMsg.Equals("Odometer"))
+            }
+            else if (NotificationMsg.Equals("Odometer"))
             {
                 Odometer.Layer.BorderColor = UIColor.Red.CGColor;
-            }else if (NotificationMsg.Equals("Dashboard"))
+            }
+            else if (NotificationMsg.Equals("Dashboard"))
             {
                 Dashboard.Layer.BorderColor = UIColor.Red.CGColor;
-            }else if (NotificationMsg.Equals("VIN"))
+            }
+            else if (NotificationMsg.Equals("VIN"))
             {
                 VIN.Layer.BorderColor = UIColor.Red.CGColor;
-            }else if (NotificationMsg.Equals("Rim"))
+            }
+            else if (NotificationMsg.Equals("Rim"))
             {
                 Rim.Layer.BorderColor = UIColor.Red.CGColor;
             }
@@ -425,9 +474,8 @@ namespace ExtAppraisalApp
             base.ViewDidDisappear(animated);
         }
 
-        private void setPersistedImage()
+        private async void setPersistedImage()
         {
-
 
             UIImage rightImage = LoadImage("right");
             if (rightImage != null)
@@ -437,6 +485,20 @@ namespace ExtAppraisalApp
                 AppDelegate.appDelegate.RightCarImageUploaded = true;
                 Right.Layer.BorderColor = UIColor.Black.CGColor;
             }
+            else
+            {
+                await setPersistImageOnlineAsync("right");
+                rightImage = LoadImage("right");
+                if (rightImage != null)
+                {
+                    rightImage = LoadImage("right");
+                    Right.SetBackgroundImage(rightImage, UIControlState.Normal);
+                    Right.TintColor = UIColor.Clear;
+                    AppDelegate.appDelegate.RightCarImageUploaded = true;
+                    Right.Layer.BorderColor = UIColor.Black.CGColor;
+                }
+            }
+
             UIImage leftImage = LoadImage("left");
             if (leftImage != null)
             {
@@ -445,6 +507,19 @@ namespace ExtAppraisalApp
                 AppDelegate.appDelegate.LeftCarImageUploaded = true;
                 Left.Layer.BorderColor = UIColor.Black.CGColor;
 
+            }
+            else
+            {
+                await setPersistImageOnlineAsync("left");
+                leftImage = LoadImage("left");
+                if (leftImage != null)
+                {
+                    leftImage = LoadImage("left");
+                    Left.SetBackgroundImage(leftImage, UIControlState.Normal);
+                    Left.TintColor = UIColor.Clear;
+                    AppDelegate.appDelegate.LeftCarImageUploaded = true;
+                    Left.Layer.BorderColor = UIColor.Black.CGColor;
+                }
             }
             UIImage frontImage = LoadImage("front");
             if (frontImage != null)
@@ -455,6 +530,20 @@ namespace ExtAppraisalApp
                 AppDelegate.appDelegate.FrontCarImageUploaded = true;
                 Front.Layer.BorderColor = UIColor.Black.CGColor;
             }
+            else
+            {
+                await setPersistImageOnlineAsync("front");
+                frontImage = LoadImage("front");
+                if (frontImage != null)
+                {
+                    frontImage = LoadImage("front");
+                    Front.SetBackgroundImage(frontImage, UIControlState.Normal);
+                    Front.TintColor = UIColor.Clear;
+                    AppDelegate.appDelegate.FrontCarImageUploaded = true;
+                    Front.Layer.BorderColor = UIColor.Black.CGColor;
+                }
+            }
+
             UIImage backImage = LoadImage("back");
             if (backImage != null)
             {
@@ -464,6 +553,19 @@ namespace ExtAppraisalApp
                 Back.Layer.BorderColor = UIColor.Black.CGColor;
 
             }
+            else
+            {
+                await setPersistImageOnlineAsync("back");
+                backImage = LoadImage("back");
+                if (backImage != null)
+                {
+                    backImage = LoadImage("back");
+                    Back.SetBackgroundImage(backImage, UIControlState.Normal);
+                    Back.TintColor = UIColor.Clear;
+                    AppDelegate.appDelegate.BackCarImageUploaded = true;
+                    Back.Layer.BorderColor = UIColor.Black.CGColor;
+                }
+            }
             UIImage seatImage = LoadImage("seat");
             if (seatImage != null)
             {
@@ -472,6 +574,19 @@ namespace ExtAppraisalApp
                 AppDelegate.appDelegate.SeatCarImageUploaded = true;
                 Left.Layer.BorderColor = UIColor.Black.CGColor;
             }
+            else
+            {
+                await setPersistImageOnlineAsync("seat");
+                seatImage = LoadImage("seat");
+                if (seatImage != null)
+                {
+                    seatImage = LoadImage("seat");
+                    Seat.SetBackgroundImage(seatImage, UIControlState.Normal);
+                    Seat.TintColor = UIColor.Clear;
+                    AppDelegate.appDelegate.SeatCarImageUploaded = true;
+                    Seat.Layer.BorderColor = UIColor.Black.CGColor;
+                }
+            }
             UIImage seatsImage = LoadImage("seats");
             if (seatsImage != null)
             {
@@ -479,6 +594,19 @@ namespace ExtAppraisalApp
                 Seats.SetBackgroundImage(seatsImage, UIControlState.Normal);
                 AppDelegate.appDelegate.BackSeatImageUploaded = true;
                 Seats.Layer.BorderColor = UIColor.Black.CGColor;
+            }
+            else
+            {
+                await setPersistImageOnlineAsync("seats");
+                seatsImage = LoadImage("seats");
+                if (seatsImage != null)
+                {
+                    seatsImage = LoadImage("seats");
+                    Seats.SetBackgroundImage(seatsImage, UIControlState.Normal);
+                    Seats.TintColor = UIColor.Clear;
+                    AppDelegate.appDelegate.BackSeatImageUploaded = true;
+                    Seats.Layer.BorderColor = UIColor.Black.CGColor;
+                }
             }
             UIImage dashImage = LoadImage("dashboard");
             if (dashImage != null)
@@ -489,6 +617,19 @@ namespace ExtAppraisalApp
                 Dashboard.Layer.BorderColor = UIColor.Black.CGColor;
 
             }
+            else
+            {
+                await setPersistImageOnlineAsync("dashboard");
+                dashImage = LoadImage("dashboard");
+                if (dashImage != null)
+                {
+                    dashImage = LoadImage("dashboard");
+                    Dashboard.SetBackgroundImage(dashImage, UIControlState.Normal);
+                    Dashboard.TintColor = UIColor.Clear;
+                    AppDelegate.appDelegate.DashBoardImageUploaded = true;
+                    Dashboard.Layer.BorderColor = UIColor.Black.CGColor;
+                }
+            }
             UIImage odoImage = LoadImage("odometer");
             if (odoImage != null)
             {
@@ -497,6 +638,19 @@ namespace ExtAppraisalApp
                 AppDelegate.appDelegate.OdometerImageUploaded = true;
                 Odometer.Layer.BorderColor = UIColor.Black.CGColor;
 
+            }
+            else
+            {
+                await setPersistImageOnlineAsync("odometer");
+                odoImage = LoadImage("odometer");
+                if (odoImage != null)
+                {
+                    odoImage = LoadImage("odometer");
+                    Odometer.SetBackgroundImage(odoImage, UIControlState.Normal);
+                    Odometer.TintColor = UIColor.Clear;
+                    AppDelegate.appDelegate.OdometerImageUploaded = true;
+                    Odometer.Layer.BorderColor = UIColor.Black.CGColor;
+                }
             }
             UIImage rimImage = LoadImage("rim");
             if (rimImage != null)
@@ -507,6 +661,19 @@ namespace ExtAppraisalApp
                 Rim.Layer.BorderColor = UIColor.Black.CGColor;
 
             }
+            else
+            {
+                await setPersistImageOnlineAsync("rim");
+                rimImage = LoadImage("rim");
+                if (rimImage != null)
+                {
+                    rimImage = LoadImage("rim");
+                    Rim.SetBackgroundImage(rimImage, UIControlState.Normal);
+                    Rim.TintColor = UIColor.Clear;
+                    AppDelegate.appDelegate.RimImageUploaded = true;
+                    Rim.Layer.BorderColor = UIColor.Black.CGColor;
+                }
+            }
             UIImage vinImage = LoadImage("VIN");
             if (vinImage != null)
             {
@@ -515,11 +682,177 @@ namespace ExtAppraisalApp
                 AppDelegate.appDelegate.VINImageUplaoded = true;
                 VIN.Layer.BorderColor = UIColor.Black.CGColor;
             }
+            else
+            {
+                await setPersistImageOnlineAsync("VIN");
+                vinImage = LoadImage("VIN");
+                if (vinImage != null)
+                {
+                    vinImage = LoadImage("VIN");
+                    VIN.SetBackgroundImage(vinImage, UIControlState.Normal);
+                    VIN.TintColor = UIColor.Clear;
+                    AppDelegate.appDelegate.VINImageUplaoded = true;
+                    VIN.Layer.BorderColor = UIColor.Black.CGColor;
+                }
+            }
+            InvokeOnMainThread(() =>
+            {
+                Utility.HideLoadingIndicator(this.View);
+            });
 
         }
+
+        private async Task setPersistImageOnlineAsync(string buttonImageName)
+        {
+
+
+            if (AppDelegate.appDelegate.getphotoResponses.AppraisalPhotos == null)
+            {
+
+                if (!AppDelegate.appDelegate.photoAcesss)
+                {
+                    AppDelegate.appDelegate.photoAcesss = true;
+                    Utility.ShowLoadingIndicator(this.View, "Fetching Photographs..", true);
+                    //Showndicator(this.View, "Photographs..", true);
+                    AppDelegate.appDelegate.getphotoResponses = await GetPhotosWebServiceCall(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId);
+                    //AppDelegate.appDelegate.getphotoResponses = GetPhotos(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId);
+
+                    if (AppDelegate.appDelegate.getphotoResponses.AppraisalPhotos != null)
+                    {
+
+                        foreach (var a in AppDelegate.appDelegate.getphotoResponses.AppraisalPhotos)
+                        {
+                            if (a.PhotoGuide == "photo-rear")
+                            {
+                                AppDelegate.appDelegate.BackCarImageURL = a.PhotoURL;
+                            }
+                            if (a.PhotoGuide == "photo-front")
+                            {
+                                AppDelegate.appDelegate.FrontCarImageURL = a.PhotoURL;
+                            }
+                            if (a.PhotoGuide == "photo-passenger-side")
+                            {
+                                AppDelegate.appDelegate.RightCarImageURL = a.PhotoURL;
+                            }
+                            if (a.PhotoGuide == "photo-driver-side")
+                            {
+                                AppDelegate.appDelegate.LeftCarImageURL = a.PhotoURL;
+                            }
+                            if (a.PhotoGuide == "photo-interior-rear")
+                            {
+                                AppDelegate.appDelegate.BackSeatImageURL = a.PhotoURL;
+                            }
+                            if (a.PhotoGuide == "photo-interior-front")
+                            {
+                                AppDelegate.appDelegate.SeatCarImageURL = a.PhotoURL;
+                            }
+                            if (a.PhotoGuide == "photo-dashboard")
+                            {
+                                AppDelegate.appDelegate.DashBoardImageURL = a.PhotoURL;
+                            }
+                            if (a.PhotoGuide == "photo-vin")
+                            {
+                                AppDelegate.appDelegate.VINImageURL = a.PhotoURL;
+                            }
+                            if (a.PhotoGuide == "photo-odometer")
+                            {
+                                AppDelegate.appDelegate.OdometerImageURL = a.PhotoURL;
+                            }
+                            if (a.PhotoGuide == "photo-wheels")
+                            {
+                                AppDelegate.appDelegate.RimImageURL = a.PhotoURL;
+                            }
+                        }
+
+                    }
+
+
+
+
+
+                }
+
+            }
+
+            saveURLLocalDB(buttonImageName);
+
+
+
+
+        }
+
+        private void saveURLLocalDB(string buttonImageName)
+        {
+            switch (buttonImageName)
+            {
+                case "back":
+                    if (AppDelegate.appDelegate.BackCarImageURL != null)
+                        savephotoURLtoDB(buttonImageName, AppDelegate.appDelegate.BackCarImageURL);
+                    break;
+                case "front":
+                    if (AppDelegate.appDelegate.FrontCarImageURL != null)
+                        savephotoURLtoDB(buttonImageName, AppDelegate.appDelegate.FrontCarImageURL);
+                    break;
+                case "right":
+                    if (AppDelegate.appDelegate.RightCarImageURL != null)
+                        savephotoURLtoDB(buttonImageName, AppDelegate.appDelegate.RightCarImageURL);
+                    break;
+                case "left":
+                    if (AppDelegate.appDelegate.LeftCarImageURL != null)
+                        savephotoURLtoDB(buttonImageName, AppDelegate.appDelegate.LeftCarImageURL);
+                    break;
+                case "seats":
+                    if (AppDelegate.appDelegate.BackSeatImageURL != null)
+                        savephotoURLtoDB(buttonImageName, AppDelegate.appDelegate.BackSeatImageURL);
+                    break;
+                case "seat":
+                    if (AppDelegate.appDelegate.SeatCarImageURL != null)
+                        savephotoURLtoDB(buttonImageName, AppDelegate.appDelegate.SeatCarImageURL);
+                    break;
+                case "dashboard":
+                    if (AppDelegate.appDelegate.DashBoardImageURL != null)
+                        savephotoURLtoDB(buttonImageName, AppDelegate.appDelegate.DashBoardImageURL);
+                    break;
+                case "odometer":
+                    if (AppDelegate.appDelegate.OdometerImageURL != null)
+                        savephotoURLtoDB(buttonImageName, AppDelegate.appDelegate.OdometerImageURL);
+                    break;
+                case "VIN":
+                    if (AppDelegate.appDelegate.VINImageURL != null)
+                        savephotoURLtoDB(buttonImageName, AppDelegate.appDelegate.VINImageURL);
+                    break;
+                case "rim":
+                    if (AppDelegate.appDelegate.RimImageURL != null)
+                        savephotoURLtoDB(buttonImageName, AppDelegate.appDelegate.RimImageURL);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void savephotoURLtoDB(string buttonImageName, string URL)
+        {
+            NSData data = NSData.FromUrl(NSUrl.FromString(URL));
+            if (data != null)
+            {
+                string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                string buttonName = buttonImageName + ".png";
+                string localPath = Path.Combine(documentsPath, buttonName);
+                NSError err = null;
+
+                if (data.Save(localPath, false, out err))
+                {
+                    Console.WriteLine("saved as " + localPath);
+                }
+                else
+                {
+                    Console.WriteLine("NOT saved as" + localPath + " because" + err.LocalizedDescription);
+                }
+            }
+        }
+
+
         public UIImage LoadImage(string filename)
-
-
         {
             string buttonName = filename + ".png";
             var documentsDirectory = Environment.GetFolderPath
@@ -534,3 +867,4 @@ namespace ExtAppraisalApp
         }
     }
 }
+

@@ -22,6 +22,23 @@ namespace ExtAppraisalApp
             get;
             set;
         }
+        public bool photoAcesss = false;
+        public PhotoGetResponse.Datum getphotoResponses = new PhotoGetResponse.Datum();
+        //Photographs Online URL
+        public string LeftCarImageURL;
+        public string RightCarImageURL;
+        public string SeatCarImageURL;
+        public string BackSeatImageURL;
+        public string FrontCarImageURL;
+        public string BackCarImageURL;
+        public string DashBoardImageURL;
+        public string VINImageURL;
+        public string RimImageURL;
+        public string OdometerImageURL;
+        public string AdditionalPhoto0;
+        public string AdditionalPhoto1;
+        public string AdditionalPhoto2;
+        public string photoButtonClicked = null;
         public static AppDelegate appDelegate { get; private set; }
         public string DeviceToken = null;
         public string APNSAlert = null;

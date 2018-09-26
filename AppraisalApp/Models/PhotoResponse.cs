@@ -6,7 +6,7 @@ namespace ExtAppraisalApp.Models
         public long VehicleID { get; set; }
         public short StoreID { get; set; }
         public short InvtrID { get; set; }
-        public Byte[] Photo { get; set; }
+        public byte[] Photo { get; set; }
         public string PhotoURL { get; set; }
         public string PhotoGuide { get; set; }
 
