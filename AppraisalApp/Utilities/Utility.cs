@@ -58,6 +58,8 @@ namespace ExtAppraisalApp.Utilities
                 var label = new UILabel(new CGRect(0, 0, (container.Frame.Width - 20), 20));
                 label.TextColor = UIColor.White;
                 label.Text = loadingMessage;
+                //label.Font = UIFont.FromName("Helvetica-Bold", 20f);
+                label.Font = UIFont.SystemFontOfSize(13);
                 label.TextAlignment = UITextAlignment.Center;
                 label.Center = new CGPoint(container.Frame.Width / 2, 4 * container.Frame.Height / 5);
                 container.Add(label);

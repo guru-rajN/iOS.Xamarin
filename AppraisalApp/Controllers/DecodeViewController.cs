@@ -190,7 +190,7 @@ namespace ExtAppraisalApp
                         UserID = Convert.ToString(new Guid());
                     }
 
-                    Utility.ShowLoadingIndicator(this.View, "Decoding VIN", true);
+                    Utility.ShowLoadingIndicator(this.View, "Creating Appraisal", true);
                     CallWebservice(txtVin.Text, AppDelegate.appDelegate.storeId, Convert.ToInt32(txtMileage.Text), UserID, txtFirstName.Text, txtLastName.Text, txtEmail.Text, txtPhone.Text);
                 }
 

@@ -2,13 +2,11 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="ExtAppraisalApp Status">
     <Files>
       <File FileName="AppraisalApp/Controllers/MasterViewController.cs" Line="368" Column="50" />
-      <File FileName="AppraisalApp/Utilities/Utility.cs" Line="45" Column="95" />
-      <File FileName="AppraisalApp/Controllers/DetailViewController.cs" Line="602" Column="1" />
+      <File FileName="AppraisalApp/Utilities/Utility.cs" Line="73" Column="40" />
+      <File FileName="AppraisalApp/Controllers/DetailViewController.cs" Line="434" Column="56" />
       <File FileName="AppraisalApp/Views/Main.storyboard" />
-      <File FileName="AppraisalApp/Controllers/DetailViewController.designer.cs" Line="85" Column="10" />
-      <File FileName="AppraisalApp/Controllers/DecodeViewController.designer.cs" Line="18" Column="54" />
-      <File FileName="AppraisalApp/Utilities/ViewWorker.cs" Line="34" Column="10" />
-      <File FileName="AppraisalApp/Controllers/PopOverViewController.cs" Line="91" Column="13" />
+      <File FileName="AppraisalApp/Controllers/AppraisedViewController.cs" Line="102" Column="29" />
+      <File FileName="AppraisalApp/Controllers/DecodeViewController.cs" Line="193" Column="80" />
       <File FileName="ExtAppraisalApp Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
