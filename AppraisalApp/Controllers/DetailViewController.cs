@@ -249,14 +249,14 @@ namespace ExtAppraisalApp
                             NSNotificationCenter.DefaultCenter.PostNotificationName((Foundation.NSString)"iPhoneWorkFlow", null, dictionary);
                         }
 
-                        if (string.IsNullOrEmpty(vehicleDetails.BodyStyle))
-                        {
-                            bodyStyleValue.Text = REQUIRED;
-                        }
-                        else
-                        {
-                            bodyStyleValue.Text = vehicleDetails.BodyStyle;
-                        }
+                        //if (string.IsNullOrEmpty(vehicleDetails.BodyStyle))
+                        //{
+                        //    bodyStyleValue.Text = REQUIRED;
+                        //}
+                        //else
+                        //{
+                        //    bodyStyleValue.Text = vehicleDetails.BodyStyle;
+                        //}
                         if (string.IsNullOrEmpty(vehicleDetails.Odometer))
                         {
                             odometerValue.Text = REQUIRED;
@@ -455,36 +455,31 @@ namespace ExtAppraisalApp
                 this.PerformSegue("popOverSegue", this);
 
             }
-            else if (rowSelected == 8)
+
+            else if (rowSelected == 8 && drivetrainvalueMultiple)
             {
 
                 this.PerformSegue("popOverSegue", this);
 
             }
-            else if (rowSelected == 9 && drivetrainvalueMultiple)
+            else if (rowSelected == 9 && transmissionvalueMultiple)
+            {
+                this.PerformSegue("popOverSegue", this);
+
+            }
+            else if (rowSelected == 10 && exteriorColorValueMultiple)
             {
 
                 this.PerformSegue("popOverSegue", this);
 
             }
-            else if (rowSelected == 10 && transmissionvalueMultiple)
-            {
-                this.PerformSegue("popOverSegue", this);
-
-            }
-            else if (rowSelected == 11 && exteriorColorValueMultiple)
+            else if (rowSelected == 11)
             {
 
                 this.PerformSegue("popOverSegue", this);
 
             }
             else if (rowSelected == 12)
-            {
-
-                this.PerformSegue("popOverSegue", this);
-
-            }
-            else if (rowSelected == 13)
             {
 
                 this.PerformSegue("popOverSegue", this);
@@ -549,17 +544,17 @@ namespace ExtAppraisalApp
 
 
                     }
-                    else if (rowSelected == 8)
-                    {
+                    //else if (rowSelected == 8)
+                    //{
 
-                        popOverViewController.title = "Body Style";
-                        if (decodeVinDetails.DecodeVinVehicleDetails.BodyStyle != null)
-                        {
-                            popOverViewController.listData = decodeVinDetails.DecodeVinVehicleDetails.BodyStyle;
-                            popOverViewController.setData(this);
-                        }
-                    }
-                    else if (rowSelected == 9 && drivetrainvalueMultiple)
+                    //    popOverViewController.title = "Body Style";
+                    //    if (decodeVinDetails.DecodeVinVehicleDetails.BodyStyle != null)
+                    //    {
+                    //        popOverViewController.listData = decodeVinDetails.DecodeVinVehicleDetails.BodyStyle;
+                    //        popOverViewController.setData(this);
+                    //    }
+                    //}
+                    else if (rowSelected == 8 && drivetrainvalueMultiple)
                     {
                         popOverViewController.title = "Drive train";
 
@@ -569,7 +564,7 @@ namespace ExtAppraisalApp
                             popOverViewController.setData(this);
                         }
                     }
-                    else if (rowSelected == 10 && transmissionvalueMultiple)
+                    else if (rowSelected == 9 && transmissionvalueMultiple)
                     {
                         popOverViewController.title = "Transmission";
 
@@ -579,7 +574,7 @@ namespace ExtAppraisalApp
                             popOverViewController.setData(this);
                         }
                     }
-                    else if (rowSelected == 11 && exteriorColorValueMultiple)
+                    else if (rowSelected == 10 && exteriorColorValueMultiple)
                     {
                         popOverViewController.title = "Exterior Color";
                         if (exteriorColorValueMultiple)
@@ -589,7 +584,7 @@ namespace ExtAppraisalApp
                         }
 
                     }
-                    else if (rowSelected == 12)
+                    else if (rowSelected == 11)
                     {
                         popOverViewController.title = "Interior Color";
                         if (decodeVinDetails.DecodeVinVehicleDetails.InteriorColor != null)
@@ -598,7 +593,7 @@ namespace ExtAppraisalApp
                             popOverViewController.setData(this);
                         }
                     }
-                    else if (rowSelected == 13)
+                    else if (rowSelected == 12)
                     {
                         popOverViewController.title = "Interior Type";
                         if (decodeVinDetails.DecodeVinVehicleDetails.InteriorType != null)
@@ -819,11 +814,11 @@ namespace ExtAppraisalApp
                 mileageValue.TextColor = UIColor.Red;
                 return false;
             }
-            else if (string.IsNullOrEmpty(bodyStyleValue.Text) || bodyStyleValue.Text.Equals(REQUIRED))
-            {
-                bodyStyleValue.TextColor = UIColor.Red;
-                return false;
-            }
+            //else if (string.IsNullOrEmpty(bodyStyleValue.Text) || bodyStyleValue.Text.Equals(REQUIRED))
+            //{
+            //    bodyStyleValue.TextColor = UIColor.Red;
+            //    return false;
+            //}
             else if (string.IsNullOrEmpty(drivetrainValue.Text) || drivetrainValue.Text.Equals(REQUIRED))
             {
                 drivetrainValue.TextColor = UIColor.Red;
@@ -925,11 +920,11 @@ namespace ExtAppraisalApp
                 mileageValue.TextColor = UIColor.Red;
                 return false;
             }
-            else if (string.IsNullOrEmpty(bodyStyleValue.Text) || bodyStyleValue.Text.Equals(REQUIRED))
-            {
-                bodyStyleValue.TextColor = UIColor.Red;
-                return false;
-            }
+            //else if (string.IsNullOrEmpty(bodyStyleValue.Text) || bodyStyleValue.Text.Equals(REQUIRED))
+            //{
+            //    bodyStyleValue.TextColor = UIColor.Red;
+            //    return false;
+            //}
             else if (string.IsNullOrEmpty(drivetrainValue.Text) || drivetrainValue.Text.Equals(REQUIRED))
             {
                 drivetrainValue.TextColor = UIColor.Red;
@@ -1207,40 +1202,40 @@ namespace ExtAppraisalApp
                 odometerValue.TextColor = UIColor.FromRGB(95, 135, 95);
                 vehicleDetails.Odometer = odometerValue.Text;
             }
+            //else if (rowSelected == 8)
+            //{
+            //    bodyStyleValue.Text = data;
+            //    bodyStyleValue.TextColor = UIColor.FromRGB(95, 135, 95);
+            //    vehicleDetails.BodyStyle = bodyStyleValue.Text;
+            //}
             else if (rowSelected == 8)
-            {
-                bodyStyleValue.Text = data;
-                bodyStyleValue.TextColor = UIColor.FromRGB(95, 135, 95);
-                vehicleDetails.BodyStyle = bodyStyleValue.Text;
-            }
-            else if (rowSelected == 9)
             {
                 drivetrainValue.Text = data;
                 drivetrainValue.TextColor = UIColor.FromRGB(95, 135, 95);
                 vehicleDetails.DriveTrain = drivetrainValue.Text;
                 vehicleDetails.KBBDrivetrainId = id;
             }
-            else if (rowSelected == 10)
+            else if (rowSelected == 9)
             {
                 transmissionValue.Text = data;
                 transmissionValue.TextColor = UIColor.FromRGB(95, 135, 95);
                 vehicleDetails.Transmission = transmissionValue.Text;
                 vehicleDetails.KBBTransmissionId = id;
             }
-            else if (rowSelected == 11)
+            else if (rowSelected == 10)
             {
                 exteriorColorValue.Text = data;
                 exteriorColorValue.TextColor = UIColor.FromRGB(95, 135, 95);
                 vehicleDetails.ExtColor = exteriorColorValue.Text;
                 vehicleDetails.KBBColorId = id.ToString();
             }
-            else if (rowSelected == 12)
+            else if (rowSelected == 11)
             {
                 interiorColorValue.Text = data;
                 interiorColorValue.TextColor = UIColor.FromRGB(95, 135, 95);
                 vehicleDetails.IntColor = interiorColorValue.Text;
             }
-            else if (rowSelected == 13)
+            else if (rowSelected == 12)
             {
                 interiorTypeValue.Text = data;
                 interiorTypeValue.TextColor = UIColor.FromRGB(95, 135, 95);

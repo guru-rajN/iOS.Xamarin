@@ -844,32 +844,8 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="23488" detailTextLabel="23489" style="IBUITableViewCellStyleValue1" id="22174">
-                                        <rect key="frame" x="0.0" y="352" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="22174" id="22175">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Body Style" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="23488">
-                                                    <rect key="frame" x="16" y="12" width="82.5" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="SUV" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="23489">
-                                                    <rect key="frame" x="325" y="12" width="34" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.23529411764705882" green="0.52156862745098043" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="23645" detailTextLabel="23646" style="IBUITableViewCellStyleValue1" id="22176">
-                                        <rect key="frame" x="0.0" y="396" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="352" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="22176" id="22177">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -893,7 +869,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="35819" detailTextLabel="35820" style="IBUITableViewCellStyleValue1" id="35817">
-                                        <rect key="frame" x="0.0" y="440" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="396" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="35817" id="35818">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -917,7 +893,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="23957" detailTextLabel="23958" style="IBUITableViewCellStyleValue1" id="22178">
-                                        <rect key="frame" x="0.0" y="484" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="440" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="22178" id="22179">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -941,7 +917,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="35823" detailTextLabel="35824" style="IBUITableViewCellStyleValue1" id="35821">
-                                        <rect key="frame" x="0.0" y="528" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="484" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="35821" id="35822">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -965,7 +941,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="35827" detailTextLabel="35828" style="IBUITableViewCellStyleValue1" id="35825">
-                                        <rect key="frame" x="0.0" y="572" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="528" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="35825" id="35826">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -1007,7 +983,6 @@
                     <connections>
                         <outlet property="DetailSaveBtn" destination="21519" id="name-outlet-21519"/>
                         <outlet property="DetailTableView" destination="19963" id="name-outlet-19963"/>
-                        <outlet property="bodyStyleValue" destination="23489" id="name-outlet-23489"/>
                         <outlet property="drivetrainValue" destination="23646" id="name-outlet-23646"/>
                         <outlet property="engineValue" destination="23020" id="name-outlet-23020"/>
                         <outlet property="exteriorColorValue" destination="23958" id="name-outlet-23958"/>

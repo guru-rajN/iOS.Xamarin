@@ -354,17 +354,37 @@ namespace ExtAppraisalApp
 
         partial void MasterViewCloseBtn_Activated(UIBarButtonItem sender)
         {
-            var storyboard = UIStoryboard.FromName("Main", null);
-            var loginViewController = storyboard.InstantiateViewController("LoginViewController");
-            AppDelegate.appDelegate.Window.RootViewController = loginViewController;
+            UIAlertView Confirm = new UIAlertView();
+            Confirm.Title = "Confirmation";
+            Confirm.Message = "You are exiting the Appraisal, anything not saved will be lost";
+            Confirm.AddButton("Cancel");
+            Confirm.AddButton("Yes");
+            Confirm.Show();
+            Confirm.Clicked += (object senders, UIButtonEventArgs es) =>
+            {
+                if (es.ButtonIndex == 0)
+                {
+                    // do something if cancel
+                    Debug.WriteLine("Cancelled");
+                }
+                else
+                {
+                    // Do something if yes
+                    var storyboard = UIStoryboard.FromName("Main", null);
+                    var loginViewController = storyboard.InstantiateViewController("LoginViewController");
+                    AppDelegate.appDelegate.Window.RootViewController = loginViewController;
 
-            AppDelegate.appDelegate.IsFactoryOptions = false;
-            AppDelegate.appDelegate.IsHistory = false;
-            AppDelegate.appDelegate.IsPhotos = false;
-            AppDelegate.appDelegate.WizardPageNo = 0;
+                    AppDelegate.appDelegate.IsFactoryOptions = false;
+                    AppDelegate.appDelegate.IsHistory = false;
+                    AppDelegate.appDelegate.IsPhotos = false;
+                    AppDelegate.appDelegate.WizardPageNo = 0;
 
-            dropSqlite();
-            deletePhoto();
+                    dropSqlite();
+                    deletePhoto();
+                }
+            };
+           
+
         }
 
         public void UpdateDatas(bool show)
