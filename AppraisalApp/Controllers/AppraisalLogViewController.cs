@@ -154,6 +154,7 @@ namespace AppraisalApp
             VinSearch.ShouldBeginEditing += VinSearch_ShouldBeginEditing;
             VinSearch.ShouldEndEditing += VinSearch_ShouldEndEditing;
             VinSearch.CancelButtonClicked += VinSearch_CancelButtonClicked;
+            VinSearch.TintColor = UIColor.FromRGB(95, 135, 95);
 
             AppraisalTableView.TableFooterView = new UIView(new CGRect(0, 0, 0, 0));
 
