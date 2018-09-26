@@ -215,6 +215,8 @@ namespace ExtAppraisalApp
                 apprrequest.LastName = lastname;
                 apprrequest.Phone = phone;
                 apprrequest.Email = email;
+                apprrequest.Is_Extrn_Customer = AppDelegate.appDelegate.IsCustomer;
+               
                 appresponse = ServiceFactory.getWebServiceHandle().CreateAppraisalKBB(apprrequest);
 
                 Console.WriteLine("vehicle id :: " + appresponse.VehicleID);

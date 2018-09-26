@@ -73,6 +73,7 @@ namespace ExtAppraisalApp
         public bool IsHistory = false;
         public bool IsPhotos = false;
         public int WizardPageNo = 0;
+        public bool IsCustomer = false;
 
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)

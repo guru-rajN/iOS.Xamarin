@@ -20,6 +20,7 @@ namespace AppraisalApp
         {
             VinSearch.EndEditing(true);
             VinSearch.Text = "";
+
             string segmentID = AppraisalTypeSegment.SelectedSegment.ToString();
             if (segmentID == "0")
             {
