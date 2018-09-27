@@ -379,6 +379,8 @@ namespace ExtAppraisalApp
                     AppDelegate.appDelegate.IsPhotos = false;
                     AppDelegate.appDelegate.WizardPageNo = 0;
 
+                    AppDelegate.appDelegate.reconResponse = null;
+
                     dropSqlite();
                     deletePhoto();
                 }

@@ -390,20 +390,22 @@ namespace ExtAppraisalApp
             {
 
                 string SegmentIndex;
-                List<ReconResponse.Datum> reconResponse = new List<ReconResponse.Datum>();
+
                 Utility.ShowLoadingIndicator(this.SplitViewController.View, "Retrieving...", true);
-                //reconResponse= GetRecon();
+
                 Task.Factory.StartNew(() =>
                 {
-                    reconResponse = ServiceFactory.getWebServiceHandle().GetReconKBB(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, AppDelegate.appDelegate.prospectId);
-                    //Utility.HideLoadingIndicator(this.View);
-                    if (reconResponse != null)
+                    if(null == AppDelegate.appDelegate.reconResponse || AppDelegate.appDelegate.reconResponse.Count == 0)
+                       AppDelegate.appDelegate.reconResponse = ServiceFactory.getWebServiceHandle().GetReconKBB(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, AppDelegate.appDelegate.prospectId);
+
+
+                    if (AppDelegate.appDelegate.reconResponse != null)
                     {
                         InvokeOnMainThread(() =>
                         {
                             Utility.HideLoadingIndicator(this.SplitViewController.View);
 
-                            foreach (var recon in reconResponse)
+                            foreach (var recon in AppDelegate.appDelegate.reconResponse)
                             {
                                 if (segmentID == "0")
                                 {

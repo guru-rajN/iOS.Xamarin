@@ -147,6 +147,8 @@ namespace ExtAppraisalApp
             AppDelegate.appDelegate.AdditionalPhoto2 = null;
 
 
+            AppDelegate.appDelegate.reconResponse = null;
+
         }
 
         private void dropSqlite()

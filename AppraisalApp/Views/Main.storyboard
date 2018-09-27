@@ -607,7 +607,7 @@
                                 <action selector="BtnCancel_Activated:" destination="pXu-PQ-Om3" id="95776"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Decode VIN" id="RpB-bh-WKK">
+                        <barButtonItem key="rightBarButtonItem" title="Start" id="RpB-bh-WKK">
                             <color key="tintColor" red="0.25299029449999999" green="0.4923122171" blue="0.27377660939999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="BtnDecode_Activated:" destination="pXu-PQ-Om3" id="95775"/>
@@ -1381,7 +1381,7 @@
                                     <action selector="SegmentValue_Changed:" destination="103588" eventType="valueChanged" id="114123"/>
                                 </connections>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please choose the condition that best represents your vehicle" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="109650">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please choose the condtions" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="109650">
                                 <rect key="frame" x="17" y="121" width="341" height="25"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>

@@ -54,6 +54,7 @@ namespace ExtAppraisalApp
         public List<FactoryOptionsKBB> factoryOptionsKBB = new List<FactoryOptionsKBB>();
         public string prospectId { get; set; }
         public AfterMarketOptions afterMarketOptions = new AfterMarketOptions();
+        public List<ReconResponse.Datum> reconResponse = new List<ReconResponse.Datum>();
 
         public Vehicle cacheVehicleDetails { get; set; } // Change after SQL database 
 

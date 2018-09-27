@@ -48,8 +48,8 @@ namespace ExtAppraisalApp
 
             AddPhotoCollectionView.Source = new AddPhotosCollectionViewSource(this, PhotosModelList);
 
-            //var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
-            //Utility.ShowLoadingIndicator(splitViewController.View, "Retrieving...", true);
+            var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
+            Utility.ShowLoadingIndicator(splitViewController.View, "Retrieving...", true);
 
             setPersistedImage();
 
@@ -65,10 +65,11 @@ namespace ExtAppraisalApp
             index = 2;
             loadImagea(index);
 
-            //InvokeOnMainThread(() =>
-            //{
-            //    Utility.HideLoadingIndicator(this.View);
-            //});
+            InvokeOnMainThread(() =>
+            {
+                var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
+                Utility.HideLoadingIndicator(splitViewController.View);
+            });
 
         }
 
