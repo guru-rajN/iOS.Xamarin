@@ -352,14 +352,10 @@ namespace ExtAppraisalApp
 
         public async void ActivityLoader()
         {
-            //LoadingOverlay loadPop;
-            //var bounds = UIScreen.MainScreen.Bounds;
-            //loadPop = new LoadingOverlay(bounds);
-            //View.Add(loadPop);
-            Utility.ShowLoadingIndicator(this.View, "Uploading ...", true);
+            var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
+            Utility.ShowLoadingIndicator(splitViewController.View, "Uploading ...", true);
             await Task.Delay(2000);
-            Utility.HideLoadingIndicator(this.View);
-            //loadPop.Hide();
+            Utility.HideLoadingIndicator(splitViewController.View);
         }
 
         public override void ViewDidLoad()
@@ -392,7 +388,6 @@ namespace ExtAppraisalApp
             NSNotificationCenter.DefaultCenter.AddObserver((Foundation.NSString)"UpdatePhotoGraphs", UpdatePhotoGraphViews);
 
             setPersistedImage();
-            //Utility.HideLoadingIndicator(this.View);
 
         }
 
@@ -409,10 +404,6 @@ namespace ExtAppraisalApp
         {
             PhotoGetResponse.Datum getphotoResponses = new PhotoGetResponse.Datum();
             getphotoResponses = ServiceFactory.getWebServiceHandle().GetPhoto(vehicleID, storeId, invtrId);
-            //InvokeOnMainThread(() =>
-            //{
-            //    Utility.HideLoadingIndicator(this.View);
-            //});
             return getphotoResponses;
 
         }
@@ -697,7 +688,8 @@ namespace ExtAppraisalApp
             }
             InvokeOnMainThread(() =>
             {
-                Utility.HideLoadingIndicator(this.View);
+                var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
+                Utility.HideLoadingIndicator(splitViewController.View);
             });
 
         }
@@ -714,7 +706,8 @@ namespace ExtAppraisalApp
                     AppDelegate.appDelegate.photoAcesss = true;
                     try
                     {
-                        Utility.ShowLoadingIndicator(this.View, "Retrieving...", true);
+                        var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
+                        Utility.ShowLoadingIndicator(splitViewController.View, "Retrieving...", true);
                     }catch(Exception exc){
                         Debug.WriteLine("Exception occurred :: " + exc.Message);
                     }

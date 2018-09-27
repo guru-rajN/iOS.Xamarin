@@ -47,7 +47,9 @@ namespace ExtAppraisalApp
             PhotosModelList.Add(new AddPhotoModel { Image = "add_photo.png", VehicleLabel = "Additional" });
 
             AddPhotoCollectionView.Source = new AddPhotosCollectionViewSource(this, PhotosModelList);
-            Utility.ShowLoadingIndicator(this.View, "Retrieving...", true);
+
+            //var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
+            //Utility.ShowLoadingIndicator(splitViewController.View, "Retrieving...", true);
 
             setPersistedImage();
 
@@ -319,9 +321,10 @@ namespace ExtAppraisalApp
 
         public async void ActivityLoader()
         {
-            Utility.ShowLoadingIndicator(this.View, "Uploading ...", true);
+            var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
+            Utility.ShowLoadingIndicator(splitViewController.View, "Uploading ...", true);
             await Task.Delay(2000);
-            Utility.HideLoadingIndicator(this.View);
+            Utility.HideLoadingIndicator(splitViewController.View);
 
         }
 
