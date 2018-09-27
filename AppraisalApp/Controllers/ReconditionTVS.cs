@@ -48,7 +48,7 @@ namespace ExtAppraisalApp
         public void SavetolocalDb(string SelectedRow)
         {
 
-            string SegmentIndex = globalInde.selectedSegmentIndex;
+            string SegmentIndex = globalInde.selectedSegmentIndex == null ? "0" : globalInde.selectedSegmentIndex;
             string RowOption = SelectedRow;
             var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             var libraryPath = Path.Combine(documentsPath, DBConstant.SEPARATOR, DBConstant.LIBRARY);// Library Folder

@@ -545,6 +545,43 @@ namespace ExtAppraisalApp
             buttonName = "odometer.png";
             pngFilename = System.IO.Path.Combine(documentsDirectory, buttonName);
             System.IO.File.Delete(pngFilename);
+            buttonName = "additional-photo-" + 0 + ".png";
+            pngFilename = System.IO.Path.Combine(documentsDirectory, buttonName);
+            System.IO.File.Delete(pngFilename);
+            buttonName = "additional-photo-" + 1 + ".png";
+            pngFilename = System.IO.Path.Combine(documentsDirectory, buttonName);
+            System.IO.File.Delete(pngFilename);
+            buttonName = "additional-photo-" + 2 + ".png";
+            pngFilename = System.IO.Path.Combine(documentsDirectory, buttonName);
+            System.IO.File.Delete(pngFilename);
+            AppDelegate.appDelegate.LeftCarImageUploaded = false;
+            AppDelegate.appDelegate.RightCarImageUploaded = false;
+            AppDelegate.appDelegate.SeatCarImageUploaded = false;
+            AppDelegate.appDelegate.BackSeatImageUploaded = false;
+            AppDelegate.appDelegate.FrontCarImageUploaded = false;
+            AppDelegate.appDelegate.BackCarImageUploaded = false;
+            AppDelegate.appDelegate.DashBoardImageUploaded = false;
+            AppDelegate.appDelegate.VINImageUplaoded = false;
+            AppDelegate.appDelegate.RimImageUploaded = false;
+            AppDelegate.appDelegate.OdometerImageUploaded = false;
+            AppDelegate.appDelegate.photoButtonClicked = null;
+            AppDelegate.appDelegate.getphotoResponses.AppraisalPhotos = null;
+            AppDelegate.appDelegate.BackCarImageURL = null;
+            AppDelegate.appDelegate.FrontCarImageURL = null;
+            AppDelegate.appDelegate.SeatCarImageURL = null;
+            AppDelegate.appDelegate.BackSeatImageURL = null;
+            AppDelegate.appDelegate.OdometerImageURL = null;
+            AppDelegate.appDelegate.DashBoardImageURL = null;
+            AppDelegate.appDelegate.LeftCarImageURL = null;
+            AppDelegate.appDelegate.RightCarImageURL = null;
+            AppDelegate.appDelegate.VINImageURL = null;
+            AppDelegate.appDelegate.RimImageURL = null;
+            AppDelegate.appDelegate.AdditionalPhoto0 = null;
+            AppDelegate.appDelegate.AdditionalPhoto1 = null;
+            AppDelegate.appDelegate.AdditionalPhoto2 = null;
+
+
+            AppDelegate.appDelegate.reconResponse = null;
 
 
         }

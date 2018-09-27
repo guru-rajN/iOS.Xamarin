@@ -1,41 +1,43 @@
 ﻿<Properties StartupConfiguration="{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="ExtAppraisalApp Status">
     <Files>
-      <File FileName="AppraisalApp/Controllers/PhotoGraphController.cs" Line="50" Column="37" />
-      <File FileName="AppraisalApp/Controllers/AdditionalPhotographs.cs" Line="204" Column="63" />
+      <File FileName="AppraisalApp/Controllers/PhotoGraphController.cs" Line="293" Column="22" />
       <File FileName="AppraisalApp/Controllers/ReconditionViewController.cs" Line="67" Column="25" />
-      <File FileName="AppraisalApp/Services/Aws.cs" Line="65" Column="92" />
-      <File FileName="AppraisalApp/Controllers/DecodeViewController.cs" Line="238" Column="1" />
-      <File FileName="AppraisalApp/Services/ServiceImpl.cs" Line="377" Column="18" />
-      <File FileName="AppraisalApp/Controllers/MasterViewController.cs" Line="377" Column="68" />
-      <File FileName="AppraisalApp/Controllers/DetailViewController.cs" Line="731" Column="1" />
-      <File FileName="AppraisalApp/Services/ServiceFactory.cs" Line="7" Column="1" />
-      <File FileName="AppraisalApp/Controllers/HistoryViewController.cs" Line="319" Column="93" />
+      <File FileName="AppraisalApp/Controllers/DecodeViewController.cs" Line="227" Column="1" />
+      <File FileName="AppraisalApp/Services/ServiceImpl.cs" Line="832" Column="35" />
       <File FileName="AppraisalApp/Controllers/SummaryViewController.cs" Line="17" Column="1" />
       <File FileName="AppraisalApp/Controllers/LoginViewController.cs" Line="105" Column="59" />
-      <File FileName="AppraisalApp/Controllers/PhotoViewController.cs" Line="40" Column="45" />
+      <File FileName="AppraisalApp/Controllers/PhotoViewController.cs" Line="133" Column="68" />
+      <File FileName="AppraisalApp/Controllers/DetailViewController.cs" Line="27" Column="52" />
+      <File FileName="AppraisalApp/Controllers/MasterViewController.cs" Line="556" Column="48" />
+      <File FileName="AppraisalApp/Controllers/ConfirmationViewController.cs" Line="150" Column="58" />
+      <File FileName="AppraisalApp/Controllers/AppraisalLogViewController.cs" Line="9" Column="32" />
       <File FileName="ExtAppraisalApp Status" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ExtAppraisalApp" expanded="True">
+            <Node name="ExtAppraisalApp" expanded="True">
+              <Node name="Controllers" expanded="True">
+                <Node name="AppraisalLogViewController.cs" selected="True" />
+                <Node name="DecodeViewController.cs" expanded="True" />
+              </Node>
+              <Node name="Services" expanded="True" />
+              <Node name="Views" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/slksoft/Sathya/VSTS/27-Sep/ExtAppraisalApp/AppraisalApp/Controllers/DetailViewController.cs" relfile="AppraisalApp/Controllers/DetailViewController.cs" line="746" column="1" />
-      <Breakpoint file="/Users/slksoft/Sathya/VSTS/27-Sep/ExtAppraisalApp/AppraisalApp/Controllers/SummaryViewController.cs" relfile="AppraisalApp/Controllers/SummaryViewController.cs" line="17" column="1" />
-      <Breakpoint file="/Users/slksoft/Sathya/VSTS/27-Sep/ExtAppraisalApp/AppraisalApp/Controllers/DecodeViewController.cs" relfile="AppraisalApp/Controllers/DecodeViewController.cs" line="220" column="1" />
-      <Breakpoint file="/Users/slksoft/Sathya/VSTS/27-Sep/ExtAppraisalApp/AppraisalApp/Services/ServiceImpl.cs" relfile="AppraisalApp/Services/ServiceImpl.cs" line="195" column="1" />
-      <Breakpoint file="/Users/slksoft/Sathya/VSTS/27-Sep/ExtAppraisalApp/AppraisalApp/Controllers/DecodeViewController.cs" relfile="AppraisalApp/Controllers/DecodeViewController.cs" line="227" column="1" />
-      <Breakpoint file="/Users/slksoft/Sathya/VSTS/27-Sep/ExtAppraisalApp/AppraisalApp/Controllers/DetailViewController.cs" relfile="AppraisalApp/Controllers/DetailViewController.cs" line="107" column="1" />
-      <Breakpoint file="/Users/slksoft/Sathya/VSTS/27-Sep/ExtAppraisalApp/AppraisalApp/Services/ServiceImpl.cs" relfile="AppraisalApp/Services/ServiceImpl.cs" line="163" column="1" />
-      <Breakpoint file="/Users/slksoft/Sathya/VSTS/27-Sep/ExtAppraisalApp/AppraisalApp/Controllers/DecodeViewController.cs" relfile="AppraisalApp/Controllers/DecodeViewController.cs" line="232" column="1" />
-      <Breakpoint file="/Users/slksoft/Sathya/VSTS/27-Sep/ExtAppraisalApp/AppraisalApp/Controllers/DetailViewController.cs" relfile="AppraisalApp/Controllers/DetailViewController.cs" line="124" column="1" />
-      <Breakpoint file="/Users/slksoft/Sathya/VSTS/27-Sep/ExtAppraisalApp/AppraisalApp/Services/ServiceImpl.cs" relfile="AppraisalApp/Services/ServiceImpl.cs" line="167" column="1" />
-      <Breakpoint file="/Users/slksoft/Sathya/VSTS/27-Sep/ExtAppraisalApp/AppraisalApp/Controllers/DetailViewController.cs" relfile="AppraisalApp/Controllers/DetailViewController.cs" line="716" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="../../../AppraisalApp/Controllers/DecodeViewController.cs" line="80" offsetX="784" offsetY="1185" expression="apprrequest.VIN" liveUpdate="True" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
-  <MonoDevelop.Ide.ItemProperties.ExtAppraisalApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.CBFD621A-3810-4A32-BA93-B050216539BB" automaticSigning="False" />
+  <MonoDevelop.Ide.ItemProperties.ExtAppraisalApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.b261155cbd492ce47bc19e9e6b7795ab0a2cb960" automaticSigning="False" />
   <MultiItemStartupConfigurations />
 </Properties>

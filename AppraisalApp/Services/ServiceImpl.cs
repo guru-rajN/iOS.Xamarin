@@ -852,25 +852,25 @@ namespace ExtAppraisalApp.Services
 
                 string request = JsonConvert.SerializeObject(photoResponse);
 
-                responseMessage = RestClient.doPost(Url.SAVE_Photo, request);
+                RestClient.doPost(Url.SAVE_Photo, request);
 
 
-                if (responseMessage.IsSuccessStatusCode)
-                {
-                    result = responseMessage.Content.ReadAsStringAsync().Result;
-                    SIMSResponseData rst = JsonConvert.DeserializeObject<SIMSResponseData>(result);
+                //if (responseMessage.IsSuccessStatusCode)
+                //{
+                //    result = responseMessage.Content.ReadAsStringAsync().Result;
+                //    SIMSResponseData rst = JsonConvert.DeserializeObject<SIMSResponseData>(result);
 
-                    response = rst;
+                //    response = rst;
 
-                    if (null != response)
-                    {
-                        Utilities.Utility.ShowAlert("Appraisal App", "Photo Done", "OK");
-                    }
-                }
-                else
-                {
-                    Utilities.Utility.ShowAlert("Appraisal App", "Photo failed!!", "OK");
-                }
+                //    if (null != response)
+                //    {
+                //        Utilities.Utility.ShowAlert("Appraisal App", "Photo Done", "OK");
+                //    }
+                //}
+                //else
+                //{
+                //    Utilities.Utility.ShowAlert("Appraisal App", "Photo failed!!", "OK");
+                //}
 
             }
             catch (Exception exc)

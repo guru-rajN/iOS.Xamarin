@@ -55,6 +55,7 @@ namespace ExtAppraisalApp
 
         }
 
+
         public void setPersistedImage()
         {
 

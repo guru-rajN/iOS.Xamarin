@@ -49,21 +49,17 @@ namespace Amazon
 
         private void SavePhotoAPI(byte[] myByteArray)
         {
-            try{
-                PhotoResponse photoResponse = new PhotoResponse();
-                SIMSResponseData responseStatus;
-                photoResponse.VehicleID = AppDelegate.appDelegate.vehicleID;
-                photoResponse.StoreID = AppDelegate.appDelegate.storeId;
-                photoResponse.InvtrID = AppDelegate.appDelegate.invtrId;
-                photoResponse.PhotoGuide = AppDelegate.appDelegate.photoButtonClicked;
-                photoResponse.PhotoURL = "";
-                photoResponse.Photo = myByteArray;
+            PhotoResponse photoResponse = new PhotoResponse();
+            SIMSResponseData responseStatus;
+            photoResponse.VehicleID = AppDelegate.appDelegate.vehicleID;
+            photoResponse.StoreID = AppDelegate.appDelegate.storeId;
+            photoResponse.InvtrID = AppDelegate.appDelegate.invtrId;
+            photoResponse.PhotoGuide = AppDelegate.appDelegate.photoButtonClicked;
+            photoResponse.PhotoURL = "";
+            photoResponse.Photo = myByteArray;
 
-                //string DeviceToken = AppDelegate.appDelegate.AppleDeviceToken;
-                responseStatus = ServiceFactory.ServicePhotoSave.getWebServiceHandle().SavePhoto(photoResponse);
-            }catch(Exception exc){
-                System.Diagnostics.Debug.WriteLine("Exception occurred :: " + exc.Message);
-            }
+            responseStatus = ServiceFactory.ServicePhotoSave.getWebServiceHandle().SavePhoto(photoResponse);
+
         }
 
         public string Generatekeyname()
