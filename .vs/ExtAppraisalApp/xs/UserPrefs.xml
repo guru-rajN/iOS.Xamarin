@@ -1,17 +1,16 @@
 ﻿<Properties StartupConfiguration="{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="ExtAppraisalApp Status">
     <Files>
-      <File FileName="AppraisalApp/Controllers/PhotoGraphController.cs" Line="293" Column="22" />
+      <File FileName="AppraisalApp/Controllers/PhotoGraphController.cs" Line="689" Column="13" />
       <File FileName="AppraisalApp/Controllers/ReconditionViewController.cs" Line="67" Column="25" />
       <File FileName="AppraisalApp/Controllers/DecodeViewController.cs" Line="227" Column="1" />
       <File FileName="AppraisalApp/Services/ServiceImpl.cs" Line="832" Column="35" />
       <File FileName="AppraisalApp/Controllers/SummaryViewController.cs" Line="17" Column="1" />
       <File FileName="AppraisalApp/Controllers/LoginViewController.cs" Line="105" Column="59" />
+      <File FileName="AppraisalApp/Controllers/MasterViewController.cs" Line="581" Column="57" />
       <File FileName="AppraisalApp/Controllers/PhotoViewController.cs" Line="133" Column="68" />
-      <File FileName="AppraisalApp/Controllers/DetailViewController.cs" Line="27" Column="52" />
-      <File FileName="AppraisalApp/Controllers/MasterViewController.cs" Line="556" Column="48" />
-      <File FileName="AppraisalApp/Controllers/ConfirmationViewController.cs" Line="150" Column="58" />
-      <File FileName="AppraisalApp/Controllers/AppraisalLogViewController.cs" Line="9" Column="32" />
+      <File FileName="AppraisalApp/Controllers/ConfirmationViewController.cs" Line="131" Column="62" />
+      <File FileName="AppraisalApp/AppDelegate.cs" Line="25" Column="21" />
       <File FileName="ExtAppraisalApp Status" />
     </Files>
     <Pads>
@@ -20,8 +19,8 @@
           <Node name="ExtAppraisalApp" expanded="True">
             <Node name="ExtAppraisalApp" expanded="True">
               <Node name="Controllers" expanded="True">
-                <Node name="AppraisalLogViewController.cs" selected="True" />
                 <Node name="DecodeViewController.cs" expanded="True" />
+                <Node name="PhotoGraphController.cs" selected="True" />
               </Node>
               <Node name="Services" expanded="True" />
               <Node name="Views" expanded="True" />
@@ -38,6 +37,6 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="../../../AppraisalApp/Controllers/DecodeViewController.cs" line="80" offsetX="784" offsetY="1185" expression="apprrequest.VIN" liveUpdate="True" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
-  <MonoDevelop.Ide.ItemProperties.ExtAppraisalApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.b261155cbd492ce47bc19e9e6b7795ab0a2cb960" automaticSigning="False" />
+  <MonoDevelop.Ide.ItemProperties.ExtAppraisalApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.0B24CE10-6C2E-4FDE-9145-62431DB5F71B" automaticSigning="False" />
   <MultiItemStartupConfigurations />
 </Properties>

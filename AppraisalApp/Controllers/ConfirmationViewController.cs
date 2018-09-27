@@ -145,7 +145,7 @@ namespace ExtAppraisalApp
             AppDelegate.appDelegate.AdditionalPhoto0 = null;
             AppDelegate.appDelegate.AdditionalPhoto1 = null;
             AppDelegate.appDelegate.AdditionalPhoto2 = null;
-
+            AppDelegate.appDelegate.photoAcesss = false;
 
             AppDelegate.appDelegate.reconResponse = null;
 
