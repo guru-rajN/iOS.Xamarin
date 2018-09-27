@@ -47,18 +47,7 @@ namespace ExtAppraisalApp
             this.PresentViewController(alert, true, null);
         }
 
-
-
-
         string currentButton = null;
-
-        //partial void Leftb_Image_TouchUpInside(UIButton sender)
-        //{
-        //   // viewPopup.Hidden = false;
-        //    currentButton = "left";
-        //    ActionButton_TouchUpInside();
-
-        //}
 
 
         partial void Front_TouchUpInside(UIButton sender)

@@ -185,6 +185,8 @@ namespace ExtAppraisalApp
                     txtPhone.AttributedPlaceholder = new NSAttributedString("", null, UIColor.Red);
                     var UserID =UIKit.UIDevice.CurrentDevice.IdentifierForVendor.AsString();
 
+                    System.Diagnostics.Debug.WriteLine("USER ID :: " + UserID);
+
                     if(UserID == null)
                     {
                         UserID = Convert.ToString(new Guid());
@@ -401,7 +403,7 @@ namespace ExtAppraisalApp
             }
             else
             {
-                Utilities.Utility.ShowAlert("Vin Scan", "Scan Failed!!", "OK");
+                Utility.ShowAlert("Vin Scan", "Scan Failed!!", "OK");
 
             }
         }

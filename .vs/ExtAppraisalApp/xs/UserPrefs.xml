@@ -1,28 +1,41 @@
 ﻿<Properties StartupConfiguration="{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="ExtAppraisalApp Status">
     <Files>
-      <File FileName="AppraisalApp/Controllers/PhotoGraphController.cs" Line="7" Column="26" />
-      <File FileName="AppraisalApp/Controllers/AdditionalPhotographs.cs" Line="66" Column="31" />
-      <File FileName="AppraisalApp/Controllers/ReconditionViewController.cs" Line="89" Column="71" />
-      <File FileName="AppraisalApp/Services/Aws.cs" Line="14" Column="6" />
+      <File FileName="AppraisalApp/Controllers/PhotoGraphController.cs" Line="50" Column="37" />
+      <File FileName="AppraisalApp/Controllers/AdditionalPhotographs.cs" Line="204" Column="63" />
+      <File FileName="AppraisalApp/Controllers/ReconditionViewController.cs" Line="67" Column="25" />
+      <File FileName="AppraisalApp/Services/Aws.cs" Line="65" Column="92" />
+      <File FileName="AppraisalApp/Controllers/DecodeViewController.cs" Line="238" Column="1" />
+      <File FileName="AppraisalApp/Services/ServiceImpl.cs" Line="377" Column="18" />
+      <File FileName="AppraisalApp/Controllers/MasterViewController.cs" Line="377" Column="68" />
+      <File FileName="AppraisalApp/Controllers/DetailViewController.cs" Line="731" Column="1" />
+      <File FileName="AppraisalApp/Services/ServiceFactory.cs" Line="7" Column="1" />
+      <File FileName="AppraisalApp/Controllers/HistoryViewController.cs" Line="319" Column="93" />
+      <File FileName="AppraisalApp/Controllers/SummaryViewController.cs" Line="17" Column="1" />
+      <File FileName="AppraisalApp/Controllers/LoginViewController.cs" Line="105" Column="59" />
+      <File FileName="AppraisalApp/Controllers/PhotoViewController.cs" Line="40" Column="45" />
       <File FileName="ExtAppraisalApp Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint enabled="false" file="/Users/slksoft/Sathya/VSTS/27-Sep/ExtAppraisalApp/AppraisalApp/Controllers/DetailViewController.cs" relfile="AppraisalApp/Controllers/DetailViewController.cs" line="431" column="1" />
-      <Breakpoint enabled="false" file="/Users/slksoft/Sathya/VSTS/27-Sep/ExtAppraisalApp/AppraisalApp/Controllers/DetailViewController.cs" relfile="AppraisalApp/Controllers/DetailViewController.cs" line="598" column="1" />
-      <Breakpoint enabled="false" file="/Users/slksoft/Sathya/VSTS/27-Sep/ExtAppraisalApp/AppraisalApp/Controllers/PopOverViewController.cs" relfile="AppraisalApp/Controllers/PopOverViewController.cs" line="53" column="1" />
-      <Breakpoint enabled="false" file="/Users/slksoft/Sathya/VSTS/27-Sep/ExtAppraisalApp/AppraisalApp/Controllers/PopOverViewController.cs" relfile="AppraisalApp/Controllers/PopOverViewController.cs" line="62" column="1" />
-      <Breakpoint enabled="false" file="/Users/slksoft/Sathya/VSTS/27-Sep/ExtAppraisalApp/AppraisalApp/Controllers/PopOverViewController.cs" relfile="AppraisalApp/Controllers/PopOverViewController.cs" line="76" column="1" />
-      <Breakpoint file="/Users/slksoft/Sathya/VSTS/27-Sep/ExtAppraisalApp/AppraisalApp/Services/Aws.cs" relfile="AppraisalApp/Services/Aws.cs" line="53" column="1" />
-      <Breakpoint file="/Users/slksoft/Sathya/VSTS/27-Sep/ExtAppraisalApp/AppraisalApp/Services/ServiceImpl.cs" relfile="AppraisalApp/Services/ServiceImpl.cs" line="855" column="1" />
+      <Breakpoint file="/Users/slksoft/Sathya/VSTS/27-Sep/ExtAppraisalApp/AppraisalApp/Controllers/DetailViewController.cs" relfile="AppraisalApp/Controllers/DetailViewController.cs" line="746" column="1" />
+      <Breakpoint file="/Users/slksoft/Sathya/VSTS/27-Sep/ExtAppraisalApp/AppraisalApp/Controllers/SummaryViewController.cs" relfile="AppraisalApp/Controllers/SummaryViewController.cs" line="17" column="1" />
+      <Breakpoint file="/Users/slksoft/Sathya/VSTS/27-Sep/ExtAppraisalApp/AppraisalApp/Controllers/DecodeViewController.cs" relfile="AppraisalApp/Controllers/DecodeViewController.cs" line="220" column="1" />
+      <Breakpoint file="/Users/slksoft/Sathya/VSTS/27-Sep/ExtAppraisalApp/AppraisalApp/Services/ServiceImpl.cs" relfile="AppraisalApp/Services/ServiceImpl.cs" line="195" column="1" />
+      <Breakpoint file="/Users/slksoft/Sathya/VSTS/27-Sep/ExtAppraisalApp/AppraisalApp/Controllers/DecodeViewController.cs" relfile="AppraisalApp/Controllers/DecodeViewController.cs" line="227" column="1" />
+      <Breakpoint file="/Users/slksoft/Sathya/VSTS/27-Sep/ExtAppraisalApp/AppraisalApp/Controllers/DetailViewController.cs" relfile="AppraisalApp/Controllers/DetailViewController.cs" line="107" column="1" />
+      <Breakpoint file="/Users/slksoft/Sathya/VSTS/27-Sep/ExtAppraisalApp/AppraisalApp/Services/ServiceImpl.cs" relfile="AppraisalApp/Services/ServiceImpl.cs" line="163" column="1" />
+      <Breakpoint file="/Users/slksoft/Sathya/VSTS/27-Sep/ExtAppraisalApp/AppraisalApp/Controllers/DecodeViewController.cs" relfile="AppraisalApp/Controllers/DecodeViewController.cs" line="232" column="1" />
+      <Breakpoint file="/Users/slksoft/Sathya/VSTS/27-Sep/ExtAppraisalApp/AppraisalApp/Controllers/DetailViewController.cs" relfile="AppraisalApp/Controllers/DetailViewController.cs" line="124" column="1" />
+      <Breakpoint file="/Users/slksoft/Sathya/VSTS/27-Sep/ExtAppraisalApp/AppraisalApp/Services/ServiceImpl.cs" relfile="AppraisalApp/Services/ServiceImpl.cs" line="167" column="1" />
+      <Breakpoint file="/Users/slksoft/Sathya/VSTS/27-Sep/ExtAppraisalApp/AppraisalApp/Controllers/DetailViewController.cs" relfile="AppraisalApp/Controllers/DetailViewController.cs" line="716" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="../../../AppraisalApp/Controllers/DecodeViewController.cs" line="80" offsetX="784" offsetY="1185" expression="apprrequest.VIN" liveUpdate="True" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
-  <MonoDevelop.Ide.ItemProperties.ExtAppraisalApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.e99ffd9f7376f177a5020a6c918a1c6bf88e5a45" automaticSigning="False" />
+  <MonoDevelop.Ide.ItemProperties.ExtAppraisalApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.CBFD621A-3810-4A32-BA93-B050216539BB" automaticSigning="False" />
   <MultiItemStartupConfigurations />
 </Properties>

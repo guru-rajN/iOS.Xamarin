@@ -124,11 +124,11 @@ namespace ExtAppraisalApp
                     {
                         if (vehicleDetails.InvtrType.Equals("Used"))
                         {
-                            decodeVinDetails = DecodeVin(vehicleDetails.VIN, (int)vehicleDetails.Mileage, vehicleDetails.StoreID, 20);
+                            decodeVinDetails = DecodeVin(vehicleDetails.VIN, (int)vehicleDetails.Mileage, vehicleDetails.StoreID, 10);
                         }
                         else
                         {
-                            decodeVinDetails = DecodeVin(vehicleDetails.VIN, AppDelegate.appDelegate.mileage, vehicleDetails.StoreID, 10);
+                            decodeVinDetails = DecodeVin(vehicleDetails.VIN, AppDelegate.appDelegate.mileage, vehicleDetails.StoreID, 20);
 
                         }
                         AppDelegate.appDelegate.cacheDecodeVinDetails = decodeVinDetails;
@@ -178,50 +178,7 @@ namespace ExtAppraisalApp
                         AppDelegate.appDelegate.IsPhotos = vehicleDetails.IsPhotos;
                         AppDelegate.appDelegate.WizardPageNo = vehicleDetails.WizardPage;
 
-                        if (WizardPageNo == 0)
-                        {
-
-                            worker.ShowPartialDoneImg(1);
-                        }
-                        else if (WizardPageNo == 1)
-                        {
-
-                            worker.ShowDoneImg(1);
-                            //worker.ShowPartialDoneImg(2);
-                        }
-                        else if (vehicleDetails.IsFactoryOptions && WizardPageNo < 2)
-                        {
-
-                            worker.ShowDoneImg(1);
-                            worker.ShowDoneImg(2);
-                            //worker.ShowPartialDoneImg(3);
-
-                        }
-                        else if (vehicleDetails.IsFactoryOptions && WizardPageNo == 2)
-                        {
-                            worker.ShowDoneImg(1);
-                            worker.ShowDoneImg(2);
-                            worker.ShowDoneImg(3);
-                            //worker.ShowPartialDoneImg(4);
-                        }
-                        else if (vehicleDetails.IsHistory && WizardPageNo < 3)
-                        {
-                            worker.ShowDoneImg(1);
-                            worker.ShowDoneImg(2);
-                            worker.ShowDoneImg(3);
-                            worker.ShowDoneImg(4);
-                            //worker.ShowPartialDoneImg(5);
-                        }
-                        else if (vehicleDetails.IsHistory && WizardPageNo == 3)
-                        {
-                            worker.ShowDoneImg(1);
-                            worker.ShowDoneImg(2);
-                            worker.ShowDoneImg(3);
-                            worker.ShowDoneImg(4);
-                            worker.ShowDoneImg(5);
-                        }
-                        else if (vehicleDetails.IsPhotos && WizardPageNo < 4)
-                        {
+                        if(WizardPageNo > 4){
                             worker.ShowDoneImg(1);
                             worker.ShowDoneImg(2);
                             worker.ShowDoneImg(3);
@@ -231,13 +188,65 @@ namespace ExtAppraisalApp
                         }
                         else
                         {
-                            worker.ShowDoneImg(1);
-                            worker.ShowDoneImg(2);
-                            worker.ShowDoneImg(3);
-                            worker.ShowDoneImg(4);
-                            worker.ShowDoneImg(5);
-                            worker.ShowDoneImg(6);
+                            if (WizardPageNo == 0)
+                            {
+
+                                worker.ShowPartialDoneImg(1);
+                            }
+                            if (WizardPageNo == 1)
+                            {
+
+                                worker.ShowDoneImg(1);
+                                //worker.ShowPartialDoneImg(2);
+                            }
+                            if (vehicleDetails.IsFactoryOptions && WizardPageNo < 2)
+                            {
+
+                                worker.ShowDoneImg(1);
+                                worker.ShowDoneImg(2);
+                                //worker.ShowPartialDoneImg(3);
+
+                            }
+                            if (vehicleDetails.IsFactoryOptions && WizardPageNo == 2)
+                            {
+                                worker.ShowDoneImg(1);
+                                worker.ShowDoneImg(2);
+                                worker.ShowDoneImg(3);
+                                //worker.ShowPartialDoneImg(4);
+                            }
+                            if (vehicleDetails.IsHistory && WizardPageNo < 3)
+                            {
+                                worker.ShowDoneImg(1);
+                                worker.ShowDoneImg(2);
+                                worker.ShowDoneImg(3);
+                                worker.ShowDoneImg(4);
+                            }
+                            if (vehicleDetails.IsFactoryOptions && vehicleDetails.IsHistory && WizardPageNo < 3)
+                            {
+                                worker.ShowDoneImg(1);
+                                worker.ShowDoneImg(2);
+                                worker.ShowDoneImg(3);
+                                worker.ShowDoneImg(4);
+                            }
+                            if (vehicleDetails.IsHistory && WizardPageNo == 3)
+                            {
+                                worker.ShowDoneImg(1);
+                                worker.ShowDoneImg(2);
+                                worker.ShowDoneImg(3);
+                                worker.ShowDoneImg(4);
+                                worker.ShowDoneImg(5);
+                            }
+                            if (vehicleDetails.IsPhotos && WizardPageNo < 4)
+                            {
+                                worker.ShowDoneImg(1);
+                                worker.ShowDoneImg(2);
+                                worker.ShowDoneImg(3);
+                                worker.ShowDoneImg(4);
+                                worker.ShowDoneImg(5);
+                                worker.ShowDoneImg(6);
+                            }
                         }
+
 
                         if (UserInterfaceIdiomIsPhone)
                         {

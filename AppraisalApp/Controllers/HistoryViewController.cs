@@ -483,7 +483,12 @@ namespace ExtAppraisalApp
                 historyValue = ServiceFactory.getWebServiceHandle().GetHistoryKBB(vehicleID, storeId, invtrId, prospectId);
                 InvokeOnMainThread(() =>
                 {
-                    Utility.HideLoadingIndicator(this.SplitViewController.View);
+                    try{
+                        Utility.HideLoadingIndicator(this.SplitViewController.View);   
+                    }catch(Exception exc){
+                        System.Diagnostics.Debug.WriteLine("Exception occurred :: " + exc.Message);
+                    }
+
                     foreach (var history in historyValue)
                     {
                         if (history.questionId == "qp/82")
