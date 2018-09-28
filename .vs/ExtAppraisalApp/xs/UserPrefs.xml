@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="ExtAppraisalApp Status">
     <Files>
-      <File FileName="AppraisalApp/Controllers/PhotoGraphController.cs" Line="689" Column="13" />
-      <File FileName="AppraisalApp/Controllers/ReconditionViewController.cs" Line="67" Column="25" />
+      <File FileName="AppraisalApp/Controllers/PhotoGraphController.cs" Line="689" Column="1" />
+      <File FileName="AppraisalApp/Controllers/ReconditionViewController.cs" Line="67" Column="1" />
       <File FileName="AppraisalApp/Controllers/DecodeViewController.cs" Line="227" Column="1" />
       <File FileName="AppraisalApp/Services/ServiceImpl.cs" Line="832" Column="35" />
       <File FileName="AppraisalApp/Controllers/SummaryViewController.cs" Line="17" Column="1" />
@@ -10,33 +10,23 @@
       <File FileName="AppraisalApp/Controllers/MasterViewController.cs" Line="581" Column="57" />
       <File FileName="AppraisalApp/Controllers/PhotoViewController.cs" Line="133" Column="68" />
       <File FileName="AppraisalApp/Controllers/ConfirmationViewController.cs" Line="131" Column="62" />
-      <File FileName="AppraisalApp/AppDelegate.cs" Line="25" Column="21" />
+      <File FileName="AppraisalApp/AppDelegate.cs" Line="108" Column="20" />
+      <File FileName="AppraisalApp/GoogleService-Info.plist" />
       <File FileName="ExtAppraisalApp Status" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="ExtAppraisalApp" expanded="True">
-            <Node name="ExtAppraisalApp" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="DecodeViewController.cs" expanded="True" />
-                <Node name="PhotoGraphController.cs" selected="True" />
-              </Node>
-              <Node name="Services" expanded="True" />
-              <Node name="Views" expanded="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/apple/Documents/Crowe/28_Sep_2018/ExtAppraisalApp/AppraisalApp/AppDelegate.cs" relfile="AppraisalApp/AppDelegate.cs" line="99" column="1" />
+      <Breakpoint file="/Users/apple/Documents/Crowe/28_Sep_2018/ExtAppraisalApp/AppraisalApp/AppDelegate.cs" relfile="AppraisalApp/AppDelegate.cs" line="108" column="20" />
+      <Breakpoint file="/Users/apple/Documents/Crowe/28_Sep_2018/ExtAppraisalApp/AppraisalApp/AppDelegate.cs" relfile="AppraisalApp/AppDelegate.cs" line="110" column="1" />
+      <Breakpoint file="/Users/apple/Documents/Crowe/28_Sep_2018/ExtAppraisalApp/AppraisalApp/AppDelegate.cs" relfile="AppraisalApp/AppDelegate.cs" line="112" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="../../../AppraisalApp/Controllers/DecodeViewController.cs" line="80" offsetX="784" offsetY="1185" expression="apprrequest.VIN" liveUpdate="True" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
-  <MonoDevelop.Ide.ItemProperties.ExtAppraisalApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.0B24CE10-6C2E-4FDE-9145-62431DB5F71B" automaticSigning="False" />
+  <MonoDevelop.Ide.ItemProperties.ExtAppraisalApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.13AA464C-9B1A-4A8C-B44A-6011481AC5C3" automaticSigning="False" />
   <MultiItemStartupConfigurations />
 </Properties>

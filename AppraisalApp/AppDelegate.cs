@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using AppraisalApp.Models;
 using ExtAppraisalApp.Models;
+using Firebase.Core;
 using Foundation;
 using UIKit;
 
@@ -96,7 +97,7 @@ namespace ExtAppraisalApp
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
-
+            try{              AppDelegate.appDelegate = this;                 NSString[] keys = { new NSString("AIzaSyCFbFEabE7C5-gv0BTJyiSRXhmQA7cGii4") } ;                 NSObject[] values = { new NSString("extappraisalapp-4527c.firebaseapp.com") } ;                 var parameters = NSDictionary<NSString, NSObject>.FromObjectsAndKeys(values, keys, keys.Length);                 Firebase.Analytics.Loader loader1 = new Firebase.Analytics.Loader();                 Firebase.InstanceID.Loader loader2 = new Firebase.InstanceID.Loader();                  App.Configure();                 //Firebase.Core.App.Configure();                 Firebase.Analytics.Analytics.LogEvent("ad_click", parameters);               }             catch(Exception ex)             {                 Console.WriteLine(ex);             } 
             // Override point for customization after application launch.
             AppDelegate.appDelegate = this;
 
