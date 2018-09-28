@@ -204,46 +204,24 @@ namespace ExtAppraisalApp
 
             if (!UserInterfaceIdiomIsPhone)
             {
-
-                //if (indexPath.Row == 1 && !AppDelegate.appDelegate.IsFactorySaved)
-                //{
-                //    return null;
-                //}
-                //else if (indexPath.Row == 2 && !AppDelegate.appDelegate.IsAftermarketSaved)
-                //{
-                //    return null;
-                //}
-                //else if (indexPath.Row == 3 && !AppDelegate.appDelegate.IsHistorySaved)
-                //{
-                //    return null;
-                //}
-                //else if (indexPath.Row == 4 && !AppDelegate.appDelegate.IsReconditionsSaved)
-                //{
-                //    return null;
-                //}
-                //else if (indexPath.Row == 5 && !AppDelegate.appDelegate.IsPhotosSaved)
-                //{
-                //    return null;
-                //}
-                //return indexPath
                 if(AppDelegate.appDelegate.WizardPageNo < 4){
-                    if (indexPath.Row == 1 && !AppDelegate.appDelegate.IsFactoryOptions)
+                    if (indexPath.Row == 1 && !AppDelegate.appDelegate.IsFactoryOptions && !AppDelegate.appDelegate.IsFactorySaved)
                     {
                         return null;
                     }
-                    else if (indexPath.Row == 2 && AppDelegate.appDelegate.WizardPageNo < 2)
+                    else if (indexPath.Row == 2 && AppDelegate.appDelegate.WizardPageNo < 2 && !AppDelegate.appDelegate.IsAftermarketSaved)
                     {
                         return null;
                     }
-                    else if (indexPath.Row == 3 && !AppDelegate.appDelegate.IsHistory)
+                    else if (indexPath.Row == 3 && !AppDelegate.appDelegate.IsHistory && !AppDelegate.appDelegate.IsHistorySaved)
                     {
                         return null;
                     }
-                    else if (indexPath.Row == 4 && AppDelegate.appDelegate.WizardPageNo < 3)
+                    else if (indexPath.Row == 4 && AppDelegate.appDelegate.WizardPageNo < 3 && !AppDelegate.appDelegate.IsReconditionsSaved)
                     {
                         return null;
                     }
-                    else if (indexPath.Row == 5 && !AppDelegate.appDelegate.IsPhotos && AppDelegate.appDelegate.WizardPageNo < 4)
+                    else if (indexPath.Row == 5 && !AppDelegate.appDelegate.IsPhotos && AppDelegate.appDelegate.WizardPageNo < 4 && !AppDelegate.appDelegate.IsPhotosSaved)
                     {
                         return null;
                     }
@@ -273,52 +251,24 @@ namespace ExtAppraisalApp
         {
             if (!UserInterfaceIdiomIsPhone)
             {
-                //if (segueIdentifier == "infoDetail")
-                //{
-
-                //}
-                //else if (segueIdentifier == "factoryDetail" && !AppDelegate.appDelegate.IsFactorySaved)
-                //{
-                //    return false;
-
-                //}
-                //else if (segueIdentifier == "AfterMarketSegue" && !AppDelegate.appDelegate.IsAftermarketSaved)
-                //{
-                //    return false;
-                //}
-                //else if (segueIdentifier == "historyDetails" && !AppDelegate.appDelegate.IsHistorySaved)
-                //{
-                //    return false;
-                //}
-                //else if (segueIdentifier == "reconditionDetails" && !AppDelegate.appDelegate.IsReconditionsSaved)
-                //{
-                //    return false;
-                //}
-                //else if (segueIdentifier == "photoDetails" && !AppDelegate.appDelegate.IsPhotosSaved)
-                //{
-                //    return false;
-                //}
-                //return true;
-
-
                 if(AppDelegate.appDelegate.WizardPageNo < 4){
-                    if (segueIdentifier == "factoryDetail" && !AppDelegate.appDelegate.IsFactoryOptions)
+                    if (segueIdentifier == "factoryDetail" && !AppDelegate.appDelegate.IsFactoryOptions && !AppDelegate.appDelegate.IsFactorySaved)
                     {
                         return false;
                     }
-                    else if (segueIdentifier == "AfterMarketSegue" && AppDelegate.appDelegate.WizardPageNo < 2)
+                    else if (segueIdentifier == "AfterMarketSegue" && AppDelegate.appDelegate.WizardPageNo < 2  && !AppDelegate.appDelegate.IsAftermarketSaved)
                     {
                         return false;
                     }
-                    else if (segueIdentifier == "historyDetails" && !AppDelegate.appDelegate.IsHistory)
+                    else if (segueIdentifier == "historyDetails" && !AppDelegate.appDelegate.IsHistory && !AppDelegate.appDelegate.IsHistorySaved)
                     {
                         return false;
                     }
-                    else if (segueIdentifier == "reconditionDetails" && AppDelegate.appDelegate.WizardPageNo < 3)
+                    else if (segueIdentifier == "reconditionDetails" && AppDelegate.appDelegate.WizardPageNo < 3 && !AppDelegate.appDelegate.IsReconditionsSaved)
                     {
                         return false;
                     }
-                    else if (segueIdentifier == "photoDetails" && !AppDelegate.appDelegate.IsPhotos && AppDelegate.appDelegate.WizardPageNo < 4)
+                    else if (segueIdentifier == "photoDetails" && !AppDelegate.appDelegate.IsPhotos && AppDelegate.appDelegate.WizardPageNo < 4 && !AppDelegate.appDelegate.IsPhotosSaved)
                     {
                         return false;
                     }

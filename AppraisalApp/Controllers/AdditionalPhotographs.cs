@@ -178,7 +178,7 @@ namespace ExtAppraisalApp
         {
             selected_index = index;
 
-            if (selected_index != (PhotosModelList.Count - 1))
+            if (selected_index != (PhotosModelList.Count - 1) || selected_index == 9)
             {
 
                 var alert = UIAlertController.Create(null, null, UIAlertControllerStyle.ActionSheet);
@@ -211,7 +211,10 @@ namespace ExtAppraisalApp
                 {
                     PhotosModelList.RemoveAt(index);
                     PhotosModelList.Add(new AddPhotoModel { Image = "camera_black.png", VehicleLabel = "Additional" });
-                    PhotosModelList.Add(new AddPhotoModel { Image = "add_photo.png", VehicleLabel = "Additional" });
+
+                    if(PhotosModelList.Count < 10){
+                        PhotosModelList.Add(new AddPhotoModel { Image = "add_photo.png", VehicleLabel = "Additional" });
+                    }
                     AddPhotoCollectionView.ReloadData();
                 }
             }

@@ -178,6 +178,7 @@ namespace ExtAppraisalApp
                         AppDelegate.appDelegate.IsPhotos = vehicleDetails.IsPhotos;
                         AppDelegate.appDelegate.WizardPageNo = vehicleDetails.WizardPage;
 
+
                         if(WizardPageNo > 4){
                             worker.ShowDoneImg(1);
                             worker.ShowDoneImg(2);

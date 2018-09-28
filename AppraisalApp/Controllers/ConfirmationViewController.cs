@@ -119,6 +119,7 @@ namespace ExtAppraisalApp
             System.IO.File.Delete(pngFilename);
             buttonName = "additional-photo-" + 2 + ".png";
             pngFilename = System.IO.Path.Combine(documentsDirectory, buttonName);
+
             System.IO.File.Delete(pngFilename);
             AppDelegate.appDelegate.LeftCarImageUploaded = false;
             AppDelegate.appDelegate.RightCarImageUploaded = false;
