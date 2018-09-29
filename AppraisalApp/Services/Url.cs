@@ -53,5 +53,7 @@ namespace ExtAppraisalApp.Services
         public const string SAVE_APNS = "SavePushNotificationToken/";
         public const string SAVE_Offer = "SaveOfferResponseKBB/";
         public const string SAVE_Photo = "SavePhoto/";
+
+        public const string CUSTOMER_APPRAISAL_LOG_URL = "FetchCustomerAppraisalLog/";
     }
 }

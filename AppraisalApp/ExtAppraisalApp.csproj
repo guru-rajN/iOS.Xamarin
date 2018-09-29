@@ -336,6 +336,7 @@
     </Compile>
     <Compile Include="Models\ReconResponse.cs" />
     <Compile Include="Models\GetphotoResponse.cs" />
+    <Compile Include="Models\CustomerAppraisalLogEntity.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />
