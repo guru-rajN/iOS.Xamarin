@@ -1,9 +1,7 @@
 ﻿<Properties StartupConfiguration="{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="ExtAppraisalApp Status">
     <Files>
-      <File FileName="AppraisalApp/Controllers/LoginViewController.cs" Line="105" Column="50" />
-      <File FileName="AppraisalApp/Models/CustomerAppraisalLogEntity.cs" Line="16" Column="1" />
-      <File FileName="AppraisalApp/Services/Url.cs" Line="3" Column="2" />
+      <File FileName="AppraisalApp/Controllers/LoginViewController.cs" Line="10" Column="21" />
       <File FileName="ExtAppraisalApp Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>

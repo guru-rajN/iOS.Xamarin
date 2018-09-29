@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleName</key>
-	<string>AppraisalApp</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -43,5 +41,7 @@
 	<string>Can we use</string>
 	<key>CFBundleIdentifier</key>
 	<string>sims.slkgroup.carCash</string>
+	<key>CFBundleName</key>
+	<string>CarCash</string>
 </dict>
 </plist>
