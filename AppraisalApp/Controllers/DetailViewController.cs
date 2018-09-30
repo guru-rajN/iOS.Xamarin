@@ -61,7 +61,7 @@ namespace ExtAppraisalApp
             this.masterViewController = masterViewController;
         }
 
-        void ConfigureView()
+        async void ConfigureView()
         {
 
             // Update the user interface for the detail item
@@ -109,7 +109,16 @@ namespace ExtAppraisalApp
                 }
                 else
                 {
-                    vehicleDetails = GetVehicleData();// get vehicle details service
+                    try{
+                        Utility.ShowLoadingIndicator(this.SplitViewController.View, "Loading...", true);
+                        // get vehicle details service
+                        vehicleDetails = await CallGetVehicleService();
+                        Utility.HideLoadingIndicator(this.SplitViewController.View);
+                    }catch(Exception exc){
+                        Debug.WriteLine("Exception occurred :: " + exc.Message);
+                    }
+
+
                     AppDelegate.appDelegate.trimId = vehicleDetails.KBBTrimId;
                     AppDelegate.appDelegate.cacheVehicleDetails = vehicleDetails;
                 }
@@ -122,16 +131,24 @@ namespace ExtAppraisalApp
                     }
                     else
                     {
-                        if (vehicleDetails.InvtrType.Equals("Used"))
-                        {
-                            decodeVinDetails = DecodeVin(vehicleDetails.VIN, (int)vehicleDetails.Mileage, vehicleDetails.StoreID, 10);
-                        }
-                        else
-                        {
-                            decodeVinDetails = DecodeVin(vehicleDetails.VIN, AppDelegate.appDelegate.mileage, vehicleDetails.StoreID, 20);
+                        try{
+                            Utility.ShowLoadingIndicator(this.SplitViewController.View, "Loading...", true);
 
+                            if (vehicleDetails.InvtrType.Equals("Used"))
+                            {
+                                decodeVinDetails = await CallDecodeVINService(vehicleDetails.VIN, (int)vehicleDetails.Mileage, vehicleDetails.StoreID, 10);
+                            }
+                            else
+                            {
+                                decodeVinDetails = await CallDecodeVINService(vehicleDetails.VIN, AppDelegate.appDelegate.mileage, vehicleDetails.StoreID, 20);
+
+                            }
+                            Utility.HideLoadingIndicator(this.SplitViewController.View);
+                            AppDelegate.appDelegate.cacheDecodeVinDetails = decodeVinDetails;
+
+                        }catch(Exception exc){
+                            Debug.WriteLine("Exception occurred :: " + exc.Message);
                         }
-                        AppDelegate.appDelegate.cacheDecodeVinDetails = decodeVinDetails;
                     }
 
 
@@ -664,6 +681,23 @@ namespace ExtAppraisalApp
             }
         }
 
+        Task<Vehicle> CallGetVehicleService(){
+            return Task<Vehicle>.Factory.StartNew(() =>
+            {
+                Vehicle vehicle = GetVehicleData();
+                return vehicle;
+            });
+        }
+
+        Task<VinVehicleDetailsKBB> CallDecodeVINService(string VIN, int Mileage, int StoreId, int InventoryType)
+        {
+            return Task<VinVehicleDetailsKBB>.Factory.StartNew(() =>
+            {
+                VinVehicleDetailsKBB vehicleDetailsKBB = DecodeVin(VIN, Mileage, StoreId, InventoryType);
+                return vehicleDetailsKBB;
+            });
+        }
+
         // Get all the vehicle details : the item which will have null value, it means it will have multiple values
         // that we need to fetch from decode vin service
         private Vehicle GetVehicleData()
@@ -749,48 +783,9 @@ namespace ExtAppraisalApp
                 worker.WorkerDelegate = masterViewController;
                 worker.UpdateUI(false);
 
-                AppDelegate.appDelegate.prospectId = GenerateProspect();
-                SaveVehicleDetails(vehicleDetails);
+                Utility.ShowLoadingIndicator(this.SplitViewController.View, "Saving...", true);
 
-                AppDelegate.appDelegate.cacheVehicleDetails = vehicleDetails;
-
-                if(null != AppDelegate.appDelegate.prospectId){
-                    
-                    if (!AppDelegate.appDelegate.IsAllDataSaved)
-                    {
-                        if (!AppDelegate.appDelegate.IsInfoSaved)
-                        {
-                            if (!AppDelegate.appDelegate.IsFactoryOptions)
-                                worker.ShowPartialDoneImg(2);
-
-                            worker.ShowDoneImg(1);
-                            worker.PerformNavigation(2);
-
-                            if (UserInterfaceIdiomIsPhone)
-                            {
-                                var dictionary = new NSDictionary(new NSString("1"), new NSString("VehicleInfo"));
-
-                                NSNotificationCenter.DefaultCenter.PostNotificationName((Foundation.NSString)"MenuSelection", null, dictionary);
-                            }
-                        }
-                    }
-                    else
-                    {
-                        var storyboard = UIStoryboard.FromName("Main", null);
-                        SummaryViewController summaryViewController = (SummaryViewController)storyboard.InstantiateViewController("SummaryViewController");
-                        UINavigationController uINavigationController = new UINavigationController(summaryViewController);
-                        uINavigationController.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
-                        uINavigationController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
-                        this.NavigationController.PresentViewController(uINavigationController, true, null);
-                    }
-
-                    AppDelegate.appDelegate.IsInfoSaved = true;
-                }else{
-                    // TO-DO // change the messsage
-                    Utility.ShowAlert("AppraisalApp", "Vehicle Prospect ID not generated", "OK");
-                }
-
-
+                SaveVehicleDatas(worker);
 
             }
 
@@ -870,34 +865,49 @@ namespace ExtAppraisalApp
                 {
 
                     InvokeOnMainThread(() => {
-                        //Utility.HideLoadingIndicator(this.View);
+                        Utility.HideLoadingIndicator(this.SplitViewController.View);
+
 
                         AppDelegate.appDelegate.cacheVehicleDetails = vehicleDetails;
 
-                        if (!AppDelegate.appDelegate.IsAllDataSaved)
+                        if (null != AppDelegate.appDelegate.prospectId)
                         {
-                            if (!AppDelegate.appDelegate.IsInfoSaved)
+
+                            if (!AppDelegate.appDelegate.IsAllDataSaved)
                             {
-                                worker.ShowPartialDoneImg(2);
-                                worker.ShowDoneImg(1);
-                                worker.PerformNavigation(2);
+                                if (!AppDelegate.appDelegate.IsInfoSaved)
+                                {
+                                    if (!AppDelegate.appDelegate.IsFactoryOptions)
+                                        worker.ShowPartialDoneImg(2);
+
+                                    worker.ShowDoneImg(1);
+                                    worker.PerformNavigation(2);
+
+                                    if (UserInterfaceIdiomIsPhone)
+                                    {
+                                        var dictionary = new NSDictionary(new NSString("1"), new NSString("VehicleInfo"));
+
+                                        NSNotificationCenter.DefaultCenter.PostNotificationName((Foundation.NSString)"MenuSelection", null, dictionary);
+                                    }
+                                }
                             }
                             else
                             {
-                                worker.PerformNavigation(2);
+                                var storyboard = UIStoryboard.FromName("Main", null);
+                                SummaryViewController summaryViewController = (SummaryViewController)storyboard.InstantiateViewController("SummaryViewController");
+                                UINavigationController uINavigationController = new UINavigationController(summaryViewController);
+                                uINavigationController.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
+                                uINavigationController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
+                                this.NavigationController.PresentViewController(uINavigationController, true, null);
                             }
+
+                            AppDelegate.appDelegate.IsInfoSaved = true;
                         }
                         else
                         {
-                            var storyboard = UIStoryboard.FromName("Main", null);
-                            SummaryViewController summaryViewController = (SummaryViewController)storyboard.InstantiateViewController("SummaryViewController");
-                            UINavigationController uINavigationController = new UINavigationController(summaryViewController);
-                            uINavigationController.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
-                            uINavigationController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
-                            this.NavigationController.PresentViewController(uINavigationController, true, null);
+                            // TO-DO // change the messsage
+                            Utility.ShowAlert("AppraisalApp", "Vehicle Prospect ID not generated", "OK");
                         }
-
-                        AppDelegate.appDelegate.IsInfoSaved = true;
                     });
                 }
             });
