@@ -144,6 +144,8 @@ namespace ExtAppraisalApp
                 ReconditionSaveBtn.TintColor = UIColor.Black;
                 selectionAlertLabel.Text = "";
 
+                //Utility.ShowLoadingIndicator(this.SplitViewController.View, "Saving...", true);
+
                 savereconAPI(recondata);
                 //alert.TextColor = UIColor.Black;
                 //save recond api
@@ -225,11 +227,23 @@ namespace ExtAppraisalApp
             }
             return rowValue;
         }
+
+        Task CallSaveReconService(ReconditionKBB reconditionKBB){
+            return Task.Factory.StartNew(() =>
+            {
+                savereconAPI(reconditionKBB);
+            });
+        }
+
         public void savereconAPI(ReconditionKBB reconditionKBB)
         {
 
             SIMSResponseData responseStatus;
             responseStatus = ServiceFactory.ServiceRecon.getWebServiceHandle().SaveRecondition(reconditionKBB);
+            //InvokeOnMainThread(() =>
+            //{
+            //    Utility.HideLoadingIndicator(this.SplitViewController.View);
+            //});
         }
         public static class globalInde
         {
