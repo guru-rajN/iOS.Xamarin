@@ -245,7 +245,7 @@ namespace ExtAppraisalApp
                     data.InvtrID = AppDelegate.appDelegate.invtrId;
                     data.UserName = "Extrnal App";
 
-                    Utility.ShowLoadingIndicator(this.SplitViewController.View, "Saving...", true);
+                    //Utility.ShowLoadingIndicator(this.SplitViewController.View, "Saving...", true);
 
                     CallSaveHistory(data);
 
@@ -328,10 +328,10 @@ namespace ExtAppraisalApp
             SIMSResponseData responseStatus;
             responseStatus = ServiceFactory.ServiceHistory.getWebServiceHandle().SaveHistory(data);
 
-            InvokeOnMainThread(() =>
-            {
-                Utility.HideLoadingIndicator(this.SplitViewController.View);
-            });
+            //InvokeOnMainThread(() =>
+            //{
+            //    Utility.HideLoadingIndicator(this.SplitViewController.View);
+            //});
         }
         partial void Segment2_Change(UISegmentedControl sender)
         {

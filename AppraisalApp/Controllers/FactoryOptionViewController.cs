@@ -24,7 +24,7 @@ namespace ExtAppraisalApp
 
         partial void BtnSave_Activated(UIBarButtonItem sender)
         {
-            Utility.ShowLoadingIndicator(this.SplitViewController.View, "Saving...", true);
+            //Utility.ShowLoadingIndicator(this.SplitViewController.View, "Saving...", true);
 
             SaveFactoryOptions(AppDelegate.appDelegate.vehicleID,AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId);
 
@@ -180,10 +180,10 @@ namespace ExtAppraisalApp
                     vehicleFactoryOptions.data = listfactory;
                     responseStatus = ServiceFactory.getWebServiceHandle().SaveFactoryOptions(vehicleFactoryOptions);
 
-                InvokeOnMainThread(() =>
-                {
-                    Utility.HideLoadingIndicator(this.SplitViewController.View);
-                });
+                //InvokeOnMainThread(() =>
+                //{
+                //    Utility.HideLoadingIndicator(this.SplitViewController.View);
+                //});
 
 
             });

@@ -41,7 +41,7 @@ namespace AppraisalApp
 
         partial void Btn_SaveAfterMarket_Activated(UIBarButtonItem sender)
         {
-            Utility.ShowLoadingIndicator(this.SplitViewController.View, "Saving...", true);
+            //Utility.ShowLoadingIndicator(this.SplitViewController.View, "Saving...", true);
 
             CallSaveAfterMarketFactoryOptions();
 
@@ -292,10 +292,10 @@ namespace AppraisalApp
 
             responseStatus = ServiceFactory.getWebServiceHandle().SaveAfterMarketFactoryOptions(vehicleFactoryOptions);
 
-            InvokeOnMainThread(() =>
-            {
-                Utility.HideLoadingIndicator(this.SplitViewController.View);
-            });
+            //InvokeOnMainThread(() =>
+            //{
+            //    Utility.HideLoadingIndicator(this.SplitViewController.View);
+            //});
         }
         public override void ViewDidLoad()
         {
