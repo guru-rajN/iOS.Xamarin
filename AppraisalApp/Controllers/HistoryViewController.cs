@@ -244,10 +244,7 @@ namespace ExtAppraisalApp
                     data.StoreID = AppDelegate.appDelegate.storeId;
                     data.InvtrID = AppDelegate.appDelegate.invtrId;
                     data.UserName = "Extrnal App";
-
-                    Utility.ShowLoadingIndicator(this.SplitViewController.View, "Saving...", true);
-
-                    CallSaveHistory(data);
+                    Save_History(data);
 
                     // Navigate to Recondition
                     if (null == masterViewController)
@@ -315,23 +312,11 @@ namespace ExtAppraisalApp
 
         }
 
-        Task CallSaveHistory(HistoryRequest data){
-            return Task.Factory.StartNew(() =>
-            {
-                Save_History(data);
-            }); 
-        }
-
         //Save History API
         void Save_History(HistoryRequest data)
         {
             SIMSResponseData responseStatus;
             responseStatus = ServiceFactory.ServiceHistory.getWebServiceHandle().SaveHistory(data);
-
-            InvokeOnMainThread(() =>
-            {
-                Utility.HideLoadingIndicator(this.SplitViewController.View);
-            });
         }
         partial void Segment2_Change(UISegmentedControl sender)
         {

@@ -41,9 +41,7 @@ namespace AppraisalApp
 
         partial void Btn_SaveAfterMarket_Activated(UIBarButtonItem sender)
         {
-            Utility.ShowLoadingIndicator(this.SplitViewController.View, "Saving...", true);
-
-            CallSaveAfterMarketFactoryOptions();
+            SaveAfterMarketFactoryOptions();
 
             // Navigate to History
             if (null == masterViewController)
@@ -223,13 +221,6 @@ namespace AppraisalApp
             });
 
         }
-        Task CallSaveAfterMarketFactoryOptions(){
-            return Task.Factory.StartNew(() =>
-            {
-                SaveAfterMarketFactoryOptions();
-            });
-        }
-
         public void SaveAfterMarketFactoryOptions()
         {
             SIMSResponseData responseStatus;
@@ -291,11 +282,6 @@ namespace AppraisalApp
             //Logic to add the Selected Factory options
 
             responseStatus = ServiceFactory.getWebServiceHandle().SaveAfterMarketFactoryOptions(vehicleFactoryOptions);
-
-            InvokeOnMainThread(() =>
-            {
-                Utility.HideLoadingIndicator(this.SplitViewController.View);
-            });
         }
         public override void ViewDidLoad()
         {
