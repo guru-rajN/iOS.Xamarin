@@ -4,11 +4,8 @@
       <File FileName="AppraisalApp/Controllers/LoginViewController.cs" Line="222" Column="73" />
       <File FileName="AppraisalApp/Controllers/DetailViewController.cs" Line="684" Column="44" />
       <File FileName="AppraisalApp/Controllers/MasterViewController.cs" Line="431" Column="38" />
-      <File FileName="AppraisalApp/Controllers/FactoryOptionViewController.cs" Line="43" Column="57" />
-      <File FileName="AppraisalApp/Services/ServiceImpl.cs" Line="445" Column="34" />
-      <File FileName="AppraisalApp/Controllers/PhotoViewController.cs" Line="47" Column="91" />
-      <File FileName="AppraisalApp/Controllers/PhotoGraphController.cs" Line="698" Column="24" />
-      <File FileName="AppraisalApp/Controllers/FactoryOptionViewController.designer.cs" Line="27" Column="39" />
+      <File FileName="AppraisalApp/Controllers/FactoryOptionViewController.cs" Line="27" Column="12" />
+      <File FileName="AppraisalApp/Controllers/AfterMarketViewController.cs" Line="51" Column="46" />
       <File FileName="ExtAppraisalApp Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>

@@ -39,12 +39,14 @@ namespace AppraisalApp
             get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
         }
 
-        partial void Btn_SaveAfterMarket_Activated(UIBarButtonItem sender)
+        async partial void Btn_SaveAfterMarket_Activated(UIBarButtonItem sender)
         {
-            //Utility.ShowLoadingIndicator(this.SplitViewController.View, "Saving...", true);
+            var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
+            Utility.ShowLoadingIndicator(splitViewController.View, "Saving...", true);
 
-            CallSaveAfterMarketFactoryOptions();
+            SIMSResponseData responseData = await CallSaveAfterMarketFactoryOptions();
 
+            Utility.HideLoadingIndicator(splitViewController.View);
             // Navigate to History
             if (null == masterViewController)
             {
@@ -223,14 +225,15 @@ namespace AppraisalApp
             });
 
         }
-        Task CallSaveAfterMarketFactoryOptions(){
-            return Task.Factory.StartNew(() =>
+        Task<SIMSResponseData> CallSaveAfterMarketFactoryOptions(){
+            return Task<SIMSResponseData>.Factory.StartNew(() =>
             {
-                SaveAfterMarketFactoryOptions();
+                SIMSResponseData responseData = SaveAfterMarketFactoryOptions();
+                return responseData;
             });
         }
 
-        public void SaveAfterMarketFactoryOptions()
+        public SIMSResponseData SaveAfterMarketFactoryOptions()
         {
             SIMSResponseData responseStatus;
             VehicleAfterMarketOptions vehicleFactoryOptions = new VehicleAfterMarketOptions();
@@ -291,11 +294,7 @@ namespace AppraisalApp
             //Logic to add the Selected Factory options
 
             responseStatus = ServiceFactory.getWebServiceHandle().SaveAfterMarketFactoryOptions(vehicleFactoryOptions);
-
-            //InvokeOnMainThread(() =>
-            //{
-            //    Utility.HideLoadingIndicator(this.SplitViewController.View);
-            //});
+            return responseStatus;
         }
         public override void ViewDidLoad()
         {
