@@ -24,7 +24,7 @@ namespace ExtAppraisalApp
 
         [Action ("BtnSave_Activated:")]
         [GeneratedCode ("iOS Designer", "1.0")]
-        partial void BtnSave_Activated (UIKit.UIBarButtonItem sender);
+        partial void BtnSave_Activated(UIKit.UIBarButtonItem sender);
 
         void ReleaseDesignerOutlets ()
         {

@@ -22,12 +22,14 @@ namespace ExtAppraisalApp
             get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
         }
 
-        partial void BtnSave_Activated(UIBarButtonItem sender)
+        async partial void BtnSave_Activated(UIBarButtonItem sender)
         {
-            //Utility.ShowLoadingIndicator(this.SplitViewController.View, "Saving...", true);
+            var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
+            Utility.ShowLoadingIndicator(splitViewController.View, "Saving...", true);
 
-            SaveFactoryOptions(AppDelegate.appDelegate.vehicleID,AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId);
+            SIMSResponseData responseData = await SaveFactoryOptions(AppDelegate.appDelegate.vehicleID,AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId);
 
+            Utility.HideLoadingIndicator(splitViewController.View);
             // Navigate to Aftermarket
             if (null == masterViewController)
             {
@@ -149,45 +151,49 @@ namespace ExtAppraisalApp
                     
 
         }
-        Task SaveFactoryOptions(long Vehicle_ID, short store_ID, short Invtr_ID){
-            return Task.Factory.StartNew(() => {
-                SIMSResponseData responseStatus;
-                VehicleFactoryOptionsKBB vehicleFactoryOptions = new VehicleFactoryOptionsKBB();
-               
-                    
-                    vehicleFactoryOptions.VehicleId = Vehicle_ID;
-                    vehicleFactoryOptions.StoreId = store_ID;
-                    vehicleFactoryOptions.InvtrId = Invtr_ID;
 
+        Task<SIMSResponseData> SaveFactoryOptions(long Vehicle_ID, short store_ID, short Invtr_ID){
 
-                    List<FactoryOptionsKBB> listfactory = new List<FactoryOptionsKBB>();
-                    foreach (var items in AppDelegate.appDelegate.fctoption)
-                    {
-                        foreach (var item in items.questions)
-                        {
-                            FactoryOptionsKBB factory = new FactoryOptionsKBB();
-                            factory.categoryName = item.categoryName;
-                            factory.displayName = item.displayName;
-                            factory.isSelected = item.isSelected;
-                            factory.optionId = item.optionId;
-                            factory.optionKindId = "KBB";
-                            listfactory.Add(factory);
+            return Task<SIMSResponseData>.Factory.StartNew(() => {
 
-
-                        }
-                    }
-
-                    vehicleFactoryOptions.data = listfactory;
-                    responseStatus = ServiceFactory.getWebServiceHandle().SaveFactoryOptions(vehicleFactoryOptions);
-
-                //InvokeOnMainThread(() =>
-                //{
-                //    Utility.HideLoadingIndicator(this.SplitViewController.View);
-                //});
-
-
+                SIMSResponseData responseData = SaveFactory(Vehicle_ID, store_ID, Invtr_ID);
+     
+                return responseData;
             });
           
+        }
+
+        private SIMSResponseData SaveFactory(long Vehicle_ID, short store_ID, short Invtr_ID)
+        {
+            SIMSResponseData responseStatus;
+            VehicleFactoryOptionsKBB vehicleFactoryOptions = new VehicleFactoryOptionsKBB();
+
+
+            vehicleFactoryOptions.VehicleId = Vehicle_ID;
+            vehicleFactoryOptions.StoreId = store_ID;
+            vehicleFactoryOptions.InvtrId = Invtr_ID;
+
+
+            List<FactoryOptionsKBB> listfactory = new List<FactoryOptionsKBB>();
+            foreach (var items in AppDelegate.appDelegate.fctoption)
+            {
+                foreach (var item in items.questions)
+                {
+                    FactoryOptionsKBB factory = new FactoryOptionsKBB();
+                    factory.categoryName = item.categoryName;
+                    factory.displayName = item.displayName;
+                    factory.isSelected = item.isSelected;
+                    factory.optionId = item.optionId;
+                    factory.optionKindId = "KBB";
+                    listfactory.Add(factory);
+
+
+                }
+            }
+
+            vehicleFactoryOptions.data = listfactory;
+            responseStatus =  ServiceFactory.getWebServiceHandle().SaveFactoryOptions(vehicleFactoryOptions);
+            return responseStatus;
         }
     }
 }
