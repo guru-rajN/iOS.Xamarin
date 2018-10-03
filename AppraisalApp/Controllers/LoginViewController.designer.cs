@@ -23,7 +23,15 @@ namespace ExtAppraisalApp
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton EmailRadioBtn { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton GuestBtn { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView GuestContainer { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -53,6 +61,10 @@ namespace ExtAppraisalApp
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void DealerBtn_TouchUpInside (UIKit.UIButton sender);
 
+        [Action ("EmailRadioBtn_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void EmailRadioBtn_TouchUpInside (UIKit.UIButton sender);
+
         [Action ("GuestBtn_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void GuestBtn_TouchUpInside (UIKit.UIButton sender);
@@ -69,9 +81,19 @@ namespace ExtAppraisalApp
                 DealerBtn = null;
             }
 
+            if (EmailRadioBtn != null) {
+                EmailRadioBtn.Dispose ();
+                EmailRadioBtn = null;
+            }
+
             if (GuestBtn != null) {
                 GuestBtn.Dispose ();
                 GuestBtn = null;
+            }
+
+            if (GuestContainer != null) {
+                GuestContainer.Dispose ();
+                GuestContainer = null;
             }
 
             if (InitialContainer != null) {

@@ -51,6 +51,9 @@ namespace ExtAppraisalApp
 
             NSNotificationCenter.DefaultCenter.AddObserver((Foundation.NSString)"ShowPushNotifyData", ShowAPNSView);
 
+            InitialContainer.Hidden = false;
+            GuestContainer.Hidden = true;
+
             if (UserInterfaceIdiomIsPhone)
             {
                 Console.WriteLine("width :: " + this.View.Bounds.Width + " Height :: " + this.View.Bounds.Height);
@@ -475,6 +478,46 @@ namespace ExtAppraisalApp
 
         }
 
+        public static void SlideVerticaly(UIView view, bool isIn, bool fromTop, double duration = 0.3, Action onFinished = null)
+        {
+            var minAlpha = (nfloat)0.0f;
+            var maxAlpha = (nfloat)1.0f;
+            var minTransform = CGAffineTransform.MakeTranslation(0, (fromTop ? -1 : 1) * view.Bounds.Height);
+            var maxTransform = CGAffineTransform.MakeIdentity();
+
+            view.Alpha = isIn ? minAlpha : maxAlpha;
+            view.Transform = isIn ? minTransform : maxTransform;
+            UIView.Animate(duration, 0, UIViewAnimationOptions.CurveEaseInOut,
+                () => {
+                    view.Alpha = isIn ? maxAlpha : minAlpha;
+                    view.Transform = isIn ? maxTransform : minTransform;
+                },
+                onFinished
+            );
+        }
+        public static void SlideHorizontaly(UIView view, bool isIn, bool fromLeft, double duration = 0.3, Action onFinished = null)
+        {
+            var minAlpha = (nfloat)0.0f;
+            var maxAlpha = (nfloat)1.0f;
+            var minTransform = CGAffineTransform.MakeTranslation((fromLeft ? -1 : 1) * view.Bounds.Width, 0);
+            var maxTransform = CGAffineTransform.MakeIdentity();
+
+            view.Alpha = isIn ? minAlpha : maxAlpha;
+            view.Transform = isIn ? minTransform : maxTransform;
+            UIView.Animate(duration, 0, UIViewAnimationOptions.CurveEaseInOut,
+                () => {
+                    view.Alpha = isIn ? maxAlpha : minAlpha;
+                    view.Transform = isIn ? maxTransform : minTransform;
+                },
+                onFinished
+            );
+        }
+
+        partial void EmailRadioBtn_TouchUpInside(UIButton sender)
+        {
+            EmailRadioBtn.SetBackgroundImage(UIImage.FromBundle("circular_filled.png"),UIControlState.Normal);
+        }
+
         partial void DealerBtn_TouchUpInside(UIButton sender)
         {
             Debug.WriteLine("Dealer Selected");
@@ -483,6 +526,11 @@ namespace ExtAppraisalApp
         partial void GuestBtn_TouchUpInside(UIButton sender)
         {
             Debug.WriteLine("Guest Selected");
+
+            InitialContainer.Hidden = true;
+            GuestContainer.Hidden = false;
+
+            SlideVerticaly(GuestContainer, true, false, 0.5, null);
         }
 
         public void performNavigate(int index)

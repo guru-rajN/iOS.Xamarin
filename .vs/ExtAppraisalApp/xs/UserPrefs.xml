@@ -1,9 +1,11 @@
 ﻿<Properties StartupConfiguration="{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="ExtAppraisalApp Status">
     <Files>
-      <File FileName="AppraisalApp/Controllers/APNSViewController.cs" Line="5" Column="1" />
+      <File FileName="AppraisalApp/Controllers/APNSViewController.cs" Line="21" Column="9" />
       <File FileName="AppraisalApp/Controllers/MapDelegate.cs" Line="43" Column="47" />
-      <File FileName="AppraisalApp/Controllers/LoginViewController.cs" Line="471" Column="36" />
+      <File FileName="AppraisalApp/Controllers/LoginViewController.cs" Line="511" Column="19" />
+      <File FileName="AppraisalApp/Controllers/PhotoGraphController.cs" Line="196" Column="51" />
+      <File FileName="AppraisalApp/Controllers/DecodeViewController.designer.cs" Line="18" Column="54" />
       <File FileName="ExtAppraisalApp Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
