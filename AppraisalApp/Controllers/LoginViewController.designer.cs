@@ -23,7 +23,15 @@ namespace ExtAppraisalApp
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField EmailPhone { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton EmailRadioBtn { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton GetStartBtn { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -47,6 +55,10 @@ namespace ExtAppraisalApp
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton PhoneRadioBtn { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIScrollView scrollview { get; set; }
 
         [Outlet]
@@ -65,9 +77,17 @@ namespace ExtAppraisalApp
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void EmailRadioBtn_TouchUpInside (UIKit.UIButton sender);
 
+        [Action ("GetStartBtn_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void GetStartBtn_TouchUpInside (UIKit.UIButton sender);
+
         [Action ("GuestBtn_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void GuestBtn_TouchUpInside (UIKit.UIButton sender);
+
+        [Action ("PhoneRadioBtn_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void PhoneRadioBtn_TouchUpInside (UIKit.UIButton sender);
 
         void ReleaseDesignerOutlets ()
         {
@@ -81,9 +101,19 @@ namespace ExtAppraisalApp
                 DealerBtn = null;
             }
 
+            if (EmailPhone != null) {
+                EmailPhone.Dispose ();
+                EmailPhone = null;
+            }
+
             if (EmailRadioBtn != null) {
                 EmailRadioBtn.Dispose ();
                 EmailRadioBtn = null;
+            }
+
+            if (GetStartBtn != null) {
+                GetStartBtn.Dispose ();
+                GetStartBtn = null;
             }
 
             if (GuestBtn != null) {
@@ -109,6 +139,11 @@ namespace ExtAppraisalApp
             if (LoginImg != null) {
                 LoginImg.Dispose ();
                 LoginImg = null;
+            }
+
+            if (PhoneRadioBtn != null) {
+                PhoneRadioBtn.Dispose ();
+                PhoneRadioBtn = null;
             }
 
             if (scrollview != null) {

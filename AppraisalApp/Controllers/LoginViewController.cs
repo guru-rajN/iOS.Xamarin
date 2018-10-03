@@ -54,6 +54,11 @@ namespace ExtAppraisalApp
             InitialContainer.Hidden = false;
             GuestContainer.Hidden = true;
 
+            EmailRadioBtn.SetBackgroundImage(UIImage.FromBundle("circular_filled.png"), UIControlState.Normal);
+            PhoneRadioBtn.SetBackgroundImage(UIImage.FromBundle("circular_empty.png"), UIControlState.Normal);
+
+            EmailPhone.Placeholder = "Email";
+
             if (UserInterfaceIdiomIsPhone)
             {
                 Console.WriteLine("width :: " + this.View.Bounds.Width + " Height :: " + this.View.Bounds.Height);
@@ -108,13 +113,12 @@ namespace ExtAppraisalApp
             AppDelegate.appDelegate.IsPhotosSaved = false;
             AppDelegate.appDelegate.IsAllDataSaved = false;
 
-            //txtZip.ShouldReturn = (tf) =>
-            //{
-            //    txtZip.EndEditing(true);
-            //    //View.EndEditing(true);
-            //    GoClick();
-            //    return true;
-            //};
+            txtZip.ShouldReturn = (tf) =>
+            {
+                txtZip.EndEditing(true);
+                GoClick();
+                return true;
+            };
 
         }
 
@@ -148,10 +152,10 @@ namespace ExtAppraisalApp
             base.ViewDidDisappear(animated);
         }
 
-        //partial void GetStartBtn_TouchUpInside(UIButton sender)
-        //{
-        //    GoClick();
-        //}
+        partial void GetStartBtn_TouchUpInside(UIButton sender)
+        {
+            GoClick();
+        }
 
         public void GoClick()
         {
@@ -197,108 +201,110 @@ namespace ExtAppraisalApp
         {
             return Task.Factory.StartNew(() =>
             {
-                //ServiceCall();
+                ServiceCall();
             });
         }
 
-        //private void ServiceCall()
-        //{
-        //    string code = null;
-        //    code = ServiceFactory.getWebServiceHandle().ValidateZipDealer(Convert.ToInt32(zipCode));
+        private void ServiceCall()
+        {
+            string code = null;
+            code = ServiceFactory.getWebServiceHandle().ValidateZipDealer(Convert.ToInt32(zipCode));
 
-        //    if (code == null)
-        //    {
-        //        List<Stores> storesList = ServiceFactory.getWebServiceHandle().SearchNearestStores(zipCode);
-        //        if (null != storesList && storesList.Count > 0)
-        //        {
-        //            InvokeOnMainThread(() =>
-        //            {
-        //                Utility.HideLoadingIndicator(this.View);
-        //                AnimateFlipHorizontally(txtZip, true, 0.5, null);
-        //                AnimateFlipHorizontally(GetStartBtn, true, 0.5, null);
-        //                txtZip.Text = "";
-        //                GetStartBtn.SetTitle("Go", UIControlState.Normal);
-        //                AppDelegate.appDelegate.IsZipCodeValid = true;
+            if (code == null)
+            {
+                List<Stores> storesList = ServiceFactory.getWebServiceHandle().SearchNearestStores(zipCode);
+                if (null != storesList && storesList.Count > 0)
+                {
+                    InvokeOnMainThread(() =>
+                    {
+                        Utility.HideLoadingIndicator(this.View);
+                        AnimateFlipHorizontally(txtZip, true, 0.5, null);
+                        AnimateFlipHorizontally(GetStartBtn, true, 0.5, null);
+                        txtZip.Text = "";
+                        GetStartBtn.SetTitle("Go", UIControlState.Normal);
+                        AppDelegate.appDelegate.IsZipCodeValid = true;
 
-        //                foreach (Stores stores in storesList)
-        //                {
-        //                    storeNamesID.Add(stores.OrgID, stores.Name);
-        //                    storeLocatorModel.Items.Add(stores.Name);
-        //                }
+                        foreach (Stores stores in storesList)
+                        {
+                            storeNamesID.Add(stores.OrgID, stores.Name);
+                            storeLocatorModel.Items.Add(stores.Name);
+                        }
 
-        //                if (AppDelegate.appDelegate.IsZipCodeValid)
-        //                {
-        //                    pickerView = new UIPickerView();
-        //                    pickerView.Model = storeLocatorModel;
-        //                    pickerView.ShowSelectionIndicator = true;
+                        if (AppDelegate.appDelegate.IsZipCodeValid)
+                        {
+                            pickerView = new UIPickerView();
+                            pickerView.Model = storeLocatorModel;
+                            pickerView.ShowSelectionIndicator = true;
 
-        //                    // To create a toolbar with done button
-        //                    toolbar = new UIToolbar();
-        //                    toolbar.BarStyle = UIBarStyle.Black;
-        //                    toolbar.Translucent = true;
-        //                    toolbar.SizeToFit();
-        //                    UIBarButtonItem flexibleSpaceLeft = new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace, null, null);
-        //                    UIBarButtonItem doneBtn = new UIBarButtonItem("Done", UIBarButtonItemStyle.Done, (s, e) =>
-        //                    {
-        //                        foreach (UIView view in this.View.Subviews)
-        //                        {
-        //                            txtZip.Text = storeLocatorModel.Items[(int)pickerView.SelectedRowInComponent(0)].ToString();
-        //                            var Id = storeNamesID.FirstOrDefault(x => x.Value.Contains(txtZip.Text)).Key;
-
-
-        //                            AppDelegate.appDelegate.storeId = short.Parse(Id);
-        //                            System.Diagnostics.Debug.WriteLine(" id :: " + AppDelegate.appDelegate.storeId);
+                            // To create a toolbar with done button
+                            toolbar = new UIToolbar();
+                            toolbar.BarStyle = UIBarStyle.Black;
+                            toolbar.Translucent = true;
+                            toolbar.SizeToFit();
+                            UIBarButtonItem flexibleSpaceLeft = new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace, null, null);
+                            UIBarButtonItem doneBtn = new UIBarButtonItem("Done", UIBarButtonItemStyle.Done, (s, e) =>
+                            {
+                                foreach (UIView view in this.View.Subviews)
+                                {
+                                    txtZip.Text = storeLocatorModel.Items[(int)pickerView.SelectedRowInComponent(0)].ToString();
+                                    var Id = storeNamesID.FirstOrDefault(x => x.Value.Contains(txtZip.Text)).Key;
 
 
-        //                            txtZip.Text = storeLocatorModel.Items[(int)pickerView.SelectedRowInComponent(0)].ToString();
-        //                            txtZip.ResignFirstResponder();
-        //                        }
-
-        //                    });
-        //                    toolbar.SetItems(new UIBarButtonItem[] { flexibleSpaceLeft, doneBtn }, true);
-
-        //                    // To assign inputview has pickerview
-        //                    txtZip.InputView = pickerView;
-        //                    txtZip.InputAccessoryView = toolbar;
-
-        //                    txtZip.TouchDown += SetPicker;
-        //                    txtZip.Placeholder = "Select Stores";
-        //                }
-        //            });
+                                    AppDelegate.appDelegate.storeId = short.Parse(Id);
+                                    System.Diagnostics.Debug.WriteLine(" id :: " + AppDelegate.appDelegate.storeId);
 
 
-        //        }
-        //        else
-        //        {
-        //            InvokeOnMainThread(() =>
-        //            {
-        //                Utility.HideLoadingIndicator(this.View);
-        //                Utility.ShowAlert("Appraisal App", "No Nearest Stores Found!!", "OK");
-        //            });
+                                    txtZip.Text = storeLocatorModel.Items[(int)pickerView.SelectedRowInComponent(0)].ToString();
+                                    txtZip.ResignFirstResponder();
+                                }
 
-        //        }
-        //    }
-        //    else if (null != code)
-        //    {
-        //        AppDelegate.appDelegate.storeId = Convert.ToInt16(code);
-        //        InvokeOnMainThread(() =>
-        //        {
-        //            var storyboard = UIStoryboard.FromName("Main", null);
-        //            var splitViewController = storyboard.InstantiateViewController("AppraisalLogNavID");
-        //            var appDelegate = (AppDelegate)UIApplication.SharedApplication.Delegate;
-        //            appDelegate.Window.RootViewController = splitViewController;
+                            });
+                            toolbar.SetItems(new UIBarButtonItem[] { flexibleSpaceLeft, doneBtn }, true);
 
-        //        });
+                            // To assign inputview has pickerview
+                            txtZip.InputView = pickerView;
+                            txtZip.InputAccessoryView = toolbar;
 
-        //    }
-        //    else
-        //    {
-        //        InvokeOnMainThread(() =>
-        //        {
-        //            Utility.ShowAlert("ZIP/Dealer", "Please Enter valid ZIP/Dealer Code", "OK");
-        //        });
-        //    }
-        //}
+                            txtZip.TouchDown += SetPicker;
+                            txtZip.Placeholder = "Select Stores";
+                        }
+                    });
+
+
+                }
+                else
+                {
+                    InvokeOnMainThread(() =>
+                    {
+                        Utility.HideLoadingIndicator(this.View);
+                        Utility.ShowAlert("Appraisal App", "No Nearest Stores Found!!", "OK");
+                    });
+
+                }
+            }
+            else if (null != code)
+            {
+                AppDelegate.appDelegate.storeId = Convert.ToInt16(code);
+                InvokeOnMainThread(() =>
+                {
+                    var storyboard = UIStoryboard.FromName("Main", null);
+                    var splitViewController = storyboard.InstantiateViewController("AppraisalLogNavID");
+                    var appDelegate = (AppDelegate)UIApplication.SharedApplication.Delegate;
+                    appDelegate.Window.RootViewController = splitViewController;
+
+                });
+
+            }
+            else
+            {
+                InvokeOnMainThread(() =>
+                {
+                    Utility.ShowAlert("ZIP/Dealer", "Please Enter valid ZIP/Dealer Code", "OK");
+                });
+            }
+        }
+
+
 
         public void removeAll(UIPickerView picker)
         {
@@ -513,9 +519,18 @@ namespace ExtAppraisalApp
             );
         }
 
+        partial void PhoneRadioBtn_TouchUpInside(UIButton sender)
+        {
+            PhoneRadioBtn.SetBackgroundImage(UIImage.FromBundle("circular_filled.png"), UIControlState.Normal);
+            EmailRadioBtn.SetBackgroundImage(UIImage.FromBundle("circular_empty.png"), UIControlState.Normal);
+            EmailPhone.Placeholder = "Phone";
+        }
+
         partial void EmailRadioBtn_TouchUpInside(UIButton sender)
         {
             EmailRadioBtn.SetBackgroundImage(UIImage.FromBundle("circular_filled.png"),UIControlState.Normal);
+            PhoneRadioBtn.SetBackgroundImage(UIImage.FromBundle("circular_empty.png"), UIControlState.Normal);
+            EmailPhone.Placeholder = "Email";
         }
 
         partial void DealerBtn_TouchUpInside(UIButton sender)
