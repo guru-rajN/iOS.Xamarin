@@ -15,23 +15,19 @@ namespace ExtAppraisalApp
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIImageView boxImg { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton btnGetStart { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIView ComponentView { get; set; }
+        UIKit.UIButton DealerBtn { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIImageView EchoParkLogo { get; set; }
+        UIKit.UIButton GuestBtn { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton GetStartBtn { get; set; }
+        UIKit.UIView InitialContainer { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -53,35 +49,34 @@ namespace ExtAppraisalApp
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void BtnGetStart_TouchUpInside (UIKit.UIButton sender);
 
-        [Action ("GetStartBtn_TouchUpInside:")]
+        [Action ("DealerBtn_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
-        partial void GetStartBtn_TouchUpInside (UIKit.UIButton sender);
+        partial void DealerBtn_TouchUpInside (UIKit.UIButton sender);
+
+        [Action ("GuestBtn_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void GuestBtn_TouchUpInside (UIKit.UIButton sender);
 
         void ReleaseDesignerOutlets ()
         {
-            if (boxImg != null) {
-                boxImg.Dispose ();
-                boxImg = null;
-            }
-
             if (btnGetStart != null) {
                 btnGetStart.Dispose ();
                 btnGetStart = null;
             }
 
-            if (ComponentView != null) {
-                ComponentView.Dispose ();
-                ComponentView = null;
+            if (DealerBtn != null) {
+                DealerBtn.Dispose ();
+                DealerBtn = null;
             }
 
-            if (EchoParkLogo != null) {
-                EchoParkLogo.Dispose ();
-                EchoParkLogo = null;
+            if (GuestBtn != null) {
+                GuestBtn.Dispose ();
+                GuestBtn = null;
             }
 
-            if (GetStartBtn != null) {
-                GetStartBtn.Dispose ();
-                GetStartBtn = null;
+            if (InitialContainer != null) {
+                InitialContainer.Dispose ();
+                InitialContainer = null;
             }
 
             if (LoginGirlImg != null) {
