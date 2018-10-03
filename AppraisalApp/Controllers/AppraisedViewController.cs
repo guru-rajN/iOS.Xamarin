@@ -6,7 +6,19 @@ namespace ExtAppraisalApp
 {
     public partial class AppraisedViewController : UIViewController
     {
-        public AppraisedViewController (IntPtr handle) : base (handle)
+        partial void Map_TouchUpInside(UIButton sender)
+        {
+            var storyboard = UIStoryboard.FromName("Main", null);
+            MapsViewController summaryViewController = (MapsViewController)storyboard.InstantiateViewController("MapsViewController");
+            UINavigationController uINavigationController = new UINavigationController(summaryViewController);
+            uINavigationController.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
+            uINavigationController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
+            this.NavigationController.PresentViewController(uINavigationController, true, null);
+        }
+
+       
+
+        public AppraisedViewController(IntPtr handle) : base(handle)
         {
         }
 
@@ -16,6 +28,7 @@ namespace ExtAppraisalApp
 
             if (AppDelegate.appDelegate.APNSAlert != null)
             {
+                address.Text = AppDelegate.appDelegate.APNSAlertAddressa + "," + AppDelegate.appDelegate.APNSAlertAddressb + "," + AppDelegate.appDelegate.APNSAlertZip;
                 string Message = AppDelegate.appDelegate.APNSAlert;
                 string[] tokens = Message.Split(' ');
                 VehicleDetails.Text = tokens[2] + " " + tokens[3] + " " + tokens[4];

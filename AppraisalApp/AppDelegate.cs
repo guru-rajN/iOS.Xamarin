@@ -76,6 +76,13 @@ namespace ExtAppraisalApp
 
         public string AppleDeviceToken = null;
 
+        public string APNSAlertStore = null;
+        public string APNSAlertLon = null;
+        public string APNSAlertLat = null;
+        public string APNSAlertAddressa = null;
+        public string APNSAlertAddressb = null;
+        public string APNSAlertZip = null;
+
         //Photographs validations
         public bool LeftCarImageUploaded = false;
         public bool RightCarImageUploaded = false;
@@ -236,14 +243,46 @@ namespace ExtAppraisalApp
         {
 
             NSDictionary aps = userInfo.ObjectForKey(new NSString("aps")) as NSDictionary;
+            // NSDictionary add = userInfo.ObjectForKey(new NSString("aps")) as NSDictionary;
 
 
 
             string alert = string.Empty;
+            string message = string.Empty;
+            string lon = string.Empty;
+            string lat = string.Empty;
+            string addressa = string.Empty;
+            string addressb = string.Empty;
+            string zip = string.Empty;
 
             if (aps.ContainsKey(new NSString("alert")))
 
                 alert = (aps[new NSString("alert")] as NSString).ToString();
+
+            if (aps.ContainsKey(new NSString("store")))
+
+                message = (aps[new NSString("store")] as NSString).ToString();
+
+            if (aps.ContainsKey(new NSString("lon")))
+
+                lon = (aps[new NSString("lon")] as NSString).ToString();
+
+            if (aps.ContainsKey(new NSString("lat")))
+
+                lat = (aps[new NSString("lat")] as NSString).ToString();
+
+            if (aps.ContainsKey(new NSString("addressa")))
+
+                addressa = (aps[new NSString("addressa")] as NSString).ToString();
+
+            if (aps.ContainsKey(new NSString("addressb")))
+
+                addressb = (aps[new NSString("addressb")] as NSString).ToString();
+
+            if (aps.ContainsKey(new NSString("zip")))
+
+                zip = (aps[new NSString("zip")] as NSString).ToString();
+
 
 
 
@@ -253,6 +292,12 @@ namespace ExtAppraisalApp
             {
 
                 APNSAlert = alert.ToString();
+                APNSAlertStore = message.ToString();
+                APNSAlertLat = lat.ToString();
+                APNSAlertLon = lon.ToString();
+                APNSAlertAddressa = addressa.ToString();
+                APNSAlertAddressb = addressb.ToString();
+                APNSAlertZip = zip.ToString();
                 var dictionary = new NSDictionary(new NSString("1"), new NSString(APNSAlert));
                 NSNotificationCenter.DefaultCenter.PostNotificationName("PushNotify", null, dictionary);
                 NSNotificationCenter.DefaultCenter.PostNotificationName("ShowPushNotifyData", null);
@@ -261,7 +306,7 @@ namespace ExtAppraisalApp
         }
 
 
-       
+
 
         public override void FailedToRegisterForRemoteNotifications(UIApplication application, NSError error)
         {

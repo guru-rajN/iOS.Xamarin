@@ -163,8 +163,8 @@
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
-    <InterfaceDefinition Include="Views\Main.storyboard" />
     <InterfaceDefinition Include="Resources\Views\Main~.storyboard" />
+    <InterfaceDefinition Include="Views\Main.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -337,6 +337,12 @@
     <Compile Include="Models\ReconResponse.cs" />
     <Compile Include="Models\GetphotoResponse.cs" />
     <Compile Include="Models\CustomerAppraisalLogEntity.cs" />
+    <Compile Include="Controllers\ConferenceAnnotation.cs" />
+    <Compile Include="Controllers\MapDelegate.cs" />
+    <Compile Include="Controllers\MapsViewController.cs" />
+    <Compile Include="Controllers\MapsViewController.designer.cs">
+      <DependentUpon>MapsViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />
@@ -370,6 +376,9 @@
     <BundleResource Include="Resources\add_photo.png" />
     <BundleResource Include="Resources\indicator.png" />
     <BundleResource Include="GoogleService-Info.plist" />
+    <BundleResource Include="Resources\carc.png" />
+    <BundleResource Include="Resources\carcash.png" />
+    <BundleResource Include="Resources\map.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.targets')" />

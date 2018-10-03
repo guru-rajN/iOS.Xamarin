@@ -149,8 +149,14 @@ namespace ExtAppraisalApp
             AppDelegate.appDelegate.photoAcesss = false;
 
             AppDelegate.appDelegate.reconResponse = null;
-
-        }
+            AppDelegate.appDelegate.APNSAlertStore = null;
+            AppDelegate.appDelegate.APNSAlertLon = null;
+            AppDelegate.appDelegate.APNSAlertLat = null;
+            AppDelegate.appDelegate.APNSAlertAddressa = null;
+            AppDelegate.appDelegate.APNSAlertAddressb = null;
+            AppDelegate.appDelegate.APNSAlertZip = null;
+            AppDelegate.appDelegate.APNSAlert = null;
+    }
 
         private void dropSqlite()
         {
