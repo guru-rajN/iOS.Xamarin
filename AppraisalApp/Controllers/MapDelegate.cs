@@ -48,7 +48,7 @@ namespace ExtAppraisalApp
                 view.AddSubview(venueView);
 
                 UIView.Animate(0.4, () => {
-                    venueView.Frame = new CGRect(-50, -25, 120, 120);
+                    venueView.Frame = new CGRect(-40, -8, 120, 120);
                 });
             }
         }

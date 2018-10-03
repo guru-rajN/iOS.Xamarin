@@ -2403,39 +2403,46 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="502096" translatesAutoresizingMaskIntoConstraints="NO" text="Store Address:" misplaced="YES">
-                                <rect key="frame" x="86" y="271" width="138" height="31"/>
+                                <rect key="frame" x="86" y="325" width="138" height="31"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18" weight="medium"/>
                                 <color key="textColor" colorSpace="calibratedWhite" white="0.333333333333333" alpha="1"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="502097" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                <rect key="frame" x="240" y="267" width="46" height="35"/>
+                                <rect key="frame" x="232" y="321" width="46" height="35"/>
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <state key="normal" backgroundImage="map.png">
                                     <color key="titleColor" colorSpace="calibratedWhite" white="0.333333333333333" alpha="1"/>
                                 </state>
-                                <constraints>
-                                    <constraint id="502100" firstAttribute="height" constant="35"/>
-                                    <constraint id="504279" firstAttribute="width" constant="46"/>
-                                </constraints>
                                 <connections>
                                     <action selector="Map_TouchUpInside:" destination="502099" id="502098" eventType="touchUpInside"/>
                                     <action selector="Map_TouchUpInside:" destination="264205" id="517817" eventType="touchUpInside"/>
                                 </connections>
+                                <constraints>
+                                    <constraint id="523616" firstAttribute="height" constant="35"/>
+                                    <constraint id="523617" firstAttribute="width" constant="46"/>
+                                </constraints>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10401 East Arapahoe Road,Englewood,CA,USA " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="502102" numberOfLines="0" misplaced="YES">
-                                <rect key="frame" x="18" y="310" width="341" height="46"/>
+                                <rect key="frame" x="16" y="364" width="341" height="46"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16" weight="medium"/>
                                 <color key="textColor" colorSpace="calibratedWhite" white="0.333333333333333" alpha="1"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="502103" misplaced="YES">
-                                <rect key="frame" x="16" y="364" width="343" height="289"/>
+                                <rect key="frame" x="16" y="412" width="378" height="289"/>
                                 <string key="text">Thank you for submitting your appraisal information. We are happy to provide a value based on the information you have provided us. Your vehicle is valued at $14,000. This amount is good for 14 days or 500 miles from the date of submission. At the time of delivery or transfer of ownership, CarCash reserves the right to verify that the information you have submitted is accurate and to adjust the value offered if we feel that your vehicle does not match the description you have provided.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="0.33333333333333298" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="carcash_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="519464" misplaced="YES">
+                                <rect key="frame" x="110" y="288" width="152" height="25"/>
+                                <constraints>
+                                    <constraint id="523608" firstAttribute="height" constant="25"/>
+                                    <constraint id="523609" firstAttribute="width" constant="152"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -2447,21 +2454,23 @@
                             <constraint firstItem="266953" firstAttribute="top" secondItem="266954" secondAttribute="bottom" constant="8" id="329495"/>
                             <constraint firstItem="266955" firstAttribute="centerX" secondItem="264206" secondAttribute="centerX" id="329496"/>
                             <constraint firstItem="266955" firstAttribute="top" secondItem="266953" secondAttribute="bottom" constant="8" id="329497"/>
-                            <constraint firstAttribute="centerX" secondItem="266956" secondAttribute="centerX" constant="73" id="329498"/>
+                            <constraint firstAttribute="centerX" secondItem="266956" secondAttribute="centerX" constant="50" id="329498"/>
                             <constraint firstItem="266956" firstAttribute="top" secondItem="266955" secondAttribute="bottom" constant="8" id="329499"/>
                             <constraint firstItem="266957" firstAttribute="centerX" secondItem="264206" secondAttribute="centerX" constant="52" id="329501"/>
                             <constraint firstItem="266957" firstAttribute="top" secondItem="266955" secondAttribute="bottom" constant="8" id="333325"/>
-                            <constraint firstItem="266957" firstAttribute="leading" secondItem="266956" secondAttribute="trailing" constant="17" id="333326"/>
-                            <constraint id="504277" firstItem="502096" firstAttribute="top" secondItem="266957" secondAttribute="bottom" constant="8"/>
-                            <constraint id="504278" firstItem="502097" firstAttribute="top" secondItem="266957" secondAttribute="bottom"/>
-                            <constraint id="504281" firstItem="502097" firstAttribute="centerX" secondItem="264206" secondAttribute="centerX" constant="56"/>
-                            <constraint id="504282" firstItem="502097" firstAttribute="leading" secondItem="502096" secondAttribute="trailing" constant="16"/>
-                            <constraint id="504283" firstAttribute="centerX" secondItem="502096" secondAttribute="centerX" constant="52"/>
-                            <constraint id="504861" firstAttribute="centerX" secondItem="502102" secondAttribute="centerX" constant="1"/>
-                            <constraint id="504862" firstItem="502102" firstAttribute="top" secondItem="502096" secondAttribute="bottom" constant="14"/>
-                            <constraint id="506021" firstAttribute="trailingMargin" secondItem="502103" secondAttribute="trailing"/>
-                            <constraint id="506022" firstAttribute="leadingMargin" secondItem="502103" secondAttribute="leading"/>
-                            <constraint id="506023" firstItem="502103" firstAttribute="top" secondItem="264202" secondAttribute="bottom" constant="300"/>
+                            <constraint firstItem="266957" firstAttribute="leading" secondItem="266956" secondAttribute="trailing" constant="2" id="333326"/>
+                            <constraint id="520057" firstItem="502103" firstAttribute="top" secondItem="264202" secondAttribute="bottom" constant="348"/>
+                            <constraint id="520058" firstAttribute="leadingMargin" secondItem="502103" secondAttribute="leading"/>
+                            <constraint id="520059" firstItem="502103" firstAttribute="trailing" secondItem="264206" secondAttribute="trailingMargin"/>
+                            <constraint id="523610" firstAttribute="centerX" secondItem="519464" secondAttribute="centerX" constant="14"/>
+                            <constraint id="523611" firstItem="519464" firstAttribute="top" secondItem="266957" secondAttribute="bottom" constant="21"/>
+                            <constraint id="523612" firstItem="502096" firstAttribute="top" secondItem="519464" secondAttribute="bottom" constant="12"/>
+                            <constraint id="523613" firstAttribute="centerX" secondItem="502096" secondAttribute="centerX" constant="46"/>
+                            <constraint id="523614" firstItem="502097" firstAttribute="top" secondItem="519464" secondAttribute="bottom" constant="4"/>
+                            <constraint id="523615" firstItem="502097" firstAttribute="centerX" secondItem="264206" secondAttribute="centerX" constant="48"/>
+                            <constraint id="523618" firstItem="502097" firstAttribute="leading" secondItem="502096" secondAttribute="trailing" constant="8"/>
+                            <constraint id="523619" firstAttribute="centerX" secondItem="502102" secondAttribute="centerX" constant="14"/>
+                            <constraint id="523620" firstItem="502102" firstAttribute="top" secondItem="502097" secondAttribute="bottom" constant="8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="268230">
@@ -3066,13 +3075,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="506614" translatesAutoresizingMaskIntoConstraints="NO" text="Store Address:" misplaced="YES">
-                                <rect key="frame" x="106" y="214" width="138" height="31"/>
+                                <rect key="frame" x="104" y="246" width="138" height="31"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18" weight="medium"/>
                                 <color key="textColor" colorSpace="calibratedWhite" white="0.333333333333333" alpha="1"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="506615" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" ambiguous="YES">
-                                <rect key="frame" x="260" y="210" width="46" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="506615" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                <rect key="frame" x="250" y="244" width="46" height="35"/>
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <state key="normal" backgroundImage="map.png">
                                     <color key="titleColor" colorSpace="calibratedWhite" white="0.333333333333333" alpha="1"/>
@@ -3086,19 +3095,26 @@
                                     <action selector="Map_TouchUpInside:" destination="390032" id="517818" eventType="touchUpInside"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10401 East Arapahoe Road,Englewood,CA,USA " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="506620" numberOfLines="0" misplaced="YES" ambiguous="YES">
-                                <rect key="frame" x="38" y="253" width="341" height="46"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10401 East Arapahoe Road,Englewood,CA,USA " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="506620" numberOfLines="0" misplaced="YES">
+                                <rect key="frame" x="20" y="298" width="341" height="46"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16" weight="medium"/>
                                 <color key="textColor" colorSpace="calibratedWhite" white="0.333333333333333" alpha="1"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="506621" misplaced="YES">
-                                <rect key="frame" x="36" y="307" width="343" height="289"/>
+                                <rect key="frame" x="37" y="352" width="343" height="289"/>
                                 <string key="text">Thank you for submitting your appraisal information. We are happy to provide a value based on the information you have provided us. Your vehicle is valued at $14,000. This amount is good for 14 days or 500 miles from the date of submission. At the time of delivery or transfer of ownership, CarCash reserves the right to verify that the information you have submitted is accurate and to adjust the value offered if we feel that your vehicle does not match the description you have provided.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="0.33333333333333298" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="carcash_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="533728" misplaced="YES">
+                                <rect key="frame" x="114" y="211" width="152" height="25"/>
+                                <constraints>
+                                    <constraint id="533729" firstAttribute="height" constant="25"/>
+                                    <constraint id="533730" firstAttribute="width" constant="152"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -3111,17 +3127,22 @@
                             <constraint firstItem="412441" firstAttribute="top" secondItem="409889" secondAttribute="bottom" constant="8" id="426620"/>
                             <constraint firstItem="412441" firstAttribute="centerX" secondItem="390034" secondAttribute="centerX" constant="2" id="426621"/>
                             <constraint firstItem="412443" firstAttribute="top" secondItem="412441" secondAttribute="bottom" constant="8" id="426622"/>
-                            <constraint firstAttribute="centerX" secondItem="412443" secondAttribute="centerX" constant="51" id="426623"/>
+                            <constraint firstAttribute="centerX" secondItem="412443" secondAttribute="centerX" constant="46" id="426623"/>
                             <constraint firstItem="412442" firstAttribute="top" secondItem="412441" secondAttribute="bottom" constant="8" id="426624"/>
                             <constraint firstItem="412442" firstAttribute="centerX" secondItem="390034" secondAttribute="centerX" constant="70" id="426625"/>
                             <constraint firstItem="412442" firstAttribute="leading" secondItem="412443" secondAttribute="trailing" constant="10" id="426626"/>
-                            <constraint id="508951" firstItem="506614" firstAttribute="top" secondItem="412442" secondAttribute="bottom" constant="8"/>
-                            <constraint id="509539" firstItem="506615" firstAttribute="top" secondItem="412442" secondAttribute="bottom" constant="6"/>
-                            <constraint id="509541" firstItem="506620" firstAttribute="top" secondItem="506614" secondAttribute="bottom" constant="10"/>
-                            <constraint id="510132" firstAttribute="centerX" secondItem="506614" secondAttribute="centerX" constant="32"/>
-                            <constraint id="510725" firstItem="506621" firstAttribute="leading" secondItem="390034" secondAttribute="leadingMargin"/>
-                            <constraint id="510726" firstAttribute="trailingMargin" secondItem="506621" secondAttribute="trailing"/>
-                            <constraint id="510727" firstItem="506621" firstAttribute="top" secondItem="390028" secondAttribute="bottom" constant="318"/>
+                            <constraint id="533735" firstAttribute="centerX" secondItem="533728" secondAttribute="centerX" constant="15"/>
+                            <constraint id="533736" firstItem="533728" firstAttribute="top" secondItem="412442" secondAttribute="bottom" constant="15"/>
+                            <constraint id="534329" firstItem="506614" firstAttribute="top" secondItem="533728" secondAttribute="bottom" constant="10"/>
+                            <constraint id="534330" firstAttribute="centerX" secondItem="506614" secondAttribute="centerX" constant="34"/>
+                            <constraint id="534331" firstItem="506615" firstAttribute="top" secondItem="533728" secondAttribute="bottom" constant="4"/>
+                            <constraint id="534332" firstItem="506615" firstAttribute="centerX" secondItem="390034" secondAttribute="centerX" constant="66"/>
+                            <constraint id="534333" firstItem="506615" firstAttribute="leading" secondItem="506614" secondAttribute="trailing" constant="8"/>
+                            <constraint id="534334" firstItem="506620" firstAttribute="top" secondItem="506614" secondAttribute="bottom" constant="21"/>
+                            <constraint id="534335" firstAttribute="centerX" secondItem="506620" secondAttribute="centerX" constant="16"/>
+                            <constraint id="534336" firstItem="506621" firstAttribute="leading" secondItem="390034" secondAttribute="leadingMargin"/>
+                            <constraint id="534337" firstAttribute="trailingMargin" secondItem="506621" secondAttribute="trailing"/>
+                            <constraint id="534338" firstItem="506621" firstAttribute="top" secondItem="390028" secondAttribute="bottom" constant="352"/>
                         </constraints>
                     </view>
                     <connections>
