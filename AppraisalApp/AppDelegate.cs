@@ -101,6 +101,10 @@ namespace ExtAppraisalApp
         public int WizardPageNo = 0;
         public bool IsCustomer = false;
 
+        public string GuestLastName;
+        public string GuestEmail;
+        public string GuestPhone;
+
         public List<CustomerAppraisalLogEntity> CustomerAppraisalLogs;
         public bool CustomerLogin = false;
 

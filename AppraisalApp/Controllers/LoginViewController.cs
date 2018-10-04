@@ -36,6 +36,8 @@ namespace ExtAppraisalApp
         private nfloat offset = 10.0f;          // extra offset
         private bool moveViewUp = false;           // which direction are we moving
 
+        private bool IsEmail = false;
+
         Dictionary<string, string> storeNamesID = new Dictionary<string, string>();
 
         public LoginViewController(IntPtr handle) : base(handle)
@@ -68,6 +70,8 @@ namespace ExtAppraisalApp
             PhoneRadioBtn.SetBackgroundImage(UIImage.FromBundle("circular_empty.png"), UIControlState.Normal);
 
             EmailPhone.Placeholder = "Email";
+            IsEmail = true;
+
 
             if (UserInterfaceIdiomIsPhone)
             {
@@ -169,6 +173,15 @@ namespace ExtAppraisalApp
             }else if(string.IsNullOrEmpty(EmailPhone.Text)){
                 Utility.ShowAlert("CarCash", "Please Enter Email or Phone.!!", "OK");
             }else{
+                AppDelegate.appDelegate.GuestLastName = LastNameTxt.Text;
+
+                if(IsEmail){
+                    AppDelegate.appDelegate.GuestEmail = EmailPhone.Text;
+                    AppDelegate.appDelegate.GuestPhone = "";
+                }else{
+                    AppDelegate.appDelegate.GuestEmail = "";
+                    AppDelegate.appDelegate.GuestPhone = EmailPhone.Text;
+                }
                 GoClick();
             }
                
@@ -264,7 +277,7 @@ namespace ExtAppraisalApp
 
                     Utility.ShowLoadingIndicator(this.View, "", true);
 
-                    customerAppraisalLogs = await CallGuestAppraisalLogService();
+                    customerAppraisalLogs = await CallGuestAppraisalLogService(AppDelegate.appDelegate.GuestLastName, AppDelegate.appDelegate.GuestEmail, AppDelegate.appDelegate.GuestPhone);
 
                     Utility.HideLoadingIndicator(this.View);
 
@@ -290,12 +303,12 @@ namespace ExtAppraisalApp
             }
         }
 
-        Task<List<CustomerAppraisalLogEntity>> CallGuestAppraisalLogService(){
+        Task<List<CustomerAppraisalLogEntity>> CallGuestAppraisalLogService(string lastname, string email, string phone){
             
             return Task<List<CustomerAppraisalLogEntity>>.Factory.StartNew(() =>
             {
                 List<CustomerAppraisalLogEntity> customerAppraisalLogs = new List<CustomerAppraisalLogEntity>();
-                customerAppraisalLogs = ServiceFactory.getWebServiceHandle().FetchCustomerAppraisalLogs("Test", "abc@gmail.com", "");
+                customerAppraisalLogs = ServiceFactory.getWebServiceHandle().FetchCustomerAppraisalLogs(lastname, email, phone);
 
                 return customerAppraisalLogs;
 
@@ -307,7 +320,7 @@ namespace ExtAppraisalApp
             return Task<List<AppraisalLogEntity>>.Factory.StartNew(() =>
             {
                 List<AppraisalLogEntity> dealerAppraisalLogs = new List<AppraisalLogEntity>();
-                //dealerAppraisalLogs = ServiceFactory.getWebServiceHandle().FetchAppraisalLog();
+                dealerAppraisalLogs = ServiceFactory.getWebServiceHandle().FetchAppraisalLog(AppDelegate.appDelegate.storeId);
 
                 return dealerAppraisalLogs;
 
@@ -696,6 +709,9 @@ namespace ExtAppraisalApp
             PhoneRadioBtn.SetBackgroundImage(UIImage.FromBundle("circular_filled.png"), UIControlState.Normal);
             EmailRadioBtn.SetBackgroundImage(UIImage.FromBundle("circular_empty.png"), UIControlState.Normal);
             EmailPhone.Placeholder = "Phone";
+            EmailPhone.KeyboardType = UIKeyboardType.PhonePad;
+            EmailPhone.Text = "";
+            IsEmail = false;
         }
 
         partial void EmailRadioBtn_TouchUpInside(UIButton sender)
@@ -703,6 +719,9 @@ namespace ExtAppraisalApp
             EmailRadioBtn.SetBackgroundImage(UIImage.FromBundle("circular_filled.png"),UIControlState.Normal);
             PhoneRadioBtn.SetBackgroundImage(UIImage.FromBundle("circular_empty.png"), UIControlState.Normal);
             EmailPhone.Placeholder = "Email";
+            EmailPhone.KeyboardType = UIKeyboardType.EmailAddress;
+            EmailPhone.Text = "";
+            IsEmail = true;
         }
 
         partial void DealerBtn_TouchUpInside(UIButton sender)
