@@ -27,6 +27,12 @@ namespace ExtAppraisalApp
 
         private string zipCode;
 
+        private UIView activeview;             // Controller that activated the keyboard
+        private nfloat scroll_amount = 0.0f;    // amount to scroll 
+        private nfloat bottom = 0.0f;           // bottom point
+        private nfloat offset = 10.0f;          // extra offset
+        private bool moveViewUp = false;           // which direction are we moving
+
         Dictionary<string, string> storeNamesID = new Dictionary<string, string>();
 
         public LoginViewController(IntPtr handle) : base(handle)
@@ -85,20 +91,20 @@ namespace ExtAppraisalApp
                 //    ComponentView.Center = new CGPoint(this.View.Bounds.Width / 2, this.View.Bounds.Height / 2.2);
                 //}
 
-                //if (this.View.Bounds.Width == 375)
-                //{
-                //    NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillHideNotification, keyboardWillHide);
-                //    NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillShowNotification, keyboardWillShow);
-                //}
+                if (this.View.Bounds.Width == 375)
+                {
+                    NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillHideNotification, keyboardWillHide);
+                    NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillShowNotification, keyboardWillShow);
+                }
 
 
             }
             else
             {
-                //if(InterfaceOrientation == UIInterfaceOrientation.LandscapeLeft || InterfaceOrientation == UIInterfaceOrientation.LandscapeRight){
-                //    NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillHideNotification, keyboardWillHide);
-                //    NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillShowNotification, keyboardWillShow);
-                //}
+                if(InterfaceOrientation == UIInterfaceOrientation.LandscapeLeft || InterfaceOrientation == UIInterfaceOrientation.LandscapeRight){
+                    NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillHideNotification, keyboardWillHide);
+                    NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillShowNotification, keyboardWillShow);
+                }
             }
 
             AppDelegate.appDelegate.IsZipCodeValid = false;
@@ -341,9 +347,11 @@ namespace ExtAppraisalApp
             try
             {
                 keyboardPushedUp = false;
-                CGPoint point = scrollview.ContentOffset;
-                point.Y = point.Y - 90;
-                scrollview.SetContentOffset(point, true);
+                //CGPoint point = scrollview.ContentOffset;
+                //point.Y = point.Y - 90;
+                //scrollview.SetContentOffset(point, true);
+
+                if (moveViewUp) { ScrollTheView(false); }
             }
             catch (NullReferenceException ex)
             {
@@ -361,10 +369,38 @@ namespace ExtAppraisalApp
             {
                 if (!keyboardPushedUp)
                 {
-                    CGPoint point = scrollview.ContentOffset;
-                    point.Y = point.Y + 90;
-                    scrollview.SetContentOffset(point, true);
+                    //CGPoint point = scrollview.ContentOffset;
+                    //point.Y = point.Y + 90;
+                    //scrollview.SetContentOffset(point, true);
                     keyboardPushedUp = true;
+
+
+                    // get the keyboard size
+                    RectangleF r = (System.Drawing.RectangleF)UIKeyboard.BoundsFromNotification(notification);
+
+                    //// Find what opened the keyboard
+                    //foreach (UIView view in this.View.Subviews)
+                    //{
+                    //    if (view.IsFirstResponder)
+                    //        activeview = view;
+                    //}
+
+                    // Bottom of the controller = initial position + height + offset      
+                    //bottom = (LastNameTxt.Frame.Y + LastNameTxt.Frame.Height + offset);
+
+                    //// Calculate how far we need to scroll
+                    //scroll_amount = (r.Height - (View.Frame.Size.Height - bottom));
+                    scroll_amount = 50;
+                    // Perform the scrolling
+                    if (scroll_amount > 0)
+                    {
+                        moveViewUp = true;
+                        ScrollTheView(moveViewUp);
+                    }
+                    else
+                    {
+                        moveViewUp = false;
+                    }
                 }
 
 
@@ -378,6 +414,30 @@ namespace ExtAppraisalApp
                 Debug.WriteLine("Exception occurred :: " + ex1.Message);
             }
         }
+
+        private void ScrollTheView(bool move)
+        {
+
+            // scroll the view up or down
+            UIView.BeginAnimations(string.Empty, System.IntPtr.Zero);
+            UIView.SetAnimationDuration(0.5);
+
+            RectangleF frame = (System.Drawing.RectangleF)View.Frame;
+
+            if (move)
+            {
+                frame.Y -= (float)scroll_amount;
+            }
+            else
+            {
+                frame.Y += (float)scroll_amount;
+                scroll_amount = 0;
+            }
+
+            View.Frame = frame;
+            UIView.CommitAnimations();
+        }
+
 
         // Inner Class : StatusChange Model : Pickerview
         public class StoreLocatorModel : UIPickerViewModel

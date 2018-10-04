@@ -47,11 +47,19 @@ namespace ExtAppraisalApp
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField LastNameTxt { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIImageView LoginGirlImg { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIImageView LoginImg { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView OverLayView { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -131,6 +139,11 @@ namespace ExtAppraisalApp
                 InitialContainer = null;
             }
 
+            if (LastNameTxt != null) {
+                LastNameTxt.Dispose ();
+                LastNameTxt = null;
+            }
+
             if (LoginGirlImg != null) {
                 LoginGirlImg.Dispose ();
                 LoginGirlImg = null;
@@ -139,6 +152,11 @@ namespace ExtAppraisalApp
             if (LoginImg != null) {
                 LoginImg.Dispose ();
                 LoginImg = null;
+            }
+
+            if (OverLayView != null) {
+                OverLayView.Dispose ();
+                OverLayView = null;
             }
 
             if (PhoneRadioBtn != null) {
