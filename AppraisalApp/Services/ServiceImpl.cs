@@ -880,5 +880,32 @@ namespace ExtAppraisalApp.Services
             return response;
 
         }
+
+        public List<CustomerAppraisalLogEntity> FetchCustomerAppraisalLogs(string lastname, string email, string phone)
+        {
+            HttpResponseMessage responseMessage = null;
+            string result = null;
+            List<CustomerAppraisalLogEntity> custAppraisalLogsData = new List<CustomerAppraisalLogEntity>();
+            try
+            {
+
+                responseMessage = RestClient.doGet(Url.CUSTOMER_APPRAISAL_LOG_URL + "/" + lastname + "/" + email + "/" + phone);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    result = responseMessage.Content.ReadAsStringAsync().Result;
+                    SIMSResponseData rst = JsonConvert.DeserializeObject<SIMSResponseData>(result);
+                    var appaisalresponse = JsonConvert.DeserializeObject<List<CustomerAppraisalLogEntity>>(rst.Data.ToString());
+
+                    custAppraisalLogsData = appaisalresponse;
+
+                }
+
+            }
+            catch (Exception exc)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception occured :: " + exc.Message);
+            }
+            return custAppraisalLogsData;
+        }
     }
 }

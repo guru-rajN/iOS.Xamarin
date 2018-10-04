@@ -41,5 +41,7 @@ namespace ExtAppraisalApp.Services
 
         string GenerateProspect();
 
+        List<CustomerAppraisalLogEntity> FetchCustomerAppraisalLogs(string lastname, string email, string phone);
+
     }
 }

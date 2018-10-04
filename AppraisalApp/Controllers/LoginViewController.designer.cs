@@ -93,6 +93,14 @@ namespace ExtAppraisalApp
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void GuestBtn_TouchUpInside (UIKit.UIButton sender);
 
+        [Action ("GuestEmailTxtChanged:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void GuestEmailTxtChanged (UIKit.UITextField sender);
+
+        [Action ("LastNameTxtChanged:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void LastNameTxtChanged (UIKit.UITextField sender);
+
         [Action ("PhoneRadioBtn_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void PhoneRadioBtn_TouchUpInside (UIKit.UIButton sender);

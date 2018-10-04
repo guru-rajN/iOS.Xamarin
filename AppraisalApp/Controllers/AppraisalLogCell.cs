@@ -29,5 +29,25 @@ namespace AppraisalApp
 
             }
         }
+
+        internal void UpdateCustomerCell(CustomerAppraisalLogEntity amfactoryOption)
+        {
+            Vin.Text = amfactoryOption.VIN;
+            YearMakeModel.Text = amfactoryOption.Year + " " + amfactoryOption.Make + " " + amfactoryOption.Model;
+            Mileage.Text = Convert.ToString(amfactoryOption.Mileage);
+            Trim.Text = amfactoryOption.SeriesTrim;
+            string[] datetime = Convert.ToString(amfactoryOption.CreatedDate).Split(' '); // sample : 9/24/2018
+            appraisalDate.Text = datetime[0];
+            string[] tokens = amfactoryOption.SACAppraisalValue.Split(',');
+            if (amfactoryOption.SACAppraisalValue != "")
+            {
+                sacComment.Text = Convert.ToString(tokens[0]) + " " + "$" + " " + tokens[1];
+            }
+            else
+            {
+                sacComment.Text = "";
+
+            }
+        }
     }
 }

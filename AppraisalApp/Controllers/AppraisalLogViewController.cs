@@ -46,7 +46,7 @@ namespace AppraisalApp
         bool VinSearch_ShouldEndEditing(UISearchBar searchBar)
         {
             VinSearch.SetShowsCancelButton(false, true);
-            return true;    
+            return true;
         }
 
 
@@ -78,6 +78,7 @@ namespace AppraisalApp
         }
 
         List<AppraisalLogEntity> apploglist = new List<AppraisalLogEntity>();
+        List<CustomerAppraisalLogEntity> CustomerAppLogsList = new List<CustomerAppraisalLogEntity>();
 
         partial void Segment_Changed(UISegmentedControl sender)
         {
@@ -116,16 +117,16 @@ namespace AppraisalApp
             View.AddGestureRecognizer(g);
 
             VinSearch.Text = VinSearch.Text.ToUpper();
-            VinSearch.TextChanged += (sender, e) =>  
-            {  
-                if(VinSearch.Text.Length > 0)
+            VinSearch.TextChanged += (sender, e) =>
+            {
+                if (VinSearch.Text.Length > 0)
                 {
                     var VinSearchEntity = apploglist.FindAll((AppraisalLogEntity obj) => obj.VIN.Contains(VinSearch.Text.Trim()));
                     AppraisalTableView.Source = new ApprasialLogTVS(VinSearchEntity);
                     AppraisalTableView.RowHeight = 120f;
                     AppraisalTableView.EstimatedRowHeight = 120.0f;
                     AppraisalTableView.BackgroundColor = UIColor.LightGray;
-                    AppraisalTableView.ReloadData();  
+                    AppraisalTableView.ReloadData();
                 }//Method get called when search started 
                 else
                 {
@@ -149,8 +150,8 @@ namespace AppraisalApp
                         AppraisalTableView.ReloadData();
                     }
                 }
-               
-            }; 
+
+            };
 
             VinSearch.ShouldBeginEditing += VinSearch_ShouldBeginEditing;
             VinSearch.ShouldEndEditing += VinSearch_ShouldEndEditing;
@@ -159,20 +160,67 @@ namespace AppraisalApp
 
             AppraisalTableView.TableFooterView = new UIView(new CGRect(0, 0, 0, 0));
 
-            apploglist=ServiceFactory.getWebServiceHandle().FetchAppraisalLog(AppDelegate.appDelegate.storeId);
-
-
-            var completedVehicle = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status == "CA");
-
             AppraisalTableView.RowHeight = 120f;
             AppraisalTableView.EstimatedRowHeight = 120.0f;
             AppraisalTableView.BackgroundColor = UIColor.LightGray;
-            AppraisalTableView.Source = new ApprasialLogTVS(completedVehicle);
 
+            if (AppDelegate.appDelegate.CustomerLogin)
+            {
+                if (null != AppDelegate.appDelegate.CustomerAppraisalLogs && AppDelegate.appDelegate.CustomerAppraisalLogs.Count > 1)
+                {
+                    CustomerAppLogsList = AppDelegate.appDelegate.CustomerAppraisalLogs;
+                    var completedVehicle = CustomerAppLogsList.FindAll((CustomerAppraisalLogEntity obj) => obj.Status == "CA");
+                    AppraisalTableView.Source = new CustomerApprasialLogTVS(completedVehicle);
+                }
+            }
+            else
+            {
+                apploglist = ServiceFactory.getWebServiceHandle().FetchAppraisalLog(AppDelegate.appDelegate.storeId);
+                var completedVehicle = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status == "CA");
+                AppraisalTableView.Source = new ApprasialLogTVS(completedVehicle);
+            }
 
             AppraisalTableView.ReloadData();
         }
 
+        internal class CustomerApprasialLogTVS : UITableViewSource
+        {
+            //protected string[] tableItems;
+            private List<CustomerAppraisalLogEntity> apploglist;
 
+            public CustomerApprasialLogTVS(List<CustomerAppraisalLogEntity> apploglist)
+            {
+                this.apploglist = apploglist;
+            }
+
+            public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
+            {
+                var amcell = (AppraisalLogCell)tableView.DequeueReusableCell("Cell_id", indexPath);
+                var amfactoryOption = apploglist[indexPath.Row];
+                amcell.UpdateCustomerCell(amfactoryOption);
+
+                return amcell;
+            }
+
+            public override nint RowsInSection(UITableView tableview, nint section)
+            {
+                return apploglist.Count;
+            }
+            public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+            {
+                var result = apploglist[indexPath.Row];
+                AppDelegate.appDelegate.storeId = result.Store_ID;
+                AppDelegate.appDelegate.vehicleID = result.Vehicle_ID;
+                AppDelegate.appDelegate.invtrId = result.Invtr_ID;
+                AppDelegate.appDelegate.cacheVehicleDetails = null;
+                AppDelegate.appDelegate.afterMarketOptions = null;
+                AppDelegate.appDelegate.fctoption = null;
+                AppDelegate.appDelegate.mileage = Convert.ToInt32(result.Mileage);
+                var storyboard = UIStoryboard.FromName("Main", null);
+                var loginViewController = storyboard.InstantiateViewController("SplitViewControllerID");
+                AppDelegate.appDelegate.Window.RootViewController = loginViewController;
+
+            }
+        }
     }
 }

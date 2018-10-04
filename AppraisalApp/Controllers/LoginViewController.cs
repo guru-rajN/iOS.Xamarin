@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using AppraisalApp.Models;
 using CoreAnimation;
@@ -19,6 +20,7 @@ namespace ExtAppraisalApp
 
     public partial class LoginViewController : UIViewController, WorkerDelegateInterface
     {
+       
         private UIPickerView pickerView;
 
         private UIToolbar toolbar;
@@ -160,10 +162,35 @@ namespace ExtAppraisalApp
 
         partial void GetStartBtn_TouchUpInside(UIButton sender)
         {
-            GoClick();
+            if(string.IsNullOrEmpty(LastNameTxt.Text)){
+                Utility.ShowAlert("CarCash", "Please Enter the LastName.!!", "OK");
+            }else if(string.IsNullOrEmpty(EmailPhone.Text)){
+                Utility.ShowAlert("CarCash", "Please Enter Email or Phone.!!", "OK");
+            }else{
+                GoClick();
+            }
+               
+
         }
 
-        public void GoClick()
+        partial void GuestEmailTxtChanged(UITextField sender)
+        {
+            
+        }
+
+        partial void LastNameTxtChanged(UITextField sender)
+        {
+            LastNameTxt.Text = Regex.Replace(LastNameTxt.Text, @"[^a-zA-Z]+", "");
+            LastNameTxt.ShouldChangeCharacters = (UITextField txt, NSRange range, string oopsTxt) =>
+            {
+                var newLength = txt.Text.Length + oopsTxt.Length - range.Length;
+                return newLength <= 50;
+
+            };
+        }
+
+
+        public async void GoClick()
         {
             try
             {
@@ -192,8 +219,30 @@ namespace ExtAppraisalApp
                 else
                 {
                     AppDelegate.appDelegate.IsZipCodeValid = false;
-                    this.PerformSegue("decodeSegue", this);
+                    // this.PerformSegue("decodeSegue", this);
                     removeAll(pickerView);
+
+                    List<CustomerAppraisalLogEntity> customerAppraisalLogs = new List<CustomerAppraisalLogEntity>();
+
+                    Utility.ShowLoadingIndicator(this.View, "", true);
+
+                    customerAppraisalLogs = await CallGuestAppraisalLogService();
+
+                    Utility.HideLoadingIndicator(this.View);
+
+                    if (customerAppraisalLogs.Count > 1)
+                    {
+                        AppDelegate.appDelegate.CustomerAppraisalLogs = customerAppraisalLogs;
+                        AppDelegate.appDelegate.CustomerLogin = true;
+                        var storyboard = UIStoryboard.FromName("Main", null);
+                        var splitViewController = storyboard.InstantiateViewController("AppraisalLogNavID");
+                        var appDelegate = (AppDelegate)UIApplication.SharedApplication.Delegate;
+                        appDelegate.Window.RootViewController = splitViewController;
+                    }
+                    else
+                    {
+                        this.PerformSegue("decodeSegue", this);
+                    }
                 }
 
             }
@@ -201,6 +250,18 @@ namespace ExtAppraisalApp
             {
                 Console.WriteLine("Exception occured :: " + exc.Message);
             }
+        }
+
+        Task<List<CustomerAppraisalLogEntity>> CallGuestAppraisalLogService(){
+            return Task<List<CustomerAppraisalLogEntity>>.Factory.StartNew(() =>
+            {
+                List<CustomerAppraisalLogEntity> customerAppraisalLogs = new List<CustomerAppraisalLogEntity>();
+                customerAppraisalLogs = ServiceFactory.getWebServiceHandle().FetchCustomerAppraisalLogs("Test", "abc@gmail.com", "");
+
+                return customerAppraisalLogs;
+
+
+            });
         }
 
         Task CallWebservice()
@@ -310,7 +371,7 @@ namespace ExtAppraisalApp
             }
         }
 
-
+     
 
         public void removeAll(UIPickerView picker)
         {

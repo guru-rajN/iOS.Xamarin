@@ -3311,7 +3311,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5eH-Bs-Hds">
-                                                        <rect key="frame" x="362" y="185" width="300" height="350"/>
+                                                        <rect key="frame" x="362" y="175" width="300" height="350"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guest" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1A-3U-23X">
                                                                 <rect key="frame" x="100" y="20" width="100" height="40"/>
@@ -3332,6 +3332,9 @@
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="family-name"/>
+                                                                <connections>
+                                                                    <action selector="LastNameTxtChanged:" destination="uiy-NA-E91" id="577001" eventType="touchUpInside"/>
+                                                                </connections>
                                                             </textField>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lco-lB-sTu">
                                                                 <rect key="frame" x="0.0" y="122" width="300" height="1"/>
@@ -3373,7 +3376,7 @@
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="561291">
-                                                                <rect key="frame" x="150" y="141" width="50" height="20.5"/>
+                                                                <rect key="frame" x="150" y="143" width="50" height="20.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="50" id="561292"/>
                                                                 </constraints>
@@ -3390,6 +3393,9 @@
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="email"/>
+                                                                <connections>
+                                                                    <action selector="GuestEmailTxtChanged:" destination="uiy-NA-E91" id="577002" eventType="touchUpInside"/>
+                                                                </connections>
                                                             </textField>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZlC-Jj-U50">
                                                                 <rect key="frame" x="0.0" y="208" width="300" height="1"/>
@@ -3440,7 +3446,7 @@
                                                             <constraint firstItem="557988" firstAttribute="leading" secondItem="551909" secondAttribute="trailing" constant="12" id="558644"/>
                                                             <constraint firstItem="559961" firstAttribute="top" secondItem="Lco-lB-sTu" secondAttribute="centerY" constant="17" id="560627"/>
                                                             <constraint firstItem="559961" firstAttribute="leading" secondItem="557988" secondAttribute="trailing" constant="8" id="560628"/>
-                                                            <constraint firstItem="561291" firstAttribute="top" secondItem="BCg-A8-TEn" secondAttribute="bottom" constant="20" id="562618"/>
+                                                            <constraint firstItem="561291" firstAttribute="top" secondItem="BCg-A8-TEn" secondAttribute="bottom" constant="22" id="562618"/>
                                                             <constraint firstItem="561291" firstAttribute="leading" secondItem="559961" secondAttribute="trailing" constant="12" id="562619"/>
                                                             <constraint firstItem="566334" firstAttribute="top" secondItem="559961" secondAttribute="bottom" constant="8" id="567005"/>
                                                             <constraint firstItem="566334" firstAttribute="centerX" secondItem="5eH-Bs-Hds" secondAttribute="centerX" id="567673"/>

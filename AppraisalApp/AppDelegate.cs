@@ -101,6 +101,9 @@ namespace ExtAppraisalApp
         public int WizardPageNo = 0;
         public bool IsCustomer = false;
 
+        public List<CustomerAppraisalLogEntity> CustomerAppraisalLogs;
+        public bool CustomerLogin = false;
+
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
             {
