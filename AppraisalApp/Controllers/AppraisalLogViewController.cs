@@ -24,21 +24,42 @@ namespace AppraisalApp
             string segmentID = AppraisalTypeSegment.SelectedSegment.ToString();
             if (segmentID == "0")
             {
-                var Appcompleted = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status == "CA");
-                AppraisalTableView.Source = new ApprasialLogTVS(Appcompleted);
-                AppraisalTableView.RowHeight = 120f;
-                AppraisalTableView.EstimatedRowHeight = 120.0f;
-                AppraisalTableView.BackgroundColor = UIColor.LightGray;
-                AppraisalTableView.ReloadData();
+                if (AppDelegate.appDelegate.CustomerLogin){
+
+                    var Appcompleted = CustomerAppLogsList.FindAll((CustomerAppraisalLogEntity obj) => obj.Status == "CA");
+                    AppraisalTableView.Source = new CustomerApprasialLogTVS(Appcompleted);
+                    AppraisalTableView.RowHeight = 120f;
+                    AppraisalTableView.EstimatedRowHeight = 120.0f;
+                    AppraisalTableView.BackgroundColor = UIColor.LightGray;
+                    AppraisalTableView.ReloadData();  
+                }else{
+                    var Appcompleted = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status == "CA");
+                    AppraisalTableView.Source = new ApprasialLogTVS(Appcompleted);
+                    AppraisalTableView.RowHeight = 120f;
+                    AppraisalTableView.EstimatedRowHeight = 120.0f;
+                    AppraisalTableView.BackgroundColor = UIColor.LightGray;
+                    AppraisalTableView.ReloadData();  
+                }
+
             }
             else
             {
-                var appPending = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status != "CA");
-                AppraisalTableView.Source = new ApprasialLogTVS(appPending);
-                AppraisalTableView.RowHeight = 120f;
-                AppraisalTableView.EstimatedRowHeight = 120.0f;
-                AppraisalTableView.BackgroundColor = UIColor.LightGray;
-                AppraisalTableView.ReloadData();
+                if (AppDelegate.appDelegate.CustomerLogin){
+                    var appPending = CustomerAppLogsList.FindAll((CustomerAppraisalLogEntity obj) => obj.Status != "CA");
+                    AppraisalTableView.Source = new CustomerApprasialLogTVS(appPending);
+                    AppraisalTableView.RowHeight = 120f;
+                    AppraisalTableView.EstimatedRowHeight = 120.0f;
+                    AppraisalTableView.BackgroundColor = UIColor.LightGray;
+                    AppraisalTableView.ReloadData(); 
+                }else{
+                    var appPending = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status != "CA");
+                    AppraisalTableView.Source = new ApprasialLogTVS(appPending);
+                    AppraisalTableView.RowHeight = 120f;
+                    AppraisalTableView.EstimatedRowHeight = 120.0f;
+                    AppraisalTableView.BackgroundColor = UIColor.LightGray;
+                    AppraisalTableView.ReloadData(); 
+                }
+
             }
         }
 
@@ -85,21 +106,41 @@ namespace AppraisalApp
             string segmentID = AppraisalTypeSegment.SelectedSegment.ToString();
             if (segmentID == "0")
             {
-                var completedVehicle = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status == "CA");
-                AppraisalTableView.Source = new ApprasialLogTVS(completedVehicle);
-                AppraisalTableView.RowHeight = 120f;
-                AppraisalTableView.EstimatedRowHeight = 120.0f;
-                AppraisalTableView.BackgroundColor = UIColor.LightGray;
-                AppraisalTableView.ReloadData();
+                if (AppDelegate.appDelegate.CustomerLogin){ 
+                    var completedVehicle = CustomerAppLogsList.FindAll((CustomerAppraisalLogEntity obj) => obj.Status == "CA");
+                    AppraisalTableView.Source = new CustomerApprasialLogTVS(completedVehicle);
+                    AppraisalTableView.RowHeight = 120f;
+                    AppraisalTableView.EstimatedRowHeight = 120.0f;
+                    AppraisalTableView.BackgroundColor = UIColor.LightGray;
+                    AppraisalTableView.ReloadData();
+                }else{
+                    var completedVehicle = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status == "CA");
+                    AppraisalTableView.Source = new ApprasialLogTVS(completedVehicle);
+                    AppraisalTableView.RowHeight = 120f;
+                    AppraisalTableView.EstimatedRowHeight = 120.0f;
+                    AppraisalTableView.BackgroundColor = UIColor.LightGray;
+                    AppraisalTableView.ReloadData();
+                }
+
             }
             else
             {
-                var completedVehicle = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status != "CA");
-                AppraisalTableView.Source = new ApprasialLogTVS(completedVehicle);
-                AppraisalTableView.RowHeight = 120f;
-                AppraisalTableView.EstimatedRowHeight = 120.0f;
-                AppraisalTableView.BackgroundColor = UIColor.LightGray;
-                AppraisalTableView.ReloadData();
+                if(AppDelegate.appDelegate.CustomerLogin){
+                    var completedVehicle = CustomerAppLogsList.FindAll((CustomerAppraisalLogEntity obj) => obj.Status != "CA");
+                    AppraisalTableView.Source = new CustomerApprasialLogTVS(completedVehicle);
+                    AppraisalTableView.RowHeight = 120f;
+                    AppraisalTableView.EstimatedRowHeight = 120.0f;
+                    AppraisalTableView.BackgroundColor = UIColor.LightGray;
+                    AppraisalTableView.ReloadData();
+                }else{
+                    var completedVehicle = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status != "CA");
+                    AppraisalTableView.Source = new ApprasialLogTVS(completedVehicle);
+                    AppraisalTableView.RowHeight = 120f;
+                    AppraisalTableView.EstimatedRowHeight = 120.0f;
+                    AppraisalTableView.BackgroundColor = UIColor.LightGray;
+                    AppraisalTableView.ReloadData();
+                }
+
             }
         }
 
@@ -169,6 +210,10 @@ namespace AppraisalApp
                 if (null != AppDelegate.appDelegate.CustomerAppraisalLogs && AppDelegate.appDelegate.CustomerAppraisalLogs.Count > 1)
                 {
                     CustomerAppLogsList = AppDelegate.appDelegate.CustomerAppraisalLogs;
+                    var completedVehicle = CustomerAppLogsList.FindAll((CustomerAppraisalLogEntity obj) => obj.Status == "CA");
+                    AppraisalTableView.Source = new CustomerApprasialLogTVS(completedVehicle);
+                }else{
+                    CustomerAppLogsList = ServiceFactory.getWebServiceHandle().FetchCustomerAppraisalLogs("Test", "abc@gmail.com", "");
                     var completedVehicle = CustomerAppLogsList.FindAll((CustomerAppraisalLogEntity obj) => obj.Status == "CA");
                     AppraisalTableView.Source = new CustomerApprasialLogTVS(completedVehicle);
                 }
