@@ -30,7 +30,6 @@ namespace ExtAppraisalApp
 
         private string zipCode;
 
-        private UIView activeview;             // Controller that activated the keyboard
         private nfloat scroll_amount = 0.0f;    // amount to scroll 
         private nfloat bottom = 0.0f;           // bottom point
         private nfloat offset = 10.0f;          // extra offset

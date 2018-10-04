@@ -22,6 +22,7 @@ namespace AppraisalApp
             VinSearch.Text = "";
 
             string segmentID = AppraisalTypeSegment.SelectedSegment.ToString();
+
             if (segmentID == "0")
             {
                 if (AppDelegate.appDelegate.CustomerLogin){
@@ -148,6 +149,7 @@ namespace AppraisalApp
         public AppraisalLogViewController(IntPtr handle) : base(handle)
         {
         }
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
