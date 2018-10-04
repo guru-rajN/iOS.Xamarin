@@ -3,8 +3,9 @@
     <Files>
       <File FileName="AppraisalApp/Controllers/APNSViewController.cs" Line="35" Column="9" />
       <File FileName="AppraisalApp/Controllers/MapDelegate.cs" Line="24" Column="46" />
-      <File FileName="AppraisalApp/Controllers/LoginViewController.cs" Line="548" Column="10" />
-      <File FileName="AppraisalApp/Controllers/PhotoGraphController.cs" Line="100" Column="42" />
+      <File FileName="AppraisalApp/Controllers/LoginViewController.cs" Line="166" Column="28" />
+      <File FileName="AppraisalApp/Controllers/PhotoGraphController.cs" Line="110" Column="56" />
+      <File FileName="AppraisalApp/Controllers/DecodeViewController.cs" Line="104" Column="28" />
       <File FileName="ExtAppraisalApp Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>

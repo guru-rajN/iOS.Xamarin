@@ -531,7 +531,7 @@ namespace ExtAppraisalApp
             txtZip.Placeholder = "ZIP/DEALER CODE";
             txtZip.EndEditing(true);
             this.View.EndEditing(true);
-            //GetStartBtn.SetTitle("Get Started", UIControlState.Normal);
+            GetStartBtn.SetTitle("Get Started", UIControlState.Normal);
             AppDelegate.appDelegate.IsZipCodeValid = false;
             if (null != toolbar)
             {
