@@ -23,6 +23,18 @@ namespace ExtAppraisalApp
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField DealerCodeTxt { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView DealerContainer { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton DealerGetStartBtn { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField EmailPhone { get; set; }
 
         [Outlet]
@@ -81,6 +93,10 @@ namespace ExtAppraisalApp
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void DealerBtn_TouchUpInside (UIKit.UIButton sender);
 
+        [Action ("DealerGetStartBtn_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void DealerGetStartBtn_TouchUpInside (UIKit.UIButton sender);
+
         [Action ("EmailRadioBtn_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void EmailRadioBtn_TouchUpInside (UIKit.UIButton sender);
@@ -115,6 +131,21 @@ namespace ExtAppraisalApp
             if (DealerBtn != null) {
                 DealerBtn.Dispose ();
                 DealerBtn = null;
+            }
+
+            if (DealerCodeTxt != null) {
+                DealerCodeTxt.Dispose ();
+                DealerCodeTxt = null;
+            }
+
+            if (DealerContainer != null) {
+                DealerContainer.Dispose ();
+                DealerContainer = null;
+            }
+
+            if (DealerGetStartBtn != null) {
+                DealerGetStartBtn.Dispose ();
+                DealerGetStartBtn = null;
             }
 
             if (EmailPhone != null) {

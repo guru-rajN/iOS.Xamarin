@@ -21,6 +21,7 @@ namespace ExtAppraisalApp
     public partial class LoginViewController : UIViewController, WorkerDelegateInterface
     {
        
+
         private UIPickerView pickerView;
 
         private UIToolbar toolbar;
@@ -61,6 +62,7 @@ namespace ExtAppraisalApp
 
             InitialContainer.Hidden = false;
             GuestContainer.Hidden = true;
+            DealerContainer.Hidden = true;
 
             EmailRadioBtn.SetBackgroundImage(UIImage.FromBundle("circular_filled.png"), UIControlState.Normal);
             PhoneRadioBtn.SetBackgroundImage(UIImage.FromBundle("circular_empty.png"), UIControlState.Normal);
@@ -173,6 +175,42 @@ namespace ExtAppraisalApp
 
         }
 
+        async partial void DealerGetStartBtn_TouchUpInside(UIButton sender)
+        {
+            if(string.IsNullOrEmpty(DealerCodeTxt.Text)){
+                Utility.ShowAlert("CarCash", "Please Enter the DealerCode.!!", "OK");
+            }else{
+                Utility.ShowLoadingIndicator(this.View, "", true);
+
+                string code = null;
+                code = await GetStoreID(DealerCodeTxt.Text);
+
+                Utility.HideLoadingIndicator(this.View);
+
+                if(null != code){
+                    AppDelegate.appDelegate.storeId = Convert.ToInt16(code);
+                    InvokeOnMainThread(() =>
+                    {
+                        var storyboard = UIStoryboard.FromName("Main", null);
+                        var splitViewController = storyboard.InstantiateViewController("AppraisalLogNavID");
+                        var appDelegate = (AppDelegate)UIApplication.SharedApplication.Delegate;
+                        appDelegate.Window.RootViewController = splitViewController;
+
+                    }); 
+                }
+
+            }
+        }
+
+        Task<string> GetStoreID(string dealercode){
+            return Task<string>.Factory.StartNew(() =>
+            {
+                string code = null;
+                code = ServiceFactory.getWebServiceHandle().ValidateZipDealer(Convert.ToInt32(dealercode));
+                return code;
+            });
+        }
+
         partial void GuestEmailTxtChanged(UITextField sender)
         {
             
@@ -253,12 +291,25 @@ namespace ExtAppraisalApp
         }
 
         Task<List<CustomerAppraisalLogEntity>> CallGuestAppraisalLogService(){
+            
             return Task<List<CustomerAppraisalLogEntity>>.Factory.StartNew(() =>
             {
                 List<CustomerAppraisalLogEntity> customerAppraisalLogs = new List<CustomerAppraisalLogEntity>();
                 customerAppraisalLogs = ServiceFactory.getWebServiceHandle().FetchCustomerAppraisalLogs("Test", "abc@gmail.com", "");
 
                 return customerAppraisalLogs;
+
+
+            });
+        }
+
+        Task<List<AppraisalLogEntity>> CallDealerAppraisalLogService(){
+            return Task<List<AppraisalLogEntity>>.Factory.StartNew(() =>
+            {
+                List<AppraisalLogEntity> dealerAppraisalLogs = new List<AppraisalLogEntity>();
+                //dealerAppraisalLogs = ServiceFactory.getWebServiceHandle().FetchAppraisalLog();
+
+                return dealerAppraisalLogs;
 
 
             });
@@ -657,6 +708,11 @@ namespace ExtAppraisalApp
         partial void DealerBtn_TouchUpInside(UIButton sender)
         {
             Debug.WriteLine("Dealer Selected");
+            InitialContainer.Hidden = true;
+            GuestContainer.Hidden = true;
+            DealerContainer.Hidden = false;
+
+            SlideVerticaly(DealerContainer, true, false, 0.5, null);
         }
 
         partial void GuestBtn_TouchUpInside(UIButton sender)
@@ -665,6 +721,7 @@ namespace ExtAppraisalApp
 
             InitialContainer.Hidden = true;
             GuestContainer.Hidden = false;
+            DealerContainer.Hidden = true;
 
             SlideVerticaly(GuestContainer, true, false, 0.5, null);
         }
