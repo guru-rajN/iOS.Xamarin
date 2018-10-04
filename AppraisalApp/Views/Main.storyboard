@@ -3311,7 +3311,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5eH-Bs-Hds">
-                                                        <rect key="frame" x="362" y="200" width="300" height="350"/>
+                                                        <rect key="frame" x="362" y="185" width="300" height="350"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guest" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1A-3U-23X">
                                                                 <rect key="frame" x="100" y="20" width="100" height="40"/>
@@ -3463,7 +3463,7 @@
                                                     <constraint firstItem="536026" firstAttribute="top" secondItem="t2y-Id-iQE" secondAttribute="bottom" constant="69" id="537866"/>
                                                     <constraint firstItem="536026" firstAttribute="centerX" secondItem="Tjb-fw-bMM" secondAttribute="centerX" id="537867"/>
                                                     <constraint firstItem="536026" firstAttribute="centerY" secondItem="Tjb-fw-bMM" secondAttribute="centerY" id="537868"/>
-                                                    <constraint firstItem="5eH-Bs-Hds" firstAttribute="top" secondItem="t2y-Id-iQE" secondAttribute="bottom" constant="45" id="297-P6-D2d"/>
+                                                    <constraint firstItem="5eH-Bs-Hds" firstAttribute="top" secondItem="t2y-Id-iQE" secondAttribute="bottom" constant="20" id="297-P6-D2d"/>
                                                     <constraint firstItem="5eH-Bs-Hds" firstAttribute="centerX" secondItem="Tjb-fw-bMM" secondAttribute="centerX" id="4pm-mc-EzV"/>
                                                     <constraint firstItem="t2y-Id-iQE" firstAttribute="centerX" secondItem="Tjb-fw-bMM" secondAttribute="centerX" id="Cwi-Eg-1Cj"/>
                                                     <constraint firstItem="QZj-RZ-FzA" firstAttribute="centerX" secondItem="Tjb-fw-bMM" secondAttribute="centerX" id="R0z-sd-7BL"/>
