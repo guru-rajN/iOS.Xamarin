@@ -309,6 +309,7 @@ namespace ExtAppraisalApp
                 };
 
                 if(AppDelegate.appDelegate.CustomerLogin){
+                    
                     if(!string.IsNullOrEmpty(AppDelegate.appDelegate.GuestLastName))
                     {
                         txtLastName.Text = AppDelegate.appDelegate.GuestLastName;

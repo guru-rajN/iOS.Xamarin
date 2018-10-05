@@ -1,20 +1,11 @@
 ﻿<Properties StartupConfiguration="{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="ExtAppraisalApp Status">
     <Files>
-      <File FileName="AppraisalApp/Controllers/LoginViewController.cs" Line="453" Column="21" />
-      <File FileName="AppraisalApp/Controllers/DecodeViewController.cs" Line="36" Column="15" />
+      <File FileName="AppraisalApp/Controllers/LoginViewController.cs" Line="450" Column="73" />
+      <File FileName="AppraisalApp/Controllers/DecodeViewController.cs" Line="307" Column="37" />
       <File FileName="AppraisalApp/Controllers/MapsViewController.cs" Line="21" Column="22" />
       <File FileName="AppraisalApp/Controllers/MasterViewController.cs" Line="329" Column="22" />
       <File FileName="AppraisalApp/Controllers/SummaryViewController.cs" Line="34" Column="14" />
-      <File FileName="AppraisalApp/Controllers/ConfirmationViewController.cs" Line="158" Column="54" />
-      <File FileName="AppraisalApp/Controllers/HistoryViewController.cs" Line="452" Column="17" />
-      <File FileName="AppraisalApp/Models/HistoryValue.cs" Line="21" Column="17" />
-      <File FileName="AppraisalApp/Models/CustomerValue.cs" Line="5" Column="2" />
-      <File FileName="AppraisalApp/Controllers/ReconditionViewController.cs" Line="44" Column="50" />
-      <File FileName="AppraisalApp/AppDelegate.cs" Line="146" Column="31" />
-      <File FileName="AppraisalApp/Controllers/AppraisalLogViewController.cs" Line="306" Column="45" />
-      <File FileName="AppraisalApp/Models/DealerValue.cs" Line="17" Column="17" />
-      <File FileName="AppraisalApp/Main.cs" Line="16" Column="1" />
       <File FileName="ExtAppraisalApp Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>

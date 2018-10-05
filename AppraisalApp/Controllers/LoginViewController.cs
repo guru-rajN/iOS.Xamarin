@@ -600,7 +600,13 @@ namespace ExtAppraisalApp
 
                     //// Calculate how far we need to scroll
                     //scroll_amount = (r.Height - (View.Frame.Size.Height - bottom));
-                    scroll_amount = 50;
+
+                    if(UserInterfaceIdiomIsPhone){
+                        scroll_amount = 50;
+                    }else{
+                        scroll_amount = 80;
+                    }
+
                     // Perform the scrolling
                     if (scroll_amount > 0)
                     {
