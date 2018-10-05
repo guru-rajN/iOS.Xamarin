@@ -343,6 +343,8 @@
     <Compile Include="Controllers\MapsViewController.designer.cs">
       <DependentUpon>MapsViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\CustomerValue.cs" />
+    <Compile Include="Models\DealerValue.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />

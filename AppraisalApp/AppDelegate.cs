@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using AppraisalApp.Models;
+using ExtAppraisalApp.DB;
 using ExtAppraisalApp.Models;
 using Firebase.Core;
 using Foundation;
@@ -112,27 +115,39 @@ namespace ExtAppraisalApp
 
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
-            {
+        {
             try{                 AppDelegate.appDelegate = this;                 NSString[] keys = { new NSString("AIzaSyCFbFEabE7C5-gv0BTJyiSRXhmQA7cGii4") } ;                 NSObject[] values = { new NSString("extappraisalapp-4527c.firebaseapp.com") } ;                 var parameters = NSDictionary<NSString, NSObject>.FromObjectsAndKeys(values, keys, keys.Length);                 Firebase.Analytics.Loader loader1 = new Firebase.Analytics.Loader();                 Firebase.InstanceID.Loader loader2 = new Firebase.InstanceID.Loader();                  App.Configure();                 //Firebase.Core.App.Configure();                 Firebase.Analytics.Analytics.LogEvent("first_open", parameters);               }             catch(Exception ex)             {                 Console.WriteLine(ex);             } 
             // Override point for customization after application launch.
             AppDelegate.appDelegate = this;
 
-            if (!IsLoggedIn)
+            GetCustomerLoginRecords();
+            GetDealerLoginRecords();
+
+            if (CustomerLogin || DealerLogin)
             {
                 var storyboard = UIStoryboard.FromName("Main", null);
-                var loginViewController = storyboard.InstantiateViewController("LoginViewController");
-                //loginViewController.ModalPresentationStyle = UIModalPresentationStyle.FullScreen;
-                //this.ro(loginViewController, null);
-                Window.RootViewController = loginViewController;
+                var splitViewController = storyboard.InstantiateViewController("AppraisalLogNavID");
+                Window.RootViewController = splitViewController;
             }
             else
             {
-                var splitViewController = (UISplitViewController)Window.RootViewController;
-                var navigationController = (UINavigationController)splitViewController.ViewControllers[1];
-                navigationController.TopViewController.NavigationItem.LeftBarButtonItem = splitViewController.DisplayModeButtonItem;
-                splitViewController.WeakDelegate = this;
-                Window.RootViewController = splitViewController;
+                if (!IsLoggedIn)
+                {
+                    var storyboard = UIStoryboard.FromName("Main", null);
+                    var loginViewController = storyboard.InstantiateViewController("LoginViewController");
+                    Window.RootViewController = loginViewController;
+                }
+                else
+                {
+                    var splitViewController = (UISplitViewController)Window.RootViewController;
+                    var navigationController = (UINavigationController)splitViewController.ViewControllers[1];
+                    navigationController.TopViewController.NavigationItem.LeftBarButtonItem = splitViewController.DisplayModeButtonItem;
+                    splitViewController.WeakDelegate = this;
+                    Window.RootViewController = splitViewController;
+                }
             }
+
+
 
             // If not required for your application you can safely delete this method
             if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
@@ -153,6 +168,48 @@ namespace ExtAppraisalApp
 
             return true;
         }
+
+
+        private void GetCustomerLoginRecords()
+        {
+
+            var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            var libraryPath = Path.Combine(documentsPath, DBConstant.SEPARATOR, DBConstant.LIBRARY);// Library Folder
+            var DbPath = Path.Combine(libraryPath, DBConstant.DB_NAME);
+            var conn = new SQLite.SQLiteConnection(DbPath);
+            conn.CreateTable<CustomerValue>();
+
+            var existingRecord = (conn.Table<CustomerValue>().Where(c => c.id == 1)).SingleOrDefault();
+
+            if (null != existingRecord)
+            {
+                CustomerLogin = existingRecord.CustomerLogin;
+                GuestLastName = existingRecord.CustomerLastName;
+                GuestEmail = existingRecord.CustomerEmail;
+                GuestPhone = existingRecord.CustomerPhone;
+            }
+
+        }
+
+        private void GetDealerLoginRecords()
+        {
+
+            var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            var libraryPath = Path.Combine(documentsPath, DBConstant.SEPARATOR, DBConstant.LIBRARY);// Library Folder
+            var DbPath = Path.Combine(libraryPath, DBConstant.DB_NAME);
+            var conn = new SQLite.SQLiteConnection(DbPath);
+            conn.CreateTable<DealerValue>();
+
+            var existingRecord = (conn.Table<DealerValue>().Where(c => c.id == 1)).SingleOrDefault();
+
+            if (null != existingRecord)
+            {
+                DealerLogin = existingRecord.DealerLogin;
+                storeId = existingRecord.StoreId;
+            }
+
+        }
+
 
         public override void OnResignActivation(UIApplication application)
         {

@@ -4,12 +4,14 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using AppraisalApp.Models;
 using CoreAnimation;
 using CoreGraphics;
+using ExtAppraisalApp.DB;
 using ExtAppraisalApp.Services;
 using ExtAppraisalApp.Utilities;
 using Foundation;
@@ -234,6 +236,8 @@ namespace ExtAppraisalApp
                     {
                         this.PerformSegue("decodeSegue", this);
                     }
+
+                    SaveDealerLogin();
                 }
 
             }
@@ -312,14 +316,16 @@ namespace ExtAppraisalApp
                         AppDelegate.appDelegate.DealerLogin = false;
                         var storyboard = UIStoryboard.FromName("Main", null);
                         var splitViewController = storyboard.InstantiateViewController("AppraisalLogNavID");
-                        var appDelegate = (AppDelegate)UIApplication.SharedApplication.Delegate;
-                        appDelegate.Window.RootViewController = splitViewController;
+                        AppDelegate.appDelegate.Window.RootViewController = splitViewController;
+
                     }
                     else
                     {
                         AppDelegate.appDelegate.CustomerLogin = true;
                         this.PerformSegue("decodeSegue", this);
                     }
+
+                    SaveCustomerLogin();
                 }
 
             }
@@ -461,7 +467,60 @@ namespace ExtAppraisalApp
             }
         }
 
-     
+        private void SaveCustomerLogin(){
+            
+            var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            var libraryPath = Path.Combine(documentsPath, DBConstant.SEPARATOR, DBConstant.LIBRARY);// Library Folder
+            var DbPath = Path.Combine(libraryPath, DBConstant.DB_NAME);
+            var conn = new SQLite.SQLiteConnection(DbPath);
+            conn.CreateTable<CustomerValue>();
+
+            var record = new CustomerValue { CustomerLogin = true, CustomerLastName = AppDelegate.appDelegate.GuestLastName, CustomerEmail = AppDelegate.appDelegate.GuestEmail, CustomerPhone = AppDelegate.appDelegate.GuestPhone };
+            using (var db = new SQLite.SQLiteConnection(DbPath))
+            {
+                var existingRecord = (db.Table<CustomerValue>().Where(c => c.CustomerLastName == record.CustomerLastName)).SingleOrDefault();
+                if (existingRecord != null)
+                {
+                    existingRecord.CustomerLogin = record.CustomerLogin;
+                    existingRecord.CustomerLastName = record.CustomerLastName;
+                    existingRecord.CustomerEmail = record.CustomerEmail;
+                    existingRecord.CustomerPhone = record.CustomerPhone;
+                    db.Update(existingRecord);
+                }
+                else
+                {
+                    db.Insert(record);
+                }
+
+            }
+        }
+
+        private void SaveDealerLogin()
+        {
+
+            var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            var libraryPath = Path.Combine(documentsPath, DBConstant.SEPARATOR, DBConstant.LIBRARY);// Library Folder
+            var DbPath = Path.Combine(libraryPath, DBConstant.DB_NAME);
+            var conn = new SQLite.SQLiteConnection(DbPath);
+            conn.CreateTable<DealerValue>();
+
+            var record = new DealerValue { DealerLogin = true, StoreId = AppDelegate.appDelegate.storeId};
+            using (var db = new SQLite.SQLiteConnection(DbPath))
+            {
+                var existingRecord = (db.Table<DealerValue>().Where(c => c.DealerLogin == record.DealerLogin)).SingleOrDefault();
+                if (existingRecord != null)
+                {
+                    existingRecord.DealerLogin = record.DealerLogin;
+                    existingRecord.StoreId = record.StoreId;
+                    db.Update(existingRecord);
+                }
+                else
+                {
+                    db.Insert(record);
+                }
+
+            }
+        }
 
         public void removeAll(UIPickerView picker)
         {

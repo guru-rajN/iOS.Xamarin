@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using AppraisalApp.Models;
 using CoreGraphics;
 using ExtAppraisalApp;
+using ExtAppraisalApp.DB;
 using ExtAppraisalApp.Models;
 using ExtAppraisalApp.Services;
 using ExtAppraisalApp.Utilities;
@@ -85,6 +88,18 @@ namespace AppraisalApp
             var loginViewController = storyboard.InstantiateViewController("LoginViewController");
             AppDelegate.appDelegate.Window.RootViewController = loginViewController;
 
+            dropDB();
+
+        }
+
+        private void dropDB()
+        {
+            var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            var libraryPath = Path.Combine(documentsPath, DBConstant.SEPARATOR, DBConstant.LIBRARY);// Library Folder
+            var DbPath = Path.Combine(libraryPath, DBConstant.DB_NAME);
+            var conn = new SQLite.SQLiteConnection(DbPath);
+            conn.DropTable<CustomerValue>();
+            conn.DropTable<DealerValue>();
         }
 
         partial void BtnAddNew_Activated(UIBarButtonItem sender)
@@ -243,6 +258,9 @@ namespace AppraisalApp
             AppraisalTableView.EstimatedRowHeight = 120.0f;
             AppraisalTableView.BackgroundColor = UIColor.LightGray;
 
+            GetCustomerLoginRecords();
+            GetDealerLoginRecords();
+
             if (AppDelegate.appDelegate.CustomerLogin)
             {
                 if (null != AppDelegate.appDelegate.CustomerAppraisalLogs && AppDelegate.appDelegate.CustomerAppraisalLogs.Count > 0)
@@ -287,6 +305,46 @@ namespace AppraisalApp
 
             AppraisalTableView.ReloadData();
         }
+
+        private void GetCustomerLoginRecords()
+        {
+
+            var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            var libraryPath = Path.Combine(documentsPath, DBConstant.SEPARATOR, DBConstant.LIBRARY);// Library Folder
+            var DbPath = Path.Combine(libraryPath, DBConstant.DB_NAME);
+            var conn = new SQLite.SQLiteConnection(DbPath);
+            conn.CreateTable<CustomerValue>();
+
+            var existingRecord = (conn.Table<CustomerValue>().Where(c => c.id == 1)).SingleOrDefault();
+
+            if(null != existingRecord){
+                AppDelegate.appDelegate.CustomerLogin = existingRecord.CustomerLogin;
+                AppDelegate.appDelegate.GuestLastName = existingRecord.CustomerLastName;
+                AppDelegate.appDelegate.GuestEmail = existingRecord.CustomerEmail;
+                AppDelegate.appDelegate.GuestPhone = existingRecord.CustomerPhone;
+            }
+
+        }
+
+        private void GetDealerLoginRecords()
+        {
+
+            var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            var libraryPath = Path.Combine(documentsPath, DBConstant.SEPARATOR, DBConstant.LIBRARY);// Library Folder
+            var DbPath = Path.Combine(libraryPath, DBConstant.DB_NAME);
+            var conn = new SQLite.SQLiteConnection(DbPath);
+            conn.CreateTable<DealerValue>();
+
+            var existingRecord = (conn.Table<DealerValue>().Where(c => c.id == 1)).SingleOrDefault();
+
+            if (null != existingRecord)
+            {
+                AppDelegate.appDelegate.DealerLogin = existingRecord.DealerLogin;
+                AppDelegate.appDelegate.storeId = existingRecord.StoreId;
+            }
+
+        }
+
 
         Task<List<CustomerAppraisalLogEntity>> CallGuestAppraisalLogService(string lastname, string email, string phone)
         {
