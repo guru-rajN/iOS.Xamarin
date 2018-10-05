@@ -106,7 +106,9 @@ namespace ExtAppraisalApp
         public string GuestPhone;
 
         public List<CustomerAppraisalLogEntity> CustomerAppraisalLogs;
+        public List<AppraisalLogEntity> AppraisalsLogs;
         public bool CustomerLogin = false;
+        public bool DealerLogin = false;
 
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)

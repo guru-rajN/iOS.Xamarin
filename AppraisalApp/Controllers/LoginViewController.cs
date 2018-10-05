@@ -201,14 +201,28 @@ namespace ExtAppraisalApp
 
                 if(null != code){
                     AppDelegate.appDelegate.storeId = Convert.ToInt16(code);
-                    InvokeOnMainThread(() =>
+                    List<AppraisalLogEntity> appraisalLogs = new List<AppraisalLogEntity>();
+
+
+                    Utility.ShowLoadingIndicator(this.View, "", true);
+
+                    appraisalLogs = await CallDealerAppraisalLogService();
+
+                    Utility.HideLoadingIndicator(this.View);
+
+                    if (appraisalLogs.Count > 0)
                     {
+                        AppDelegate.appDelegate.AppraisalsLogs = appraisalLogs;
+                        AppDelegate.appDelegate.DealerLogin = true;
                         var storyboard = UIStoryboard.FromName("Main", null);
                         var splitViewController = storyboard.InstantiateViewController("AppraisalLogNavID");
                         var appDelegate = (AppDelegate)UIApplication.SharedApplication.Delegate;
                         appDelegate.Window.RootViewController = splitViewController;
-
-                    }); 
+                    }
+                    else
+                    {
+                        this.PerformSegue("decodeSegue", this);
+                    }
                 }
 
             }
@@ -280,7 +294,7 @@ namespace ExtAppraisalApp
 
                     Utility.HideLoadingIndicator(this.View);
 
-                    if (customerAppraisalLogs.Count > 1)
+                    if (customerAppraisalLogs.Count > 0)
                     {
                         AppDelegate.appDelegate.CustomerAppraisalLogs = customerAppraisalLogs;
                         AppDelegate.appDelegate.CustomerLogin = true;

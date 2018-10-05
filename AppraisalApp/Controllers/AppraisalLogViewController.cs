@@ -209,7 +209,7 @@ namespace AppraisalApp
 
             if (AppDelegate.appDelegate.CustomerLogin)
             {
-                if (null != AppDelegate.appDelegate.CustomerAppraisalLogs && AppDelegate.appDelegate.CustomerAppraisalLogs.Count > 1)
+                if (null != AppDelegate.appDelegate.CustomerAppraisalLogs && AppDelegate.appDelegate.CustomerAppraisalLogs.Count > 0)
                 {
                     CustomerAppLogsList = AppDelegate.appDelegate.CustomerAppraisalLogs;
                     var completedVehicle = CustomerAppLogsList.FindAll((CustomerAppraisalLogEntity obj) => obj.Status == "CA");
@@ -222,9 +222,18 @@ namespace AppraisalApp
             }
             else
             {
-                apploglist = ServiceFactory.getWebServiceHandle().FetchAppraisalLog(AppDelegate.appDelegate.storeId);
-                var completedVehicle = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status == "CA");
-                AppraisalTableView.Source = new ApprasialLogTVS(completedVehicle);
+                if(null != AppDelegate.appDelegate.AppraisalsLogs && AppDelegate.appDelegate.AppraisalsLogs.Count > 0)
+                {
+                    apploglist = AppDelegate.appDelegate.AppraisalsLogs;
+                    var completedVehicle = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status == "CA");
+                    AppraisalTableView.Source = new ApprasialLogTVS(completedVehicle);  
+                }else{
+                    apploglist = ServiceFactory.getWebServiceHandle().FetchAppraisalLog(AppDelegate.appDelegate.storeId);
+                    var completedVehicle = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status == "CA");
+                    AppraisalTableView.Source = new ApprasialLogTVS(completedVehicle);  
+                }
+
+
             }
 
             AppraisalTableView.ReloadData();
