@@ -121,33 +121,31 @@ namespace ExtAppraisalApp
                 string mileage = txtMileage.Text;
                 string phone = txtPhone.Text;
 
-
-                if (string.IsNullOrEmpty(vin) || string.IsNullOrEmpty(mileage) || string.IsNullOrEmpty(firstname) ||string.IsNullOrEmpty(lastname))
+                if (string.IsNullOrEmpty(vin) || string.IsNullOrEmpty(mileage) || string.IsNullOrEmpty(firstname) ||string.IsNullOrEmpty(lastname) || (string.IsNullOrEmpty(email) && string.IsNullOrEmpty(phone)))
                 {
                     txtVin.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
                     txtMileage.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
                     txtFirstName.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
-                    txtEmail.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
-                    txtPhone.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
+                    //txtEmail.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
+                    //txtPhone.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
                     txtLastName.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
 
-                }
-                //if (string.IsNullOrEmpty(mileage))
-                //{
-                //}
-                //if (string.IsNullOrEmpty(firstname))
-                //{
-                //}
-                //if (string.IsNullOrEmpty(lastname))
-                //{
-                //}
+                    if (string.IsNullOrEmpty(email) && string.IsNullOrEmpty(phone))
+                    {
+                        txtEmail.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
+                        txtPhone.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
 
-                else if (string.IsNullOrEmpty(email) && string.IsNullOrEmpty(phone))
-                {
-                    txtEmail.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
-                    txtPhone.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
-         
+                    }
+
                 }
+
+
+                //else if (string.IsNullOrEmpty(email) && string.IsNullOrEmpty(phone))
+                //{
+                //    txtEmail.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
+                //    txtPhone.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
+         
+                //}
                 //else if(string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(phone)){
 
                 //    txtEmail.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
@@ -158,27 +156,7 @@ namespace ExtAppraisalApp
                 //}
 
 
-                //else if (!Regex.Match(firstname, @"^[a-zA-Z]*$").Success)
-                //{
 
-                //    Utilities.Utility.ShowAlert("First Name", "Your FirstName (" + firstname + ") is Incorrect", "OK");
-                //}
-                //else if (!Regex.Match(lastname, @"^[a-zA-Z]*$").Success)
-                //{
-                //    Utilities.Utility.ShowAlert("Last Name", "Your LastName (" + lastname + ") is Incorrect", "OK");
-
-                //}
-
-                //else if (!string.IsNullOrEmpty(email) && !Regex.Match(email, (@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$")).Success)
-                //{
-                //    Utilities.Utility.ShowAlert("Email", "Your email (" + email + ") is Incorrect", "OK");
-
-                //}
-                //else if (!string.IsNullOrEmpty(phone) && phone.Length != 10)
-                //{
-                //    Utilities.Utility.ShowAlert("Phone", "Your phone (" + phone + ") is Incorrect", "OK");
-
-                //}
                 else
                 {
                     txtEmail.AttributedPlaceholder = new NSAttributedString("", null, UIColor.Red);
@@ -330,6 +308,22 @@ namespace ExtAppraisalApp
                     return true;
                 };
 
+                if(AppDelegate.appDelegate.CustomerLogin){
+                    if(!string.IsNullOrEmpty(AppDelegate.appDelegate.GuestLastName))
+                    {
+                        txtLastName.Text = AppDelegate.appDelegate.GuestLastName;
+                    }
+                    if (!string.IsNullOrEmpty(AppDelegate.appDelegate.GuestEmail))
+                    {
+                        txtEmail.Text = AppDelegate.appDelegate.GuestEmail;
+                    }
+
+                    if (!string.IsNullOrEmpty(AppDelegate.appDelegate.GuestPhone))
+                    {
+                        txtPhone.Text = AppDelegate.appDelegate.GuestPhone;
+                    }
+                }
+
                 // hide keyboard on touch outside area
                 var g = new UITapGestureRecognizer(() => View.EndEditing(true));
                 g.CancelsTouchesInView = false; //for iOS5
@@ -375,10 +369,6 @@ namespace ExtAppraisalApp
             base.DidReceiveMemoryWarning();
             // Release any cached data, images, etc that aren't in use.
         }
-
-
-
-
 
         public void HandleScanResult(ZXing.Result result)
         {

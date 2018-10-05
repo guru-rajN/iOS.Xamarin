@@ -71,6 +71,14 @@ namespace ExtAppraisalApp
             EmailPhone.Placeholder = "Email";
             IsEmail = true;
 
+            if(!IsEmail){
+                
+                EmailPhone.ShouldChangeCharacters = (textField, range, replacementString) => {
+                    var newLength = textField.Text.Length + replacementString.Length - range.Length;
+                    return newLength <= 10;
+                };
+            }
+
 
             if (UserInterfaceIdiomIsPhone)
             {
@@ -190,8 +198,11 @@ namespace ExtAppraisalApp
         async partial void DealerGetStartBtn_TouchUpInside(UIButton sender)
         {
             if(string.IsNullOrEmpty(DealerCodeTxt.Text)){
+                
                 Utility.ShowAlert("CarCash", "Please Enter the DealerCode.!!", "OK");
+
             }else{
+                
                 Utility.ShowLoadingIndicator(this.View, "", true);
 
                 string code = null;
@@ -213,6 +224,7 @@ namespace ExtAppraisalApp
                     if (appraisalLogs.Count > 0)
                     {
                         AppDelegate.appDelegate.AppraisalsLogs = appraisalLogs;
+                        AppDelegate.appDelegate.CustomerLogin = false;
                         AppDelegate.appDelegate.DealerLogin = true;
                         var storyboard = UIStoryboard.FromName("Main", null);
                         var splitViewController = storyboard.InstantiateViewController("AppraisalLogNavID");
@@ -298,6 +310,7 @@ namespace ExtAppraisalApp
                     {
                         AppDelegate.appDelegate.CustomerAppraisalLogs = customerAppraisalLogs;
                         AppDelegate.appDelegate.CustomerLogin = true;
+                        AppDelegate.appDelegate.DealerLogin = false;
                         var storyboard = UIStoryboard.FromName("Main", null);
                         var splitViewController = storyboard.InstantiateViewController("AppraisalLogNavID");
                         var appDelegate = (AppDelegate)UIApplication.SharedApplication.Delegate;
@@ -305,6 +318,7 @@ namespace ExtAppraisalApp
                     }
                     else
                     {
+                        AppDelegate.appDelegate.CustomerLogin = true;
                         this.PerformSegue("decodeSegue", this);
                     }
                 }
