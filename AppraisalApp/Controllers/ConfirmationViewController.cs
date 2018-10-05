@@ -6,11 +6,52 @@ using ExtAppraisalApp.DB;
 using ExtAppraisalApp.Models;
 using ExtAppraisalApp.Services;
 using System.IO;
+using Xamarin.Forms;
 
 namespace ExtAppraisalApp
 {
     public partial class ConfirmationViewController : UIViewController
     {
+        partial void BtnDial_TouchUpInside(UIButton sender)
+        {
+            try             {                 global::Xamarin.Forms.Forms.Init();                 Device.OpenUri(new Uri(String.Format("tel:{0}", "+18666576642")));             }             catch (ArgumentNullException Ex)             {                 // Number was null or white space             }
+        }
+
+        partial void BtnMail_TouchUpInside(UIButton sender)
+        {
+            global::Xamarin.Forms.Forms.Init();              var address = "chidu.soraba@gmail.com";              Device.OpenUri(new Uri($"mailto:{ address}?subject=Feedback&body=A message for you consideration." + "%0D%0A" +  //line break                                     "Line2"));
+        }
+
+        partial void BtnFAQ_TouchUpInside(UIButton sender)
+        {
+            HighContactUs.Hidden = true;
+            HighQA.Hidden = false;
+            ViewContactDetails.Hidden = true;
+            ViewFAQ.Hidden = false;
+        }
+
+        partial void BtnMailDial_TouchUpInside(UIButton sender)
+        {
+            HighQA.Hidden = true;
+            HighContactUs.Hidden = false;
+            ViewContactDetails.Hidden = false;
+            ViewFAQ.Hidden = true;
+
+            
+        }
+
+
+
+        partial void DownArrow_TouchUpInside(UIButton sender)
+        {
+            VIewMainView.Hidden = true;
+        }
+
+        partial void UpArrow_TouchUpInside(UIButton sender)
+        {
+            VIewMainView.Hidden = false;
+        }
+
         public ConfirmationViewController(IntPtr handle) : base(handle)
         {
         }
@@ -19,6 +60,19 @@ namespace ExtAppraisalApp
         {
             NSNotificationCenter.DefaultCenter.AddObserver((Foundation.NSString)"SaveClicked", SaveDetails);
             base.ViewDidLoad();
+            UITapGestureRecognizer tapGesture = new UITapGestureRecognizer(ShowPopUp);
+            ViewUpArrow.AddGestureRecognizer(tapGesture);
+            UITapGestureRecognizer tapGesture1 = new UITapGestureRecognizer(HidePopUp);
+            ViewDownArrow.AddGestureRecognizer(tapGesture1);
+                       
+        }
+        public void ShowPopUp()
+        {
+            VIewMainView.Hidden = false;
+        }
+        public void HidePopUp()
+        {
+            VIewMainView.Hidden = true;
         }
 
         public override void ViewDidDisappear(bool animated)
