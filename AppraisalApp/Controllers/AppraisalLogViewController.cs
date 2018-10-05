@@ -162,38 +162,74 @@ namespace AppraisalApp
             VinSearch.Text = VinSearch.Text.ToUpper();
             VinSearch.TextChanged += (sender, e) =>
             {
-                if (VinSearch.Text.Length > 0)
-                {
-                    var VinSearchEntity = apploglist.FindAll((AppraisalLogEntity obj) => obj.VIN.Contains(VinSearch.Text.Trim()));
-                    AppraisalTableView.Source = new ApprasialLogTVS(VinSearchEntity);
-                    AppraisalTableView.RowHeight = 120f;
-                    AppraisalTableView.EstimatedRowHeight = 120.0f;
-                    AppraisalTableView.BackgroundColor = UIColor.LightGray;
-                    AppraisalTableView.ReloadData();
-                }//Method get called when search started 
-                else
-                {
-                    string segmentID = AppraisalTypeSegment.SelectedSegment.ToString();
-                    if (segmentID == "0")
+                if(AppDelegate.appDelegate.CustomerLogin){
+
+                    if (VinSearch.Text.Length > 0)
                     {
-                        var Appcompleted = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status == "CA");
-                        AppraisalTableView.Source = new ApprasialLogTVS(Appcompleted);
+                        var VinSearchEntity = CustomerAppLogsList.FindAll((CustomerAppraisalLogEntity obj) => obj.VIN.Contains(VinSearch.Text.Trim()));
+                        AppraisalTableView.Source = new CustomerApprasialLogTVS(VinSearchEntity);
                         AppraisalTableView.RowHeight = 120f;
                         AppraisalTableView.EstimatedRowHeight = 120.0f;
                         AppraisalTableView.BackgroundColor = UIColor.LightGray;
                         AppraisalTableView.ReloadData();
-                    }
+                    }//Method get called when search started 
                     else
                     {
-                        var appPending = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status != "CA");
-                        AppraisalTableView.Source = new ApprasialLogTVS(appPending);
+                        string segmentID = AppraisalTypeSegment.SelectedSegment.ToString();
+                        if (segmentID == "0")
+                        {
+                            var Appcompleted = CustomerAppLogsList.FindAll((CustomerAppraisalLogEntity obj) => obj.Status == "CA");
+                            AppraisalTableView.Source = new CustomerApprasialLogTVS(Appcompleted);
+                            AppraisalTableView.RowHeight = 120f;
+                            AppraisalTableView.EstimatedRowHeight = 120.0f;
+                            AppraisalTableView.BackgroundColor = UIColor.LightGray;
+                            AppraisalTableView.ReloadData();
+                        }
+                        else
+                        {
+                            var appPending = CustomerAppLogsList.FindAll((CustomerAppraisalLogEntity obj) => obj.Status != "CA");
+                            AppraisalTableView.Source = new CustomerApprasialLogTVS(appPending);
+                            AppraisalTableView.RowHeight = 120f;
+                            AppraisalTableView.EstimatedRowHeight = 120.0f;
+                            AppraisalTableView.BackgroundColor = UIColor.LightGray;
+                            AppraisalTableView.ReloadData();
+                        }
+                    }
+
+                }else{
+                    
+                    if (VinSearch.Text.Length > 0)
+                    {
+                        var VinSearchEntity = apploglist.FindAll((AppraisalLogEntity obj) => obj.VIN.Contains(VinSearch.Text.Trim()));
+                        AppraisalTableView.Source = new ApprasialLogTVS(VinSearchEntity);
                         AppraisalTableView.RowHeight = 120f;
                         AppraisalTableView.EstimatedRowHeight = 120.0f;
                         AppraisalTableView.BackgroundColor = UIColor.LightGray;
                         AppraisalTableView.ReloadData();
+                    }//Method get called when search started 
+                    else
+                    {
+                        string segmentID = AppraisalTypeSegment.SelectedSegment.ToString();
+                        if (segmentID == "0")
+                        {
+                            var Appcompleted = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status == "CA");
+                            AppraisalTableView.Source = new ApprasialLogTVS(Appcompleted);
+                            AppraisalTableView.RowHeight = 120f;
+                            AppraisalTableView.EstimatedRowHeight = 120.0f;
+                            AppraisalTableView.BackgroundColor = UIColor.LightGray;
+                            AppraisalTableView.ReloadData();
+                        }
+                        else
+                        {
+                            var appPending = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status != "CA");
+                            AppraisalTableView.Source = new ApprasialLogTVS(appPending);
+                            AppraisalTableView.RowHeight = 120f;
+                            AppraisalTableView.EstimatedRowHeight = 120.0f;
+                            AppraisalTableView.BackgroundColor = UIColor.LightGray;
+                            AppraisalTableView.ReloadData();
+                        }
                     }
                 }
-
             };
 
             VinSearch.ShouldBeginEditing += VinSearch_ShouldBeginEditing;
