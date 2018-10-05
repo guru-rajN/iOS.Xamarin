@@ -321,8 +321,19 @@ namespace ExtAppraisalApp
                 {
                     // Do something if yes
                     var storyboard = UIStoryboard.FromName("Main", null);
-                    var loginViewController = storyboard.InstantiateViewController("LoginViewController");
-                    AppDelegate.appDelegate.Window.RootViewController = loginViewController;
+                    //var loginViewController = storyboard.InstantiateViewController("LoginViewController");
+                    //AppDelegate.appDelegate.Window.RootViewController = loginViewController;
+                    var appraisalViewController = storyboard.InstantiateViewController("AppraisalLogNavID");
+                    AppDelegate.appDelegate.Window.RootViewController = appraisalViewController;
+                    if (null != AppDelegate.appDelegate.CustomerAppraisalLogs)
+                    {
+                        AppDelegate.appDelegate.CustomerAppraisalLogs.Clear();
+                    }
+
+                    if (null != AppDelegate.appDelegate.AppraisalsLogs){
+                        AppDelegate.appDelegate.AppraisalsLogs.Clear(); 
+                    }
+                        
 
                     AppDelegate.appDelegate.IsAllDataSaved = false;
 

@@ -250,6 +250,7 @@ namespace AppraisalApp
                     CustomerAppLogsList = AppDelegate.appDelegate.CustomerAppraisalLogs;
                     var completedVehicle = CustomerAppLogsList.FindAll((CustomerAppraisalLogEntity obj) => obj.Status == "CA");
                     AppraisalTableView.Source = new CustomerApprasialLogTVS(completedVehicle);
+
                 }else{
                     Utility.ShowLoadingIndicator(this.View, "", true);
 
@@ -268,6 +269,7 @@ namespace AppraisalApp
                     apploglist = AppDelegate.appDelegate.AppraisalsLogs;
                     var completedVehicle = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status == "CA");
                     AppraisalTableView.Source = new ApprasialLogTVS(completedVehicle);  
+
                 }else{
 
                     Utility.ShowLoadingIndicator(this.View, "", true);

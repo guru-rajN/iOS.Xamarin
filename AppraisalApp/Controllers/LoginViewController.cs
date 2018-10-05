@@ -160,7 +160,6 @@ namespace ExtAppraisalApp
             catch (Exception exc)
             {
                 Debug.WriteLine("Exception occurred :: " + exc.Message);
-                //Utility.ShowAlert("AppraisalApp", "EXC :: " + exc.Message, "OK");
             }
 
 
