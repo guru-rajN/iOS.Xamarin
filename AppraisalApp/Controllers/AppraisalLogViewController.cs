@@ -150,7 +150,7 @@ namespace AppraisalApp
         {
         }
 
-        public override void ViewDidLoad()
+        async public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 
@@ -251,7 +251,12 @@ namespace AppraisalApp
                     var completedVehicle = CustomerAppLogsList.FindAll((CustomerAppraisalLogEntity obj) => obj.Status == "CA");
                     AppraisalTableView.Source = new CustomerApprasialLogTVS(completedVehicle);
                 }else{
-                    CustomerAppLogsList = ServiceFactory.getWebServiceHandle().FetchCustomerAppraisalLogs(AppDelegate.appDelegate.GuestLastName, AppDelegate.appDelegate.GuestEmail, AppDelegate.appDelegate.GuestPhone);
+                    Utility.ShowLoadingIndicator(this.View, "", true);
+
+                    CustomerAppLogsList = await CallGuestAppraisalLogService(AppDelegate.appDelegate.GuestLastName, AppDelegate.appDelegate.GuestEmail, AppDelegate.appDelegate.GuestPhone);
+
+                    Utility.HideLoadingIndicator(this.View);
+
                     var completedVehicle = CustomerAppLogsList.FindAll((CustomerAppraisalLogEntity obj) => obj.Status == "CA");
                     AppraisalTableView.Source = new CustomerApprasialLogTVS(completedVehicle);
                 }
@@ -264,7 +269,13 @@ namespace AppraisalApp
                     var completedVehicle = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status == "CA");
                     AppraisalTableView.Source = new ApprasialLogTVS(completedVehicle);  
                 }else{
-                    apploglist = ServiceFactory.getWebServiceHandle().FetchAppraisalLog(AppDelegate.appDelegate.storeId);
+
+                    Utility.ShowLoadingIndicator(this.View, "", true);
+
+                    apploglist = await CallDealerAppraisalLogService();
+
+                    Utility.HideLoadingIndicator(this.View);
+
                     var completedVehicle = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status == "CA");
                     AppraisalTableView.Source = new ApprasialLogTVS(completedVehicle);  
                 }
@@ -273,6 +284,33 @@ namespace AppraisalApp
             }
 
             AppraisalTableView.ReloadData();
+        }
+
+        Task<List<CustomerAppraisalLogEntity>> CallGuestAppraisalLogService(string lastname, string email, string phone)
+        {
+
+            return Task<List<CustomerAppraisalLogEntity>>.Factory.StartNew(() =>
+            {
+                List<CustomerAppraisalLogEntity> customerAppraisalLogs = new List<CustomerAppraisalLogEntity>();
+                customerAppraisalLogs = ServiceFactory.getWebServiceHandle().FetchCustomerAppraisalLogs(lastname, email, phone);
+
+                return customerAppraisalLogs;
+
+
+            });
+        }
+
+        Task<List<AppraisalLogEntity>> CallDealerAppraisalLogService()
+        {
+            return Task<List<AppraisalLogEntity>>.Factory.StartNew(() =>
+            {
+                List<AppraisalLogEntity> dealerAppraisalLogs = new List<AppraisalLogEntity>();
+                dealerAppraisalLogs = ServiceFactory.getWebServiceHandle().FetchAppraisalLog(AppDelegate.appDelegate.storeId);
+
+                return dealerAppraisalLogs;
+
+
+            });
         }
 
         internal class CustomerApprasialLogTVS : UITableViewSource
