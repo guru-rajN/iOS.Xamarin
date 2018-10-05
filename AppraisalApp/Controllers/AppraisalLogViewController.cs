@@ -215,7 +215,7 @@ namespace AppraisalApp
                     var completedVehicle = CustomerAppLogsList.FindAll((CustomerAppraisalLogEntity obj) => obj.Status == "CA");
                     AppraisalTableView.Source = new CustomerApprasialLogTVS(completedVehicle);
                 }else{
-                    CustomerAppLogsList = ServiceFactory.getWebServiceHandle().FetchCustomerAppraisalLogs("Test", "abc@gmail.com", "");
+                    CustomerAppLogsList = ServiceFactory.getWebServiceHandle().FetchCustomerAppraisalLogs(AppDelegate.appDelegate.GuestLastName, AppDelegate.appDelegate.GuestEmail, AppDelegate.appDelegate.GuestPhone);
                     var completedVehicle = CustomerAppLogsList.FindAll((CustomerAppraisalLogEntity obj) => obj.Status == "CA");
                     AppraisalTableView.Source = new CustomerApprasialLogTVS(completedVehicle);
                 }
