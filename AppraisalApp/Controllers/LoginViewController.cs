@@ -32,6 +32,8 @@ namespace ExtAppraisalApp
 
         private string zipCode;
 
+        public NetworkStatus remoteHostStatus, internetStatus, localWifiStatus;
+
         private nfloat scroll_amount = 0.0f;    // amount to scroll 
         private nfloat bottom = 0.0f;           // bottom point
         private nfloat offset = 10.0f;          // extra offset
@@ -53,8 +55,27 @@ namespace ExtAppraisalApp
             get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
         }
 
+        void updateInternetStatus()
+        {
+            try
+            {
+                remoteHostStatus = Reachability.RemoteHostStatus();
+                internetStatus = Reachability.InternetConnectionStatus();
+                localWifiStatus = Reachability.LocalWifiConnectionStatus();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Exception In LoginViewController: updateInternetStatus: " + ex.Message);
+            }
+        }
+
         public override void ViewDidLoad()
         {
+
+            updateInternetStatus();
+            Reachability.ReachabilityChanged += (object sender, EventArgs e) => {
+                updateInternetStatus();
+            };
 
             // hide keyboard on touch outside area
             var g = new UITapGestureRecognizer(() => View.EndEditing(true));
@@ -281,19 +302,26 @@ namespace ExtAppraisalApp
 
                     if (zip == "")
                     {
-                        Utility.ShowAlert("ZIP/Dealer Code", "A ZIP/Dealer is required.!!", "OK");
+                        Utility.ShowAlert("CarCash", "A ZIP/Dealer is required.!!", "OK");
 
                     }
-                    else if (!(zip.Length == 6 || zip.Length == 5))
+                    else if (!(zip.Length == 5))
                     {
-                        Utility.ShowAlert("ZIP/Dealer Code", "Your ZIP/Dealer (" + zip + ") is Incorrect", "OK");
+                        Utility.ShowAlert("CarCash", "Your ZIP/Dealer (" + zip + ") is Incorrect", "OK");
 
                     }
                     else
                     {
                         zipCode = txtZip.Text;
-                        Utility.ShowLoadingIndicator(this.View, "", true);
-                        CallWebservice();
+
+                        if(!Reachability.InternetConnectionStatus().Equals(NetworkStatus.NotReachable)){
+                            Utility.ShowLoadingIndicator(this.View, "", true);
+                            CallWebservice();
+
+                        }else{
+                            Utility.ShowAlert("CarCash", "You are disconnected from internet. Please connect and try again", "OK");
+                        }
+
                     }
                 }
                 else
