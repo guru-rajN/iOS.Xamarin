@@ -56,11 +56,27 @@ namespace ExtAppraisalApp
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblDial { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblMail { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel SummaryMsg { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton UpArrow { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITableViewCell viewcelldial { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITableViewCell viewcellmail { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -105,6 +121,14 @@ namespace ExtAppraisalApp
         [Action ("BtnMailDial_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void BtnMailDial_TouchUpInside (UIKit.UIButton sender);
+
+        [Action ("BtnMainContactUs_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void BtnMainContactUs_TouchUpInside (UIKit.UIButton sender);
+
+        [Action ("btnMainQA_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void btnMainQA_TouchUpInside (UIKit.UIButton sender);
 
         [Action ("DownArrow_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -166,6 +190,16 @@ namespace ExtAppraisalApp
                 HighQA = null;
             }
 
+            if (lblDial != null) {
+                lblDial.Dispose ();
+                lblDial = null;
+            }
+
+            if (lblMail != null) {
+                lblMail.Dispose ();
+                lblMail = null;
+            }
+
             if (SummaryMsg != null) {
                 SummaryMsg.Dispose ();
                 SummaryMsg = null;
@@ -174,6 +208,16 @@ namespace ExtAppraisalApp
             if (UpArrow != null) {
                 UpArrow.Dispose ();
                 UpArrow = null;
+            }
+
+            if (viewcelldial != null) {
+                viewcelldial.Dispose ();
+                viewcelldial = null;
+            }
+
+            if (viewcellmail != null) {
+                viewcellmail.Dispose ();
+                viewcellmail = null;
             }
 
             if (ViewContactDetails != null) {

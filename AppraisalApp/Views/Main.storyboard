@@ -3713,10 +3713,16 @@
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lbt-DX-feT">
                                         <rect key="frame" x="25" y="15" width="63" height="63"/>
                                         <state key="normal" backgroundImage="ContactUs-64.png"/>
+                                        <connections>
+                                            <action selector="BtnMainContactUs_TouchUpInside:" destination="LBy-GF-8fU" id="610541" eventType="touchUpInside"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bf6-ih-Ent">
                                         <rect key="frame" x="946" y="16" width="63" height="60"/>
                                         <state key="normal" backgroundImage="Qest-64.png"/>
+                                        <connections>
+                                            <action selector="btnMainQA_TouchUpInside:" destination="LBy-GF-8fU" id="611361" eventType="touchUpInside"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ContactUs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jVg-Z6-2xq">
                                         <rect key="frame" x="18" y="76" width="82" height="21"/>
@@ -3731,7 +3737,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NGg-Hb-PtQ">
-                                        <rect key="frame" x="108" y="0.0" width="830" height="99"/>
+                                        <rect key="frame" x="108" y="0.0" width="368" height="99"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qzc-NK-a6E">
                                                 <rect key="frame" x="392" y="8" width="46" height="30"/>
@@ -3873,8 +3879,8 @@
                                             <constraint firstAttribute="height" constant="2" id="uNZ-Uq-7MI"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gS9-jB-UnR">
-                                        <rect key="frame" x="0.0" y="89" width="532" height="2"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gS9-jB-UnR" misplaced="YES">
+                                        <rect key="frame" x="0.0" y="89" width="532" height="9"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="2" id="TZn-28-bHj"/>
@@ -3908,10 +3914,10 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XwV-dg-4OS">
-                                        <rect key="frame" x="0.0" y="92" width="1024" height="248"/>
+                                        <rect key="frame" x="0.0" y="99" width="540" height="241"/>
                                         <subviews>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" rowHeight="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="wwW-2J-znB">
-                                                <rect key="frame" x="0.0" y="-270" width="0.0" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="-277" width="0.0" height="0.0"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wwW-2J-znB" id="trN-vO-jfu">
                                                     <rect key="frame" x="0.0" y="-0.5" width="0.0" height="0.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
@@ -3938,9 +3944,8 @@
                                                                 <action selector="BtnDial_TouchUpInside:" destination="LBy-GF-8fU" eventType="touchUpInside" id="NVt-be-eCa"/>
                                                             </connections>
                                                         </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Frw-Nb-vRV">
-                                                            <rect key="frame" x="64" y="6" width="42" height="48"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Frw-Nb-vRV" misplaced="YES">
+                                                            <rect key="frame" x="64" y="6" width="478" height="48"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -3950,6 +3955,9 @@
                                                         <constraint firstItem="Lp7-Fp-Cbg" firstAttribute="top" secondItem="R5d-lb-9Th" secondAttribute="top" constant="6" id="P1L-A2-kAn"/>
                                                         <constraint firstItem="Lp7-Fp-Cbg" firstAttribute="leading" secondItem="R5d-lb-9Th" secondAttribute="leading" constant="8" id="mak-F4-KvW"/>
                                                         <constraint firstAttribute="bottom" secondItem="Lp7-Fp-Cbg" secondAttribute="bottom" constant="4" id="sjk-bx-7CB"/>
+                                                        <constraint id="605240" firstItem="Frw-Nb-vRV" firstAttribute="leading" secondItem="Lp7-Fp-Cbg" secondAttribute="trailing" constant="40"/>
+                                                        <constraint id="605241" firstItem="Frw-Nb-vRV" firstAttribute="top" secondItem="R5d-lb-9Th" secondAttribute="top" constant="6"/>
+                                                        <constraint id="605242" firstItem="R5d-lb-9Th" firstAttribute="bottom" secondItem="Frw-Nb-vRV" secondAttribute="bottom" constant="4"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                             </tableViewCell>
@@ -3960,9 +3968,8 @@
                                                     <action selector="BtnMail_TouchUpInside:" destination="LBy-GF-8fU" eventType="touchUpInside" id="WXu-FZ-gKt"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohC-t3-TzO">
-                                                <rect key="frame" x="65" y="12" width="42" height="48"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohC-t3-TzO" misplaced="YES">
+                                                <rect key="frame" x="65" y="0.0" width="475" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -3976,6 +3983,9 @@
                                             <constraint firstItem="qGJ-Mk-KIi" firstAttribute="trailing" secondItem="XwV-dg-4OS" secondAttribute="trailing" id="mFG-qA-jD0"/>
                                             <constraint firstItem="qGJ-Mk-KIi" firstAttribute="trailing" secondItem="wwW-2J-znB" secondAttribute="trailing" id="mK6-Bg-F6w"/>
                                             <constraint firstItem="Jz7-zM-nAy" firstAttribute="leading" secondItem="XwV-dg-4OS" secondAttribute="leading" constant="9" id="zdv-H1-3Mt"/>
+                                            <constraint id="605237" firstItem="ohC-t3-TzO" firstAttribute="leading" secondItem="Jz7-zM-nAy" secondAttribute="trailing" constant="40"/>
+                                            <constraint id="605238" firstItem="ohC-t3-TzO" firstAttribute="top" secondItem="XwV-dg-4OS" secondAttribute="top"/>
+                                            <constraint id="605239" firstItem="qGJ-Mk-KIi" firstAttribute="top" secondItem="ohC-t3-TzO" secondAttribute="bottom" constant="8"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -4038,11 +4048,15 @@
                         <outlet property="btnMainContactUs" destination="Lbt-DX-feT" id="wFO-IN-bw0"/>
                         <outlet property="btnMainQA" destination="bf6-ih-Ent" id="ios-Xs-iKU"/>
                         <outlet property="viewMainMenu" destination="3NY-nu-Uqa" id="rYI-fp-mnF"/>
+                        <outlet property="lblDial" destination="Frw-Nb-vRV" id="name-outlet-Frw-Nb-vRV"/>
+                        <outlet property="lblMail" destination="ohC-t3-TzO" id="name-outlet-ohC-t3-TzO"/>
+                        <outlet property="viewcelldial" destination="O2o-c7-wJp" id="name-outlet-O2o-c7-wJp"/>
+                        <outlet property="viewcellmail" destination="wwW-2J-znB" id="name-outlet-wwW-2J-znB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZeW-AF-oUN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7823" y="-375"/>
+            <point key="canvasLocation" x="7156" y="-619"/>
         </scene>
     </scenes>
     <resources>

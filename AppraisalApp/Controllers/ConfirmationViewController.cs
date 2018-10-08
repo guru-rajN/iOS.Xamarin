@@ -12,6 +12,26 @@ namespace ExtAppraisalApp
 {
     public partial class ConfirmationViewController : UIViewController
     {
+        partial void btnMainQA_TouchUpInside(UIButton sender)
+        {
+            VIewMainView.Hidden = false;
+            HighContactUs.Hidden = true;
+            HighQA.Hidden = false;
+            ViewContactDetails.Hidden = true;
+            ViewFAQ.Hidden = false;
+
+        }
+
+        partial void BtnMainContactUs_TouchUpInside(UIButton sender)
+        {
+            VIewMainView.Hidden = false;
+            HighQA.Hidden = true;
+            HighContactUs.Hidden = false;
+            ViewContactDetails.Hidden = false;
+            ViewFAQ.Hidden = true;
+            
+        }
+
         partial void BtnDial_TouchUpInside(UIButton sender)
         {
             try             {                 global::Xamarin.Forms.Forms.Init();                 Device.OpenUri(new Uri(String.Format("tel:{0}", "+18666576642")));             }             catch (ArgumentNullException Ex)             {                 // Number was null or white space             }
@@ -19,7 +39,7 @@ namespace ExtAppraisalApp
 
         partial void BtnMail_TouchUpInside(UIButton sender)
         {
-            global::Xamarin.Forms.Forms.Init();              var address = "chidu.soraba@gmail.com";              Device.OpenUri(new Uri($"mailto:{ address}?subject=Feedback&body=A message for you consideration." + "%0D%0A" +  //line break                                     "Line2"));
+            global::Xamarin.Forms.Forms.Init();              var address = "chidu.soraba@gmail.com";              Device.OpenUri(new Uri($"mailto:{ address}?subject=Feedback&body=A message for you consideration." + "%0D%0A" +  //line break                                     ""));
         }
 
         partial void BtnFAQ_TouchUpInside(UIButton sender)
@@ -64,6 +84,31 @@ namespace ExtAppraisalApp
             ViewUpArrow.AddGestureRecognizer(tapGesture);
             UITapGestureRecognizer tapGesture1 = new UITapGestureRecognizer(HidePopUp);
             ViewDownArrow.AddGestureRecognizer(tapGesture1);
+            UITapGestureRecognizer tapGestureMail = new UITapGestureRecognizer(ShowMail);
+            lblMail.AddGestureRecognizer(tapGestureMail);
+
+            UITapGestureRecognizer tapGestureContact = new UITapGestureRecognizer(DialContact);
+            lblDial.AddGestureRecognizer(tapGestureContact);
+           // lblDial.
+
+            viewcellmail.AddGestureRecognizer(tapGestureMail);
+            viewcelldial.AddGestureRecognizer(tapGestureContact);
+        }
+        public void ShowMail()
+        {
+            global::Xamarin.Forms.Forms.Init();
+
+            var address = "support@sonic.net";
+
+            Device.OpenUri(new Uri($"mailto:{ address}?subject=Feedback&body=A message for you consideration." + "%0D%0A" +  //line break 
+                                   "Line2"));
+
+        }
+        public void DialContact()
+        {
+            global::Xamarin.Forms.Forms.Init();
+            Device.OpenUri(new Uri(String.Format("tel:{0}", "+18666576642")));
+
                        
         }
         public void ShowPopUp()
