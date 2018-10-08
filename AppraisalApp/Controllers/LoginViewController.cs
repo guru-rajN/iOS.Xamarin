@@ -109,6 +109,12 @@ namespace ExtAppraisalApp
                 return newLength <= 5;
             };
 
+
+            DealerCodeTxt.ShouldChangeCharacters = (textField, range, replacementString) => {
+                var newLength = textField.Text.Length + replacementString.Length - range.Length;
+                return newLength <= 6;
+            };
+
             if (UserInterfaceIdiomIsPhone)
             {
                 Console.WriteLine("width :: " + this.View.Bounds.Width + " Height :: " + this.View.Bounds.Height);
@@ -243,7 +249,11 @@ namespace ExtAppraisalApp
                 
                 Utility.ShowAlert("CarCash", "Please Enter the DealerCode.!!", "OK");
 
-            }else{
+            }else if((DealerCodeTxt.Text.Length != 6)){
+                
+                Utility.ShowAlert("CarCash", "Your Dealer code (" + DealerCodeTxt.Text + ") is Incorrect", "OK");
+            }
+            else{
                 
                 Utility.ShowLoadingIndicator(this.View, "", true);
 
@@ -324,9 +334,9 @@ namespace ExtAppraisalApp
                         Utility.ShowAlert("CarCash", "A ZIP/Dealer is required.!!", "OK");
 
                     }
-                    else if (!(zip.Length == 5))
+                    else if (zip.Length != 5)
                     {
-                        Utility.ShowAlert("CarCash", "Your ZIP/Dealer (" + zip + ") is Incorrect", "OK");
+                        Utility.ShowAlert("CarCash", "Your ZIP code (" + zip + ") is Incorrect", "OK");
 
                     }else if(!Regex.Match(EmailPhone.Text, "^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$").Success && IsEmail){
                         
