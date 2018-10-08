@@ -3807,7 +3807,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TAb-ap-dwB" misplaced="YES">
                                                 <rect key="frame" x="61" y="0.0" width="393" height="99"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fm8-em-4it">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fm8-em-4it" misplaced="YES">
                                                         <rect key="frame" x="392" y="0.0" width="46" height="38"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="46" id="L91-go-Ciy"/>
@@ -3821,9 +3821,9 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstItem="Fm8-em-4it" firstAttribute="leading" secondItem="TAb-ap-dwB" secondAttribute="leading" constant="392" id="7bX-T6-bpj"/>
                                                     <constraint firstItem="Fm8-em-4it" firstAttribute="top" secondItem="TAb-ap-dwB" secondAttribute="top" id="HWl-1I-yvG"/>
                                                     <constraint firstAttribute="height" constant="99" id="hL1-eP-jUk"/>
+                                                    <constraint id="583203" firstItem="Fm8-em-4it" firstAttribute="centerX" secondItem="TAb-ap-dwB" secondAttribute="centerX"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="643-5h-eId">
