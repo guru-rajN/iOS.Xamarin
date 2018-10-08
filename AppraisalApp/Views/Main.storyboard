@@ -44,7 +44,7 @@
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZU-Oi-B1e" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-856" y="-330"/>
+            <point key="canvasLocation" x="-1507" y="-330"/>
         </scene>
         <!--Master-->
         <scene sceneID="smW-Zh-WAh">
@@ -3911,7 +3911,7 @@
                                                 </tableViewCellContentView>
                                             </tableViewCell>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" colorSpace="calibratedRGB" red="0.83529411764705885" green="0.83529411764705885" blue="0.83529411764705885" alpha="1"/>
                                     </view>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XwV-dg-4OS">
                                         <rect key="frame" x="0.0" y="99" width="540" height="241"/>
@@ -3975,7 +3975,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" colorSpace="calibratedRGB" red="0.83529411764705885" green="0.83529411764705885" blue="0.83529411764705885" alpha="1"/>
                                         <constraints>
                                             <constraint firstItem="qGJ-Mk-KIi" firstAttribute="top" secondItem="Jz7-zM-nAy" secondAttribute="bottom" constant="18" id="GJ6-GM-lZx"/>
                                             <constraint firstItem="qGJ-Mk-KIi" firstAttribute="leading" secondItem="XwV-dg-4OS" secondAttribute="leading" id="ZAj-nP-HCL"/>
