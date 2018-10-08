@@ -209,6 +209,7 @@ namespace ExtAppraisalApp
                 string code = null;
                 code = await GetStoreID(DealerCodeTxt.Text);
 
+
                 Utility.HideLoadingIndicator(this.View);
 
                 if(null != code){

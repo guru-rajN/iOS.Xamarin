@@ -217,8 +217,9 @@ namespace AppraisalApp
 
                     AdditionSegment.SelectedSegment = 1;
                     AdditionAMFO.Hidden = true;
-                    //Utility.ShowLoadingIndicator(this.View, "Fetching AfterMarket Options", false);
-                    Utility.HideLoadingIndicator(this.SplitViewController.View);
+
+                    var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
+                    Utility.HideLoadingIndicator(splitViewController.View);
                 });
                // Utility.ShowLoadingIndicator(this.View, "Fetching AfterMarket Options", false);
 
@@ -326,7 +327,8 @@ namespace AppraisalApp
                     }
                 else
                 {
-                    Utility.ShowLoadingIndicator(this.SplitViewController.View, "Retrieving...", true);
+                    var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
+                    Utility.ShowLoadingIndicator(splitViewController.View, "Retrieving...", true);
                     GetAltenateFactoryOptions(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, AppDelegate.appDelegate.prospectId);
 
                 }
@@ -346,9 +348,9 @@ namespace AppraisalApp
                 Debug.WriteLine("prospect id :: " + AppDelegate.appDelegate.prospectId);
                 InvokeOnMainThread(() =>
                 {
-
-                    Utility.HideLoadingIndicator(this.SplitViewController.View);
-                    Utility.ShowLoadingIndicator(this.View, "Retrieving...", true);
+                    var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
+                    Utility.HideLoadingIndicator(splitViewController.View);
+                    Utility.ShowLoadingIndicator(splitViewController.View, "Retrieving...", true);
                     GetAltenateFactoryOptions(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, AppDelegate.appDelegate.prospectId);
 
 

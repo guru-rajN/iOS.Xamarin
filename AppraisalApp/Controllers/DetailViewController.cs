@@ -110,10 +110,11 @@ namespace ExtAppraisalApp
                 else
                 {
                     try{
-                        Utility.ShowLoadingIndicator(this.SplitViewController.View, "Loading...", true);
+                        var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
+                        Utility.ShowLoadingIndicator(splitViewController.View, "Loading...", true);
                         // get vehicle details service
                         vehicleDetails = await CallGetVehicleService();
-                        Utility.HideLoadingIndicator(this.SplitViewController.View);
+                        Utility.HideLoadingIndicator(SplitViewController.View);
                     }catch(Exception exc){
                         Debug.WriteLine("Exception occurred :: " + exc.Message);
                     }
@@ -132,7 +133,8 @@ namespace ExtAppraisalApp
                     else
                     {
                         try{
-                            Utility.ShowLoadingIndicator(this.SplitViewController.View, "Loading...", true);
+                            var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
+                            Utility.ShowLoadingIndicator(splitViewController.View, "Loading...", true);
 
                             if (vehicleDetails.InvtrType.Equals("Used"))
                             {
@@ -143,7 +145,8 @@ namespace ExtAppraisalApp
                                 decodeVinDetails = await CallDecodeVINService(vehicleDetails.VIN, AppDelegate.appDelegate.mileage, vehicleDetails.StoreID, 20);
 
                             }
-                            Utility.HideLoadingIndicator(this.SplitViewController.View);
+                     
+                            Utility.HideLoadingIndicator(splitViewController.View);
                             AppDelegate.appDelegate.cacheDecodeVinDetails = decodeVinDetails;
 
                         }catch(Exception exc){
@@ -783,7 +786,8 @@ namespace ExtAppraisalApp
                 worker.WorkerDelegate = masterViewController;
                 worker.UpdateUI(false);
 
-                Utility.ShowLoadingIndicator(this.SplitViewController.View, "Saving...", true);
+                var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
+                Utility.ShowLoadingIndicator(splitViewController.View, "Saving...", true);
 
                 SaveVehicleDatas(worker);
 
@@ -865,7 +869,9 @@ namespace ExtAppraisalApp
                 {
 
                     InvokeOnMainThread(() => {
-                        Utility.HideLoadingIndicator(this.SplitViewController.View);
+                        
+                        var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
+                        Utility.HideLoadingIndicator(splitViewController.View);
 
 
                         AppDelegate.appDelegate.cacheVehicleDetails = vehicleDetails;

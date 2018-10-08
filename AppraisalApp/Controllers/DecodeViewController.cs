@@ -170,7 +170,8 @@ namespace ExtAppraisalApp
                         UserID = Convert.ToString(new Guid());
                     }
 
-                    Utility.ShowLoadingIndicator(this.View, "Creating Appraisal", true);
+                    var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
+                    Utility.ShowLoadingIndicator(splitViewController.View, "Creating Appraisal", true);
                     CallWebservice(txtVin.Text, AppDelegate.appDelegate.storeId, Convert.ToInt32(txtMileage.Text), UserID, txtFirstName.Text, txtLastName.Text, txtEmail.Text, txtPhone.Text);
                 }
 
@@ -203,10 +204,11 @@ namespace ExtAppraisalApp
 
                 if (null != appresponse.VIN)
                 {
-
+                    
                     InvokeOnMainThread(() =>
                     {
-                        Utility.HideLoadingIndicator(this.View);
+                        var splitView = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
+                        Utility.HideLoadingIndicator(splitView.View);
                         AppDelegate.appDelegate.vehicleID = appresponse.VehicleID;
                         AppDelegate.appDelegate.storeId = appresponse.StoreID;
                         AppDelegate.appDelegate.invtrId = appresponse.InvtrID;
@@ -224,7 +226,8 @@ namespace ExtAppraisalApp
                 {
                     InvokeOnMainThread(() =>
                     {
-                        Utility.HideLoadingIndicator(this.View);
+                        var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
+                        Utility.HideLoadingIndicator(splitViewController.View);
                         Utility.ShowAlert("AppraisalApp", "Decode VIN Failed !!", "OK");
                     });
 

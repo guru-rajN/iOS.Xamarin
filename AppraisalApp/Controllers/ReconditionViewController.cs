@@ -72,7 +72,9 @@ namespace ExtAppraisalApp
                     selectionAlertLabel.Hidden = false;
                     selectionAlertLabel.Text = "Please choose one of the " + labeltext + " options below";
                     selectionAlertLabel.TextColor = UIColor.Red;
-                    Utility.HideLoadingIndicator(this.SplitViewController.View);
+
+                    var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
+                    Utility.HideLoadingIndicator(splitViewController.View);
                 }
                 else
                 {
@@ -143,8 +145,6 @@ namespace ExtAppraisalApp
             {
                 ReconditionSaveBtn.TintColor = UIColor.Black;
                 selectionAlertLabel.Text = "";
-
-                //Utility.ShowLoadingIndicator(this.SplitViewController.View, "Saving...", true);
 
                 savereconAPI(recondata);
                 //alert.TextColor = UIColor.Black;
@@ -402,10 +402,11 @@ namespace ExtAppraisalApp
 
             if (existings == null)
             {
-
+                
                 string SegmentIndex;
 
-                Utility.ShowLoadingIndicator(this.SplitViewController.View, "Retrieving...", true);
+                var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
+                Utility.ShowLoadingIndicator(splitViewController.View, "Retrieving...", true);
 
                 Task.Factory.StartNew(() =>
                 {
@@ -417,7 +418,8 @@ namespace ExtAppraisalApp
                     {
                         InvokeOnMainThread(() =>
                         {
-                            Utility.HideLoadingIndicator(this.SplitViewController.View);
+   
+                            Utility.HideLoadingIndicator(splitViewController.View);
 
                             foreach (var recon in AppDelegate.appDelegate.reconResponse)
                             {
@@ -435,7 +437,8 @@ namespace ExtAppraisalApp
                                                 ReconditionTableView.SelectRow(NSIndexPath.FromRowSection(rowselected, 0), false, UITableViewScrollPosition.Middle);
                                                 SavetolocalDba(rowselected.ToString(), SegmentIndex);
                                                 selectionAlertLabel.Hidden = true;
-                                                Utility.HideLoadingIndicator(this.SplitViewController.View);
+
+                                                Utility.HideLoadingIndicator(splitViewController.View);
                                             }
                                             //rowselected=(from r in option where r.selected == true select r)
                                         }
@@ -456,7 +459,9 @@ namespace ExtAppraisalApp
                                                 ReconditionTableView.SelectRow(NSIndexPath.FromRowSection(rowselected, 0), false, UITableViewScrollPosition.Middle);
                                                 SavetolocalDba(rowselected.ToString(), SegmentIndex);
                                                 selectionAlertLabel.Hidden = true;
-                                                Utility.HideLoadingIndicator(this.SplitViewController.View);
+
+                                              
+                                                Utility.HideLoadingIndicator(splitViewController.View);
 
                                             }
                                             //rowselected=(from r in option where r.selected == true select r)
@@ -478,7 +483,9 @@ namespace ExtAppraisalApp
                                                 ReconditionTableView.SelectRow(NSIndexPath.FromRowSection(rowselected, 0), false, UITableViewScrollPosition.Middle);
                                                 SavetolocalDba(rowselected.ToString(), SegmentIndex);
                                                 selectionAlertLabel.Hidden = true;
-                                                Utility.HideLoadingIndicator(this.SplitViewController.View);
+
+
+                                                Utility.HideLoadingIndicator(splitViewController.View);
 
                                             }
                                             //rowselected=(from r in option where r.selected == true select r)

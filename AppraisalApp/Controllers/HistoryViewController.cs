@@ -445,7 +445,8 @@ namespace ExtAppraisalApp
             var existingRecord3 = (conn.Table<HistoryValue>().Where(c => c.HistoyQuestion == "2")).SingleOrDefault();
             if (existingRecord == null || existingRecord2 == null || existingRecord3 == null)
             {
-                Utility.ShowLoadingIndicator(this.SplitViewController.View, "Retrieving...", true);
+                var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
+                Utility.ShowLoadingIndicator(splitViewController.View, "Retrieving...", true);
                 GetHistoryKBB(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, AppDelegate.appDelegate.prospectId);
                 // Utility.HideLoadingIndicator(this.View);
             }
@@ -499,7 +500,8 @@ namespace ExtAppraisalApp
                 InvokeOnMainThread(() =>
                 {
                     try{
-                        Utility.HideLoadingIndicator(this.SplitViewController.View);   
+                        var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
+                        Utility.HideLoadingIndicator(splitViewController.View);   
                     }catch(Exception exc){
                         System.Diagnostics.Debug.WriteLine("Exception occurred :: " + exc.Message);
                     }

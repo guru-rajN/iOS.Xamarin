@@ -289,6 +289,7 @@ namespace AppraisalApp
                     AppraisalTableView.Source = new ApprasialLogTVS(completedVehicle);  
 
                 }else{
+                    
 
                     Utility.ShowLoadingIndicator(this.View, "", true);
 
