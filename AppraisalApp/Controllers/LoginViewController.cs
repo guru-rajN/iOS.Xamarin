@@ -94,14 +94,20 @@ namespace ExtAppraisalApp
             EmailPhone.Placeholder = "Email";
             IsEmail = true;
 
-            if(!IsEmail){
-                
-                EmailPhone.ShouldChangeCharacters = (textField, range, replacementString) => {
-                    var newLength = textField.Text.Length + replacementString.Length - range.Length;
-                    return newLength <= 10;
-                };
-            }
+            LastNameTxt.Text = Regex.Replace(LastNameTxt.Text, @"[^a-zA-Z]+", "");
+            LastNameTxt.ShouldChangeCharacters = (UITextField txt, NSRange range, string oopsTxt) =>
+            {
+                var newLength = txt.Text.Length + oopsTxt.Length - range.Length;
+                return newLength <= 50;
 
+            };
+
+
+
+            txtZip.ShouldChangeCharacters = (textField, range, replacementString) => {
+                var newLength = textField.Text.Length + replacementString.Length - range.Length;
+                return newLength <= 5;
+            };
 
             if (UserInterfaceIdiomIsPhone)
             {
@@ -157,9 +163,23 @@ namespace ExtAppraisalApp
             AppDelegate.appDelegate.IsPhotosSaved = false;
             AppDelegate.appDelegate.IsAllDataSaved = false;
 
+            LastNameTxt.ShouldReturn = (tf) =>
+            {
+                LastNameTxt.ReturnKeyType = UIReturnKeyType.Next;
+                EmailPhone.BecomeFirstResponder();
+                return true;
+            };
+            EmailPhone.ShouldReturn = (tf) =>
+            {
+                EmailPhone.ReturnKeyType = UIReturnKeyType.Next;
+                txtZip.BecomeFirstResponder();
+                return true;
+            };
+
             txtZip.ShouldReturn = (tf) =>
             {
                 txtZip.EndEditing(true);
+                txtZip.ReturnKeyType = UIReturnKeyType.Go;
                 GoClick();
                 return true;
             };
@@ -276,7 +296,7 @@ namespace ExtAppraisalApp
 
         partial void GuestEmailTxtChanged(UITextField sender)
         {
-            
+            Debug.WriteLine("Email text changed");
         }
 
         partial void LastNameTxtChanged(UITextField sender)
@@ -295,7 +315,6 @@ namespace ExtAppraisalApp
         {
             try
             {
-
                 if (!AppDelegate.appDelegate.IsZipCodeValid)
                 {
                     string zip = txtZip.Text;
@@ -309,16 +328,21 @@ namespace ExtAppraisalApp
                     {
                         Utility.ShowAlert("CarCash", "Your ZIP/Dealer (" + zip + ") is Incorrect", "OK");
 
+                    }else if(!Regex.Match(EmailPhone.Text, "^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$").Success && IsEmail){
+                        
+                        Utility.ShowAlert("CarCash", "Your Email (" + EmailPhone.Text + ") is Incorrect", "OK");
                     }
                     else
                     {
                         zipCode = txtZip.Text;
 
                         if(!Reachability.InternetConnectionStatus().Equals(NetworkStatus.NotReachable)){
+                            
                             Utility.ShowLoadingIndicator(this.View, "", true);
                             CallWebservice();
 
                         }else{
+                            
                             Utility.ShowAlert("CarCash", "You are disconnected from internet. Please connect and try again", "OK");
                         }
 
@@ -832,6 +856,11 @@ namespace ExtAppraisalApp
             EmailPhone.KeyboardType = UIKeyboardType.PhonePad;
             EmailPhone.Text = "";
             IsEmail = false;
+
+            EmailPhone.ShouldChangeCharacters = (textField, range, replacementString) => {
+                var newLength = textField.Text.Length + replacementString.Length - range.Length;
+                return newLength <= 10;
+            };
         }
 
         partial void EmailRadioBtn_TouchUpInside(UIButton sender)
@@ -842,6 +871,13 @@ namespace ExtAppraisalApp
             EmailPhone.KeyboardType = UIKeyboardType.EmailAddress;
             EmailPhone.Text = "";
             IsEmail = true;
+
+            EmailPhone.ShouldChangeCharacters = (textField, range, replacementString) => {
+                var newLength = textField.Text.Length + replacementString.Length - range.Length;
+                return newLength <= 100;
+            };
+
+             
         }
 
         partial void DealerBtn_TouchUpInside(UIButton sender)

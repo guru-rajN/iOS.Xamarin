@@ -126,8 +126,6 @@ namespace ExtAppraisalApp
                     txtVin.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
                     txtMileage.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
                     txtFirstName.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
-                    //txtEmail.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
-                    //txtPhone.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
                     txtLastName.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
 
                     if (string.IsNullOrEmpty(email) && string.IsNullOrEmpty(phone))
@@ -137,26 +135,10 @@ namespace ExtAppraisalApp
 
                     }
 
+                }else if(!Regex.Match(email, "^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$").Success){
+                    
+                    Utility.ShowAlert("CarCash", "Your Email (" + email + ") is Incorrect", "OK");
                 }
-
-
-                //else if (string.IsNullOrEmpty(email) && string.IsNullOrEmpty(phone))
-                //{
-                //    txtEmail.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
-                //    txtPhone.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
-         
-                //}
-                //else if(string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(phone)){
-
-                //    txtEmail.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
-
-                //}else if(!string.IsNullOrEmpty(email) && string.IsNullOrEmpty(phone)){
-
-                //    txtPhone.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
-                //}
-
-
-
                 else
                 {
                     txtEmail.AttributedPlaceholder = new NSAttributedString("", null, UIColor.Red);
