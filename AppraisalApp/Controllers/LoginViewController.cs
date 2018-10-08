@@ -190,6 +190,14 @@ namespace ExtAppraisalApp
                 return true;
             };
 
+            DealerCodeTxt.ShouldReturn = (tf) =>
+            {
+                DealerCodeTxt.EndEditing(true);
+                DealerCodeTxt.ReturnKeyType = UIReturnKeyType.Go;
+                DealerClicked();
+                return true;
+            };
+
         }
 
         private void ShowAPNSView(NSNotification obj)
@@ -243,18 +251,27 @@ namespace ExtAppraisalApp
 
         }
 
-        async partial void DealerGetStartBtn_TouchUpInside(UIButton sender)
+        partial void DealerGetStartBtn_TouchUpInside(UIButton sender)
         {
-            if(string.IsNullOrEmpty(DealerCodeTxt.Text)){
-                
+            DealerClicked();
+        }
+
+        private async void DealerClicked(){
+            
+            if (string.IsNullOrEmpty(DealerCodeTxt.Text))
+            {
+
                 Utility.ShowAlert("CarCash", "Please Enter the DealerCode.!!", "OK");
 
-            }else if((DealerCodeTxt.Text.Length != 6)){
-                
+            }
+            else if ((DealerCodeTxt.Text.Length != 6))
+            {
+
                 Utility.ShowAlert("CarCash", "Your Dealer code (" + DealerCodeTxt.Text + ") is Incorrect", "OK");
             }
-            else{
-                
+            else
+            {
+
                 Utility.ShowLoadingIndicator(this.View, "", true);
 
                 string code = null;
@@ -263,7 +280,8 @@ namespace ExtAppraisalApp
 
                 Utility.HideLoadingIndicator(this.View);
 
-                if(null != code){
+                if (null != code)
+                {
                     AppDelegate.appDelegate.storeId = Convert.ToInt16(code);
                     List<AppraisalLogEntity> appraisalLogs = new List<AppraisalLogEntity>();
 
