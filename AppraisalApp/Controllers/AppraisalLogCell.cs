@@ -21,7 +21,7 @@ namespace AppraisalApp
             Trim.Text = amfactoryOption.SeriesTrim;
             string[] datetime = Convert.ToString(amfactoryOption.CreatedDate).Split(' '); // sample : 9/24/2018
             string[] datetimeFormarted = Convert.ToString(datetime[0]).Split('/');
-            appraisalDate.Text = datetimeFormarted[1] + "/" + datetimeFormarted[0] + '/' + datetimeFormarted[2];
+            appraisalDate.Text = datetimeFormarted[0] + "-" + datetimeFormarted[1] + '-' + datetimeFormarted[2];
 
             //appraisalDate.Text = datetime[0]; 
             string[] tokens = amfactoryOption.SACAppraisalValue.Split(',');
@@ -43,11 +43,11 @@ namespace AppraisalApp
             Trim.Text = amfactoryOption.SeriesTrim;
             string[] datetime = Convert.ToString(amfactoryOption.CreatedDate).Split(' '); // sample : 9/24/2018
             string[] datetimeFormarted = Convert.ToString(datetime[0]).Split('/');
-            appraisalDate.Text = datetimeFormarted[1] + "/" + datetimeFormarted[0]+'/'+datetimeFormarted[2];
+            appraisalDate.Text = datetimeFormarted[0] + "-" + datetimeFormarted[1]+'-'+datetimeFormarted[2];
             string[] tokens = amfactoryOption.SACAppraisalValue.Split(',');
             if (amfactoryOption.SACAppraisalValue != "")
             {
-                sacComment.Text = Convert.ToString(tokens[0]) + " " + "$" + " " + tokens[1];
+                sacComment.Text = Convert.ToString("$" + " " + tokens[1];
             }
             else
             {

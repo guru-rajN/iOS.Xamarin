@@ -65,6 +65,8 @@ namespace ExtAppraisalApp
         public VinVehicleDetailsKBB cacheDecodeVinDetails { get; set; }
 
         public KBBColorDetails cacheExteriorColorDetails { get; set; }
+        public string FirebaseKey = "AIzaSyCYW0MK5MLd3xoxvXqoLHLWVHWmtILY1uw";
+        public string FirebaseValue = "extappraisalapp-c7d3d.firebaseio.com";
 
         public bool IsZipCodeValid = false;
 
@@ -116,7 +118,7 @@ namespace ExtAppraisalApp
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
-            try{                 AppDelegate.appDelegate = this;                 NSString[] keys = { new NSString("AIzaSyCYW0MK5MLd3xoxvXqoLHLWVHWmtILY1uw") } ;                 NSObject[] values = { new NSString("extappraisalapp-c7d3d.firebaseio.com") } ;                 var parameters = NSDictionary<NSString, NSObject>.FromObjectsAndKeys(values, keys, keys.Length);                 Firebase.Analytics.Loader loader1 = new Firebase.Analytics.Loader();                 Firebase.InstanceID.Loader loader2 = new Firebase.InstanceID.Loader();                  App.Configure();                 //Firebase.Core.App.Configure();                 Firebase.Analytics.Analytics.LogEvent("first_open", parameters);               }             catch(Exception ex)             {                 Console.WriteLine(ex);             } 
+            try{                 AppDelegate.appDelegate = this;                 NSString[] keys = { new NSString(FirebaseKey) } ;                 NSObject[] values = { new NSString(FirebaseValue) } ;                 var parameters = NSDictionary<NSString, NSObject>.FromObjectsAndKeys(values, keys, keys.Length);                 Firebase.Analytics.Loader loader1 = new Firebase.Analytics.Loader();                 Firebase.InstanceID.Loader loader2 = new Firebase.InstanceID.Loader();                  App.Configure();                 //Firebase.Core.App.Configure();                 Firebase.Analytics.Analytics.LogEvent("first_open", parameters);               }             catch(Exception ex)             {                 Console.WriteLine(ex);             } 
             // Override point for customization after application launch.
             AppDelegate.appDelegate = this;
 
