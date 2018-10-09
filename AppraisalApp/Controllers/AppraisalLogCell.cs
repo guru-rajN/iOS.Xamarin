@@ -20,7 +20,7 @@ namespace AppraisalApp
             Mileage.Text = String.Format(new CultureInfo("en-IN"), "{0:C0}", amfactoryOption.Mileage);
             Trim.Text = amfactoryOption.SeriesTrim;
             string[] datetime = Convert.ToString(amfactoryOption.CreatedDate).Split(' '); // sample : 9/24/2018
-            string[] datetimeFormarted = Convert.ToString(datetime).Split('/');
+            string[] datetimeFormarted = Convert.ToString(datetime[0]).Split('/');
             appraisalDate.Text = datetimeFormarted[1] + "/" + datetimeFormarted[0] + '/' + datetimeFormarted[2];
 
             //appraisalDate.Text = datetime[0]; 
@@ -42,7 +42,7 @@ namespace AppraisalApp
             Mileage.Text= String.Format(new CultureInfo("en-IN"), "{0:C0}", amfactoryOption.Mileage);
             Trim.Text = amfactoryOption.SeriesTrim;
             string[] datetime = Convert.ToString(amfactoryOption.CreatedDate).Split(' '); // sample : 9/24/2018
-            string[] datetimeFormarted = Convert.ToString(datetime).Split('/');
+            string[] datetimeFormarted = Convert.ToString(datetime[0]).Split('/');
             appraisalDate.Text = datetimeFormarted[1] + "/" + datetimeFormarted[0]+'/'+datetimeFormarted[2];
             string[] tokens = amfactoryOption.SACAppraisalValue.Split(',');
             if (amfactoryOption.SACAppraisalValue != "")
