@@ -135,7 +135,7 @@ namespace ExtAppraisalApp
 
                     }
 
-                }else if(!Regex.Match(email, "^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$").Success){
+                }else if(phone==null && !Regex.Match(email, "^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$").Success){
                     
                     Utility.ShowAlert("CarCash", "Your Email (" + email + ") is Incorrect", "OK");
                 }
