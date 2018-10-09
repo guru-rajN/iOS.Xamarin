@@ -20,10 +20,8 @@ namespace AppraisalApp
             Mileage.Text = String.Format("{0:C0}", amfactoryOption.Mileage).Replace(@"$", string.Empty);
             Trim.Text = amfactoryOption.SeriesTrim;
             string[] datetime = Convert.ToString(amfactoryOption.CreatedDate).Split(' '); // sample : 9/24/2018
-            string[] datetimeFormarted = Convert.ToString(datetime[0]).Split('/');
-            appraisalDate.Text = datetimeFormarted[0] + "-" + datetimeFormarted[1] + '-' + datetimeFormarted[2];
-
-            //appraisalDate.Text = datetime[0]; 
+            DateTime CurreDate=Convert.ToDateTime(datetime[0]);
+            appraisalDate.Text = CurreDate.ToString("MM-dd-yyyy");
             string[] tokens = amfactoryOption.SACAppraisalValue.Split(',');
             if(amfactoryOption.SACAppraisalValue!=""){
                 sacComment.Text = Convert.ToString(tokens[0]) + " " + "$" + " " + tokens[1];
@@ -41,9 +39,9 @@ namespace AppraisalApp
             string milleage = Convert.ToString(amfactoryOption.Mileage);
             Mileage.Text= String.Format("{0:C0}", amfactoryOption.Mileage).Replace(@"$", string.Empty);
             Trim.Text = amfactoryOption.SeriesTrim;
-            string[] datetime = Convert.ToString(amfactoryOption.CreatedDate).Split(' '); // sample : 9/24/2018
-            string[] datetimeFormarted = Convert.ToString(datetime[0]).Split('/');
-            appraisalDate.Text = datetimeFormarted[0] + "-" + datetimeFormarted[1]+'-'+datetimeFormarted[2];
+            string[] datetime = Convert.ToString(amfactoryOption.CreatedDate).Split(' '); 
+            DateTime CurreDate = Convert.ToDateTime(datetime[0]);
+            appraisalDate.Text = CurreDate.ToString("MM-dd-yyyy");         
             string[] tokens = amfactoryOption.SACAppraisalValue.Split(',');
             if (amfactoryOption.SACAppraisalValue != "")
             {
