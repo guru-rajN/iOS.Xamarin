@@ -17,7 +17,7 @@ namespace AppraisalApp
             Vin.Text = amfactoryOption.VIN;
             YearMakeModel.Text = amfactoryOption.Year + " " + amfactoryOption.Make + " " + amfactoryOption.Model;
             string milleage = Convert.ToString(amfactoryOption.Mileage);
-            Mileage.Text = String.Format(new CultureInfo("en-IN"), "{0:C0}", amfactoryOption.Mileage);
+            Mileage.Text = String.Format("{0:C0}", amfactoryOption.Mileage).Replace(@"$", string.Empty);
             Trim.Text = amfactoryOption.SeriesTrim;
             string[] datetime = Convert.ToString(amfactoryOption.CreatedDate).Split(' '); // sample : 9/24/2018
             string[] datetimeFormarted = Convert.ToString(datetime[0]).Split('/');
@@ -39,7 +39,7 @@ namespace AppraisalApp
             Vin.Text = amfactoryOption.VIN;
             YearMakeModel.Text = amfactoryOption.Year + " " + amfactoryOption.Make + " " + amfactoryOption.Model;
             string milleage = Convert.ToString(amfactoryOption.Mileage);
-            Mileage.Text= String.Format(new CultureInfo("en-IN"), "{0:C0}", amfactoryOption.Mileage);
+            Mileage.Text= String.Format("{0:C0}", amfactoryOption.Mileage).Replace(@"$", string.Empty);
             Trim.Text = amfactoryOption.SeriesTrim;
             string[] datetime = Convert.ToString(amfactoryOption.CreatedDate).Split(' '); // sample : 9/24/2018
             string[] datetimeFormarted = Convert.ToString(datetime[0]).Split('/');
