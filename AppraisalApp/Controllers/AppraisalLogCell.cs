@@ -47,7 +47,7 @@ namespace AppraisalApp
             string[] tokens = amfactoryOption.SACAppraisalValue.Split(',');
             if (amfactoryOption.SACAppraisalValue != "")
             {
-                sacComment.Text = Convert.ToString("$" + " " + tokens[1];
+                sacComment.Text = Convert.ToString("$" + " " + tokens[1]);
             }
             else
             {
