@@ -299,11 +299,13 @@ namespace ExtAppraisalApp
                     if (!string.IsNullOrEmpty(AppDelegate.appDelegate.GuestEmail))
                     {
                         txtEmail.Text = AppDelegate.appDelegate.GuestEmail;
+                        txtPhone.Placeholder = "";
                     }
 
                     if (!string.IsNullOrEmpty(AppDelegate.appDelegate.GuestPhone))
                     {
                         txtPhone.Text = AppDelegate.appDelegate.GuestPhone;
+                        txtEmail.Placeholder = "";
                     }
                 }
 
