@@ -7,84 +7,127 @@ using ExtAppraisalApp.Models;
 using ExtAppraisalApp.Services;
 using System.IO;
 using Xamarin.Forms;
-using System.Threading.Tasks;
-using ExtAppraisalApp.Utilities;
+using CoreGraphics;
 
 namespace ExtAppraisalApp
 {
     public partial class ConfirmationViewController : UIViewController
     {
-        partial void btnMainQA_TouchUpInside(UIButton sender)
+        private bool IsPopUpShown = false;
+
+        //partial void btnMainQA_TouchUpInside(UIButton sender)
+        //{
+        //    VIewMainView.Hidden = false;
+        //    HighContactUs.Hidden = true;
+        //    HighQA.Hidden = false;
+        //    ViewContactDetails.Hidden = true;
+        //    ViewFAQ.Hidden = false;
+
+        //}
+
+        //partial void BtnMainContactUs_TouchUpInside(UIButton sender)
+        //{
+        //    VIewMainView.Hidden = false;
+        //    HighQA.Hidden = true;
+        //    HighContactUs.Hidden = false;
+        //    ViewContactDetails.Hidden = false;
+        //    ViewFAQ.Hidden = true;
+
+        //}
+
+        //partial void BtnDial_TouchUpInside(UIButton sender)
+        //{
+        //    try
+        //    {
+        //        global::Xamarin.Forms.Forms.Init();
+        //        Device.OpenUri(new Uri(String.Format("tel:{0}", "+18666576642")));
+        //    }
+        //    catch (ArgumentNullException Ex)
+        //    {
+        //        // Number was null or white space
+        //    }
+        //}
+
+        //partial void BtnMail_TouchUpInside(UIButton sender)
+        //{
+        //    global::Xamarin.Forms.Forms.Init();
+
+        //    var address = "chidu.soraba@gmail.com";
+
+        //    Device.OpenUri(new Uri($"mailto:{ address}?subject=Feedback&body=A message for you consideration." + "%0D%0A" +  //line break 
+        //                           ""));
+        //}
+
+        //partial void BtnFAQ_TouchUpInside(UIButton sender)
+        //{
+        //    HighContactUs.Hidden = true;
+        //    HighQA.Hidden = false;
+        //    ViewContactDetails.Hidden = true;
+        //    ViewFAQ.Hidden = false;
+        //}
+
+        //partial void BtnMailDial_TouchUpInside(UIButton sender)
+        //{
+        //    HighQA.Hidden = true;
+        //    HighContactUs.Hidden = false;
+        //    ViewContactDetails.Hidden = false;
+        //    ViewFAQ.Hidden = true;
+
+
+        //}
+
+
+
+        //partial void DownArrow_TouchUpInside(UIButton sender)
+        //{
+        //    VIewMainView.Hidden = true;
+        //}
+
+        //partial void UpArrow_TouchUpInside(UIButton sender)
+        //{
+        //    VIewMainView.Hidden = false;
+        //}
+
+        partial void UpArrowBtn_TouchUpInside(UIButton sender)
         {
-            VIewMainView.Hidden = false;
-            HighContactUs.Hidden = true;
-            HighQA.Hidden = false;
-            ViewContactDetails.Hidden = true;
-            ViewFAQ.Hidden = false;
-
-        }
-
-        partial void BtnMainContactUs_TouchUpInside(UIButton sender)
-        {
-            VIewMainView.Hidden = false;
-            HighQA.Hidden = true;
-            HighContactUs.Hidden = false;
-            ViewContactDetails.Hidden = false;
-            ViewFAQ.Hidden = true;
-
-        }
-
-        partial void BtnDial_TouchUpInside(UIButton sender)
-        {
-            try
+            if (!IsPopUpShown)
             {
-                global::Xamarin.Forms.Forms.Init();
-                Device.OpenUri(new Uri(String.Format("tel:{0}", "+18666576642")));
+                UpArrowBtn.SetBackgroundImage(UIImage.FromBundle("DownArrow20.png"), UIControlState.Normal);
+
+                ContactUsPanelBottomConstraints.Constant = 0;
+                SlideVerticaly(ContactUsPanelView, true, false, 0.5, null);
+                IsPopUpShown = true;
             }
-            catch (ArgumentNullException Ex)
+            else
             {
-                // Number was null or white space
+                UpArrowBtn.SetBackgroundImage(UIImage.FromBundle("UpArroww1-20.png"), UIControlState.Normal);
+
+                ContactUsPanelBottomConstraints.Constant = -180;
+                SlideVerticaly(ContactUsPanelView, true, true, 0.5, null);
+                IsPopUpShown = false;
             }
-        }
 
-        partial void BtnMail_TouchUpInside(UIButton sender)
-        {
-            global::Xamarin.Forms.Forms.Init();
 
-            var address = "chidu.soraba@gmail.com";
-
-            Device.OpenUri(new Uri($"mailto:{ address}?subject=Feedback&body=A message for you consideration." + "%0D%0A" +  //line break 
-                                   ""));
-        }
-
-        partial void BtnFAQ_TouchUpInside(UIButton sender)
-        {
-            HighContactUs.Hidden = true;
-            HighQA.Hidden = false;
-            ViewContactDetails.Hidden = true;
-            ViewFAQ.Hidden = false;
-        }
-
-        partial void BtnMailDial_TouchUpInside(UIButton sender)
-        {
-            HighQA.Hidden = true;
-            HighContactUs.Hidden = false;
-            ViewContactDetails.Hidden = false;
-            ViewFAQ.Hidden = true;
-
+            //this.ContactUsPanelView.SetNeedsUpdateConstraints();
 
         }
 
-
-
-        partial void DownArrow_TouchUpInside(UIButton sender)
+        public static void SlideVerticaly(UIView view, bool isIn, bool fromTop, double duration = 0.3, Action onFinished = null)
         {
-            VIewMainView.Hidden = true;
-        }
+            var minAlpha = (nfloat)0.0f;
+            var maxAlpha = (nfloat)1.0f;
+            var minTransform = CGAffineTransform.MakeTranslation(0, (fromTop ? -1 : 1) * view.Bounds.Height);
+            var maxTransform = CGAffineTransform.MakeIdentity();
 
-        partial void UpArrow_TouchUpInside(UIButton sender)
-        {
-            VIewMainView.Hidden = false;
+            view.Alpha = isIn ? minAlpha : maxAlpha;
+            view.Transform = isIn ? minTransform : maxTransform;
+            UIView.Animate(duration, 0, UIViewAnimationOptions.CurveEaseInOut,
+                () => {
+                    view.Alpha = isIn ? maxAlpha : minAlpha;
+                    view.Transform = isIn ? maxTransform : minTransform;
+                },
+                onFinished
+            );
         }
 
         public ConfirmationViewController(IntPtr handle) : base(handle)
@@ -93,21 +136,30 @@ namespace ExtAppraisalApp
 
         public override void ViewDidLoad()
         {
-            NSNotificationCenter.DefaultCenter.AddObserver((Foundation.NSString)"SaveClicked", notify: delegate (NSNotification obj) { SaveDetails(obj); });
+            NSNotificationCenter.DefaultCenter.AddObserver((Foundation.NSString)"SaveClicked", SaveDetails);
             base.ViewDidLoad();
-            UITapGestureRecognizer tapGesture = new UITapGestureRecognizer(ShowPopUp);
-            ViewUpArrow.AddGestureRecognizer(tapGesture);
-            UITapGestureRecognizer tapGesture1 = new UITapGestureRecognizer(HidePopUp);
-            ViewDownArrow.AddGestureRecognizer(tapGesture1);
-            UITapGestureRecognizer tapGestureMail = new UITapGestureRecognizer(ShowMail);
-            lblMail.AddGestureRecognizer(tapGestureMail);
 
-            UITapGestureRecognizer tapGestureContact = new UITapGestureRecognizer(DialContact);
-            lblDial.AddGestureRecognizer(tapGestureContact);
-            // lblDial.
+            ContactUsPanelView.Layer.BorderColor = UIColor.DarkGray.CGColor;
+            ContactUsPanelView.Layer.BorderWidth = 1.0f;
 
-            viewcellmail.AddGestureRecognizer(tapGestureMail);
-            viewcelldial.AddGestureRecognizer(tapGestureContact);
+            ContactUsPanelView.Layer.ShadowColor = UIColor.DarkGray.CGColor;
+            ContactUsPanelView.Layer.ShadowRadius = 2.0f;
+            ContactUsPanelView.Layer.ShadowOpacity = 0.8f;
+
+
+            // UITapGestureRecognizer tapGesture = new UITapGestureRecognizer(ShowPopUp);
+            // ViewUpArrow.AddGestureRecognizer(tapGesture);
+            // UITapGestureRecognizer tapGesture1 = new UITapGestureRecognizer(HidePopUp);
+            // ViewDownArrow.AddGestureRecognizer(tapGesture1);
+            // UITapGestureRecognizer tapGestureMail = new UITapGestureRecognizer(ShowMail);
+            // lblMail.AddGestureRecognizer(tapGestureMail);
+
+            // UITapGestureRecognizer tapGestureContact = new UITapGestureRecognizer(DialContact);
+            // lblDial.AddGestureRecognizer(tapGestureContact);
+            //// lblDial.
+
+            //viewcellmail.AddGestureRecognizer(tapGestureMail);
+            //viewcelldial.AddGestureRecognizer(tapGestureContact);
         }
         public void ShowMail()
         {
@@ -126,14 +178,6 @@ namespace ExtAppraisalApp
 
 
         }
-        public void ShowPopUp()
-        {
-            VIewMainView.Hidden = false;
-        }
-        public void HidePopUp()
-        {
-            VIewMainView.Hidden = true;
-        }
 
         public override void ViewDidDisappear(bool animated)
         {
@@ -141,32 +185,26 @@ namespace ExtAppraisalApp
             base.ViewDidDisappear(animated);
         }
 
-        private async Task SaveDetails(NSNotification obj)
+        private void SaveDetails(NSNotification obj)
         {
             // TO-DO : API calls integration
+
             ConfirmationMsg.Text = "We will get back to you.";
+
             SummaryMsg.Text = "Thank you for submitting your appraisal information. Once we appraise your Trade,the value will be valid for 14 days or 500 miles from the date of submission. At the time of delivery or transfer of ownership, CarCash reserves the right to verify that the information you have submitted is accurate and to adjust the value offered if we feel that your vehicle does not match the description you have provided.";
+
+
+
             dropSqlite();
             deletePhoto();
- 
-            Utility.ShowLoadingIndicator(this.View, "Saving...", true);
-            await CallService();
-            Utility.HideLoadingIndicator(this.View);
 
+            saveDeviceToken();
+            SaveOfferAPI();
         }
 
-
-        Task CallService()
+        private void SaveOfferAPI()
         {
-            return Task.Factory.StartNew(() =>
-            {
-                Save_Offer();
-                saveDeviceToken();
-            });
-        }
 
-        private void Save_Offer()
-        {
             OfferResponse offerResponse = new OfferResponse();
             SIMSResponseData responseStatus;
             offerResponse.vehicleId = AppDelegate.appDelegate.vehicleID;
@@ -179,6 +217,7 @@ namespace ExtAppraisalApp
             string DeviceToken = AppDelegate.appDelegate.AppleDeviceToken;
             responseStatus = ServiceFactory.ServiceOffer.getWebServiceHandle().SaveOffer(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, "ExterAppraisalApp", AppDelegate.appDelegate.prospectId, AppDelegate.appDelegate.trimId);
         }
+
 
         private void saveDeviceToken()
         {
