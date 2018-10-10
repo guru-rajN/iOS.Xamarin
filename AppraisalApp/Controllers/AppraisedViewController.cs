@@ -88,7 +88,7 @@ namespace ExtAppraisalApp
                 string datea = tokens[7].Substring(1);
                 int Appvalue = Int32.Parse(datea);
                 string Appvaluea = "$" + Appvalue.ToString("#,##0");
-                AppValue.Text = Appvaluea;
+                AppValue.Text = Appvaluea.Substring(0, Appvaluea.IndexOf('.', 0));;
                 DateTime date = DateTime.Now.AddDays(14);
                 //string summarytext = "14 days or 500 miles";
                 string formatteddate = date.ToString("MMM dd, yyyy");

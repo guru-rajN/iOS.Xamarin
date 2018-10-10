@@ -16,9 +16,7 @@ namespace AppraisalApp
         {
             Vin.Text = amfactoryOption.VIN;
             YearMakeModel.Text = amfactoryOption.Year + " " + amfactoryOption.Make + " " + amfactoryOption.Model;
-            string milleage = Convert.ToString(amfactoryOption.Mileage);
-            Mileage.Text = String.Format("{0:C0}", amfactoryOption.Mileage).Replace(@"$", string.Empty);
-            Trim.Text = amfactoryOption.SeriesTrim;
+            double milleage = Convert.ToDouble(amfactoryOption.Mileage);             string Millieagedec = milleage.ToString("N2", System.Globalization.CultureInfo.GetCultureInfo("en-US"));             Mileage.Text = Millieagedec.Substring(0, Millieagedec.IndexOf('.', 0));            Trim.Text = amfactoryOption.SeriesTrim;
             string[] datetime = Convert.ToString(amfactoryOption.CreatedDate).Split(' '); // sample : 9/24/2018
             DateTime CurreDate=Convert.ToDateTime(datetime[0]);
             appraisalDate.Text = CurreDate.ToString("MM-dd-yyyy");
@@ -36,9 +34,7 @@ namespace AppraisalApp
         {
             Vin.Text = amfactoryOption.VIN;
             YearMakeModel.Text = amfactoryOption.Year + " " + amfactoryOption.Make + " " + amfactoryOption.Model;
-            string milleage = Convert.ToString(amfactoryOption.Mileage);
-            Mileage.Text= String.Format("{0:C0}", amfactoryOption.Mileage).Replace(@"$", string.Empty);
-            Trim.Text = amfactoryOption.SeriesTrim;
+            double milleage = Convert.ToDouble(amfactoryOption.Mileage);             string Millieagedec = milleage.ToString("N2", System.Globalization.CultureInfo.GetCultureInfo("en-US"));             Mileage.Text = Millieagedec.Substring(0, Millieagedec.IndexOf('.', 0));            Trim.Text = amfactoryOption.SeriesTrim;
             string[] datetime = Convert.ToString(amfactoryOption.CreatedDate).Split(' '); 
             DateTime CurreDate = Convert.ToDateTime(datetime[0]);
             appraisalDate.Text = CurreDate.ToString("MM-dd-yyyy");         
