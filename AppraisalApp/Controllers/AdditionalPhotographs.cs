@@ -212,7 +212,8 @@ namespace ExtAppraisalApp
                     PhotosModelList.RemoveAt(index);
                     PhotosModelList.Add(new AddPhotoModel { Image = "camera_black.png", VehicleLabel = "Additional" });
 
-                    if(PhotosModelList.Count < 10){
+                    if (PhotosModelList.Count < 10)
+                    {
                         PhotosModelList.Add(new AddPhotoModel { Image = "add_photo.png", VehicleLabel = "Additional" });
                     }
                     AddPhotoCollectionView.ReloadData();
@@ -291,7 +292,16 @@ namespace ExtAppraisalApp
 
                     SetAdditionalImages(pngFilename);
                     var imagea = UIImage.LoadFromData(imgData);
-
+                    var currentOrientation = UIApplication.SharedApplication.StatusBarOrientation;
+                    string Orientaion = "Landscape";
+                    if (currentOrientation == UIInterfaceOrientation.Portrait)
+                    {
+                        Orientaion = "Portrait";
+                    }
+                    else
+                    {
+                        Orientaion = "Landscape";
+                    }
                     NSData imageData = originalImage.AsJPEG(0.0f);
 
                     Byte[] myByteArray = new Byte[imageData.Length];
@@ -300,7 +310,7 @@ namespace ExtAppraisalApp
                     // save photos to Azure cloud
                     imagePicker.DismissModalViewController(true);
                     Amazon.Aws amazonS3 = new Amazon.Aws();
-                    Task.Run(() => amazonS3.UploadFile(pngFilename, myByteArray));
+                    Task.Run(() => amazonS3.UploadFile(pngFilename, myByteArray, Orientaion));
                     ActivityLoader();
                 }
             }
