@@ -144,18 +144,14 @@ namespace ExtAppraisalApp
         private async Task SaveDetails(NSNotification obj)
         {
             // TO-DO : API calls integration
-
             ConfirmationMsg.Text = "We will get back to you.";
-
             SummaryMsg.Text = "Thank you for submitting your appraisal information. Once we appraise your Trade,the value will be valid for 14 days or 500 miles from the date of submission. At the time of delivery or transfer of ownership, CarCash reserves the right to verify that the information you have submitted is accurate and to adjust the value offered if we feel that your vehicle does not match the description you have provided.";
             dropSqlite();
             deletePhoto();
-            // saveDeviceToken();
-            var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
-            Utility.ShowLoadingIndicator(splitViewController.View, "Saving...", true);
+ 
+            Utility.ShowLoadingIndicator(this.View, "Saving...", true);
             await CallService();
-            Utility.HideLoadingIndicator(splitViewController.View);
-            deletePhoto();
+            Utility.HideLoadingIndicator(this.View);
 
         }
 
