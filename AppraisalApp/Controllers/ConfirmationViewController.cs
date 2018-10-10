@@ -7,6 +7,8 @@ using ExtAppraisalApp.Models;
 using ExtAppraisalApp.Services;
 using System.IO;
 using Xamarin.Forms;
+using System.Threading.Tasks;
+using ExtAppraisalApp.Utilities;
 
 namespace ExtAppraisalApp
 {
@@ -29,17 +31,30 @@ namespace ExtAppraisalApp
             HighContactUs.Hidden = false;
             ViewContactDetails.Hidden = false;
             ViewFAQ.Hidden = true;
-            
+
         }
 
         partial void BtnDial_TouchUpInside(UIButton sender)
         {
-            try             {                 global::Xamarin.Forms.Forms.Init();                 Device.OpenUri(new Uri(String.Format("tel:{0}", "+18666576642")));             }             catch (ArgumentNullException Ex)             {                 // Number was null or white space             }
+            try
+            {
+                global::Xamarin.Forms.Forms.Init();
+                Device.OpenUri(new Uri(String.Format("tel:{0}", "+18666576642")));
+            }
+            catch (ArgumentNullException Ex)
+            {
+                // Number was null or white space
+            }
         }
 
         partial void BtnMail_TouchUpInside(UIButton sender)
         {
-            global::Xamarin.Forms.Forms.Init();              var address = "chidu.soraba@gmail.com";              Device.OpenUri(new Uri($"mailto:{ address}?subject=Feedback&body=A message for you consideration." + "%0D%0A" +  //line break                                     ""));
+            global::Xamarin.Forms.Forms.Init();
+
+            var address = "chidu.soraba@gmail.com";
+
+            Device.OpenUri(new Uri($"mailto:{ address}?subject=Feedback&body=A message for you consideration." + "%0D%0A" +  //line break 
+                                   ""));
         }
 
         partial void BtnFAQ_TouchUpInside(UIButton sender)
@@ -57,7 +72,7 @@ namespace ExtAppraisalApp
             ViewContactDetails.Hidden = false;
             ViewFAQ.Hidden = true;
 
-            
+
         }
 
 
@@ -78,7 +93,7 @@ namespace ExtAppraisalApp
 
         public override void ViewDidLoad()
         {
-            NSNotificationCenter.DefaultCenter.AddObserver((Foundation.NSString)"SaveClicked", SaveDetails);
+            NSNotificationCenter.DefaultCenter.AddObserver((Foundation.NSString)"SaveClicked", notify: delegate (NSNotification obj) { SaveDetails(obj); });
             base.ViewDidLoad();
             UITapGestureRecognizer tapGesture = new UITapGestureRecognizer(ShowPopUp);
             ViewUpArrow.AddGestureRecognizer(tapGesture);
@@ -89,7 +104,7 @@ namespace ExtAppraisalApp
 
             UITapGestureRecognizer tapGestureContact = new UITapGestureRecognizer(DialContact);
             lblDial.AddGestureRecognizer(tapGestureContact);
-           // lblDial.
+            // lblDial.
 
             viewcellmail.AddGestureRecognizer(tapGestureMail);
             viewcelldial.AddGestureRecognizer(tapGestureContact);
@@ -109,7 +124,7 @@ namespace ExtAppraisalApp
             global::Xamarin.Forms.Forms.Init();
             Device.OpenUri(new Uri(String.Format("tel:{0}", "+18666576642")));
 
-                       
+
         }
         public void ShowPopUp()
         {
@@ -126,26 +141,36 @@ namespace ExtAppraisalApp
             base.ViewDidDisappear(animated);
         }
 
-        private void SaveDetails(NSNotification obj)
+        private async Task SaveDetails(NSNotification obj)
         {
             // TO-DO : API calls integration
 
             ConfirmationMsg.Text = "We will get back to you.";
 
             SummaryMsg.Text = "Thank you for submitting your appraisal information. Once we appraise your Trade,the value will be valid for 14 days or 500 miles from the date of submission. At the time of delivery or transfer of ownership, CarCash reserves the right to verify that the information you have submitted is accurate and to adjust the value offered if we feel that your vehicle does not match the description you have provided.";
-
-
-
             dropSqlite();
             deletePhoto();
+            // saveDeviceToken();
+            var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
+            Utility.ShowLoadingIndicator(splitViewController.View, "Saving...", true);
+            await CallService();
+            Utility.HideLoadingIndicator(splitViewController.View);
+            deletePhoto();
 
-            saveDeviceToken();
-            SaveOfferAPI();
         }
 
-        private void SaveOfferAPI()
-        {
 
+        Task CallService()
+        {
+            return Task.Factory.StartNew(() =>
+            {
+                Save_Offer();
+                saveDeviceToken();
+            });
+        }
+
+        private void Save_Offer()
+        {
             OfferResponse offerResponse = new OfferResponse();
             SIMSResponseData responseStatus;
             offerResponse.vehicleId = AppDelegate.appDelegate.vehicleID;
@@ -158,7 +183,6 @@ namespace ExtAppraisalApp
             string DeviceToken = AppDelegate.appDelegate.AppleDeviceToken;
             responseStatus = ServiceFactory.ServiceOffer.getWebServiceHandle().SaveOffer(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId, "ExterAppraisalApp", AppDelegate.appDelegate.prospectId, AppDelegate.appDelegate.trimId);
         }
-
 
         private void saveDeviceToken()
         {
@@ -256,7 +280,7 @@ namespace ExtAppraisalApp
             AppDelegate.appDelegate.APNSAlertAddressb = null;
             AppDelegate.appDelegate.APNSAlertZip = null;
             AppDelegate.appDelegate.APNSAlert = null;
-    }
+        }
 
         private void dropSqlite()
         {

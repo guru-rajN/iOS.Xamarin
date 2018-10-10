@@ -24,7 +24,7 @@ namespace ExtAppraisalApp
             get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
         }
 
-        partial void ReconditionSaveBtn_Activated(UIBarButtonItem sender)
+        async partial void ReconditionSaveBtn_Activated(UIBarButtonItem sender)
         {
             string labeltext = null;
             string segmentIndex = null;
@@ -69,6 +69,9 @@ namespace ExtAppraisalApp
                         ReconditionSegment.SelectedSegment = 2;
                     }
                     //ReconditionSaveBtn.TintColor = UIColor.Red;
+
+
+                    ReconditionSaveBtn.Title = "Next";
                     selectionAlertLabel.Hidden = false;
                     selectionAlertLabel.Text = "Please choose one of the " + labeltext + " options below";
                     selectionAlertLabel.TextColor = UIColor.Red;
@@ -143,10 +146,24 @@ namespace ExtAppraisalApp
 
             if ((Saverecon.Count >= 3))
             {
-                ReconditionSaveBtn.TintColor = UIColor.Black;
+                ReconditionSaveBtn.TintColor = UIColor.FromRGB(95, 165, 53);
+                ReconditionSaveBtn.Enabled = false;
+                var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
+                Utility.ShowLoadingIndicator(splitViewController.View, "Saving...", true);
+                await CallSaveReconService(recondata);
+                Utility.HideLoadingIndicator(splitViewController.View);
+                if (UserInterfaceIdiomIsPhone)
+                {
+                    ReconditionSaveBtn.Title = "Save";
+                }
+                else
+                {
+                    ReconditionSaveBtn.Title = "Next";
+                }
+              
                 selectionAlertLabel.Text = "";
 
-                savereconAPI(recondata);
+                //savereconAPI(recondata);
                 //alert.TextColor = UIColor.Black;
                 //save recond api
 
@@ -578,13 +595,14 @@ namespace ExtAppraisalApp
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            ReconditionSaveBtn.Enabled = true;
             ReconditionTableView.TableFooterView = new UIView(new CGRect(0, 0, 0, 0));
 
             if (!AppDelegate.appDelegate.IsAllDataSaved)
             {
                 if (UserInterfaceIdiomIsPhone)
                 {
-                    ReconditionSaveBtn.Title = "Save";
+                    ReconditionSaveBtn.Title = "Next";
                 }
                 else
                 {

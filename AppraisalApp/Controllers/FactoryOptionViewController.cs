@@ -24,6 +24,7 @@ namespace ExtAppraisalApp
 
         async partial void BtnSave_Activated(UIBarButtonItem sender)
         {
+            BtnSave.Enabled = false;
             var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
             Utility.ShowLoadingIndicator(splitViewController.View, "Saving...", true);
 
@@ -86,6 +87,7 @@ namespace ExtAppraisalApp
         {
 
             base.ViewDidLoad();
+            BtnSave.Enabled = true;
             FactoryOptionTableView.RowHeight = UITableView.AutomaticDimension;
             if (!AppDelegate.appDelegate.IsAllDataSaved)
             {

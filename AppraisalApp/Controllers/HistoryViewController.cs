@@ -132,7 +132,7 @@ namespace ExtAppraisalApp
         string value2;
         string value3;
         string value2_Answer = null;
-        partial void Save_Activated(UIBarButtonItem sender)
+        async partial void Save_Activated(UIBarButtonItem sender)
         {
             value1 = Segment1.SelectedSegment.ToString();
             value2 = Segment2.SelectedSegment.ToString();
@@ -231,10 +231,6 @@ namespace ExtAppraisalApp
                         vehicleConditionCategory = 0
                     };
 
-
-
-
-
                     HistoryRequest data = new HistoryRequest();
                     data.Answers.Add(History1);
                     data.Answers.Add(History2);
@@ -244,11 +240,11 @@ namespace ExtAppraisalApp
                     data.StoreID = AppDelegate.appDelegate.storeId;
                     data.InvtrID = AppDelegate.appDelegate.invtrId;
                     data.UserName = "Extrnal App";
-
-                    //Utility.ShowLoadingIndicator(this.SplitViewController.View, "Saving...", true);
-
-                    CallSaveHistory(data);
-
+                    Save.Enabled = false;
+                    var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
+                    Utility.ShowLoadingIndicator(splitViewController.View, "Saving...", true);
+                    await CallSaveHistory(data);
+                    Utility.HideLoadingIndicator(splitViewController.View);
                     // Navigate to Recondition
                     if (null == masterViewController)
                     {
@@ -315,11 +311,12 @@ namespace ExtAppraisalApp
 
         }
 
-        Task CallSaveHistory(HistoryRequest data){
+        Task CallSaveHistory(HistoryRequest data)
+        {
             return Task.Factory.StartNew(() =>
             {
                 Save_History(data);
-            }); 
+            });
         }
 
         //Save History API
@@ -402,7 +399,7 @@ namespace ExtAppraisalApp
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-
+            Save.Enabled = true;
             if (!AppDelegate.appDelegate.IsAllDataSaved)
             {
                 if (UserInterfaceIdiomIsPhone)
@@ -499,10 +496,13 @@ namespace ExtAppraisalApp
                 historyValue = ServiceFactory.getWebServiceHandle().GetHistoryKBB(vehicleID, storeId, invtrId, prospectId);
                 InvokeOnMainThread(() =>
                 {
-                    try{
+                    try
+                    {
                         var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
-                        Utility.HideLoadingIndicator(splitViewController.View);   
-                    }catch(Exception exc){
+                        Utility.HideLoadingIndicator(splitViewController.View);
+                    }
+                    catch (Exception exc)
+                    {
                         System.Diagnostics.Debug.WriteLine("Exception occurred :: " + exc.Message);
                     }
 

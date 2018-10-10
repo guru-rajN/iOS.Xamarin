@@ -41,6 +41,7 @@ namespace AppraisalApp
 
         async partial void Btn_SaveAfterMarket_Activated(UIBarButtonItem sender)
         {
+            Btn_SaveAfterMarket.Enabled = false;
             var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
             Utility.ShowLoadingIndicator(splitViewController.View, "Saving...", true);
 
@@ -300,6 +301,7 @@ namespace AppraisalApp
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            Btn_SaveAfterMarket.Enabled = true;
 
             if (!AppDelegate.appDelegate.IsAllDataSaved)
             {

@@ -437,7 +437,7 @@ namespace ExtAppraisalApp
         {
             base.ViewDidLoad();
             // Perform any additional setup after loading the view, typically from a nib.
-
+            DetailSaveBtn.Enabled = true;
             ConfigureView();
         }
 
@@ -785,7 +785,7 @@ namespace ExtAppraisalApp
                 ViewWorker worker = new ViewWorker();
                 worker.WorkerDelegate = masterViewController;
                 worker.UpdateUI(false);
-
+                DetailSaveBtn.Enabled = false;
                 var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
                 Utility.ShowLoadingIndicator(splitViewController.View, "Saving...", true);
 
