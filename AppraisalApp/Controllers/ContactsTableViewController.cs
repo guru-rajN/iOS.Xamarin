@@ -28,16 +28,17 @@ namespace ExtAppraisalApp
 
                 global::Xamarin.Forms.Forms.Init();
 
-                var address = "chidu.soraba@gmail.com";
+                var address = "support@sonic.net";
+
                 Device.OpenUri(new Uri($"mailto:{ address}?subject=Feedback&body=A message for you consideration." + "%0D%0A" +  //line break 
-                                           ""));
+                                       "Line2"));
             }
             else if (indexPath.Row == 1)
             {
                 try
                 {
                     global::Xamarin.Forms.Forms.Init();
-                    Device.OpenUri(new Uri(String.Format("tel:{0}", "+18666576642")));
+                    Device.OpenUri(new Uri(String.Format("tel:{0}", "+18002272274")));
                 }
                 catch (ArgumentNullException exc)
                 {

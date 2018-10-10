@@ -17,6 +17,9 @@ namespace ExtAppraisalApp
     {
         private bool IsPopUpShown = false;
 
+        private UISwipeGestureRecognizer swipeUp;
+        private UISwipeGestureRecognizer swipeDown;
+
         //partial void btnMainQA_TouchUpInside(UIButton sender)
         //{
         //    VIewMainView.Hidden = false;
@@ -149,6 +152,14 @@ namespace ExtAppraisalApp
             ContactUsPanelView.Layer.ShadowOpacity = 0.8f;
 
 
+            swipeUp = new UISwipeGestureRecognizer(didSwipe);
+            swipeUp.Direction = UISwipeGestureRecognizerDirection.Up;
+            this.ContactUsPanelView.AddGestureRecognizer(swipeUp);
+
+            swipeDown = new UISwipeGestureRecognizer(didSwipe);
+            swipeDown.Direction = UISwipeGestureRecognizerDirection.Down;
+            this.ContactUsPanelView.AddGestureRecognizer(swipeDown);
+
             // UITapGestureRecognizer tapGesture = new UITapGestureRecognizer(ShowPopUp);
             // ViewUpArrow.AddGestureRecognizer(tapGesture);
             // UITapGestureRecognizer tapGesture1 = new UITapGestureRecognizer(HidePopUp);
@@ -163,24 +174,28 @@ namespace ExtAppraisalApp
             //viewcellmail.AddGestureRecognizer(tapGestureMail);
             //viewcelldial.AddGestureRecognizer(tapGestureContact);
         }
-        public void ShowMail()
+
+        private void didSwipe(UISwipeGestureRecognizer uISwipeGesture)
         {
-            global::Xamarin.Forms.Forms.Init();
+            if (uISwipeGesture == swipeUp)
+            {
+                // Show panel
+                UpArrowBtn.SetBackgroundImage(UIImage.FromBundle("DownArrow20.png"), UIControlState.Normal);
 
-            var address = "support@sonic.net";
+                ContactUsPanelBottomConstraints.Constant = 0;
+                SlideVerticaly(ContactUsPanelView, true, false, 0.5, null);
+                IsPopUpShown = true;
+            }
+            else
+            {
+                // Hide panel
+                UpArrowBtn.SetBackgroundImage(UIImage.FromBundle("UpArroww1-20.png"), UIControlState.Normal);
 
-            Device.OpenUri(new Uri($"mailto:{ address}?subject=Feedback&body=A message for you consideration." + "%0D%0A" +  //line break 
-                                   "Line2"));
-
+                ContactUsPanelBottomConstraints.Constant = -180;
+                SlideVerticaly(ContactUsPanelView, true, true, 0.5, null);
+                IsPopUpShown = false;
+            }
         }
-        public void DialContact()
-        {
-            global::Xamarin.Forms.Forms.Init();
-            Device.OpenUri(new Uri(String.Format("tel:{0}", "+18666576642")));
-
-
-        }
-
         public override void ViewDidDisappear(bool animated)
         {
             NSNotificationCenter.DefaultCenter.RemoveObserver((Foundation.NSString)"SaveClicked");
