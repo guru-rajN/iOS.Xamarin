@@ -13,7 +13,7 @@ namespace Amazon
     public class Aws
     {
 
-        public void UploadFile(string filepath, byte[] myByteArray)
+        public void UploadFile(string filepath, byte[] myByteArray, string orientaion)
         {
 
             try
@@ -38,7 +38,7 @@ namespace Amazon
                 //blob.UploadFromFileAsync(filepath);
 
                 //string photoURL = String.Concat("https://iossims.blob.core.windows.net/simsphoto/" + keyName + ".jpeg");
-                SavePhotoAPI(myByteArray);
+                SavePhotoAPI(myByteArray, orientaion);
 
             }
             catch (Exception exc)
@@ -47,7 +47,7 @@ namespace Amazon
             }
         }
 
-        private void SavePhotoAPI(byte[] myByteArray)
+        private void SavePhotoAPI(byte[] myByteArray, string orintation)
         {
             PhotoResponse photoResponse = new PhotoResponse();
             SIMSResponseData responseStatus;
@@ -55,6 +55,7 @@ namespace Amazon
             photoResponse.StoreID = AppDelegate.appDelegate.storeId;
             photoResponse.InvtrID = AppDelegate.appDelegate.invtrId;
             photoResponse.PhotoGuide = AppDelegate.appDelegate.photoButtonClicked;
+            photoResponse.Orientaion = orintation;
             photoResponse.PhotoURL = "";
             photoResponse.Photo = myByteArray;
 

@@ -9,6 +9,6 @@ namespace ExtAppraisalApp.Models
         public byte[] Photo { get; set; }
         public string PhotoURL { get; set; }
         public string PhotoGuide { get; set; }
-
+        public string Orientaion { get; set; }
     }
 }

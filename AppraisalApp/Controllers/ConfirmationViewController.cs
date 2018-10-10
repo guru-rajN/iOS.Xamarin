@@ -8,6 +8,8 @@ using ExtAppraisalApp.Services;
 using System.IO;
 using Xamarin.Forms;
 using CoreGraphics;
+using System.Threading.Tasks;
+using ExtAppraisalApp.Utilities;
 
 namespace ExtAppraisalApp
 {
@@ -136,7 +138,7 @@ namespace ExtAppraisalApp
 
         public override void ViewDidLoad()
         {
-            NSNotificationCenter.DefaultCenter.AddObserver((Foundation.NSString)"SaveClicked", SaveDetails);
+            NSNotificationCenter.DefaultCenter.AddObserver((Foundation.NSString)"SaveClicked", notify: delegate (NSNotification obj) { SaveDetails(obj); });
             base.ViewDidLoad();
 
             ContactUsPanelView.Layer.BorderColor = UIColor.DarkGray.CGColor;
@@ -185,22 +187,30 @@ namespace ExtAppraisalApp
             base.ViewDidDisappear(animated);
         }
 
-        private void SaveDetails(NSNotification obj)
+
+        private async Task SaveDetails(NSNotification obj)
         {
             // TO-DO : API calls integration
-
             ConfirmationMsg.Text = "We will get back to you.";
-
             SummaryMsg.Text = "Thank you for submitting your appraisal information. Once we appraise your Trade,the value will be valid for 14 days or 500 miles from the date of submission. At the time of delivery or transfer of ownership, CarCash reserves the right to verify that the information you have submitted is accurate and to adjust the value offered if we feel that your vehicle does not match the description you have provided.";
-
-
-
             dropSqlite();
             deletePhoto();
 
-            saveDeviceToken();
-            SaveOfferAPI();
+            Utility.ShowLoadingIndicator(this.View, "Saving...", true);
+            await CallService();
+            Utility.HideLoadingIndicator(this.View);
+
         }
+
+        Task CallService()
+        {
+            return Task.Factory.StartNew(() =>
+            {
+                SaveOfferAPI();
+                saveDeviceToken();
+            });
+        }
+
 
         private void SaveOfferAPI()
         {

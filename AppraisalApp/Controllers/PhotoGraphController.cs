@@ -307,6 +307,16 @@ namespace ExtAppraisalApp
                     //{
 
                     //});
+                    var currentOrientation = UIApplication.SharedApplication.StatusBarOrientation;
+                    string Orientaion = "Landscape";
+                    if (currentOrientation == UIInterfaceOrientation.Portrait)
+                    {
+                        Orientaion = "Portrait";
+                    }
+                    else
+                    {
+                        Orientaion = "Landscape";
+                    }
                     NSData imageData = originalImage.AsJPEG(0.0f);
 
                     byte[] myByteArray = new byte[imageData.Length];
@@ -314,7 +324,7 @@ namespace ExtAppraisalApp
 
                     imagePicker.DismissModalViewController(true);
                     Amazon.Aws amazonS3 = new Amazon.Aws();
-                    Task.Run(() => amazonS3.UploadFile(pngFilename, myByteArray));
+                    Task.Run(() => amazonS3.UploadFile(pngFilename, myByteArray, Orientaion));
                     ActivityLoader();
                 }
             }
@@ -327,6 +337,8 @@ namespace ExtAppraisalApp
             //imagePicker.DismissModalViewController(true);
             //imagePicker.DismissModalViewControllerAnimated(true);
         }
+
+
 
         void Handle_Canceled(object sender, EventArgs e)
         {
