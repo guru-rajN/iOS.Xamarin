@@ -17,6 +17,9 @@ namespace ExtAppraisalApp
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIBarButtonItem btnCancel { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnCancel { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
