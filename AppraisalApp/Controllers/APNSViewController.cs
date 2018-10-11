@@ -22,8 +22,8 @@ namespace ExtAppraisalApp
         partial void APNSDone_Activated(UIBarButtonItem sender)
         {
             var storyboard = UIStoryboard.FromName("Main", null);
-            var loginViewController = storyboard.InstantiateViewController("LoginViewController");
-            AppDelegate.appDelegate.Window.RootViewController = loginViewController;
+            var appraisalLogViewController = storyboard.InstantiateViewController("AppraisalLogNavID");
+            AppDelegate.appDelegate.Window.RootViewController = appraisalLogViewController;
         }
 
 

@@ -163,7 +163,6 @@
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
-    <InterfaceDefinition Include="Resources\Views\Main~.storyboard" />
     <InterfaceDefinition Include="Views\Main.storyboard" />
   </ItemGroup>
   <ItemGroup>
@@ -393,6 +392,7 @@
     <BundleResource Include="Resources\Qest-64.png" />
     <BundleResource Include="Resources\DownArrow20.png" />
     <BundleResource Include="Resources\UpArroww1-20.png" />
+    <BundleResource Include="Resources\up_arrow.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.targets')" />

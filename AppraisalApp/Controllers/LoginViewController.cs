@@ -82,7 +82,7 @@ namespace ExtAppraisalApp
             g.CancelsTouchesInView = false; //for iOS5
             View.AddGestureRecognizer(g);
 
-            NSNotificationCenter.DefaultCenter.AddObserver((Foundation.NSString)"ShowPushNotifyData", ShowAPNSView);
+
 
             InitialContainer.Hidden = false;
             GuestContainer.Hidden = true;
@@ -200,34 +200,9 @@ namespace ExtAppraisalApp
 
         }
 
-        private void ShowAPNSView(NSNotification obj)
-        {
+       
 
-            try
-            {
-
-                UIStoryboard board = UIStoryboard.FromName("Main", null);
-                APNSViewController ctrl = (APNSViewController)board.InstantiateViewController("APNSViewController");
-                UINavigationController navigationController = new UINavigationController(ctrl);
-                navigationController.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
-                navigationController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
-                AppDelegate.appDelegate.Window.RootViewController.PresentViewController(navigationController, true, null);
-
-            }
-            catch (Exception exc)
-            {
-                Debug.WriteLine("Exception occurred :: " + exc.Message);
-            }
-
-
-
-        }
-
-        public override void ViewDidDisappear(bool animated)
-        {
-            NSNotificationCenter.DefaultCenter.RemoveObserver((Foundation.NSString)"ShowPushNotifyData");
-            base.ViewDidDisappear(animated);
-        }
+       
 
         partial void GetStartBtn_TouchUpInside(UIButton sender)
         {

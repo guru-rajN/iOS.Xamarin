@@ -211,7 +211,7 @@ namespace ExtAppraisalApp
             dropSqlite();
             deletePhoto();
 
-            Utility.ShowLoadingIndicator(this.View, "Saving...", true);
+            Utility.ShowLoadingIndicator(this.View, "Submitting...", true);
             await CallService();
             Utility.HideLoadingIndicator(this.View);
 

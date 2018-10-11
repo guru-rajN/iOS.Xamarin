@@ -15,10 +15,6 @@ namespace ExtAppraisalApp
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton btnGetStart { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton DealerBtn { get; set; }
 
         [Outlet]
@@ -67,10 +63,6 @@ namespace ExtAppraisalApp
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIImageView LoginImg { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView OverLayView { get; set; }
 
         [Outlet]
@@ -84,10 +76,6 @@ namespace ExtAppraisalApp
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField txtZip { get; set; }
-
-        [Action ("BtnGetStart_TouchUpInside:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void BtnGetStart_TouchUpInside (UIKit.UIButton sender);
 
         [Action ("DealerBtn_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -123,11 +111,6 @@ namespace ExtAppraisalApp
 
         void ReleaseDesignerOutlets ()
         {
-            if (btnGetStart != null) {
-                btnGetStart.Dispose ();
-                btnGetStart = null;
-            }
-
             if (DealerBtn != null) {
                 DealerBtn.Dispose ();
                 DealerBtn = null;
@@ -186,11 +169,6 @@ namespace ExtAppraisalApp
             if (LoginGirlImg != null) {
                 LoginGirlImg.Dispose ();
                 LoginGirlImg = null;
-            }
-
-            if (LoginImg != null) {
-                LoginImg.Dispose ();
-                LoginImg = null;
             }
 
             if (OverLayView != null) {

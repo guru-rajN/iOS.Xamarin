@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -172,6 +173,8 @@ namespace AppraisalApp
         {
             base.ViewDidLoad();
 
+            NSNotificationCenter.DefaultCenter.AddObserver((Foundation.NSString)"ShowPushNotifyData", ShowAPNSView);
+
             // hide keyboard on touch outside area
             var g = new UITapGestureRecognizer(() => View.EndEditing(true));
             g.CancelsTouchesInView = false; //for iOS5
@@ -308,6 +311,35 @@ namespace AppraisalApp
             }
 
             AppraisalTableView.ReloadData();
+        }
+
+        public override void ViewDidDisappear(bool animated)
+        {
+            NSNotificationCenter.DefaultCenter.RemoveObserver((Foundation.NSString)"ShowPushNotifyData");
+            base.ViewDidDisappear(animated);
+        }
+
+        private void ShowAPNSView(NSNotification obj)
+        {
+
+            try
+            {
+
+                UIStoryboard board = UIStoryboard.FromName("Main", null);
+                APNSViewController ctrl = (APNSViewController)board.InstantiateViewController("APNSViewController");
+                UINavigationController navigationController = new UINavigationController(ctrl);
+                navigationController.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
+                navigationController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
+                AppDelegate.appDelegate.Window.RootViewController.PresentViewController(navigationController, true, null);
+
+            }
+            catch (Exception exc)
+            {
+                Debug.WriteLine("Exception occurred :: " + exc.Message);
+            }
+
+
+
         }
 
         private void GetCustomerLoginRecords()
