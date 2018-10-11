@@ -245,6 +245,12 @@ namespace ExtAppraisalApp
                     AppDelegate.appDelegate.GuestEmail = "";
                     AppDelegate.appDelegate.GuestPhone = EmailPhone.Text;
                 }
+            }
+            if(txtZip.Placeholder != "ZIP CODE" && string.IsNullOrEmpty(txtZip.Text)){
+                Utility.ShowAlert("CarCash", "Please select store.!!", "OK");
+
+            }
+            else{
                 GoClick();
             }
                
@@ -511,6 +517,8 @@ namespace ExtAppraisalApp
 
                             txtZip.TouchDown += SetPicker;
                             txtZip.Placeholder = "Select Stores";
+                            //txtVin.AttributedPlaceholder = new NSAttributedString("Select Stores", null, UIColor.Black);
+
                         }
                     });
 
