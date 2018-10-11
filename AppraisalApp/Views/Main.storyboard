@@ -3686,23 +3686,30 @@
                     </view>
                     <navigationItem key="navigationItem" id="501418">
                         <label key="titleView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="     Store Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="501422">
-                            <rect key="frame" x="0.0" y="0.0" width="228" height="41"/>
+                            <rect key="frame" x="0.0" y="0.0" width="217" height="41"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                            <color key="textColor" red="0.37254901960784315" green="0.65490196078431373" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" colorSpace="calibratedRGB" red="0.29411764705882354" green="0.50980392156862742" blue="0.28627450980392155" alpha="1"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <barButtonItem key="rightBarButtonItem" title="Close" width="62.5" id="501413">
+                        <barButtonItem key="rightBarButtonItem" title="Navigate" width="62.5" id="501413">
                             <color key="tintColor" red="0.27843137254901962" green="0.49019607843137253" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="MapClose_Activated:" destination="501411" id="501421"/>
+                                <action selector="NavBarButton_Activated:" destination="501411" id="608520"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="609291">
+                            <color key="tintColor" colorSpace="calibratedRGB" red="0.29411764705882354" green="0.50980392156862742" blue="0.28627450980392155" alpha="1"/>
+                            <connections>
+                                <action selector="MapClose_Activated:" destination="501411" id="611605"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="MapClose" destination="501413" id="name-outlet-501413"/>
+                        <outlet property="NavBarButton" destination="501413" id="name-outlet-501413"/>
                         <outlet property="map" destination="501415" id="501414"/>
                         <outlet property="mapTypes" destination="501417" id="501416"/>
+                        <outlet property="MapClose" destination="609291" id="name-outlet-609291"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="501437" userLabel="First Responder" sceneMemberID="firstResponder"/>

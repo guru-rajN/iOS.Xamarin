@@ -4,12 +4,14 @@ using MapKit;
 using System;
 using System.Globalization;
 using System.Threading;
+using System.Threading.Tasks;
 using UIKit;
 
 namespace ExtAppraisalApp
 {
     public partial class MapsViewController : UIViewController
     {
+        
         MapDelegate mapDelegate;
         CLLocationManager locationManager = new CLLocationManager();
 
@@ -146,5 +148,28 @@ namespace ExtAppraisalApp
             }
             return result;
         }
+
+        partial void NavBarButton_Activated(UIBarButtonItem sender)
+        {
+            string place = AppDelegate.appDelegate.APNSAlertAddressa.ToString();
+            var name = place.Replace("&", "and");
+
+            double lon = ConvertToDouble(AppDelegate.appDelegate.APNSAlertLat.ToString());
+            double lat = ConvertToDouble(AppDelegate.appDelegate.APNSAlertLon.ToString());
+            var loc = string.Format("{0},{1}", lat, lon);
+
+            //string request=string.Format("http://maps.apple.com/maps?q={0}&sll={1}", name.Replace(' ', '+'), loc);
+            string request = string.Format("http://maps.apple.com/maps?q={0}&sll={1}", name.Replace(' ', '+'), loc);
+
+
+            var canOpen = UIApplication.SharedApplication.CanOpenUrl(new NSUrl(request.ToString()));
+            if (!canOpen)
+            { Task.FromResult(false); }
+            else
+            {
+                Task.FromResult(UIApplication.SharedApplication.OpenUrl(new NSUrl(request.ToString())));
+            }
+        }
+
     }
 }

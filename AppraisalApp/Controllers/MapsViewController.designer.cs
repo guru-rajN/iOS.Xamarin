@@ -26,9 +26,17 @@ namespace ExtAppraisalApp
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UISegmentedControl mapTypes { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIBarButtonItem NavBarButton { get; set; }
+
         [Action ("MapClose_Activated:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void MapClose_Activated (UIKit.UIBarButtonItem sender);
+
+        [Action ("NavBarButton_Activated:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void NavBarButton_Activated (UIKit.UIBarButtonItem sender);
 
         void ReleaseDesignerOutlets ()
         {
@@ -45,6 +53,11 @@ namespace ExtAppraisalApp
             if (mapTypes != null) {
                 mapTypes.Dispose ();
                 mapTypes = null;
+            }
+
+            if (NavBarButton != null) {
+                NavBarButton.Dispose ();
+                NavBarButton = null;
             }
         }
     }
