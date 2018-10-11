@@ -133,11 +133,11 @@ namespace ExtAppraisalApp
                     {
                         txtEmail.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
                         txtPhone.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
-
+                         
                     }
 
                 }
-                else if(phone=="" && !(Regex.Match(email, "^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$").Success)){
+                else if(string.IsNullOrEmpty(phone) && !(Regex.Match(email, "^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$").Success)){
                     
                     Utility.ShowAlert("CarCash", "Your Email (" + email + ") is Incorrect", "OK");
                 }

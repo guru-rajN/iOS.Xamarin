@@ -192,6 +192,7 @@ namespace AppraisalApp
                         y = y + 50;
                         label.UserInteractionEnabled = true;
                         label.Text = option.Description;
+                        label.Font = UIFont.SystemFontOfSize(16);
                         AMFO.AddSubview(switchele);
                         AMFO.AddSubview(label);
 
