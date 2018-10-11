@@ -149,10 +149,11 @@ namespace ExtAppraisalApp
         //}
 
         UIImagePickerController imagePicker;
-
+        bool iSCamera = false;
         void GalleryButtona_TouchUpInside()
         {
             //viewPopup.Hidden = true;
+            iSCamera = false;
             imagePicker = new UIImagePickerController();
             imagePicker.PrefersStatusBarHidden();
             imagePicker.SourceType = UIImagePickerControllerSourceType.PhotoLibrary;
@@ -171,6 +172,7 @@ namespace ExtAppraisalApp
             Console.WriteLine("Capture button clicked ");
             try
             {
+                iSCamera = true;
                 //viewPopup.Hidden = true;
                 imagePicker = new UIImagePickerController();
                 imagePicker.PrefersStatusBarHidden();
@@ -309,14 +311,18 @@ namespace ExtAppraisalApp
                     //});
                     var currentOrientation = UIApplication.SharedApplication.StatusBarOrientation;
                     string Orientaion = "Landscape";
-                    if (currentOrientation == UIInterfaceOrientation.Portrait)
+                    if (iSCamera)
                     {
-                        Orientaion = "Portrait";
+                        if (currentOrientation == UIInterfaceOrientation.Portrait)
+                        {
+                            Orientaion = "Portrait";
+                        }
+                        else
+                        {
+                            Orientaion = "Landscape";
+                        }
                     }
-                    else
-                    {
-                        Orientaion = "Landscape";
-                    }
+                    iSCamera = false;
                     NSData imageData = originalImage.AsJPEG(0.0f);
 
                     byte[] myByteArray = new byte[imageData.Length];
@@ -709,7 +715,9 @@ namespace ExtAppraisalApp
                     {
                         var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
                         Utility.ShowLoadingIndicator(splitViewController.View, "Retrieving...", true);
-                    }catch(Exception exc){
+                    }
+                    catch (Exception exc)
+                    {
                         Debug.WriteLine("Exception occurred :: " + exc.Message);
                     }
 
