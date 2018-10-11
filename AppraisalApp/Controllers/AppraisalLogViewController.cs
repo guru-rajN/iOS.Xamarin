@@ -353,6 +353,7 @@ namespace AppraisalApp
             var existingRecord = (conn.Table<CustomerValue>().Where(c => c.id == 1)).SingleOrDefault();
 
             if(null != existingRecord){
+                
                 AppDelegate.appDelegate.CustomerLogin = existingRecord.CustomerLogin;
                 AppDelegate.appDelegate.GuestLastName = existingRecord.CustomerLastName;
                 AppDelegate.appDelegate.GuestEmail = existingRecord.CustomerEmail;

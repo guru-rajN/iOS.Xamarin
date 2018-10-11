@@ -12,6 +12,12 @@ namespace AppraisalApp
         {
         }
 
+        // Detect the device whether iPad or iPhone
+        static bool UserInterfaceIdiomIsPhone
+        {
+            get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
+        }
+
         internal void UpdateCell(AppraisalLogEntity amfactoryOption)
         {
             Vin.Text = amfactoryOption.VIN;
@@ -22,7 +28,14 @@ namespace AppraisalApp
             appraisalDate.Text = CurreDate.ToString("MM-dd-yyyy");
             string[] tokens = amfactoryOption.SACAppraisalValue.Split(',');
             if(amfactoryOption.SACAppraisalValue!=""){
-                sacComment.Text = Convert.ToString(tokens[0]) + " " + "$" + " " + tokens[1];
+                if(UserInterfaceIdiomIsPhone){
+                    SacCommentsWidth.Constant = 100;
+                    sacComment.Text = Convert.ToString("$" + tokens[1].Trim());
+                }else{
+                    SacCommentsWidth.Constant = 250;
+                    sacComment.Text = Convert.ToString(tokens[0]) + " " + "$" + tokens[1].Trim();
+                }
+
             }
             else{
                 sacComment.Text = "";
@@ -41,7 +54,7 @@ namespace AppraisalApp
             string[] tokens = amfactoryOption.SACAppraisalValue.Split(',');
             if (amfactoryOption.SACAppraisalValue != "")
             {
-                sacComment.Text = Convert.ToString("$" + " " + tokens[1]);
+                sacComment.Text = Convert.ToString("$" + tokens[1].Trim());
             }
             else
             {

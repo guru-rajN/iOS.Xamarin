@@ -32,6 +32,10 @@ namespace AppraisalApp
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.NSLayoutConstraint SacCommentsWidth { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel Trim { get; set; }
 
         [Outlet]
@@ -62,6 +66,11 @@ namespace AppraisalApp
             if (sacComment != null) {
                 sacComment.Dispose ();
                 sacComment = null;
+            }
+
+            if (SacCommentsWidth != null) {
+                SacCommentsWidth.Dispose ();
+                SacCommentsWidth = null;
             }
 
             if (Trim != null) {
