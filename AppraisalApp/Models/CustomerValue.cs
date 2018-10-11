@@ -29,5 +29,10 @@ namespace AppraisalApp.Models
         {
             get; set;
         }
+
+        public short StoreId 
+        {
+            get; set;
+        }
     }
 }

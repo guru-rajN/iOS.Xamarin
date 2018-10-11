@@ -189,6 +189,7 @@ namespace ExtAppraisalApp
                 GuestLastName = existingRecord.CustomerLastName;
                 GuestEmail = existingRecord.CustomerEmail;
                 GuestPhone = existingRecord.CustomerPhone;
+                storeId = existingRecord.StoreId;
             }
 
         }
@@ -277,8 +278,7 @@ namespace ExtAppraisalApp
 
         }
 
-        public override void RegisteredForRemoteNotifications(
-        UIApplication application, NSData deviceToken)
+        public override void RegisteredForRemoteNotifications( UIApplication application, NSData deviceToken)
         {
             // Get current device token
             var DeviceToken = deviceToken.Description;

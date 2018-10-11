@@ -539,7 +539,7 @@ namespace ExtAppraisalApp
             var conn = new SQLite.SQLiteConnection(DbPath);
             conn.CreateTable<CustomerValue>();
 
-            var record = new CustomerValue { CustomerLogin = true, CustomerLastName = AppDelegate.appDelegate.GuestLastName, CustomerEmail = AppDelegate.appDelegate.GuestEmail, CustomerPhone = AppDelegate.appDelegate.GuestPhone };
+            var record = new CustomerValue { CustomerLogin = true, CustomerLastName = AppDelegate.appDelegate.GuestLastName, CustomerEmail = AppDelegate.appDelegate.GuestEmail, CustomerPhone = AppDelegate.appDelegate.GuestPhone, StoreId = AppDelegate.appDelegate.storeId };
             using (var db = new SQLite.SQLiteConnection(DbPath))
             {
                 var existingRecord = (db.Table<CustomerValue>().Where(c => c.CustomerLastName == record.CustomerLastName)).SingleOrDefault();
@@ -549,6 +549,7 @@ namespace ExtAppraisalApp
                     existingRecord.CustomerLastName = record.CustomerLastName;
                     existingRecord.CustomerEmail = record.CustomerEmail;
                     existingRecord.CustomerPhone = record.CustomerPhone;
+                    existingRecord.StoreId = record.StoreId;
                     db.Update(existingRecord);
                 }
                 else

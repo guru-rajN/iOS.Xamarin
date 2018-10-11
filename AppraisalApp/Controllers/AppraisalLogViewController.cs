@@ -357,6 +357,7 @@ namespace AppraisalApp
                 AppDelegate.appDelegate.GuestLastName = existingRecord.CustomerLastName;
                 AppDelegate.appDelegate.GuestEmail = existingRecord.CustomerEmail;
                 AppDelegate.appDelegate.GuestPhone = existingRecord.CustomerPhone;
+                AppDelegate.appDelegate.storeId = existingRecord.StoreId;
             }
 
         }
