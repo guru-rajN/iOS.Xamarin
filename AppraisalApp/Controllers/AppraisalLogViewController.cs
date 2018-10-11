@@ -106,7 +106,6 @@ namespace AppraisalApp
         partial void BtnAddNew_Activated(UIBarButtonItem sender)
         {
             AppDelegate.appDelegate.vehicleID = 0;
-            AppDelegate.appDelegate.storeId = 0;
             AppDelegate.appDelegate.invtrId = 0;
             // Navigate DecodeView
             var storyboard = UIStoryboard.FromName("Main", null);
