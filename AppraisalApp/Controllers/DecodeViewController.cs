@@ -122,6 +122,7 @@ namespace ExtAppraisalApp
                 string phone = txtPhone.Text;
 
                 if (string.IsNullOrEmpty(vin) || string.IsNullOrEmpty(mileage) || string.IsNullOrEmpty(firstname) ||string.IsNullOrEmpty(lastname) || (string.IsNullOrEmpty(email) && string.IsNullOrEmpty(phone)))
+                
                 {
                     txtVin.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
                     txtMileage.AttributedPlaceholder = new NSAttributedString("Required", null, UIColor.Red);
@@ -135,7 +136,8 @@ namespace ExtAppraisalApp
 
                     }
 
-                }else if(phone==null && !Regex.Match(email, "^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$").Success){
+                }
+                else if(phone=="" && !(Regex.Match(email, "^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$").Success)){
                     
                     Utility.ShowAlert("CarCash", "Your Email (" + email + ") is Incorrect", "OK");
                 }
