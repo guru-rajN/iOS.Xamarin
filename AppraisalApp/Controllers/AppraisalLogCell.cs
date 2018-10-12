@@ -30,7 +30,12 @@ namespace AppraisalApp
             if(amfactoryOption.SACAppraisalValue!=""){
                 //if(UserInterfaceIdiomIsPhone){
                 //    SacCommentsWidth.Constant = 100;
-                   sacComment.Text = Convert.ToString("$" + tokens[1].Trim());
+                double sacValue = Convert.ToDouble(tokens[1].Trim());
+                string SacValueNew = milleage.ToString("N2", System.Globalization.CultureInfo.GetCultureInfo("en-US")).Substring(0, Millieagedec.IndexOf('.', 0));
+
+                sacComment.Text = Convert.ToString("$" + SacValueNew.Trim());
+ 
+                // sacComment.Text = Convert.ToString("$" + tokens[1].Trim());
                 //}else{
                 //    SacCommentsWidth.Constant = 250;
                 //    sacComment.Text = Convert.ToString("$" + tokens[1].Trim());
@@ -54,7 +59,10 @@ namespace AppraisalApp
             string[] tokens = amfactoryOption.SACAppraisalValue.Split(',');
             if (amfactoryOption.SACAppraisalValue != "")
             {
-                sacComment.Text = Convert.ToString("$" + tokens[1].Trim());
+                double sacValue = Convert.ToDouble(tokens[1].Trim());
+                string SacValueNew = milleage.ToString("N2", System.Globalization.CultureInfo.GetCultureInfo("en-US")).Substring(0, Millieagedec.IndexOf('.', 0));
+
+                sacComment.Text = Convert.ToString("$" + SacValueNew.Trim());
             }
             else
             {
