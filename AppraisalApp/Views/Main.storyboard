@@ -1698,8 +1698,8 @@
                                 <action selector="EditButton_Activated:" destination="QXV-ds-S7Z" id="187280"/>
                             </connections>
                         </barButtonItem>
-                        <label key="titleView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value a Vehicle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="432490">
-                            <rect key="frame" x="0.0" y="0.0" width="148.5" height="41"/>
+                        <label key="titleView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value My Vehicle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="432490">
+                            <rect key="frame" x="0.0" y="0.0" width="155" height="41"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                             <color key="textColor" red="0.37254901960784315" green="0.65490196078431373" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
