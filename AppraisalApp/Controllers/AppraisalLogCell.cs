@@ -28,13 +28,13 @@ namespace AppraisalApp
             appraisalDate.Text = CurreDate.ToString("MM-dd-yyyy");
             string[] tokens = amfactoryOption.SACAppraisalValue.Split(',');
             if(amfactoryOption.SACAppraisalValue!=""){
-                if(UserInterfaceIdiomIsPhone){
-                    SacCommentsWidth.Constant = 100;
-                    sacComment.Text = Convert.ToString("$" + tokens[1].Trim());
-                }else{
-                    SacCommentsWidth.Constant = 250;
-                    sacComment.Text = Convert.ToString(tokens[0]) + " " + "$" + tokens[1].Trim();
-                }
+                //if(UserInterfaceIdiomIsPhone){
+                //    SacCommentsWidth.Constant = 100;
+                   sacComment.Text = Convert.ToString("$" + tokens[1].Trim());
+                //}else{
+                //    SacCommentsWidth.Constant = 250;
+                //    sacComment.Text = Convert.ToString("$" + tokens[1].Trim());
+                //}
 
             }
             else{
