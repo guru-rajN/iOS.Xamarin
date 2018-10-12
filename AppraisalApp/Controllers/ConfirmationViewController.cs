@@ -97,7 +97,7 @@ namespace ExtAppraisalApp
         {
             if (!IsPopUpShown)
             {
-                UpArrowBtn.SetBackgroundImage(UIImage.FromBundle("DownArrow20.png"), UIControlState.Normal);
+                UpArrowBtn.SetBackgroundImage(UIImage.FromBundle("sliding_icon.png"), UIControlState.Normal);
 
                 ContactUsPanelBottomConstraints.Constant = 0;
                 SlideVerticaly(ContactUsPanelView, true, false, 0.5, null);
@@ -105,7 +105,7 @@ namespace ExtAppraisalApp
             }
             else
             {
-                UpArrowBtn.SetBackgroundImage(UIImage.FromBundle("UpArroww1-20.png"), UIControlState.Normal);
+                UpArrowBtn.SetBackgroundImage(UIImage.FromBundle("sliding_icon.png"), UIControlState.Normal);
 
                 ContactUsPanelBottomConstraints.Constant = -180;
                 SlideVerticaly(ContactUsPanelView, true, true, 0.5, null);
@@ -180,7 +180,7 @@ namespace ExtAppraisalApp
             if (uISwipeGesture == swipeUp)
             {
                 // Show panel
-                UpArrowBtn.SetBackgroundImage(UIImage.FromBundle("DownArrow20.png"), UIControlState.Normal);
+                UpArrowBtn.SetBackgroundImage(UIImage.FromBundle("sliding_icon.png"), UIControlState.Normal);
 
                 ContactUsPanelBottomConstraints.Constant = 0;
                 SlideVerticaly(ContactUsPanelView, true, false, 0.5, null);
@@ -189,7 +189,7 @@ namespace ExtAppraisalApp
             else
             {
                 // Hide panel
-                UpArrowBtn.SetBackgroundImage(UIImage.FromBundle("UpArroww1-20.png"), UIControlState.Normal);
+                UpArrowBtn.SetBackgroundImage(UIImage.FromBundle("sliding_icon.png"), UIControlState.Normal);
 
                 ContactUsPanelBottomConstraints.Constant = -180;
                 SlideVerticaly(ContactUsPanelView, true, true, 0.5, null);
