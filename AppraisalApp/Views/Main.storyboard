@@ -2475,9 +2475,10 @@
                             <constraint firstItem="502097" firstAttribute="top" secondItem="519464" secondAttribute="bottom" constant="4" id="523614"/>
                             <constraint firstItem="502097" firstAttribute="centerX" secondItem="264206" secondAttribute="centerX" constant="48" id="523615"/>
                             <constraint firstItem="502097" firstAttribute="leading" secondItem="502096" secondAttribute="trailing" constant="8" id="523618"/>
-                            <constraint firstAttribute="centerX" secondItem="502102" secondAttribute="centerX" constant="14" id="523619"/>
                             <constraint firstItem="502102" firstAttribute="top" secondItem="502097" secondAttribute="bottom" constant="8" id="523620"/>
                             <constraint firstAttribute="centerX" secondItem="266956" secondAttribute="centerX" constant="63" id="604396"/>
+                            <constraint id="613421" firstItem="502102" firstAttribute="leading" secondItem="264206" secondAttribute="leadingMargin" constant="4"/>
+                            <constraint id="613422" firstItem="264206" firstAttribute="trailingMargin" secondItem="502102" secondAttribute="trailing" constant="4"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="268230">
@@ -3175,10 +3176,11 @@
                             <constraint firstItem="506615" firstAttribute="centerX" secondItem="390034" secondAttribute="centerX" constant="66" id="534332"/>
                             <constraint firstItem="506615" firstAttribute="leading" secondItem="506614" secondAttribute="trailing" constant="8" id="534333"/>
                             <constraint firstItem="506620" firstAttribute="top" secondItem="506614" secondAttribute="bottom" constant="21" id="534334"/>
-                            <constraint firstAttribute="centerX" secondItem="506620" secondAttribute="centerX" constant="16" id="534335"/>
                             <constraint firstItem="506621" firstAttribute="leading" secondItem="390034" secondAttribute="leadingMargin" id="534336"/>
                             <constraint firstAttribute="trailingMargin" secondItem="506621" secondAttribute="trailing" id="534337"/>
                             <constraint firstItem="506621" firstAttribute="top" secondItem="390028" secondAttribute="bottom" constant="352" id="534338"/>
+                            <constraint id="615739" firstItem="506620" firstAttribute="leading" secondItem="390034" secondAttribute="leadingMargin" constant="4"/>
+                            <constraint id="615740" firstItem="506620" firstAttribute="trailing" secondItem="390034" secondAttribute="trailingMargin" constant="4"/>
                         </constraints>
                     </view>
                     <connections>
