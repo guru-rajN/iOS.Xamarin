@@ -1,28 +1,24 @@
 ﻿<Properties StartupConfiguration="{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="ExtAppraisalApp Status">
     <Files>
-      <File FileName="AppraisalApp/Controllers/LoginViewController.cs" Line="167" Column="37" />
-      <File FileName="AppraisalApp/Controllers/MasterViewController.cs" Line="72" Column="1" />
+      <File FileName="AppraisalApp/Controllers/LoginViewController.cs" Line="189" Column="27" />
+      <File FileName="AppraisalApp/Controllers/MasterViewController.cs" Line="294" Column="14" />
       <File FileName="AppraisalApp/Controllers/DetailViewController.cs" Line="897" Column="38" />
-      <File FileName="AppraisalApp/Controllers/ConfirmationViewController.cs" Line="149" Column="58" />
-      <File FileName="AppraisalApp/Controllers/PhotoViewController.cs" Line="131" Column="1" />
-      <File FileName="AppraisalApp/Controllers/FactoryOptionViewController.cs" Line="66" Column="64" />
-      <File FileName="AppraisalApp/Controllers/AfterMarketViewController.cs" Line="85" Column="70" />
-      <File FileName="AppraisalApp/Controllers/HistoryViewController.cs" Line="297" Column="1" />
-      <File FileName="AppraisalApp/Controllers/ReconditionViewController.cs" Line="205" Column="55" />
+      <File FileName="AppraisalApp/Controllers/ConfirmationViewController.cs" Line="149" Column="1" />
       <File FileName="AppraisalApp/AppDelegate.cs" Line="76" Column="21" />
       <File FileName="AppraisalApp/Controllers/AppraisedViewController.cs" Line="27" Column="1" />
-      <File FileName="AppraisalApp/Controllers/MapsViewController.cs" Line="167" Column="40" />
-      <File FileName="AppraisalApp/Controllers/MapsViewController.designer.cs" Line="1" Column="1" />
+      <File FileName="AppraisalApp/Controllers/MapsViewController.cs" Line="24" Column="10" />
+      <File FileName="AppraisalApp/Controllers/AppraisalLogViewController.cs" Line="425" Column="100" />
+      <File FileName="AppraisalApp/Controllers/AppraisalLogCell.cs" Line="26" Column="91" />
+      <File FileName="AppraisalApp/Controllers/PhotoViewController.cs" Line="121" Column="79" />
+      <File FileName="AppraisalApp/Controllers/PhotoGraphController.cs" Line="686" Column="45" />
       <File FileName="ExtAppraisalApp Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/slksoft/Sathya/VSTS/12-Oct/ExtAppraisalApp/AppraisalApp/Controllers/AppraisedViewController.cs" relfile="AppraisalApp/Controllers/AppraisedViewController.cs" line="69" column="1" />
-      <Breakpoint file="/Users/slksoft/Sathya/VSTS/12-Oct/ExtAppraisalApp/AppraisalApp/Controllers/MasterViewController.cs" relfile="AppraisalApp/Controllers/MasterViewController.cs" line="72" column="1" />
-      <Breakpoint file="/Users/slksoft/Sathya/VSTS/12-Oct/ExtAppraisalApp/AppraisalApp/Controllers/PhotoViewController.cs" relfile="AppraisalApp/Controllers/PhotoViewController.cs" line="106" column="1" />
       <Breakpoint file="/Users/slksoft/Sathya/VSTS/12-Oct/ExtAppraisalApp/AppraisalApp/Controllers/ReconditionViewController.cs" relfile="AppraisalApp/Controllers/ReconditionViewController.cs" line="198" column="1" />
       <Breakpoint file="/Users/slksoft/Sathya/VSTS/12-Oct/ExtAppraisalApp/AppraisalApp/Controllers/ReconditionViewController.cs" relfile="AppraisalApp/Controllers/ReconditionViewController.cs" line="201" column="1" />
       <Breakpoint file="/Users/slksoft/Sathya/VSTS/12-Oct/ExtAppraisalApp/AppraisalApp/Controllers/ReconditionViewController.cs" relfile="AppraisalApp/Controllers/ReconditionViewController.cs" line="203" column="1" />

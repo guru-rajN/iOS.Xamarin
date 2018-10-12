@@ -101,33 +101,57 @@ namespace ExtAppraisalApp
                 NSNotificationCenter.DefaultCenter.PostNotificationName("UpdatePhotoGraphs", null, dictionary);
             }
 
-            if (AppDelegate.appDelegate.LeftCarImageUploaded && AppDelegate.appDelegate.RightCarImageUploaded && AppDelegate.appDelegate.SeatCarImageUploaded && AppDelegate.appDelegate.BackSeatImageUploaded && AppDelegate.appDelegate.FrontCarImageUploaded && AppDelegate.appDelegate.BackCarImageUploaded
-               && AppDelegate.appDelegate.OdometerImageUploaded && AppDelegate.appDelegate.DashBoardImageUploaded && AppDelegate.appDelegate.VINImageUplaoded && AppDelegate.appDelegate.RimImageUploaded)
+            if (!AppDelegate.appDelegate.LeftCarImageUploaded && !AppDelegate.appDelegate.RightCarImageUploaded && !AppDelegate.appDelegate.SeatCarImageUploaded && !AppDelegate.appDelegate.BackSeatImageUploaded && !AppDelegate.appDelegate.FrontCarImageUploaded && !AppDelegate.appDelegate.BackCarImageUploaded
+               && !AppDelegate.appDelegate.OdometerImageUploaded && !AppDelegate.appDelegate.DashBoardImageUploaded && !AppDelegate.appDelegate.VINImageUplaoded && !AppDelegate.appDelegate.RimImageUploaded)
             {
-                // Navigate to Summary 
-                if (null == masterViewController)
+                UIAlertView Confirm = new UIAlertView();
+                Confirm.Title = "CarCash";
+                Confirm.Message = "We can give you the best CarCash value for your vehicle if you provide photos";
+                Confirm.AddButton("Cancel");
+                Confirm.AddButton("OK");
+                Confirm.Show();
+                Confirm.Clicked += (object senders, UIButtonEventArgs es) =>
                 {
-                    if (!UserInterfaceIdiomIsPhone)
-                        masterViewController = (MasterViewController)((UINavigationController)SplitViewController.ViewControllers[0]).TopViewController;
-                }
+                    if (es.ButtonIndex == 0)
+                    {
+  
+                        System.Diagnostics.Debug.WriteLine("Cancel button click");
 
-                ViewWorker viewWorker = new ViewWorker();
-                viewWorker.WorkerDelegate = (ExtAppraisalApp.Utilities.WorkerDelegateInterface)masterViewController;
-                viewWorker.ShowDoneImg(6);
+                    }else{
+                        System.Diagnostics.Debug.WriteLine("OK button click");
+                        PerformNavigation();
+                    }
 
-                if (UserInterfaceIdiomIsPhone)
-                {
-                    var dictionary = new NSDictionary(new NSString("1"), new NSString("PhotoGraphs"));
-
-                    NSNotificationCenter.DefaultCenter.PostNotificationName((Foundation.NSString)"MenuSelection", null, dictionary);
-                }
-
-                AppDelegate.appDelegate.IsPhotosSaved = true;
-
-                this.PerformSegue("summarySegue", this);
+                };
+            }else{
+                PerformNavigation();
             }
 
 
+        }
+
+        private void PerformNavigation(){
+            // Navigate to Summary 
+            if (null == masterViewController)
+            {
+                if (!UserInterfaceIdiomIsPhone)
+                    masterViewController = (MasterViewController)((UINavigationController)SplitViewController.ViewControllers[0]).TopViewController;
+            }
+
+            ViewWorker viewWorker = new ViewWorker();
+            viewWorker.WorkerDelegate = (ExtAppraisalApp.Utilities.WorkerDelegateInterface)masterViewController;
+            viewWorker.ShowDoneImg(6);
+
+            if (UserInterfaceIdiomIsPhone)
+            {
+                var dictionary = new NSDictionary(new NSString("1"), new NSString("PhotoGraphs"));
+
+                NSNotificationCenter.DefaultCenter.PostNotificationName((Foundation.NSString)"MenuSelection", null, dictionary);
+            }
+
+            AppDelegate.appDelegate.IsPhotosSaved = true;
+
+            this.PerformSegue("summarySegue", this);
         }
 
         protected PhotoViewController(IntPtr handle) : base(handle)

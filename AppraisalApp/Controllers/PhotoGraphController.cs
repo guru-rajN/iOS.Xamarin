@@ -418,51 +418,51 @@ namespace ExtAppraisalApp
         private void UpdatePhotoGraphViews(NSNotification obj)
         {
             Debug.WriteLine("notification msg :: " + obj.UserInfo);
-            var userInfo = obj.UserInfo;
-            var NotificationMsg = "";
-            if (null != userInfo)
-                NotificationMsg = userInfo.Keys[0].ToString();
+            //var userInfo = obj.UserInfo;
+            //var NotificationMsg = "";
+            //if (null != userInfo)
+                //NotificationMsg = userInfo.Keys[0].ToString();
 
-            if (NotificationMsg.Equals("Left"))
-            {
-                Left.Layer.BorderColor = UIColor.Red.CGColor;
-            }
-            else if (NotificationMsg.Equals("Right"))
-            {
-                Right.Layer.BorderColor = UIColor.Red.CGColor;
-            }
-            else if (NotificationMsg.Equals("Seat"))
-            {
-                Seat.Layer.BorderColor = UIColor.Red.CGColor;
-            }
-            else if (NotificationMsg.Equals("Seats"))
-            {
-                Seats.Layer.BorderColor = UIColor.Red.CGColor;
-            }
-            else if (NotificationMsg.Equals("Front"))
-            {
-                Front.Layer.BorderColor = UIColor.Red.CGColor;
-            }
-            else if (NotificationMsg.Equals("Back"))
-            {
-                Back.Layer.BorderColor = UIColor.Red.CGColor;
-            }
-            else if (NotificationMsg.Equals("Odometer"))
-            {
-                Odometer.Layer.BorderColor = UIColor.Red.CGColor;
-            }
-            else if (NotificationMsg.Equals("Dashboard"))
-            {
-                Dashboard.Layer.BorderColor = UIColor.Red.CGColor;
-            }
-            else if (NotificationMsg.Equals("VIN"))
-            {
-                VIN.Layer.BorderColor = UIColor.Red.CGColor;
-            }
-            else if (NotificationMsg.Equals("Rim"))
-            {
-                Rim.Layer.BorderColor = UIColor.Red.CGColor;
-            }
+            //if (NotificationMsg.Equals("Left"))
+            //{
+            //    Left.Layer.BorderColor = UIColor.Red.CGColor;
+            //}
+            //else if (NotificationMsg.Equals("Right"))
+            //{
+            //    Right.Layer.BorderColor = UIColor.Red.CGColor;
+            //}
+            //else if (NotificationMsg.Equals("Seat"))
+            //{
+            //    Seat.Layer.BorderColor = UIColor.Red.CGColor;
+            //}
+            //else if (NotificationMsg.Equals("Seats"))
+            //{
+            //    Seats.Layer.BorderColor = UIColor.Red.CGColor;
+            //}
+            //else if (NotificationMsg.Equals("Front"))
+            //{
+            //    Front.Layer.BorderColor = UIColor.Red.CGColor;
+            //}
+            //else if (NotificationMsg.Equals("Back"))
+            //{
+            //    Back.Layer.BorderColor = UIColor.Red.CGColor;
+            //}
+            //else if (NotificationMsg.Equals("Odometer"))
+            //{
+            //    Odometer.Layer.BorderColor = UIColor.Red.CGColor;
+            //}
+            //else if (NotificationMsg.Equals("Dashboard"))
+            //{
+            //    Dashboard.Layer.BorderColor = UIColor.Red.CGColor;
+            //}
+            //else if (NotificationMsg.Equals("VIN"))
+            //{
+            //    VIN.Layer.BorderColor = UIColor.Red.CGColor;
+            //}
+            //else if (NotificationMsg.Equals("Rim"))
+            //{
+            //    Rim.Layer.BorderColor = UIColor.Red.CGColor;
+            //}
         }
 
         public override void ViewDidDisappear(bool animated)
