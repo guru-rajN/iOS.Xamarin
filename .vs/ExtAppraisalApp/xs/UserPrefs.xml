@@ -4,7 +4,9 @@
       <File FileName="AppraisalApp/Controllers/LoginViewController.cs" Line="219" Column="23" />
       <File FileName="AppraisalApp/Controllers/MasterViewController.cs" Line="63" Column="101" />
       <File FileName="AppraisalApp/Controllers/DetailViewController.cs" Line="23" Column="40" />
-      <File FileName="AppraisalApp/Controllers/ConfirmationViewController.cs" Line="38" Column="49" />
+      <File FileName="AppraisalApp/Controllers/ConfirmationViewController.cs" Line="77" Column="44" />
+      <File FileName="AppraisalApp/Controllers/AppraisalLogViewController.cs" Line="427" Column="42" />
+      <File FileName="AppraisalApp/Controllers/AppraisalLogCell.cs" Line="42" Column="17" />
       <File FileName="ExtAppraisalApp Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>

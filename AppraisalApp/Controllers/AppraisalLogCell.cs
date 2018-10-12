@@ -28,18 +28,11 @@ namespace AppraisalApp
             appraisalDate.Text = CurreDate.ToString("MM-dd-yyyy");
             string[] tokens = amfactoryOption.SACAppraisalValue.Split(',');
             if(amfactoryOption.SACAppraisalValue!=""){
-                //if(UserInterfaceIdiomIsPhone){
-                //    SacCommentsWidth.Constant = 100;
+
                 double sacValue = Convert.ToDouble(tokens[1].Trim());
-                string SacValueNew = milleage.ToString("N2", System.Globalization.CultureInfo.GetCultureInfo("en-US")).Substring(0, Millieagedec.IndexOf('.', 0));
+                string SacValueNew = String.Format("{0:C0}",sacValue.ToString("N2", System.Globalization.CultureInfo.GetCultureInfo("en-US")));
 
                 sacComment.Text = Convert.ToString("$" + SacValueNew.Trim());
- 
-                // sacComment.Text = Convert.ToString("$" + tokens[1].Trim());
-                //}else{
-                //    SacCommentsWidth.Constant = 250;
-                //    sacComment.Text = Convert.ToString("$" + tokens[1].Trim());
-                //}
 
             }
             else{
@@ -59,10 +52,15 @@ namespace AppraisalApp
             string[] tokens = amfactoryOption.SACAppraisalValue.Split(',');
             if (amfactoryOption.SACAppraisalValue != "")
             {
-                double sacValue = Convert.ToDouble(tokens[1].Trim());
-                string SacValueNew = milleage.ToString("N2", System.Globalization.CultureInfo.GetCultureInfo("en-US")).Substring(0, Millieagedec.IndexOf('.', 0));
+                try{
+                    double sacValue = Convert.ToDouble(tokens[1].Trim());
+                    string SacValueNew = String.Format("{0:C0}",sacValue.ToString("N2", System.Globalization.CultureInfo.GetCultureInfo("en-US")));
 
-                sacComment.Text = Convert.ToString("$" + SacValueNew.Trim());
+                    sacComment.Text = Convert.ToString("$" + SacValueNew.Trim());  
+                }catch(Exception exc){
+                    System.Diagnostics.Debug.WriteLine(exc.Message);
+                }
+
             }
             else
             {
