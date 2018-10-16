@@ -94,20 +94,20 @@ namespace ExtAppraisalApp
                     {
                         if (a.PhotoGuide == "additional-photo-0.png")
                         {
-                            AppDelegate.appDelegate.AdditionalPhoto0 = a.PhotoURL;
+                            AppDelegate.appDelegate.AdditionalPhoto0 = a.ThumbnailPhotoURL;
                             savephotoURLtoDB("additional-photo-0", AppDelegate.appDelegate.AdditionalPhoto0);
                             loadOnlineImage(0);
                         }
                         if (a.PhotoGuide == "additional-photo-1.png")
                         {
-                            AppDelegate.appDelegate.AdditionalPhoto1 = a.PhotoURL;
+                            AppDelegate.appDelegate.AdditionalPhoto1 = a.ThumbnailPhotoURL;
 
                             savephotoURLtoDB("additional-photo-1", AppDelegate.appDelegate.AdditionalPhoto1);
                             loadOnlineImage(1);
                         }
                         if (a.PhotoGuide == "additional-photo-2.png")
                         {
-                            AppDelegate.appDelegate.AdditionalPhoto2 = a.PhotoURL;
+                            AppDelegate.appDelegate.AdditionalPhoto2 = a.ThumbnailPhotoURL;
                             savephotoURLtoDB("additional-photo-2", AppDelegate.appDelegate.AdditionalPhoto2);
                             loadOnlineImage(2);
                         }

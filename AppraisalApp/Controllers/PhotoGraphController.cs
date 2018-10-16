@@ -732,43 +732,43 @@ namespace ExtAppraisalApp
                         {
                             if (a.PhotoGuide == "photo-rear")
                             {
-                                AppDelegate.appDelegate.BackCarImageURL = a.PhotoURL;
+                                AppDelegate.appDelegate.BackCarImageURL = a.ThumbnailPhotoURL;
                             }
                             if (a.PhotoGuide == "photo-front")
                             {
-                                AppDelegate.appDelegate.FrontCarImageURL = a.PhotoURL;
+                                AppDelegate.appDelegate.FrontCarImageURL = a.ThumbnailPhotoURL;
                             }
                             if (a.PhotoGuide == "photo-passenger-side")
                             {
-                                AppDelegate.appDelegate.RightCarImageURL = a.PhotoURL;
+                                AppDelegate.appDelegate.RightCarImageURL = a.ThumbnailPhotoURL;
                             }
                             if (a.PhotoGuide == "photo-driver-side")
                             {
-                                AppDelegate.appDelegate.LeftCarImageURL = a.PhotoURL;
+                                AppDelegate.appDelegate.LeftCarImageURL = a.ThumbnailPhotoURL;
                             }
                             if (a.PhotoGuide == "photo-interior-rear")
                             {
-                                AppDelegate.appDelegate.BackSeatImageURL = a.PhotoURL;
+                                AppDelegate.appDelegate.BackSeatImageURL = a.ThumbnailPhotoURL;
                             }
                             if (a.PhotoGuide == "photo-interior-front")
                             {
-                                AppDelegate.appDelegate.SeatCarImageURL = a.PhotoURL;
+                                AppDelegate.appDelegate.SeatCarImageURL = a.ThumbnailPhotoURL;
                             }
                             if (a.PhotoGuide == "photo-dashboard")
                             {
-                                AppDelegate.appDelegate.DashBoardImageURL = a.PhotoURL;
+                                AppDelegate.appDelegate.DashBoardImageURL = a.ThumbnailPhotoURL;
                             }
                             if (a.PhotoGuide == "photo-vin")
                             {
-                                AppDelegate.appDelegate.VINImageURL = a.PhotoURL;
+                                AppDelegate.appDelegate.VINImageURL = a.ThumbnailPhotoURL;
                             }
                             if (a.PhotoGuide == "photo-odometer")
                             {
-                                AppDelegate.appDelegate.OdometerImageURL = a.PhotoURL;
+                                AppDelegate.appDelegate.OdometerImageURL = a.ThumbnailPhotoURL;
                             }
                             if (a.PhotoGuide == "photo-wheels")
                             {
-                                AppDelegate.appDelegate.RimImageURL = a.PhotoURL;
+                                AppDelegate.appDelegate.RimImageURL = a.ThumbnailPhotoURL;
                             }
                         }
 
