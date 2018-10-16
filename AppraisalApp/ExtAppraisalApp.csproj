@@ -385,8 +385,6 @@
     <BundleResource Include="Resources\carcash.png" />
     <BundleResource Include="Resources\map.png" />
     <BundleResource Include="Resources\carc.png" />
-    <BundleResource Include="Resources\circular_empty.png" />
-    <BundleResource Include="Resources\circular_filled.png" />
     <BundleResource Include="Resources\ContactUs-64.png" />
     <BundleResource Include="Resources\Dailer.png" />
     <BundleResource Include="Resources\Mail-48.png" />
@@ -401,6 +399,8 @@
     <BundleResource Include="Resources\Three-3-30.png" />
     <BundleResource Include="Resources\Two-2-30.png" />
     <BundleResource Include="Resources\Sixx-6-30.png" />
+    <BundleResource Include="Resources\circular_filled.png" />
+    <BundleResource Include="Resources\circular_empty.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.targets')" />
