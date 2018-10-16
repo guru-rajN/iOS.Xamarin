@@ -61,7 +61,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="done.png" translatesAutoresizingMaskIntoConstraints="NO" id="2Up-uu-2Az">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="One-1-30.png" translatesAutoresizingMaskIntoConstraints="NO" id="2Up-uu-2Az">
                                                     <rect key="frame" x="16" y="7" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -86,7 +86,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="done.png" translatesAutoresizingMaskIntoConstraints="NO" id="123460">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Two-2-30.png" translatesAutoresizingMaskIntoConstraints="NO" id="123460">
                                                     <rect key="frame" x="16" y="7" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -111,7 +111,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="done.png" translatesAutoresizingMaskIntoConstraints="NO" id="124460">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Three-3-30.png" translatesAutoresizingMaskIntoConstraints="NO" id="124460">
                                                     <rect key="frame" x="16" y="7" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -136,7 +136,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="done.png" translatesAutoresizingMaskIntoConstraints="NO" id="128123">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Four-4-30.png" translatesAutoresizingMaskIntoConstraints="NO" id="128123">
                                                     <rect key="frame" x="16" y="7" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -161,7 +161,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="done.png" translatesAutoresizingMaskIntoConstraints="NO" id="129136">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Five-5-30.png" translatesAutoresizingMaskIntoConstraints="NO" id="129136">
                                                     <rect key="frame" x="16" y="7" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -186,7 +186,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="done.png" translatesAutoresizingMaskIntoConstraints="NO" id="130919">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Sixx-6-30.png" translatesAutoresizingMaskIntoConstraints="NO" id="130919">
                                                     <rect key="frame" x="16" y="7" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -3965,6 +3965,12 @@
         <image name="pseats.png" width="66" height="39"/>
         <image name="pvin.png" width="112" height="65"/>
         <image name="sliding_icon.png" width="128" height="128"/>
+        <image name="Five-5-30.png" width="30" height="30"/>
+        <image name="Four-4-30.png" width="30" height="30"/>
+        <image name="One-1-30.png" width="30" height="30"/>
+        <image name="Two-2-30.png" width="30" height="30"/>
+        <image name="Three-3-30.png" width="30" height="30"/>
+        <image name="Sixx-6-30.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Tll-UG-LXB"/>

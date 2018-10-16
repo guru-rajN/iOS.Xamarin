@@ -395,6 +395,12 @@
     <BundleResource Include="Resources\up_arrow.png" />
     <BundleResource Include="Resources\sliding_icon.png" />
     <BundleResource Include="Resources\down_arrow.png" />
+    <BundleResource Include="Resources\Five-5-30.png" />
+    <BundleResource Include="Resources\Four-4-30.png" />
+    <BundleResource Include="Resources\One-1-30.png" />
+    <BundleResource Include="Resources\Three-3-30.png" />
+    <BundleResource Include="Resources\Two-2-30.png" />
+    <BundleResource Include="Resources\Sixx-6-30.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.targets')" />

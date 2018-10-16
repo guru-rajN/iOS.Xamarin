@@ -38,12 +38,12 @@ namespace ExtAppraisalApp
 
             TableView.TableFooterView = new UIView(new CGRect(0, 0, 0, 0));
 
-            InfoDoneImg.Hidden = true;
-            FactoryOptionsDoneImg.Hidden = true;
-            AfterMarketDoneImg.Hidden = true;
-            HistoryDoneImg.Hidden = true;
-            ReconditionsDoneImg.Hidden = true;
-            PhotosDoneImg.Hidden = true;
+            //InfoDoneImg.Hidden = true;
+            //FactoryOptionsDoneImg.Hidden = true;
+            //AfterMarketDoneImg.Hidden = true;
+            //HistoryDoneImg.Hidden = true;
+            //ReconditionsDoneImg.Hidden = true;
+            //PhotosDoneImg.Hidden = true;
 
             NSIndexPath path = NSIndexPath.FromRowSection(0, 0);
             this.TableView.SelectRow(path, true, UITableViewScrollPosition.None);
