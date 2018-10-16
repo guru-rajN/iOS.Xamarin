@@ -2510,7 +2510,7 @@
         <!--Navigation Controller-->
         <scene sceneID="268184">
             <objects>
-                <navigationController id="268185" sceneMemberID="viewController">
+                <navigationController id="268185" sceneMemberID="viewController" storyboardIdentifier="APNSViewControllerNav">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="268187">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

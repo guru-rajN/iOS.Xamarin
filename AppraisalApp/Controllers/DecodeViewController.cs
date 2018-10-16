@@ -191,6 +191,12 @@ namespace ExtAppraisalApp
                     InvokeOnMainThread(() =>
                     {
                         Utility.HideLoadingIndicator(this.View);
+                        AppDelegate.appDelegate.IsInfoSaved = false;
+                        AppDelegate.appDelegate.IsFactorySaved = false;
+                        AppDelegate.appDelegate.IsAftermarketSaved = false;
+                        AppDelegate.appDelegate.IsHistorySaved = false;
+                        AppDelegate.appDelegate.IsReconditionsSaved = false;
+                        AppDelegate.appDelegate.IsPhotosSaved = false;
                         AppDelegate.appDelegate.vehicleID = appresponse.VehicleID;
                         AppDelegate.appDelegate.storeId = appresponse.StoreID;
                         AppDelegate.appDelegate.invtrId = appresponse.InvtrID;

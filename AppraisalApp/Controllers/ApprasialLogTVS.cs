@@ -40,10 +40,20 @@ namespace AppraisalApp
             AppDelegate.appDelegate.cacheVehicleDetails = null;
             AppDelegate.appDelegate.afterMarketOptions = null;
             AppDelegate.appDelegate.fctoption = null;
-            AppDelegate.appDelegate.mileage = Convert.ToInt32(result.Mileage);
-            var storyboard = UIStoryboard.FromName("Main", null);
-            var loginViewController = storyboard.InstantiateViewController("SplitViewControllerID");
-            AppDelegate.appDelegate.Window.RootViewController = loginViewController;
+            if(result.Status=="CA")
+            {
+                AppDelegate.appDelegate.mileage = Convert.ToInt32(result.Mileage);
+                var storyboard = UIStoryboard.FromName("Main", null);
+                var loginViewController = storyboard.InstantiateViewController("APNSViewControllerNav");
+                AppDelegate.appDelegate.Window.RootViewController = loginViewController;
+            }
+            else{
+                AppDelegate.appDelegate.mileage = Convert.ToInt32(result.Mileage);
+                var storyboard = UIStoryboard.FromName("Main", null);
+                var loginViewController = storyboard.InstantiateViewController("SplitViewControllerID");
+                AppDelegate.appDelegate.Window.RootViewController = loginViewController;
+
+            }
 
         }
     }
