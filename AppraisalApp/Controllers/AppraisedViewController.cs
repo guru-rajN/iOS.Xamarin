@@ -1,3 +1,4 @@
+using ExtAppraisalApp.Utilities;
 using Foundation;
 using System;
 using UIKit;
@@ -6,15 +7,25 @@ namespace ExtAppraisalApp
 {
     public partial class AppraisedViewController : UIViewController
     {
-        partial void Map_TouchUpInside(UIButton sender)
+        partial void UIButton689113_TouchUpInside(UIButton sender)
         {
-            var storyboard = UIStoryboard.FromName("Main", null);
-            MapsViewController summaryViewController = (MapsViewController)storyboard.InstantiateViewController("MapsViewController");
-            UINavigationController uINavigationController = new UINavigationController(summaryViewController);
-            uINavigationController.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
-            uINavigationController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
-            this.NavigationController.PresentViewController(uINavigationController, true, null);
+            Utility.ShowAlert("CarCash", "Functionality yet to come", "OK");
         }
+
+        partial void UIButton689118_TouchUpInside(UIButton sender)
+        {
+            Utility.ShowAlert("CarCash", "Functionality yet to come", "OK");
+        }
+
+        //partial void Map_TouchUpInside(UIButton sender)
+        //{
+        //    var storyboard = UIStoryboard.FromName("Main", null);
+        //    MapsViewController summaryViewController = (MapsViewController)storyboard.InstantiateViewController("MapsViewController");
+        //    UINavigationController uINavigationController = new UINavigationController(summaryViewController);
+        //    uINavigationController.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
+        //    uINavigationController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
+        //    this.NavigationController.PresentViewController(uINavigationController, true, null);
+        //}
 
        
 
@@ -25,7 +36,16 @@ namespace ExtAppraisalApp
         public override void ViewDidLoad()
         {
             NSNotificationCenter.DefaultCenter.AddObserver((Foundation.NSString)"AppraisedValue", ShowAppraisedValue, null);
-
+            UITapGestureRecognizer labelTap = new UITapGestureRecognizer(() => {
+                var storyboard = UIStoryboard.FromName("Main", null);
+                MapsViewController summaryViewController = (MapsViewController)storyboard.InstantiateViewController("MapsViewController");
+                UINavigationController uINavigationController = new UINavigationController(summaryViewController);
+                uINavigationController.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
+                uINavigationController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
+                this.NavigationController.PresentViewController(uINavigationController, true, null);
+            });
+            address.UserInteractionEnabled = true;
+            address.AddGestureRecognizer(labelTap);
             if (AppDelegate.appDelegate.APNSAlert != null)
             {
                 address.Text = AppDelegate.appDelegate.APNSAlertAddressa + "," + AppDelegate.appDelegate.APNSAlertAddressb + "," + AppDelegate.appDelegate.APNSAlertZip;

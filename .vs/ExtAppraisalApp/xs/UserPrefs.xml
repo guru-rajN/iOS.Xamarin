@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}|Default" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ExtAppraisalApp Status">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AppraisalApp/Views/Main.storyboard">
     <Files>
       <File FileName="AppraisalApp/Views/AdditionDesc.cs" Line="1" Column="1" />
       <File FileName="AppraisalApp/Views/Main.storyboard" />
@@ -8,12 +8,13 @@
       <File FileName="AppraisalApp/Controllers/AdditionalPhotographs.cs" Line="198" Column="17" />
       <File FileName="AppraisalApp/Controllers/LoginViewController.cs" Line="210" Column="84" />
       <File FileName="ExtAppraisalApp Status" />
+      <File FileName="AppraisalApp/Controllers/AppraisedViewController.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/apple/Documents/Narasegowda/codebaseb1/ExtAppraisalApp/AppraisalApp/Controllers/AppraisedViewController.cs" relfile="AppraisalApp/Controllers/AppraisedViewController.cs" line="69" column="1" />
+      <Breakpoint file="/Users/apple/Documents/Narasegowda/codebaseb1/ExtAppraisalApp/AppraisalApp/Controllers/AppraisedViewController.cs" relfile="AppraisalApp/Controllers/AppraisedViewController.cs" line="74" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>

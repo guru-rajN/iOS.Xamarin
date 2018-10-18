@@ -3096,112 +3096,120 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="676"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="CarCash Value" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="404697">
-                                <rect key="frame" x="126" y="94" width="164" height="33"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="21"/>
-                                <color key="textColor" white="0.33333333333333298" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="done.png" translatesAutoresizingMaskIntoConstraints="NO" id="408322" misplaced="YES">
-                                <rect key="frame" x="263.5" y="89" width="58" height="33"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="33" id="640138"/>
-                                    <constraint firstAttribute="width" constant="58" id="640139"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="2014 Toyota Camry" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="409889">
-                                <rect key="frame" x="22" y="135" width="373" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="409889" text="Year Make Model" misplaced="YES">
+                                <rect key="frame" x="22" y="112" width="373" height="31"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                 <color key="textColor" white="0.33333333333333298" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$140000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="412441">
-                                <rect key="frame" x="30" y="165" width="358" height="33"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$$$" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="412441" misplaced="YES">
+                                <rect key="frame" x="30" y="144" width="358" height="25"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
                                 <color key="textColor" red="0.37254901960784315" green="0.65490196078431373" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="20 Sep, 2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="412442">
-                                <rect key="frame" x="206" y="206" width="134" height="33"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="412442" text="Offer Exp Date" misplaced="YES" ambiguous="YES">
+                                <rect key="frame" x="208" y="178" width="134" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18" weight="semibold"/>
                                 <color key="textColor" white="0.33333333333333298" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Valid Until:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="412443">
-                                <rect key="frame" x="96" y="206" width="94" height="33"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Valid Until:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="412443" misplaced="YES" ambiguous="YES">
+                                <rect key="frame" x="105" y="177" width="95" height="25"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                 <color key="textColor" white="0.33333333333333298" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Store Address:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="506614">
-                                <rect key="frame" x="118" y="246" width="138" height="31"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <rect key="frame" x="139" y="230" width="138" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16" weight="medium"/>
                                 <color key="textColor" white="0.33333333333333298" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="506615">
-                                <rect key="frame" x="264" y="244" width="46" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="640151"/>
-                                    <constraint firstAttribute="height" constant="35" id="640152"/>
-                                </constraints>
-                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <state key="normal" backgroundImage="map.png">
-                                    <color key="titleColor" white="0.33333333333333298" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="Map_TouchUpInside:" destination="390032" eventType="touchUpInside" id="517818"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="10401 East Arapahoe Road,Englewood,CA,USA " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="506620">
-                                <rect key="frame" x="24" y="298" width="368" height="46"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10401 East Arapahoe Road,Englewood,CA,USA " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="506620" misplaced="YES">
+                                <rect key="frame" x="24" y="253" width="368" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14" weight="medium"/>
                                 <color key="textColor" white="0.33333333333333298" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="506621">
-                                <rect key="frame" x="37" y="352" width="343" height="289"/>
+                                <rect key="frame" x="42" y="412" width="343" height="267"/>
                                 <string key="text">Thank you for submitting your appraisal information. We are happy to provide a value based on the information you have provided us. Your vehicle is valued at $14,000. This amount is good for 14 days or 500 miles from the date of submission. At the time of delivery or transfer of ownership, CarCash reserves the right to verify that the information you have submitted is accurate and to adjust the value offered if we feel that your vehicle does not match the description you have provided.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="0.33333333333333298" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="carcash_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="533728" misplaced="YES">
-                                <rect key="frame" x="98.5" y="44" width="180" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="636883"/>
-                                    <constraint firstAttribute="width" constant="180" id="636884"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="carcash.png" translatesAutoresizingMaskIntoConstraints="NO" id="533728" misplaced="YES">
+                                <rect key="frame" x="118" y="31" width="180" height="73"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="689113" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                <rect key="frame" x="102" y="387" width="222" height="34"/>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.37254901960784315" green="0.65490196078431373" blue="0.32549019607843138" alpha="1"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Compare Your ffer">
+                                    <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                                </state>
+                                <constraints>
+                                    <constraint id="689116" firstAttribute="height" constant="34"/>
+                                    <constraint id="689117" firstAttribute="width" constant="222"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="UIButton664399_TouchUpInside:" destination="689115" id="689114" eventType="touchUpInside"/>
+                                    <action selector="UIButton689113_TouchUpInside:" destination="390032" id="689875" eventType="touchUpInside"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="689118" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                <rect key="frame" x="102" y="345" width="222" height="34"/>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.37254901960784315" green="0.65490196078431373" blue="0.32549019607843138" alpha="1"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Get Your $$">
+                                    <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                                </state>
+                                <connections>
+                                    <action selector="UIButton661442_TouchUpInside:" destination="689115" id="689119" eventType="touchUpInside"/>
+                                    <action selector="UIButton689118_TouchUpInside:" destination="390032" id="689874" eventType="touchUpInside"/>
+                                </connections>
+                                <constraints>
+                                    <constraint id="689120" firstAttribute="height" constant="34"/>
+                                    <constraint id="689121" firstAttribute="width" constant="222"/>
+                                </constraints>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="689122" translatesAutoresizingMaskIntoConstraints="NO" text="You can cash out at any participating dealership." numberOfLines="0" misplaced="YES" ambiguous="YES">
+                                <rect key="frame" x="44" y="283" width="339" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18" weight="medium"/>
+                                <color key="textColor" colorSpace="calibratedWhite" white="0.333333333333333" alpha="1"/>
+                                <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="690634" firstAttribute="height" constant="54"/>
+                                    <constraint id="690635" firstAttribute="width" constant="339"/>
+                                </constraints>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="533728" firstAttribute="top" secondItem="390028" secondAttribute="bottom" constant="44" id="636885"/>
-                            <constraint firstItem="404697" firstAttribute="top" secondItem="533728" secondAttribute="bottom" constant="17" id="638378"/>
-                            <constraint firstItem="408322" firstAttribute="top" secondItem="533728" secondAttribute="bottom" constant="17" id="638379"/>
-                            <constraint firstItem="404697" firstAttribute="centerX" secondItem="390034" secondAttribute="centerX" constant="1" id="640137"/>
-                            <constraint firstItem="408322" firstAttribute="centerX" secondItem="390034" secondAttribute="centerX" constant="105" id="640140"/>
-                            <constraint firstItem="409889" firstAttribute="top" secondItem="404697" secondAttribute="bottom" constant="8" id="640141"/>
-                            <constraint firstItem="412441" firstAttribute="top" secondItem="409889" secondAttribute="bottom" constant="8" id="640142"/>
-                            <constraint firstItem="412442" firstAttribute="top" secondItem="412441" secondAttribute="bottom" constant="8" id="640143"/>
-                            <constraint firstItem="412443" firstAttribute="top" secondItem="412441" secondAttribute="bottom" constant="8" id="640144"/>
-                            <constraint firstItem="412442" firstAttribute="leading" secondItem="412443" secondAttribute="trailing" constant="16" id="640145"/>
-                            <constraint firstAttribute="centerX" secondItem="412443" secondAttribute="centerX" constant="64" id="640146"/>
-                            <constraint firstItem="412442" firstAttribute="centerX" secondItem="390034" secondAttribute="centerX" constant="66" id="640147"/>
-                            <constraint firstItem="506614" firstAttribute="top" secondItem="412443" secondAttribute="bottom" constant="9" id="640148"/>
-                            <constraint firstItem="506615" firstAttribute="top" secondItem="412442" secondAttribute="bottom" constant="5" id="640149"/>
-                            <constraint firstItem="506615" firstAttribute="leading" secondItem="506614" secondAttribute="trailing" constant="8" id="640150"/>
                             <constraint firstAttribute="centerX" secondItem="506614" secondAttribute="centerX" constant="20" id="640153"/>
-                            <constraint firstItem="506615" firstAttribute="centerX" secondItem="390034" secondAttribute="centerX" constant="80" id="640154"/>
-                            <constraint firstItem="506620" firstAttribute="top" secondItem="506614" secondAttribute="bottom" constant="21" id="640155"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="506620" secondAttribute="trailing" constant="4" id="640156"/>
-                            <constraint firstItem="506620" firstAttribute="leading" secondItem="390034" secondAttribute="leadingMargin" constant="4" id="640157"/>
-                            <constraint firstItem="506621" firstAttribute="top" secondItem="390028" secondAttribute="bottom" constant="352" id="640921"/>
                             <constraint firstItem="506621" firstAttribute="leading" secondItem="390034" secondAttribute="leadingMargin" id="640922"/>
                             <constraint firstAttribute="trailingMargin" secondItem="506621" secondAttribute="trailing" id="640923"/>
-                            <constraint firstItem="412441" firstAttribute="centerX" secondItem="390034" secondAttribute="centerX" constant="2" id="643418"/>
-                            <constraint firstItem="409889" firstAttribute="centerX" secondItem="390034" secondAttribute="centerX" constant="1" id="643419"/>
-                            <constraint firstItem="533728" firstAttribute="centerX" secondItem="390034" secondAttribute="centerX" constant="1" id="643420"/>
+                            <constraint id="690619" firstItem="533728" firstAttribute="top" secondItem="390028" secondAttribute="bottom" constant="31"/>
+                            <constraint id="690620" firstItem="533728" firstAttribute="centerX" secondItem="390034" secondAttribute="centerX" constant="1"/>
+                            <constraint id="690621" firstItem="409889" firstAttribute="top" secondItem="533728" secondAttribute="bottom" constant="8"/>
+                            <constraint id="690622" firstItem="409889" firstAttribute="centerX" secondItem="390034" secondAttribute="centerX" constant="1"/>
+                            <constraint id="690623" firstItem="412441" firstAttribute="top" secondItem="409889" secondAttribute="bottom" constant="1"/>
+                            <constraint id="690624" firstItem="412441" firstAttribute="centerX" secondItem="390034" secondAttribute="centerX" constant="2"/>
+                            <constraint id="690625" firstItem="412443" firstAttribute="top" secondItem="412441" secondAttribute="bottom" constant="8"/>
+                            <constraint id="690626" firstItem="412442" firstAttribute="top" secondItem="412441" secondAttribute="bottom" constant="9"/>
+                            <constraint id="690627" firstItem="412442" firstAttribute="centerX" secondItem="390034" secondAttribute="centerX" constant="68"/>
+                            <constraint id="690628" firstAttribute="centerX" secondItem="412443" secondAttribute="centerX" constant="54"/>
+                            <constraint id="690629" firstItem="412442" firstAttribute="leading" secondItem="412443" secondAttribute="trailing" constant="8"/>
+                            <constraint id="690630" firstItem="506614" firstAttribute="top" secondItem="412442" secondAttribute="bottom" constant="29"/>
+                            <constraint id="690632" firstItem="506620" firstAttribute="centerX" secondItem="390034" secondAttribute="centerX" constant="1"/>
+                            <constraint id="690633" firstItem="506620" firstAttribute="top" secondItem="506614" secondAttribute="bottom" constant="1"/>
+                            <constraint id="690636" firstItem="506620" firstAttribute="bottom" secondItem="689122" secondAttribute="top" constant="2"/>
+                            <constraint id="690637" firstItem="689118" firstAttribute="top" secondItem="689122" secondAttribute="bottom" constant="8"/>
+                            <constraint id="690638" firstItem="689113" firstAttribute="top" secondItem="689118" secondAttribute="bottom" constant="8"/>
+                            <constraint id="690639" firstItem="689118" firstAttribute="centerX" secondItem="390034" secondAttribute="centerX" constant="6"/>
+                            <constraint id="690640" firstItem="689113" firstAttribute="centerX" secondItem="390034" secondAttribute="centerX" constant="6"/>
+                            <constraint id="690641" firstItem="506621" firstAttribute="top" secondItem="390028" secondAttribute="bottom" constant="412"/>
                         </constraints>
                     </view>
                     <connections>
@@ -3210,7 +3218,6 @@
                         <outlet property="ExpDate" destination="412442" id="name-outlet-412442"/>
                         <outlet property="VehicleDetails" destination="409889" id="name-outlet-409889"/>
                         <outlet property="address" destination="506620" id="name-outlet-506620"/>
-                        <outlet property="map" destination="506615" id="name-outlet-506615"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="390035" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3987,7 +3994,6 @@
         <image name="camera_black.png" width="48" height="48"/>
         <image name="indicator.png" width="50" height="80"/>
         <image name="carcash.png" width="285" height="139"/>
-        <image name="map.png" width="64" height="64"/>
         <image name="ContactUs-64.png" width="64" height="64"/>
         <image name="Dailer.png" width="48" height="48"/>
         <image name="Mail-48.png" width="48" height="48"/>
