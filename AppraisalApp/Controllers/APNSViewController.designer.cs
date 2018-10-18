@@ -48,10 +48,6 @@ namespace ExtAppraisalApp
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton map { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel VehicleDetails { get; set; }
 
         [Action ("ApnsCloseButton_TouchUpInside:")]
@@ -62,9 +58,13 @@ namespace ExtAppraisalApp
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void APNSDone_Activated (UIKit.UIBarButtonItem sender);
 
-        [Action ("Map_TouchUpInside:")]
+        [Action ("UIButton661442_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
-        partial void Map_TouchUpInside (UIKit.UIButton sender);
+        partial void UIButton661442_TouchUpInside (UIKit.UIButton sender);
+
+        [Action ("UIButton664399_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void UIButton664399_TouchUpInside (UIKit.UIButton sender);
 
         void ReleaseDesignerOutlets ()
         {
@@ -106,11 +106,6 @@ namespace ExtAppraisalApp
             if (ExpDate != null) {
                 ExpDate.Dispose ();
                 ExpDate = null;
-            }
-
-            if (map != null) {
-                map.Dispose ();
-                map = null;
             }
 
             if (VehicleDetails != null) {
