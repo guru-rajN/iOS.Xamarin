@@ -87,7 +87,8 @@ namespace ExtAppraisalApp
         public string APNSAlertAddressa = null;
         public string APNSAlertAddressb = null;
         public string APNSAlertZip = null;
-
+        public string SACvalue = null;
+        public bool APNSSACDB = false;
         //Photographs validations
         public bool LeftCarImageUploaded = false;
         public bool RightCarImageUploaded = false;

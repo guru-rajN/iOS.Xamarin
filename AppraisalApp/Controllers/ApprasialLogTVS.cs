@@ -13,7 +13,7 @@ namespace AppraisalApp
         //protected string[] tableItems;
         private List<AppraisalLogEntity> apploglist;
 
-        public  ApprasialLogTVS(List<AppraisalLogEntity> apploglist)
+        public ApprasialLogTVS(List<AppraisalLogEntity> apploglist)
         {
             this.apploglist = apploglist;
         }
@@ -33,21 +33,22 @@ namespace AppraisalApp
         }
         public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
         {
-            var result =apploglist[indexPath.Row];
+            var result = apploglist[indexPath.Row];
             AppDelegate.appDelegate.storeId = result.Store_ID;
             AppDelegate.appDelegate.vehicleID = result.Vehicle_ID;
             AppDelegate.appDelegate.invtrId = result.Invtr_ID;
             AppDelegate.appDelegate.cacheVehicleDetails = null;
             AppDelegate.appDelegate.afterMarketOptions = null;
             AppDelegate.appDelegate.fctoption = null;
-            if(result.Status=="CA")
+            if (result.SACStatus == 403)
             {
-                AppDelegate.appDelegate.mileage = Convert.ToInt32(result.Mileage);
-                var storyboard = UIStoryboard.FromName("Main", null);
-                var loginViewController = storyboard.InstantiateViewController("APNSViewControllerNav");
-                AppDelegate.appDelegate.Window.RootViewController = loginViewController;
+                AppDelegate.appDelegate.SACvalue = result.AppraisalValue.ToString();
+                AppDelegate.appDelegate.APNSSACDB = true;
+                NSNotificationCenter.DefaultCenter.PostNotificationName("ShowPushNotifyAppLog", null);
+
             }
-            else{
+            else
+            {
                 AppDelegate.appDelegate.mileage = Convert.ToInt32(result.Mileage);
                 var storyboard = UIStoryboard.FromName("Main", null);
                 var loginViewController = storyboard.InstantiateViewController("SplitViewControllerID");

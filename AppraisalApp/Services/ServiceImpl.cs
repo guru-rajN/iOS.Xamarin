@@ -907,5 +907,44 @@ namespace ExtAppraisalApp.Services
             }
             return custAppraisalLogsData;
         }
+        public ApnsSummaryview GetAPNSSummaryView(long VehicleId, short StoreId, short InventoryId)
+        {
+            string result = null;
+
+            ApnsSummaryview getAPNSviewResponses = new ApnsSummaryview();
+            HttpResponseMessage responseMessage = null;
+            try
+            {
+                responseMessage = RestClient.doGet(Url.GetAPNSSummary + "/" + VehicleId + "/" + StoreId + "/" + InventoryId);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    result = responseMessage.Content.ReadAsStringAsync().Result;
+                    SIMSResponseData rst = JsonConvert.DeserializeObject<SIMSResponseData>(result);
+                    var facresponse = JsonConvert.DeserializeObject<ApnsSummaryview>(rst.Data.ToString());
+                    //facresponse.aftermarketQuestions=JsonConvert.DeserializeObject<AfterMarketOptions>(rst.Data.ToString());
+
+                    getAPNSviewResponses = facresponse;
+
+                    if (null != result)
+                    {
+                        //result = null;
+                    }
+                    // TO-DO : show alert message if the VIN appraisal already created
+                }
+                else
+                {
+                    result = null;
+
+                    //Utilities.Utility.ShowAlert("Appraisal App", "Decode VIN Failed!!", "OK");
+                }
+            }
+            catch (Exception exc)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception occured :: " + exc.Message);
+            }
+
+            return getAPNSviewResponses;
+        }
+
     }
 }

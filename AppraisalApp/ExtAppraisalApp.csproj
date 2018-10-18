@@ -349,6 +349,7 @@
     <Compile Include="Controllers\ContactsTableViewController.designer.cs">
       <DependentUpon>ContactsTableViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\ApnsSummaryview.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\done.png" />

@@ -29,40 +29,46 @@ namespace AppraisalApp
 
             if (segmentID == "0")
             {
-                if (AppDelegate.appDelegate.CustomerLogin){
+                if (AppDelegate.appDelegate.CustomerLogin)
+                {
 
                     var Appcompleted = CustomerAppLogsList.FindAll((CustomerAppraisalLogEntity obj) => obj.Status == "CA");
                     AppraisalTableView.Source = new CustomerApprasialLogTVS(Appcompleted);
                     AppraisalTableView.RowHeight = 120f;
                     AppraisalTableView.EstimatedRowHeight = 120.0f;
                     AppraisalTableView.BackgroundColor = UIColor.LightGray;
-                    AppraisalTableView.ReloadData();  
-                }else{
+                    AppraisalTableView.ReloadData();
+                }
+                else
+                {
                     var Appcompleted = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status == "CA");
                     AppraisalTableView.Source = new ApprasialLogTVS(Appcompleted);
                     AppraisalTableView.RowHeight = 120f;
                     AppraisalTableView.EstimatedRowHeight = 120.0f;
                     AppraisalTableView.BackgroundColor = UIColor.LightGray;
-                    AppraisalTableView.ReloadData();  
+                    AppraisalTableView.ReloadData();
                 }
 
             }
             else
             {
-                if (AppDelegate.appDelegate.CustomerLogin){
+                if (AppDelegate.appDelegate.CustomerLogin)
+                {
                     var appPending = CustomerAppLogsList.FindAll((CustomerAppraisalLogEntity obj) => obj.Status != "CA");
                     AppraisalTableView.Source = new CustomerApprasialLogTVS(appPending);
                     AppraisalTableView.RowHeight = 120f;
                     AppraisalTableView.EstimatedRowHeight = 120.0f;
                     AppraisalTableView.BackgroundColor = UIColor.LightGray;
-                    AppraisalTableView.ReloadData(); 
-                }else{
+                    AppraisalTableView.ReloadData();
+                }
+                else
+                {
                     var appPending = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status != "CA");
                     AppraisalTableView.Source = new ApprasialLogTVS(appPending);
                     AppraisalTableView.RowHeight = 120f;
                     AppraisalTableView.EstimatedRowHeight = 120.0f;
                     AppraisalTableView.BackgroundColor = UIColor.LightGray;
-                    AppraisalTableView.ReloadData(); 
+                    AppraisalTableView.ReloadData();
                 }
 
             }
@@ -101,6 +107,7 @@ namespace AppraisalApp
             var conn = new SQLite.SQLiteConnection(DbPath);
             conn.DropTable<CustomerValue>();
             conn.DropTable<DealerValue>();
+
         }
 
         partial void BtnAddNew_Activated(UIBarButtonItem sender)
@@ -125,14 +132,17 @@ namespace AppraisalApp
             string segmentID = AppraisalTypeSegment.SelectedSegment.ToString();
             if (segmentID == "0")
             {
-                if (AppDelegate.appDelegate.CustomerLogin){ 
+                if (AppDelegate.appDelegate.CustomerLogin)
+                {
                     var completedVehicle = CustomerAppLogsList.FindAll((CustomerAppraisalLogEntity obj) => obj.Status == "CA");
                     AppraisalTableView.Source = new CustomerApprasialLogTVS(completedVehicle);
                     AppraisalTableView.RowHeight = 120f;
                     AppraisalTableView.EstimatedRowHeight = 120.0f;
                     AppraisalTableView.BackgroundColor = UIColor.LightGray;
                     AppraisalTableView.ReloadData();
-                }else{
+                }
+                else
+                {
                     var completedVehicle = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status == "CA");
                     AppraisalTableView.Source = new ApprasialLogTVS(completedVehicle);
                     AppraisalTableView.RowHeight = 120f;
@@ -144,14 +154,17 @@ namespace AppraisalApp
             }
             else
             {
-                if(AppDelegate.appDelegate.CustomerLogin){
+                if (AppDelegate.appDelegate.CustomerLogin)
+                {
                     var completedVehicle = CustomerAppLogsList.FindAll((CustomerAppraisalLogEntity obj) => obj.Status != "CA");
                     AppraisalTableView.Source = new CustomerApprasialLogTVS(completedVehicle);
                     AppraisalTableView.RowHeight = 120f;
                     AppraisalTableView.EstimatedRowHeight = 120.0f;
                     AppraisalTableView.BackgroundColor = UIColor.LightGray;
                     AppraisalTableView.ReloadData();
-                }else{
+                }
+                else
+                {
                     var completedVehicle = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status != "CA");
                     AppraisalTableView.Source = new ApprasialLogTVS(completedVehicle);
                     AppraisalTableView.RowHeight = 120f;
@@ -173,6 +186,7 @@ namespace AppraisalApp
             base.ViewDidLoad();
 
             NSNotificationCenter.DefaultCenter.AddObserver((Foundation.NSString)"ShowPushNotifyData", ShowAPNSView);
+            NSNotificationCenter.DefaultCenter.AddObserver((Foundation.NSString)"ShowPushNotifyAppLog", ShowAPNSView);
 
             // hide keyboard on touch outside area
             var g = new UITapGestureRecognizer(() => View.EndEditing(true));
@@ -182,7 +196,8 @@ namespace AppraisalApp
             VinSearch.Text = VinSearch.Text.ToUpper();
             VinSearch.TextChanged += (sender, e) =>
             {
-                if(AppDelegate.appDelegate.CustomerLogin){
+                if (AppDelegate.appDelegate.CustomerLogin)
+                {
 
                     if (VinSearch.Text.Length > 0)
                     {
@@ -216,8 +231,10 @@ namespace AppraisalApp
                         }
                     }
 
-                }else{
-                    
+                }
+                else
+                {
+
                     if (VinSearch.Text.Length > 0)
                     {
                         var VinSearchEntity = apploglist.FindAll((AppraisalLogEntity obj) => obj.VIN.Contains(VinSearch.Text.Trim()));
@@ -274,7 +291,9 @@ namespace AppraisalApp
                     var completedVehicle = CustomerAppLogsList.FindAll((CustomerAppraisalLogEntity obj) => obj.Status == "CA");
                     AppraisalTableView.Source = new CustomerApprasialLogTVS(completedVehicle);
 
-                }else{
+                }
+                else
+                {
                     Utility.ShowLoadingIndicator(this.View, "", true);
 
                     CustomerAppLogsList = await CallGuestAppraisalLogService(AppDelegate.appDelegate.GuestLastName, AppDelegate.appDelegate.GuestEmail, AppDelegate.appDelegate.GuestPhone);
@@ -287,14 +306,16 @@ namespace AppraisalApp
             }
             else
             {
-                if(null != AppDelegate.appDelegate.AppraisalsLogs && AppDelegate.appDelegate.AppraisalsLogs.Count > 0)
+                if (null != AppDelegate.appDelegate.AppraisalsLogs && AppDelegate.appDelegate.AppraisalsLogs.Count > 0)
                 {
                     apploglist = AppDelegate.appDelegate.AppraisalsLogs;
                     var completedVehicle = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status == "CA");
-                    AppraisalTableView.Source = new ApprasialLogTVS(completedVehicle);  
+                    AppraisalTableView.Source = new ApprasialLogTVS(completedVehicle);
 
-                }else{
-                    
+                }
+                else
+                {
+
 
                     Utility.ShowLoadingIndicator(this.View, "", true);
 
@@ -303,7 +324,7 @@ namespace AppraisalApp
                     Utility.HideLoadingIndicator(this.View);
 
                     var completedVehicle = apploglist.FindAll((AppraisalLogEntity obj) => obj.Status == "CA");
-                    AppraisalTableView.Source = new ApprasialLogTVS(completedVehicle);  
+                    AppraisalTableView.Source = new ApprasialLogTVS(completedVehicle);
                 }
 
 
@@ -315,6 +336,7 @@ namespace AppraisalApp
         public override void ViewDidDisappear(bool animated)
         {
             NSNotificationCenter.DefaultCenter.RemoveObserver((Foundation.NSString)"ShowPushNotifyData");
+            NSNotificationCenter.DefaultCenter.RemoveObserver((Foundation.NSString)"ShowPushNotifyAppLog");
             base.ViewDidDisappear(animated);
         }
 
@@ -352,8 +374,9 @@ namespace AppraisalApp
 
             var existingRecord = (conn.Table<CustomerValue>().Where(c => c.id == 1)).SingleOrDefault();
 
-            if(null != existingRecord){
-                
+            if (null != existingRecord)
+            {
+
                 AppDelegate.appDelegate.CustomerLogin = existingRecord.CustomerLogin;
                 AppDelegate.appDelegate.GuestLastName = existingRecord.CustomerLastName;
                 AppDelegate.appDelegate.GuestEmail = existingRecord.CustomerEmail;

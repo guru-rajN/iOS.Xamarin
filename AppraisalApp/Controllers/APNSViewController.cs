@@ -1,6 +1,10 @@
+using AppraisalApp.Models;
+using ExtAppraisalApp.Services;
+using ExtAppraisalApp.Utilities;
 using Foundation;
 using System;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using UIKit;
 
 namespace ExtAppraisalApp
@@ -33,12 +37,25 @@ namespace ExtAppraisalApp
 
         }
 
-        public override void ViewDidLoad()
+        async public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            if (AppDelegate.appDelegate.APNSSACDB)
+            {
+                //Get SAC and other value from DB 
+                //var storyboard = UIStoryboard.FromName("Main", null);
+                //APNSViewController summaryViewController = (APNSViewController)storyboard.InstantiateViewController("APNSViewController");
+                //var splitViewController = (APNSViewController)AppDelegate.appDelegate.Window.RootViewController;
+                Utility.ShowLoadingIndicator(this.View, "", true);
+                await GetAPNSSummary();
+                AppDelegate.appDelegate.APNSSACDB = false;
+                Utility.HideLoadingIndicator(this.View);
+
+            }
             if (AppDelegate.appDelegate.APNSAlert != null)
             {
-                //var a=new UILa
+                //var a=new 
+
                 address.Text = AppDelegate.appDelegate.APNSAlertAddressa + "," + AppDelegate.appDelegate.APNSAlertAddressb + "," + AppDelegate.appDelegate.APNSAlertZip;
                 string Message = AppDelegate.appDelegate.APNSAlert;
                 string[] tokens = Message.Split(' ');
@@ -77,6 +94,29 @@ namespace ExtAppraisalApp
                 //"that the information you have submitted is accurate and to adjust the value offered if we feel that your vehicle does not match the description you have provided.";
             }
         }
+
+        Task GetAPNSSummary()
+        {
+            return Task.Factory.StartNew(() =>
+            {
+                AppDelegate.appDelegate.SACvalue = AppDelegate.appDelegate.SACvalue.Substring(0, AppDelegate.appDelegate.SACvalue.IndexOf('.', 0));
+                AppDelegate.appDelegate.SACvalue = AppDelegate.appDelegate.SACvalue.Split(',')[0];
+                ApnsSummaryview APNSvalue = new ApnsSummaryview();
+                APNSvalue = ServiceFactory.getWebServiceHandle().GetAPNSSummaryView(AppDelegate.appDelegate.vehicleID,
+                                                                                    AppDelegate.appDelegate.storeId,
+                                                                                    AppDelegate.appDelegate.invtrId);
+                AppDelegate.appDelegate.APNSAlert = APNSvalue.Message + AppDelegate.appDelegate.SACvalue;
+                AppDelegate.appDelegate.APNSAlertStore = APNSvalue.StoreName;
+                AppDelegate.appDelegate.APNSAlertLat = APNSvalue.Langitude;
+                AppDelegate.appDelegate.APNSAlertLon = APNSvalue.Lattitude;
+                AppDelegate.appDelegate.APNSAlertAddressa = APNSvalue.Addressa;
+                AppDelegate.appDelegate.APNSAlertAddressb = APNSvalue.Addressb;
+                AppDelegate.appDelegate.APNSAlertZip = APNSvalue.Zipcode;
+
+            });
+
+        }
+
 
     }
 }

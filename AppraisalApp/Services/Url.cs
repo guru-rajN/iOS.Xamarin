@@ -55,5 +55,6 @@ namespace ExtAppraisalApp.Services
         public const string SAVE_Photo = "SavePhoto/";
 
         public const string CUSTOMER_APPRAISAL_LOG_URL = "FetchCustomerAppraisalLog/";
+        public const string GetAPNSSummary = "GetApnsSummaryView/";
     }
 }
