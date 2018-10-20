@@ -48,6 +48,10 @@ namespace ExtAppraisalApp
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIBarButtonItem CloseBtn { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton Comparebook { get; set; }
 
         [Outlet]
@@ -69,6 +73,10 @@ namespace ExtAppraisalApp
         [Action ("Cashout_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void Cashout_TouchUpInside (UIKit.UIButton sender);
+
+        [Action ("CloseBtn_Activated:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void CloseBtn_Activated (UIKit.UIBarButtonItem sender);
 
         [Action ("Comparebook_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -114,6 +122,11 @@ namespace ExtAppraisalApp
             if (Cashout != null) {
                 Cashout.Dispose ();
                 Cashout = null;
+            }
+
+            if (CloseBtn != null) {
+                CloseBtn.Dispose ();
+                CloseBtn = null;
             }
 
             if (Comparebook != null) {

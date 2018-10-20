@@ -25,9 +25,9 @@ namespace ExtAppraisalApp
 
         partial void APNSDone_Activated(UIBarButtonItem sender)
         {
-            var storyboard = UIStoryboard.FromName("Main", null);
-            var appraisalLogViewController = storyboard.InstantiateViewController("AppraisalLogNavID");
-            AppDelegate.appDelegate.Window.RootViewController = appraisalLogViewController;
+            //var storyboard = UIStoryboard.FromName("Main", null);
+            //var appraisalLogViewController = storyboard.InstantiateViewController("AppraisalLogNavID");
+            //AppDelegate.appDelegate.Window.RootViewController = appraisalLogViewController;
         }
 
 
@@ -43,6 +43,9 @@ namespace ExtAppraisalApp
         {
 
             base.ViewDidLoad();
+
+            APNSDone.Enabled = false;
+
             if (AppDelegate.appDelegate.APNSSACDB)
             {
                 //Get SAC and other value from DB 
@@ -87,7 +90,7 @@ namespace ExtAppraisalApp
                 int SummaryExEndIndex = 20;
                 var firstAttributes = new UIStringAttributes
                 {
-                    Font = UIFont.BoldSystemFontOfSize(19)
+                    Font = UIFont.BoldSystemFontOfSize(14)
                 };
 
                 var secondAttributes = new UIStringAttributes
@@ -106,6 +109,13 @@ namespace ExtAppraisalApp
                 //" us. Your vehicle is valued at" + Appvaluea + ". This amount is good for "+" "+summarytext+ " " +"from the date of submission. At the time of delivery or transfer of ownership, CarCash reserves the right to verify " +
                 //"that the information you have submitted is accurate and to adjust the value offered if we feel that your vehicle does not match the description you have provided.";
             }
+        }
+
+        partial void CloseBtn_Activated(UIBarButtonItem sender)
+        {
+            var storyboard = UIStoryboard.FromName("Main", null);
+            var appraisalLogViewController = storyboard.InstantiateViewController("AppraisalLogNavID");
+            AppDelegate.appDelegate.Window.RootViewController = appraisalLogViewController;
         }
 
         partial void Cashout_TouchUpInside(UIButton sender)
