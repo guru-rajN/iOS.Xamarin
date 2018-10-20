@@ -44,6 +44,14 @@ namespace ExtAppraisalApp
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton Cashout { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton Comparebook { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel ExpDate { get; set; }
 
         [Outlet]
@@ -58,13 +66,13 @@ namespace ExtAppraisalApp
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void APNSDone_Activated (UIKit.UIBarButtonItem sender);
 
-        [Action ("UIButton661442_TouchUpInside:")]
+        [Action ("Cashout_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
-        partial void UIButton661442_TouchUpInside (UIKit.UIButton sender);
+        partial void Cashout_TouchUpInside (UIKit.UIButton sender);
 
-        [Action ("UIButton664399_TouchUpInside:")]
+        [Action ("Comparebook_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
-        partial void UIButton664399_TouchUpInside (UIKit.UIButton sender);
+        partial void Comparebook_TouchUpInside (UIKit.UIButton sender);
 
         void ReleaseDesignerOutlets ()
         {
@@ -101,6 +109,16 @@ namespace ExtAppraisalApp
             if (AppValue != null) {
                 AppValue.Dispose ();
                 AppValue = null;
+            }
+
+            if (Cashout != null) {
+                Cashout.Dispose ();
+                Cashout = null;
+            }
+
+            if (Comparebook != null) {
+                Comparebook.Dispose ();
+                Comparebook = null;
             }
 
             if (ExpDate != null) {

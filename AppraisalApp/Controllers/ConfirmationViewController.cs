@@ -207,8 +207,9 @@ namespace ExtAppraisalApp
         {
             // TO-DO : API calls integration
             ConfirmationMsg.Text = "We will get back to you.";
-            SummaryMsg.Text = "Thank you for submitting your appraisal information. Once we appraise your Trade,the value will be valid for 14 days or 500 miles from the date of submission. At the time of delivery or transfer of ownership, CarCash reserves the right to verify that the information you have submitted is accurate and to adjust the value offered if we feel that your vehicle does not match the description you have provided.";
+            SummaryMsg.Text = "Thank you for your appraisal submission.We appreciate the opportunity to value your vehicle, and we will place your appraisal request at the top of our queue when we return to the office tomorrow at 9 a.m.EST.We will return a value to you as soon as possible!.";
             dropSqlite();
+
             deletePhoto();
 
             Utility.ShowLoadingIndicator(this.View, "Submitting...", true);

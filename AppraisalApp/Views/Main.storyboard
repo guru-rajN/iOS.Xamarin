@@ -2451,7 +2451,7 @@
                                     <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                                 </state>
                                 <connections>
-                                    <action selector="UIButton661442_TouchUpInside:" destination="264205" id="671014" eventType="touchUpInside"/>
+                                    <action selector="Cashout_TouchUpInside:" destination="264205" id="693211" eventType="touchUpInside"/>
                                 </connections>
                                 <constraints>
                                     <constraint id="671015" firstAttribute="height" constant="34"/>
@@ -2462,7 +2462,7 @@
                                 <rect key="frame" x="103" y="476" width="222" height="34"/>
                                 <color key="backgroundColor" colorSpace="calibratedRGB" red="0.37254901960784315" green="0.65490196078431373" blue="0.32549019607843138" alpha="1"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Compare Your ffer">
+                                <state key="normal" title="Compare Your Offer">
                                     <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                                 </state>
                                 <constraints>
@@ -2470,7 +2470,7 @@
                                     <constraint id="671018" firstAttribute="width" constant="222"/>
                                 </constraints>
                                 <connections>
-                                    <action selector="UIButton664399_TouchUpInside:" destination="264205" id="686597" eventType="touchUpInside"/>
+                                    <action selector="Comparebook_TouchUpInside:" destination="264205" id="693212" eventType="touchUpInside"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2525,6 +2525,8 @@
                         <outlet property="ExpDate" destination="266957" id="name-outlet-266957"/>
                         <outlet property="VehicleDetails" destination="266953" id="name-outlet-266953"/>
                         <outlet property="address" destination="502102" id="name-outlet-502102"/>
+                        <outlet property="Cashout" destination="661442" id="name-outlet-661442"/>
+                        <outlet property="Comparebook" destination="664399" id="name-outlet-664399"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="264207" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3155,7 +3157,7 @@
                                 </constraints>
                                 <connections>
                                     <action selector="UIButton664399_TouchUpInside:" destination="689115" id="689114" eventType="touchUpInside"/>
-                                    <action selector="UIButton689113_TouchUpInside:" destination="390032" id="689875" eventType="touchUpInside"/>
+                                    <action selector="Comparebook_TouchUpInside:" destination="390032" id="693982" eventType="touchUpInside"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="689118" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
@@ -3167,7 +3169,7 @@
                                 </state>
                                 <connections>
                                     <action selector="UIButton661442_TouchUpInside:" destination="689115" id="689119" eventType="touchUpInside"/>
-                                    <action selector="UIButton689118_TouchUpInside:" destination="390032" id="689874" eventType="touchUpInside"/>
+                                    <action selector="Cashout_TouchUpInside:" destination="390032" id="693981" eventType="touchUpInside"/>
                                 </connections>
                                 <constraints>
                                     <constraint id="689120" firstAttribute="height" constant="34"/>
@@ -3218,6 +3220,8 @@
                         <outlet property="ExpDate" destination="412442" id="name-outlet-412442"/>
                         <outlet property="VehicleDetails" destination="409889" id="name-outlet-409889"/>
                         <outlet property="address" destination="506620" id="name-outlet-506620"/>
+                        <outlet property="Cashout" destination="689118" id="name-outlet-689118"/>
+                        <outlet property="Comparebook" destination="689113" id="name-outlet-689113"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="390035" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3772,11 +3776,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ws-bA-3nd" misplaced="YES">
-                                <rect key="frame" x="16" y="345" width="343" height="153"/>
-                                <string key="text">Once you submit your trade, we will return your Appraised Value in 5-10 minutes. Your Appraised Value will be based upon your representation of the vehicle. The accuracy of your representation will be reviewed when the vehicle is personally observed by our staff. The ultimate value may be adjusted to reflect the visual review.</string>
+                                <rect key="frame" x="16" y="345" width="343" height="192"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <string key="text">Thank you for your appraisal submission.We appreciate the opportunity to value your vehicle, and we’ll have a number to you in just 5-10 minutes.Your Appraised value will be based upon the the accuracy of your vehicle’s representation.Our Staff will personally verify the condition of your vehicle, and the ultimate value my be adjusted to reflect to the visual review.</string>
                             </label>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nr8-I2-K0Y">
                                 <rect key="frame" x="0.0" y="570" width="375" height="300"/>

@@ -37,10 +37,7 @@ namespace ExtAppraisalApp
 
         }
 
-        partial void UIButton661442_TouchUpInside(UIButton sender)
-        {
-            Utility.ShowAlert("CarCash", "Functionality yet to come", "OK");
-        }
+       
 
         async public override void ViewDidLoad()
         {
@@ -111,10 +108,16 @@ namespace ExtAppraisalApp
             }
         }
 
-        partial void UIButton664399_TouchUpInside(UIButton sender)
+        partial void Cashout_TouchUpInside(UIButton sender)
         {
-            Utility.ShowAlert("CarCash", "Functionality yet to come", "OK");
+            var storyboard = UIStoryboard.FromName("Main", null);
+            MapsViewController summaryViewController = (MapsViewController)storyboard.InstantiateViewController("MapsViewController");
+            UINavigationController uINavigationController = new UINavigationController(summaryViewController);
+            uINavigationController.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
+            uINavigationController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
+            this.NavigationController.PresentViewController(uINavigationController, true, null);
         }
+
 
         Task GetAPNSSummary()
         {
@@ -139,5 +142,9 @@ namespace ExtAppraisalApp
         }
 
 
+        partial void Comparebook_TouchUpInside(UIButton sender)
+        {
+            Utility.ShowAlert("CarCash", "functionality coming soon", "OK");
+        }
     }
 }

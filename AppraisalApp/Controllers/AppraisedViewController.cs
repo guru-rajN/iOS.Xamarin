@@ -7,14 +7,21 @@ namespace ExtAppraisalApp
 {
     public partial class AppraisedViewController : UIViewController
     {
-        partial void UIButton689113_TouchUpInside(UIButton sender)
+        partial void Cashout_TouchUpInside(UIButton sender)
         {
-            Utility.ShowAlert("CarCash", "Functionality yet to come", "OK");
+            var storyboard = UIStoryboard.FromName("Main", null);
+            MapsViewController summaryViewController = (MapsViewController)storyboard.InstantiateViewController("MapsViewController");
+            UINavigationController uINavigationController = new UINavigationController(summaryViewController);
+            uINavigationController.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
+            uINavigationController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
+            this.NavigationController.PresentViewController(uINavigationController, true, null);
         }
 
-        partial void UIButton689118_TouchUpInside(UIButton sender)
+      
+
+        partial void Comparebook_TouchUpInside(UIButton sender)
         {
-            Utility.ShowAlert("CarCash", "Functionality yet to come", "OK");
+            Utility.ShowAlert("CarCash", "functionality coming soone", "OK");
         }
 
         //partial void Map_TouchUpInside(UIButton sender)
