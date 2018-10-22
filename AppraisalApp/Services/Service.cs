@@ -33,7 +33,7 @@ namespace ExtAppraisalApp.Services
 
         SIMSResponseData SaveHistory(HistoryRequest historyrequest);
 
-        List<Stores> SearchNearestStores(string zipcode);
+        short SearchNearestStores(string zipcode);
 
         SIMSResponseData SaveAfterMarketFactoryOptions(VehicleAfterMarketOptions vehicleAfterMarketOptions);
 

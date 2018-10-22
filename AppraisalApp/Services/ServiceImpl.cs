@@ -694,37 +694,10 @@ namespace ExtAppraisalApp.Services
 
         }
 
-        public List<Stores> SearchNearestStores(string zipcode)
-        {
-            HttpResponseMessage responseMessage = null;
-            string result = null;
-            List<Stores> storesList = new List<Stores>();
+        public short SearchNearestStores(string zipcode)         {             HttpResponseMessage responseMessage = null;             string result = null;             short storeId = 0;              try             {                 responseMessage = RestClient.doGet(Url.SEARCH_NEAREST_STORES_URL + "/" + zipcode);                  if (responseMessage.IsSuccessStatusCode)                 {                     result = responseMessage.Content.ReadAsStringAsync().Result;                     SIMSResponseData rst = JsonConvert.DeserializeObject<SIMSResponseData>(result);                     var response = JsonConvert.DeserializeObject<short>(rst.Data.ToString());                      storeId = response;                 }                 else                 {                     result = null;
 
-            try
-            {
-                responseMessage = RestClient.doGet(Url.SEARCH_NEAREST_STORES_URL + "/" + zipcode);
-
-                if (responseMessage.IsSuccessStatusCode)
-                {
-                    result = responseMessage.Content.ReadAsStringAsync().Result;
-                    SIMSResponseData rst = JsonConvert.DeserializeObject<SIMSResponseData>(result);
-                    var response = JsonConvert.DeserializeObject<List<Stores>>(rst.Data.ToString());
-
-                    storesList = response;
-                }
-                else
-                {
-                    result = null;
-
-                    Utilities.Utility.ShowAlert("Appraisal App", "No Stores Found!!", "OK");
-                }
-            }
-            catch (Exception exc)
-            {
-                System.Diagnostics.Debug.WriteLine("Exception occured :: " + exc.Message);
-            }
-            return storesList;
-        }
+                    // Utilities.Utility.ShowAlert("Appraisal App", "No Stores Found!!", "OK");
+                }             }             catch (Exception exc)             {                 System.Diagnostics.Debug.WriteLine("Exception occured :: " + exc.Message);             }             return storeId;         } 
 
         public SIMSResponseData SaveAfterMarketFactoryOptions(VehicleAfterMarketOptions vehicleAfterMarketOptions)
         {
