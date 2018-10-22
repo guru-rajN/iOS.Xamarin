@@ -55,7 +55,11 @@ namespace ExtAppraisalApp
             address.AddGestureRecognizer(labelTap);
             if (AppDelegate.appDelegate.APNSAlert != null)
             {
-                address.Text = AppDelegate.appDelegate.APNSAlertAddressa + "," + AppDelegate.appDelegate.APNSAlertAddressb + "," + AppDelegate.appDelegate.APNSAlertZip;
+                string addressText = AppDelegate.appDelegate.APNSAlertAddressa + "," + AppDelegate.appDelegate.APNSAlertAddressb + "," + AppDelegate.appDelegate.APNSAlertZip;
+                var underlineAttriString = new NSMutableAttributedString(addressText);
+                underlineAttriString.AddAttribute(UIStringAttributeKey.UnderlineStyle,
+                                                  NSNumber.FromInt32((int)NSUnderlineStyle.Single), new NSRange(0, underlineAttriString.Length));
+                address.AttributedText = underlineAttriString;
                 string Message = AppDelegate.appDelegate.APNSAlert;
                 string[] tokens = Message.Split(' ');
                 VehicleDetails.Text = tokens[2] + " " + tokens[3] + " " + tokens[4];

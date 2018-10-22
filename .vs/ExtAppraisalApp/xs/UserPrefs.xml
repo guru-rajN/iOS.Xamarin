@@ -3,30 +3,33 @@
     <Files>
       <File FileName="AppraisalApp/Services/ServiceImpl.cs" Line="708" Column="1" />
       <File FileName="AppraisalApp/Services/Service.cs" Line="36" Column="34" />
+      <File FileName="AppraisalApp/Views/Main.storyboard" />
+      <File FileName="AppraisalApp/Controllers/APNSViewController.cs" Line="75" Column="35" />
+      <File FileName="AppraisalApp/Controllers/AppraisedViewController.cs" Line="63" Column="68" />
       <File FileName="ExtAppraisalApp Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/apple/Documents/Crowe/11_Sep_2018/ExtAppraisalApp/AppraisalApp/Controllers/AppraisedViewController.cs" relfile="AppraisalApp/Controllers/AppraisedViewController.cs" line="27" column="1" />
-      <Breakpoint file="/Users/apple/Documents/Crowe/11_Sep_2018/ExtAppraisalApp/AppraisalApp/Controllers/AppraisedViewController.cs" relfile="AppraisalApp/Controllers/AppraisedViewController.cs" line="69" column="1" />
-      <Breakpoint file="/Users/apple/Documents/Crowe/11_Sep_2018/ExtAppraisalApp/AppraisalApp/Controllers/DetailViewController.cs" relfile="AppraisalApp/Controllers/DetailViewController.cs" line="884" column="1" />
-      <Breakpoint file="/Users/apple/Documents/Crowe/11_Sep_2018/ExtAppraisalApp/AppraisalApp/Controllers/DetailViewController.cs" relfile="AppraisalApp/Controllers/DetailViewController.cs" line="886" column="1" />
-      <Breakpoint file="/Users/apple/Documents/Crowe/11_Sep_2018/ExtAppraisalApp/AppraisalApp/Controllers/DetailViewController.cs" relfile="AppraisalApp/Controllers/DetailViewController.cs" line="882" column="1" />
-      <Breakpoint file="/Users/apple/Documents/Crowe/11_Sep_2018/ExtAppraisalApp/AppraisalApp/Controllers/DetailViewController.cs" relfile="AppraisalApp/Controllers/DetailViewController.cs" line="891" column="1" />
-      <Breakpoint file="/Users/apple/Documents/Crowe/11_Sep_2018/ExtAppraisalApp/AppraisalApp/Controllers/DetailViewController.cs" relfile="AppraisalApp/Controllers/DetailViewController.cs" line="890" column="1" />
-      <Breakpoint file="/Users/apple/Documents/Crowe/11_Sep_2018/ExtAppraisalApp/AppraisalApp/Utilities/ViewWorker.cs" relfile="AppraisalApp/Utilities/ViewWorker.cs" line="32" column="1" />
-      <Breakpoint file="/Users/apple/Documents/Crowe/11_Sep_2018/ExtAppraisalApp/AppraisalApp/Utilities/ViewWorker.cs" relfile="AppraisalApp/Utilities/ViewWorker.cs" line="33" column="1" />
-      <Breakpoint file="/Users/apple/Documents/Crowe/11_Sep_2018/ExtAppraisalApp/AppraisalApp/Controllers/ApprasialLogTVS.cs" relfile="AppraisalApp/Controllers/ApprasialLogTVS.cs" line="43" column="1" />
-      <Breakpoint file="/Users/apple/Documents/Crowe/11_Sep_2018/ExtAppraisalApp/AppraisalApp/Services/ServiceImpl.cs" relfile="AppraisalApp/Services/ServiceImpl.cs" line="705" column="1" />
-      <Breakpoint file="/Users/apple/Documents/Crowe/11_Sep_2018/ExtAppraisalApp/AppraisalApp/Services/ServiceImpl.cs" relfile="AppraisalApp/Services/ServiceImpl.cs" line="706" column="1" />
-      <Breakpoint file="/Users/apple/Documents/Crowe/11_Sep_2018/ExtAppraisalApp/AppraisalApp/Services/ServiceImpl.cs" relfile="AppraisalApp/Services/ServiceImpl.cs" line="708" column="1" />
+      <Breakpoint file="/Users/apple/Documents/Narasegowda/codebasea1/ExtAppraisalApp/AppraisalApp/Controllers/AppraisedViewController.cs" relfile="AppraisalApp/Controllers/AppraisedViewController.cs" line="27" column="1" />
+      <Breakpoint file="/Users/apple/Documents/Narasegowda/codebasea1/ExtAppraisalApp/AppraisalApp/Controllers/AppraisedViewController.cs" relfile="AppraisalApp/Controllers/AppraisedViewController.cs" line="73" column="1" />
+      <Breakpoint file="/Users/apple/Documents/Narasegowda/codebasea1/ExtAppraisalApp/AppraisalApp/Controllers/DetailViewController.cs" relfile="AppraisalApp/Controllers/DetailViewController.cs" line="884" column="1" />
+      <Breakpoint file="/Users/apple/Documents/Narasegowda/codebasea1/ExtAppraisalApp/AppraisalApp/Controllers/DetailViewController.cs" relfile="AppraisalApp/Controllers/DetailViewController.cs" line="886" column="1" />
+      <Breakpoint file="/Users/apple/Documents/Narasegowda/codebasea1/ExtAppraisalApp/AppraisalApp/Controllers/DetailViewController.cs" relfile="AppraisalApp/Controllers/DetailViewController.cs" line="882" column="1" />
+      <Breakpoint file="/Users/apple/Documents/Narasegowda/codebasea1/ExtAppraisalApp/AppraisalApp/Controllers/DetailViewController.cs" relfile="AppraisalApp/Controllers/DetailViewController.cs" line="891" column="1" />
+      <Breakpoint file="/Users/apple/Documents/Narasegowda/codebasea1/ExtAppraisalApp/AppraisalApp/Controllers/DetailViewController.cs" relfile="AppraisalApp/Controllers/DetailViewController.cs" line="890" column="1" />
+      <Breakpoint file="/Users/apple/Documents/Narasegowda/codebasea1/ExtAppraisalApp/AppraisalApp/Utilities/ViewWorker.cs" relfile="AppraisalApp/Utilities/ViewWorker.cs" line="32" column="1" />
+      <Breakpoint file="/Users/apple/Documents/Narasegowda/codebasea1/ExtAppraisalApp/AppraisalApp/Utilities/ViewWorker.cs" relfile="AppraisalApp/Utilities/ViewWorker.cs" line="33" column="1" />
+      <Breakpoint file="/Users/apple/Documents/Narasegowda/codebasea1/ExtAppraisalApp/AppraisalApp/Controllers/ApprasialLogTVS.cs" relfile="AppraisalApp/Controllers/ApprasialLogTVS.cs" line="43" column="1" />
+      <Breakpoint file="/Users/apple/Documents/Narasegowda/codebasea1/ExtAppraisalApp/AppraisalApp/Services/ServiceImpl.cs" relfile="AppraisalApp/Services/ServiceImpl.cs" line="705" column="1" />
+      <Breakpoint file="/Users/apple/Documents/Narasegowda/codebasea1/ExtAppraisalApp/AppraisalApp/Services/ServiceImpl.cs" relfile="AppraisalApp/Services/ServiceImpl.cs" line="706" column="1" />
+      <Breakpoint file="/Users/apple/Documents/Narasegowda/codebasea1/ExtAppraisalApp/AppraisalApp/Services/ServiceImpl.cs" relfile="AppraisalApp/Services/ServiceImpl.cs" line="708" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="../../../AppraisalApp/Controllers/DecodeViewController.cs" line="80" offsetX="784" offsetY="1185" expression="apprrequest.VIN" liveUpdate="True" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
-  <MonoDevelop.Ide.ItemProperties.ExtAppraisalApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.13AA464C-9B1A-4A8C-B44A-6011481AC5C3" />
+  <MonoDevelop.Ide.ItemProperties.ExtAppraisalApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.91327E94-EAB5-440F-8CBA-EF416122B73E" />
   <MultiItemStartupConfigurations />
 </Properties>
