@@ -1370,9 +1370,9 @@
                                     <constraint firstAttribute="width" constant="343" id="109408"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="Mechanical" misplaced="YES"/>
-                                    <segment title="Interior" misplaced="YES"/>
-                                    <segment title="Exterior" misplaced="YES"/>
+                                    <segment title="Mechanical"/>
+                                    <segment title="Interior"/>
+                                    <segment title="Exterior"/>
                                 </segments>
                                 <color key="tintColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
@@ -3166,7 +3166,7 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="10401 East Arapahoe Road,Englewood,CA,USA " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="506620">
                                 <rect key="frame" x="24" y="253" width="368" height="32"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14" weight="semibold"/>
                                 <color key="textColor" white="0.33333333333333298" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <constraints>
@@ -3248,7 +3248,7 @@
                             <constraint firstItem="506620" firstAttribute="centerX" secondItem="390034" secondAttribute="centerX" id="690632"/>
                             <constraint firstItem="506620" firstAttribute="top" secondItem="506614" secondAttribute="bottom" constant="4" id="690633"/>
                             <constraint firstItem="506620" firstAttribute="bottom" secondItem="689122" secondAttribute="top" constant="2" id="690636"/>
-                            <constraint firstItem="689118" firstAttribute="top" secondItem="689122" secondAttribute="bottom" constant="19" id="690637"/>
+                            <constraint firstItem="689118" firstAttribute="top" secondItem="689122" secondAttribute="bottom" constant="12" id="690637"/>
                             <constraint firstItem="689113" firstAttribute="top" secondItem="689118" secondAttribute="bottom" constant="10" id="690638"/>
                             <constraint firstItem="689118" firstAttribute="centerX" secondItem="390034" secondAttribute="centerX" id="690639"/>
                             <constraint firstItem="689113" firstAttribute="centerX" secondItem="390034" secondAttribute="centerX" id="690640"/>

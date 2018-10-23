@@ -77,7 +77,7 @@ namespace ExtAppraisalApp
                 int SummaryExEndIndex = 20;
                 var firstAttributes = new UIStringAttributes
                 {
-                    Font = UIFont.BoldSystemFontOfSize(19)
+                    Font = UIFont.BoldSystemFontOfSize(14)
                 };
 
                 var secondAttributes = new UIStringAttributes
@@ -113,6 +113,11 @@ namespace ExtAppraisalApp
             if (!string.IsNullOrEmpty(Title))
             {
                 //var a=new UILa
+                string addressText = AppDelegate.appDelegate.APNSAlertAddressa + "," + AppDelegate.appDelegate.APNSAlertAddressb + "," + AppDelegate.appDelegate.APNSAlertZip;
+                var underlineAttriString = new NSMutableAttributedString(addressText);
+                underlineAttriString.AddAttribute(UIStringAttributeKey.UnderlineStyle,
+                                                  NSNumber.FromInt32((int)NSUnderlineStyle.Single), new NSRange(0, underlineAttriString.Length));
+                address.AttributedText = underlineAttriString;
                 string Message = AppDelegate.appDelegate.APNSAlert;
                 string[] tokens = Message.Split(' ');
                 VehicleDetails.Text = tokens[2] + " " + tokens[3] + " " + tokens[4];
@@ -130,7 +135,7 @@ namespace ExtAppraisalApp
                 int SummaryExEndIndex = 20;
                 var firstAttributes = new UIStringAttributes
                 {
-                    Font = UIFont.BoldSystemFontOfSize(19)
+                    Font = UIFont.BoldSystemFontOfSize(14)
                 };
 
                 var secondAttributes = new UIStringAttributes
