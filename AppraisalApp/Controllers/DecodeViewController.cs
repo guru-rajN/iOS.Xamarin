@@ -171,6 +171,7 @@ namespace ExtAppraisalApp
             return Task.Factory.StartNew(() => {
                 CreateAppraisalRequest apprrequest = new CreateAppraisalRequest();
                 AppraisalResponse appresponse = new AppraisalResponse();
+                ContactUS contactresponse = new ContactUS();
                 apprrequest.VIN = Vin;
                 apprrequest.StoreID = storeId;
                 apprrequest.Mileage = mileage;
@@ -180,8 +181,8 @@ namespace ExtAppraisalApp
                 apprrequest.Phone = phone;
                 apprrequest.Email = email;
                 apprrequest.Is_Extrn_Customer = AppDelegate.appDelegate.IsCustomer;
-               
-                appresponse = ServiceFactory.getWebServiceHandle().CreateAppraisalKBB(apprrequest);
+
+                contactresponse = ServiceFactory.getWebServiceHandle().GetContactUS();
 
                 Console.WriteLine("vehicle id :: " + appresponse.VehicleID);
 
@@ -201,6 +202,11 @@ namespace ExtAppraisalApp
                         AppDelegate.appDelegate.storeId = appresponse.StoreID;
                         AppDelegate.appDelegate.invtrId = appresponse.InvtrID;
                         AppDelegate.appDelegate.trimId = appresponse.KBBTrimId;
+                        AppDelegate.appDelegate.Phone = contactresponse.Phone;
+                        AppDelegate.appDelegate.Email = contactresponse.Email;
+                        AppDelegate.appDelegate.Subject = contactresponse.Subject;
+                        AppDelegate.appDelegate.Body = contactresponse.Body;
+
                         AppDelegate.appDelegate.mileage = Convert.ToInt32(txtMileage.Text);
 
                         var storyboard = UIStoryboard.FromName("Main", null);

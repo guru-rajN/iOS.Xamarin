@@ -107,6 +107,12 @@ namespace ExtAppraisalApp
         public int WizardPageNo = 0;
         public bool IsCustomer = false;
 
+        public string Phone = null;
+        public string Email = null;
+        public string Subject = null;
+        public string Body = null;
+
+
         public string GuestLastName;
         public string GuestEmail;
         public string GuestPhone;

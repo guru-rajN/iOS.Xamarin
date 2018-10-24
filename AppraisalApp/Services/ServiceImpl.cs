@@ -222,6 +222,43 @@ namespace ExtAppraisalApp.Services
             return response;
 
         }
+        public ContactUS GetContactUS()
+        {
+            string result = null;
+            ContactUS contactresponse = new ContactUS();
+            HttpResponseMessage responseMessage = null;
+            try
+            {
+                responseMessage = RestClient.doGet(Url.GetContactUS);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    result = responseMessage.Content.ReadAsStringAsync().Result;
+                    SIMSResponseData rst = JsonConvert.DeserializeObject<SIMSResponseData>(result);
+                    var ContactData = JsonConvert.DeserializeObject<ContactUS>(rst.Data.ToString());
+
+                    contactresponse = ContactData;
+
+                    if (null != result)
+                    {
+                        //result = null;
+                    }
+                    // TO-DO : show alert message if the VIN appraisal already created
+                }
+                else
+                {
+                    result = null;
+
+                    //Utilities.Utility.ShowAlert("Appraisal App", "Decode VIN Failed!!", "OK");
+                }
+            }
+            catch (Exception exc)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception occured :: " + exc.Message);
+            }
+
+            return contactresponse;
+
+        }
 
         // Get KBB Vehicle details 
         public Vehicle GetVehicleDetails(long vehicleId, short storeId, short invtrId)

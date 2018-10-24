@@ -1,24 +1,26 @@
 ﻿<Properties StartupConfiguration="{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="ExtAppraisalApp Status">
     <Files>
-      <File FileName="AppraisalApp/Services/ServiceImpl.cs" Line="697" Column="22" />
-      <File FileName="AppraisalApp/Services/Service.cs" Line="36" Column="34" />
-      <File FileName="AppraisalApp/Controllers/LoginViewController.cs" Line="379" Column="18" />
-      <File FileName="../../../../../Library/Frameworks/Xamarin.iOS.framework/Versions/12.0.0.15/src/Xamarin.iOS/mcs/class/referencesource/mscorlib/system/runtime/exceptionservices/exceptionservicescommon.cs" Line="147" Column="32" />
+      <File FileName="AppraisalApp/Models/ContactUS.cs" Line="12" Column="41" />
+      <File FileName="AppraisalApp/Controllers/DecodeViewController.cs" Line="208" Column="53" />
+      <File FileName="AppraisalApp/AppDelegate.cs" Line="116" Column="36" />
+      <File FileName="AppraisalApp/Services/ServiceImpl.cs" Line="229" Column="56" />
+      <File FileName="AppraisalApp/Services/Url.cs" Line="59" Column="57" />
+      <File FileName="AppraisalApp/Controllers/ContactsTableViewController.cs" Line="37" Column="14" />
       <File FileName="ExtAppraisalApp Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/sathya/Work/23_Oct/ExtAppraisalApp/AppraisalApp/Controllers/AppraisedViewController.cs" relfile="AppraisalApp/Controllers/AppraisedViewController.cs" line="27" column="1" />
-      <Breakpoint file="/Users/sathya/Work/23_Oct/ExtAppraisalApp/AppraisalApp/Controllers/AppraisedViewController.cs" relfile="AppraisalApp/Controllers/AppraisedViewController.cs" line="73" column="1" />
-      <Breakpoint file="/Users/sathya/Work/23_Oct/ExtAppraisalApp/AppraisalApp/Controllers/ApprasialLogTVS.cs" relfile="AppraisalApp/Controllers/ApprasialLogTVS.cs" line="43" column="1" />
+      <Breakpoint file="/Users/apple/Documents/Narasegowda/codebaseExt/ExtAppraisalApp/AppraisalApp/Controllers/AppraisedViewController.cs" relfile="AppraisalApp/Controllers/AppraisedViewController.cs" line="27" column="1" />
+      <Breakpoint file="/Users/apple/Documents/Narasegowda/codebaseExt/ExtAppraisalApp/AppraisalApp/Controllers/AppraisedViewController.cs" relfile="AppraisalApp/Controllers/AppraisedViewController.cs" line="73" column="1" />
+      <Breakpoint file="/Users/apple/Documents/Narasegowda/codebaseExt/ExtAppraisalApp/AppraisalApp/Controllers/ApprasialLogTVS.cs" relfile="AppraisalApp/Controllers/ApprasialLogTVS.cs" line="43" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="../../../AppraisalApp/Controllers/DecodeViewController.cs" line="80" offsetX="784" offsetY="1185" expression="apprrequest.VIN" liveUpdate="True" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
-  <MonoDevelop.Ide.ItemProperties.ExtAppraisalApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.B1845A78-8EFE-4EDC-BB45-C002FBA985F7" />
+  <MonoDevelop.Ide.ItemProperties.ExtAppraisalApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.e99ffd9f7376f177a5020a6c918a1c6bf88e5a45" />
   <MultiItemStartupConfigurations />
 </Properties>
