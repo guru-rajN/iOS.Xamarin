@@ -229,7 +229,7 @@ namespace ExtAppraisalApp.Services
             HttpResponseMessage responseMessage = null;
             try
             {
-                responseMessage = RestClient.doGet(Url.GetContactUS);
+                responseMessage = RestClient.doGet(Url.GetContactUsInfoDetail);
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     result = responseMessage.Content.ReadAsStringAsync().Result;

@@ -56,6 +56,6 @@ namespace ExtAppraisalApp.Services
 
         public const string CUSTOMER_APPRAISAL_LOG_URL = "FetchCustomerAppraisalLog/";
         public const string GetAPNSSummary = "GetApnsSummaryView/";
-        public const string GetContactUS = "GetContactUS/";
+        public const string GetContactUsInfoDetail = "GetContactUsInfoDetail/";
     }
 }

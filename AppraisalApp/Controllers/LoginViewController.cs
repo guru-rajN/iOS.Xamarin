@@ -12,6 +12,7 @@ using AppraisalApp.Models;
 using CoreAnimation;
 using CoreGraphics;
 using ExtAppraisalApp.DB;
+using ExtAppraisalApp.Models;
 using ExtAppraisalApp.Services;
 using ExtAppraisalApp.Utilities;
 using Foundation;
@@ -201,10 +202,6 @@ namespace ExtAppraisalApp
 
         }
 
-
-
-
-
         partial void GetStartBtn_TouchUpInside(UIButton sender)
         {
             if (string.IsNullOrEmpty(LastNameTxt.Text))
@@ -269,8 +266,12 @@ namespace ExtAppraisalApp
 
                 string code = null;
                 code = await GetStoreID(DealerCodeTxt.Text);
-
-
+                //ContactUS contactresponse = new ContactUS();
+                //contactresponse = await GetContact();
+                //AppDelegate.appDelegate.Phone = contactresponse.Phone;
+                //AppDelegate.appDelegate.Email = contactresponse.Email;
+                //AppDelegate.appDelegate.Subject = contactresponse.Subject;
+                //AppDelegate.appDelegate.Body = contactresponse.Body;
                 Utility.HideLoadingIndicator(this.View);
 
                 if (null != code)
@@ -313,6 +314,15 @@ namespace ExtAppraisalApp
                 string code = null;
                 code = ServiceFactory.getWebServiceHandle().ValidateZipDealer(Convert.ToInt32(dealercode));
                 return code;
+            });
+        }
+        Task<ContactUS> GetContact()
+        {
+            return Task<ContactUS>.Factory.StartNew(() =>
+            {
+                ContactUS contat = null;
+                contat = ServiceFactory.getWebServiceHandle().GetContactUS();
+                return contat;
             });
         }
 
