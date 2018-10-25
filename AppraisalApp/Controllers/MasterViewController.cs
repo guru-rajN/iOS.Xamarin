@@ -306,7 +306,7 @@ namespace ExtAppraisalApp
         {
             UIAlertView Confirm = new UIAlertView();
             Confirm.Title = "Confirmation";
-            Confirm.Message = "You are exiting the Appraisal, anything not saved will be lost";
+            Confirm.Message = "You are discontinuing the Appraisal, anything not saved will be lost";
             Confirm.AddButton("Cancel");
             Confirm.AddButton("Yes");
             Confirm.Show();
