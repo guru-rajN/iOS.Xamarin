@@ -101,8 +101,8 @@ namespace ExtAppraisalApp
                 NSNotificationCenter.DefaultCenter.PostNotificationName("UpdatePhotoGraphs", null, dictionary);
             }
 
-            if (!AppDelegate.appDelegate.LeftCarImageUploaded && !AppDelegate.appDelegate.RightCarImageUploaded && !AppDelegate.appDelegate.SeatCarImageUploaded && !AppDelegate.appDelegate.BackSeatImageUploaded && !AppDelegate.appDelegate.FrontCarImageUploaded && !AppDelegate.appDelegate.BackCarImageUploaded
-               && !AppDelegate.appDelegate.OdometerImageUploaded && !AppDelegate.appDelegate.DashBoardImageUploaded && !AppDelegate.appDelegate.VINImageUplaoded && !AppDelegate.appDelegate.RimImageUploaded)
+            if (!AppDelegate.appDelegate.LeftCarImageUploaded || !AppDelegate.appDelegate.RightCarImageUploaded || !AppDelegate.appDelegate.SeatCarImageUploaded || !AppDelegate.appDelegate.BackSeatImageUploaded || !AppDelegate.appDelegate.FrontCarImageUploaded || !AppDelegate.appDelegate.BackCarImageUploaded
+               || !AppDelegate.appDelegate.OdometerImageUploaded || !AppDelegate.appDelegate.DashBoardImageUploaded || !AppDelegate.appDelegate.VINImageUplaoded || !AppDelegate.appDelegate.RimImageUploaded)
             {
                 UIAlertView Confirm = new UIAlertView();
                 Confirm.Title = "CarCash";

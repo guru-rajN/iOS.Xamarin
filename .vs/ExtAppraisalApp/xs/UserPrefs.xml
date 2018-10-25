@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{1F100DC9-48F0-4C07-9B61-A2673A77FAEF}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="AppraisalApp/Controllers/MasterViewController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AppraisalApp/Controllers/PhotoViewController.cs">
     <Files>
       <File FileName="AppraisalApp/Controllers/DecodeViewController.cs" Line="60" Column="13" />
       <File FileName="AppraisalApp/Views/Main.storyboard" />
@@ -7,7 +7,10 @@
       <File FileName="AppraisalApp/Services/ServiceImpl.cs" Line="233" Column="1" />
       <File FileName="AppraisalApp/Main.cs" Line="12" Column="1" />
       <File FileName="ExtAppraisalApp Status" />
-      <File FileName="AppraisalApp/Controllers/MasterViewController.cs" Line="309" Column="47" />
+      <File FileName="AppraisalApp/Controllers/MasterViewController.cs" Line="310" Column="41" />
+      <File FileName="AppraisalApp/Controllers/PhotoGraphController.cs" Line="168" Column="9" />
+      <File FileName="AppraisalApp/Services/Aws.cs" Line="1" Column="1" />
+      <File FileName="AppraisalApp/Controllers/PhotoViewController.cs" Line="110" Column="45" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
