@@ -104,17 +104,22 @@ namespace ExtAppraisalApp
             };
 
 
-
             txtZip.ShouldChangeCharacters = (textField, range, replacementString) => {
+                txtZip.Text = Regex.Replace(textField.Text, @"[^0-9]+", "");
                 var newLength = textField.Text.Length + replacementString.Length - range.Length;
                 return newLength <= 5;
             };
+            
+
+
 
 
             DealerCodeTxt.ShouldChangeCharacters = (textField, range, replacementString) => {
+                DealerCodeTxt.Text = Regex.Replace(textField.Text, @"[^0-9]+", "");
                 var newLength = textField.Text.Length + replacementString.Length - range.Length;
                 return newLength <= 6;
             };
+
 
             if (UserInterfaceIdiomIsPhone)
             {
@@ -201,6 +206,9 @@ namespace ExtAppraisalApp
             };
 
         }
+
+           
+
 
         partial void GetStartBtn_TouchUpInside(UIButton sender)
         {
@@ -366,6 +374,12 @@ namespace ExtAppraisalApp
 
                         Utility.ShowAlert("CarCash", "Your Email (" + EmailPhone.Text + ") is Incorrect", "OK");
                     }
+                    else if (!Regex.Match(EmailPhone.Text, "^[0-9]{10}$").Success && !IsEmail)
+                    {
+
+                        Utility.ShowAlert("CarCash", "Phone number  (" + EmailPhone.Text + ") is Incorrect", "OK");
+                    }
+
                     else
                     {
                         zipCode = txtZip.Text;
@@ -883,13 +897,21 @@ namespace ExtAppraisalApp
             EmailPhone.KeyboardType = UIKeyboardType.PhonePad;
             EmailPhone.Text = "";
             IsEmail = false;
-
+            const int maxCharacters = 10;
+            EmailPhone.Text = Regex.Replace(EmailPhone.Text, @"[^0-9]+", "");
             EmailPhone.ShouldChangeCharacters = (textField, range, replacementString) => {
-                var newLength = textField.Text.Length + replacementString.Length - range.Length;
-                return newLength <= 10;
+                var newContent = new NSString(textField.Text).Replace(range, new NSString(replacementString)).ToString();
+                int number;
+                if (newContent.Length > 0)
+                {
+                    EmailPhone.AttributedPlaceholder = new NSAttributedString("", null, UIColor.Red);
+                    //EmailPhone.AttributedPlaceholder = new NSAttributedString("", null, UIColor.Red);
+
+                }
+                return newContent.Length <= maxCharacters && (replacementString.Length == 0 || int.TryParse(replacementString, out number));
             };
         }
-
+       
         partial void EmailRadioBtn_TouchUpInside(UIButton sender)
         {
             EmailRadioBtn.SetBackgroundImage(UIImage.FromBundle("circular_filled.png"), UIControlState.Normal);
