@@ -90,14 +90,14 @@ namespace ExtAppraisalApp
                     masterViewController = (MasterViewController)((UINavigationController)SplitViewController.ViewControllers[0]).TopViewController;
             }
 
-            if(!AppDelegate.appDelegate.IsInfoSaved){
-                ViewWorker worker = new ViewWorker();
+            //if (!AppDelegate.appDelegate.IsInfoSaved){
+            //    ViewWorker worker = new ViewWorker();
 
-                worker.WorkerDelegate = masterViewController;
+            //    worker.WorkerDelegate = masterViewController;
 
-                worker.ShowPartialDoneImg(1);
+            //    worker.ShowPartialDoneImg(1);
 
-            }
+            //}
 
 
             try
@@ -109,13 +109,16 @@ namespace ExtAppraisalApp
                 }
                 else
                 {
-                    try{
+                    try
+                    {
                         var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
                         Utility.ShowLoadingIndicator(splitViewController.View, "Loading...", true);
                         // get vehicle details service
                         vehicleDetails = await CallGetVehicleService();
                         Utility.HideLoadingIndicator(SplitViewController.View);
-                    }catch(Exception exc){
+                    }
+                    catch (Exception exc)
+                    {
                         Debug.WriteLine("Exception occurred :: " + exc.Message);
                     }
 
@@ -132,7 +135,8 @@ namespace ExtAppraisalApp
                     }
                     else
                     {
-                        try{
+                        try
+                        {
                             var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
                             Utility.ShowLoadingIndicator(splitViewController.View, "Loading...", true);
 
@@ -145,11 +149,13 @@ namespace ExtAppraisalApp
                                 decodeVinDetails = await CallDecodeVINService(vehicleDetails.VIN, AppDelegate.appDelegate.mileage, vehicleDetails.StoreID, 20);
 
                             }
-                     
+
                             Utility.HideLoadingIndicator(splitViewController.View);
                             AppDelegate.appDelegate.cacheDecodeVinDetails = decodeVinDetails;
 
-                        }catch(Exception exc){
+                        }
+                        catch (Exception exc)
+                        {
                             Debug.WriteLine("Exception occurred :: " + exc.Message);
                         }
                     }
@@ -163,14 +169,17 @@ namespace ExtAppraisalApp
                         makeValue.Text = vehicleDetails.Make;
 
                         // Display Year & Make in MasterView
-                        if(!UserInterfaceIdiomIsPhone){
-                            masterViewController.Title = vehicleDetails.Year.ToString() + " " + vehicleDetails.Make;  
-                        }else{
+                        if (!UserInterfaceIdiomIsPhone)
+                        {
+                            masterViewController.Title = vehicleDetails.Year.ToString() + " " + vehicleDetails.Make;
+                        }
+                        else
+                        {
                             var dictionary = new NSDictionary(new NSString("1"), new NSString(vehicleDetails.Year.ToString() + " " + vehicleDetails.Make));
 
                             NSNotificationCenter.DefaultCenter.PostNotificationName((Foundation.NSString)"Title", null, dictionary);
                         }
-                           
+
 
                         mileageValue.Text = AppDelegate.appDelegate.mileage.ToString();
                         vehicleDetails.Mileage = AppDelegate.appDelegate.mileage;
@@ -199,7 +208,8 @@ namespace ExtAppraisalApp
                         AppDelegate.appDelegate.WizardPageNo = vehicleDetails.WizardPage;
 
 
-                        if(WizardPageNo > 4){
+                        if (WizardPageNo > 4)
+                        {
                             worker.ShowDoneImg(1);
                             worker.ShowDoneImg(2);
                             worker.ShowDoneImg(3);
@@ -422,6 +432,11 @@ namespace ExtAppraisalApp
                     }
                 }
 
+                if (null != masterViewController)
+                {
+                    if (UserInterfaceIdiomIsPhone)
+                        masterViewController.Title = "Back";
+                }
 
             }
             catch (Exception exc)
@@ -684,7 +699,8 @@ namespace ExtAppraisalApp
             }
         }
 
-        Task<Vehicle> CallGetVehicleService(){
+        Task<Vehicle> CallGetVehicleService()
+        {
             return Task<Vehicle>.Factory.StartNew(() =>
             {
                 Vehicle vehicle = GetVehicleData();
@@ -869,7 +885,7 @@ namespace ExtAppraisalApp
                 {
 
                     InvokeOnMainThread(() => {
-                        
+
                         var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
                         Utility.HideLoadingIndicator(splitViewController.View);
 
@@ -883,17 +899,20 @@ namespace ExtAppraisalApp
                             {
                                 if (!AppDelegate.appDelegate.IsInfoSaved)
                                 {
-                                    if (!AppDelegate.appDelegate.IsFactoryOptions)
-                                        worker.ShowPartialDoneImg(2);
-
-                                    worker.ShowDoneImg(1);
-                                    worker.PerformNavigation(2);
 
                                     if (UserInterfaceIdiomIsPhone)
                                     {
                                         var dictionary = new NSDictionary(new NSString("1"), new NSString("VehicleInfo"));
 
                                         NSNotificationCenter.DefaultCenter.PostNotificationName((Foundation.NSString)"MenuSelection", null, dictionary);
+                                    }
+                                    else
+                                    {
+                                        if (!AppDelegate.appDelegate.IsFactoryOptions)
+                                            worker.ShowPartialDoneImg(2);
+
+                                        worker.ShowDoneImg(1);
+                                        worker.PerformNavigation(2);
                                     }
                                 }
                             }

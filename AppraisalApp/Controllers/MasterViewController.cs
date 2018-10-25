@@ -19,6 +19,7 @@ namespace ExtAppraisalApp
         public DetailViewController DetailViewController { get; set; }
 
         private string NotificationMessage;
+        private string TitleMsg = null;
 
         protected MasterViewController(IntPtr handle) : base(handle)
         {
@@ -133,8 +134,10 @@ namespace ExtAppraisalApp
                 NotificationMsg = userInfo.Keys[0].ToString();
 
             var message = userInfo.ValueForKey((Foundation.NSString)"1");
+            TitleMsg = message.ToString();
 
-            if(NotificationMsg.Equals("1")){
+            if (NotificationMsg.Equals("1"))
+            {
                 Title = message.ToString();
             }
         }
@@ -145,7 +148,25 @@ namespace ExtAppraisalApp
             NSNotificationCenter.DefaultCenter.RemoveObserver((Foundation.NSString)"Title");
             NSNotificationCenter.DefaultCenter.RemoveObserver((Foundation.NSString)"MenuSelection");
             NSNotificationCenter.DefaultCenter.RemoveObserver((Foundation.NSString)"iPhoneWorkFlow");
+
             base.ViewDidDisappear(animated);
+        }
+
+        public override void ViewDidAppear(bool animated)
+        {
+            Debug.WriteLine("View did Appear");
+            if (UserInterfaceIdiomIsPhone)
+            {
+                if (!string.IsNullOrEmpty(TitleMsg))
+                {
+                    Title = TitleMsg;
+                }
+                else
+                {
+                    Title = "";
+                }
+            }
+            base.ViewDidAppear(animated);
         }
 
         public void UpdateView(NSNotification notification)
@@ -196,7 +217,10 @@ namespace ExtAppraisalApp
         public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
         {
             Console.WriteLine("row selected :: " + indexPath.Row);
-
+            if (UserInterfaceIdiomIsPhone)
+            {
+                Title = "Back";
+            }
         }
 
         public override NSIndexPath WillSelectRow(UITableView tableView, NSIndexPath indexPath)
@@ -204,7 +228,8 @@ namespace ExtAppraisalApp
 
             if (!UserInterfaceIdiomIsPhone)
             {
-                if(AppDelegate.appDelegate.WizardPageNo < 4){
+                if (AppDelegate.appDelegate.WizardPageNo < 4)
+                {
                     if (indexPath.Row == 1 && !AppDelegate.appDelegate.IsFactoryOptions && !AppDelegate.appDelegate.IsFactorySaved)
                     {
                         return null;
@@ -226,7 +251,9 @@ namespace ExtAppraisalApp
                         return null;
                     }
                     return indexPath;
-                }else{
+                }
+                else
+                {
                     return indexPath;
                 }
 
@@ -251,12 +278,13 @@ namespace ExtAppraisalApp
         {
             if (!UserInterfaceIdiomIsPhone)
             {
-                if(AppDelegate.appDelegate.WizardPageNo < 4){
+                if (AppDelegate.appDelegate.WizardPageNo < 4)
+                {
                     if (segueIdentifier == "factoryDetail" && !AppDelegate.appDelegate.IsFactoryOptions && !AppDelegate.appDelegate.IsFactorySaved)
                     {
                         return false;
                     }
-                    else if (segueIdentifier == "AfterMarketSegue" && AppDelegate.appDelegate.WizardPageNo < 2  && !AppDelegate.appDelegate.IsAftermarketSaved)
+                    else if (segueIdentifier == "AfterMarketSegue" && AppDelegate.appDelegate.WizardPageNo < 2 && !AppDelegate.appDelegate.IsAftermarketSaved)
                     {
                         return false;
                     }
@@ -274,7 +302,9 @@ namespace ExtAppraisalApp
                     }
 
                     return true;
-                }else{
+                }
+                else
+                {
                     return true;
                 }
             }
@@ -330,10 +360,11 @@ namespace ExtAppraisalApp
                         AppDelegate.appDelegate.CustomerAppraisalLogs.Clear();
                     }
 
-                    if (null != AppDelegate.appDelegate.AppraisalsLogs){
-                        AppDelegate.appDelegate.AppraisalsLogs.Clear(); 
+                    if (null != AppDelegate.appDelegate.AppraisalsLogs)
+                    {
+                        AppDelegate.appDelegate.AppraisalsLogs.Clear();
                     }
-                        
+
 
                     AppDelegate.appDelegate.IsAllDataSaved = false;
 
@@ -350,7 +381,7 @@ namespace ExtAppraisalApp
                     deletePhoto();
                 }
             };
-           
+
 
         }
 

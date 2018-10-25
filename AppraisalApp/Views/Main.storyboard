@@ -213,7 +213,7 @@
                             <outlet property="delegate" destination="7bK-jq-Zjz" id="RA6-mI-bju"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Master" id="Zdf-7t-Un8">
+                    <navigationItem key="navigationItem" id="Zdf-7t-Un8">
                         <barButtonItem key="leftBarButtonItem" title="Close" id="733">
                             <color key="tintColor" red="0.27450980392156865" green="0.44705882352941179" blue="0.25882352941176473" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -1370,9 +1370,9 @@
                                     <constraint firstAttribute="width" constant="343" id="109408"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="Mechanical"/>
-                                    <segment title="Interior"/>
-                                    <segment title="Exterior"/>
+                                    <segment title="Mechanical" misplaced="YES"/>
+                                    <segment title="Interior" misplaced="YES"/>
+                                    <segment title="Exterior" misplaced="YES"/>
                                 </segments>
                                 <color key="tintColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
