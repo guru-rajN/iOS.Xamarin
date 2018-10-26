@@ -205,16 +205,14 @@ namespace ExtAppraisalApp
 
         private async Task SaveDetails(NSNotification obj)
         {
-            // TO-DO : API calls integration
-            ConfirmationMsg.Text = "We will get back to you.";
-            SummaryMsg.Text = "Thank you for your appraisal submission.We appreciate the opportunity to value your vehicle, and we will place your appraisal request at the top of our queue when we return to the office tomorrow at 9 a.m.EST.We will return a value to you as soon as possible!.";
+            // TO-DO : API calls integration    
             dropSqlite();
-
             deletePhoto();
-
             Utility.ShowLoadingIndicator(this.View, "Submitting...", true);
             await CallService();
             Utility.HideLoadingIndicator(this.View);
+            ConfirmationMsg.Text = "We will get back to you.";
+            SummaryMsg.Text = "Thank you for your appraisal submission.We appreciate the opportunity to value your vehicle, and we will place your appraisal request at the top of our queue when we return to the office tomorrow at 9 a.m.EST.We will return a value to you as soon as possible!.";
 
         }
 
