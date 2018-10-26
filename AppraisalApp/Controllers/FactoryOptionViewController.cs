@@ -28,7 +28,7 @@ namespace ExtAppraisalApp
             var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
             Utility.ShowLoadingIndicator(splitViewController.View, "Saving...", true);
 
-            SIMSResponseData responseData = await SaveFactoryOptions(AppDelegate.appDelegate.vehicleID,AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId);
+            SIMSResponseData responseData = await SaveFactoryOptions(AppDelegate.appDelegate.vehicleID, AppDelegate.appDelegate.storeId, AppDelegate.appDelegate.invtrId);
 
             Utility.HideLoadingIndicator(splitViewController.View);
             // Navigate to Aftermarket
@@ -80,7 +80,7 @@ namespace ExtAppraisalApp
 
         UITableView table;
         IEnumerable<FactoryOptionsSection> fctoption = new List<FactoryOptionsSection>();
-        public FactoryOptionViewController (IntPtr handle) : base (handle)
+        public FactoryOptionViewController(IntPtr handle) : base(handle)
         {
         }
         public override void ViewDidLoad()
@@ -114,14 +114,15 @@ namespace ExtAppraisalApp
 
         }
 
-       
-        Task GetFactoryOptionsKBB(long Vehicle_ID,short store_ID,short Invtr_ID,int Trim_ID)
+
+        Task GetFactoryOptionsKBB(long Vehicle_ID, short store_ID, short Invtr_ID, int Trim_ID)
         {
-            return Task.Factory.StartNew(() => { 
-                if(AppDelegate.appDelegate.fctoption == null || AppDelegate.appDelegate.fctoption.Count ==0){
+            return Task.Factory.StartNew(() => {
+                if (AppDelegate.appDelegate.fctoption == null || AppDelegate.appDelegate.fctoption.Count == 0)
+                {
                     AppDelegate.appDelegate.fctoption = ServiceFactory.getWebServiceHandle().GetFactoryOptionsKBB(Vehicle_ID, store_ID, Invtr_ID, Trim_ID);
                 }
-           
+
                 InvokeOnMainThread(() =>
                 {
                     var splitViewController = (UISplitViewController)AppDelegate.appDelegate.Window.RootViewController;
@@ -137,10 +138,12 @@ namespace ExtAppraisalApp
                     List<string> tableItems = new List<string>();
                     foreach (var category in AppDelegate.appDelegate.fctoption)
                     {
-                        if(category.Caption == "Seats" || category.Caption =="Steering" || category.Caption =="Lighting and Mirrors"){
-                            
+                        if (category.Caption == "Seats" || category.Caption == "Steering" || category.Caption == "Lighting and Mirrors")
+                        {
+
                         }
-                        else{
+                        else
+                        {
                             string str = category.Caption;
                             tableItems.Add(str);
                         }
@@ -152,19 +155,20 @@ namespace ExtAppraisalApp
                 });
 
             });
-                    
+
 
         }
 
-        Task<SIMSResponseData> SaveFactoryOptions(long Vehicle_ID, short store_ID, short Invtr_ID){
+        Task<SIMSResponseData> SaveFactoryOptions(long Vehicle_ID, short store_ID, short Invtr_ID)
+        {
 
             return Task<SIMSResponseData>.Factory.StartNew(() => {
 
                 SIMSResponseData responseData = SaveFactory(Vehicle_ID, store_ID, Invtr_ID);
-     
+
                 return responseData;
             });
-          
+
         }
 
         private SIMSResponseData SaveFactory(long Vehicle_ID, short store_ID, short Invtr_ID)
@@ -188,6 +192,7 @@ namespace ExtAppraisalApp
                     factory.displayName = item.displayName;
                     factory.isSelected = item.isSelected;
                     factory.optionId = item.optionId;
+                    factory.isStandardOption = item.isStandardOption;
                     factory.optionKindId = "KBB";
                     listfactory.Add(factory);
 
@@ -196,7 +201,7 @@ namespace ExtAppraisalApp
             }
 
             vehicleFactoryOptions.data = listfactory;
-            responseStatus =  ServiceFactory.getWebServiceHandle().SaveFactoryOptions(vehicleFactoryOptions);
+            responseStatus = ServiceFactory.getWebServiceHandle().SaveFactoryOptions(vehicleFactoryOptions);
             return responseStatus;
         }
     }

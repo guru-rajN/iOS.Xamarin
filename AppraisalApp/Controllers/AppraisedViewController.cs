@@ -17,7 +17,7 @@ namespace ExtAppraisalApp
             this.NavigationController.PresentViewController(uINavigationController, true, null);
         }
 
-      
+
 
         partial void Comparebook_TouchUpInside(UIButton sender)
         {
@@ -34,7 +34,7 @@ namespace ExtAppraisalApp
         //    this.NavigationController.PresentViewController(uINavigationController, true, null);
         //}
 
-       
+
 
         public AppraisedViewController(IntPtr handle) : base(handle)
         {
@@ -124,7 +124,6 @@ namespace ExtAppraisalApp
                 string datea = tokens[7].Substring(1);
                 int Appvalue = Int32.Parse(datea);
                 string Appvaluea = "$" + Appvalue.ToString("#,##0");
-                AppValue.Text = Appvaluea;
                 DateTime date = DateTime.Now.AddDays(14);
                 //string summarytext = "14 days or 500 miles";
                 string formatteddate = date.ToString("MMM dd, yyyy");

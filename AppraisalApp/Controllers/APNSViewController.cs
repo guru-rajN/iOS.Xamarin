@@ -37,7 +37,7 @@ namespace ExtAppraisalApp
 
         }
 
-       
+
 
         async public override void ViewDidLoad()
         {
@@ -83,7 +83,11 @@ namespace ExtAppraisalApp
                 VehicleDetails.Text = tokens[2] + " " + tokens[3] + " " + tokens[4];
                 string datea = tokens[7].Substring(1);
                 int Appvalue = Int32.Parse(datea);
+                //String.Format("{0:C0}", sacValue.ToString("N2", System.Globalization.CultureInfo.GetCultureInfo("en-US")));
+                // string Appvaluea = "$" + Appvalue.ToString("#,##0");
                 string Appvaluea = "$" + Appvalue.ToString("#,##0");
+                //Globalization.CultureInfo.GetCultureInfo("en-US")));
+                // Appvaluea = Appvaluea.Substring(0, Appvaluea.IndexOf('.', 0));
                 AppValue.Text = Appvaluea;
                 DateTime date = DateTime.Now.AddDays(14);
                 //string summarytext = "14 days or 500 miles";
