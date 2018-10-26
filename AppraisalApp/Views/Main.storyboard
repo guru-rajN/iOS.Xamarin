@@ -1370,9 +1370,9 @@
                                     <constraint firstAttribute="width" constant="343" id="109408"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="Mechanical" misplaced="YES"/>
-                                    <segment title="Interior" misplaced="YES"/>
-                                    <segment title="Exterior" misplaced="YES"/>
+                                    <segment title="Mechanical"/>
+                                    <segment title="Interior"/>
+                                    <segment title="Exterior"/>
                                 </segments>
                                 <color key="tintColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
@@ -3477,7 +3477,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="8Ws-bA-3nd" firstAttribute="leading" secondItem="7bG-h4-l02" secondAttribute="leadingMargin" id="4dy-i0-fik"/>
-                            <constraint firstItem="8Ws-bA-3nd" firstAttribute="top" secondItem="luG-dx-wcG" secondAttribute="bottom" constant="345" id="F8N-Q2-MCU"/>
+                            <constraint firstItem="8Ws-bA-3nd" firstAttribute="top" secondItem="luG-dx-wcG" secondAttribute="bottom" constant="328" id="F8N-Q2-MCU"/>
                             <constraint firstItem="8Ws-bA-3nd" firstAttribute="trailing" secondItem="7bG-h4-l02" secondAttribute="trailingMargin" id="KYm-hM-Jww"/>
                             <constraint firstItem="RCC-Ce-tqe" firstAttribute="top" secondItem="luG-dx-wcG" secondAttribute="bottom" constant="73" id="bdc-xF-CLz"/>
                             <constraint firstAttribute="trailing" secondItem="Nr8-I2-K0Y" secondAttribute="trailing" id="dZb-c3-mJv"/>
